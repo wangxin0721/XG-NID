@@ -14,9 +14,14 @@ It does not download or preprocess the dataset by itself yet.
 
 1. Sync this repository to the server.
 2. Run `scripts/bootstrap.sh`.
-3. Place the dataset under `data/raw/`.
+3. Download the processed `CICIoT2023` bundle:
+
+```bash
+bash scripts/download_ciciot2023.sh
+```
+
 4. Place or clone `GNN4ID` under `third_party/GNN4ID/`.
-5. Use the `GNN4ID` notebooks/scripts to export graph files.
+5. Use the `GNN4ID` notebooks/scripts to export graph files if you want the raw pipeline.
 6. Run:
 
 ```bash
@@ -36,4 +41,4 @@ python main.py eval --data /path/to/graphs.pt --checkpoint outputs/xgnid/best.pt
 - Use the server terminal in VS Code.
 - Keep the dataset outside Git.
 - Keep graph exports in `data/processed/` or `outputs/`, both ignored by Git.
-
+- The UNB dataset page requires a form and may error in-browser; the GNN4ID Google Drive link is the faster path for the processed bundle.
