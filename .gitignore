@@ -12,6 +12,7 @@ outputs/
 runs/
 checkpoints/
 data/raw/
+data/processed/
 third_party/
 *.pt
 *.pth
