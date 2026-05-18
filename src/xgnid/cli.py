@@ -4,11 +4,14 @@ import argparse
 from pathlib import Path
 
 import torch
+from sklearn.metrics import accuracy_score
+from sklearn.metrics import precision_recall_fscore_support
 from torch_geometric.loader import DataLoader
 
 from .data import load_graphs, summarize_graphs
+from .export_test_results import save_test_outputs
 from .model import XGNIDClassifier
-from .train import evaluate, train
+from .train import predict, train
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -89,7 +92,16 @@ def main(argv: list[str] | None = None) -> int:
         model.load_state_dict(checkpoint["model_state"])
         device = torch.device(args.device if torch.cuda.is_available() or args.device == "cpu" else "cpu")
         model = model.to(device)
-        metrics = evaluate(model, loader, device)
+        preds, labels = predict(model, loader, device)
+        accuracy = accuracy_score(labels, preds)
+        precision, recall, f1, _ = precision_recall_fscore_support(labels, preds, average="macro", zero_division=0)
+        metrics = {
+            "accuracy": float(accuracy),
+            "precision_macro": float(precision),
+            "recall_macro": float(recall),
+            "f1_macro": float(f1),
+        }
+        save_test_outputs(accuracy, preds, labels)
         print(metrics)
         return 0
 

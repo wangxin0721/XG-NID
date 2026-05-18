@@ -25,7 +25,7 @@ def _move_batch(batch, device: torch.device):
 
 
 @torch.no_grad()
-def evaluate(model: nn.Module, loader, device: torch.device) -> dict[str, float]:
+def predict(model: nn.Module, loader, device: torch.device) -> tuple[list[int], list[int]]:
     model.eval()
     all_preds: list[int] = []
     all_targets: list[int] = []
@@ -36,6 +36,12 @@ def evaluate(model: nn.Module, loader, device: torch.device) -> dict[str, float]
         targets = batch.y.view(-1).detach().cpu().tolist()
         all_preds.extend(preds)
         all_targets.extend(targets)
+    return all_preds, all_targets
+
+
+@torch.no_grad()
+def evaluate(model: nn.Module, loader, device: torch.device) -> dict[str, float]:
+    all_preds, all_targets = predict(model, loader, device)
     precision, recall, f1, _ = precision_recall_fscore_support(all_targets, all_preds, average="macro", zero_division=0)
     acc = accuracy_score(all_targets, all_preds)
     return {
@@ -107,4 +113,3 @@ def train(
 
     test_metrics = evaluate(model, test_loader, device_t)
     return TrainResult(best_path=best_path, metrics={"best_val_f1": best_f1, **best_metrics, **{f"test_{k}": v for k, v in test_metrics.items()}})
-
