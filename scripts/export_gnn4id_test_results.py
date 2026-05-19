@@ -24,8 +24,8 @@ from xgnid.model import XGNIDClassifier
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser()
     parser.add_argument("--data", default=str(ROOT / "data" / "processed" / "CICIoT2023_processed" / "processed"))
-    parser.add_argument("--checkpoint", default=str(ROOT / "outputs" / "GNN4ID" / "model.pth"))
-    parser.add_argument("--output-dir", default=str(ROOT / "outputs" / "test_exports"))
+    parser.add_argument("--checkpoint", default=str(ROOT / "outputs" / "GNN4ID_edge" / "model.pth"))
+    parser.add_argument("--output-dir", default=str(ROOT / "outputs" /"GNN4ID_edge" / "test_exports"))
     parser.add_argument("--batch-size", type=int, default=1)
     parser.add_argument("--device", default="cuda")
     return parser
