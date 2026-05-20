@@ -11,6 +11,7 @@ from torch.optim import AdamW
 from tqdm import tqdm
 
 from .data import load_graphs, make_loaders, summarize_graphs
+from .data import label_counts
 from .model import XGNIDClassifier
 
 
@@ -65,10 +66,22 @@ def train(
     val_ratio: float = 0.1,
     seed: int = 42,
     device: str = "cuda",
+    stratify: bool = True,
+    balance_train: bool = False,
+    train_samples_per_class: int | None = None,
 ) -> TrainResult:
     device_t = torch.device(device if torch.cuda.is_available() or device == "cpu" else "cpu")
     graphs = load_graphs(data_path)
-    loaders = make_loaders(graphs, batch_size=batch_size, train_ratio=train_ratio, val_ratio=val_ratio, seed=seed)
+    loaders = make_loaders(
+        graphs,
+        batch_size=batch_size,
+        train_ratio=train_ratio,
+        val_ratio=val_ratio,
+        seed=seed,
+        stratify=stratify,
+        balance_train=balance_train,
+        train_samples_per_class=train_samples_per_class,
+    )
     train_loader, val_loader, test_loader = loaders
     model = XGNIDClassifier(hidden_dim=hidden_dim, heads=heads, num_classes=num_classes).to(device_t)
     optimizer = AdamW(model.parameters(), lr=lr, weight_decay=1e-4)
@@ -78,6 +91,11 @@ def train(
     best_path = output_dir / "best.pt"
     best_f1 = -1.0
     best_metrics: dict[str, float] = {}
+
+    print("dataset label counts:", label_counts(graphs))
+    print("train label counts:", label_counts(train_loader.dataset))
+    print("val label counts:", label_counts(val_loader.dataset))
+    print("test label counts:", label_counts(test_loader.dataset))
 
     for epoch in range(1, epochs + 1):
         model.train()
@@ -111,5 +129,11 @@ def train(
             f"val_acc={val_metrics['accuracy']:.4f} val_f1={val_metrics['f1_macro']:.4f}"
         )
 
-    test_metrics = evaluate(model, test_loader, device_t)
-    return TrainResult(best_path=best_path, metrics={"best_val_f1": best_f1, **best_metrics, **{f"test_{k}": v for k, v in test_metrics.items()}})
+    best_checkpoint = torch.load(best_path, map_location=device_t)
+    best_model = XGNIDClassifier(**best_checkpoint["model_kwargs"]).to(device_t)
+    best_model.load_state_dict(best_checkpoint["model_state"])
+    test_metrics = evaluate(best_model, test_loader, device_t)
+    return TrainResult(
+        best_path=best_path,
+        metrics={"best_val_f1": best_f1, **best_metrics, **{f"test_{k}": v for k, v in test_metrics.items()}},
+    )

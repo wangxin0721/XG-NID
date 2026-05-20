@@ -9,6 +9,7 @@ from sklearn.metrics import precision_recall_fscore_support
 from torch_geometric.loader import DataLoader
 
 from .data import load_graphs, summarize_graphs
+from .data import label_counts
 from .export_test_results import save_test_outputs
 from .model import XGNIDClassifier
 from .train import predict, train
@@ -34,6 +35,9 @@ def build_parser() -> argparse.ArgumentParser:
     train_p.add_argument("--val-ratio", type=float, default=0.1)
     train_p.add_argument("--seed", type=int, default=42)
     train_p.add_argument("--device", default="cuda")
+    train_p.add_argument("--no-stratify", action="store_false", dest="stratify", default=True)
+    train_p.add_argument("--balance-train", action="store_true")
+    train_p.add_argument("--train-samples-per-class", type=int, default=None)
 
     eval_p = sub.add_parser("eval", help="Evaluate a checkpoint")
     eval_p.add_argument("--data", required=True)
@@ -51,6 +55,7 @@ def main(argv: list[str] | None = None) -> int:
     if args.command == "inspect":
         graphs = load_graphs(args.data)
         print(summarize_graphs(graphs))
+        print("label_counts:", label_counts(graphs))
         if graphs:
             g = graphs[0]
             print("node_types:", g.node_types)
@@ -79,6 +84,9 @@ def main(argv: list[str] | None = None) -> int:
             val_ratio=args.val_ratio,
             seed=args.seed,
             device=args.device,
+            stratify=args.stratify,
+            balance_train=args.balance_train,
+            train_samples_per_class=args.train_samples_per_class,
         )
         print(result.best_path)
         print(result.metrics)
