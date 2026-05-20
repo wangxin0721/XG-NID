@@ -40,23 +40,41 @@ def build_parser() -> argparse.ArgumentParser:
         default=["RF", "LR", "AdaBoost", "DNN", "KNN"],
         help="Supported: RF, LR, AdaBoost, DNN, KNN",
     )
+    parser.add_argument(
+        "--feature-mode",
+        choices=["paper_flow", "flow82"],
+        default="paper_flow",
+        help=(
+            "paper_flow keeps only the base flow statistics before packet/temporal columns; "
+            "flow82 keeps the current 82-dim non-packet feature set used by the graph pipeline."
+        ),
+    )
+    parser.add_argument("--rf-trees", type=int, default=100)
     parser.add_argument("--seed", type=int, default=42)
     return parser
 
 
-def load_flow_only(csv_path: str | Path) -> tuple[pd.DataFrame, pd.Series]:
+def load_flow_only(csv_path: str | Path, feature_mode: str) -> tuple[pd.DataFrame, pd.Series]:
     df = pd.read_csv(csv_path)
     if "Label" not in df.columns:
         raise ValueError(f"Missing Label column in {csv_path}")
-    drop_cols = [c for c in df.columns if c.startswith("udps.")]
-    X = df.drop(columns=drop_cols + ["Label"]).fillna(0)
+
+    if feature_mode == "paper_flow":
+        cutoff = df.columns.get_loc("udps.payload_data")
+        feature_cols = list(df.columns[:cutoff])
+    elif feature_mode == "flow82":
+        feature_cols = [c for c in df.columns if not c.startswith("udps.") and c != "Label"]
+    else:
+        raise ValueError(f"Unsupported feature mode: {feature_mode}")
+
+    X = df[feature_cols].fillna(0)
     y = df["Label"].astype(int)
     return X, y
 
 
-def build_models(seed: int):
+def build_models(seed: int, rf_trees: int):
     return {
-        "RF": RandomForestClassifier(n_estimators=300, random_state=seed, n_jobs=-1),
+        "RF": RandomForestClassifier(n_estimators=rf_trees, random_state=seed, n_jobs=-1),
         "LR": make_pipeline(
             StandardScaler(),
             LogisticRegression(max_iter=3000, n_jobs=-1, random_state=seed),
@@ -86,15 +104,19 @@ def main() -> int:
     out_root = Path(args.output_dir)
     out_root.mkdir(parents=True, exist_ok=True)
 
-    X_train, y_train = load_flow_only(args.train_csv)
-    X_test, y_test = load_flow_only(args.test_csv)
+    X_train, y_train = load_flow_only(args.train_csv, args.feature_mode)
+    X_test, y_test = load_flow_only(args.test_csv, args.feature_mode)
 
-    available = build_models(args.seed)
+    available = build_models(args.seed, args.rf_trees)
     selected = []
     for name in args.models:
         if name not in available:
             raise ValueError(f"Unsupported model: {name}. Supported: {', '.join(available)}")
         selected.append((name, available[name]))
+
+    print(f"[flow-only] feature_mode={args.feature_mode} num_features={X_train.shape[1]}")
+    if args.feature_mode == "paper_flow":
+        print("[flow-only] using base flow statistics only; packet and temporal add-on columns are excluded.")
 
     summary_rows = []
     for name, model in selected:
@@ -121,6 +143,7 @@ def main() -> int:
                     "precision_macro": float(precision),
                     "recall_macro": float(recall),
                     "f1_macro": float(f1),
+                    "feature_mode": args.feature_mode,
                     "num_train_rows": int(len(X_train)),
                     "num_test_rows": int(len(X_test)),
                     "num_features": int(X_train.shape[1]),
