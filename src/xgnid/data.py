@@ -3,6 +3,7 @@ from __future__ import annotations
 from collections import Counter
 from pathlib import Path
 from typing import Iterable, Sequence
+import warnings
 
 import torch
 from sklearn.model_selection import train_test_split
@@ -71,7 +72,10 @@ def load_graphs(path: str | Path) -> list[HeteroData]:
     if path.is_dir():
         graphs: list[HeteroData] = []
         for file in sorted(path.glob("*.pt")):
-            graphs.extend(_as_graph_list(_load_graph_container(file)))
+            try:
+                graphs.extend(_as_graph_list(_load_graph_container(file)))
+            except TypeError as exc:
+                warnings.warn(f"Skipping unsupported graph file {file.name}: {exc}")
         return graphs
     return _as_graph_list(_load_graph_container(path))
 
