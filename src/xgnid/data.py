@@ -40,14 +40,40 @@ def _as_graph_list(obj) -> list[HeteroData]:
     return graphs
 
 
+def _resolve_reference_path(raw: str | Path, bases: Sequence[Path]) -> Path | None:
+    raw_path = Path(raw)
+    candidates = [raw_path]
+    if not raw_path.is_absolute():
+        for base in bases:
+            candidates.append((base / raw_path).resolve())
+    for candidate in candidates:
+        if candidate.exists():
+            return candidate
+    return None
+
+
+def _load_graph_container(path: Path, max_depth: int = 3):
+    obj = torch.load(path, map_location="cpu")
+    depth = 0
+    current_path = path
+    while depth < max_depth and isinstance(obj, (str, Path)):
+        ref = _resolve_reference_path(obj, bases=[current_path.parent, current_path.parent.parent, Path.cwd()])
+        if ref is None:
+            break
+        current_path = ref
+        obj = torch.load(ref, map_location="cpu")
+        depth += 1
+    return obj
+
+
 def load_graphs(path: str | Path) -> list[HeteroData]:
     path = Path(path)
     if path.is_dir():
         graphs: list[HeteroData] = []
         for file in sorted(path.glob("*.pt")):
-            graphs.extend(_as_graph_list(torch.load(file, map_location="cpu")))
+            graphs.extend(_as_graph_list(_load_graph_container(file)))
         return graphs
-    return _as_graph_list(torch.load(path, map_location="cpu"))
+    return _as_graph_list(_load_graph_container(path))
 
 
 def summarize_graphs(graphs: Sequence[HeteroData]) -> dict[str, int]:
