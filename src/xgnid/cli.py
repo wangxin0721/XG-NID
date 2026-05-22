@@ -8,7 +8,7 @@ from sklearn.metrics import accuracy_score
 from sklearn.metrics import precision_recall_fscore_support
 from torch_geometric.loader import DataLoader
 
-from .data import load_graphs, summarize_graphs
+from .data import load_graphs, load_split_record, summarize_graphs, subset_graphs
 from .data import label_counts
 from .export_test_results import save_test_outputs
 from .model import XGNIDClassifier
@@ -42,8 +42,10 @@ def build_parser() -> argparse.ArgumentParser:
     eval_p = sub.add_parser("eval", help="Evaluate a checkpoint")
     eval_p.add_argument("--data", required=True)
     eval_p.add_argument("--checkpoint", required=True)
+    eval_p.add_argument("--split", default=None, help="Path to split.json saved by train")
     eval_p.add_argument("--batch-size", type=int, default=16)
     eval_p.add_argument("--device", default="cuda")
+    eval_p.add_argument("--output-dir", default=None)
 
     return parser
 
@@ -94,6 +96,15 @@ def main(argv: list[str] | None = None) -> int:
 
     if args.command == "eval":
         graphs = load_graphs(args.data)
+        split_path = args.split
+        if split_path is None:
+            candidate = Path(args.checkpoint).resolve().parent / "split.json"
+            if candidate.exists():
+                split_path = str(candidate)
+        if split_path is not None:
+            split_record = load_split_record(split_path)
+            test_indices = split_record["split_indices"]["test"]
+            graphs = subset_graphs(graphs, test_indices)
         loader = DataLoader(graphs, batch_size=args.batch_size, shuffle=False)
         checkpoint = torch.load(args.checkpoint, map_location="cpu")
         model = XGNIDClassifier(**checkpoint["model_kwargs"])
@@ -109,7 +120,10 @@ def main(argv: list[str] | None = None) -> int:
             "recall_macro": float(recall),
             "f1_macro": float(f1),
         }
-        save_test_outputs(accuracy, preds, labels)
+        output_dir = args.output_dir
+        if output_dir is None:
+            output_dir = str(Path(args.checkpoint).resolve().parent / "test_exports")
+        save_test_outputs(accuracy, preds, labels, output_dir=output_dir)
         print(metrics)
         return 0
 

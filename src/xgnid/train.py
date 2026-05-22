@@ -10,7 +10,7 @@ from torch import nn
 from torch.optim import AdamW
 from tqdm import tqdm
 
-from .data import load_graphs, make_loaders, summarize_graphs
+from .data import build_split_record, load_graphs, make_loaders, save_split_record, split_graph_indices
 from .data import label_counts
 from .model import XGNIDClassifier
 
@@ -18,7 +18,7 @@ from .model import XGNIDClassifier
 @dataclass
 class TrainResult:
     best_path: Path
-    metrics: dict[str, float]
+    metrics: dict[str, float | str]
 
 
 def _move_batch(batch, device: torch.device):
@@ -72,6 +72,13 @@ def train(
 ) -> TrainResult:
     device_t = torch.device(device if torch.cuda.is_available() or device == "cpu" else "cpu")
     graphs = load_graphs(data_path)
+    split_indices = split_graph_indices(
+        graphs,
+        train_ratio=train_ratio,
+        val_ratio=val_ratio,
+        seed=seed,
+        stratify=stratify,
+    )
     loaders = make_loaders(
         graphs,
         batch_size=batch_size,
@@ -81,6 +88,7 @@ def train(
         stratify=stratify,
         balance_train=balance_train,
         train_samples_per_class=train_samples_per_class,
+        split_indices=split_indices,
     )
     train_loader, val_loader, test_loader = loaders
     model = XGNIDClassifier(hidden_dim=hidden_dim, heads=heads, num_classes=num_classes).to(device_t)
@@ -89,8 +97,22 @@ def train(
     output_dir = Path(output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
     best_path = output_dir / "best.pt"
+    split_path = output_dir / "split.json"
     best_f1 = -1.0
     best_metrics: dict[str, float] = {}
+
+    split_record = build_split_record(
+        graphs,
+        split_indices,
+        data_path=data_path,
+        train_ratio=train_ratio,
+        val_ratio=val_ratio,
+        seed=seed,
+        stratify=stratify,
+        balance_train=balance_train,
+        train_samples_per_class=train_samples_per_class,
+    )
+    save_split_record(split_record, split_path)
 
     print("dataset label counts:", label_counts(graphs))
     print("train label counts:", label_counts(train_loader.dataset))
@@ -135,5 +157,10 @@ def train(
     test_metrics = evaluate(best_model, test_loader, device_t)
     return TrainResult(
         best_path=best_path,
-        metrics={"best_val_f1": best_f1, **best_metrics, **{f"test_{k}": v for k, v in test_metrics.items()}},
+        metrics={
+            "best_val_f1": best_f1,
+            **best_metrics,
+            **{f"test_{k}": v for k, v in test_metrics.items()},
+            "split_path": str(split_path),
+        },
     )

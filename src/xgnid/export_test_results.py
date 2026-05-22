@@ -31,7 +31,7 @@ def save_test_outputs(
     acc: float,
     prediction: Sequence[int] | np.ndarray,
     label: Sequence[int] | np.ndarray,
-    output_dir: str | Path = "outputs/GNN4ID_edge/test_exports",
+    output_dir: str | Path = "outputs/GNN4ID/test_exports",
     class_names: Sequence[str] = DEFAULT_CLASS_NAMES,
 ) -> Path:
     output_dir = Path(output_dir)
