@@ -3,6 +3,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Iterable
+import warnings
 
 import torch
 from sklearn.metrics import accuracy_score, precision_recall_fscore_support
@@ -10,7 +11,14 @@ from torch import nn
 from torch.optim import AdamW
 from tqdm import tqdm
 
-from .data import build_split_record, load_graphs, make_loaders, save_split_record, split_graph_indices_paper_table4
+from .data import (
+    TABLE4_TEST_TARGETS,
+    build_split_record,
+    load_graphs,
+    make_loaders,
+    save_split_record,
+    split_graph_indices_paper_table4,
+)
 from .data import label_counts
 from .model import XGNIDClassifier
 
@@ -70,10 +78,17 @@ def train(
     balance_train: bool = False,
     train_samples_per_class: int | None = None,
 ) -> TrainResult:
+    if abs(train_ratio - 0.8) > 1e-9:
+        warnings.warn(
+            "train_ratio is ignored by the paper-aligned split; using the fixed Table 4 class-wise test targets.",
+            stacklevel=2,
+        )
     device_t = torch.device(device if torch.cuda.is_available() or device == "cpu" else "cpu")
     graphs = load_graphs(data_path)
     split_indices = split_graph_indices_paper_table4(
         graphs,
+        test_ratio=0.2,
+        test_cap=4000,
         val_ratio=val_ratio,
         seed=seed,
     )
@@ -103,12 +118,13 @@ def train(
         graphs,
         split_indices,
         data_path=data_path,
-        split_strategy="paper_table4",
-        test_ratio=1.0 - train_ratio - val_ratio,
+        split_strategy="paper_table4_fixed_counts",
+        test_ratio=0.2,
         test_cap=4000,
         val_ratio=val_ratio,
         seed=seed,
         target_per_class=train_samples_per_class if balance_train else None,
+        test_targets=TABLE4_TEST_TARGETS,
     )
     save_split_record(split_record, split_path)
 

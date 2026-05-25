@@ -12,6 +12,18 @@ from torch_geometric.data import HeteroData
 from torch_geometric.loader import DataLoader
 
 
+TABLE4_TEST_TARGETS: dict[int, int] = {
+    0: 4000,  # Benign
+    1: 1090,  # WebBased
+    2: 4000,  # Spoofing
+    3: 4000,  # Recon
+    4: 4000,  # Mirai
+    5: 4000,  # DoS
+    6: 4000,  # DDoS
+    7: 467,   # BruteForce
+}
+
+
 def graph_label(graph: HeteroData) -> int | None:
     if hasattr(graph, "y") and graph.y is not None:
         return int(graph.y.view(-1)[0].item())
@@ -157,14 +169,26 @@ def split_graph_indices_paper_table4(
         raise ValueError("val_ratio must be in [0, 1).")
 
     grouped = _group_indices_by_label(graphs)
+    required_labels = set(TABLE4_TEST_TARGETS)
+    missing = sorted(required_labels.difference(grouped))
+    if missing:
+        raise ValueError(f"Missing labels for paper-aligned split: {missing}")
     train_idx: list[int] = []
     val_idx: list[int] = []
     test_idx: list[int] = []
 
     for label in sorted(grouped):
         indices = _shuffle_indices(grouped[label], seed + label)
-        n_test = min(int(round(len(indices) * test_ratio)), test_cap)
+        target_test = TABLE4_TEST_TARGETS.get(label)
+        if target_test is None:
+            raise ValueError(f"Unexpected label in dataset: {label}")
+        n_test = min(target_test, test_cap) if test_cap > 0 else target_test
         n_test = min(n_test, len(indices))
+        if len(indices) < target_test:
+            raise ValueError(
+                f"Label {label} has only {len(indices)} samples, "
+                f"but paper Table 4 requires {target_test} test samples."
+            )
         label_test = indices[:n_test]
         label_remain = indices[n_test:]
         n_val = int(round(len(label_remain) * val_ratio))
@@ -195,6 +219,7 @@ def build_split_record(
     val_ratio: float,
     seed: int,
     target_per_class: int | None,
+    test_targets: dict[int, int] | None = None,
 ) -> dict[str, object]:
     train_graphs = _subset_graphs(graphs, split_indices["train"])
     val_graphs = _subset_graphs(graphs, split_indices["val"])
@@ -209,6 +234,7 @@ def build_split_record(
         "val_ratio": float(val_ratio),
         "seed": int(seed),
         "target_per_class": target_per_class,
+        "test_targets": {str(k): int(v) for k, v in (test_targets or TABLE4_TEST_TARGETS).items()},
         "total_graphs": len(graphs),
         "label_counts": label_counts(graphs),
         "split_indices": {
