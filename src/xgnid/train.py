@@ -10,7 +10,7 @@ from torch import nn
 from torch.optim import AdamW
 from tqdm import tqdm
 
-from .data import build_split_record, load_graphs, make_loaders, save_split_record, split_graph_indices
+from .data import build_split_record, load_graphs, make_loaders, save_split_record, split_graph_indices_paper_table4
 from .data import label_counts
 from .model import XGNIDClassifier
 
@@ -72,12 +72,10 @@ def train(
 ) -> TrainResult:
     device_t = torch.device(device if torch.cuda.is_available() or device == "cpu" else "cpu")
     graphs = load_graphs(data_path)
-    split_indices = split_graph_indices(
+    split_indices = split_graph_indices_paper_table4(
         graphs,
-        train_ratio=train_ratio,
         val_ratio=val_ratio,
         seed=seed,
-        stratify=stratify,
     )
     loaders = make_loaders(
         graphs,

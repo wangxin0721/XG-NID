@@ -113,6 +113,35 @@ def subset_graphs(graphs: Sequence[HeteroData], indices: Sequence[int]) -> list[
     return _subset_graphs(graphs, indices)
 
 
+def _group_indices_by_label(graphs: Sequence[HeteroData]) -> dict[int, list[int]]:
+    grouped: dict[int, list[int]] = {}
+    for idx, graph in enumerate(graphs):
+        label = graph_label(graph)
+        if label is None:
+            continue
+        grouped.setdefault(label, []).append(idx)
+    return grouped
+
+
+def _shuffle_indices(indices: Sequence[int], seed: int) -> list[int]:
+    if not indices:
+        return []
+    rng = torch.Generator().manual_seed(seed)
+    perm = torch.randperm(len(indices), generator=rng).tolist()
+    return [indices[i] for i in perm]
+
+
+def _sample_indices(indices: Sequence[int], n: int, seed: int) -> list[int]:
+    if n <= 0 or not indices:
+        return []
+    rng = torch.Generator().manual_seed(seed)
+    if n <= len(indices):
+        perm = torch.randperm(len(indices), generator=rng).tolist()
+        return [indices[i] for i in perm[:n]]
+    pick = torch.randint(low=0, high=len(indices), size=(n,), generator=rng).tolist()
+    return [indices[i] for i in pick]
+
+
 def split_graph_indices_paper_table4(
     graphs: Sequence[HeteroData],
     test_ratio: float = 0.2,
@@ -150,6 +179,9 @@ def split_graph_indices_paper_table4(
     val_idx = _shuffle_indices(val_idx, seed + 999)
     test_idx = _shuffle_indices(test_idx, seed + 1999)
     return {"train": train_idx, "val": val_idx, "test": test_idx}
+
+
+split_graph_indices = split_graph_indices_paper_table4
 
 
 def build_split_record(
