@@ -113,64 +113,43 @@ def subset_graphs(graphs: Sequence[HeteroData], indices: Sequence[int]) -> list[
     return _subset_graphs(graphs, indices)
 
 
-def split_graph_indices(
+def split_graph_indices_paper_table4(
     graphs: Sequence[HeteroData],
-    train_ratio: float = 0.8,
+    test_ratio: float = 0.2,
+    test_cap: int = 4000,
     val_ratio: float = 0.1,
     seed: int = 42,
-    stratify: bool = True,
 ) -> dict[str, list[int]]:
-    if not 0 < train_ratio < 1 or not 0 <= val_ratio < 1:
-        raise ValueError("Ratios must be in (0, 1).")
-    if train_ratio + val_ratio >= 1:
-        raise ValueError("train_ratio + val_ratio must be < 1.")
+    if not 0 < test_ratio <= 1:
+        raise ValueError("test_ratio must be in (0, 1].")
+    if test_cap <= 0:
+        raise ValueError("test_cap must be positive.")
+    if not 0 <= val_ratio < 1:
+        raise ValueError("val_ratio must be in [0, 1).")
 
-    total = len(graphs)
-    test_ratio = 1.0 - train_ratio - val_ratio
-    indices = list(range(total))
-    labels = [graph_label(graph) for graph in graphs]
+    grouped = _group_indices_by_label(graphs)
+    train_idx: list[int] = []
+    val_idx: list[int] = []
+    test_idx: list[int] = []
 
-    train_idx: list[int]
-    val_idx: list[int]
-    test_idx: list[int]
+    for label in sorted(grouped):
+        indices = _shuffle_indices(grouped[label], seed + label)
+        n_test = min(int(round(len(indices) * test_ratio)), test_cap)
+        n_test = min(n_test, len(indices))
+        label_test = indices[:n_test]
+        label_remain = indices[n_test:]
+        n_val = int(round(len(label_remain) * val_ratio))
+        n_val = min(n_val, len(label_remain))
+        label_val = label_remain[:n_val]
+        label_train = label_remain[n_val:]
+        test_idx.extend(label_test)
+        val_idx.extend(label_val)
+        train_idx.extend(label_train)
 
-    if stratify and _can_stratify([label for label in labels if label is not None]):
-        train_idx, temp_idx = train_test_split(
-            indices,
-            test_size=val_ratio + test_ratio,
-            random_state=seed,
-            stratify=labels,
-        )
-        temp_labels = [labels[i] for i in temp_idx]
-        if _can_stratify([label for label in temp_labels if label is not None]):
-            val_idx, test_idx = train_test_split(
-                temp_idx,
-                test_size=test_ratio / (val_ratio + test_ratio),
-                random_state=seed,
-                stratify=temp_labels,
-            )
-        else:
-            temp_idx = list(temp_idx)
-            rng = torch.Generator().manual_seed(seed)
-            perm = torch.randperm(len(temp_idx), generator=rng).tolist()
-            temp_idx = [temp_idx[i] for i in perm]
-            split = int(len(temp_idx) * val_ratio / (val_ratio + test_ratio))
-            val_idx = temp_idx[:split]
-            test_idx = temp_idx[split:]
-    else:
-        rng = torch.Generator().manual_seed(seed)
-        perm = torch.randperm(total, generator=rng).tolist()
-        train_size = int(total * train_ratio)
-        val_size = int(total * val_ratio)
-        train_idx = perm[:train_size]
-        val_idx = perm[train_size : train_size + val_size]
-        test_idx = perm[train_size + val_size :]
-
-    return {
-        "train": train_idx,
-        "val": val_idx,
-        "test": test_idx,
-    }
+    train_idx = _shuffle_indices(train_idx, seed)
+    val_idx = _shuffle_indices(val_idx, seed + 999)
+    test_idx = _shuffle_indices(test_idx, seed + 1999)
+    return {"train": train_idx, "val": val_idx, "test": test_idx}
 
 
 def build_split_record(
@@ -178,27 +157,26 @@ def build_split_record(
     split_indices: dict[str, Sequence[int]],
     *,
     data_path: str | Path,
-    train_ratio: float,
+    split_strategy: str,
+    test_ratio: float,
+    test_cap: int,
     val_ratio: float,
     seed: int,
-    stratify: bool,
-    balance_train: bool,
-    train_samples_per_class: int | None,
+    target_per_class: int | None,
 ) -> dict[str, object]:
     train_graphs = _subset_graphs(graphs, split_indices["train"])
     val_graphs = _subset_graphs(graphs, split_indices["val"])
     test_graphs = _subset_graphs(graphs, split_indices["test"])
     return {
         "schema_version": 1,
+        "split_strategy": split_strategy,
         "data_path": str(Path(data_path)),
         "data_path_resolved": str(Path(data_path).resolve()),
-        "train_ratio": float(train_ratio),
+        "test_ratio": float(test_ratio),
+        "test_cap": int(test_cap),
         "val_ratio": float(val_ratio),
-        "test_ratio": float(1.0 - train_ratio - val_ratio),
         "seed": int(seed),
-        "stratify": bool(stratify),
-        "balance_train": bool(balance_train),
-        "train_samples_per_class": train_samples_per_class,
+        "target_per_class": target_per_class,
         "total_graphs": len(graphs),
         "label_counts": label_counts(graphs),
         "split_indices": {
@@ -231,6 +209,7 @@ def _balance_train_graphs(
     seed: int = 42,
     train_samples_per_class: int | None = None,
 ) -> list[HeteroData]:
+    target = train_samples_per_class if train_samples_per_class is not None else 20000
     labels = [graph_label(graph) for graph in graphs]
     grouped: dict[int, list[int]] = {}
     for idx, label in enumerate(labels):
@@ -239,29 +218,15 @@ def _balance_train_graphs(
         grouped.setdefault(label, []).append(idx)
     if not grouped:
         return list(graphs)
-
-    target = train_samples_per_class
-    if target is None:
-        target = min(len(indices) for indices in grouped.values())
-    if target <= 0:
-        raise ValueError("train_samples_per_class must be positive.")
-
-    rng = torch.Generator().manual_seed(seed)
     balanced_indices: list[int] = []
     for label in sorted(grouped):
         indices = grouped[label]
         if len(indices) >= target:
-            perm = torch.randperm(len(indices), generator=rng).tolist()
-            balanced_indices.extend(indices[i] for i in perm[:target])
+            balanced_indices.extend(_sample_indices(indices, target, seed + label))
         else:
             balanced_indices.extend(indices)
-            extra = target - len(indices)
-            if extra > 0:
-                pick = torch.randint(low=0, high=len(indices), size=(extra,), generator=rng).tolist()
-                balanced_indices.extend(indices[i] for i in pick)
-
-    perm = torch.randperm(len(balanced_indices), generator=rng).tolist()
-    balanced_indices = [balanced_indices[i] for i in perm]
+            balanced_indices.extend(_sample_indices(indices, target - len(indices), seed + label + 10_000))
+    balanced_indices = _shuffle_indices(balanced_indices, seed)
     return _subset_graphs(graphs, balanced_indices)
 
 
@@ -274,12 +239,14 @@ def split_graphs(
     balance_train: bool = False,
     train_samples_per_class: int | None = None,
 ) -> tuple[list[HeteroData], list[HeteroData], list[HeteroData]]:
-    split_indices = split_graph_indices(
+    if stratify is False:
+        warnings.warn("stratify=False is ignored for the paper-aligned split; using class-wise sampling.")
+    split_indices = split_graph_indices_paper_table4(
         graphs,
-        train_ratio=train_ratio,
+        test_ratio=1.0 - train_ratio - val_ratio,
+        test_cap=4000,
         val_ratio=val_ratio,
         seed=seed,
-        stratify=stratify,
     )
     train_graphs = _subset_graphs(graphs, split_indices["train"])
     if balance_train:

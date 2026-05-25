@@ -105,12 +105,12 @@ def train(
         graphs,
         split_indices,
         data_path=data_path,
-        train_ratio=train_ratio,
+        split_strategy="paper_table4",
+        test_ratio=1.0 - train_ratio - val_ratio,
+        test_cap=4000,
         val_ratio=val_ratio,
         seed=seed,
-        stratify=stratify,
-        balance_train=balance_train,
-        train_samples_per_class=train_samples_per_class,
+        target_per_class=train_samples_per_class if balance_train else None,
     )
     save_split_record(split_record, split_path)
 
