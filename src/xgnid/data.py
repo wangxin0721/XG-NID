@@ -314,7 +314,7 @@ def split_graphs(
 
 def make_loaders(
     graphs: Sequence[HeteroData],
-    batch_size: int = 64,
+    batch_size: int = 16,
     train_ratio: float = 0.8,
     val_ratio: float = 0.1,
     seed: int = 42,

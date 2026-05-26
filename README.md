@@ -42,7 +42,7 @@ python main.py inspect --data /path/to/graphs.pt
 4. Train:
 
 ```bash
-python main.py train --data /path/to/graphs.pt --epochs 30 --batch-size 64 --lr 0.01 --weight-decay 1e-5 --hidden-dim 64 --output-dir outputs/xgnid
+python main.py train --data /path/to/graphs.pt --epochs 30 --batch-size 16 --output-dir outputs/xgnid
 ```
 
 5. Evaluate:
@@ -55,3 +55,4 @@ python main.py eval --data /path/to/graphs.pt --checkpoint outputs/xgnid/best.pt
 
 - Data preprocessing / graph export on full CIC-IoT2023: hours.
 - Training on a sampled balanced set: tens of minutes to a few hours depending on GPU.
+

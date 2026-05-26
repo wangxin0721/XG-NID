@@ -26,10 +26,9 @@ def build_parser() -> argparse.ArgumentParser:
     train_p.add_argument("--data", required=True)
     train_p.add_argument("--output-dir", default="outputs/xgnid")
     train_p.add_argument("--epochs", type=int, default=30)
-    train_p.add_argument("--batch-size", type=int, default=64)
-    train_p.add_argument("--lr", type=float, default=1e-2)
-    train_p.add_argument("--weight-decay", type=float, default=1e-5)
-    train_p.add_argument("--hidden-dim", type=int, default=64)
+    train_p.add_argument("--batch-size", type=int, default=16)
+    train_p.add_argument("--lr", type=float, default=1e-3)
+    train_p.add_argument("--hidden-dim", type=int, default=128)
     train_p.add_argument("--heads", type=int, default=2)
     train_p.add_argument("--num-classes", type=int, default=8)
     train_p.add_argument("--train-ratio", type=float, default=0.8)
@@ -44,7 +43,7 @@ def build_parser() -> argparse.ArgumentParser:
     eval_p.add_argument("--data", required=True)
     eval_p.add_argument("--checkpoint", required=True)
     eval_p.add_argument("--split", default=None, help="Path to split.json saved by train")
-    eval_p.add_argument("--batch-size", type=int, default=64)
+    eval_p.add_argument("--batch-size", type=int, default=16)
     eval_p.add_argument("--device", default="cuda")
     eval_p.add_argument("--output-dir", default=None)
 
@@ -80,7 +79,6 @@ def main(argv: list[str] | None = None) -> int:
             epochs=args.epochs,
             batch_size=args.batch_size,
             lr=args.lr,
-            weight_decay=args.weight_decay,
             hidden_dim=args.hidden_dim,
             heads=args.heads,
             num_classes=args.num_classes,

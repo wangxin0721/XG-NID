@@ -26,7 +26,7 @@ bash scripts/download_ciciot2023.sh
 
 ```bash
 python main.py inspect --data /path/to/graphs.pt
-python main.py train --data /path/to/graphs.pt --epochs 30 --batch-size 64 --lr 0.01 --weight-decay 1e-5 --hidden-dim 64 --output-dir outputs/xgnid
+python main.py train --data /path/to/graphs.pt --epochs 30 --batch-size 16 --output-dir outputs/xgnid
 python main.py eval --data /path/to/graphs.pt --checkpoint outputs/xgnid/best.pt
 ```
 
