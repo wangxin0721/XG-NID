@@ -62,6 +62,14 @@ python scripts/build_innov1_packet_selection.py \
   --output-dir data/processed/CICIoT2023_processed/processed_innov1
 ```
 
+Then build graphs:
+
+```bash
+python scripts/build_innov1_graphs.py \
+  --input-dir data/processed/CICIoT2023_processed/processed_innov1 \
+  --output-dir data/processed/CICIoT2023_processed/processed_innov1_graphs
+```
+
 ## Expected runtime
 
 - Data preprocessing / graph export on full CIC-IoT2023: hours.
