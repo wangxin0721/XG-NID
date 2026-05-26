@@ -11,7 +11,7 @@ from torch_geometric.loader import DataLoader
 from .data import load_graphs, load_split_record, summarize_graphs, subset_graphs
 from .data import label_counts
 from .export_test_results import save_test_outputs
-from .model import XGNIDClassifier
+from .model import HeteroGNN
 from .train import predict, train
 
 
@@ -107,7 +107,7 @@ def main(argv: list[str] | None = None) -> int:
             graphs = subset_graphs(graphs, test_indices)
         loader = DataLoader(graphs, batch_size=args.batch_size, shuffle=False)
         checkpoint = torch.load(args.checkpoint, map_location="cpu")
-        model = XGNIDClassifier(**checkpoint["model_kwargs"])
+        model = HeteroGNN(**checkpoint["model_kwargs"])
         model.load_state_dict(checkpoint["model_state"])
         device = torch.device(args.device if torch.cuda.is_available() or args.device == "cpu" else "cpu")
         model = model.to(device)

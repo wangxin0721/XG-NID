@@ -20,7 +20,7 @@ from .data import (
     split_graph_indices_paper_table4,
 )
 from .data import label_counts
-from .model import XGNIDClassifier
+from .model import HeteroGNN
 
 
 @dataclass
@@ -104,7 +104,7 @@ def train(
         split_indices=split_indices,
     )
     train_loader, val_loader, test_loader = loaders
-    model = XGNIDClassifier(hidden_dim=hidden_dim, heads=heads, num_classes=num_classes).to(device_t)
+    model = HeteroGNN(hidden_dim=hidden_dim, num_classes=num_classes).to(device_t)
     optimizer = AdamW(model.parameters(), lr=lr, weight_decay=1e-4)
     criterion = nn.CrossEntropyLoss()
     output_dir = Path(output_dir)
@@ -153,7 +153,6 @@ def train(
                     "model_state": model.state_dict(),
                     "model_kwargs": {
                         "hidden_dim": hidden_dim,
-                        "heads": heads,
                         "num_classes": num_classes,
                     },
                     "metrics": val_metrics,
@@ -166,7 +165,7 @@ def train(
         )
 
     best_checkpoint = torch.load(best_path, map_location=device_t)
-    best_model = XGNIDClassifier(**best_checkpoint["model_kwargs"]).to(device_t)
+    best_model = HeteroGNN(**best_checkpoint["model_kwargs"]).to(device_t)
     best_model.load_state_dict(best_checkpoint["model_state"])
     test_metrics = evaluate(best_model, test_loader, device_t)
     return TrainResult(
