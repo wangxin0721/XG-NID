@@ -106,7 +106,7 @@ def train(
     train_loader, val_loader, test_loader = loaders
     model = HeteroGNN(hidden_dim=hidden_dim, num_classes=num_classes).to(device_t)
     optimizer = AdamW(model.parameters(), lr=lr, weight_decay=1e-4)
-    criterion = nn.CrossEntropyLoss()
+    criterion = nn.NLLLoss()
     output_dir = Path(output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
     best_path = output_dir / "best.pt"
