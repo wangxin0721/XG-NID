@@ -28,7 +28,7 @@ class XGNIDClassifier(nn.Module):
         self,
         flow_dim: int = 82,
         packet_dim: int = 1500,
-        hidden_dim: int = 128,
+        hidden_dim: int = 64,
         num_classes: int = 8,
         heads: int = 2,
         dropout: float = 0.2,
@@ -122,4 +122,3 @@ class XGNIDClassifier(nn.Module):
         x = F.leaky_relu(x, negative_slope=0.1)
         x = global_mean_pool(x, batch)
         return self.classifier(x)
-

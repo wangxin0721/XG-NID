@@ -8,7 +8,7 @@ import warnings
 import torch
 from sklearn.metrics import accuracy_score, precision_recall_fscore_support
 from torch import nn
-from torch.optim import AdamW
+from torch.optim import Adam
 from tqdm import tqdm
 
 from .data import (
@@ -65,9 +65,10 @@ def train(
     data_path: str | Path,
     output_dir: str | Path,
     epochs: int = 30,
-    batch_size: int = 16,
-    lr: float = 1e-3,
-    hidden_dim: int = 128,
+    batch_size: int = 64,
+    lr: float = 1e-2,
+    weight_decay: float = 1e-5,
+    hidden_dim: int = 64,
     heads: int = 2,
     num_classes: int = 8,
     train_ratio: float = 0.8,
@@ -105,7 +106,7 @@ def train(
     )
     train_loader, val_loader, test_loader = loaders
     model = XGNIDClassifier(hidden_dim=hidden_dim, heads=heads, num_classes=num_classes).to(device_t)
-    optimizer = AdamW(model.parameters(), lr=lr, weight_decay=1e-4)
+    optimizer = Adam(model.parameters(), lr=lr, weight_decay=weight_decay)
     criterion = nn.CrossEntropyLoss()
     output_dir = Path(output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
