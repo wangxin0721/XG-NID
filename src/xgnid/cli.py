@@ -10,8 +10,8 @@ from torch_geometric.loader import DataLoader
 
 from .data import load_graphs, load_split_record, summarize_graphs, subset_graphs
 from .data import label_counts
-from .export_test_results import save_test_summary, save_test_outputs
-from .model import build_model
+from .export_test_results import save_test_outputs
+from .model import HeteroGNN
 from .train import predict, train
 
 
@@ -25,8 +25,6 @@ def build_parser() -> argparse.ArgumentParser:
     train_p = sub.add_parser("train", help="Train the graph classifier")
     train_p.add_argument("--data", required=True)
     train_p.add_argument("--output-dir", default="outputs/xgnid")
-    train_p.add_argument("--model-name", default="baseline")
-    train_p.add_argument("--selection-ratio", type=float, default=0.35)
     train_p.add_argument("--epochs", type=int, default=100)
     train_p.add_argument("--batch-size", type=int, default=16)
     train_p.add_argument("--lr", type=float, default=1e-3)
@@ -80,8 +78,6 @@ def main(argv: list[str] | None = None) -> int:
         result = train(
             data_path=args.data,
             output_dir=args.output_dir,
-            model_name=args.model_name,
-            selection_ratio=args.selection_ratio,
             epochs=args.epochs,
             batch_size=args.batch_size,
             lr=args.lr,
@@ -115,7 +111,7 @@ def main(argv: list[str] | None = None) -> int:
             graphs = subset_graphs(graphs, test_indices)
         loader = DataLoader(graphs, batch_size=args.batch_size, shuffle=False)
         checkpoint = torch.load(args.checkpoint, map_location="cpu")
-        model = build_model(**checkpoint["model_kwargs"])
+        model = HeteroGNN(**checkpoint["model_kwargs"])
         model.load_state_dict(checkpoint["model_state"])
         device = torch.device(args.device if torch.cuda.is_available() or args.device == "cpu" else "cpu")
         model = model.to(device)
@@ -131,7 +127,7 @@ def main(argv: list[str] | None = None) -> int:
         output_dir = args.output_dir
         if output_dir is None:
             output_dir = str(Path(args.checkpoint).resolve().parent / "test_exports")
-        save_test_summary(metrics, preds, labels, output_dir=output_dir)
+        save_test_outputs(accuracy, preds, labels, output_dir=output_dir)
         print(metrics)
         return 0
 

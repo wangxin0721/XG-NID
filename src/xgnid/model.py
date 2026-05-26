@@ -14,48 +14,6 @@ PACKET_TO_FLOW: Tuple[str, str, str] = ("packet", "rev_contain", "flow")
 PACKET_TO_PACKET: Tuple[str, str, str] = ("packet", "link", "packet")
 
 
-class AdaptivePacketPool(nn.Module):
-    def __init__(self, hidden_dim: int, selection_ratio: float = 0.35) -> None:
-        super().__init__()
-        self.selection_ratio = float(selection_ratio)
-        self.score = nn.Sequential(
-            nn.Linear(hidden_dim, hidden_dim),
-            nn.LeakyReLU(),
-            nn.Linear(hidden_dim, 1),
-        )
-
-    def forward(self, packet_x: torch.Tensor, batch: torch.Tensor) -> tuple[torch.Tensor, torch.Tensor]:
-        if packet_x.numel() == 0:
-            empty = packet_x.new_zeros((0, packet_x.size(-1)))
-            return empty, empty
-
-        num_graphs = int(batch.max().item()) + 1 if batch.numel() > 0 else 0
-        mean_pools: list[torch.Tensor] = []
-        selected_pools: list[torch.Tensor] = []
-        hidden_dim = int(packet_x.size(-1))
-
-        for graph_idx in range(num_graphs):
-            mask = batch == graph_idx
-            graph_packets = packet_x[mask]
-            if graph_packets.numel() == 0:
-                zero = packet_x.new_zeros(hidden_dim)
-                mean_pools.append(zero)
-                selected_pools.append(zero)
-                continue
-
-            graph_scores = self.score(graph_packets).squeeze(-1)
-            target_k = int(round(graph_packets.size(0) * self.selection_ratio))
-            k = max(1, min(graph_packets.size(0), target_k))
-            selected_scores, selected_idx = torch.topk(graph_scores, k=k, largest=True)
-            selected_packets = graph_packets[selected_idx]
-            weights = torch.softmax(selected_scores, dim=0).unsqueeze(-1)
-
-            mean_pools.append(graph_packets.mean(dim=0))
-            selected_pools.append((weights * selected_packets).sum(dim=0))
-
-        return torch.stack(mean_pools, dim=0), torch.stack(selected_pools, dim=0)
-
-
 class _PaperStyleHeteroBase(nn.Module):
     def __init__(
         self,
@@ -239,61 +197,6 @@ class HeteroGNN_Edge(_PaperStyleHeteroBase):
             conv_cls=GATConv,
             edge_aware=True,
         )
-
-
-class AdaptivePacketHeteroGNN(_PaperStyleHeteroBase):
-    def __init__(
-        self,
-        hidden_dim: int = 64,
-        num_classes: int = 8,
-        eps: float = 1.0,
-        selection_ratio: float = 0.35,
-    ) -> None:
-        super().__init__(
-            hidden_dim=hidden_dim,
-            num_classes=num_classes,
-            eps=eps,
-            conv_cls=SAGEConv,
-            edge_aware=False,
-        )
-        self.selection_ratio = float(selection_ratio)
-        self.packet_pool = AdaptivePacketPool(hidden_dim, selection_ratio=selection_ratio)
-        self.graph_prediction = nn.Linear(hidden_dim * 3, hidden_dim)
-        self.graph_prediction_1 = nn.Linear(hidden_dim, max(hidden_dim // 4, 16))
-        self.graph_prediction_2 = nn.Linear(max(hidden_dim // 4, 16), num_classes)
-
-    def _graph_logits(self, data: HeteroData) -> torch.Tensor:
-        x_dict = self._forward_convs(data)
-        flow_emb = global_mean_pool(x_dict["flow"], data["flow"].batch)
-        packet_mean, packet_selected = self.packet_pool(x_dict["packet"], data["packet"].batch)
-        graph_emb = torch.cat([flow_emb, packet_mean, packet_selected], dim=1)
-        out = self.graph_prediction(graph_emb)
-        out = F.leaky_relu(out)
-        out = self.graph_prediction_1(out)
-        out = F.leaky_relu(out)
-        out = self.graph_prediction_2(out)
-        return out
-
-
-def build_model(
-    model_name: str = "baseline",
-    hidden_dim: int = 64,
-    num_classes: int = 8,
-    *,
-    selection_ratio: float = 0.35,
-) -> nn.Module:
-    name = model_name.lower()
-    if name in {"baseline", "paper", "heterognn", "hetero"}:
-        return HeteroGNN(hidden_dim=hidden_dim, num_classes=num_classes)
-    if name in {"innov1", "adaptive_packet", "hierarchical_packet"}:
-        return AdaptivePacketHeteroGNN(
-            hidden_dim=hidden_dim,
-            num_classes=num_classes,
-            selection_ratio=selection_ratio,
-        )
-    if name in {"edge", "hetero_edge", "heterognn_edge"}:
-        return HeteroGNN_Edge(hidden_dim=hidden_dim, num_classes=num_classes)
-    raise ValueError(f"Unknown model_name: {model_name!r}")
 
 
 XGNIDClassifier = HeteroGNN
