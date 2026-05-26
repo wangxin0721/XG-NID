@@ -84,7 +84,7 @@ def load_graphs(path: str | Path) -> list[HeteroData]:
     path = Path(path)
     if path.is_dir():
         graphs: list[HeteroData] = []
-        for file in sorted(path.rglob("*.pt")):
+        for file in sorted(path.glob("*.pt")):
             try:
                 graphs.extend(_as_graph_list(_load_graph_container(file)))
             except TypeError as exc:
