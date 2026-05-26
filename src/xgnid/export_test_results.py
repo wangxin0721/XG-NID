@@ -74,3 +74,27 @@ def save_test_outputs(
     plt.close()
 
     return output_dir
+
+
+def save_test_summary(
+    metrics: dict[str, float],
+    prediction: Sequence[int] | np.ndarray,
+    label: Sequence[int] | np.ndarray,
+    output_dir: str | Path,
+    class_names: Sequence[str] = DEFAULT_CLASS_NAMES,
+) -> Path:
+    output_dir = Path(output_dir)
+    output_dir.mkdir(parents=True, exist_ok=True)
+    acc = float(metrics.get("accuracy", 0.0))
+    save_test_outputs(
+        acc,
+        prediction,
+        label,
+        output_dir=output_dir,
+        class_names=class_names,
+    )
+    (output_dir / "metrics.json").write_text(
+        json.dumps(metrics, ensure_ascii=False, indent=2),
+        encoding="utf-8",
+    )
+    return output_dir

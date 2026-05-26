@@ -20,7 +20,7 @@ from .data import (
     split_graph_indices_paper_table4,
 )
 from .data import label_counts
-from .model import HeteroGNN
+from .model import build_model
 
 
 @dataclass
@@ -64,6 +64,8 @@ def evaluate(model: nn.Module, loader, device: torch.device) -> dict[str, float]
 def train(
     data_path: str | Path,
     output_dir: str | Path,
+    model_name: str = "baseline",
+    selection_ratio: float = 0.35,
     epochs: int = 100,
     batch_size: int = 16,
     lr: float = 1e-3,
@@ -106,7 +108,12 @@ def train(
         split_indices=split_indices,
     )
     train_loader, val_loader, test_loader = loaders
-    model = HeteroGNN(hidden_dim=hidden_dim, num_classes=num_classes).to(device_t)
+    model = build_model(
+        model_name,
+        hidden_dim=hidden_dim,
+        num_classes=num_classes,
+        selection_ratio=selection_ratio,
+    ).to(device_t)
     optimizer = AdamW(model.parameters(), lr=lr, weight_decay=1e-4)
     criterion = nn.NLLLoss()
     output_dir = Path(output_dir)
@@ -159,8 +166,10 @@ def train(
                 {
                     "model_state": model.state_dict(),
                     "model_kwargs": {
+                        "model_name": model_name,
                         "hidden_dim": hidden_dim,
                         "num_classes": num_classes,
+                        "selection_ratio": selection_ratio,
                     },
                     "metrics": val_metrics,
                 },
@@ -180,7 +189,7 @@ def train(
                 break
 
     best_checkpoint = torch.load(best_path, map_location=device_t)
-    best_model = HeteroGNN(**best_checkpoint["model_kwargs"]).to(device_t)
+    best_model = build_model(**best_checkpoint["model_kwargs"]).to(device_t)
     best_model.load_state_dict(best_checkpoint["model_state"])
     test_metrics = evaluate(best_model, test_loader, device_t)
     return TrainResult(
