@@ -51,6 +51,17 @@ python main.py train --data /path/to/graphs.pt --epochs 30 --batch-size 16 --out
 python main.py eval --data /path/to/graphs.pt --checkpoint outputs/xgnid/best.pt
 ```
 
+## Innovation 1 preprocessing
+
+To generate the packet-selected intermediate CSVs for the hierarchical graph pipeline:
+
+```bash
+python scripts/build_innov1_packet_selection.py \
+  --train-csv data/processed/CICIoT2023_processed/df_class_8_train.csv \
+  --test-csv data/processed/CICIoT2023_processed/df_class_8_test.csv \
+  --output-dir data/processed/CICIoT2023_processed/processed_innov1
+```
+
 ## Expected runtime
 
 - Data preprocessing / graph export on full CIC-IoT2023: hours.
