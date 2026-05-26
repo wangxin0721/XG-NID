@@ -25,7 +25,7 @@ def build_parser() -> argparse.ArgumentParser:
     train_p = sub.add_parser("train", help="Train the graph classifier")
     train_p.add_argument("--data", required=True)
     train_p.add_argument("--output-dir", default="outputs/xgnid")
-    train_p.add_argument("--epochs", type=int, default=30)
+    train_p.add_argument("--epochs", type=int, default=100)
     train_p.add_argument("--batch-size", type=int, default=16)
     train_p.add_argument("--lr", type=float, default=1e-3)
     train_p.add_argument("--hidden-dim", type=int, default=128)
@@ -38,6 +38,8 @@ def build_parser() -> argparse.ArgumentParser:
     train_p.add_argument("--no-stratify", action="store_false", dest="stratify", default=True)
     train_p.add_argument("--balance-train", action="store_true")
     train_p.add_argument("--train-samples-per-class", type=int, default=None)
+    train_p.add_argument("--early-stop-patience", type=int, default=12)
+    train_p.add_argument("--early-stop-min-delta", type=float, default=0.0)
 
     eval_p = sub.add_parser("eval", help="Evaluate a checkpoint")
     eval_p.add_argument("--data", required=True)
@@ -89,6 +91,8 @@ def main(argv: list[str] | None = None) -> int:
             stratify=args.stratify,
             balance_train=args.balance_train,
             train_samples_per_class=args.train_samples_per_class,
+            early_stop_patience=args.early_stop_patience,
+            early_stop_min_delta=args.early_stop_min_delta,
         )
         print(result.best_path)
         print(result.metrics)

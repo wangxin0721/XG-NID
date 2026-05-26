@@ -64,7 +64,7 @@ def evaluate(model: nn.Module, loader, device: torch.device) -> dict[str, float]
 def train(
     data_path: str | Path,
     output_dir: str | Path,
-    epochs: int = 30,
+    epochs: int = 100,
     batch_size: int = 16,
     lr: float = 1e-3,
     hidden_dim: int = 128,
@@ -77,6 +77,8 @@ def train(
     stratify: bool = True,
     balance_train: bool = False,
     train_samples_per_class: int | None = None,
+    early_stop_patience: int = 12,
+    early_stop_min_delta: float = 0.0,
 ) -> TrainResult:
     if abs(train_ratio - 0.8) > 1e-9:
         warnings.warn(
@@ -112,6 +114,8 @@ def train(
     best_path = output_dir / "best.pt"
     split_path = output_dir / "split.json"
     best_f1 = -1.0
+    best_epoch = 0
+    patience_left = max(int(early_stop_patience), 0)
     best_metrics: dict[str, float] = {}
 
     split_record = build_split_record(
@@ -145,9 +149,12 @@ def train(
             optimizer.step()
             total_loss += float(loss.item())
         val_metrics = evaluate(model, val_loader, device_t)
-        if val_metrics["f1_macro"] >= best_f1:
+        improved = val_metrics["f1_macro"] > (best_f1 + early_stop_min_delta)
+        if improved:
             best_f1 = val_metrics["f1_macro"]
+            best_epoch = epoch
             best_metrics = val_metrics
+            patience_left = max(int(early_stop_patience), 0)
             torch.save(
                 {
                     "model_state": model.state_dict(),
@@ -163,6 +170,14 @@ def train(
             f"epoch={epoch} loss={total_loss / max(len(train_loader), 1):.4f} "
             f"val_acc={val_metrics['accuracy']:.4f} val_f1={val_metrics['f1_macro']:.4f}"
         )
+        if not improved and early_stop_patience >= 0:
+            patience_left -= 1
+            if patience_left <= 0:
+                print(
+                    f"early stopping at epoch {epoch} "
+                    f"(best_epoch={best_epoch}, best_val_f1={best_f1:.4f})"
+                )
+                break
 
     best_checkpoint = torch.load(best_path, map_location=device_t)
     best_model = HeteroGNN(**best_checkpoint["model_kwargs"]).to(device_t)
@@ -172,8 +187,10 @@ def train(
         best_path=best_path,
         metrics={
             "best_val_f1": best_f1,
+            "best_epoch": best_epoch,
             **best_metrics,
             **{f"test_{k}": v for k, v in test_metrics.items()},
             "split_path": str(split_path),
+            "stopped_epoch": epoch,
         },
     )
