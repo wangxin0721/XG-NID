@@ -10,10 +10,7 @@ SRC = ROOT / "src"
 if str(SRC) not in sys.path:
     sys.path.insert(0, str(SRC))
 
-from xgnid.cli import main as xgnid_main
-
-
-LOCKED_GRAPH_DIR = ROOT / "data" / "processed" / "CICIoT2023_processed" / "processed_innov1_graphs"
+LOCKED_GRAPH_DIR = ROOT / "data" / "processed" / "CICIoT2023_processed" / "processed_innov1_r25_graphs"
 LOCKED_OUTPUT_DIR = ROOT / "outputs" / "innov2"
 LOCKED_BEST_PATH = LOCKED_OUTPUT_DIR / "best.pt"
 LOCKED_SPLIT_PATH = LOCKED_OUTPUT_DIR / "split.json"
@@ -50,6 +47,8 @@ def build_parser() -> argparse.ArgumentParser:
 
 
 def _run_train(args: argparse.Namespace) -> int:
+    from xgnid.cli import main as xgnid_main
+
     print(f"[innov2] locked input : {LOCKED_GRAPH_DIR}")
     print(f"[innov2] locked output: {LOCKED_OUTPUT_DIR}")
     cli_args = [
@@ -91,6 +90,8 @@ def _run_train(args: argparse.Namespace) -> int:
 
 
 def _run_eval(args: argparse.Namespace) -> int:
+    from xgnid.cli import main as xgnid_main
+
     print(f"[innov2] locked input : {LOCKED_GRAPH_DIR}")
     print(f"[innov2] locked output: {LOCKED_OUTPUT_DIR}")
     cli_args = [
