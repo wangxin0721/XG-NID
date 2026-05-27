@@ -40,7 +40,16 @@ def build_parser() -> argparse.ArgumentParser:
     train_p.add_argument(
         "--model",
         default="dual",
-        choices=["paper", "edge", "dual", "dual_edge", "dual_gate", "dual_gate_edge"],
+        choices=[
+            "paper",
+            "edge",
+            "dual",
+            "dual_edge",
+            "dual_gate",
+            "dual_gate_edge",
+            "dual_gate_logit",
+            "dual_gate_logit_edge",
+        ],
     )
     train_p.add_argument("--branch-mode", default="dual", choices=["flow", "packet", "dual"])
     train_p.add_argument("--run-name", default="dual_v1")
