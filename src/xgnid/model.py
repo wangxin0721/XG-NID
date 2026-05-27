@@ -13,7 +13,16 @@ from torch_geometric.nn import GATConv, HeteroConv, SAGEConv, global_mean_pool
 FLOW_TO_PACKET: Tuple[str, str, str] = ("flow", "contain", "packet")
 PACKET_TO_FLOW: Tuple[str, str, str] = ("packet", "rev_contain", "flow")
 PACKET_TO_PACKET: Tuple[str, str, str] = ("packet", "link", "packet")
-ModelName = Literal["paper", "edge", "dual", "dual_edge", "dual_gate", "dual_gate_edge"]
+ModelName = Literal[
+    "paper",
+    "edge",
+    "dual",
+    "dual_edge",
+    "dual_gate",
+    "dual_gate_edge",
+    "dual_gate_logit",
+    "dual_gate_logit_edge",
+]
 BranchMode = Literal["flow", "packet", "dual"]
 
 
@@ -345,6 +354,40 @@ class _ConfidenceGate(nn.Module):
         return torch.softmax(self.net(gate_input), dim=-1)
 
 
+class _LogitConfidenceGate(nn.Module):
+    def __init__(self, num_classes: int) -> None:
+        super().__init__()
+        self.net = nn.Sequential(
+            nn.Linear(num_classes * 2 + 5, max(num_classes, 16)),
+            nn.LeakyReLU(),
+            nn.Linear(max(num_classes, 16), 2),
+        )
+
+    def forward(
+        self,
+        flow_logits: torch.Tensor,
+        packet_logits: torch.Tensor,
+        flow_conf: torch.Tensor,
+        packet_conf: torch.Tensor,
+        flow_margin: torch.Tensor,
+        packet_margin: torch.Tensor,
+        branch_agreement: torch.Tensor,
+    ) -> torch.Tensor:
+        gate_input = torch.cat(
+            [
+                flow_logits,
+                packet_logits,
+                flow_conf.unsqueeze(-1),
+                packet_conf.unsqueeze(-1),
+                flow_margin.unsqueeze(-1),
+                packet_margin.unsqueeze(-1),
+                branch_agreement.unsqueeze(-1),
+            ],
+            dim=-1,
+        )
+        return torch.softmax(self.net(gate_input), dim=-1)
+
+
 class DualBranchGatedHeteroGNN(nn.Module):
     def __init__(
         self,
@@ -488,6 +531,155 @@ class DualBranchGatedHeteroGNN_Edge(DualBranchGatedHeteroGNN):
         )
 
 
+class DualBranchLogitGatedHeteroGNN(nn.Module):
+    def __init__(
+        self,
+        hidden_dim: int = 64,
+        num_classes: int = 8,
+        eps: float = 1.0,
+        branch_mode: BranchMode = "dual",
+        conv_cls=SAGEConv,
+        edge_aware: bool = False,
+        aux_loss_weight: float = 0.02,
+    ) -> None:
+        super().__init__()
+        if branch_mode not in {"flow", "packet", "dual"}:
+            raise ValueError(f"Unsupported branch_mode: {branch_mode}")
+        self.hidden_dim = hidden_dim
+        self.num_classes = num_classes
+        self.branch_mode = branch_mode
+        self.aux_loss_weight = aux_loss_weight
+
+        self.flow_encoder = _PaperStyleHeteroEncoder(
+            hidden_dim=hidden_dim,
+            eps=eps,
+            conv_cls=conv_cls,
+            edge_aware=edge_aware,
+        )
+        self.packet_encoder = _PaperStyleHeteroEncoder(
+            hidden_dim=hidden_dim,
+            eps=eps,
+            conv_cls=conv_cls,
+            edge_aware=edge_aware,
+        )
+        self.flow_classifier = nn.Linear(hidden_dim, num_classes)
+        self.packet_classifier = nn.Linear(hidden_dim, num_classes)
+        self.gate = _LogitConfidenceGate(num_classes)
+        self.shared_head = nn.Sequential(
+            nn.Linear(num_classes, max(hidden_dim // 2, 16)),
+            nn.LeakyReLU(),
+            nn.Linear(max(hidden_dim // 2, 16), num_classes),
+        )
+        self._last_cache: dict[str, torch.Tensor] = {}
+
+    @staticmethod
+    def _branch_embedding(
+        encoder: _PaperStyleHeteroEncoder,
+        data: HeteroData,
+        node_type: str,
+    ) -> torch.Tensor:
+        x_dict = encoder(data)
+        return global_mean_pool(x_dict[node_type], data[node_type].batch)
+
+    @staticmethod
+    def _confidence_from_logits(logits: torch.Tensor) -> torch.Tensor:
+        probs = F.softmax(logits, dim=-1)
+        entropy = -(probs * probs.clamp_min(1e-8).log()).sum(dim=-1)
+        denom = math.log(float(max(probs.size(-1), 2)))
+        return 1.0 - entropy / denom
+
+    @staticmethod
+    def _margin_from_logits(logits: torch.Tensor) -> torch.Tensor:
+        probs = F.softmax(logits, dim=-1)
+        top2 = torch.topk(probs, k=min(2, probs.size(-1)), dim=-1).values
+        if top2.size(-1) == 1:
+            return top2[:, 0]
+        return top2[:, 0] - top2[:, 1]
+
+    def _branch_outputs(self, data: HeteroData) -> tuple[torch.Tensor, torch.Tensor, torch.Tensor, torch.Tensor]:
+        flow_emb = self._branch_embedding(self.flow_encoder, data, "flow")
+        packet_emb = self._branch_embedding(self.packet_encoder, data, "packet")
+        flow_logits = self.flow_classifier(flow_emb)
+        packet_logits = self.packet_classifier(packet_emb)
+        return flow_emb, packet_emb, flow_logits, packet_logits
+
+    def _graph_logits(self, data: HeteroData) -> torch.Tensor:
+        flow_emb, packet_emb, flow_logits, packet_logits = self._branch_outputs(data)
+        flow_conf = self._confidence_from_logits(flow_logits)
+        packet_conf = self._confidence_from_logits(packet_logits)
+        flow_margin = self._margin_from_logits(flow_logits)
+        packet_margin = self._margin_from_logits(packet_logits)
+        branch_agreement = F.cosine_similarity(flow_logits, packet_logits, dim=-1)
+
+        if self.branch_mode == "flow":
+            gate_weights = torch.zeros(flow_logits.size(0), 2, device=flow_logits.device, dtype=flow_logits.dtype)
+            gate_weights[:, 0] = 1.0
+        elif self.branch_mode == "packet":
+            gate_weights = torch.zeros(flow_logits.size(0), 2, device=flow_logits.device, dtype=flow_logits.dtype)
+            gate_weights[:, 1] = 1.0
+        else:
+            gate_weights = self.gate(
+                flow_logits,
+                packet_logits,
+                flow_conf,
+                packet_conf,
+                flow_margin,
+                packet_margin,
+                branch_agreement,
+            )
+            gate_weights = 0.9 * gate_weights + 0.1 * torch.stack([flow_conf, packet_conf], dim=-1)
+            gate_weights = gate_weights / gate_weights.sum(dim=-1, keepdim=True).clamp_min(1e-8)
+
+        fused_logits = gate_weights[:, :1] * flow_logits + gate_weights[:, 1:] * packet_logits
+        logits = self.shared_head(fused_logits)
+        self._last_cache = {
+            "flow_logits": flow_logits,
+            "packet_logits": packet_logits,
+            "gate_weights": gate_weights,
+            "flow_conf": flow_conf,
+            "packet_conf": packet_conf,
+            "flow_margin": flow_margin,
+            "packet_margin": packet_margin,
+            "branch_agreement": branch_agreement,
+        }
+        return logits
+
+    def forward(self, data: HeteroData) -> torch.Tensor:
+        return F.log_softmax(self._graph_logits(data), dim=1)
+
+    def loss(self, preds: torch.Tensor, label: torch.Tensor) -> torch.Tensor:
+        main_loss = F.nll_loss(preds, label)
+        cache = getattr(self, "_last_cache", {})
+        if not cache:
+            return main_loss
+        flow_loss = F.nll_loss(F.log_softmax(cache["flow_logits"], dim=1), label)
+        packet_loss = F.nll_loss(F.log_softmax(cache["packet_logits"], dim=1), label)
+        aux_loss = 0.5 * (flow_loss + packet_loss)
+        agreement_penalty = (1.0 - cache["branch_agreement"].mean()).clamp_min(0.0)
+        aux_loss = aux_loss + 0.05 * agreement_penalty
+        return main_loss + self.aux_loss_weight * aux_loss
+
+
+class DualBranchLogitGatedHeteroGNN_Edge(DualBranchLogitGatedHeteroGNN):
+    def __init__(
+        self,
+        hidden_dim: int = 64,
+        num_classes: int = 8,
+        eps: float = 1.0,
+        branch_mode: BranchMode = "dual",
+        aux_loss_weight: float = 0.02,
+    ) -> None:
+        super().__init__(
+            hidden_dim=hidden_dim,
+            num_classes=num_classes,
+            eps=eps,
+            branch_mode=branch_mode,
+            conv_cls=GATConv,
+            edge_aware=True,
+            aux_loss_weight=aux_loss_weight,
+        )
+
+
 MODEL_REGISTRY = {
     "paper": HeteroGNN,
     "edge": HeteroGNN_Edge,
@@ -495,6 +687,8 @@ MODEL_REGISTRY = {
     "dual_edge": DualBranchHeteroGNN_Edge,
     "dual_gate": DualBranchGatedHeteroGNN,
     "dual_gate_edge": DualBranchGatedHeteroGNN_Edge,
+    "dual_gate_logit": DualBranchLogitGatedHeteroGNN,
+    "dual_gate_logit_edge": DualBranchLogitGatedHeteroGNN_Edge,
 }
 
 
