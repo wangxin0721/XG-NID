@@ -11,7 +11,7 @@ from torch_geometric.loader import DataLoader
 from .data import load_graphs, load_split_record, summarize_graphs, subset_graphs
 from .data import label_counts
 from .export_test_results import save_test_outputs
-from .model import HeteroGNN
+from .model import build_model_from_checkpoint
 from .train import predict, train
 
 
@@ -40,6 +40,8 @@ def build_parser() -> argparse.ArgumentParser:
     train_p.add_argument("--train-samples-per-class", type=int, default=None)
     train_p.add_argument("--early-stop-patience", type=int, default=12)
     train_p.add_argument("--early-stop-min-delta", type=float, default=0.0)
+    train_p.add_argument("--model", default="paper", choices=["paper", "edge", "dual", "dual_edge"])
+    train_p.add_argument("--branch-mode", default="dual", choices=["flow", "packet", "dual"])
 
     eval_p = sub.add_parser("eval", help="Evaluate a checkpoint")
     eval_p.add_argument("--data", required=True)
@@ -93,6 +95,8 @@ def main(argv: list[str] | None = None) -> int:
             train_samples_per_class=args.train_samples_per_class,
             early_stop_patience=args.early_stop_patience,
             early_stop_min_delta=args.early_stop_min_delta,
+            model_name=args.model,
+            branch_mode=args.branch_mode,
         )
         print(result.best_path)
         print(result.metrics)
@@ -111,7 +115,7 @@ def main(argv: list[str] | None = None) -> int:
             graphs = subset_graphs(graphs, test_indices)
         loader = DataLoader(graphs, batch_size=args.batch_size, shuffle=False)
         checkpoint = torch.load(args.checkpoint, map_location="cpu")
-        model = HeteroGNN(**checkpoint["model_kwargs"])
+        model = build_model_from_checkpoint(checkpoint)
         model.load_state_dict(checkpoint["model_state"])
         device = torch.device(args.device if torch.cuda.is_available() or args.device == "cpu" else "cpu")
         model = model.to(device)

@@ -20,7 +20,7 @@ from .data import (
     split_graph_indices_paper_table4,
 )
 from .data import label_counts
-from .model import HeteroGNN
+from .model import build_model, build_model_from_checkpoint
 
 
 @dataclass
@@ -79,6 +79,8 @@ def train(
     train_samples_per_class: int | None = None,
     early_stop_patience: int = 12,
     early_stop_min_delta: float = 0.0,
+    model_name: str = "paper",
+    branch_mode: str = "dual",
 ) -> TrainResult:
     if abs(train_ratio - 0.8) > 1e-9:
         warnings.warn(
@@ -106,7 +108,12 @@ def train(
         split_indices=split_indices,
     )
     train_loader, val_loader, test_loader = loaders
-    model = HeteroGNN(hidden_dim=hidden_dim, num_classes=num_classes).to(device_t)
+    model = build_model(
+        model_name,
+        hidden_dim=hidden_dim,
+        num_classes=num_classes,
+        branch_mode=branch_mode,
+    ).to(device_t)
     optimizer = AdamW(model.parameters(), lr=lr, weight_decay=1e-4)
     criterion = nn.NLLLoss()
     output_dir = Path(output_dir)
@@ -158,9 +165,11 @@ def train(
             torch.save(
                 {
                     "model_state": model.state_dict(),
+                    "model_name": model_name,
                     "model_kwargs": {
                         "hidden_dim": hidden_dim,
                         "num_classes": num_classes,
+                        "branch_mode": branch_mode,
                     },
                     "metrics": val_metrics,
                 },
@@ -180,7 +189,7 @@ def train(
                 break
 
     best_checkpoint = torch.load(best_path, map_location=device_t)
-    best_model = HeteroGNN(**best_checkpoint["model_kwargs"]).to(device_t)
+    best_model = build_model_from_checkpoint(best_checkpoint).to(device_t)
     best_model.load_state_dict(best_checkpoint["model_state"])
     test_metrics = evaluate(best_model, test_loader, device_t)
     return TrainResult(
