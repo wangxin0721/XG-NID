@@ -11,10 +11,11 @@ if str(SRC) not in sys.path:
     sys.path.insert(0, str(SRC))
 
 LOCKED_GRAPH_DIR = ROOT / "data" / "processed" / "CICIoT2023_processed" / "processed_innov1_r25_graphs"
-LOCKED_OUTPUT_DIR = ROOT / "outputs" / "innov2"
-LOCKED_BEST_PATH = LOCKED_OUTPUT_DIR / "best.pt"
-LOCKED_SPLIT_PATH = LOCKED_OUTPUT_DIR / "split.json"
-LOCKED_TEST_EXPORTS = LOCKED_OUTPUT_DIR / "test_exports"
+LOCKED_OUTPUT_ROOT = ROOT / "outputs" / "innov2"
+
+
+def _resolve_run_dir(run_name: str) -> Path:
+    return LOCKED_OUTPUT_ROOT / run_name
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -38,12 +39,15 @@ def build_parser() -> argparse.ArgumentParser:
     train_p.add_argument("--early-stop-min-delta", type=float, default=0.0)
     train_p.add_argument("--model", default="dual", choices=["paper", "edge", "dual", "dual_edge"])
     train_p.add_argument("--branch-mode", default="dual", choices=["flow", "packet", "dual"])
+    train_p.add_argument("--run-name", default="dual_v1")
 
     eval_p = sub.add_parser("eval", help="Evaluate innov2 with locked input/output paths")
     eval_p.add_argument("--batch-size", type=int, default=64)
     eval_p.add_argument("--device", default="cuda")
+    eval_p.add_argument("--run-name", default="dual_v1")
 
     paths_p = sub.add_parser("paths", help="Print the locked innov2 paths")
+    paths_p.add_argument("--run-name", default="dual_v1")
 
     return parser
 
@@ -51,14 +55,18 @@ def build_parser() -> argparse.ArgumentParser:
 def _run_train(args: argparse.Namespace) -> int:
     from xgnid.cli import main as xgnid_main
 
+    output_dir = _resolve_run_dir(args.run_name)
+    best_path = output_dir / "best.pt"
+    split_path = output_dir / "split.json"
+
     print(f"[innov2] locked input : {LOCKED_GRAPH_DIR}")
-    print(f"[innov2] locked output: {LOCKED_OUTPUT_DIR}")
+    print(f"[innov2] locked output: {output_dir}")
     cli_args = [
         "train",
         "--data",
         str(LOCKED_GRAPH_DIR),
         "--output-dir",
-        str(LOCKED_OUTPUT_DIR),
+        str(output_dir),
         "--epochs",
         str(args.epochs),
         "--batch-size",
@@ -98,22 +106,27 @@ def _run_train(args: argparse.Namespace) -> int:
 def _run_eval(args: argparse.Namespace) -> int:
     from xgnid.cli import main as xgnid_main
 
+    output_dir = _resolve_run_dir(args.run_name)
+    best_path = output_dir / "best.pt"
+    split_path = output_dir / "split.json"
+    test_exports = output_dir / "test_exports"
+
     print(f"[innov2] locked input : {LOCKED_GRAPH_DIR}")
-    print(f"[innov2] locked output: {LOCKED_OUTPUT_DIR}")
+    print(f"[innov2] locked output: {output_dir}")
     cli_args = [
         "eval",
         "--data",
         str(LOCKED_GRAPH_DIR),
         "--checkpoint",
-        str(LOCKED_BEST_PATH),
+        str(best_path),
         "--split",
-        str(LOCKED_SPLIT_PATH),
+        str(split_path),
         "--batch-size",
         str(args.batch_size),
         "--device",
         str(args.device),
         "--output-dir",
-        str(LOCKED_TEST_EXPORTS),
+        str(test_exports),
     ]
     return xgnid_main(cli_args)
 
@@ -125,11 +138,12 @@ def main() -> int:
     if args.command == "eval":
         return _run_eval(args)
     if args.command == "paths":
+        output_dir = _resolve_run_dir(args.run_name)
         print(f"input={LOCKED_GRAPH_DIR}")
-        print(f"output={LOCKED_OUTPUT_DIR}")
-        print(f"best={LOCKED_BEST_PATH}")
-        print(f"split={LOCKED_SPLIT_PATH}")
-        print(f"exports={LOCKED_TEST_EXPORTS}")
+        print(f"output={output_dir}")
+        print(f"best={output_dir / 'best.pt'}")
+        print(f"split={output_dir / 'split.json'}")
+        print(f"exports={output_dir / 'test_exports'}")
         return 0
     return 1
 
