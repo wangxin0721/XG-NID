@@ -37,7 +37,11 @@ def build_parser() -> argparse.ArgumentParser:
     train_p.add_argument("--train-samples-per-class", type=int, default=20000)
     train_p.add_argument("--early-stop-patience", type=int, default=12)
     train_p.add_argument("--early-stop-min-delta", type=float, default=0.0)
-    train_p.add_argument("--model", default="dual", choices=["paper", "edge", "dual", "dual_edge"])
+    train_p.add_argument(
+        "--model",
+        default="dual",
+        choices=["paper", "edge", "dual", "dual_edge", "dual_gate", "dual_gate_edge"],
+    )
     train_p.add_argument("--branch-mode", default="dual", choices=["flow", "packet", "dual"])
     train_p.add_argument("--run-name", default="dual_v1")
 
