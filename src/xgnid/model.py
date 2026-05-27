@@ -317,7 +317,7 @@ class _ConfidenceGate(nn.Module):
     def __init__(self, hidden_dim: int) -> None:
         super().__init__()
         self.net = nn.Sequential(
-            nn.Linear(hidden_dim * 2 + 2, hidden_dim),
+            nn.Linear(hidden_dim * 2 + 4, hidden_dim),
             nn.LeakyReLU(),
             nn.Linear(hidden_dim, 2),
         )
@@ -328,6 +328,8 @@ class _ConfidenceGate(nn.Module):
         packet_emb: torch.Tensor,
         flow_conf: torch.Tensor,
         packet_conf: torch.Tensor,
+        flow_margin: torch.Tensor,
+        packet_margin: torch.Tensor,
     ) -> torch.Tensor:
         gate_input = torch.cat(
             [
@@ -335,6 +337,8 @@ class _ConfidenceGate(nn.Module):
                 packet_emb,
                 flow_conf.unsqueeze(-1),
                 packet_conf.unsqueeze(-1),
+                flow_margin.unsqueeze(-1),
+                packet_margin.unsqueeze(-1),
             ],
             dim=-1,
         )
@@ -350,7 +354,7 @@ class DualBranchGatedHeteroGNN(nn.Module):
         branch_mode: BranchMode = "dual",
         conv_cls=SAGEConv,
         edge_aware: bool = False,
-        aux_loss_weight: float = 0.2,
+        aux_loss_weight: float = 0.05,
     ) -> None:
         super().__init__()
         if branch_mode not in {"flow", "packet", "dual"}:
@@ -398,6 +402,14 @@ class DualBranchGatedHeteroGNN(nn.Module):
         denom = math.log(float(max(probs.size(-1), 2)))
         return 1.0 - entropy / denom
 
+    @staticmethod
+    def _margin_from_logits(logits: torch.Tensor) -> torch.Tensor:
+        probs = F.softmax(logits, dim=-1)
+        top2 = torch.topk(probs, k=min(2, probs.size(-1)), dim=-1).values
+        if top2.size(-1) == 1:
+            return top2[:, 0]
+        return top2[:, 0] - top2[:, 1]
+
     def _branch_outputs(self, data: HeteroData) -> tuple[torch.Tensor, torch.Tensor, torch.Tensor, torch.Tensor]:
         flow_emb = self._branch_embedding(self.flow_encoder, data, "flow")
         packet_emb = self._branch_embedding(self.packet_encoder, data, "packet")
@@ -409,6 +421,9 @@ class DualBranchGatedHeteroGNN(nn.Module):
         flow_emb, packet_emb, flow_logits, packet_logits = self._branch_outputs(data)
         flow_conf = self._confidence_from_logits(flow_logits)
         packet_conf = self._confidence_from_logits(packet_logits)
+        flow_margin = self._margin_from_logits(flow_logits)
+        packet_margin = self._margin_from_logits(packet_logits)
+        branch_agreement = F.cosine_similarity(flow_logits, packet_logits, dim=-1)
 
         if self.branch_mode == "flow":
             gate_weights = torch.zeros(flow_emb.size(0), 2, device=flow_emb.device, dtype=flow_emb.dtype)
@@ -419,7 +434,9 @@ class DualBranchGatedHeteroGNN(nn.Module):
             gate_weights[:, 1] = 1.0
             flow_emb = torch.zeros_like(flow_emb)
         else:
-            gate_weights = self.gate(flow_emb, packet_emb, flow_conf, packet_conf)
+            gate_weights = self.gate(flow_emb, packet_emb, flow_conf, packet_conf, flow_margin, packet_margin)
+            gate_weights = 0.85 * gate_weights + 0.15 * torch.stack([flow_conf, packet_conf], dim=-1)
+            gate_weights = gate_weights / gate_weights.sum(dim=-1, keepdim=True).clamp_min(1e-8)
 
         fused = gate_weights[:, :1] * flow_emb + gate_weights[:, 1:] * packet_emb
         logits = self.shared_head(fused)
@@ -429,6 +446,9 @@ class DualBranchGatedHeteroGNN(nn.Module):
             "gate_weights": gate_weights,
             "flow_conf": flow_conf,
             "packet_conf": packet_conf,
+            "flow_margin": flow_margin,
+            "packet_margin": packet_margin,
+            "branch_agreement": branch_agreement,
         }
         return logits
 
@@ -443,6 +463,8 @@ class DualBranchGatedHeteroGNN(nn.Module):
         flow_loss = F.nll_loss(F.log_softmax(cache["flow_logits"], dim=1), label)
         packet_loss = F.nll_loss(F.log_softmax(cache["packet_logits"], dim=1), label)
         aux_loss = 0.5 * (flow_loss + packet_loss)
+        agreement_penalty = (1.0 - cache["branch_agreement"].mean()).clamp_min(0.0)
+        aux_loss = aux_loss + 0.1 * agreement_penalty
         return main_loss + self.aux_loss_weight * aux_loss
 
 
