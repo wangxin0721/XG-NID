@@ -151,7 +151,10 @@ def train(
             batch = _move_batch(batch, device_t)
             optimizer.zero_grad(set_to_none=True)
             logits = model(batch)
-            loss = criterion(logits, batch.y.view(-1))
+            if hasattr(model, "loss"):
+                loss = model.loss(logits, batch.y.view(-1))
+            else:
+                loss = criterion(logits, batch.y.view(-1))
             loss.backward()
             optimizer.step()
             total_loss += float(loss.item())
