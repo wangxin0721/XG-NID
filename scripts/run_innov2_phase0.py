@@ -36,6 +36,8 @@ def build_parser() -> argparse.ArgumentParser:
     train_p.add_argument("--train-samples-per-class", type=int, default=20000)
     train_p.add_argument("--early-stop-patience", type=int, default=12)
     train_p.add_argument("--early-stop-min-delta", type=float, default=0.0)
+    train_p.add_argument("--model", default="dual", choices=["paper", "edge", "dual", "dual_edge"])
+    train_p.add_argument("--branch-mode", default="dual", choices=["flow", "packet", "dual"])
 
     eval_p = sub.add_parser("eval", help="Evaluate innov2 with locked input/output paths")
     eval_p.add_argument("--batch-size", type=int, default=64)
@@ -81,6 +83,10 @@ def _run_train(args: argparse.Namespace) -> int:
         str(args.early_stop_patience),
         "--early-stop-min-delta",
         str(args.early_stop_min_delta),
+        "--model",
+        str(args.model),
+        "--branch-mode",
+        str(args.branch_mode),
     ]
     if args.stratify is False:
         cli_args.append("--no-stratify")
