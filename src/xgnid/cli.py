@@ -55,6 +55,7 @@ def build_parser() -> argparse.ArgumentParser:
         ],
     )
     train_p.add_argument("--branch-mode", default="dual", choices=["flow", "packet", "dual"])
+    train_p.add_argument("--webbased-weight", type=float, default=1.0)
 
     eval_p = sub.add_parser("eval", help="Evaluate a checkpoint")
     eval_p.add_argument("--data", required=True)
@@ -110,6 +111,7 @@ def main(argv: list[str] | None = None) -> int:
             early_stop_min_delta=args.early_stop_min_delta,
             model_name=args.model,
             branch_mode=args.branch_mode,
+            webbased_weight=args.webbased_weight,
         )
         print(result.best_path)
         print(result.metrics)

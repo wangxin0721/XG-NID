@@ -81,6 +81,7 @@ def train(
     early_stop_min_delta: float = 0.0,
     model_name: str = "paper",
     branch_mode: str = "dual",
+    webbased_weight: float = 1.0,
 ) -> TrainResult:
     if abs(train_ratio - 0.8) > 1e-9:
         warnings.warn(
@@ -116,6 +117,9 @@ def train(
     ).to(device_t)
     optimizer = AdamW(model.parameters(), lr=lr, weight_decay=1e-4)
     criterion = nn.NLLLoss()
+    class_weight = torch.ones(num_classes, dtype=torch.float32, device=device_t)
+    if webbased_weight != 1.0 and num_classes > 1:
+        class_weight[1] = float(webbased_weight)
     output_dir = Path(output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
     best_path = output_dir / "best.pt"
@@ -152,9 +156,9 @@ def train(
             optimizer.zero_grad(set_to_none=True)
             logits = model(batch)
             if hasattr(model, "loss"):
-                loss = model.loss(logits, batch.y.view(-1))
+                loss = model.loss(logits, batch.y.view(-1), class_weight=class_weight)
             else:
-                loss = criterion(logits, batch.y.view(-1))
+                loss = criterion(logits, batch.y.view(-1), weight=class_weight)
             loss.backward()
             optimizer.step()
             total_loss += float(loss.item())

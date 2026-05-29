@@ -200,8 +200,13 @@ class _PaperStyleHeteroBase(nn.Module):
     def forward(self, data: HeteroData) -> torch.Tensor:
         return F.log_softmax(self._graph_logits(data), dim=1)
 
-    def loss(self, preds: torch.Tensor, label: torch.Tensor) -> torch.Tensor:
-        return F.nll_loss(preds, label)
+    def loss(
+        self,
+        preds: torch.Tensor,
+        label: torch.Tensor,
+        class_weight: torch.Tensor | None = None,
+    ) -> torch.Tensor:
+        return F.nll_loss(preds, label, weight=class_weight)
 
 
 class HeteroGNN(_PaperStyleHeteroBase):
@@ -300,8 +305,13 @@ class DualBranchHeteroGNN(nn.Module):
     def forward(self, data: HeteroData) -> torch.Tensor:
         return F.log_softmax(self._graph_logits(data), dim=1)
 
-    def loss(self, preds: torch.Tensor, label: torch.Tensor) -> torch.Tensor:
-        return F.nll_loss(preds, label)
+    def loss(
+        self,
+        preds: torch.Tensor,
+        label: torch.Tensor,
+        class_weight: torch.Tensor | None = None,
+    ) -> torch.Tensor:
+        return F.nll_loss(preds, label, weight=class_weight)
 
 
 class DualBranchHeteroGNN_Edge(DualBranchHeteroGNN):
@@ -498,13 +508,18 @@ class DualBranchGatedHeteroGNN(nn.Module):
     def forward(self, data: HeteroData) -> torch.Tensor:
         return F.log_softmax(self._graph_logits(data), dim=1)
 
-    def loss(self, preds: torch.Tensor, label: torch.Tensor) -> torch.Tensor:
-        main_loss = F.nll_loss(preds, label)
+    def loss(
+        self,
+        preds: torch.Tensor,
+        label: torch.Tensor,
+        class_weight: torch.Tensor | None = None,
+    ) -> torch.Tensor:
+        main_loss = F.nll_loss(preds, label, weight=class_weight)
         cache = getattr(self, "_last_cache", {})
         if not cache:
             return main_loss
-        flow_loss = F.nll_loss(F.log_softmax(cache["flow_logits"], dim=1), label)
-        packet_loss = F.nll_loss(F.log_softmax(cache["packet_logits"], dim=1), label)
+        flow_loss = F.nll_loss(F.log_softmax(cache["flow_logits"], dim=1), label, weight=class_weight)
+        packet_loss = F.nll_loss(F.log_softmax(cache["packet_logits"], dim=1), label, weight=class_weight)
         aux_loss = 0.5 * (flow_loss + packet_loss)
         agreement_penalty = (1.0 - cache["branch_agreement"].mean()).clamp_min(0.0)
         aux_loss = aux_loss + 0.1 * agreement_penalty
@@ -647,13 +662,18 @@ class DualBranchLogitGatedHeteroGNN(nn.Module):
     def forward(self, data: HeteroData) -> torch.Tensor:
         return F.log_softmax(self._graph_logits(data), dim=1)
 
-    def loss(self, preds: torch.Tensor, label: torch.Tensor) -> torch.Tensor:
-        main_loss = F.nll_loss(preds, label)
+    def loss(
+        self,
+        preds: torch.Tensor,
+        label: torch.Tensor,
+        class_weight: torch.Tensor | None = None,
+    ) -> torch.Tensor:
+        main_loss = F.nll_loss(preds, label, weight=class_weight)
         cache = getattr(self, "_last_cache", {})
         if not cache:
             return main_loss
-        flow_loss = F.nll_loss(F.log_softmax(cache["flow_logits"], dim=1), label)
-        packet_loss = F.nll_loss(F.log_softmax(cache["packet_logits"], dim=1), label)
+        flow_loss = F.nll_loss(F.log_softmax(cache["flow_logits"], dim=1), label, weight=class_weight)
+        packet_loss = F.nll_loss(F.log_softmax(cache["packet_logits"], dim=1), label, weight=class_weight)
         aux_loss = 0.5 * (flow_loss + packet_loss)
         agreement_penalty = (1.0 - cache["branch_agreement"].mean()).clamp_min(0.0)
         aux_loss = aux_loss + 0.05 * agreement_penalty
