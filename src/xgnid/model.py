@@ -580,6 +580,7 @@ class DualBranchLogitGatedHeteroGNN(nn.Module):
         self.flow_classifier = nn.Linear(hidden_dim, num_classes)
         self.packet_classifier = nn.Linear(hidden_dim, num_classes)
         self.gate = _LogitConfidenceGate(num_classes)
+        self.webbased_head = nn.Linear(num_classes, 2)
         self.shared_head = nn.Sequential(
             nn.Linear(num_classes, max(hidden_dim // 2, 16)),
             nn.LeakyReLU(),
@@ -646,6 +647,7 @@ class DualBranchLogitGatedHeteroGNN(nn.Module):
             gate_weights = gate_weights / gate_weights.sum(dim=-1, keepdim=True).clamp_min(1e-8)
 
         fused_logits = gate_weights[:, :1] * flow_logits + gate_weights[:, 1:] * packet_logits
+        webbased_logits = self.webbased_head(fused_logits)
         logits = self.shared_head(fused_logits)
         self._last_cache = {
             "flow_logits": flow_logits,
@@ -656,6 +658,7 @@ class DualBranchLogitGatedHeteroGNN(nn.Module):
             "flow_margin": flow_margin,
             "packet_margin": packet_margin,
             "branch_agreement": branch_agreement,
+            "webbased_logits": webbased_logits,
         }
         return logits
 
@@ -676,7 +679,9 @@ class DualBranchLogitGatedHeteroGNN(nn.Module):
         packet_loss = F.nll_loss(F.log_softmax(cache["packet_logits"], dim=1), label, weight=class_weight)
         aux_loss = 0.5 * (flow_loss + packet_loss)
         agreement_penalty = (1.0 - cache["branch_agreement"].mean()).clamp_min(0.0)
-        aux_loss = aux_loss + 0.05 * agreement_penalty
+        webbased_target = (label == 1).long()
+        webbased_loss = F.cross_entropy(cache["webbased_logits"], webbased_target)
+        aux_loss = aux_loss + 0.05 * agreement_penalty + 0.25 * webbased_loss
         return main_loss + self.aux_loss_weight * aux_loss
 
 
