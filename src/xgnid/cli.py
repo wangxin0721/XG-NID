@@ -57,6 +57,8 @@ def build_parser() -> argparse.ArgumentParser:
     train_p.add_argument("--branch-mode", default="dual", choices=["flow", "packet", "dual"])
     train_p.add_argument("--webbased-weight", type=float, default=1.0)
     train_p.add_argument("--webbased-aux-weight", type=float, default=0.25)
+    train_p.add_argument("--webbased-recon-aux-weight", type=float, default=0.25)
+    train_p.add_argument("--webbased-recon-hard-weight", type=float, default=2.0)
 
     eval_p = sub.add_parser("eval", help="Evaluate a checkpoint")
     eval_p.add_argument("--data", required=True)
@@ -114,6 +116,8 @@ def main(argv: list[str] | None = None) -> int:
             branch_mode=args.branch_mode,
             webbased_weight=args.webbased_weight,
             webbased_aux_weight=args.webbased_aux_weight,
+            webbased_recon_aux_weight=args.webbased_recon_aux_weight,
+            webbased_recon_hard_weight=args.webbased_recon_hard_weight,
         )
         print(result.best_path)
         print(result.metrics)

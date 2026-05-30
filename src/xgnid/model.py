@@ -556,6 +556,9 @@ class DualBranchLogitGatedHeteroGNN(nn.Module):
         conv_cls=SAGEConv,
         edge_aware: bool = False,
         aux_loss_weight: float = 0.02,
+        webbased_aux_weight: float = 0.25,
+        webbased_recon_aux_weight: float = 0.25,
+        webbased_recon_hard_weight: float = 2.0,
     ) -> None:
         super().__init__()
         if branch_mode not in {"flow", "packet", "dual"}:
@@ -564,6 +567,9 @@ class DualBranchLogitGatedHeteroGNN(nn.Module):
         self.num_classes = num_classes
         self.branch_mode = branch_mode
         self.aux_loss_weight = aux_loss_weight
+        self.webbased_aux_weight = webbased_aux_weight
+        self.webbased_recon_aux_weight = webbased_recon_aux_weight
+        self.webbased_recon_hard_weight = webbased_recon_hard_weight
 
         self.flow_encoder = _PaperStyleHeteroEncoder(
             hidden_dim=hidden_dim,
@@ -581,6 +587,7 @@ class DualBranchLogitGatedHeteroGNN(nn.Module):
         self.packet_classifier = nn.Linear(hidden_dim, num_classes)
         self.gate = _LogitConfidenceGate(num_classes)
         self.webbased_head = nn.Linear(num_classes, 2)
+        self.webbased_recon_head = nn.Linear(num_classes, 2)
         self.shared_head = nn.Sequential(
             nn.Linear(num_classes, max(hidden_dim // 2, 16)),
             nn.LeakyReLU(),
@@ -648,6 +655,7 @@ class DualBranchLogitGatedHeteroGNN(nn.Module):
 
         fused_logits = gate_weights[:, :1] * flow_logits + gate_weights[:, 1:] * packet_logits
         webbased_logits = self.webbased_head(fused_logits)
+        webbased_recon_logits = self.webbased_recon_head(fused_logits)
         logits = self.shared_head(fused_logits)
         self._last_cache = {
             "flow_logits": flow_logits,
@@ -659,6 +667,7 @@ class DualBranchLogitGatedHeteroGNN(nn.Module):
             "packet_margin": packet_margin,
             "branch_agreement": branch_agreement,
             "webbased_logits": webbased_logits,
+            "webbased_recon_logits": webbased_recon_logits,
         }
         return logits
 
@@ -675,14 +684,29 @@ class DualBranchLogitGatedHeteroGNN(nn.Module):
         cache = getattr(self, "_last_cache", {})
         if not cache:
             return main_loss
-        flow_loss = F.nll_loss(F.log_softmax(cache["flow_logits"], dim=1), label, weight=class_weight)
-        packet_loss = F.nll_loss(F.log_softmax(cache["packet_logits"], dim=1), label, weight=class_weight)
-        aux_loss = 0.5 * (flow_loss + packet_loss)
-        agreement_penalty = (1.0 - cache["branch_agreement"].mean()).clamp_min(0.0)
         webbased_target = (label == 1).long()
         webbased_loss = F.cross_entropy(cache["webbased_logits"], webbased_target)
-        aux_loss = aux_loss + 0.05 * agreement_penalty + 0.25 * webbased_loss
-        return main_loss + self.aux_loss_weight * aux_loss
+
+        wb_recon_mask = (label == 1) | (label == 3)
+        if wb_recon_mask.any():
+            wb_recon_logits = cache["webbased_recon_logits"][wb_recon_mask]
+            wb_recon_target = (label[wb_recon_mask] == 3).long()
+            wb_recon_loss = F.cross_entropy(wb_recon_logits, wb_recon_target, reduction="none")
+            wb_recon_weights = torch.ones_like(wb_recon_loss)
+            wb_recon_weights = torch.where(
+                wb_recon_target == 1,
+                torch.full_like(wb_recon_weights, float(self.webbased_recon_hard_weight)),
+                wb_recon_weights,
+            )
+            wb_recon_loss = (wb_recon_loss * wb_recon_weights).sum() / wb_recon_weights.sum().clamp_min(1.0)
+        else:
+            wb_recon_loss = main_loss.new_zeros(())
+
+        return (
+            main_loss
+            + self.webbased_aux_weight * webbased_loss
+            + self.webbased_recon_aux_weight * wb_recon_loss
+        )
 
 
 class DualBranchLogitGatedHeteroGNN_Edge(DualBranchLogitGatedHeteroGNN):
@@ -693,6 +717,9 @@ class DualBranchLogitGatedHeteroGNN_Edge(DualBranchLogitGatedHeteroGNN):
         eps: float = 1.0,
         branch_mode: BranchMode = "dual",
         aux_loss_weight: float = 0.02,
+        webbased_aux_weight: float = 0.25,
+        webbased_recon_aux_weight: float = 0.25,
+        webbased_recon_hard_weight: float = 2.0,
     ) -> None:
         super().__init__(
             hidden_dim=hidden_dim,
@@ -702,6 +729,9 @@ class DualBranchLogitGatedHeteroGNN_Edge(DualBranchLogitGatedHeteroGNN):
             conv_cls=GATConv,
             edge_aware=True,
             aux_loss_weight=aux_loss_weight,
+            webbased_aux_weight=webbased_aux_weight,
+            webbased_recon_aux_weight=webbased_recon_aux_weight,
+            webbased_recon_hard_weight=webbased_recon_hard_weight,
         )
 
 

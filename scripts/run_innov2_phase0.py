@@ -54,6 +54,8 @@ def build_parser() -> argparse.ArgumentParser:
     train_p.add_argument("--branch-mode", default="dual", choices=["flow", "packet", "dual"])
     train_p.add_argument("--webbased-weight", type=float, default=1.0)
     train_p.add_argument("--webbased-aux-weight", type=float, default=0.25)
+    train_p.add_argument("--webbased-recon-aux-weight", type=float, default=0.25)
+    train_p.add_argument("--webbased-recon-hard-weight", type=float, default=2.0)
     train_p.add_argument("--run-name", default="dual_v1")
 
     eval_p = sub.add_parser("eval", help="Evaluate innov2 with locked input/output paths")
@@ -114,6 +116,10 @@ def _run_train(args: argparse.Namespace) -> int:
         str(args.webbased_weight),
         "--webbased-aux-weight",
         str(args.webbased_aux_weight),
+        "--webbased-recon-aux-weight",
+        str(args.webbased_recon_aux_weight),
+        "--webbased-recon-hard-weight",
+        str(args.webbased_recon_hard_weight),
     ]
     if args.stratify is False:
         cli_args.append("--no-stratify")

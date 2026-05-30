@@ -83,6 +83,8 @@ def train(
     branch_mode: str = "dual",
     webbased_weight: float = 1.0,
     webbased_aux_weight: float = 0.25,
+    webbased_recon_aux_weight: float = 0.25,
+    webbased_recon_hard_weight: float = 2.0,
 ) -> TrainResult:
     if abs(train_ratio - 0.8) > 1e-9:
         warnings.warn(
@@ -116,6 +118,9 @@ def train(
         num_classes=num_classes,
         branch_mode=branch_mode,
         aux_loss_weight=webbased_aux_weight,
+        webbased_aux_weight=webbased_aux_weight,
+        webbased_recon_aux_weight=webbased_recon_aux_weight,
+        webbased_recon_hard_weight=webbased_recon_hard_weight,
     ).to(device_t)
     optimizer = AdamW(model.parameters(), lr=lr, weight_decay=1e-4)
     criterion = nn.NLLLoss()
