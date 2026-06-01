@@ -1,8 +1,9 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+from collections import Counter
 from pathlib import Path
-from typing import Iterable
+from typing import Iterable, Sequence
 import warnings
 
 import torch
@@ -31,6 +32,17 @@ class TrainResult:
 
 def _move_batch(batch, device: torch.device):
     return batch.to(device)
+
+
+def _graph_index_list(graphs_or_loader) -> list[int]:
+    indices: list[int] = []
+    dataset = getattr(graphs_or_loader, "dataset", graphs_or_loader)
+    for graph in dataset:
+        graph_idx = getattr(graph, "graph_index", None)
+        if graph_idx is None:
+            continue
+        indices.append(int(graph_idx.view(-1)[0].item()))
+    return indices
 
 
 @torch.no_grad()
@@ -85,6 +97,8 @@ def train(
     webbased_aux_weight: float = 0.25,
     webbased_recon_aux_weight: float = 0.25,
     webbased_recon_hard_weight: float = 2.0,
+    hard_negative_weight: float = 1.5,
+    hard_negative_warmup_epoch: int = 1,
 ) -> TrainResult:
     if abs(train_ratio - 0.8) > 1e-9:
         warnings.warn(
@@ -112,6 +126,7 @@ def train(
         split_indices=split_indices,
     )
     train_loader, val_loader, test_loader = loaders
+    train_graph_indices = _graph_index_list(train_loader)
     model = build_model(
         model_name,
         hidden_dim=hidden_dim,
@@ -135,6 +150,8 @@ def train(
     best_epoch = 0
     patience_left = max(int(early_stop_patience), 0)
     best_metrics: dict[str, float] = {}
+    hard_negative_counts: Counter[int] = Counter()
+    hard_negative_indices: set[int] = set()
 
     split_record = build_split_record(
         graphs,
@@ -158,12 +175,25 @@ def train(
     for epoch in range(1, epochs + 1):
         model.train()
         total_loss = 0.0
+        hard_negative_indices = set(hard_negative_counts.keys())
         for batch in tqdm(train_loader, desc=f"epoch {epoch}/{epochs}", leave=False):
             batch = _move_batch(batch, device_t)
             optimizer.zero_grad(set_to_none=True)
             logits = model(batch)
             if hasattr(model, "loss"):
+                sample_weight = None
+                if hard_negative_indices:
+                    batch_indices = getattr(batch, "graph_index", None)
+                    if batch_indices is not None:
+                        batch_indices = batch_indices.view(-1).detach().cpu().tolist()
+                        weights = torch.ones_like(batch.y.view(-1), dtype=torch.float32, device=device_t)
+                        for i, graph_idx in enumerate(batch_indices):
+                            if int(graph_idx) in hard_negative_indices:
+                                weights[i] = float(hard_negative_weight)
+                        sample_weight = weights
                 loss = model.loss(logits, batch.y.view(-1), class_weight=class_weight)
+                if sample_weight is not None:
+                    loss = loss * sample_weight.mean()
             else:
                 loss = criterion(logits, batch.y.view(-1), weight=class_weight)
             loss.backward()
@@ -189,6 +219,24 @@ def train(
                 },
                 best_path,
             )
+        if epoch >= hard_negative_warmup_epoch:
+            model.eval()
+            with torch.no_grad():
+                for batch in train_loader:
+                    batch = _move_batch(batch, device_t)
+                    preds = model(batch).argmax(dim=-1).detach().cpu().tolist()
+                    targets = batch.y.view(-1).detach().cpu().tolist()
+                    batch_indices = getattr(batch, "graph_index", None)
+                    if batch_indices is None:
+                        continue
+                    batch_indices = batch_indices.view(-1).detach().cpu().tolist()
+                    for pred, target, graph_idx in zip(preds, targets, batch_indices):
+                        if int(target) == 3 and int(pred) == 1:
+                            hard_negative_counts[int(graph_idx)] += 1
+                        elif int(graph_idx) in hard_negative_counts and int(pred) == int(target):
+                            hard_negative_counts[int(graph_idx)] = max(hard_negative_counts[int(graph_idx)] - 1, 0)
+                            if hard_negative_counts[int(graph_idx)] <= 0:
+                                del hard_negative_counts[int(graph_idx)]
         print(
             f"epoch={epoch} loss={total_loss / max(len(train_loader), 1):.4f} "
             f"val_acc={val_metrics['accuracy']:.4f} val_f1={val_metrics['f1_macro']:.4f}"

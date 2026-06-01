@@ -80,6 +80,14 @@ def _load_graph_container(path: Path, max_depth: int = 3):
     return obj
 
 
+def _attach_graph_indices(graphs: Sequence[HeteroData]) -> list[HeteroData]:
+    indexed_graphs: list[HeteroData] = []
+    for idx, graph in enumerate(graphs):
+        graph.graph_index = torch.tensor([idx], dtype=torch.long)
+        indexed_graphs.append(graph)
+    return indexed_graphs
+
+
 def load_graphs(path: str | Path) -> list[HeteroData]:
     path = Path(path)
     if path.is_dir():
@@ -89,8 +97,8 @@ def load_graphs(path: str | Path) -> list[HeteroData]:
                 graphs.extend(_as_graph_list(_load_graph_container(file)))
             except TypeError as exc:
                 warnings.warn(f"Skipping unsupported graph file {file.name}: {exc}")
-        return graphs
-    return _as_graph_list(_load_graph_container(path))
+        return _attach_graph_indices(graphs)
+    return _attach_graph_indices(_as_graph_list(_load_graph_container(path)))
 
 
 def summarize_graphs(graphs: Sequence[HeteroData]) -> dict[str, int]:
