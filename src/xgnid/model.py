@@ -26,6 +26,17 @@ ModelName = Literal[
 BranchMode = Literal["flow", "packet", "dual"]
 
 
+def _align_feature_dim(x: torch.Tensor, target_dim: int | None) -> torch.Tensor:
+    if target_dim is None:
+        return x
+    current_dim = int(x.size(-1))
+    if current_dim == target_dim:
+        return x
+    if current_dim < target_dim:
+        return F.pad(x, (0, target_dim - current_dim))
+    return x[..., :target_dim]
+
+
 class _PaperStyleHeteroEncoder(nn.Module):
     def __init__(
         self,
@@ -33,10 +44,14 @@ class _PaperStyleHeteroEncoder(nn.Module):
         eps: float = 1.0,
         conv_cls=SAGEConv,
         edge_aware: bool = False,
+        flow_input_dim: int | None = None,
+        packet_input_dim: int | None = None,
     ) -> None:
         super().__init__()
         self.hidden_dim = hidden_dim
         self.edge_aware = edge_aware
+        self.flow_input_dim = flow_input_dim
+        self.packet_input_dim = packet_input_dim
 
         conv_kwargs = {"edge_dim": -1, "add_self_loops": False} if edge_aware else {}
 
@@ -127,8 +142,8 @@ class _PaperStyleHeteroEncoder(nn.Module):
 
     def forward(self, data: HeteroData) -> dict[str, torch.Tensor]:
         x_dict = {
-            "flow": data["flow"].x.float(),
-            "packet": data["packet"].x.float(),
+            "flow": _align_feature_dim(data["flow"].x.float(), self.flow_input_dim),
+            "packet": _align_feature_dim(data["packet"].x.float(), self.packet_input_dim),
         }
         edge_index_dict = self._edge_index_dict(data)
         edge_attr_dict = self._edge_attr_dict(data)
@@ -140,8 +155,8 @@ class _PaperStyleHeteroEncoder(nn.Module):
         x_dict = self._ensure_all_node_types(
             x_dict,
             {
-                "flow": data["flow"].x.float(),
-                "packet": data["packet"].x.float(),
+                "flow": _align_feature_dim(data["flow"].x.float(), self.flow_input_dim),
+                "packet": _align_feature_dim(data["packet"].x.float(), self.packet_input_dim),
             },
         )
         x_dict = self._apply_nodewise_ops(x_dict, self.bns1, self.relus1)
@@ -153,8 +168,8 @@ class _PaperStyleHeteroEncoder(nn.Module):
         x_dict = self._ensure_all_node_types(
             x_dict,
             {
-                "flow": data["flow"].x.float(),
-                "packet": data["packet"].x.float(),
+                "flow": _align_feature_dim(data["flow"].x.float(), self.flow_input_dim),
+                "packet": _align_feature_dim(data["packet"].x.float(), self.packet_input_dim),
             },
         )
         x_dict = self._apply_nodewise_ops(x_dict, self.bns2, self.relus2)
@@ -169,6 +184,8 @@ class _PaperStyleHeteroBase(nn.Module):
         eps: float = 1.0,
         conv_cls = SAGEConv,
         edge_aware: bool = False,
+        flow_input_dim: int | None = None,
+        packet_input_dim: int | None = None,
     ) -> None:
         super().__init__()
         self.hidden_dim = hidden_dim
@@ -178,6 +195,8 @@ class _PaperStyleHeteroBase(nn.Module):
             eps=eps,
             conv_cls=conv_cls,
             edge_aware=edge_aware,
+            flow_input_dim=flow_input_dim,
+            packet_input_dim=packet_input_dim,
         )
         self.edge_aware = edge_aware
 
@@ -215,6 +234,8 @@ class HeteroGNN(_PaperStyleHeteroBase):
         hidden_dim: int = 64,
         num_classes: int = 8,
         eps: float = 1.0,
+        flow_input_dim: int | None = None,
+        packet_input_dim: int | None = None,
         **_: object,
     ) -> None:
         super().__init__(
@@ -223,6 +244,8 @@ class HeteroGNN(_PaperStyleHeteroBase):
             eps=eps,
             conv_cls=SAGEConv,
             edge_aware=False,
+            flow_input_dim=flow_input_dim,
+            packet_input_dim=packet_input_dim,
         )
 
 
@@ -232,6 +255,8 @@ class HeteroGNN_Edge(_PaperStyleHeteroBase):
         hidden_dim: int = 64,
         num_classes: int = 8,
         eps: float = 1.0,
+        flow_input_dim: int | None = None,
+        packet_input_dim: int | None = None,
         **_: object,
     ) -> None:
         super().__init__(
@@ -240,6 +265,8 @@ class HeteroGNN_Edge(_PaperStyleHeteroBase):
             eps=eps,
             conv_cls=GATConv,
             edge_aware=True,
+            flow_input_dim=flow_input_dim,
+            packet_input_dim=packet_input_dim,
         )
 
 
@@ -252,6 +279,8 @@ class DualBranchHeteroGNN(nn.Module):
         branch_mode: BranchMode = "dual",
         conv_cls=SAGEConv,
         edge_aware: bool = False,
+        flow_input_dim: int | None = None,
+        packet_input_dim: int | None = None,
     ) -> None:
         super().__init__()
         if branch_mode not in {"flow", "packet", "dual"}:
@@ -264,12 +293,16 @@ class DualBranchHeteroGNN(nn.Module):
             eps=eps,
             conv_cls=conv_cls,
             edge_aware=edge_aware,
+            flow_input_dim=flow_input_dim,
+            packet_input_dim=packet_input_dim,
         )
         self.packet_encoder = _PaperStyleHeteroEncoder(
             hidden_dim=hidden_dim,
             eps=eps,
             conv_cls=conv_cls,
             edge_aware=edge_aware,
+            flow_input_dim=flow_input_dim,
+            packet_input_dim=packet_input_dim,
         )
         self.graph_prediction = nn.Linear(hidden_dim * 2, hidden_dim)
         self.graph_prediction_1 = nn.Linear(hidden_dim, max(hidden_dim // 4, 16))
@@ -321,6 +354,8 @@ class DualBranchHeteroGNN_Edge(DualBranchHeteroGNN):
         num_classes: int = 8,
         eps: float = 1.0,
         branch_mode: BranchMode = "dual",
+        flow_input_dim: int | None = None,
+        packet_input_dim: int | None = None,
     ) -> None:
         super().__init__(
             hidden_dim=hidden_dim,
@@ -329,6 +364,8 @@ class DualBranchHeteroGNN_Edge(DualBranchHeteroGNN):
             branch_mode=branch_mode,
             conv_cls=GATConv,
             edge_aware=True,
+            flow_input_dim=flow_input_dim,
+            packet_input_dim=packet_input_dim,
         )
 
 
@@ -408,6 +445,8 @@ class DualBranchGatedHeteroGNN(nn.Module):
         conv_cls=SAGEConv,
         edge_aware: bool = False,
         aux_loss_weight: float = 0.05,
+        flow_input_dim: int | None = None,
+        packet_input_dim: int | None = None,
     ) -> None:
         super().__init__()
         if branch_mode not in {"flow", "packet", "dual"}:
@@ -422,12 +461,16 @@ class DualBranchGatedHeteroGNN(nn.Module):
             eps=eps,
             conv_cls=conv_cls,
             edge_aware=edge_aware,
+            flow_input_dim=flow_input_dim,
+            packet_input_dim=packet_input_dim,
         )
         self.packet_encoder = _PaperStyleHeteroEncoder(
             hidden_dim=hidden_dim,
             eps=eps,
             conv_cls=conv_cls,
             edge_aware=edge_aware,
+            flow_input_dim=flow_input_dim,
+            packet_input_dim=packet_input_dim,
         )
         self.flow_classifier = nn.Linear(hidden_dim, num_classes)
         self.packet_classifier = nn.Linear(hidden_dim, num_classes)
@@ -534,6 +577,8 @@ class DualBranchGatedHeteroGNN_Edge(DualBranchGatedHeteroGNN):
         eps: float = 1.0,
         branch_mode: BranchMode = "dual",
         aux_loss_weight: float = 0.2,
+        flow_input_dim: int | None = None,
+        packet_input_dim: int | None = None,
     ) -> None:
         super().__init__(
             hidden_dim=hidden_dim,
@@ -543,6 +588,8 @@ class DualBranchGatedHeteroGNN_Edge(DualBranchGatedHeteroGNN):
             conv_cls=GATConv,
             edge_aware=True,
             aux_loss_weight=aux_loss_weight,
+            flow_input_dim=flow_input_dim,
+            packet_input_dim=packet_input_dim,
         )
 
 
@@ -559,6 +606,8 @@ class DualBranchLogitGatedHeteroGNN(nn.Module):
         webbased_aux_weight: float = 0.25,
         webbased_recon_aux_weight: float = 0.25,
         webbased_recon_hard_weight: float = 2.0,
+        flow_input_dim: int | None = None,
+        packet_input_dim: int | None = None,
     ) -> None:
         super().__init__()
         if branch_mode not in {"flow", "packet", "dual"}:
@@ -576,12 +625,16 @@ class DualBranchLogitGatedHeteroGNN(nn.Module):
             eps=eps,
             conv_cls=conv_cls,
             edge_aware=edge_aware,
+            flow_input_dim=flow_input_dim,
+            packet_input_dim=packet_input_dim,
         )
         self.packet_encoder = _PaperStyleHeteroEncoder(
             hidden_dim=hidden_dim,
             eps=eps,
             conv_cls=conv_cls,
             edge_aware=edge_aware,
+            flow_input_dim=flow_input_dim,
+            packet_input_dim=packet_input_dim,
         )
         self.flow_classifier = nn.Linear(hidden_dim, num_classes)
         self.packet_classifier = nn.Linear(hidden_dim, num_classes)
@@ -746,6 +799,8 @@ class DualBranchLogitGatedHeteroGNN_Edge(DualBranchLogitGatedHeteroGNN):
         webbased_aux_weight: float = 0.25,
         webbased_recon_aux_weight: float = 0.25,
         webbased_recon_hard_weight: float = 2.0,
+        flow_input_dim: int | None = None,
+        packet_input_dim: int | None = None,
     ) -> None:
         super().__init__(
             hidden_dim=hidden_dim,
@@ -758,6 +813,8 @@ class DualBranchLogitGatedHeteroGNN_Edge(DualBranchLogitGatedHeteroGNN):
             webbased_aux_weight=webbased_aux_weight,
             webbased_recon_aux_weight=webbased_recon_aux_weight,
             webbased_recon_hard_weight=webbased_recon_hard_weight,
+            flow_input_dim=flow_input_dim,
+            packet_input_dim=packet_input_dim,
         )
 
 

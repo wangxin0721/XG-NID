@@ -45,6 +45,19 @@ def _graph_index_list(graphs_or_loader) -> list[int]:
     return indices
 
 
+def _node_input_dims(graphs) -> tuple[int | None, int | None]:
+    flow_dim: int | None = None
+    packet_dim: int | None = None
+    for graph in graphs:
+        flow_x = getattr(graph["flow"], "x", None)
+        packet_x = getattr(graph["packet"], "x", None)
+        if flow_x is not None:
+            flow_dim = max(int(flow_x.size(-1)), flow_dim or 0)
+        if packet_x is not None:
+            packet_dim = max(int(packet_x.size(-1)), packet_dim or 0)
+    return flow_dim, packet_dim
+
+
 @torch.no_grad()
 def predict(model: nn.Module, loader, device: torch.device) -> tuple[list[int], list[int]]:
     model.eval()
@@ -107,6 +120,7 @@ def train(
         )
     device_t = torch.device(device if torch.cuda.is_available() or device == "cpu" else "cpu")
     graphs = load_graphs(data_path)
+    flow_input_dim, packet_input_dim = _node_input_dims(graphs)
     split_indices = split_graph_indices_paper_table4(
         graphs,
         test_ratio=0.2,
@@ -136,6 +150,8 @@ def train(
         webbased_aux_weight=webbased_aux_weight,
         webbased_recon_aux_weight=webbased_recon_aux_weight,
         webbased_recon_hard_weight=webbased_recon_hard_weight,
+        flow_input_dim=flow_input_dim,
+        packet_input_dim=packet_input_dim,
     ).to(device_t)
     optimizer = AdamW(model.parameters(), lr=lr, weight_decay=1e-4)
     criterion = nn.NLLLoss()
@@ -214,6 +230,8 @@ def train(
                         "hidden_dim": hidden_dim,
                         "num_classes": num_classes,
                         "branch_mode": branch_mode,
+                        "flow_input_dim": flow_input_dim,
+                        "packet_input_dim": packet_input_dim,
                     },
                     "metrics": val_metrics,
                 },
