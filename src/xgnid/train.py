@@ -58,6 +58,73 @@ def _node_input_dims(graphs) -> tuple[int | None, int | None]:
     return flow_dim, packet_dim
 
 
+def _model_kwargs_for_training(
+    *,
+    model_name: str,
+    hidden_dim: int,
+    num_classes: int,
+    branch_mode: str,
+    webbased_aux_weight: float,
+    webbased_recon_aux_weight: float,
+    webbased_recon_hard_weight: float,
+    flow_input_dim: int | None,
+    packet_input_dim: int | None,
+) -> dict[str, object]:
+    base_kwargs: dict[str, object] = {
+        "hidden_dim": hidden_dim,
+        "num_classes": num_classes,
+        "branch_mode": branch_mode,
+        "flow_input_dim": flow_input_dim,
+        "packet_input_dim": packet_input_dim,
+    }
+    if model_name in {"paper", "edge"}:
+        return base_kwargs
+    if model_name in {"dual", "dual_edge"}:
+        return base_kwargs
+    if model_name in {"dual_gate", "dual_gate_edge"}:
+        base_kwargs["aux_loss_weight"] = webbased_aux_weight
+        return base_kwargs
+    if model_name in {"dual_gate_logit", "dual_gate_logit_edge"}:
+        base_kwargs.update(
+            aux_loss_weight=webbased_aux_weight,
+            webbased_aux_weight=webbased_aux_weight,
+            webbased_recon_aux_weight=webbased_recon_aux_weight,
+            webbased_recon_hard_weight=webbased_recon_hard_weight,
+        )
+        return base_kwargs
+    raise ValueError(f"Unsupported model for training: {model_name}")
+
+
+def _model_kwargs_for_checkpoint(
+    *,
+    model_name: str,
+    hidden_dim: int,
+    num_classes: int,
+    branch_mode: str,
+    flow_input_dim: int | None,
+    packet_input_dim: int | None,
+    webbased_aux_weight: float,
+    webbased_recon_aux_weight: float,
+    webbased_recon_hard_weight: float,
+) -> dict[str, object]:
+    checkpoint_kwargs: dict[str, object] = {
+        "hidden_dim": hidden_dim,
+        "num_classes": num_classes,
+        "branch_mode": branch_mode,
+        "flow_input_dim": flow_input_dim,
+        "packet_input_dim": packet_input_dim,
+    }
+    if model_name in {"dual_gate", "dual_gate_edge", "dual_gate_logit", "dual_gate_logit_edge"}:
+        checkpoint_kwargs["aux_loss_weight"] = webbased_aux_weight
+    if model_name in {"dual_gate_logit", "dual_gate_logit_edge"}:
+        checkpoint_kwargs.update(
+            webbased_aux_weight=webbased_aux_weight,
+            webbased_recon_aux_weight=webbased_recon_aux_weight,
+            webbased_recon_hard_weight=webbased_recon_hard_weight,
+        )
+    return checkpoint_kwargs
+
+
 @torch.no_grad()
 def predict(model: nn.Module, loader, device: torch.device) -> tuple[list[int], list[int]]:
     model.eval()
@@ -143,21 +210,23 @@ def train(
     train_graph_indices = _graph_index_list(train_loader)
     model = build_model(
         model_name,
-        hidden_dim=hidden_dim,
-        num_classes=num_classes,
-        branch_mode=branch_mode,
-        aux_loss_weight=webbased_aux_weight,
-        webbased_aux_weight=webbased_aux_weight,
-        webbased_recon_aux_weight=webbased_recon_aux_weight,
-        webbased_recon_hard_weight=webbased_recon_hard_weight,
-        flow_input_dim=flow_input_dim,
-        packet_input_dim=packet_input_dim,
+        **_model_kwargs_for_training(
+            model_name=model_name,
+            hidden_dim=hidden_dim,
+            num_classes=num_classes,
+            branch_mode=branch_mode,
+            webbased_aux_weight=webbased_aux_weight,
+            webbased_recon_aux_weight=webbased_recon_aux_weight,
+            webbased_recon_hard_weight=webbased_recon_hard_weight,
+            flow_input_dim=flow_input_dim,
+            packet_input_dim=packet_input_dim,
+        ),
     ).to(device_t)
     optimizer = AdamW(model.parameters(), lr=lr, weight_decay=1e-4)
-    criterion = nn.NLLLoss()
     class_weight = torch.ones(num_classes, dtype=torch.float32, device=device_t)
     if webbased_weight != 1.0 and num_classes > 1:
         class_weight[1] = float(webbased_weight)
+    criterion = nn.NLLLoss(weight=class_weight)
     output_dir = Path(output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
     best_path = output_dir / "best.pt"
@@ -211,7 +280,7 @@ def train(
                 if sample_weight is not None:
                     loss = loss * sample_weight.mean()
             else:
-                loss = criterion(logits, batch.y.view(-1), weight=class_weight)
+                loss = criterion(logits, batch.y.view(-1))
             loss.backward()
             optimizer.step()
             total_loss += float(loss.item())
@@ -226,13 +295,17 @@ def train(
                 {
                     "model_state": model.state_dict(),
                     "model_name": model_name,
-                    "model_kwargs": {
-                        "hidden_dim": hidden_dim,
-                        "num_classes": num_classes,
-                        "branch_mode": branch_mode,
-                        "flow_input_dim": flow_input_dim,
-                        "packet_input_dim": packet_input_dim,
-                    },
+                    "model_kwargs": _model_kwargs_for_checkpoint(
+                        model_name=model_name,
+                        hidden_dim=hidden_dim,
+                        num_classes=num_classes,
+                        branch_mode=branch_mode,
+                        flow_input_dim=flow_input_dim,
+                        packet_input_dim=packet_input_dim,
+                        webbased_aux_weight=webbased_aux_weight,
+                        webbased_recon_aux_weight=webbased_recon_aux_weight,
+                        webbased_recon_hard_weight=webbased_recon_hard_weight,
+                    ),
                     "metrics": val_metrics,
                 },
                 best_path,

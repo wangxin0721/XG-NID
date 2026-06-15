@@ -10,12 +10,16 @@ SRC = ROOT / "src"
 if str(SRC) not in sys.path:
     sys.path.insert(0, str(SRC))
 
-LOCKED_GRAPH_DIR = ROOT / "data" / "processed" / "CICIoT2023_processed" / "processed_innov1_r25_graphs"
+GRAPH_DIRS = {
+    "baseline": ROOT / "data" / "processed" / "CICIoT2023_processed" / "processed",
+    "innov1": ROOT / "data" / "processed" / "CICIoT2023_processed" / "processed_innov1_graphs",
+    "innov1_r25": ROOT / "data" / "processed" / "CICIoT2023_processed" / "processed_innov1_r25_graphs",
+}
 LOCKED_OUTPUT_ROOT = ROOT / "outputs" / "innov2"
 
 
-def _resolve_run_dir(run_name: str) -> Path:
-    return LOCKED_OUTPUT_ROOT / run_name
+def _resolve_run_dir(run_name: str, input_name: str) -> Path:
+    return LOCKED_OUTPUT_ROOT / input_name / run_name
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -33,7 +37,8 @@ def build_parser() -> argparse.ArgumentParser:
     train_p.add_argument("--seed", type=int, default=42)
     train_p.add_argument("--device", default="cuda")
     train_p.add_argument("--no-stratify", action="store_false", dest="stratify", default=True)
-    train_p.add_argument("--balance-train", action="store_true")
+    train_p.add_argument("--balance-train", action="store_true", default=True)
+    train_p.add_argument("--no-balance-train", action="store_false", dest="balance_train")
     train_p.add_argument("--train-samples-per-class", type=int, default=20000)
     train_p.add_argument("--early-stop-patience", type=int, default=12)
     train_p.add_argument("--early-stop-min-delta", type=float, default=0.0)
@@ -56,14 +61,17 @@ def build_parser() -> argparse.ArgumentParser:
     train_p.add_argument("--webbased-aux-weight", type=float, default=0.25)
     train_p.add_argument("--webbased-recon-aux-weight", type=float, default=0.25)
     train_p.add_argument("--webbased-recon-hard-weight", type=float, default=2.0)
+    train_p.add_argument("--input-name", default="baseline", choices=sorted(GRAPH_DIRS))
     train_p.add_argument("--run-name", default="dual_v1")
 
     eval_p = sub.add_parser("eval", help="Evaluate innov2 with locked input/output paths")
     eval_p.add_argument("--batch-size", type=int, default=64)
     eval_p.add_argument("--device", default="cuda")
+    eval_p.add_argument("--input-name", default="baseline", choices=sorted(GRAPH_DIRS))
     eval_p.add_argument("--run-name", default="dual_v1")
 
     paths_p = sub.add_parser("paths", help="Print the locked innov2 paths")
+    paths_p.add_argument("--input-name", default="baseline", choices=sorted(GRAPH_DIRS))
     paths_p.add_argument("--run-name", default="dual_v1")
 
     return parser
@@ -72,16 +80,17 @@ def build_parser() -> argparse.ArgumentParser:
 def _run_train(args: argparse.Namespace) -> int:
     from xgnid.cli import main as xgnid_main
 
-    output_dir = _resolve_run_dir(args.run_name)
+    graph_dir = GRAPH_DIRS[args.input_name]
+    output_dir = _resolve_run_dir(args.run_name, args.input_name)
     best_path = output_dir / "best.pt"
     split_path = output_dir / "split.json"
 
-    print(f"[innov2] locked input : {LOCKED_GRAPH_DIR}")
+    print(f"[innov2] locked input : {graph_dir}")
     print(f"[innov2] locked output: {output_dir}")
     cli_args = [
         "train",
         "--data",
-        str(LOCKED_GRAPH_DIR),
+        str(graph_dir),
         "--output-dir",
         str(output_dir),
         "--epochs",
@@ -125,23 +134,26 @@ def _run_train(args: argparse.Namespace) -> int:
         cli_args.append("--no-stratify")
     if args.balance_train:
         cli_args.append("--balance-train")
+    else:
+        cli_args.append("--no-balance-train")
     return xgnid_main(cli_args)
 
 
 def _run_eval(args: argparse.Namespace) -> int:
     from xgnid.cli import main as xgnid_main
 
-    output_dir = _resolve_run_dir(args.run_name)
+    graph_dir = GRAPH_DIRS[args.input_name]
+    output_dir = _resolve_run_dir(args.run_name, args.input_name)
     best_path = output_dir / "best.pt"
     split_path = output_dir / "split.json"
     test_exports = output_dir / "test_exports"
 
-    print(f"[innov2] locked input : {LOCKED_GRAPH_DIR}")
+    print(f"[innov2] locked input : {graph_dir}")
     print(f"[innov2] locked output: {output_dir}")
     cli_args = [
         "eval",
         "--data",
-        str(LOCKED_GRAPH_DIR),
+        str(graph_dir),
         "--checkpoint",
         str(best_path),
         "--split",
@@ -163,8 +175,9 @@ def main() -> int:
     if args.command == "eval":
         return _run_eval(args)
     if args.command == "paths":
-        output_dir = _resolve_run_dir(args.run_name)
-        print(f"input={LOCKED_GRAPH_DIR}")
+        graph_dir = GRAPH_DIRS[args.input_name]
+        output_dir = _resolve_run_dir(args.run_name, args.input_name)
+        print(f"input={graph_dir}")
         print(f"output={output_dir}")
         print(f"best={output_dir / 'best.pt'}")
         print(f"split={output_dir / 'split.json'}")
