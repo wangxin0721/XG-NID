@@ -67,6 +67,8 @@ def _model_kwargs_for_training(
     webbased_aux_weight: float,
     webbased_recon_aux_weight: float,
     webbased_recon_hard_weight: float,
+    webbased_recon_sep_weight: float,
+    webbased_recon_sep_margin: float,
     flow_input_dim: int | None,
     packet_input_dim: int | None,
 ) -> dict[str, object]:
@@ -90,6 +92,8 @@ def _model_kwargs_for_training(
             webbased_aux_weight=webbased_aux_weight,
             webbased_recon_aux_weight=webbased_recon_aux_weight,
             webbased_recon_hard_weight=webbased_recon_hard_weight,
+            webbased_recon_sep_weight=webbased_recon_sep_weight,
+            webbased_recon_sep_margin=webbased_recon_sep_margin,
         )
         return base_kwargs
     raise ValueError(f"Unsupported model for training: {model_name}")
@@ -106,6 +110,8 @@ def _model_kwargs_for_checkpoint(
     webbased_aux_weight: float,
     webbased_recon_aux_weight: float,
     webbased_recon_hard_weight: float,
+    webbased_recon_sep_weight: float,
+    webbased_recon_sep_margin: float,
 ) -> dict[str, object]:
     checkpoint_kwargs: dict[str, object] = {
         "hidden_dim": hidden_dim,
@@ -121,6 +127,8 @@ def _model_kwargs_for_checkpoint(
             webbased_aux_weight=webbased_aux_weight,
             webbased_recon_aux_weight=webbased_recon_aux_weight,
             webbased_recon_hard_weight=webbased_recon_hard_weight,
+            webbased_recon_sep_weight=webbased_recon_sep_weight,
+            webbased_recon_sep_margin=webbased_recon_sep_margin,
         )
     return checkpoint_kwargs
 
@@ -177,6 +185,8 @@ def train(
     webbased_aux_weight: float = 0.25,
     webbased_recon_aux_weight: float = 0.25,
     webbased_recon_hard_weight: float = 2.0,
+    webbased_recon_sep_weight: float = 0.2,
+    webbased_recon_sep_margin: float = 0.15,
     hard_negative_weight: float = 1.5,
     hard_negative_warmup_epoch: int = 1,
 ) -> TrainResult:
@@ -218,6 +228,8 @@ def train(
             webbased_aux_weight=webbased_aux_weight,
             webbased_recon_aux_weight=webbased_recon_aux_weight,
             webbased_recon_hard_weight=webbased_recon_hard_weight,
+            webbased_recon_sep_weight=webbased_recon_sep_weight,
+            webbased_recon_sep_margin=webbased_recon_sep_margin,
             flow_input_dim=flow_input_dim,
             packet_input_dim=packet_input_dim,
         ),
@@ -305,6 +317,8 @@ def train(
                         webbased_aux_weight=webbased_aux_weight,
                         webbased_recon_aux_weight=webbased_recon_aux_weight,
                         webbased_recon_hard_weight=webbased_recon_hard_weight,
+                        webbased_recon_sep_weight=webbased_recon_sep_weight,
+                        webbased_recon_sep_margin=webbased_recon_sep_margin,
                     ),
                     "metrics": val_metrics,
                 },
