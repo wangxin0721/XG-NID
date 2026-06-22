@@ -61,8 +61,6 @@ def build_parser() -> argparse.ArgumentParser:
     train_p.add_argument("--webbased-aux-weight", type=float, default=0.25)
     train_p.add_argument("--webbased-recon-aux-weight", type=float, default=0.25)
     train_p.add_argument("--webbased-recon-hard-weight", type=float, default=2.0)
-    train_p.add_argument("--webbased-recon-sep-weight", type=float, default=0.2)
-    train_p.add_argument("--webbased-recon-sep-margin", type=float, default=0.15)
     train_p.add_argument("--input-name", default="baseline", choices=sorted(GRAPH_DIRS))
     train_p.add_argument("--run-name", default="dual_v1")
 
@@ -131,10 +129,6 @@ def _run_train(args: argparse.Namespace) -> int:
         str(args.webbased_recon_aux_weight),
         "--webbased-recon-hard-weight",
         str(args.webbased_recon_hard_weight),
-        "--webbased-recon-sep-weight",
-        str(args.webbased_recon_sep_weight),
-        "--webbased-recon-sep-margin",
-        str(args.webbased_recon_sep_margin),
     ]
     if args.stratify is False:
         cli_args.append("--no-stratify")

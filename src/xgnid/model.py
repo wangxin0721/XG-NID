@@ -606,8 +606,6 @@ class DualBranchLogitGatedHeteroGNN(nn.Module):
         webbased_aux_weight: float = 0.25,
         webbased_recon_aux_weight: float = 0.25,
         webbased_recon_hard_weight: float = 2.0,
-        webbased_recon_sep_weight: float = 0.2,
-        webbased_recon_sep_margin: float = 0.15,
         flow_input_dim: int | None = None,
         packet_input_dim: int | None = None,
     ) -> None:
@@ -621,8 +619,6 @@ class DualBranchLogitGatedHeteroGNN(nn.Module):
         self.webbased_aux_weight = webbased_aux_weight
         self.webbased_recon_aux_weight = webbased_recon_aux_weight
         self.webbased_recon_hard_weight = webbased_recon_hard_weight
-        self.webbased_recon_sep_weight = webbased_recon_sep_weight
-        self.webbased_recon_sep_margin = webbased_recon_sep_margin
 
         self.flow_encoder = _PaperStyleHeteroEncoder(
             hidden_dim=hidden_dim,
@@ -731,13 +727,25 @@ class DualBranchLogitGatedHeteroGNN(nn.Module):
         return logits
 
     @staticmethod
-    def _wb_recon_margin_loss(
+    def _recon_binary_aux_loss(
+        self,
+        label: torch.Tensor,
+        sep_logits: torch.Tensor,
+    ) -> torch.Tensor:
+        pair_mask = (label == 1) | (label == 3)
+        if not pair_mask.any():
+            return sep_logits.new_zeros(())
+        pair_logits = sep_logits[pair_mask]
+        pair_target = (label[pair_mask] == 3).long()
+        return F.cross_entropy(pair_logits, pair_target)
+
+    @staticmethod
+    def _recon_hard_negative_loss(
         fused_emb: torch.Tensor,
         label: torch.Tensor,
         *,
-        sim_margin: float,
         topk: int,
-        hard_weight: float,
+        sim_margin: float,
     ) -> torch.Tensor:
         wb_mask = label == 1
         recon_mask = label == 3
@@ -760,36 +768,7 @@ class DualBranchLogitGatedHeteroGNN(nn.Module):
         recon_center = recon_emb.mean(dim=0, keepdim=True)
         center_sim = F.cosine_similarity(wb_center, recon_center, dim=-1)
         center_loss = F.relu(center_sim - (sim_margin - 0.05)).mean()
-        return hard_weight * hard_loss + 0.5 * center_loss
-
-    def _wb_recon_separation_loss(
-        self,
-        fused_emb: torch.Tensor,
-        label: torch.Tensor,
-        sep_logits: torch.Tensor,
-    ) -> torch.Tensor:
-        wb_mask = label == 1
-        recon_mask = label == 3
-        pair_mask = wb_mask | recon_mask
-        if not pair_mask.any():
-            return fused_emb.new_zeros(())
-
-        pair_logits = sep_logits[pair_mask]
-        pair_target = (label[pair_mask] == 3).long()
-        ce_loss = F.cross_entropy(pair_logits, pair_target)
-
-        if wb_mask.any() and recon_mask.any():
-            wb_emb = F.normalize(fused_emb[wb_mask], dim=-1)
-            recon_emb = F.normalize(fused_emb[recon_mask], dim=-1)
-            sim = wb_emb @ recon_emb.transpose(0, 1)
-            hard_loss = F.relu(sim - self.webbased_recon_sep_margin).mean()
-            wb_center = wb_emb.mean(dim=0, keepdim=True)
-            recon_center = recon_emb.mean(dim=0, keepdim=True)
-            center_sim = F.cosine_similarity(wb_center, recon_center, dim=-1)
-            center_loss = F.relu(center_sim - self.webbased_recon_sep_margin).mean()
-            return ce_loss + 0.5 * hard_loss + 0.5 * center_loss
-
-        return ce_loss
+        return hard_loss + 0.5 * center_loss
 
     def forward(self, data: HeteroData) -> torch.Tensor:
         return F.log_softmax(self._graph_logits(data), dim=1)
@@ -806,24 +785,22 @@ class DualBranchLogitGatedHeteroGNN(nn.Module):
             return main_loss
         webbased_target = (label == 1).long()
         webbased_loss = F.cross_entropy(cache["webbased_logits"], webbased_target)
-        wb_recon_loss = self._wb_recon_margin_loss(
+        recon_binary_loss = self._recon_binary_aux_loss(
+            label,
+            cache["webbased_recon_logits"],
+        )
+        recon_hard_loss = self._recon_hard_negative_loss(
             cache["fused_emb"],
             label,
             sim_margin=0.15,
             topk=3,
-            hard_weight=float(self.webbased_recon_hard_weight),
-        )
-        wb_recon_sep_loss = self._wb_recon_separation_loss(
-            cache["fused_emb"],
-            label,
-            cache["webbased_recon_logits"],
         )
 
         return (
             main_loss
             + self.aux_loss_weight * webbased_loss
-            + self.webbased_recon_aux_weight * wb_recon_loss
-            + self.webbased_recon_sep_weight * wb_recon_sep_loss
+            + self.webbased_recon_aux_weight * recon_binary_loss
+            + self.webbased_recon_hard_weight * recon_hard_loss
         )
 
 
@@ -838,8 +815,6 @@ class DualBranchLogitGatedHeteroGNN_Edge(DualBranchLogitGatedHeteroGNN):
         webbased_aux_weight: float = 0.25,
         webbased_recon_aux_weight: float = 0.25,
         webbased_recon_hard_weight: float = 2.0,
-        webbased_recon_sep_weight: float = 0.2,
-        webbased_recon_sep_margin: float = 0.15,
         flow_input_dim: int | None = None,
         packet_input_dim: int | None = None,
     ) -> None:
@@ -854,8 +829,6 @@ class DualBranchLogitGatedHeteroGNN_Edge(DualBranchLogitGatedHeteroGNN):
             webbased_aux_weight=webbased_aux_weight,
             webbased_recon_aux_weight=webbased_recon_aux_weight,
             webbased_recon_hard_weight=webbased_recon_hard_weight,
-            webbased_recon_sep_weight=webbased_recon_sep_weight,
-            webbased_recon_sep_margin=webbased_recon_sep_margin,
             flow_input_dim=flow_input_dim,
             packet_input_dim=packet_input_dim,
         )
