@@ -728,7 +728,6 @@ class DualBranchLogitGatedHeteroGNN(nn.Module):
 
     @staticmethod
     def _recon_binary_aux_loss(
-        self,
         label: torch.Tensor,
         sep_logits: torch.Tensor,
     ) -> torch.Tensor:
@@ -785,10 +784,7 @@ class DualBranchLogitGatedHeteroGNN(nn.Module):
             return main_loss
         webbased_target = (label == 1).long()
         webbased_loss = F.cross_entropy(cache["webbased_logits"], webbased_target)
-        recon_binary_loss = self._recon_binary_aux_loss(
-            label,
-            cache["webbased_recon_logits"],
-        )
+        recon_binary_loss = self._recon_binary_aux_loss(label, cache["webbased_recon_logits"])
         recon_hard_loss = self._recon_hard_negative_loss(
             cache["fused_emb"],
             label,
