@@ -776,7 +776,8 @@ class DualBranchLogitGatedHeteroGNN(nn.Module):
         webbased_logits: torch.Tensor,
     ) -> torch.Tensor:
         recon_mask = label == 3
-        if not recon_mask.any():
+        webbased_mask = label == 1
+        if not recon_mask.any() or not webbased_mask.any():
             return fused_emb.new_zeros(())
 
         recon_emb = F.normalize(fused_emb[recon_mask], dim=-1)
@@ -786,10 +787,10 @@ class DualBranchLogitGatedHeteroGNN(nn.Module):
             return fused_emb.new_zeros(())
 
         confused_recon_emb = recon_emb[confusion_mask]
-        mean_sim = torch.matmul(
-            confused_recon_emb,
-            F.normalize(fused_emb[label == 1], dim=-1).mean(dim=0, keepdim=True).t(),
-        ).mean()
+        webbased_center = F.normalize(fused_emb[webbased_mask], dim=-1).mean(dim=0, keepdim=True)
+        mean_sim = torch.matmul(confused_recon_emb, webbased_center.t()).mean()
+        if not torch.isfinite(mean_sim):
+            return fused_emb.new_zeros(())
         return F.relu(mean_sim - 0.1)
 
     def forward(self, data: HeteroData) -> torch.Tensor:
