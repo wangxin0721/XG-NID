@@ -769,6 +769,29 @@ class DualBranchLogitGatedHeteroGNN(nn.Module):
         center_loss = F.relu(center_sim - (sim_margin - 0.05)).mean()
         return hard_loss + 0.5 * center_loss
 
+    def _recon_confusion_penalty(
+        self,
+        fused_emb: torch.Tensor,
+        label: torch.Tensor,
+        webbased_logits: torch.Tensor,
+    ) -> torch.Tensor:
+        recon_mask = label == 3
+        if not recon_mask.any():
+            return fused_emb.new_zeros(())
+
+        recon_emb = F.normalize(fused_emb[recon_mask], dim=-1)
+        recon_scores = webbased_logits[recon_mask, 1] - webbased_logits[recon_mask, 0]
+        confusion_mask = recon_scores > 0
+        if not confusion_mask.any():
+            return fused_emb.new_zeros(())
+
+        confused_recon_emb = recon_emb[confusion_mask]
+        mean_sim = torch.matmul(
+            confused_recon_emb,
+            F.normalize(fused_emb[label == 1], dim=-1).mean(dim=0, keepdim=True).t(),
+        ).mean()
+        return F.relu(mean_sim - 0.1)
+
     def forward(self, data: HeteroData) -> torch.Tensor:
         return F.log_softmax(self._graph_logits(data), dim=1)
 
@@ -791,12 +814,18 @@ class DualBranchLogitGatedHeteroGNN(nn.Module):
             sim_margin=0.15,
             topk=3,
         )
+        recon_confusion_loss = self._recon_confusion_penalty(
+            cache["fused_emb"],
+            label,
+            cache["webbased_logits"],
+        )
 
         return (
             main_loss
             + self.aux_loss_weight * webbased_loss
             + self.webbased_recon_aux_weight * recon_binary_loss
             + self.webbased_recon_hard_weight * recon_hard_loss
+            + 0.5 * recon_confusion_loss
         )
 
 
