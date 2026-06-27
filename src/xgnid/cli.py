@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+import json
 from pathlib import Path
 
 import torch
@@ -12,7 +13,7 @@ from .data import load_graphs, load_split_record, summarize_graphs, subset_graph
 from .data import label_counts
 from .export_test_results import save_test_outputs
 from .model import build_model_from_checkpoint
-from .train import predict, train
+from .train import fit_recon_webbased_threshold_calibrator, predict, train
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -131,6 +132,8 @@ def main(argv: list[str] | None = None) -> int:
     if args.command == "eval":
         graphs = load_graphs(args.data)
         split_path = args.split
+        split_record = None
+        val_graphs = []
         if split_path is None:
             candidate = Path(args.checkpoint).resolve().parent / "split.json"
             if candidate.exists():
@@ -138,14 +141,28 @@ def main(argv: list[str] | None = None) -> int:
         if split_path is not None:
             split_record = load_split_record(split_path)
             test_indices = split_record["split_indices"]["test"]
+            val_indices = split_record["split_indices"].get("val", [])
+            full_graphs = graphs
             graphs = subset_graphs(graphs, test_indices)
-        loader = DataLoader(graphs, batch_size=args.batch_size, shuffle=False)
+            val_graphs = subset_graphs(full_graphs, val_indices) if val_indices else []
         checkpoint = torch.load(args.checkpoint, map_location="cpu")
         model = build_model_from_checkpoint(checkpoint)
         model.load_state_dict(checkpoint["model_state"])
         device = torch.device(args.device if torch.cuda.is_available() or args.device == "cpu" else "cpu")
         model = model.to(device)
-        preds, labels = predict(model, loader, device)
+        calibrator = None
+        if split_record is not None and val_graphs:
+            val_loader = DataLoader(val_graphs, batch_size=args.batch_size, shuffle=False)
+            calibrator = fit_recon_webbased_threshold_calibrator(model, val_loader, device)
+            if calibrator is not None:
+                print(
+                    f"[calibration] threshold={calibrator.threshold:.4f} "
+                    f"pair_f1={calibrator.pair_f1:.4f} "
+                    f"webbased_precision={calibrator.webbased_precision:.4f} "
+                    f"recon_to_webbased={calibrator.recon_to_webbased}"
+                )
+        loader = DataLoader(graphs, batch_size=args.batch_size, shuffle=False)
+        preds, labels = predict(model, loader, device, calibrator)
         accuracy = accuracy_score(labels, preds)
         precision, recall, f1, _ = precision_recall_fscore_support(labels, preds, average="macro", zero_division=0)
         metrics = {
@@ -158,6 +175,9 @@ def main(argv: list[str] | None = None) -> int:
         if output_dir is None:
             output_dir = str(Path(args.checkpoint).resolve().parent / "test_exports")
         save_test_outputs(accuracy, preds, labels, output_dir=output_dir)
+        if calibrator is not None:
+            Path(output_dir).mkdir(parents=True, exist_ok=True)
+            (Path(output_dir) / "calibration.json").write_text(json.dumps(calibrator.__dict__, ensure_ascii=False, indent=2), encoding="utf-8")
         print(metrics)
         return 0
 
