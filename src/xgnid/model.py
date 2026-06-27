@@ -679,6 +679,24 @@ class DualBranchLogitGatedHeteroGNN(nn.Module):
         packet_logits = self.packet_classifier(packet_emb)
         return flow_emb, packet_emb, flow_logits, packet_logits
 
+    @staticmethod
+    def _rerank_recon_webbased(
+        logits: torch.Tensor,
+        recon_webbased_logits: torch.Tensor,
+    ) -> torch.Tensor:
+        """Re-score Recon/WebBased only when the 8-class head is already in that pair."""
+        base_pred = logits.argmax(dim=-1)
+        rerank_mask = (base_pred == 1) | (base_pred == 3)
+        if not rerank_mask.any():
+            return logits
+
+        reranked = logits.clone()
+        pair_logits = recon_webbased_logits[rerank_mask]
+        # Binary head order matches the training target: 0=WebBased, 1=Recon.
+        reranked[rerank_mask, 1] = pair_logits[:, 0]
+        reranked[rerank_mask, 3] = pair_logits[:, 1]
+        return reranked
+
     def _graph_logits(self, data: HeteroData) -> torch.Tensor:
         flow_emb, packet_emb, flow_logits, packet_logits = self._branch_outputs(data)
         flow_conf = self._confidence_from_logits(flow_logits)
@@ -724,7 +742,9 @@ class DualBranchLogitGatedHeteroGNN(nn.Module):
             "webbased_logits": webbased_logits,
             "webbased_recon_logits": webbased_recon_logits,
         }
-        return logits
+        if self.training:
+            return logits
+        return self._rerank_recon_webbased(logits, webbased_recon_logits)
 
     @staticmethod
     def _recon_binary_aux_loss(
@@ -806,28 +826,8 @@ class DualBranchLogitGatedHeteroGNN(nn.Module):
         cache = getattr(self, "_last_cache", {})
         if not cache:
             return main_loss
-        webbased_target = (label == 1).long()
-        webbased_loss = F.cross_entropy(cache["webbased_logits"], webbased_target)
         recon_binary_loss = self._recon_binary_aux_loss(label, cache["webbased_recon_logits"])
-        recon_hard_loss = self._recon_hard_negative_loss(
-            cache["fused_emb"],
-            label,
-            sim_margin=0.15,
-            topk=3,
-        )
-        recon_confusion_loss = self._recon_confusion_penalty(
-            cache["fused_emb"],
-            label,
-            cache["webbased_logits"],
-        )
-
-        return (
-            main_loss
-            + self.aux_loss_weight * webbased_loss
-            + self.webbased_recon_aux_weight * recon_binary_loss
-            + self.webbased_recon_hard_weight * recon_hard_loss
-            + 0.5 * recon_confusion_loss
-        )
+        return main_loss + self.webbased_recon_aux_weight * recon_binary_loss
 
 
 class DualBranchLogitGatedHeteroGNN_Edge(DualBranchLogitGatedHeteroGNN):
