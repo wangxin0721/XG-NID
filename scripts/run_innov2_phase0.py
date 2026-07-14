@@ -69,6 +69,11 @@ def build_parser() -> argparse.ArgumentParser:
     eval_p.add_argument("--device", default="cuda")
     eval_p.add_argument("--input-name", default="baseline", choices=sorted(GRAPH_DIRS))
     eval_p.add_argument("--run-name", default="dual_v1")
+    eval_p.add_argument("--recon-webbased-threshold", type=float, default=None)
+    eval_p.add_argument("--recon-webbased-thresholds", default=None)
+    eval_p.add_argument("--calibrate-benign-spoofing", action="store_true", default=False)
+    eval_p.add_argument("--benign-spoofing-threshold", type=float, default=None)
+    eval_p.add_argument("--benign-spoofing-thresholds", default=None)
 
     paths_p = sub.add_parser("paths", help="Print the locked innov2 paths")
     paths_p.add_argument("--input-name", default="baseline", choices=sorted(GRAPH_DIRS))
@@ -165,6 +170,16 @@ def _run_eval(args: argparse.Namespace) -> int:
         "--output-dir",
         str(test_exports),
     ]
+    if args.recon_webbased_threshold is not None:
+        cli_args.extend(["--recon-webbased-threshold", str(args.recon_webbased_threshold)])
+    if args.recon_webbased_thresholds is not None:
+        cli_args.extend(["--recon-webbased-thresholds", str(args.recon_webbased_thresholds)])
+    if args.calibrate_benign_spoofing:
+        cli_args.append("--calibrate-benign-spoofing")
+    if args.benign_spoofing_threshold is not None:
+        cli_args.extend(["--benign-spoofing-threshold", str(args.benign_spoofing_threshold)])
+    if args.benign_spoofing_thresholds is not None:
+        cli_args.extend(["--benign-spoofing-thresholds", str(args.benign_spoofing_thresholds)])
     return xgnid_main(cli_args)
 
 

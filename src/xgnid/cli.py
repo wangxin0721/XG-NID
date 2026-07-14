@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+from dataclasses import asdict, replace
 import json
 from pathlib import Path
 
@@ -13,7 +14,15 @@ from .data import load_graphs, load_split_record, summarize_graphs, subset_graph
 from .data import label_counts
 from .export_test_results import save_test_outputs
 from .model import build_model_from_checkpoint
-from .train import fit_recon_webbased_threshold_calibrator, predict, train
+from .train import fit_pair_threshold_calibrator, fit_recon_webbased_threshold_calibrator, predict, train
+
+
+def _parse_threshold_list(raw: str | None) -> list[float] | None:
+    if raw is None:
+        return None
+    values = [part.strip() for part in raw.split(",")]
+    parsed = [float(value) for value in values if value]
+    return parsed or None
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -71,6 +80,11 @@ def build_parser() -> argparse.ArgumentParser:
     eval_p.add_argument("--batch-size", type=int, default=16)
     eval_p.add_argument("--device", default="cuda")
     eval_p.add_argument("--output-dir", default=None)
+    eval_p.add_argument("--recon-webbased-threshold", type=float, default=None)
+    eval_p.add_argument("--recon-webbased-thresholds", default=None, help="Comma-separated threshold sweep for Recon/WebBased calibration")
+    eval_p.add_argument("--calibrate-benign-spoofing", action="store_true", default=False)
+    eval_p.add_argument("--benign-spoofing-threshold", type=float, default=None)
+    eval_p.add_argument("--benign-spoofing-thresholds", default=None, help="Comma-separated threshold sweep for Benign/Spoofing calibration")
 
     return parser
 
@@ -151,18 +165,60 @@ def main(argv: list[str] | None = None) -> int:
         device = torch.device(args.device if torch.cuda.is_available() or args.device == "cpu" else "cpu")
         model = model.to(device)
         calibrator = None
+        pair_calibrators = []
         if split_record is not None and val_graphs:
             val_loader = DataLoader(val_graphs, batch_size=args.batch_size, shuffle=False)
-            calibrator = fit_recon_webbased_threshold_calibrator(model, val_loader, device)
+            calibrator = fit_recon_webbased_threshold_calibrator(
+                model,
+                val_loader,
+                device,
+                thresholds=_parse_threshold_list(args.recon_webbased_thresholds),
+            )
             if calibrator is not None:
+                if args.recon_webbased_threshold is not None:
+                    calibrator = replace(calibrator, threshold=float(args.recon_webbased_threshold))
                 print(
                     f"[calibration] threshold={calibrator.threshold:.4f} "
                     f"pair_f1={calibrator.pair_f1:.4f} "
                     f"webbased_precision={calibrator.webbased_precision:.4f} "
                     f"recon_to_webbased={calibrator.recon_to_webbased}"
                 )
+            if args.calibrate_benign_spoofing or args.benign_spoofing_threshold is not None or args.benign_spoofing_thresholds is not None:
+                benign_spoofing_calibrator = fit_pair_threshold_calibrator(
+                    model,
+                    val_loader,
+                    device,
+                    pair_labels=(0, 2),
+                    thresholds=_parse_threshold_list(args.benign_spoofing_thresholds),
+                    name="benign_spoofing",
+                )
+                if benign_spoofing_calibrator is not None:
+                    if args.benign_spoofing_threshold is not None:
+                        benign_spoofing_calibrator = replace(
+                            benign_spoofing_calibrator,
+                            threshold=float(args.benign_spoofing_threshold),
+                        )
+                    pair_calibrators.append(benign_spoofing_calibrator)
+                    print(
+                        f"[calibration:{benign_spoofing_calibrator.name}] "
+                        f"threshold={benign_spoofing_calibrator.threshold:.4f} "
+                        f"pair_f1={benign_spoofing_calibrator.pair_f1:.4f} "
+                        f"benign_precision={benign_spoofing_calibrator.first_precision:.4f} "
+                        f"spoofing_precision={benign_spoofing_calibrator.second_precision:.4f} "
+                        f"benign_to_spoofing={benign_spoofing_calibrator.first_to_second} "
+                        f"spoofing_to_benign={benign_spoofing_calibrator.second_to_first} "
+                        f"source={benign_spoofing_calibrator.score_source}"
+                    )
+        elif (
+            args.recon_webbased_threshold is not None
+            or args.recon_webbased_thresholds is not None
+            or args.calibrate_benign_spoofing
+            or args.benign_spoofing_threshold is not None
+            or args.benign_spoofing_thresholds is not None
+        ):
+            raise ValueError("Pair calibration requires a validation split. Provide --split from a completed training run.")
         loader = DataLoader(graphs, batch_size=args.batch_size, shuffle=False)
-        preds, labels = predict(model, loader, device, calibrator)
+        preds, labels = predict(model, loader, device, calibrator, pair_calibrators=pair_calibrators)
         accuracy = accuracy_score(labels, preds)
         precision, recall, f1, _ = precision_recall_fscore_support(labels, preds, average="macro", zero_division=0)
         metrics = {
@@ -175,9 +231,16 @@ def main(argv: list[str] | None = None) -> int:
         if output_dir is None:
             output_dir = str(Path(args.checkpoint).resolve().parent / "test_exports")
         save_test_outputs(accuracy, preds, labels, output_dir=output_dir)
-        if calibrator is not None:
+        if calibrator is not None or pair_calibrators:
             Path(output_dir).mkdir(parents=True, exist_ok=True)
-            (Path(output_dir) / "calibration.json").write_text(json.dumps(calibrator.__dict__, ensure_ascii=False, indent=2), encoding="utf-8")
+            calibration_payload = {
+                "recon_webbased": asdict(calibrator) if calibrator is not None else None,
+                "pair_calibrators": [asdict(item) for item in pair_calibrators],
+            }
+            (Path(output_dir) / "calibration.json").write_text(
+                json.dumps(calibration_payload, ensure_ascii=False, indent=2),
+                encoding="utf-8",
+            )
         print(metrics)
         return 0
 

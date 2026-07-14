@@ -39,8 +39,32 @@ class ReconWebbasedThresholdCalibrator:
     recon_to_webbased: int
 
 
+@dataclass(frozen=True)
+class PairThresholdCalibrator:
+    name: str
+    pair_labels: tuple[int, int]
+    threshold: float
+    pair_f1: float
+    macro_f1: float
+    first_precision: float
+    second_precision: float
+    first_to_second: int
+    second_to_first: int
+    pair_logits_key: str | None = None
+    score_source: str = "base_logits"
+
+
 def _move_batch(batch, device: torch.device):
     return batch.to(device)
+
+
+def _normalize_pair_labels(pair_labels: Sequence[int]) -> tuple[int, int]:
+    if len(pair_labels) != 2:
+        raise ValueError(f"pair_labels must contain exactly two labels, got {pair_labels!r}")
+    first, second = (int(pair_labels[0]), int(pair_labels[1]))
+    if first == second:
+        raise ValueError(f"pair_labels must contain two distinct labels, got {pair_labels!r}")
+    return first, second
 
 
 def _graph_index_list(graphs_or_loader) -> list[int]:
@@ -65,6 +89,44 @@ def _node_input_dims(graphs) -> tuple[int | None, int | None]:
         if packet_x is not None:
             packet_dim = max(int(packet_x.size(-1)), packet_dim or 0)
     return flow_dim, packet_dim
+
+
+def _pair_logits_from_outputs(
+    base_logits: torch.Tensor,
+    cache: dict[str, torch.Tensor],
+    pair_labels: Sequence[int],
+    *,
+    pair_logits_key: str | None = None,
+) -> tuple[torch.Tensor, str]:
+    first_label, second_label = _normalize_pair_labels(pair_labels)
+    resolved_key = pair_logits_key
+    if resolved_key is None and (first_label, second_label) == (1, 3) and "webbased_recon_logits" in cache:
+        resolved_key = "webbased_recon_logits"
+    if resolved_key is not None:
+        pair_logits = cache.get(resolved_key)
+        if pair_logits is None:
+            raise RuntimeError(f"Model did not expose {resolved_key!r} for pair calibration.")
+        return pair_logits, resolved_key
+    return torch.stack([base_logits[:, first_label], base_logits[:, second_label]], dim=-1), "base_logits"
+
+
+def _apply_pair_threshold_calibrator(
+    preds: torch.Tensor,
+    pair_logits: torch.Tensor,
+    calibrator: PairThresholdCalibrator,
+) -> torch.Tensor:
+    first_label, second_label = calibrator.pair_labels
+    pair_mask = (preds == first_label) | (preds == second_label)
+    if not pair_mask.any():
+        return preds
+    pair_probs = torch.softmax(pair_logits, dim=-1)[:, 0]
+    calibrated = preds.clone()
+    calibrated[pair_mask] = torch.where(
+        pair_probs[pair_mask] >= float(calibrator.threshold),
+        torch.tensor(first_label, device=preds.device, dtype=preds.dtype),
+        torch.tensor(second_label, device=preds.device, dtype=preds.dtype),
+    )
+    return calibrated
 
 
 def _model_kwargs_for_training(
@@ -140,6 +202,7 @@ def predict(
     loader,
     device: torch.device,
     calibrator: ReconWebbasedThresholdCalibrator | None = None,
+    pair_calibrators: Sequence[PairThresholdCalibrator] | None = None,
 ) -> tuple[list[int], list[int]]:
     model.eval()
     all_preds: list[int] = []
@@ -148,20 +211,36 @@ def predict(
         batch = _move_batch(batch, device)
         logits = model(batch)
         preds = logits.argmax(dim=-1)
+        cache = getattr(model, "_last_cache", {})
         if calibrator is not None:
-            cache = getattr(model, "_last_cache", {})
-            pair_logits = cache.get("webbased_recon_logits")
-            if pair_logits is None:
-                raise RuntimeError("Model did not expose webbased_recon_logits for calibration.")
-            pair_mask = (preds == 1) | (preds == 3)
-            if pair_mask.any():
-                pair_probs = torch.softmax(pair_logits, dim=-1)[:, 0]
-                preds = preds.clone()
-                preds[pair_mask] = torch.where(
-                    pair_probs[pair_mask] >= float(calibrator.threshold),
-                    torch.tensor(1, device=preds.device, dtype=preds.dtype),
-                    torch.tensor(3, device=preds.device, dtype=preds.dtype),
-                )
+            generic_recon_calibrator = PairThresholdCalibrator(
+                name="recon_webbased",
+                pair_labels=(1, 3),
+                threshold=float(calibrator.threshold),
+                pair_f1=float(calibrator.pair_f1),
+                macro_f1=float(calibrator.macro_f1),
+                first_precision=float(calibrator.webbased_precision),
+                second_precision=0.0,
+                first_to_second=0,
+                second_to_first=int(calibrator.recon_to_webbased),
+                pair_logits_key="webbased_recon_logits",
+                score_source="webbased_recon_logits",
+            )
+            pair_logits, _ = _pair_logits_from_outputs(
+                logits,
+                cache,
+                generic_recon_calibrator.pair_labels,
+                pair_logits_key=generic_recon_calibrator.pair_logits_key,
+            )
+            preds = _apply_pair_threshold_calibrator(preds, pair_logits, generic_recon_calibrator)
+        for pair_calibrator in pair_calibrators or []:
+            pair_logits, _ = _pair_logits_from_outputs(
+                logits,
+                cache,
+                pair_calibrator.pair_labels,
+                pair_logits_key=pair_calibrator.pair_logits_key,
+            )
+            preds = _apply_pair_threshold_calibrator(preds, pair_logits, pair_calibrator)
         preds = preds.detach().cpu().tolist()
         targets = batch.y.view(-1).detach().cpu().tolist()
         all_preds.extend(preds)
@@ -175,8 +254,9 @@ def evaluate(
     loader,
     device: torch.device,
     calibrator: ReconWebbasedThresholdCalibrator | None = None,
+    pair_calibrators: Sequence[PairThresholdCalibrator] | None = None,
 ) -> dict[str, float]:
-    all_preds, all_targets = predict(model, loader, device, calibrator=calibrator)
+    all_preds, all_targets = predict(model, loader, device, calibrator=calibrator, pair_calibrators=pair_calibrators)
     precision, recall, f1, _ = precision_recall_fscore_support(all_targets, all_preds, average="macro", zero_division=0)
     acc = accuracy_score(all_targets, all_preds)
     return {
@@ -212,6 +292,145 @@ def _collect_recon_webbased_pair_outputs(model: nn.Module, loader, device: torch
     return torch.cat(base_logits_list, dim=0), torch.cat(pair_probs_list, dim=0), torch.cat(labels_list, dim=0)
 
 
+@torch.no_grad()
+def _collect_pair_outputs(
+    model: nn.Module,
+    loader,
+    device: torch.device,
+    *,
+    pair_labels: Sequence[int],
+    pair_logits_key: str | None = None,
+) -> tuple[torch.Tensor, torch.Tensor, torch.Tensor, str]:
+    model.eval()
+    base_logits_list: list[torch.Tensor] = []
+    pair_logits_list: list[torch.Tensor] = []
+    labels_list: list[torch.Tensor] = []
+    score_source = "base_logits"
+    for batch in loader:
+        batch = _move_batch(batch, device)
+        base_logits = model(batch)
+        cache = getattr(model, "_last_cache", {})
+        pair_logits, score_source = _pair_logits_from_outputs(
+            base_logits,
+            cache,
+            pair_labels,
+            pair_logits_key=pair_logits_key,
+        )
+        base_logits_list.append(base_logits.detach().cpu())
+        pair_logits_list.append(pair_logits.detach().cpu())
+        labels_list.append(batch.y.view(-1).detach().cpu())
+    if not base_logits_list:
+        return (
+            torch.empty((0, 8), dtype=torch.float32),
+            torch.empty((0, 2), dtype=torch.float32),
+            torch.empty((0,), dtype=torch.long),
+            score_source,
+        )
+    return (
+        torch.cat(base_logits_list, dim=0),
+        torch.cat(pair_logits_list, dim=0),
+        torch.cat(labels_list, dim=0),
+        score_source,
+    )
+
+
+def fit_pair_threshold_calibrator(
+    model: nn.Module,
+    loader,
+    device: torch.device,
+    *,
+    pair_labels: Sequence[int],
+    thresholds: Sequence[float] | None = None,
+    pair_logits_key: str | None = None,
+    name: str | None = None,
+) -> PairThresholdCalibrator | None:
+    first_label, second_label = _normalize_pair_labels(pair_labels)
+    base_logits, pair_logits, labels, score_source = _collect_pair_outputs(
+        model,
+        loader,
+        device,
+        pair_labels=(first_label, second_label),
+        pair_logits_key=pair_logits_key,
+    )
+    if base_logits.numel() == 0:
+        return None
+
+    if thresholds is None:
+        thresholds = torch.linspace(0.40, 0.99, steps=60).tolist()
+
+    best: PairThresholdCalibrator | None = None
+    base_preds = base_logits.argmax(dim=-1)
+    pair_mask = (base_preds == first_label) | (base_preds == second_label)
+    if not pair_mask.any():
+        return PairThresholdCalibrator(
+            name=name or f"{first_label}_{second_label}",
+            pair_labels=(first_label, second_label),
+            threshold=0.5,
+            pair_f1=0.0,
+            macro_f1=float(precision_recall_fscore_support(labels.tolist(), base_preds.tolist(), average="macro", zero_division=0)[2]),
+            first_precision=0.0,
+            second_precision=0.0,
+            first_to_second=0,
+            second_to_first=0,
+            pair_logits_key=pair_logits_key,
+            score_source=score_source,
+        )
+
+    pair_probs = torch.softmax(pair_logits, dim=-1)[:, 0]
+    for threshold in thresholds:
+        preds = base_preds.clone()
+        preds[pair_mask] = torch.where(
+            pair_probs[pair_mask] >= float(threshold),
+            torch.tensor(first_label, dtype=preds.dtype),
+            torch.tensor(second_label, dtype=preds.dtype),
+        )
+        precision, recall, f1, _ = precision_recall_fscore_support(
+            labels.tolist(),
+            preds.tolist(),
+            labels=[first_label, second_label],
+            zero_division=0,
+        )
+        pair_f1 = float(f1.mean()) if len(f1) else 0.0
+        macro_f1 = float(precision_recall_fscore_support(labels.tolist(), preds.tolist(), average="macro", zero_division=0)[2])
+        first_precision = float(precision[0]) if len(precision) > 0 else 0.0
+        second_precision = float(precision[1]) if len(precision) > 1 else 0.0
+        first_to_second = int(((labels == first_label) & (preds == second_label)).sum().item())
+        second_to_first = int(((labels == second_label) & (preds == first_label)).sum().item())
+        candidate = PairThresholdCalibrator(
+            name=name or f"{first_label}_{second_label}",
+            pair_labels=(first_label, second_label),
+            threshold=float(threshold),
+            pair_f1=pair_f1,
+            macro_f1=macro_f1,
+            first_precision=first_precision,
+            second_precision=second_precision,
+            first_to_second=first_to_second,
+            second_to_first=second_to_first,
+            pair_logits_key=pair_logits_key,
+            score_source=score_source,
+        )
+        if best is None:
+            best = candidate
+            continue
+        candidate_score = (
+            candidate.pair_f1,
+            candidate.macro_f1,
+            candidate.first_precision + candidate.second_precision,
+            -(candidate.first_to_second + candidate.second_to_first),
+            candidate.threshold,
+        )
+        best_score = (
+            best.pair_f1,
+            best.macro_f1,
+            best.first_precision + best.second_precision,
+            -(best.first_to_second + best.second_to_first),
+            best.threshold,
+        )
+        if candidate_score > best_score:
+            best = candidate
+    return best
+
+
 def fit_recon_webbased_threshold_calibrator(
     model: nn.Module,
     loader,
@@ -219,61 +438,24 @@ def fit_recon_webbased_threshold_calibrator(
     *,
     thresholds: Sequence[float] | None = None,
 ) -> ReconWebbasedThresholdCalibrator | None:
-    base_logits, pair_probs, labels = _collect_recon_webbased_pair_outputs(model, loader, device)
-    if base_logits.numel() == 0:
+    pair_calibrator = fit_pair_threshold_calibrator(
+        model,
+        loader,
+        device,
+        pair_labels=(1, 3),
+        thresholds=thresholds,
+        pair_logits_key="webbased_recon_logits",
+        name="recon_webbased",
+    )
+    if pair_calibrator is None:
         return None
-
-    if thresholds is None:
-        thresholds = torch.linspace(0.50, 0.99, steps=50).tolist()
-
-    best: ReconWebbasedThresholdCalibrator | None = None
-    base_preds = base_logits.argmax(dim=-1)
-    pair_mask = (base_preds == 1) | (base_preds == 3)
-    if not pair_mask.any():
-        return ReconWebbasedThresholdCalibrator(
-            threshold=0.5,
-            pair_f1=0.0,
-            macro_f1=float(precision_recall_fscore_support(labels.tolist(), base_preds.tolist(), average="macro", zero_division=0)[2]),
-            webbased_precision=0.0,
-            recon_to_webbased=0,
-        )
-
-    pair_scores = pair_probs
-    for threshold in thresholds:
-        preds = base_preds.clone()
-        rerank_mask = pair_mask
-        if rerank_mask.any():
-            preds[rerank_mask] = torch.where(
-                pair_scores[rerank_mask] >= float(threshold),
-                torch.tensor(1, dtype=preds.dtype),
-                torch.tensor(3, dtype=preds.dtype),
-            )
-
-        precision, recall, f1, _ = precision_recall_fscore_support(
-            labels.tolist(),
-            preds.tolist(),
-            labels=[1, 3],
-            zero_division=0,
-        )
-        pair_f1 = float(f1.mean()) if len(f1) else 0.0
-        macro_f1 = float(precision_recall_fscore_support(labels.tolist(), preds.tolist(), average="macro", zero_division=0)[2])
-        webbased_precision = float(precision[0]) if len(precision) else 0.0
-        recon_to_webbased = int(((labels == 3) & (preds == 1)).sum().item())
-        candidate = ReconWebbasedThresholdCalibrator(
-            threshold=float(threshold),
-            pair_f1=pair_f1,
-            macro_f1=macro_f1,
-            webbased_precision=webbased_precision,
-            recon_to_webbased=recon_to_webbased,
-        )
-        if best is None:
-            best = candidate
-            continue
-        candidate_score = (candidate.pair_f1, candidate.macro_f1, candidate.webbased_precision, -candidate.recon_to_webbased, candidate.threshold)
-        best_score = (best.pair_f1, best.macro_f1, best.webbased_precision, -best.recon_to_webbased, best.threshold)
-        if candidate_score > best_score:
-            best = candidate
-    return best
+    return ReconWebbasedThresholdCalibrator(
+        threshold=pair_calibrator.threshold,
+        pair_f1=pair_calibrator.pair_f1,
+        macro_f1=pair_calibrator.macro_f1,
+        webbased_precision=pair_calibrator.first_precision,
+        recon_to_webbased=pair_calibrator.second_to_first,
+    )
 
 
 @torch.no_grad()
