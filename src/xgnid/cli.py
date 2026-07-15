@@ -13,7 +13,7 @@ from torch_geometric.loader import DataLoader
 from .data import load_graphs, load_split_record, summarize_graphs, subset_graphs
 from .data import label_counts
 from .export_test_results import save_test_outputs
-from .model import build_model_from_checkpoint
+from .model import build_model_from_checkpoint, load_model_state_compat
 from .train import fit_pair_threshold_calibrator, fit_recon_webbased_threshold_calibrator, predict, train
 
 
@@ -163,7 +163,7 @@ def main(argv: list[str] | None = None) -> int:
             val_graphs = subset_graphs(full_graphs, val_indices) if val_indices else []
         checkpoint = torch.load(args.checkpoint, map_location="cpu")
         model = build_model_from_checkpoint(checkpoint)
-        model.load_state_dict(checkpoint["model_state"])
+        load_model_state_compat(model, checkpoint["model_state"])
         device = torch.device(args.device if torch.cuda.is_available() or args.device == "cpu" else "cpu")
         model = model.to(device)
         calibrator = None

@@ -21,7 +21,7 @@ from .data import (
     split_graph_indices_paper_table4,
 )
 from .data import label_counts
-from .model import build_model, build_model_from_checkpoint
+from .model import build_model, build_model_from_checkpoint, load_model_state_compat
 
 
 @dataclass
@@ -710,7 +710,7 @@ def train(
 
     best_checkpoint = torch.load(best_path, map_location=device_t)
     best_model = build_model_from_checkpoint(best_checkpoint).to(device_t)
-    best_model.load_state_dict(best_checkpoint["model_state"])
+    load_model_state_compat(best_model, best_checkpoint["model_state"])
     calibrator = None
     pair_calibrators: list[PairThresholdCalibrator] = []
     if model_name in {"dual_gate_logit", "dual_gate_logit_edge"} and len(getattr(val_loader, "dataset", [])) > 0:

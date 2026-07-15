@@ -24,6 +24,10 @@ ModelName = Literal[
     "dual_gate_logit_edge",
 ]
 BranchMode = Literal["flow", "packet", "dual"]
+OPTIONAL_COMPAT_STATE_KEYS = {
+    "benign_spoofing_head.weight",
+    "benign_spoofing_head.bias",
+}
 
 
 def _align_feature_dim(x: torch.Tensor, target_dim: int | None) -> torch.Tensor:
@@ -884,6 +888,21 @@ def build_model_from_checkpoint(checkpoint: dict[str, object]) -> nn.Module:
     model_name = str(checkpoint.get("model_name", "paper"))
     model_kwargs = dict(checkpoint.get("model_kwargs", {}))
     return build_model(model_name, **model_kwargs)
+
+
+def load_model_state_compat(model: nn.Module, state_dict: dict[str, torch.Tensor]) -> None:
+    incompatible = model.load_state_dict(state_dict, strict=False)
+    missing_keys = set(incompatible.missing_keys)
+    unexpected_keys = set(incompatible.unexpected_keys)
+    missing_required = sorted(missing_keys - OPTIONAL_COMPAT_STATE_KEYS)
+    unexpected_required = sorted(unexpected_keys - OPTIONAL_COMPAT_STATE_KEYS)
+    if missing_required or unexpected_required:
+        message_parts: list[str] = []
+        if missing_required:
+            message_parts.append(f"missing keys: {missing_required}")
+        if unexpected_required:
+            message_parts.append(f"unexpected keys: {unexpected_required}")
+        raise RuntimeError("Checkpoint/model state mismatch: " + "; ".join(message_parts))
 
 
 XGNIDClassifier = HeteroGNN
