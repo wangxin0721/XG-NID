@@ -60,6 +60,7 @@ def build_parser() -> argparse.ArgumentParser:
     train_p.add_argument("--webbased-weight", type=float, default=1.0)
     train_p.add_argument("--webbased-aux-weight", type=float, default=0.25)
     train_p.add_argument("--webbased-recon-aux-weight", type=float, default=0.25)
+    train_p.add_argument("--benign-spoofing-aux-weight", type=float, default=0.0)
     train_p.add_argument("--webbased-recon-hard-weight", type=float, default=2.0)
     train_p.add_argument("--input-name", default="baseline", choices=sorted(GRAPH_DIRS))
     train_p.add_argument("--run-name", default="dual_v1")
@@ -132,6 +133,8 @@ def _run_train(args: argparse.Namespace) -> int:
         str(args.webbased_aux_weight),
         "--webbased-recon-aux-weight",
         str(args.webbased_recon_aux_weight),
+        "--benign-spoofing-aux-weight",
+        str(args.benign_spoofing_aux_weight),
         "--webbased-recon-hard-weight",
         str(args.webbased_recon_hard_weight),
     ]

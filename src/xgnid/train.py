@@ -102,6 +102,8 @@ def _pair_logits_from_outputs(
     resolved_key = pair_logits_key
     if resolved_key is None and (first_label, second_label) == (1, 3) and "webbased_recon_logits" in cache:
         resolved_key = "webbased_recon_logits"
+    if resolved_key is None and (first_label, second_label) == (0, 2) and "benign_spoofing_logits" in cache:
+        resolved_key = "benign_spoofing_logits"
     if resolved_key is not None:
         pair_logits = cache.get(resolved_key)
         if pair_logits is None:
@@ -137,6 +139,7 @@ def _model_kwargs_for_training(
     branch_mode: str,
     webbased_aux_weight: float,
     webbased_recon_aux_weight: float,
+    benign_spoofing_aux_weight: float,
     webbased_recon_hard_weight: float,
     flow_input_dim: int | None,
     packet_input_dim: int | None,
@@ -160,6 +163,7 @@ def _model_kwargs_for_training(
             aux_loss_weight=webbased_aux_weight,
             webbased_aux_weight=webbased_aux_weight,
             webbased_recon_aux_weight=webbased_recon_aux_weight,
+            benign_spoofing_aux_weight=benign_spoofing_aux_weight,
             webbased_recon_hard_weight=webbased_recon_hard_weight,
         )
         return base_kwargs
@@ -176,6 +180,7 @@ def _model_kwargs_for_checkpoint(
     packet_input_dim: int | None,
     webbased_aux_weight: float,
     webbased_recon_aux_weight: float,
+    benign_spoofing_aux_weight: float,
     webbased_recon_hard_weight: float,
 ) -> dict[str, object]:
     checkpoint_kwargs: dict[str, object] = {
@@ -191,6 +196,7 @@ def _model_kwargs_for_checkpoint(
         checkpoint_kwargs.update(
             webbased_aux_weight=webbased_aux_weight,
             webbased_recon_aux_weight=webbased_recon_aux_weight,
+            benign_spoofing_aux_weight=benign_spoofing_aux_weight,
             webbased_recon_hard_weight=webbased_recon_hard_weight,
         )
     return checkpoint_kwargs
@@ -534,6 +540,7 @@ def train(
     webbased_weight: float = 1.0,
     webbased_aux_weight: float = 0.25,
     webbased_recon_aux_weight: float = 0.25,
+    benign_spoofing_aux_weight: float = 0.0,
     webbased_recon_hard_weight: float = 2.0,
     hard_negative_weight: float = 1.5,
     hard_negative_warmup_epoch: int = 1,
@@ -575,6 +582,7 @@ def train(
             branch_mode=branch_mode,
             webbased_aux_weight=webbased_aux_weight,
             webbased_recon_aux_weight=webbased_recon_aux_weight,
+            benign_spoofing_aux_weight=benign_spoofing_aux_weight,
             webbased_recon_hard_weight=webbased_recon_hard_weight,
             flow_input_dim=flow_input_dim,
             packet_input_dim=packet_input_dim,
@@ -662,6 +670,7 @@ def train(
                         packet_input_dim=packet_input_dim,
                         webbased_aux_weight=webbased_aux_weight,
                         webbased_recon_aux_weight=webbased_recon_aux_weight,
+                        benign_spoofing_aux_weight=benign_spoofing_aux_weight,
                         webbased_recon_hard_weight=webbased_recon_hard_weight,
                     ),
                     "metrics": val_metrics,
@@ -703,9 +712,27 @@ def train(
     best_model = build_model_from_checkpoint(best_checkpoint).to(device_t)
     best_model.load_state_dict(best_checkpoint["model_state"])
     calibrator = None
+    pair_calibrators: list[PairThresholdCalibrator] = []
     if model_name in {"dual_gate_logit", "dual_gate_logit_edge"} and len(getattr(val_loader, "dataset", [])) > 0:
         calibrator = fit_recon_webbased_threshold_calibrator(best_model, val_loader, device_t)
-    test_metrics = evaluate_with_recon_webbased_threshold(best_model, test_loader, device_t, calibrator)
+        if benign_spoofing_aux_weight > 0.0:
+            benign_spoofing_calibrator = fit_pair_threshold_calibrator(
+                best_model,
+                val_loader,
+                device_t,
+                pair_labels=(0, 2),
+                pair_logits_key="benign_spoofing_logits",
+                name="benign_spoofing",
+            )
+            if benign_spoofing_calibrator is not None:
+                pair_calibrators.append(benign_spoofing_calibrator)
+    test_metrics = evaluate(
+        best_model,
+        test_loader,
+        device_t,
+        calibrator=calibrator,
+        pair_calibrators=pair_calibrators,
+    )
     if calibrator is not None:
         best_metrics = {
             **best_metrics,
@@ -714,6 +741,18 @@ def train(
             "recon_webbased_webbased_precision": calibrator.webbased_precision,
             "recon_webbased_recon_to_webbased": float(calibrator.recon_to_webbased),
         }
+    if pair_calibrators:
+        for pair_calibrator in pair_calibrators:
+            best_metrics.update(
+                {
+                    f"{pair_calibrator.name}_threshold": pair_calibrator.threshold,
+                    f"{pair_calibrator.name}_pair_f1": pair_calibrator.pair_f1,
+                    f"{pair_calibrator.name}_first_precision": pair_calibrator.first_precision,
+                    f"{pair_calibrator.name}_second_precision": pair_calibrator.second_precision,
+                    f"{pair_calibrator.name}_first_to_second": float(pair_calibrator.first_to_second),
+                    f"{pair_calibrator.name}_second_to_first": float(pair_calibrator.second_to_first),
+                }
+            )
     return TrainResult(
         best_path=best_path,
         metrics={

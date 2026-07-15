@@ -605,6 +605,7 @@ class DualBranchLogitGatedHeteroGNN(nn.Module):
         aux_loss_weight: float = 0.02,
         webbased_aux_weight: float = 0.25,
         webbased_recon_aux_weight: float = 0.25,
+        benign_spoofing_aux_weight: float = 0.0,
         webbased_recon_hard_weight: float = 2.0,
         flow_input_dim: int | None = None,
         packet_input_dim: int | None = None,
@@ -618,6 +619,7 @@ class DualBranchLogitGatedHeteroGNN(nn.Module):
         self.aux_loss_weight = aux_loss_weight
         self.webbased_aux_weight = webbased_aux_weight
         self.webbased_recon_aux_weight = webbased_recon_aux_weight
+        self.benign_spoofing_aux_weight = benign_spoofing_aux_weight
         self.webbased_recon_hard_weight = webbased_recon_hard_weight
 
         self.flow_encoder = _PaperStyleHeteroEncoder(
@@ -641,6 +643,7 @@ class DualBranchLogitGatedHeteroGNN(nn.Module):
         self.gate = _LogitConfidenceGate(num_classes)
         self.webbased_head = nn.Linear(num_classes, 2)
         self.webbased_recon_head = nn.Linear(hidden_dim, 2)
+        self.benign_spoofing_head = nn.Linear(hidden_dim, 2)
         self.shared_head = nn.Sequential(
             nn.Linear(num_classes, max(hidden_dim // 2, 16)),
             nn.LeakyReLU(),
@@ -710,6 +713,7 @@ class DualBranchLogitGatedHeteroGNN(nn.Module):
         fused_emb = gate_weights[:, :1] * flow_emb + gate_weights[:, 1:] * packet_emb
         webbased_logits = self.webbased_head(fused_logits)
         webbased_recon_logits = self.webbased_recon_head(fused_emb)
+        benign_spoofing_logits = self.benign_spoofing_head(fused_emb)
         logits = self.shared_head(fused_logits)
         self._last_cache = {
             "flow_logits": flow_logits,
@@ -723,19 +727,22 @@ class DualBranchLogitGatedHeteroGNN(nn.Module):
             "fused_emb": fused_emb,
             "webbased_logits": webbased_logits,
             "webbased_recon_logits": webbased_recon_logits,
+            "benign_spoofing_logits": benign_spoofing_logits,
         }
         return logits
 
     @staticmethod
-    def _recon_binary_aux_loss(
+    def _pair_binary_aux_loss(
         label: torch.Tensor,
         sep_logits: torch.Tensor,
+        pair_labels: tuple[int, int],
     ) -> torch.Tensor:
-        pair_mask = (label == 1) | (label == 3)
+        first_label, second_label = pair_labels
+        pair_mask = (label == first_label) | (label == second_label)
         if not pair_mask.any():
             return sep_logits.new_zeros(())
         pair_logits = sep_logits[pair_mask]
-        pair_target = (label[pair_mask] == 3).long()
+        pair_target = (label[pair_mask] == second_label).long()
         return F.cross_entropy(pair_logits, pair_target)
 
     @staticmethod
@@ -806,8 +813,21 @@ class DualBranchLogitGatedHeteroGNN(nn.Module):
         cache = getattr(self, "_last_cache", {})
         if not cache:
             return main_loss
-        recon_binary_loss = self._recon_binary_aux_loss(label, cache["webbased_recon_logits"])
-        return main_loss + self.webbased_recon_aux_weight * recon_binary_loss
+        recon_binary_loss = self._pair_binary_aux_loss(
+            label,
+            cache["webbased_recon_logits"],
+            (1, 3),
+        )
+        benign_spoofing_binary_loss = self._pair_binary_aux_loss(
+            label,
+            cache["benign_spoofing_logits"],
+            (0, 2),
+        )
+        return (
+            main_loss
+            + self.webbased_recon_aux_weight * recon_binary_loss
+            + self.benign_spoofing_aux_weight * benign_spoofing_binary_loss
+        )
 
 
 class DualBranchLogitGatedHeteroGNN_Edge(DualBranchLogitGatedHeteroGNN):
@@ -820,6 +840,7 @@ class DualBranchLogitGatedHeteroGNN_Edge(DualBranchLogitGatedHeteroGNN):
         aux_loss_weight: float = 0.02,
         webbased_aux_weight: float = 0.25,
         webbased_recon_aux_weight: float = 0.25,
+        benign_spoofing_aux_weight: float = 0.0,
         webbased_recon_hard_weight: float = 2.0,
         flow_input_dim: int | None = None,
         packet_input_dim: int | None = None,
@@ -834,6 +855,7 @@ class DualBranchLogitGatedHeteroGNN_Edge(DualBranchLogitGatedHeteroGNN):
             aux_loss_weight=aux_loss_weight,
             webbased_aux_weight=webbased_aux_weight,
             webbased_recon_aux_weight=webbased_recon_aux_weight,
+            benign_spoofing_aux_weight=benign_spoofing_aux_weight,
             webbased_recon_hard_weight=webbased_recon_hard_weight,
             flow_input_dim=flow_input_dim,
             packet_input_dim=packet_input_dim,
