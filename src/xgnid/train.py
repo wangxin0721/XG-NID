@@ -2,7 +2,6 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from collections import Counter
-from itertools import product
 from pathlib import Path
 from typing import Iterable, Sequence
 import warnings
@@ -481,9 +480,8 @@ def fit_logit_bias_calibrator(
     if bias_values is None:
         bias_values = [-0.20, -0.10, -0.05, 0.0, 0.05, 0.10, 0.20]
 
-    best: LogitBiasCalibrator | None = None
-    for candidate_biases in product(bias_values, repeat=len(labels_tuple)):
-        class_biases = {label: float(bias) for label, bias in zip(labels_tuple, candidate_biases) if abs(float(bias)) > 1e-12}
+    def build_candidate(class_biases: dict[int, float]) -> LogitBiasCalibrator:
+        normalized_biases = {label: float(bias) for label, bias in class_biases.items() if abs(float(bias)) > 1e-12}
         preds = _predict_from_cached_outputs(
             base_logits,
             cache_tensors,
@@ -492,7 +490,7 @@ def fit_logit_bias_calibrator(
             logit_bias_calibrator=LogitBiasCalibrator(
                 name=name,
                 target_labels=labels_tuple,
-                class_biases=class_biases,
+                class_biases=normalized_biases,
                 accuracy=0.0,
                 macro_f1=0.0,
                 focus_macro_f1=0.0,
@@ -507,31 +505,46 @@ def fit_logit_bias_calibrator(
             zero_division=0,
         )[2]
         focus_macro_f1 = float(sum(per_label_f1) / max(len(per_label_f1), 1))
-        candidate = LogitBiasCalibrator(
+        return LogitBiasCalibrator(
             name=name,
             target_labels=labels_tuple,
-            class_biases=class_biases,
+            class_biases=normalized_biases,
             accuracy=accuracy,
             macro_f1=macro_f1,
             focus_macro_f1=focus_macro_f1,
         )
-        if best is None:
-            best = candidate
-            continue
-        candidate_score = (
+
+    def candidate_score(candidate: LogitBiasCalibrator) -> tuple[float, float, float, float]:
+        return (
             candidate.accuracy,
             candidate.macro_f1,
             candidate.focus_macro_f1,
             -sum(abs(bias) for bias in candidate.class_biases.values()),
         )
-        best_score = (
-            best.accuracy,
-            best.macro_f1,
-            best.focus_macro_f1,
-            -sum(abs(bias) for bias in best.class_biases.values()),
-        )
-        if candidate_score > best_score:
-            best = candidate
+
+    best = build_candidate({})
+    max_passes = 3
+    for _ in range(max_passes):
+        improved = False
+        for label in labels_tuple:
+            local_best = best
+            current_bias = best.class_biases.get(label, 0.0)
+            for bias in bias_values:
+                if abs(float(bias) - float(current_bias)) <= 1e-12:
+                    continue
+                candidate_biases = dict(best.class_biases)
+                if abs(float(bias)) <= 1e-12:
+                    candidate_biases.pop(label, None)
+                else:
+                    candidate_biases[label] = float(bias)
+                candidate = build_candidate(candidate_biases)
+                if candidate_score(candidate) > candidate_score(local_best):
+                    local_best = candidate
+            if candidate_score(local_best) > candidate_score(best):
+                best = local_best
+                improved = True
+        if not improved:
+            break
     return best
 
 
