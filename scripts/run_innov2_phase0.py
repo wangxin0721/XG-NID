@@ -75,6 +75,9 @@ def build_parser() -> argparse.ArgumentParser:
     eval_p.add_argument("--calibrate-benign-spoofing", action="store_true", default=False)
     eval_p.add_argument("--benign-spoofing-threshold", type=float, default=None)
     eval_p.add_argument("--benign-spoofing-thresholds", default=None)
+    eval_p.add_argument("--calibrate-logit-biases", action="store_true", default=False)
+    eval_p.add_argument("--logit-bias-labels", default=None)
+    eval_p.add_argument("--logit-bias-values", default=None)
 
     paths_p = sub.add_parser("paths", help="Print the locked innov2 paths")
     paths_p.add_argument("--input-name", default="baseline", choices=sorted(GRAPH_DIRS))
@@ -183,6 +186,12 @@ def _run_eval(args: argparse.Namespace) -> int:
         cli_args.extend(["--benign-spoofing-threshold", str(args.benign_spoofing_threshold)])
     if args.benign_spoofing_thresholds is not None:
         cli_args.extend(["--benign-spoofing-thresholds", str(args.benign_spoofing_thresholds)])
+    if args.calibrate_logit_biases:
+        cli_args.append("--calibrate-logit-biases")
+    if args.logit_bias_labels is not None:
+        cli_args.extend(["--logit-bias-labels", str(args.logit_bias_labels)])
+    if args.logit_bias_values is not None:
+        cli_args.extend(["--logit-bias-values", str(args.logit_bias_values)])
     return xgnid_main(cli_args)
 
 

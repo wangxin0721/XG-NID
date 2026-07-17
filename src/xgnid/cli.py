@@ -14,7 +14,13 @@ from .data import load_graphs, load_split_record, summarize_graphs, subset_graph
 from .data import label_counts
 from .export_test_results import save_test_outputs
 from .model import build_model_from_checkpoint, load_model_state_compat
-from .train import fit_pair_threshold_calibrator, fit_recon_webbased_threshold_calibrator, predict, train
+from .train import (
+    fit_logit_bias_calibrator,
+    fit_pair_threshold_calibrator,
+    fit_recon_webbased_threshold_calibrator,
+    predict,
+    train,
+)
 
 
 def _parse_threshold_list(raw: str | None) -> list[float] | None:
@@ -22,6 +28,14 @@ def _parse_threshold_list(raw: str | None) -> list[float] | None:
         return None
     values = [part.strip() for part in raw.split(",")]
     parsed = [float(value) for value in values if value]
+    return parsed or None
+
+
+def _parse_int_list(raw: str | None) -> list[int] | None:
+    if raw is None:
+        return None
+    values = [part.strip() for part in raw.split(",")]
+    parsed = [int(value) for value in values if value]
     return parsed or None
 
 
@@ -86,6 +100,9 @@ def build_parser() -> argparse.ArgumentParser:
     eval_p.add_argument("--calibrate-benign-spoofing", action="store_true", default=False)
     eval_p.add_argument("--benign-spoofing-threshold", type=float, default=None)
     eval_p.add_argument("--benign-spoofing-thresholds", default=None, help="Comma-separated threshold sweep for Benign/Spoofing calibration")
+    eval_p.add_argument("--calibrate-logit-biases", action="store_true", default=False)
+    eval_p.add_argument("--logit-bias-labels", default="0,1,2,3", help="Comma-separated class ids for joint logit bias search")
+    eval_p.add_argument("--logit-bias-values", default="-0.20,-0.10,-0.05,0.00,0.05,0.10,0.20", help="Comma-separated candidate bias values")
 
     return parser
 
@@ -168,6 +185,7 @@ def main(argv: list[str] | None = None) -> int:
         model = model.to(device)
         calibrator = None
         pair_calibrators = []
+        logit_bias_calibrator = None
         if split_record is not None and val_graphs:
             val_loader = DataLoader(val_graphs, batch_size=args.batch_size, shuffle=False)
             calibrator = fit_recon_webbased_threshold_calibrator(
@@ -212,16 +230,47 @@ def main(argv: list[str] | None = None) -> int:
                         f"spoofing_to_benign={benign_spoofing_calibrator.second_to_first} "
                         f"source={benign_spoofing_calibrator.score_source}"
                     )
+            if args.calibrate_logit_biases:
+                logit_bias_calibrator = fit_logit_bias_calibrator(
+                    model,
+                    val_loader,
+                    device,
+                    target_labels=_parse_int_list(args.logit_bias_labels) or [0, 1, 2, 3],
+                    bias_values=_parse_threshold_list(args.logit_bias_values),
+                    calibrator=calibrator,
+                    pair_calibrators=pair_calibrators,
+                    name="logit_bias",
+                )
+                if logit_bias_calibrator is not None:
+                    bias_text = ",".join(
+                        f"{label}:{bias:+.3f}" for label, bias in sorted(logit_bias_calibrator.class_biases.items())
+                    ) or "none"
+                    print(
+                        f"[calibration:{logit_bias_calibrator.name}] "
+                        f"labels={list(logit_bias_calibrator.target_labels)} "
+                        f"biases={bias_text} "
+                        f"val_acc={logit_bias_calibrator.accuracy:.4f} "
+                        f"val_macro_f1={logit_bias_calibrator.macro_f1:.4f} "
+                        f"val_focus_f1={logit_bias_calibrator.focus_macro_f1:.4f}"
+                    )
         elif (
             args.recon_webbased_threshold is not None
             or args.recon_webbased_thresholds is not None
             or args.calibrate_benign_spoofing
             or args.benign_spoofing_threshold is not None
             or args.benign_spoofing_thresholds is not None
+            or args.calibrate_logit_biases
         ):
             raise ValueError("Pair calibration requires a validation split. Provide --split from a completed training run.")
         loader = DataLoader(graphs, batch_size=args.batch_size, shuffle=False)
-        preds, labels = predict(model, loader, device, calibrator, pair_calibrators=pair_calibrators)
+        preds, labels = predict(
+            model,
+            loader,
+            device,
+            calibrator,
+            pair_calibrators=pair_calibrators,
+            logit_bias_calibrator=logit_bias_calibrator,
+        )
         accuracy = accuracy_score(labels, preds)
         precision, recall, f1, _ = precision_recall_fscore_support(labels, preds, average="macro", zero_division=0)
         metrics = {
@@ -234,11 +283,12 @@ def main(argv: list[str] | None = None) -> int:
         if output_dir is None:
             output_dir = str(Path(args.checkpoint).resolve().parent / "test_exports")
         save_test_outputs(accuracy, preds, labels, output_dir=output_dir)
-        if calibrator is not None or pair_calibrators:
+        if calibrator is not None or pair_calibrators or logit_bias_calibrator is not None:
             Path(output_dir).mkdir(parents=True, exist_ok=True)
             calibration_payload = {
                 "recon_webbased": asdict(calibrator) if calibrator is not None else None,
                 "pair_calibrators": [asdict(item) for item in pair_calibrators],
+                "logit_bias": asdict(logit_bias_calibrator) if logit_bias_calibrator is not None else None,
             }
             (Path(output_dir) / "calibration.json").write_text(
                 json.dumps(calibration_payload, ensure_ascii=False, indent=2),

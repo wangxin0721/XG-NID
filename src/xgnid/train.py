@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from collections import Counter
+from itertools import product
 from pathlib import Path
 from typing import Iterable, Sequence
 import warnings
@@ -54,8 +55,43 @@ class PairThresholdCalibrator:
     score_source: str = "base_logits"
 
 
+@dataclass(frozen=True)
+class LogitBiasCalibrator:
+    name: str
+    target_labels: tuple[int, ...]
+    class_biases: dict[int, float]
+    accuracy: float
+    macro_f1: float
+    focus_macro_f1: float
+
+
 def _move_batch(batch, device: torch.device):
     return batch.to(device)
+
+
+def _ordered_pair_calibrators(
+    calibrator: ReconWebbasedThresholdCalibrator | None,
+    pair_calibrators: Sequence[PairThresholdCalibrator] | None = None,
+) -> list[PairThresholdCalibrator]:
+    ordered: list[PairThresholdCalibrator] = []
+    if calibrator is not None:
+        ordered.append(
+            PairThresholdCalibrator(
+                name="recon_webbased",
+                pair_labels=(1, 3),
+                threshold=float(calibrator.threshold),
+                pair_f1=float(calibrator.pair_f1),
+                macro_f1=float(calibrator.macro_f1),
+                first_precision=float(calibrator.webbased_precision),
+                second_precision=0.0,
+                first_to_second=0,
+                second_to_first=int(calibrator.recon_to_webbased),
+                pair_logits_key="webbased_recon_logits",
+                score_source="webbased_recon_logits",
+            )
+        )
+    ordered.extend(pair_calibrators or [])
+    return ordered
 
 
 def _normalize_pair_labels(pair_labels: Sequence[int]) -> tuple[int, int]:
@@ -129,6 +165,18 @@ def _apply_pair_threshold_calibrator(
         torch.tensor(second_label, device=preds.device, dtype=preds.dtype),
     )
     return calibrated
+
+
+def _apply_logit_biases(
+    logits: torch.Tensor,
+    class_biases: dict[int, float] | None,
+) -> torch.Tensor:
+    if not class_biases:
+        return logits
+    adjusted = logits.clone()
+    for label, bias in class_biases.items():
+        adjusted[:, int(label)] = adjusted[:, int(label)] + float(bias)
+    return adjusted
 
 
 def _model_kwargs_for_training(
@@ -209,37 +257,19 @@ def predict(
     device: torch.device,
     calibrator: ReconWebbasedThresholdCalibrator | None = None,
     pair_calibrators: Sequence[PairThresholdCalibrator] | None = None,
+    logit_bias_calibrator: LogitBiasCalibrator | None = None,
 ) -> tuple[list[int], list[int]]:
     model.eval()
     all_preds: list[int] = []
     all_targets: list[int] = []
+    ordered_pair_calibrators = _ordered_pair_calibrators(calibrator, pair_calibrators)
     for batch in loader:
         batch = _move_batch(batch, device)
         logits = model(batch)
+        logits = _apply_logit_biases(logits, None if logit_bias_calibrator is None else logit_bias_calibrator.class_biases)
         preds = logits.argmax(dim=-1)
         cache = getattr(model, "_last_cache", {})
-        if calibrator is not None:
-            generic_recon_calibrator = PairThresholdCalibrator(
-                name="recon_webbased",
-                pair_labels=(1, 3),
-                threshold=float(calibrator.threshold),
-                pair_f1=float(calibrator.pair_f1),
-                macro_f1=float(calibrator.macro_f1),
-                first_precision=float(calibrator.webbased_precision),
-                second_precision=0.0,
-                first_to_second=0,
-                second_to_first=int(calibrator.recon_to_webbased),
-                pair_logits_key="webbased_recon_logits",
-                score_source="webbased_recon_logits",
-            )
-            pair_logits, _ = _pair_logits_from_outputs(
-                logits,
-                cache,
-                generic_recon_calibrator.pair_labels,
-                pair_logits_key=generic_recon_calibrator.pair_logits_key,
-            )
-            preds = _apply_pair_threshold_calibrator(preds, pair_logits, generic_recon_calibrator)
-        for pair_calibrator in pair_calibrators or []:
+        for pair_calibrator in ordered_pair_calibrators:
             pair_logits, _ = _pair_logits_from_outputs(
                 logits,
                 cache,
@@ -261,8 +291,16 @@ def evaluate(
     device: torch.device,
     calibrator: ReconWebbasedThresholdCalibrator | None = None,
     pair_calibrators: Sequence[PairThresholdCalibrator] | None = None,
+    logit_bias_calibrator: LogitBiasCalibrator | None = None,
 ) -> dict[str, float]:
-    all_preds, all_targets = predict(model, loader, device, calibrator=calibrator, pair_calibrators=pair_calibrators)
+    all_preds, all_targets = predict(
+        model,
+        loader,
+        device,
+        calibrator=calibrator,
+        pair_calibrators=pair_calibrators,
+        logit_bias_calibrator=logit_bias_calibrator,
+    )
     precision, recall, f1, _ = precision_recall_fscore_support(all_targets, all_preds, average="macro", zero_division=0)
     acc = accuracy_score(all_targets, all_preds)
     return {
@@ -338,6 +376,163 @@ def _collect_pair_outputs(
         torch.cat(labels_list, dim=0),
         score_source,
     )
+
+
+@torch.no_grad()
+def _collect_cached_outputs(
+    model: nn.Module,
+    loader,
+    device: torch.device,
+    *,
+    cache_keys: Sequence[str] = ("webbased_recon_logits", "benign_spoofing_logits"),
+) -> tuple[torch.Tensor, torch.Tensor, dict[str, torch.Tensor]]:
+    model.eval()
+    base_logits_list: list[torch.Tensor] = []
+    labels_list: list[torch.Tensor] = []
+    cache_lists: dict[str, list[torch.Tensor]] = {key: [] for key in cache_keys}
+    for batch in loader:
+        batch = _move_batch(batch, device)
+        base_logits = model(batch)
+        cache = getattr(model, "_last_cache", {})
+        base_logits_list.append(base_logits.detach().cpu())
+        labels_list.append(batch.y.view(-1).detach().cpu())
+        for key in cache_keys:
+            value = cache.get(key)
+            if value is not None:
+                cache_lists[key].append(value.detach().cpu())
+    if not base_logits_list:
+        return (
+            torch.empty((0, 8), dtype=torch.float32),
+            torch.empty((0,), dtype=torch.long),
+            {key: torch.empty((0, 2), dtype=torch.float32) for key in cache_keys},
+        )
+    return (
+        torch.cat(base_logits_list, dim=0),
+        torch.cat(labels_list, dim=0),
+        {
+            key: torch.cat(values, dim=0) if values else torch.empty((0, 2), dtype=torch.float32)
+            for key, values in cache_lists.items()
+        },
+    )
+
+
+def _pair_logits_from_cached_outputs(
+    base_logits: torch.Tensor,
+    cache_tensors: dict[str, torch.Tensor],
+    pair_labels: Sequence[int],
+    *,
+    pair_logits_key: str | None = None,
+) -> torch.Tensor:
+    first_label, second_label = _normalize_pair_labels(pair_labels)
+    resolved_key = pair_logits_key
+    if resolved_key is None and (first_label, second_label) == (1, 3) and cache_tensors.get("webbased_recon_logits", torch.empty(0)).numel() > 0:
+        resolved_key = "webbased_recon_logits"
+    if resolved_key is None and (first_label, second_label) == (0, 2) and cache_tensors.get("benign_spoofing_logits", torch.empty(0)).numel() > 0:
+        resolved_key = "benign_spoofing_logits"
+    if resolved_key is not None:
+        pair_logits = cache_tensors.get(resolved_key)
+        if pair_logits is None or pair_logits.numel() == 0:
+            raise RuntimeError(f"Cached outputs did not include {resolved_key!r} for pair calibration.")
+        return pair_logits
+    return torch.stack([base_logits[:, first_label], base_logits[:, second_label]], dim=-1)
+
+
+def _predict_from_cached_outputs(
+    base_logits: torch.Tensor,
+    cache_tensors: dict[str, torch.Tensor],
+    *,
+    calibrator: ReconWebbasedThresholdCalibrator | None = None,
+    pair_calibrators: Sequence[PairThresholdCalibrator] | None = None,
+    logit_bias_calibrator: LogitBiasCalibrator | None = None,
+) -> torch.Tensor:
+    adjusted_logits = _apply_logit_biases(
+        base_logits,
+        None if logit_bias_calibrator is None else logit_bias_calibrator.class_biases,
+    )
+    preds = adjusted_logits.argmax(dim=-1)
+    for pair_calibrator in _ordered_pair_calibrators(calibrator, pair_calibrators):
+        pair_logits = _pair_logits_from_cached_outputs(
+            adjusted_logits,
+            cache_tensors,
+            pair_calibrator.pair_labels,
+            pair_logits_key=pair_calibrator.pair_logits_key,
+        )
+        preds = _apply_pair_threshold_calibrator(preds, pair_logits, pair_calibrator)
+    return preds
+
+
+def fit_logit_bias_calibrator(
+    model: nn.Module,
+    loader,
+    device: torch.device,
+    *,
+    target_labels: Sequence[int],
+    bias_values: Sequence[float] | None = None,
+    calibrator: ReconWebbasedThresholdCalibrator | None = None,
+    pair_calibrators: Sequence[PairThresholdCalibrator] | None = None,
+    name: str = "logit_bias",
+) -> LogitBiasCalibrator | None:
+    labels_tuple = tuple(int(label) for label in target_labels)
+    if not labels_tuple:
+        raise ValueError("target_labels must not be empty.")
+    base_logits, labels, cache_tensors = _collect_cached_outputs(model, loader, device)
+    if base_logits.numel() == 0:
+        return None
+    if bias_values is None:
+        bias_values = [-0.20, -0.10, -0.05, 0.0, 0.05, 0.10, 0.20]
+
+    best: LogitBiasCalibrator | None = None
+    for candidate_biases in product(bias_values, repeat=len(labels_tuple)):
+        class_biases = {label: float(bias) for label, bias in zip(labels_tuple, candidate_biases) if abs(float(bias)) > 1e-12}
+        preds = _predict_from_cached_outputs(
+            base_logits,
+            cache_tensors,
+            calibrator=calibrator,
+            pair_calibrators=pair_calibrators,
+            logit_bias_calibrator=LogitBiasCalibrator(
+                name=name,
+                target_labels=labels_tuple,
+                class_biases=class_biases,
+                accuracy=0.0,
+                macro_f1=0.0,
+                focus_macro_f1=0.0,
+            ),
+        )
+        accuracy = float(accuracy_score(labels.tolist(), preds.tolist()))
+        macro_f1 = float(precision_recall_fscore_support(labels.tolist(), preds.tolist(), average="macro", zero_division=0)[2])
+        per_label_f1 = precision_recall_fscore_support(
+            labels.tolist(),
+            preds.tolist(),
+            labels=list(labels_tuple),
+            zero_division=0,
+        )[2]
+        focus_macro_f1 = float(sum(per_label_f1) / max(len(per_label_f1), 1))
+        candidate = LogitBiasCalibrator(
+            name=name,
+            target_labels=labels_tuple,
+            class_biases=class_biases,
+            accuracy=accuracy,
+            macro_f1=macro_f1,
+            focus_macro_f1=focus_macro_f1,
+        )
+        if best is None:
+            best = candidate
+            continue
+        candidate_score = (
+            candidate.accuracy,
+            candidate.macro_f1,
+            candidate.focus_macro_f1,
+            -sum(abs(bias) for bias in candidate.class_biases.values()),
+        )
+        best_score = (
+            best.accuracy,
+            best.macro_f1,
+            best.focus_macro_f1,
+            -sum(abs(bias) for bias in best.class_biases.values()),
+        )
+        if candidate_score > best_score:
+            best = candidate
+    return best
 
 
 def fit_pair_threshold_calibrator(
