@@ -245,3 +245,48 @@ tail -n 50 outputs/grouped_gpu_smoke_v1.log
 默认仅使用一张T4，不自动启用双卡。请求CUDA但不可用或运行失败时报告失败，不静默退回CPU。成功后取回 `outputs/grouped_gpu_smoke_v1/smoke.json`；配置/代码哈希、精确样本身份、版本和设备在config.json；退出状态在status.json。失败时取回error.log、smoke_partial.json（若有）和外部运行日志。不可复用已经存在的输出目录。
 
 本地仅用24张人工小图的临时测试集串联图审查→分组划分→CPU单批次前向/反向/更新，验证配对初始化、源文件不变及图内容/清单篡改拒绝；不运行本地真实数据训练。CPU测试通过不代表服务器PyG2.5.3/CUDA已通过；必须以上述服务器实际结果为准。正式全量训练入口及训练运行尚未执行，须在GPU冒烟后继续准备。
+
+## 11. GPU冒烟通过后：短程试跑与正式训练入口
+
+服务器实际CUDA冒烟已通过，split ID一致，32候选/16图batch，耗时约11.36秒。E0/E1初始state SHA相同，参数各431704；E2/E3初始state SHA相同，参数各846800。四者损失有限、参数更新成功、输入图未改动。E0的Reverse Contain扰动差12.3493、Link差4.4509，显著大于0.001526容差，且两关系投影有非零梯度；E1属性不传入GAT、边投影无梯度，扰动差落在重复前向抖动范围内。E3门控梯度最大值0.001262，E2门控未参与梯度。Contain属性变化仅在抖动范围内，梯度0，符合其单入边机制。分支末层中通向非池化节点类型的部分卷积无梯度是当前分支结构的预期表现，不应要求所有参数都有梯度。
+
+这只证明实现路径与一个优化步骤可用，尚无服务器训练性能结论。新增 `train_grouped.py` 共用冻结清单和通过的模型构造器，所有图按路径/offset懒加载，每次加载核验原始输入哈希和标签，保持82/1500特征及旧拓扑。检查冒烟报告与实际模型/数据代码SHA一致；同种子初始化必须与冒烟state SHA一致。训练始终使用独立torch.Generator控制样本打乱，记录每轮顺序哈希。Flow BatchNorm遇到最后1个图时，将该图合入前一batch，不丢训练样本。
+
+先做E0/E1短程试跑：从冻结train每类取32图，共256；从val每类取16图，共128；2 epoch，不读取test图，不据此评价优劣。
+
+```bash
+git pull --ff-only
+python -u scripts/train_grouped.py \
+  --mode pilot \
+  --split-dir data/processed/ciciot2023_grouped_input_v1 \
+  --expected-split-id a8ae9c934eec9fee970cc725e60051d0c709e0f16c7dda14749350ff2006975a \
+  --smoke-report outputs/grouped_gpu_smoke_v1/smoke.json \
+  --device cuda:0 --seed 42 --batch-size 16 --epochs 2 --workers 0 \
+  --experiments E0 E1 --output outputs/grouped_training_pilot_v1 \
+  > outputs/grouped_training_pilot_v1.log 2>&1
+RC=$?
+printf '%s\n' "$RC" > outputs/grouped_training_pilot_v1.exitcode
+tail -n 40 outputs/grouped_training_pilot_v1.log
+```
+
+取回summary.json；失败取回error.log与运行日志。每组含config.json、epochs.jsonl、best.pt、last.pt、metrics.json、status.json。best按验证Macro-F1选取并重载；pilot的test字段为null，不能当作已测试。检查点包括优化器、采样器与torch RNG状态，保留中断恢复所需信息；当前入口尚不自动resume，不复用既有输出目录。每轮检查有限损失和梯度（范数阈值为无穷大，不裁剪有限梯度），记录训练时间、验证指标和CUDA峰值内存。CSV/权重不上传GitHub。
+
+短程完成且人工核查通过后，完整E0可用以下配置启动；本命令是后续计划，不代表已运行：
+
+```bash
+python -u scripts/train_grouped.py \
+  --mode full \
+  --split-dir data/processed/ciciot2023_grouped_input_v1 \
+  --expected-split-id a8ae9c934eec9fee970cc725e60051d0c709e0f16c7dda14749350ff2006975a \
+  --smoke-report outputs/grouped_gpu_smoke_v1/smoke.json \
+  --pilot-report outputs/grouped_training_pilot_v1/summary.json \
+  --device cuda:0 --seed 42 --batch-size 16 --epochs 100 --patience 12 --workers 2 \
+  --experiments E0 --output outputs/grouped_full_E0_s42_v1 \
+  > outputs/grouped_full_E0_s42_v1.log 2>&1
+```
+
+完整模式使用全部107621/13446/13448图，hidden64、Adam lr0.001、固定LR、普通NLL、无类别权重、无辅助损失、无hard negative、无校准，验证Macro-F1早停patience12/min_delta0。只在选定最佳验证权重后测试一次，保存Accuracy/Macro-F1/Weighted-F1、每类Precision/Recall/F1/support、8×8混淆矩阵和带sample_id的predictions.csv。门控模型还记录权重分布。计时区分含图IO的墙钟时间与模型调用CUDA event时间；单次计时不作为稳定开销结论。
+
+E0完成后，E1沿用相同参数/100轮上限，使用 `--experiments E1 --baseline-report outputs/grouped_full_E0_s42_v1/summary.json` 并换独立输出目录。E2亦需同一完整E0报告；单独E3还需 `--fusion-control-report` 指向已完成E2的summary.json。入口验证split、种子、训练控制参数及完整预算一致；E2/E3同一命令执行时按E2→E3顺序运行，其他设置共享。E0/E1或E2/E3若同一run出现初始state SHA不同，直接报错。
+
+本地训练入口测试仅在24张人工小图上执行少量CPU步骤，覆盖不丢单样本的batch合并、E0/E1相同训练顺序、pilot不读取test、检查点保存重载、全量入口必需pilot、E1必需E0及预算匹配、E3必需E2。这些不是本地真实数据实验。正式服务器E0—E3完整训练尚未执行，仍需保留原始流身份未知及新基准不等于历史复现的限制。
