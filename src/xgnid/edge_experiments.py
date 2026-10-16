@@ -39,6 +39,8 @@ def validate_graph(data):
             raise ValueError(f"{node}: empty or nonfinite node features")
     for relation, dim in zip(RELATIONS, (4, 4, 1)):
         index, attr = data[relation].edge_index, data[relation].edge_attr
+        if dim == 1 and attr.ndim == 1:
+            attr = attr.unsqueeze(-1)
         if index.dtype != torch.long or index.ndim != 2 or index.size(0) != 2:
             raise ValueError(f"{relation}: invalid edge_index")
         if attr.shape != (index.size(1), dim) or not torch.isfinite(attr).all():

@@ -109,6 +109,14 @@ def graph_check(path, limit):
             entry["nodes"] = {n: list(graph[n].x.shape) if getattr(graph[n], "x", None) is not None else None for n in graph.node_types}
             entry["edges"] = {str(r): {"edge_index": list(graph[r].edge_index.shape),
                 "edge_attr": list(graph[r].edge_attr.shape) if getattr(graph[r], "edge_attr", None) is not None else None} for r in graph.edge_types}
+            relation = ("packet", "link", "packet")
+            if relation in graph.edge_types:
+                index = graph[relation].edge_index
+                if index.ndim == 2 and index.size(0) == 2:
+                    pairs = set(map(tuple, index.t().tolist()))
+                    entry["link_topology"] = {"edges": index.size(1),
+                        "unique_edges_with_reverse": sum((b, a) in pairs for a, b in pairs),
+                        "max_in_degree": int(torch.bincount(index[1]).max()) if index.numel() else 0}
             try:
                 validate_graph(graph)
                 entry["edge_contract"] = "passed"
@@ -123,7 +131,9 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--data-root", type=Path, action="append")
     parser.add_argument("--split", type=Path, action="append", default=[])
-    parser.add_argument("--trusted-graph-file", type=Path)
+    graph_source = parser.add_mutually_exclusive_group()
+    graph_source.add_argument("--trusted-graph-file", type=Path)
+    graph_source.add_argument("--trusted-graph-directory", type=Path)
     parser.add_argument("--graph-limit", type=int, default=8)
     parser.add_argument("--check-runtime", action="store_true")
     parser.add_argument("--output", type=Path, required=True)
@@ -174,6 +184,31 @@ def main():
                     report["errors"].append({"stage": "graph", "index": entry["index"], "error": entry["error"]})
         except Exception as exc:
             report["errors"].append({"stage": "graph", "error": str(exc)})
+    if args.trusted_graph_directory:
+        report["graph_samples"] = []
+        checked = 0
+        root = args.trusted_graph_directory
+        if not root.is_dir():
+            report["errors"].append({"stage": "graph", "error": f"Missing directory: {root}"})
+        else:
+            # Explicitly named trusted directory; select shards, not metadata.
+            for path in sorted(root.rglob("*.pt")):
+                if path.name in ("pre_filter.pt", "pre_transform.pt"):
+                    continue
+                try:
+                    result = graph_check(path, args.graph_limit - checked)
+                    report["graph_samples"].append(result)
+                    checked += len(result["checked_graphs"])
+                    for entry in result["checked_graphs"]:
+                        if "error" in entry:
+                            report["errors"].append({"stage": "graph", "path": str(path), "error": entry["error"]})
+                except Exception as exc:
+                    report["errors"].append({"stage": "graph", "path": str(path), "error": str(exc)})
+                    break
+                if checked >= args.graph_limit:
+                    break
+            if checked == 0:
+                report["errors"].append({"stage": "graph", "error": "No graph samples checked"})
     args.output.parent.mkdir(parents=True, exist_ok=True)
     report["exit_code"] = 1 if report["errors"] else 0
     with args.output.open("x", encoding="utf-8") as handle:

@@ -6,11 +6,16 @@ import json
 from pathlib import Path
 import tempfile
 import unittest
+import sys
 
 import torch
 from torch_geometric.data import HeteroData
+from torch_geometric.data import Batch
 
 from audit_graph_split import audit, file_hash, fingerprint
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
+from xgnid.edge_experiments import build_experiment, validate_graph
 
 
 def graph(label=0, value=1.):
@@ -28,6 +33,26 @@ def graph(label=0, value=1.):
 
 
 class GraphAuditChecks(unittest.TestCase):
+    def test_scalar_link_is_compatible_and_does_not_change_predictions(self):
+        data = graph()
+        relation = ("packet", "link", "packet")
+        data[relation].edge_attr = data[relation].edge_attr.flatten()
+        validate_graph(data)
+        data[relation].edge_index = torch.empty((2, 0), dtype=torch.long)
+        data[relation].edge_attr = torch.empty(0)
+        validate_graph(data)
+        data[relation].edge_attr = torch.ones(1)
+        with self.assertRaises(ValueError):
+            validate_graph(data)
+        batch = Batch.from_data_list([graph(), graph(value=2.)])
+        scalar = batch.clone()
+        scalar[relation].edge_attr = scalar[relation].edge_attr.flatten()
+        for name in ("E0", "E2"):
+            model = build_experiment(name, graph()).eval()
+            with torch.no_grad():
+                torch.testing.assert_close(model(batch), model(scalar), rtol=0, atol=0)
+        self.assertEqual(scalar[relation].edge_attr.ndim, 1)
+
     def test_hash_excludes_label_and_identifies_edge_only_changes(self):
         a, b = graph(), graph(label=1)
         self.assertEqual(fingerprint(a, True), fingerprint(b, True))

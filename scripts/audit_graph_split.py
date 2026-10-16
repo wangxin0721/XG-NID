@@ -139,6 +139,10 @@ def audit(args):
                     edges = store.edge_index.size(1)
                     if attr is None:
                         issues[f"missing attributes {relation}"] += 1
+                    elif dim == 1 and attr.ndim == 1 and attr.shape == (edges,):
+                        shapes[f"compatible scalar {relation} attr_rank=1"] += 1
+                        if not torch.isfinite(attr).all():
+                            issues[f"nonfinite attributes {relation}"] += 1
                     elif edges == 0 and attr.numel() == 0:
                         shapes[f"empty {relation} attr_shape={tuple(attr.shape)}"] += 1
                     elif attr.shape != (edges, dim) or not torch.isfinite(attr).all():

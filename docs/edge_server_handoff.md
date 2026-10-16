@@ -169,3 +169,27 @@ tail -n 60 outputs/server_graph_split_audit_v1.log
 ```
 
 这是完整磁盘读取，可能持续较长时间；每2000个文件记录进度。请等待命令结束；如需另开终端观察，可用 `tail -f outputs/server_graph_split_audit_v1.log`。保持原始图目录和split在扫描期间不变。取回 `outputs/server_graph_split_audit_v1/report.json`；失败时取回日志及该目录下status.json。SQLite是服务器本地身份清单，无需上传GitHub或发送整个文件。
+
+## 8. 首次全图审查结论与标量Link兼容更正
+
+服务器返回185557图，全部Flow82维、Packet1500维float32；数量、索引范围、完整分区和各类数均与记录匹配。pre_filter.pt/pre_transform.pt是元数据字符串，按旧loader规则跳过，不是缺失图。
+
+按当前loader映射：Edge输入有4775个测试样本与训练重复（18.68%）、5564个验证样本与训练重复（34.78%）；No Edge对应4783、5570。测试还与验证有重复，不能直接将两项受影响样本数相加。Edge分区内重复行train40587、val1708、test1851。这些计数只描述当前重建划分，不将historical_order_verified=false改写为已复现历史。
+
+首次工具将非空Link属性149124图计为invalid，另36433图为空Link `(0,)`。该分类过于严格：vendored Functions.py 的 `_get_link_edge_features` 返回一维delta_time数组，而服务器PyG2.5.3的GATConv.edge_update明确支持一维属性并内部view(-1,1)。因此不能仅凭该分类认定图损坏。已修正检查器和受控模型：接受有限的 `[E]` 标量Link（包括E=0），保留其他关系4维要求；自定义encoder仅在forward创建 `[E,1]` 视图，不写回图，不改变数值或连接。长度错误、非有限值仍拒绝。原报告保留，不能在未重查的情况下将149124个旧错误全部声称为通过。
+
+API依据：[PyG2.5.3 GATConv源码](https://pytorch-geometric.readthedocs.io/en/2.5.3/_modules/torch_geometric/nn/conv/gat_conv.html)、[ToUndirected源码](https://pytorch-geometric.readthedocs.io/en/2.5.3/_modules/torch_geometric/transforms/to_undirected.html)。本地PyG2.6.1的轻量测试验证原始参考模型和自定义分支模型的一维/二维Link预测逐项一致，且原图属性维度保持不变；尚未替代服务器PyG2.5.3实际模型冒烟。
+
+此外，旧构图调用ToUndirected()，会使同类型Packet Link产生反向边；原本仅有向链上的GAT单入边分析不能直接推广至此旧图。先轻量抽查真实旧图的标量属性、反向边和入度；不必为了初步定位再次完整扫描14分钟。
+
+```bash
+python scripts/check_edge_server.py \
+  --data-root data/processed/CICIoT2023_processed/train \
+  --trusted-graph-directory data/processed/CICIoT2023_processed/processed \
+  --graph-limit 32 --check-runtime \
+  --output outputs/server_graph_compat_check_v2.json
+```
+
+上例用已知train/子目录做轻量CSV表头盘点，同时从显式指定可信processed目录按字典序抽查前32张图（不把pre_filter/pre_transform当图）。不代表全数据验收；结果含link_topology的边数、具反向的唯一边数、最大入度。取回该JSON。目录抽样不跟随路径引用；若遇到不支持容器如实报错，不隐式改写或转换。
+
+下一正式基准应以本次SQLite身份清单为起点，在冻结当前图版本和路径/顺序清单后，以No Edge输入指纹分组、检查组标签冲突并统计每类独立组数，再决定可行的分层train/val/test数量。如此可使两种输入模式的精确重复均不跨集；验证/测试中重复输入如何计权或去重也应事先固定。不能先保留旧Table4测试数量再为凑数制造重复，更不能声称输入去重解决了缺失原始流身份的问题。旧图和旧split保持不变，新划分独立存放。取得原始流/capture身份仍是更强的分组依据。

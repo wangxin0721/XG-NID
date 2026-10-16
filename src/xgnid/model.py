@@ -118,6 +118,10 @@ class _PaperStyleHeteroEncoder(nn.Module):
         for relation, dim in ((FLOW_TO_PACKET, 4), (PACKET_TO_FLOW, 4), (PACKET_TO_PACKET, 1)):
             attr = getattr(data[relation], "edge_attr", None)
             n_edges = data[relation].edge_index.size(1)
+            if attr is not None and dim == 1 and attr.ndim == 1:
+                # Vendored builder stores scalar Link attributes as [E].
+                # PyG GAT accepts this too; use a view without editing the graph.
+                attr = attr.unsqueeze(-1)
             if attr is None or attr.shape != (n_edges, dim):
                 raise ValueError(f"{relation}: expected edge_attr [{n_edges}, {dim}]")
             if not torch.isfinite(attr).all():
