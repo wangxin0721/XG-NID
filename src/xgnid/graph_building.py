@@ -81,7 +81,7 @@ def _packet_features(row: pd.Series) -> torch.Tensor:
     payloads = _parse_list_cell(row.get("udps.payload_data"))
     packet_count = len(payloads)
     if packet_count == 0:
-        return torch.zeros((0, 1508), dtype=torch.float32)
+        return torch.zeros((0, 1513), dtype=torch.float32)
 
     delta_time = _parse_list_cell(row.get("udps.delta_time"))
     direction = _parse_list_cell(row.get("udps.packet_direction"))
@@ -139,7 +139,7 @@ def _contain_edge_attr(row: pd.Series) -> torch.Tensor:
                 _safe_float(_parse_list_cell(row.get("udps.payload_size"))[idx]) if idx < len(_parse_list_cell(row.get("udps.payload_size"))) else 0.0,
             ]
         )
-    return torch.tensor(np.asarray(edge_rows, dtype=np.float32), dtype=torch.float32)
+    return torch.tensor(np.asarray(edge_rows, dtype=np.float32).reshape(-1, 4), dtype=torch.float32)
 
 
 def _link_edge_attr(row: pd.Series) -> torch.Tensor:

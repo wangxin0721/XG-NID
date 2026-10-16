@@ -54,6 +54,8 @@ class _PaperStyleHeteroEncoder(nn.Module):
         super().__init__()
         self.hidden_dim = hidden_dim
         self.edge_aware = edge_aware
+        # Keep the GAT architecture fixed for strict Edge/No Edge ablations.
+        self.use_edge_attr = edge_aware
         self.flow_input_dim = flow_input_dim
         self.packet_input_dim = packet_input_dim
 
@@ -106,20 +108,21 @@ class _PaperStyleHeteroEncoder(nn.Module):
             FLOW_TO_PACKET: data[FLOW_TO_PACKET].edge_index,
             PACKET_TO_PACKET: data[PACKET_TO_PACKET].edge_index,
         }
-        edge_index_dict[PACKET_TO_FLOW] = data[FLOW_TO_PACKET].edge_index.flip(0)
+        edge_index_dict[PACKET_TO_FLOW] = data[PACKET_TO_FLOW].edge_index
         return edge_index_dict
 
     def _edge_attr_dict(self, data: HeteroData) -> dict[tuple[str, str, str], torch.Tensor]:
-        if not self.edge_aware:
+        if not self.edge_aware or not self.use_edge_attr:
             return {}
-        edge_attr_dict: dict[tuple[str, str, str], torch.Tensor] = {}
-        contain_attr = getattr(data[FLOW_TO_PACKET], "edge_attr", None)
-        link_attr = getattr(data[PACKET_TO_PACKET], "edge_attr", None)
-        if contain_attr is not None:
-            edge_attr_dict[FLOW_TO_PACKET] = contain_attr
-            edge_attr_dict[PACKET_TO_FLOW] = contain_attr
-        if link_attr is not None:
-            edge_attr_dict[PACKET_TO_PACKET] = link_attr
+        edge_attr_dict = {}
+        for relation, dim in ((FLOW_TO_PACKET, 4), (PACKET_TO_FLOW, 4), (PACKET_TO_PACKET, 1)):
+            attr = getattr(data[relation], "edge_attr", None)
+            n_edges = data[relation].edge_index.size(1)
+            if attr is None or attr.shape != (n_edges, dim):
+                raise ValueError(f"{relation}: expected edge_attr [{n_edges}, {dim}]")
+            if not torch.isfinite(attr).all():
+                raise ValueError(f"{relation}: nonfinite edge_attr")
+            edge_attr_dict[relation] = attr.float()
         return edge_attr_dict
 
     @staticmethod
@@ -620,6 +623,7 @@ class DualBranchLogitGatedHeteroGNN(nn.Module):
         self.hidden_dim = hidden_dim
         self.num_classes = num_classes
         self.branch_mode = branch_mode
+        self.use_gate = True
         self.aux_loss_weight = aux_loss_weight
         self.webbased_aux_weight = webbased_aux_weight
         self.webbased_recon_aux_weight = webbased_recon_aux_weight
@@ -700,6 +704,8 @@ class DualBranchLogitGatedHeteroGNN(nn.Module):
         elif self.branch_mode == "packet":
             gate_weights = torch.zeros(flow_logits.size(0), 2, device=flow_logits.device, dtype=flow_logits.dtype)
             gate_weights[:, 1] = 1.0
+        elif not self.use_gate:
+            gate_weights = flow_logits.new_full((flow_logits.size(0), 2), 0.5)
         else:
             gate_weights = self.gate(
                 flow_logits,
