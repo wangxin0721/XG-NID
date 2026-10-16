@@ -4,7 +4,7 @@
 
 ## 1. 本地交付范围
 
-`scripts/package_edge_delivery.py` 中的 FILES 是明确的14文件清单，包含受控模型、构图、核查/试运行工具及本轮文档。`src/xgnid/__init__.py` 和参考 `third_party/GNN4ID/Utility/Model.py` 是运行依赖，也打入源码包；它们没有本轮实质修改。没有打包数据、权重、历史结果、报告Word、图纸或其他既有改动。
+`scripts/package_edge_delivery.py` 中的 FILES 是明确的16文件清单，包含受控模型、构图、核查/试运行工具及本轮文档。`src/xgnid/__init__.py` 和参考 `third_party/GNN4ID/Utility/Model.py` 是运行依赖，也打入源码包；它们没有本轮实质修改。没有打包数据、权重、历史结果、报告Word、图纸或其他既有改动。首次交付zip包含当时的14个文件；后续增加了图内容审查及其测试脚本，重新打包时使用新输出目录。
 
 当前工作区有与本轮无关的删除和修改，且部分 outputs 文件以前已被Git跟踪；`.gitignore` 不会阻止已跟踪文件被提交。不要使用 `git add .` 或 `git add -A`。
 
@@ -138,3 +138,34 @@ printf '%s\n' "$RC" > "$RUN/source_audit.exitcode"
 取回本次RUN目录中的inventory/source_audit、可选split_check/graph_check报告，以及对应log和exitcode。无需传回大型CSV/.pt或权重。提供服务器使用的数据根目录、训练环境名和提交SHA即可结合报告决定数据是否可用。本地生成的核查结果只能用于验证脚本本身，不能充当服务器结果。
 
 本轮本地轻量验证：两个回归测试通过（精确重复/特征重复/冲突标签计数、拒绝覆盖、旧split重叠及无效索引），标准库盘点成功，已有小图文件前2图检查和环境导入成功；未启动新训练或重跑完整CSV扫描。服务器检查尚未执行。
+
+## 7. 对已找到的历史split检查实际图内容重复
+
+服务器后续回传确认：三个基础基线均记录185557图，train/val/test为144000/16000/25557，索引合法且不相交；GNN4ID_paper_align与GNN4ID的split SHA256相同；rerun文件SHA不同，尚不能据此判断索引是否相同。三个数据路径都在服务器存在，均未保存样本身份。
+
+新增 `audit_graph_split.py` 按仓库当前loader规则（递归字典序文件、容器内图顺序）逐文件读取，写SQLite身份清单，不把全部图同时加载到内存；单个合并容器仍须整体加载，当前服务器主要是单图小分片。工具只反序列化显式指定的可信目录里的图，最多解析3层目录内路径引用，拒绝读取目录外引用；不修改图、标签、划分或模型，不训练，不使用GPU。
+
+它分别比较“节点+拓扑+边属性”和“节点+拓扑”两种精确张量指纹，覆盖Edge和No Edge可观察到的输入。标签不参与指纹，冲突标签另报。输出每对数据集共有的输入组数及两侧受影响样本数。空Link形状保持原样，仅统计，不修复。边属性结构异常另列graph_issues。成功退出只表示内容审查执行成功，不表示数据没有重复。
+
+即使重建的图数量、类别分布与记录一致，也无法单凭这些证明历史图顺序完全未变；报告明确标记historical_order_verified=false。结论均附带“按当前loader重建的索引映射”，不能冒称已经精确还原当时实验。精确重复检测也不等于原始流分组检查。
+
+在服务器拉取本次更新后，先检查三个split索引是否完全相同（文件内容SHA不同可能只是路径字段不同）：
+
+```bash
+python -c 'import json; from pathlib import Path; paths=["outputs/baselines/GNN4ID_paper_align/split.json","outputs/baseline_rerun_paper_align_v2/split.json","outputs/GNN4ID/split.json"]; records=[json.loads(Path(p).read_text()) for p in paths]; print({p:records[i]["split_indices"]==records[0]["split_indices"] for i,p in enumerate(paths)})'
+```
+
+然后只扫描一个代表划分，避免重复读取约12GB图。若三个索引不同，首次报告只适用于指定split：
+
+```bash
+python -u scripts/audit_graph_split.py \
+  --trusted-data data/processed/CICIoT2023_processed/processed \
+  --split outputs/baselines/GNN4ID_paper_align/split.json \
+  --output outputs/server_graph_split_audit_v1 \
+  > outputs/server_graph_split_audit_v1.log 2>&1
+RC=$?
+printf '%s\n' "$RC" > outputs/server_graph_split_audit_v1.exitcode
+tail -n 60 outputs/server_graph_split_audit_v1.log
+```
+
+这是完整磁盘读取，可能持续较长时间；每2000个文件记录进度。请等待命令结束；如需另开终端观察，可用 `tail -f outputs/server_graph_split_audit_v1.log`。保持原始图目录和split在扫描期间不变。取回 `outputs/server_graph_split_audit_v1/report.json`；失败时取回日志及该目录下status.json。SQLite是服务器本地身份清单，无需上传GitHub或发送整个文件。
