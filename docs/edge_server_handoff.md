@@ -4,7 +4,7 @@
 
 ## 1. 本地交付范围
 
-`scripts/package_edge_delivery.py` 中的 FILES 是明确的18文件清单，包含受控模型、构图、核查/试运行工具及本轮文档。`src/xgnid/__init__.py` 和参考 `third_party/GNN4ID/Utility/Model.py` 是运行依赖，也打入源码包；它们没有本轮实质修改。没有打包数据、权重、历史结果、报告Word、图纸或其他既有改动。首次交付zip包含当时的14个文件；后续增加了图内容审查、分组划分及其测试脚本，重新打包时使用新输出目录。
+`scripts/package_edge_delivery.py` 中的 FILES 是明确的交付清单，包含受控模型、构图、核查/试运行工具及本轮文档，以脚本中的实际列表为准。`src/xgnid/__init__.py` 和参考 `third_party/GNN4ID/Utility/Model.py` 是运行依赖，也打入源码包；它们没有本轮实质修改。没有打包数据、权重、历史结果、报告Word、图纸或其他既有改动。首次交付zip包含当时的14个文件；后续增加了图内容审查、分组划分、GPU冒烟及测试脚本，重新打包时使用新输出目录。
 
 当前工作区有与本轮无关的删除和修改，且部分 outputs 文件以前已被Git跟踪；`.gitignore` 不会阻止已跟踪文件被提交。不要使用 `git add .` 或 `git add -A`。
 
@@ -218,3 +218,30 @@ python scripts/build_grouped_split.py \
 这是将现有图集合重新建立的新基准，合并使用已有源train/test图，不能称为旧Table4划分或原实验严格复现。原始流/capture独立性仍未知。新协议按Edge独立输入等权评价，同一No Edge组中的不同Edge变体可贡献多个样本，但不得跨集；该计权方式需在论文中写明。
 
 新split不提供旧split_indices，避免被旧CLI误当成185557图字典序索引使用；samples.jsonl使用显式路径+容器offset，不依赖旧排序的可信性。接下来的正式服务器入口必须读取此清单、核验取出的图输入哈希和标签，再执行GPU冒烟与训练。不要直接套用旧训练命令或CPU pilot入口。
+
+## 10. 新划分完成后的服务器GPU冒烟
+
+服务器已成功生成新划分：split ID为 `a8ae9c934eec9fee970cc725e60051d0c709e0f16c7dda14749350ff2006975a`，samples.jsonl SHA256为 `b8e9b0810471d0c2b52033488fab640625c3731315afd5d2add1571bd2518827`。保留134515图、134463输入组，train/val/test为107621/13446/13448。四项不重叠与完整分组断言通过。额外52个DDoS属性变体分别落在train46、val2、test4；同一No Edge组没有跨集。这是新基准，原始流独立性仍未知。
+
+新增 `grouped_graphs.py` 读取新清单，重新校验split ID、样本清单哈希、组/样本唯一性、标签计数和显式图路径；每个取出的真实图都与冻结的Edge/No Edge指纹及标签比对。仅在克隆的内存图上将标量Link `[E]` 视为 `[E,1]`，兼容批处理，不写回源图。节点特征维度保持82/1500，不改变拓扑或属性值。
+
+`smoke_grouped_gpu.py` 默认从train清单每类取至多4个候选图，验证全部候选；挑选含至少两张三报文及以上图的一个batch（最多16图）。不加载验证/测试图，不做epoch训练或性能评价。E0—E3各完成一次前向、逐关系属性扰动、普通NLL反向传播和一次Adam更新；额外损失、校准、类别加权均关闭。E0/E1、E2/E3各自核对共同lazy初始化后的完整state_dict哈希相同。记录每一层GAT真实属性输入、前向差异、边投影梯度、门控梯度和输入未被修改。E2门控不参与梯度；E3门控需有非零梯度。
+
+GPU scatter可能有重复前向的浮点抖动，属性效应比较会同时记录重复前向抖动及数值尺度，并据此设置容差；不是要求每个关系的属性都必须改变输出。关系隔离诊断仅在诊断调用中绕过Contain镜像一致检查，不改写源数据。当前batch不足以观测效应时明确失败，不冒称数据链路已验证。
+
+```bash
+git pull --ff-only
+python -u scripts/smoke_grouped_gpu.py \
+  --split-dir data/processed/ciciot2023_grouped_input_v1 \
+  --expected-split-id a8ae9c934eec9fee970cc725e60051d0c709e0f16c7dda14749350ff2006975a \
+  --device cuda:0 --seed 42 --batch-size 16 \
+  --output outputs/grouped_gpu_smoke_v1 \
+  > outputs/grouped_gpu_smoke_v1.log 2>&1
+RC=$?
+printf '%s\n' "$RC" > outputs/grouped_gpu_smoke_v1.exitcode
+tail -n 50 outputs/grouped_gpu_smoke_v1.log
+```
+
+默认仅使用一张T4，不自动启用双卡。请求CUDA但不可用或运行失败时报告失败，不静默退回CPU。成功后取回 `outputs/grouped_gpu_smoke_v1/smoke.json`；配置/代码哈希、精确样本身份、版本和设备在config.json；退出状态在status.json。失败时取回error.log、smoke_partial.json（若有）和外部运行日志。不可复用已经存在的输出目录。
+
+本地仅用24张人工小图的临时测试集串联图审查→分组划分→CPU单批次前向/反向/更新，验证配对初始化、源文件不变及图内容/清单篡改拒绝；不运行本地真实数据训练。CPU测试通过不代表服务器PyG2.5.3/CUDA已通过；必须以上述服务器实际结果为准。正式全量训练入口及训练运行尚未执行，须在GPU冒烟后继续准备。

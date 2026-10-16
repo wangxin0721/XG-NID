@@ -14,6 +14,7 @@ FILES = [
     "scripts/test_server_audit.py",
     "scripts/audit_graph_split.py", "scripts/test_graph_split_audit.py",
     "scripts/build_grouped_split.py", "scripts/test_grouped_split.py",
+    "scripts/grouped_graphs.py", "scripts/smoke_grouped_gpu.py", "scripts/test_grouped_gpu_smoke.py",
     "scripts/run_edge_chain.py", "scripts/summarize_edge_chain.py",
     "scripts/package_edge_delivery.py", "docs/edge_P0_20261016.md",
     "docs/edge_stage_report_20261016.md", "docs/edge_server_handoff.md",
