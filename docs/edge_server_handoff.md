@@ -4,7 +4,7 @@
 
 ## 1. 本地交付范围
 
-`scripts/package_edge_delivery.py` 中的 FILES 是明确的16文件清单，包含受控模型、构图、核查/试运行工具及本轮文档。`src/xgnid/__init__.py` 和参考 `third_party/GNN4ID/Utility/Model.py` 是运行依赖，也打入源码包；它们没有本轮实质修改。没有打包数据、权重、历史结果、报告Word、图纸或其他既有改动。首次交付zip包含当时的14个文件；后续增加了图内容审查及其测试脚本，重新打包时使用新输出目录。
+`scripts/package_edge_delivery.py` 中的 FILES 是明确的18文件清单，包含受控模型、构图、核查/试运行工具及本轮文档。`src/xgnid/__init__.py` 和参考 `third_party/GNN4ID/Utility/Model.py` 是运行依赖，也打入源码包；它们没有本轮实质修改。没有打包数据、权重、历史结果、报告Word、图纸或其他既有改动。首次交付zip包含当时的14个文件；后续增加了图内容审查、分组划分及其测试脚本，重新打包时使用新输出目录。
 
 当前工作区有与本轮无关的删除和修改，且部分 outputs 文件以前已被Git跟踪；`.gitignore` 不会阻止已跟踪文件被提交。不要使用 `git add .` 或 `git add -A`。
 
@@ -193,3 +193,28 @@ python scripts/check_edge_server.py \
 上例用已知train/子目录做轻量CSV表头盘点，同时从显式指定可信processed目录按字典序抽查前32张图（不把pre_filter/pre_transform当图）。不代表全数据验收；结果含link_topology的边数、具反向的唯一边数、最大入度。取回该JSON。目录抽样不跟随路径引用；若遇到不支持容器如实报错，不隐式改写或转换。
 
 下一正式基准应以本次SQLite身份清单为起点，在冻结当前图版本和路径/顺序清单后，以No Edge输入指纹分组、检查组标签冲突并统计每类独立组数，再决定可行的分层train/val/test数量。如此可使两种输入模式的精确重复均不跨集；验证/测试中重复输入如何计权或去重也应事先固定。不能先保留旧Table4测试数量再为凑数制造重复，更不能声称输入去重解决了缺失原始流身份的问题。旧图和旧split保持不变，新划分独立存放。取得原始流/capture身份仍是更强的分组依据。
+
+## 9. 冻结按输入分组的新基准
+
+服务器32图抽查全部passed，包含单报文、双报文和多报文；非空Link确有反向边，部分节点最大入度2。该结论是格式抽查，不是全图或模型前向验收。
+
+服务器SQLite统计如下，括号中是Edge独立输入数：Benign23890（23890）、WebBased5447（5447）、Spoofing17392（17392）、Recon22780（22780）、Mirai24000（24000）、Dos14752（14752）、DDos23866（23918）、BruteForce2336（2336）。合计134463个No Edge组、134515个Edge输入；其余51042行为完全相同Edge输入的副本。目录内存在原始过采样痕迹，不能再把20000张图等同于20000个独立输入。
+
+`build_grouped_split.py`仅使用标准库，以只读模式打开SQLite，验证其SHA256与完成的审查报告一致，并拒绝同No Edge组标签冲突。每个Edge输入选最小audit_index作代表；保留52个边属性变体，但它们与对应No Edge组必须同集。按类别将No Edge组排序、以seed42+label打乱，验证/测试各取floor(10%)组，剩余训练。各类有足够组，得到约80/10/10的分组划分；比例按组计算，样本比例因边属性变体略有差别。所有模型共用相同样本清单，不做训练重采样或类别加权。
+
+输出独立目录：samples.jsonl（稳定sample_id、group_id、partition、相对图路径、容器内offset、原audit索引、两种输入哈希）、split.json（协议、来源、split ID、清单哈希、类别分布和不重叠断言）、status.json。不复制或重建.pt，不覆盖源CSV/图/旧split，也不读取所有图。split ID由冻结协议、样本清单和源SQLite哈希生成。
+
+```bash
+git pull --ff-only
+python scripts/build_grouped_split.py \
+  --manifest outputs/server_graph_split_audit_v1/graph_manifest.sqlite \
+  --audit-report outputs/server_graph_split_audit_v1/report.json \
+  --seed 42 --val-ratio 0.1 --test-ratio 0.1 \
+  --output data/processed/ciciot2023_grouped_input_v1
+```
+
+预期保留134515个Edge输入，组成134463个No Edge组；实际分区和每类数量以新split.json为准。运行后先回传终端摘要或该split.json，不需要回传较大的samples.jsonl或SQLite。该命令仅建立元数据划分，不进行训练、图加载或模型优化。
+
+这是将现有图集合重新建立的新基准，合并使用已有源train/test图，不能称为旧Table4划分或原实验严格复现。原始流/capture独立性仍未知。新协议按Edge独立输入等权评价，同一No Edge组中的不同Edge变体可贡献多个样本，但不得跨集；该计权方式需在论文中写明。
+
+新split不提供旧split_indices，避免被旧CLI误当成185557图字典序索引使用；samples.jsonl使用显式路径+容器offset，不依赖旧排序的可信性。接下来的正式服务器入口必须读取此清单、核验取出的图输入哈希和标签，再执行GPU冒烟与训练。不要直接套用旧训练命令或CPU pilot入口。
