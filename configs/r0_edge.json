@@ -1,0 +1,22 @@
+{
+  "schema": "xgnid.r0.config.v1",
+  "experiment": "R0",
+  "claim": "protocol_reimplementation",
+  "upstream_commit": "551d1f10189e5259f8f34e32f918d557a2b3a64e",
+  "model": "official_HeteroGNN_Edge",
+  "hidden_size": 64,
+  "eps": 1.0,
+  "optimizer": "Adam",
+  "lr": 0.01,
+  "weight_decay": 0.0,
+  "epochs": 30,
+  "batch_size": 64,
+  "test_batch_size": 1,
+  "scheduler": null,
+  "selection": "last_epoch",
+  "seed": 42,
+  "seed_evidence": "local reproducibility choice; official training seed not published",
+  "flow_dim": 82,
+  "packet_dim": 1500,
+  "labels": ["Benign", "WebBased", "Spoofing", "Recon", "Mirai", "Dos", "DDos", "BruteForce"]
+}

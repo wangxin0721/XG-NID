@@ -1,0 +1,60 @@
+{
+  "repository": "https://github.com/Yasir-ali-farrukh/GNN4ID",
+  "commit": "551d1f10189e5259f8f34e32f918d557a2b3a64e",
+  "commit_date": "2026-02-23T00:08:34Z",
+  "paper": "https://arxiv.org/html/2408.16021v2",
+  "paper_to_commit_training_identity": "not established",
+  "files": {
+    "Data_preprocessing_CIC-IoT2023.ipynb": {
+      "upstream_sha256": "1d313f34fff027fb5b4de20c6ce745171f724f1ddb40b8856951936862b6b949",
+      "local_sha256": "a47e7d387da5b6f1b7a0e504965a39c7dc076125edefa0655e0ae113969bebc7",
+      "normalized_text_equal": false,
+      "normalized_text_identity": "e227e80b995c7c971dd857c9709b4b0e67e978a4b4486009e271a61e479aebfc"
+    },
+    "GNN4ID.ipynb": {
+      "upstream_sha256": "0b348110dd27d0e0c6b2af77d8490b5a4eafcde2e4c4fe515d7f67c27e05382c",
+      "local_sha256": "0b348110dd27d0e0c6b2af77d8490b5a4eafcde2e4c4fe515d7f67c27e05382c",
+      "normalized_text_equal": true,
+      "normalized_text_identity": "cf3056571e0fdb16b7aea2ab7949c24c3093d78fe1e85db50cd1b8398f30a9ab"
+    },
+    "GNN4ID_Model.ipynb": {
+      "upstream_sha256": "aadffb666ee9caa633fa592609f934931f372546b62735cffcc1e16fc9fbe00b",
+      "local_sha256": "72ad6a5ed6f37594d80fa6f65468826cd996735e4223f06ab21954f2ec9a0fb7",
+      "normalized_text_equal": false,
+      "normalized_text_identity": "2aec98cb1426308d707e7e83abc82ace23e0798adc090775298a4395b0945962"
+    },
+    "README.md": {
+      "upstream_sha256": "b6499dbd0af7bafef905a357b399c21eac5385b4eae6277544ead0cf6018593a",
+      "local_sha256": "b6499dbd0af7bafef905a357b399c21eac5385b4eae6277544ead0cf6018593a",
+      "normalized_text_equal": true,
+      "normalized_text_identity": "6244e406ea6b216822ecb5b323bfd822cf87486f308f9ebaa67be167c2650767"
+    },
+    "Utility/Functions.py": {
+      "upstream_sha256": "3cdc144ce6252d38ecfd751c6e1bd7b6a0616c8262d7c89a2b395677ae383b04",
+      "local_sha256": "63c0b80ad2d0155984c3b0cb4279172febf6dbc86f84d42c39c7bbd0914d162f",
+      "normalized_text_equal": true,
+      "ast_equal": true,
+      "normalized_text_identity": "3161183a6fb585ad64308261a9b7b67a864829f1e4030f49cfe72e6ab115bb04"
+    },
+    "Utility/Model.py": {
+      "upstream_sha256": "6127b62f7d720af5c114ac35ff82d30d4a8fe7e99872811623ed03af2df76ffd",
+      "local_sha256": "e17c3905e3c9f437c269bdd0e4d115656cfba6054b6a4474bbd06b5453010688",
+      "normalized_text_equal": true,
+      "ast_equal": true,
+      "normalized_text_identity": "72a6c12aed6acbea50555686e1540ccbed0ba03d589951accce3fc1d453bfcb0"
+    },
+    "Utility/Training.py": {
+      "upstream_sha256": "cb5411bf9fed082724f0cb9afee281e8adc0a94070a367cdcc4ab4e0d2728e75",
+      "local_sha256": "e15ab0a1a6f1d19b77a8afdfe366bc9b01b3d30e78843db573d577c00789fe43",
+      "normalized_text_equal": true,
+      "ast_equal": true,
+      "normalized_text_identity": "6cf89cdecf902ab2f7eef1067c597d44cfe7f8b25cb43886f33212f3e6782827"
+    },
+    "requirement.txt": {
+      "upstream_sha256": "cb35d25a6bfef5e566512624f97da548fc77bcfd3adb7611ad6d080c8c5d1c05",
+      "local_sha256": "298345605787b22d1733fa8d95ad87ecddd1a91e60635cbb84c74807f2f250b2",
+      "normalized_text_equal": true,
+      "normalized_text_identity": "0bf8d1edd644ad47a7991271f64eeef677ba260f8b116360d882933c73bc88d0"
+    }
+  }
+}
