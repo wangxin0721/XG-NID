@@ -46,3 +46,38 @@ test ! -f "$R0_CPU/summary.json" || cat "$R0_CPU/summary.json"
 ```
 
 此命令前台运行，结束前等待，不重复启动。若变量已丢失，应先用实际既有路径恢复R0_PREP，不新建时间戳冒充已有清单。失败回传外部log/error.log；成功回传summary.json/exitcode。不会根据两轮训练的Accuracy挑配置或作论文性能比较。随后再安排同代码/清单的真实CUDA smoke；正式30轮仍未启动。
+
+## 服务器CPU冒烟与E1完成回传
+
+用户回传了`outputs/r0_cpu_smoke_server_v1/summary.json`尾部及其头部/运行环境摘录：status=completed、exit_code=0、mode=smoke、epochs_completed=2。真实服务器环境为Python3.9.23、torch2.3.1+cu118、PyG2.5.3、CUDA构建11.8；本次device_type=cpu/gpu=null。没有本地运行模型。之前一次启动因日志路径被粘贴成字面量`$\(PWD/...`而在shell重定向阶段失败，Python没有启动；修正为简单相对路径后本次CPU运行完成。
+
+- 参数431704；loss=1.9906264543533325，optimizer_step_passed=true，test=null；记录的流程wall_seconds约1.4427（不含全部解释器/依赖导入和清单解析时间，不能据此估算正式训练）。
+- 两层Link边投影梯度最大值约2.4913e-6/4.3562e-6，Reverse Contain约1.4277e-4/4.1673e-6；Contain两层均0。
+- 隔离属性干预的最大logprob差：Contain0、Link0.07998848、Reverse Contain27.01780891；重复前向抖动0、容差1e-6，支持真实边属性作用。Contain单入边允许其注意力项抵消，不据此判定属性漏传。
+- last.pt SHA256=`f36c0755a19c203b3cffc8d9615fe18ccf4b87e511e45ee22e836c51499fcb51`。
+
+同次回传E1根status=completed/exit_code=0，epoch日志最后为47轮。最佳轮次、最终测试指标和完整产物尚未回传；不能把epoch47验证Macro-F1=0.9477984714392171当成最终测试成绩。E1完成记录不等于已确认cuda:0无人占用；新的GPU任务启动前仍需检查当前进程/资源安排。
+
+## 下一步：真实CUDA冒烟，仍不启动full
+
+在原服务器仓库wx终端先收取E1指标并检查残留训练进程：
+
+```bash
+cat outputs/grouped_full_E1_s42_v1/E1/metrics.json
+pgrep -af '[p]ython.*(train_grouped.py|run_r0_edge.py)' || true
+```
+
+确认E1进程已退出且cuda:0没有其他训练占用后，使用原有独立worktree和同一清单。只运行小规模smoke，不运行full，不改变torch/驱动：
+
+```bash
+R0_CODE="$(python -c 'import json,sys; print(json.load(open(sys.argv[1], encoding="utf-8"))["code_root"])' "$R0_PREP/source_evidence.json")"
+R0_GPU=outputs/r0_cuda_smoke_server_v1
+env CUDA_VISIBLE_DEVICES=0 OMP_NUM_THREADS=2 MKL_NUM_THREADS=2 \
+  /home/nzxn/miniconda3/envs/wx/bin/python -u "$R0_CODE/scripts/run_r0_edge.py" \
+  --mode smoke --manifest-dir "$R0_PREP/manifest" --device cuda:0 --workers 0 \
+  --output "$R0_GPU" > "$R0_GPU.log" 2>&1
+printf '%s\n' "$?" > "$R0_GPU.exitcode"
+tail -n 50 "$R0_GPU.log"
+```
+
+返回日志及summary/status/exitcode。CUDA不可用或属性干预/梯度/优化检查失败均如实报告，不回退CPU冒充GPU通过，不动E1检查点。只有同代码、配置、清单及runtime的真实CUDA smoke通过、结果人工核查后，才提供下一步正式训练启动操作。本段命令尚未执行。
