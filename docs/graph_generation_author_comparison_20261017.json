@@ -1,0 +1,47 @@
+{
+  "repository": "https://github.com/Yasir-ali-farrukh/GNN4ID",
+  "official_commit": "551d1f10189e5259f8f34e32f918d557a2b3a64e",
+  "scope": "Static file/content comparison only; no graph generation, model execution, or source edits",
+  "original_paper_training_commit_verified": false,
+  "server_historical_graph_generator_verified": false,
+  "files": [
+    {
+      "path": "Utility/Functions.py",
+      "official_raw_sha256": "3cdc144ce6252d38ecfd751c6e1bd7b6a0616c8262d7c89a2b395677ae383b04",
+      "local_raw_sha256": "63c0b80ad2d0155984c3b0cb4279172febf6dbc86f84d42c39c7bbd0914d162f",
+      "normalized_text_equal": true,
+      "official_lf_text_sha256": "63c0b80ad2d0155984c3b0cb4279172febf6dbc86f84d42c39c7bbd0914d162f"
+    },
+    {
+      "path": "Utility/Feature_extractor_flow_packet_combined.py",
+      "official_raw_sha256": "5276c4f102e76d3846f23df8b074caaf6183febfffe828fc126301b655e6d69c",
+      "local_raw_sha256": "a323aefff3fbe903332b5c253040d0687025e6dd2034f067a4fb9f3afdd43e80",
+      "normalized_text_equal": true,
+      "official_lf_text_sha256": "a323aefff3fbe903332b5c253040d0687025e6dd2034f067a4fb9f3afdd43e80"
+    },
+    {
+      "path": "Utility/Additional_Features.py",
+      "official_raw_sha256": "d40fd8b3bb834cb6aefe0641bc41e1f6a72b70cad24dff83e4e6620f9f42c07f",
+      "local_raw_sha256": "d40fd8b3bb834cb6aefe0641bc41e1f6a72b70cad24dff83e4e6620f9f42c07f",
+      "normalized_text_equal": true,
+      "official_lf_text_sha256": "d40fd8b3bb834cb6aefe0641bc41e1f6a72b70cad24dff83e4e6620f9f42c07f"
+    },
+    {
+      "path": "GNN4ID.ipynb",
+      "official_raw_sha256": "0b348110dd27d0e0c6b2af77d8490b5a4eafcde2e4c4fe515d7f67c27e05382c",
+      "local_raw_sha256": "0b348110dd27d0e0c6b2af77d8490b5a4eafcde2e4c4fe515d7f67c27e05382c",
+      "normalized_text_equal": true,
+      "code_cells_equal_in_execution_order": true,
+      "official_lf_text_sha256": "0b348110dd27d0e0c6b2af77d8490b5a4eafcde2e4c4fe515d7f67c27e05382c"
+    },
+    {
+      "path": "Data_preprocessing_CIC-IoT2023.ipynb",
+      "official_raw_sha256": "1d313f34fff027fb5b4de20c6ce745171f724f1ddb40b8856951936862b6b949",
+      "local_raw_sha256": "a47e7d387da5b6f1b7a0e504965a39c7dc076125edefa0655e0ae113969bebc7",
+      "normalized_text_equal": false,
+      "code_cells_equal_in_execution_order": true,
+      "official_lf_text_sha256": "1d313f34fff027fb5b4de20c6ce745171f724f1ddb40b8856951936862b6b949"
+    }
+  ],
+  "upstream_file_history_lookup": "GitHub API rate limited; publication-time file history remains unverified"
+}
