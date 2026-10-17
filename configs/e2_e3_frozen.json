@@ -1,0 +1,43 @@
+{
+  "schema": "xgnid.e2-e3-preparation.v1",
+  "split_id": "a8ae9c934eec9fee970cc725e60051d0c709e0f16c7dda14749350ff2006975a",
+  "labels": ["Benign", "WebBased", "Spoofing", "Recon", "Mirai", "Dos", "DDos", "BruteForce"],
+  "partition_sizes": {"train": 107621, "val": 13446, "test": 13448},
+  "paths": {
+    "split_dir": "data/processed/ciciot2023_grouped_input_v1",
+    "smoke_report": "outputs/grouped_gpu_smoke_v1/smoke.json",
+    "pilot_report": "outputs/grouped_training_pilot_v1/summary.json",
+    "baseline_report": "outputs/grouped_full_E0_s42_v1/summary.json",
+    "e1_report": "outputs/grouped_full_E1_s42_v1/summary.json",
+    "e2_output": "outputs/grouped_full_E2_s42_v1",
+    "e3_output": "outputs/grouped_full_E3_s42_v1"
+  },
+  "controls": {
+    "seed": 42,
+    "batch_size": 16,
+    "lr": 0.001,
+    "hidden_dim": 64,
+    "optimizer": "Adam",
+    "early_stop_patience": 12,
+    "early_stop_min_delta": 0.0,
+    "auxiliary_losses": false,
+    "calibration": false,
+    "class_weighting": false,
+    "hard_negatives": false,
+    "loss": "plain NLL",
+    "device_family": "cuda"
+  },
+  "epochs": 100,
+  "workers": 2,
+  "device": "cuda:0",
+  "expected_runtime": {"python": "3.9.23", "torch": "2.3.1+cu118", "pyg": "2.5.3"},
+  "model_semantics": {
+    "E2": "Two independent full heterograph encoders; pool Flow/Packet separately; equal 8-dimensional representation fusion; shared classifier",
+    "E3": "Same branches and classifier; adaptive gate with entropy-complement proxy mixing; final NLL only",
+    "parameter_count_each": 846800,
+    "input_dimensions": {"flow": 82, "packet": 1500, "contain": 4, "reverse_contain": 4, "link": 1},
+    "selection": "best validation Macro-F1; strict improvement; patience 12; reload best before one final test",
+    "optimizer_defaults": "Adam weight_decay=0, no scheduler, no finite gradient clipping"
+  },
+  "scheduling": "Preparation only while R0 runs. Start E2 after R0 finishes and GPU availability is confirmed; review E2 completion before starting E3. No automatic training, retry, resume, or dependency installation."
+}
