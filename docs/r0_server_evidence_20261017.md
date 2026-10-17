@@ -30,3 +30,13 @@ python -c 'import sys; from importlib.metadata import version; print(sys.executa
 PID来自10:45:44快照；若已退出，以status/日志和当前进程为准，不用旧PID认定仍运行。日志路径为既有启动命令候选，如果文件不存在，回传缺失错误并寻找真实重定向路径；不创建替代日志。版本命令只读取包元数据，不导入torch或创建CUDA上下文。正常运行但epoch尚未结束时日志可能暂不更新，不能仅凭一次tail判定卡死。
 
 本轮完成的是服务器环境和文件命名的真实盘点。R0清单生成、真实图内容/类别/重叠检查、GPU冒烟及正式训练仍未执行；E0完整原始交付尚待采集。待确认E1进展后安排CPU/I/O清单扫描，GPU冒烟留待资源空闲及环境可用时进行。
+
+## 10:49:42回传补充
+
+用户再次回传真实ps/status/完整epoch1～17日志。主进程3768665已运行约1:38:21，其余四个进程PPID均为3768665，确认是该训练的子进程，结合train/val persistent workers配置，不是五个独立启动的E1。两级status均为running。已完成17轮，每轮实际消费107621训练图；最近训练约277～284秒、验证约33～34秒，loss有限；日志记录cuda:0与非零峰值CUDA分配内存。这支持训练已在CUDA上完成多轮，不能把nvidia-smi失败直接等同于CUDA训练不可用；当前尚无完成状态或最终测试结果。
+
+已回传17轮中的最佳验证Macro-F1为epoch15的0.9435216988706552，Accuracy0.9635579354454856；这是中途验证，不是E1最终结果。epoch17验证Macro-F1为0.9391866840180138。不会据此调整冻结超参数或提前终止。
+
+日志还显示torch-spline-conv导入undefined symbol后被PyG禁用，以及Can't initialize NVML警告。冻结E1源码路径使用GAT而非SplineConv；日志证明这些报警未阻止已回传17轮。不安装/重装包或驱动，不中断E1；后续独立R0 smoke仍须真实验证实际依赖和CUDA路径。
+
+下一步新增服务器CPU包装器`prepare_r0_server.py`：计算两份候选CSV的SHA256，明确记录CSV→图映射尚未验证，再调用已交付r0_data生成源train/test图输入清单、逐类数和重叠报告。运行于独立Git worktree，避免切换E1工作树；输出仅写新目录，不用GPU，不修改原数据。该新增包装器本地仅静态审查，未运行；服务器清单扫描仍待真实执行。清单完成也不等于GPU冒烟通过或严格恢复作者样本。
