@@ -1,0 +1,93 @@
+{
+  "schema": "xgnid.r0.aligned-smoke-user-evidence.v1",
+  "received_date": "2026-10-19",
+  "source": "User-pasted server terminal JSON; not direct server access",
+  "attachment_sha256": "cc03e173f63f61d6e116ff1149a95ec65d951fc2f95bee812c1f903602ecc6c5",
+  "server_summary_file_received": false,
+  "checkpoint_file_received": false,
+  "formal_run_status": "not_confirmed_started",
+  "server_smoke_summary": {
+    "status": "completed",
+    "exit_code": 0,
+    "mode": "smoke",
+    "epochs_completed": 2,
+    "binding": {
+      "manifest_id": "22d027fe3d0b0ad9079da9a13614597b0e40bb883a34b2d4d825452d6129d383",
+      "base_code": {
+        "scripts/run_r0_edge.py": "b8dd03260fd1bb5963a4f27b825028bb60125a021870c1cdbbeff1a568330626",
+        "scripts/r0_data.py": "b1d812cf0fb137200a1707a554b1e907c25fe988ea89f7f094b341e60d8cfff5",
+        "scripts/audit_graph_split.py": "f015ad28326e1aa697f5f1aa94ce0d65122c044f6396ad1a8059978b9cef9355",
+        "scripts/build_grouped_split.py": "63689d2130edf831c1e9b2a4c3ea49146d8c1c39d23303c96927618111a3d1e1",
+        "src/xgnid/edge_experiments.py": "028299120dbc4f22b682f7e180062a15ffb9d59f72c34d6444cd6ad0a9cc4f97",
+        "src/xgnid/model.py": "e56860fedda32af7acfaec85c3f6b10b6e67547e6557d3dcf222570c9d3d2d89",
+        "third_party/GNN4ID/Utility/Model.py": "72a6c12aed6acbea50555686e1540ccbed0ba03d589951accce3fc1d453bfcb0",
+        "docs/r0_source_lock.json": "3657c8f5a37039e81dffdda7e88a0977de288c5ebd19650e6f3914894b63b01c"
+      },
+      "experiment": {
+        "experiment": "R0-A",
+        "base_config_id": "7463253af0c7d165dc7c3b681895e6d918e8c83f80994ac896ef5045f84e414b",
+        "order": "contiguous_numeric_filename",
+        "initialization": "first_training_forward_no_warmup",
+        "training": "locked_official_train_with_edge_Att_with_observation_hooks",
+        "seed": 42,
+        "claim": "protocol_reimplementation",
+        "joint_control_not_individual_causal_attribution": true
+      },
+      "tool_identity": "082c4dc27605235106a5409aeacb5cd2aa9e9ff5bbcbf59f7099ab609b040080",
+      "training_source_identity": "6cf89cdecf902ab2f7eef1067c597d44cfe7f8b25cb43886f33212f3e6782827",
+      "runtime": {
+        "python": "3.9.23",
+        "torch": "2.3.1+cu118",
+        "pyg": "2.5.3",
+        "cuda": "11.8",
+        "device_type": "cuda",
+        "gpu": "Tesla T4"
+      },
+      "full_numeric_train_members_id": "4c50166d8c079803122e7ac841f1c891cb01a388c0790f70730fb2340ce3067f"
+    },
+    "claim": "protocol_reimplementation",
+    "selection": "last_epoch",
+    "optimizer_step_passed": true,
+    "first_step": {
+      "updated_parameter_tensors": 46,
+      "gat_attribute_shapes": {
+        "convs1.convs.<flow___contain___packet>": [
+          634,
+          4
+        ],
+        "convs1.convs.<packet___link___packet>": [
+          1140,
+          1
+        ],
+        "convs1.convs.<packet___rev_contain___flow>": [
+          634,
+          4
+        ],
+        "convs2.convs.<flow___contain___packet>": [
+          634,
+          4
+        ],
+        "convs2.convs.<packet___link___packet>": [
+          1140,
+          1
+        ],
+        "convs2.convs.<packet___rev_contain___flow>": [
+          634,
+          4
+        ]
+      },
+      "edge_projection_gradients": {
+        "convs1.convs.<flow___contain___packet>": 0.0,
+        "convs1.convs.<packet___link___packet>": 6.157835741760209e-06,
+        "convs1.convs.<packet___rev_contain___flow>": 4.491908475756645e-05,
+        "convs2.convs.<flow___contain___packet>": 0.0,
+        "convs2.convs.<packet___link___packet>": 2.3139432414609473e-07,
+        "convs2.convs.<packet___rev_contain___flow>": 3.221393853891641e-06
+      }
+    },
+    "parameters": 431704,
+    "test": null,
+    "last_checkpoint_sha256": "a450f50b30dc52428e85dbba560594e7dcaabc085684397b1fbd626dd8a23217",
+    "wall_seconds": 7.464174032211304
+  }
+}

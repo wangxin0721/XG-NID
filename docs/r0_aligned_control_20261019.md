@@ -34,10 +34,47 @@ CUDA_VISIBLE_DEVICES=0 python -B -u /tmp/xgnid_r0_aligned.py --repo . --mode smo
 
 ## 冒烟通过后才执行一次正式对照
 
-新入口不自动启动正式训练。正式模式强制核对新R0-A冒烟的代码、数据、配置、运行环境绑定及其checkpoint SHA；旧R0冒烟不能替代。下面为前台运行命令，需保持终端连接；当前未执行。
+新入口不自动启动正式训练。正式模式强制核对新R0-A冒烟的代码、数据、配置、运行环境绑定及其checkpoint SHA；旧R0冒烟不能替代。2026-10-19已收到新冒烟通过回传，详见末节。下面为前台运行命令，需保持终端连接；正式训练尚未收到启动证据。
 
 ```bash
 CUDA_VISIBLE_DEVICES=0 python -B -u /tmp/xgnid_r0_aligned.py --repo . --mode full --device cuda:0 --smoke-report outputs/r0_aligned_smoke_s42_v1/summary.json --output outputs/r0_aligned_full_s42_v1
+```
+
+需要后台运行时，使用下面命令**代替**前台命令，不能两者都运行。先在原仓库wx环境执行；复用已通过冒烟的`/tmp/xgnid_r0_aligned.py`，无需更新脚本或重跑冒烟。外层先用noclobber独占创建日志，拒绝覆盖已有输出/日志；脚本自身仍检查已知训练进程和匹配冒烟。nohup返回只表示提交启动，不表示正式训练已正常开始。
+
+```bash
+(
+  set -C
+  if [ -e outputs/r0_aligned_full_s42_v1 ]; then
+    echo 'R0-A output already exists; stop.'
+    exit 1
+  fi
+  : > outputs/r0_aligned_full_s42_v1.log || exit 1
+  nohup sh -c '
+    printf "%s\n" "$$" > outputs/r0_aligned_full_s42_v1.supervisor.pid
+    CUDA_VISIBLE_DEVICES=0 python -B -u /tmp/xgnid_r0_aligned.py --repo . --mode full --device cuda:0 --smoke-report outputs/r0_aligned_smoke_s42_v1/summary.json --output outputs/r0_aligned_full_s42_v1 &
+    train_pid=$!
+    printf "%s\n" "$train_pid" > outputs/r0_aligned_full_s42_v1.pid
+    wait "$train_pid"
+    rc=$?
+    printf "%s\n" "$rc" > outputs/r0_aligned_full_s42_v1.exitcode
+    exit "$rc"
+  ' >> outputs/r0_aligned_full_s42_v1.log 2>&1 < /dev/null &
+)
+```
+
+连续显示日志（Ctrl+C仅停止查看，不终止后台训练）：
+
+```bash
+tail -n 30 -f outputs/r0_aligned_full_s42_v1.log
+```
+
+在另一终端可核对训练PID和最终退出码；exitcode在进程结束后才生成，缺失不等于失败：
+
+```bash
+ps -p "$(cat outputs/r0_aligned_full_s42_v1.pid)" -o pid,ppid,etime,args
+cat outputs/r0_aligned_full_s42_v1/status.json
+cat outputs/r0_aligned_full_s42_v1.exitcode
 ```
 
 正式训练固定30轮，每轮记录训练loss/accuracy、训练样本身份顺序摘要、优化步数和用时；不额外增加训练F1全量扫描。保存最后一轮权重并加载核对，然后对同一现有测试成员评价一次，保存metrics、逐样本身份/标签/预测和CM。原R0和E0～E3不被修改，既有CSV与图全程只读。测试数字重排本身不会改变固定模型的汇总F1。
@@ -54,4 +91,16 @@ cat outputs/r0_aligned_full_s42_v1/summary.json
 
 ## 本地交付与待执行状态
 
-本地只完成Python3.9 AST语法/编译和锁定官方训练函数循环/插入位置静态核查；没有导入模型、运行新增入口或执行数据检查。服务器CUDA冒烟、正式对照及上游重算均待真实执行，不能记录为通过。
+本地只完成Python3.9 AST语法/编译和锁定官方训练函数循环/插入位置静态核查；没有导入模型、运行新增入口或执行数据检查。服务器CUDA冒烟已真实通过；正式对照训练及上游重算仍待实际证据，不能记录为完成。
+
+## 服务器CUDA冒烟回传（2026-10-19）
+
+用户回传已归档至[r0_aligned_smoke_evidence_20261019.json](r0_aligned_smoke_evidence_20261019.json)，未直接取回服务器summary或checkpoint文件。工具identity与交付源码一致，为`082c4dc27605235106a5409aeacb5cd2aa9e9ff5bbcbf59f7099ab609b040080`。
+
+- status=completed，exit_code=0，mode=smoke，epochs_completed=2，optimizer_step_passed=true，test=null。
+- Tesla T4/CUDA，Python3.9.23、torch2.3.1+cu118、PyG2.5.3。256个训练样本，每轮4步，总8步；参数431704，首次更新46个参数张量。
+- 6个GAT均接收实际边属性，Contain/reverse为634×4，Link为1140×1；Link和reverse关系边投影梯度非零。Contain的零梯度不能单独作为错误证据。
+- 两轮训练loss为1.878309428691864和1.2582197487354279，训练accuracy为0.34765625和0.69921875。它们是小样本冒烟指标，不能用于推断正式精度或预计全量耗时。
+- last.pt SHA256为`a450f50b30dc52428e85dbba560594e7dcaabc085684397b1fbd626dd8a23217`，总用时7.464秒。运行中出现torch-spline-conv和NVML警告，但本次实际CUDA执行成功，不因警告改动服务器环境。
+
+结论：R0-A已满足其独立CUDA冒烟门槛，可进入一次固定30轮正式对照。正式入口仍会重新校验匹配绑定；尚无正式训练已启动或性能差距已解决的证据。
