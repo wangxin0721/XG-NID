@@ -97,3 +97,13 @@ python -B -u /tmp/xgnid_audit_r0_gap.py --repo .
 另一个待追溯的平台细节：官方name_mapping将BrowserHijacking映射为`Webbased-BrwserHijack`（小写b），而后续主类使用`WebBased`；文件路径还包含Windows反斜线拆分和glob。Linux移植时需要核对实际修订及输入文件覆盖范围。当前CSV数量匹配表4、64张样本匹配并不能恢复所有亚类来源；这仍是待证实项，不是已定位根因。
 
 下一步只读取已有报告中的82列及temporal列，并结合用户保留的原提取记录确认执行顺序；不重复当前已通过的产物/前向核查，不自动重训练。
+
+## 七、特征列真实回传：附加列名称和顺序核对通过
+
+用户执行只读命令，从上述服务器诊断目录的`csv_graph_samples.json`提取train的完整flow_feature_order、temporal_columns和mac_columns_present。回传共82个Flow列，分解为46个基础统计列、1个packet_size_variation、28个rolling/分组附加列、7个独热列。工具的temporal_columns按列名前缀筛选，也包含packet_size_variation；不能将其称为29个全是时间窗口特征。
+
+本地仅对字符串及官方源码AST核对：回传29个附加列的**名称和顺序**与锁定官方Additional_Features.py一致。缓存与vendored该文件字节相同，SHA256为`d40fd8b3bb834cb6aefe0641bc41e1f6a72b70cad24dff83e4e6620f9f42c07f`。末尾Exp_0、Exp_-1、proto_1、proto_2、proto_6、proto_17、proto_58与公开默认类别顺序一致。先前服务器CPU核查已要求train/test的完整82列顺序相同并通过，无需再重复读取测试列。
+
+mac_columns_present=[]符合官方预处理先过滤、再删除src_mac/dst_mac等标识列的输出结构，不能据此推断未做MAC过滤，也不能反向证明过滤确实按论文执行。29个附加列齐全不支持“完全漏掉时间特征列”的解释；列名存在及64张抽样值匹配仍不能证明历史window_size、逐文件计算范围或所有行的值与作者实验完全一致。
+
+这项列结构核对已完成，无需再要求用户重复回传表头或重跑完整审查。当前已检查范围内未发现可直接修复的输入/封装/评价错误；论文分数差距的根因仍未确定。保持原始结果和冻结训练不变，后续需要作者样本/历史生成记录，或另行登记的独立受控实验来检验已确认的训练顺序与初始化时机差异，不根据测试反馈反复调参。
