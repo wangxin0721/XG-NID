@@ -1,0 +1,52 @@
+{
+  "schema": "xgnid.r0.server-result-transcription.v1",
+  "received_date": "2026-10-19",
+  "source": "User-pasted server metrics.json and last three epochs.jsonl records; no local model execution",
+  "output_relative_path": "outputs/r0_full_s42_20261017T065259974842Z",
+  "claim": "protocol_reimplementation",
+  "evidence_status": {
+    "epoch_30_record_received": true,
+    "final_test_metrics_received": true,
+    "server_status_received": false,
+    "supervisor_exit_code_received": false,
+    "final_summary_received": false,
+    "checkpoint_hash_verified": false,
+    "predictions_file_independently_verified": false,
+    "full_artifact_acceptance": "pending"
+  },
+  "labels": ["Benign", "WebBased", "Spoofing", "Recon", "Mirai", "Dos", "DDos", "BruteForce"],
+  "metrics": {
+    "samples": 25557,
+    "accuracy": 0.949798489650585,
+    "macro_f1": 0.9282109573752342,
+    "weighted_f1": 0.9527271796968293,
+    "classification_report": {
+      "Benign": {"precision": 0.9593098120010302, "recall": 0.93125, "f1-score": 0.9450716732208551, "support": 4000.0},
+      "WebBased": {"precision": 0.5710412147505423, "recall": 0.9660550458715597, "f1-score": 0.7177914110429447, "support": 1090.0},
+      "Spoofing": {"precision": 0.9480153649167734, "recall": 0.9255, "f1-score": 0.9366223908918406, "support": 4000.0},
+      "Recon": {"precision": 0.9853629976580797, "recall": 0.8415, "f1-score": 0.9077669902912622, "support": 4000.0},
+      "Mirai": {"precision": 1.0, "recall": 0.99925, "f1-score": 0.9996248593222459, "support": 4000.0},
+      "Dos": {"precision": 0.9942657691348791, "recall": 0.997, "f1-score": 0.9956310073648732, "support": 4000.0},
+      "DDos": {"precision": 1.0, "recall": 0.998, "f1-score": 0.998998998998999, "support": 4000.0},
+      "BruteForce": {"precision": 0.8860510805500982, "recall": 0.9657387580299786, "f1-score": 0.9241803278688524, "support": 467.0},
+      "accuracy": 0.949798489650585,
+      "macro avg": {"precision": 0.9180057798764254, "recall": 0.9530367254876922, "f1-score": 0.9282109573752342, "support": 25557.0},
+      "weighted avg": {"precision": 0.9619296691136688, "recall": 0.949798489650585, "f1-score": 0.9527271796968293, "support": 25557.0}
+    },
+    "confusion_matrix_true_rows_predicted_columns": [
+      [3725, 96, 156, 17, 0, 0, 0, 6],
+      [4, 1053, 4, 3, 0, 0, 0, 26],
+      [126, 127, 3702, 21, 0, 0, 0, 24],
+      [28, 546, 35, 3366, 0, 23, 0, 2],
+      [0, 1, 2, 0, 3997, 0, 0, 0],
+      [0, 3, 1, 8, 0, 3988, 0, 0],
+      [0, 5, 2, 1, 0, 0, 3992, 0],
+      [0, 13, 3, 0, 0, 0, 0, 451]
+    ]
+  },
+  "epochs_tail": [
+    {"epoch": 28, "train_loss": 0.11383533785510808, "train_samples": 160000, "train_accuracy": 0.96228125, "lr": 0.01, "seconds": 1127.8295814990997},
+    {"epoch": 29, "train_loss": 0.13179811293520033, "train_samples": 160000, "train_accuracy": 0.95151875, "lr": 0.01, "seconds": 1110.2083077430725},
+    {"epoch": 30, "train_loss": 0.11756023076064885, "train_samples": 160000, "train_accuracy": 0.9601, "lr": 0.01, "seconds": 1124.2913432121277}
+  ]
+}
