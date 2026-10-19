@@ -49,4 +49,26 @@ python -B -u /tmp/xgnid_audit_r0_gap.py --repo .
 
 完成后回传终端JSON，重点看`failed_checks`、`base_order_is_official_numeric`、CSV抽样matching_samples、checkpoint/BN计数、官方forward差异；完整字段在工具打印的report.json。候选映射有差异还需回传同目录csv_graph_samples.json中对应差异项。`checks_passed_with_unresolved_protocol_differences`仅表示本次所选核对通过，不表示已达到97%或已排除所有问题；`root_cause_established`保持false。
 
-本次本地交付仅Python3.9语法解析与静态审查；服务器运行尚未执行，不能列为通过。任何失败都保留原结果并报告，不自动修补数据、换seed或重训练。
+首次本地交付仅Python3.9语法解析与静态审查；后续已经收到服务器真实通过回传，范围见下节。没有在本地运行模型或诊断脚本。任何失败都保留原结果并报告，不自动修补数据、换seed或重训练。
+
+## 四、真实服务器回传：三项检查全部通过
+
+来源为用户完整粘贴的终端JSON；工具来自提交`1e00494`。原数值保存于`r0_gap_server_evidence_20261019.json`，完整服务器report及CSV抽样详情文件仍在服务器，并未整文件取回。诊断目录为`outputs/r0_gap_audit_20261019T011605512759Z`。
+
+| 检查 | 真实回传 |
+|---|---|
+| 正式运行产物与清单 | passed；30轮、状态/配置/源码/清单绑定及最终权重SHA通过 |
+| 保存预测与指标 | passed；25557条身份、标签、顺序正确，重建Macro-F1=0.9282109573752343 |
+| CSV/图、checkpoint、CPU前向 | passed；训练32/32、测试32/32抽样张量匹配，候选对应差异0 |
+| 优化与BN计数 | Adam state step均75000；四个BN num_batches_tracked均75000，与30×2500 batch一致 |
+| 包装模型与官方模型 | 使用同一最终权重和所检训练batch，最大logprob差0.0 |
+| batch与单图eval | 最大logprob差4.57763671875e-05，在工具设定rtol=atol=1e-5的联合容差内通过；不是所有测试图的数值等价证明 |
+| 实际诊断环境 | CPU，Python3.9.23、torch2.3.1+cu118、PyG2.5.3、pandas2.0.3、numpy1.23.5、sklearn1.3.2 |
+
+最终权重SHA=`7a86dbc2b7345295be9b564cb581eb9dff20227018449aaf8e1a47aeba6ff581`；预测SHA=`8c1e13b25066f4f5e9b0499f52fc6f39c6329c50730abd395f0c0e8122a6b543`。没有启动训练、没有使用GPU、没有新增测试推断。
+
+源train/test均确认是字典序而非官方数字基础顺序。**必须区分训练与测试：** 训练基础顺序可能影响随机批次/优化轨迹；因果影响仍未测定。测试以同一权重、eval、batch1逐图推断，预测与标签已逐条对齐，仅改变样本遍历顺序不会改变这套样本上的汇总F1，不能拿测试排序解释4.18个百分点。
+
+现阶段没有发现抽样输入被错构、包装器改变官方输出或指标算错的证据；不能扩展为所有代码/所有输入均无问题。64个匹配只证明当前候选CSV与这64张图的一致性，不能证明作者历史样本相同。时间窗口、历史过滤与亚类比例仍缺来源记录；root_cause_established=false。
+
+无需重跑本次审查。下一步可以直接从现有`csv_graph_samples.json`提取82列顺序和temporal列清单，核实可见时间特征，再判断需要哪份原始生成记录。不要因检查通过就反复换seed或修改测试集。

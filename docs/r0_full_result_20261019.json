@@ -20,9 +20,21 @@
     "server_status_received": true,
     "supervisor_exit_code_received": true,
     "final_summary_received": "compact summary shown in status screenshots; full JSON not received",
-    "checkpoint_hash_verified": false,
-    "predictions_file_independently_verified": false,
-    "full_artifact_acceptance": "normal completion confirmed; independent checkpoint/prediction verification pending"
+    "checkpoint_hash_verified": true,
+    "predictions_file_independently_verified": true,
+    "full_summary_verified_by_server_audit": true,
+    "full_artifact_acceptance": "passed checks for final run status, source/config/manifest binding, checkpoint SHA and internal state, all stored prediction identities and reconstructed metrics; author historical sample identity remains unverified"
+  },
+  "server_integrity_audit": {
+    "evidence_file": "docs/r0_gap_server_evidence_20261019.json",
+    "report_relative_path": "outputs/r0_gap_audit_20261019T011605512759Z/report.json",
+    "failed_checks": [],
+    "checkpoint_sha256": "7a86dbc2b7345295be9b564cb581eb9dff20227018449aaf8e1a47aeba6ff581",
+    "predictions_sha256": "8c1e13b25066f4f5e9b0499f52fc6f39c6329c50730abd395f0c0e8122a6b543",
+    "candidate_csv_graph_samples_matched": {"train": 32, "test": 32},
+    "full_csv_to_graph_mapping_verified": false,
+    "wrapper_official_sampled_forward_max_delta": 0.0,
+    "root_cause_established": false
   },
   "completion_screenshot": {
     "training_status": {"status": "completed", "exit_code": 0},

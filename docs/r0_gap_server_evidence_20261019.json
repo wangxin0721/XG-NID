@@ -1,0 +1,119 @@
+{
+  "schema": "xgnid.r0.gap-audit-user-evidence.v1",
+  "received_date": "2026-10-19",
+  "source": "User-pasted complete terminal audit JSON",
+  "attachment_sha256": "98272e579e2a974782a2f5d3556cf9fa2ce22160a7a512db8ac9404c6bdfcc6c",
+  "full_server_report_file_received": false,
+  "csv_graph_samples_file_received": false,
+  "server_audit": {
+    "status": "checks_passed_with_unresolved_protocol_differences",
+    "failed_checks": [],
+    "checks": [
+      {
+        "name": "formal_run_artifacts_and_manifest",
+        "status": "passed",
+        "detail": {
+          "output": "/home/nzxn/下载/WX/load/XG-NID/outputs/r0_full_s42_20261017T065259974842Z",
+          "checkpoint_sha256": "7a86dbc2b7345295be9b564cb581eb9dff20227018449aaf8e1a47aeba6ff581",
+          "manifest_id": "22d027fe3d0b0ad9079da9a13614597b0e40bb883a34b2d4d825452d6129d383",
+          "runtime_recorded": {
+            "python": "3.9.23",
+            "torch": "2.3.1+cu118",
+            "pyg": "2.5.3",
+            "cuda": "11.8",
+            "device_type": "cuda",
+            "gpu": "Tesla T4"
+          },
+          "wall_seconds": 56126.535998106,
+          "epochs": 30,
+          "base_order_is_official_numeric": {
+            "train": false,
+            "test": false
+          },
+          "first_filenames": {
+            "train": [
+              "data_0.pt",
+              "data_1.pt",
+              "data_10.pt",
+              "data_100.pt",
+              "data_1000.pt",
+              "data_10000.pt",
+              "data_100000.pt",
+              "data_100001.pt",
+              "data_100002.pt",
+              "data_100003.pt",
+              "data_100004.pt",
+              "data_100005.pt"
+            ],
+            "test": [
+              "data_test_0.pt",
+              "data_test_1.pt",
+              "data_test_10.pt",
+              "data_test_100.pt",
+              "data_test_1000.pt",
+              "data_test_10000.pt",
+              "data_test_10001.pt",
+              "data_test_10002.pt",
+              "data_test_10003.pt",
+              "data_test_10004.pt",
+              "data_test_10005.pt",
+              "data_test_10006.pt"
+            ]
+          },
+          "order_note": "Different base indexing changes seed/sample initialization and batch trajectories; causality for the paper gap is not established"
+        }
+      },
+      {
+        "name": "saved_predictions_and_metric_reconstruction",
+        "status": "passed",
+        "detail": {
+          "prediction_sha256": "8c1e13b25066f4f5e9b0499f52fc6f39c6329c50730abd395f0c0e8122a6b543",
+          "rows": 25557,
+          "sample_identity_and_order": "matched frozen test manifest",
+          "reconstructed_macro_f1": 0.9282109573752343,
+          "new_test_inference": false
+        }
+      },
+      {
+        "name": "csv_graph_checkpoint_and_cpu_forward",
+        "status": "passed",
+        "detail": {
+          "runtime": {
+            "python": "3.9.23",
+            "torch": "2.3.1+cu118",
+            "pyg": "2.5.3",
+            "pandas": "2.0.3",
+            "numpy": "1.23.5",
+            "sklearn": "1.3.2"
+          },
+          "device": "cpu",
+          "source_graphs_read": 64,
+          "new_test_inference": false,
+          "csv_graph_report": "/home/nzxn/下载/WX/load/XG-NID/outputs/r0_gap_audit_20261019T011605512759Z/csv_graph_samples.json",
+          "csv_graph_matching_samples": {
+            "train": 32,
+            "test": 32
+          },
+          "candidate_mapping_mismatches": 0,
+          "optimizer_step_counts": [
+            75000
+          ],
+          "batchnorm_counters": {
+            "reference.bns1.flow.num_batches_tracked": 75000,
+            "reference.bns1.packet.num_batches_tracked": 75000,
+            "reference.bns2.flow.num_batches_tracked": 75000,
+            "reference.bns2.packet.num_batches_tracked": 75000
+          },
+          "wrapper_official_max_logprob_delta": 0.0,
+          "batch_vs_single_max_logprob_delta": 4.57763671875e-05,
+          "training_sample_nll": 0.03988932818174362
+        }
+      }
+    ],
+    "report": "/home/nzxn/下载/WX/load/XG-NID/outputs/r0_gap_audit_20261019T011605512759Z/report.json",
+    "root_cause_established": false,
+    "training_started": false,
+    "gpu_used": false,
+    "test_inference_performed": false
+  }
+}
