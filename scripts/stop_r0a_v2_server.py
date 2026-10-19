@@ -12,6 +12,7 @@ import time
 
 
 TARGET_NAMES = ("r0_aligned_full_s42_v2", "r0_aligned_restart_control_v2", "r0_aligned_train_f1_v2")
+SCRIPT_NAMES = {"run_r0_aligned_server.py", "supervisor.py", "watch_r0a_train_f1.py", "xgnid_watch_r0a_f1.py"}
 
 
 def require(condition, message):
@@ -30,19 +31,36 @@ def deletion_targets(repo):
     return targets
 
 
-def process(pid):
+def candidate_args(parts):
+    return bool(parts and "python" in Path(parts[0]).name.lower()
+                and SCRIPT_NAMES.intersection(Path(p).name for p in parts[1:] if p.endswith(".py")))
+
+
+def process(pid, *, scanning=False):
     root = Path("/proc") / str(pid)
+    parts = None
     try:
         uid = root.stat().st_uid
         if uid != os.getuid():
+            require(scanning, "Recorded PID belongs to another user; nothing deleted: " + str(pid))
+            return None
+        parts = (root / "cmdline").read_bytes().decode().strip("\0").split("\0")
+        # Do not inspect cwd for unrelated same-user services (e.g. protected
+        # processes). A candidate with unreadable cwd still fails closed.
+        if scanning and not candidate_args(parts):
             return None
         status = (root / "stat").read_text().rsplit(")", 1)[1].split()
         if status[0] == "Z":
             return None
         return {"pid": int(pid), "start": status[19],
-                "args": (root / "cmdline").read_bytes().decode().strip("\0").split("\0"),
+                "args": parts,
                 "cwd": str((root / "cwd").resolve()), "uid": uid}
     except (FileNotFoundError, ProcessLookupError):
+        return None
+    except PermissionError as exc:
+        if not scanning or candidate_args(parts):
+            raise RuntimeError("Cannot verify target/candidate PID " + str(pid)
+                               + "; no deletion performed: " + str(exc)) from exc
         return None
 
 
@@ -80,7 +98,7 @@ def discover(repo):
     found = []
     for item in Path("/proc").iterdir():
         if item.name.isdigit() and int(item.name) != os.getpid():
-            info = process(item.name)
+            info = process(item.name, scanning=True)
             role = role_of(info, repo)
             if role:
                 found.append(dict(info, role=role))

@@ -1,6 +1,7 @@
 """Pure identity/path checks; never signal a process or delete real run files."""
 from pathlib import Path
 import tempfile
+from types import SimpleNamespace
 import unittest
 from unittest.mock import patch
 
@@ -8,6 +9,33 @@ import stop_r0a_v2_server as cleanup
 
 
 class CleanupChecks(unittest.TestCase):
+    def test_scan_does_not_read_unrelated_process_cwd(self):
+        with patch.object(cleanup.os, 'getuid', return_value=1000, create=True), \
+                patch.object(cleanup.Path, 'stat', return_value=SimpleNamespace(st_uid=1000)), \
+                patch.object(cleanup.Path, 'read_bytes', return_value=b'python\0other_service.py\0'), \
+                patch.object(cleanup.Path, 'resolve', side_effect=PermissionError('cwd denied')) as resolve:
+            self.assertIsNone(cleanup.process(2537, scanning=True))
+            resolve.assert_not_called()
+
+    def test_unreadable_candidate_or_recorded_pid_blocks_deletion(self):
+        stat = '123 (python) ' + ' '.join(['S'] + ['0'] * 18 + ['12345'])
+        with patch.object(cleanup.os, 'getuid', return_value=1000, create=True), \
+                patch.object(cleanup.Path, 'stat', return_value=SimpleNamespace(st_uid=1000)), \
+                patch.object(cleanup.Path, 'read_bytes', return_value=b'python\0supervisor.py\0'), \
+                patch.object(cleanup.Path, 'read_text', return_value=stat), \
+                patch.object(cleanup.Path, 'resolve', side_effect=PermissionError('cwd denied')):
+            for scanning in (True, False):
+                with self.assertRaisesRegex(RuntimeError, 'Cannot verify target/candidate PID'):
+                    cleanup.process(2537, scanning=scanning)
+
+    def test_unreadable_cmdline_is_skipped_only_during_scan(self):
+        with patch.object(cleanup.os, 'getuid', return_value=1000, create=True), \
+                patch.object(cleanup.Path, 'stat', return_value=SimpleNamespace(st_uid=1000)), \
+                patch.object(cleanup.Path, 'read_bytes', side_effect=PermissionError('cmdline denied')):
+            self.assertIsNone(cleanup.process(2537, scanning=True))
+            with self.assertRaisesRegex(RuntimeError, 'Cannot verify target/candidate PID'):
+                cleanup.process(2537)
+
     def test_only_named_v2_paths_are_targets(self):
         with tempfile.TemporaryDirectory(dir=Path(__file__).resolve().parents[1] / 'tmp') as folder:
             repo = Path(folder).resolve()
