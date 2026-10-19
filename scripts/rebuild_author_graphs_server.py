@@ -156,12 +156,51 @@ def download(part, destination, progress, resume=False):
     return {"file_id": source["id"], "url": url, "bytes": count, "sha256": digest.hexdigest(), "headers": headers}
 
 
-def worker(repo, job):
+def verified_copy(part, source, destination, progress):
+    """Accept existing server bytes only after matching the full author SHA."""
+    expected = SOURCES[part]
+    before = source.stat()
+    require(source.is_file() and before.st_size == expected["bytes"], "Existing CSV size differs: " + part)
+    digest = sha(source)
+    require(digest == expected["observed_sha256"], "Existing CSV does not match verified author SHA: " + part)
+    after_hash = source.stat()
+    require((before.st_size, before.st_mtime_ns) == (after_hash.st_size, after_hash.st_mtime_ns), "Source changed during verification")
+    copied, h = 0, hashlib.sha256()
+    with source.open("rb") as original, destination.open("xb") as target:
+        for block in iter(lambda: original.read(4 * 1024 * 1024), b""):
+            target.write(block)
+            h.update(block)
+            copied += len(block)
+            if copied % (64 * 1024 * 1024) == 0:
+                progress(part, copied)
+    after_copy = source.stat()
+    require((before.st_size, before.st_mtime_ns) == (after_copy.st_size, after_copy.st_mtime_ns)
+            and copied == expected["bytes"] and h.hexdigest() == digest,
+            "Existing CSV changed while copying")
+    require(sha(destination) == digest, "Copied CSV verification failed")
+    progress(part, copied)
+    return {"file_id": expected["id"], "bytes": copied, "sha256": digest,
+            "acquisition": "verified_existing_server_csv_copy", "copy_source": str(source),
+            "author_url": "https://drive.google.com/file/d/" + expected["id"] + "/view",
+            "network_used": False}
+
+
+def dataset_path(repo, offline):
+    suffix = "offline_v2" if offline else "v1"
+    return repo / ("data/processed/xgnid_author_rebuild_" + suffix)
+
+
+def job_path(repo, offline):
+    suffix = "offline_v2" if offline else "v1"
+    return repo / ("outputs/r0_graph_rebuild_author_" + suffix)
+
+
+def worker(repo, job, offline=False):
     require(sys.platform.startswith("linux"), "Run data processing only on the Linux server")
     require(os.environ.get("CUDA_VISIBLE_DEVICES") == "", "Rebuild must hide all GPUs")
     started = time.time()
     status = {"status": "running", "phase": "source_checks", "pid": os.getpid(),
-              "gpu_used": False, "training_started": False, "graphs_completed": 0}
+              "gpu_used": False, "training_started": False, "graphs_completed": 0, "offline": offline}
     write(job / "status.json", status)
     try:
         launch = read(repo / "outputs/r0_full_launch.json")
@@ -193,7 +232,7 @@ def worker(repo, job):
         for part in SOURCES:
             require(set(old[part]) == set(range(SOURCES[part]["rows"])), "Old numeric membership is incomplete")
         evidence = read(manifest.parent / "source_evidence.json")
-        data = repo / "data/processed/xgnid_author_rebuild_v1"
+        data = dataset_path(repo, offline)
         require(not data.exists(), "New rebuild directory already exists; no overwrite or automatic resume")
         # Conservative allowance for max20 packets x1500 float32 plus metadata,
         # new CSVs, manifests and filesystem overhead. Not a measured ETA/size.
@@ -207,14 +246,21 @@ def worker(repo, job):
         sources = {}
 
         def download_progress(part, count):
-            status.update(phase="download_author_csv", partition=part, downloaded_bytes=count,
+            status.update(phase="verify_and_copy_existing_csv" if offline else "download_author_csv", partition=part, downloaded_bytes=count,
                           download_total_bytes=SOURCES[part]["bytes"])
             write(job / "status.json", status)
-            print(f"download {part}: {count}/{SOURCES[part]['bytes']} bytes", flush=True)
+            print(f"{'copy' if offline else 'download'} {part}: {count}/{SOURCES[part]['bytes']} bytes", flush=True)
 
         for part in SOURCES:
             destination = data / "raw" / ("df_class_8_" + part + ".csv")
-            sources[part] = download(part, destination, download_progress)
+            if offline:
+                source = within(repo, evidence["csv_sources"][part]["path"])
+                print(f"Verifying existing {part} against full author SHA: {source}", flush=True)
+                status.update(phase="verify_existing_csv_sha256", partition=part)
+                write(job / "status.json", status)
+                sources[part] = verified_copy(part, source, destination, download_progress)
+            else:
+                sources[part] = download(part, destination, download_progress)
             sources[part]["path"] = str(destination)
             sources[part]["equal_to_previous_candidate_sha256"] = sources[part]["sha256"] == evidence["csv_sources"][part]["sha256"]
             print(f"author {part} SHA256={sources[part]['sha256']}; same as previous candidate="
@@ -334,7 +380,7 @@ def worker(repo, job):
                   "graphs_manifest_sha256": sha(job / "graphs.jsonl"), "author_commit": REPOSITORY_COMMIT,
                   "author_functions_identity": identity(functions), "old_manifest_id": meta["manifest_id"],
                   "runtime": runtime,
-                  "gpu_used": False, "training_started": False, "old_data_replaced": False,
+                  "gpu_used": False, "training_started": False, "old_data_replaced": False, "offline": offline,
                   "historical_paper_sample_identity_verified": False,
                   "processing": "Fresh published processed CSVs; unchanged row-wise official process/helpers, streamed chunks, observed saves",
                   "limitations": ["No PCAP re-extraction or upstream rolling/filter/sampling reconstruction",
@@ -356,6 +402,8 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--repo", type=Path, default=Path.cwd())
     parser.add_argument("--status", action="store_true")
+    parser.add_argument("--offline", action="store_true",
+                        help="Use existing server CSVs only after verifying full author SHA; isolated v2 job")
     parser.add_argument("--download-only", action="store_true",
                         help="Download published CSVs only; allowed locally, never loads graphs or models")
     parser.add_argument("--resume-download", action="store_true",
@@ -365,7 +413,7 @@ def main():
     args = parser.parse_args()
     repo = args.repo.resolve()
     if args.download_only:
-        require(not (args.status or args.worker or args.supervise), "Download-only cannot be combined with job modes")
+        require(not (args.status or args.worker or args.supervise or args.offline), "Download-only cannot be combined with job modes")
         destination = repo / "data/raw/xgnid_author_published_v1"
         destination.parent.mkdir(parents=True, exist_ok=True)
         require(shutil.disk_usage(destination.parent).free > sum(s["bytes"] for s in SOURCES.values()) + 512 * 1024**2,
@@ -406,7 +454,7 @@ def main():
             raise
     require(not args.resume_download, "--resume-download requires --download-only")
     require(sys.platform.startswith("linux"), "Run graph processing only on Linux server")
-    job = repo / "outputs/r0_graph_rebuild_author_v1"
+    job = job_path(repo, args.offline)
     if args.status:
         value = {"job": str(job), "status": read(job / "status.json") if (job / "status.json").is_file() else "not_submitted"}
         for name in ("worker.pid", "supervisor.pid", "exitcode"):
@@ -420,11 +468,12 @@ def main():
         print(json.dumps(value, ensure_ascii=False, indent=2))
         return 0
     if args.worker:
-        return worker(repo, job)
+        return worker(repo, job, args.offline)
+    mode_flags = ["--offline"] if args.offline else []
     if args.supervise:
         rc = 1
         try:
-            process = subprocess.Popen([sys.executable, "-B", "-u", str(job / "entry.py"), "--repo", str(repo), "--worker"],
+            process = subprocess.Popen([sys.executable, "-B", "-u", str(job / "entry.py"), "--repo", str(repo), "--worker", *mode_flags],
                                        cwd=repo, stdin=subprocess.DEVNULL)
             (job / "worker.pid").write_text(str(process.pid) + "\n")
             rc = process.wait()
@@ -432,18 +481,18 @@ def main():
             (job / "exitcode").write_text(str(rc) + "\n")
         return rc
     require((repo / "outputs/r0_full_launch.json").is_file(), "Run in the original server repository")
-    require(not (repo / "data/processed/xgnid_author_rebuild_v1").exists(), "Rebuild dataset already exists; retained")
+    require(not dataset_path(repo, args.offline).exists(), "Rebuild dataset already exists; retained")
     job.mkdir(exist_ok=False)
     shutil.copyfile(Path(__file__), job / "entry.py")
-    write(job / "status.json", {"status": "submitted", "training_started": False, "gpu_used": False})
+    write(job / "status.json", {"status": "submitted", "training_started": False, "gpu_used": False, "offline": args.offline})
     environment = dict(os.environ, CUDA_VISIBLE_DEVICES="", OMP_NUM_THREADS="1", MKL_NUM_THREADS="1", OPENBLAS_NUM_THREADS="1")
     with (job / "run.log").open("x", encoding="utf-8") as log:
-        process = subprocess.Popen([sys.executable, "-B", "-u", str(job / "entry.py"), "--repo", str(repo), "--supervise"],
+        process = subprocess.Popen([sys.executable, "-B", "-u", str(job / "entry.py"), "--repo", str(repo), "--supervise", *mode_flags],
                                    cwd=repo, stdin=subprocess.DEVNULL, stdout=log, stderr=subprocess.STDOUT,
                                    env=environment, start_new_session=True)
     (job / "supervisor.pid").write_text(str(process.pid) + "\n")
     print(json.dumps({"submission": "recorded; check actual status", "supervisor_pid": process.pid,
-                      "job": str(job), "log": str(job / "run.log"), "training_started": False}, ensure_ascii=False, indent=2))
+                      "job": str(job), "log": str(job / "run.log"), "training_started": False, "offline": args.offline}, ensure_ascii=False, indent=2))
     return 0
 
 

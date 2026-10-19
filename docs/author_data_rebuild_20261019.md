@@ -1,5 +1,7 @@
 # 作者公开数据核查及独立全量生图
 
+> 服务器在线v1已回传Google Drive连接超时，失败在CSV获取阶段。现在优先使用末节的`--offline`命令：重新核验现有服务器CSV与作者完整下载SHA，再复制到独立v2目录生成；不重跑在线v1、不清理失败证据。
+
 ## 本地压缩包实际检查
 
 `D:/XG-NID/data/CICIoT2023.zip`大小500559747字节，SHA256为`793b212d1dc40973068d06cec4d0676eaf7f17436a859dfa522303e199c7ea5a`。只读取ZIP目录、三份CSV表头和首条标签，没有解压、全表处理或本地生图。完整清单见[ciciot2023_archive_inventory_20261019.json](ciciot2023_archive_inventory_20261019.json)。
@@ -79,3 +81,31 @@ exitcode和summary在结束后才出现。回传状态/最终summary，重点核
 **两份下载SHA分别与原服务器回传候选CSV SHA完全相同。** 这比此前“名称/大小相同”更强：新公开下载内容与此前服务器记录的文件逐字节一致。此前用户报告其CSV自行从PCAP提取；现在应区分“用户报告的历史来源”和“现有文件可核实的内容身份”，不再将与作者现公开CSV内容不同作为既有证据支持的原因。不能据此反推实际历史下载/提取行为，也不能证明服务器文件此刻未被后续修改；服务器工具会重新核验。
 
 这项证据更新降低了CSV版本内容差异的可能，但未证明全部旧图与CSV逐行相同，也未绑定论文当年97%的具体输入和训练记录。全量重生图会补齐现公开CSV到185557张图的可追踪链路，不会自动改变既有F1结论。
+
+## 服务器网络超时：使用严格哈希验证的离线v2
+
+用户回传v1的run.log尾部：worker在download调用urllib连接Google Drive时出现`socket.timeout`/`URLError: timed out`，发生于两份CSV获取循环、进入任何构图之前。完整status/exitcode未回传，不填造监督状态或完成报告。失败v1的日志及部分文件原样保留。
+
+已在本地完整下载作者文件并固定两个SHA，因此服务器不必再联网：`--offline`沿原R0 source_evidence定位现有服务器CSV，逐文件重新计算完整SHA；必须等于本次作者下载的固定SHA且字节数正确，才以独占创建方式复制到全新目录。复制时核对源大小/mtime稳定，复制后重新核验目标完整SHA。不匹配立即失败，不补值、不切换来源、不自动联网降级。
+
+离线v2使用`outputs/r0_graph_rebuild_author_offline_v2/`和`data/processed/xgnid_author_rebuild_offline_v2/`，与失败v1及旧图完全分离。除输入获取改为严格验证复制外，官方构图、全量文件检查、新旧逐图比较及不自动训练规则保持相同。不是在失败目录中自动续跑。
+
+若终端仍在tail旧日志，先按Ctrl+C退出查看，再在wx环境原仓库执行：
+
+```bash
+cd /home/nzxn/下载/WX/load/XG-NID
+git fetch origin codex/r0-edge-preparation
+git show origin/codex/r0-edge-preparation:scripts/rebuild_author_graphs_server.py > /tmp/xgnid_rebuild_author.py
+python -B -u /tmp/xgnid_rebuild_author.py --repo . --offline
+```
+
+```bash
+tail -n 30 -f outputs/r0_graph_rebuild_author_offline_v2/run.log
+```
+
+```bash
+python -B /tmp/xgnid_rebuild_author.py --repo . --offline --status
+cat outputs/r0_graph_rebuild_author_offline_v2/summary.json
+```
+
+本地已完成Python3.9语法/编译，以及只用微小临时文本的标准库I/O验证：正确SHA复制成功、错误SHA在写目标前被拒绝、既有目标拒绝覆盖、v1/v2路径隔离。没有处理真实CSV、加载图/模型或运行构图。服务器离线输入校验和全量生图仍待真实回传。
