@@ -4,6 +4,16 @@
   "source": "User-pasted server metrics.json and last three epochs.jsonl records, followed by two screenshots of run_r0_full_server.py --status; no local model execution",
   "output_relative_path": "outputs/r0_full_s42_20261017T065259974842Z",
   "claim": "protocol_reimplementation",
+  "paper_comparison": {
+    "source": "User-provided journal PDF, page 11, Figure 5; plot y-axis explicitly says Macro F1-Score",
+    "public_paper_url": "https://arxiv.org/html/2408.16021v2#S4.F5",
+    "paper_ciciot2023_reported_macro_f1_percent": 97,
+    "paper_value_precision": "integer percentage shown on chart; underlying unrounded score unavailable",
+    "r0_macro_f1_percent": 92.82109573752342,
+    "approximate_gap_percentage_points": 4.17890426247658,
+    "reproduction_score_matched": false,
+    "root_cause_established": false
+  },
   "evidence_status": {
     "epoch_30_record_received": true,
     "final_test_metrics_received": true,

@@ -46,7 +46,7 @@ E1：台账仍是“命令已提供、运行/完成待回传”。本地没有�
 | 选模 | Edge函数没有验证集、best变量未使用；测试在训练后，保存最终模型 | 冻结验证Macro-F1、patience12、best后测试 | **已确认示例行为**；R0最终30轮last.pt，无best/早停；论文具体选模运行证据缺失 |
 | 训练随机种子 | notebook无torch/numpy/Python训练seed；局部sample42不等于训练seed42 | 冻结明确42 | **缺少证据，原始RNG轨迹无法恢复**；R0新增42并披露，含显式lazy初始化及字典序输入次序 |
 | 测试评价 | classification_report(label,prediction)与最终归一化CM真值行/预测列；Training.calculate_metrics中的一次原始CM参数顺序反了 | 冻结输出macro/weighted/per-class等 | **已确认**；R0显式输出正确方向CM、Accuracy、Macro/Weighted-F1与support；不复刻打印方向错误 |
-| 论文分数 | v2表5/6 Proposed Precision0.95、Recall0.99、F1约0.97 | E0测试Macro-F1约0.952321属另一协议 | **已确认报告值；平均方式、精确预测和对应Edge检查点缺少证据**；不把论文0.97直接称Macro-F1，也不据此调测试集 |
+| 论文分数 | v2表5/6 Proposed Precision0.95、Recall0.99、F1约0.97；2026-10-19补查用户期刊PDF第11页图5，纵轴明确Macro F1-Score，CIC-IoT2023为97% | E0测试Macro-F1约0.952321属另一协议；R0真实Macro-F1为0.9282109574 | **更正：图5的97%明确是Macro-F1**；精确预测和对应Edge检查点仍缺少证据。R0与该报告值约差4.18个百分点，不能拿Weighted-F1缩小差距，也不据此调测试集 |
 | 环境 | 官方requirements torch2.3.1+cu118/PyG2.5.3/sklearn1.3.2 | 本地torch2.8.0+cpu/PyG2.6.1；服务器当前环境待实测 | **公开声明已确认、运行环境待确认**；不替换服务器现有CUDA包，记录实际版本和差异 |
 
 ## 4. R0可执行实现和数据方案
