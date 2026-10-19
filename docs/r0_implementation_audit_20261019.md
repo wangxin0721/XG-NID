@@ -80,3 +80,20 @@ python -B -u /tmp/xgnid_audit_r0_gap.py --repo .
 接下来的核查需恢复实际提取脚本/notebook及执行参数。固定官方代码可确认的对照项为：NFStream6.5.3（requirements声明），accounting_mode=1、idle_timeout=120、statistical_analysis=True、n_dissections=0、My_Custom(limit=20)；additional_features按输入CSV逐文件调用，按bidirectional_first_seen_ms排序，默认每分组350条流记录rolling。原示例先提取、增加temporal特征，再过滤/划分/采样。若实际流程改变了文件合并边界、先采样再算rolling、协议处理或流切分，最终特征可能不同，需要真实命令/源文件证据确认；这些目前都不是已确认错误。
 
 当前安装的NFStream版本只能作为环境快照，不能替代历史提取环境。现有报告可直接读出82列顺序、temporal列和MAC列是否留存；无需重跑CPU前向、重新扫描CSV或重新训练。用户实际提取命令/脚本名称仍待提供。
+
+## 六、用户补充及官方实际提取调用
+
+用户进一步说明“从作者给出的代码里执行提取”，并展示服务器的`Data_preprocessing_CIC-IoT2023.ipynb`。这确认用户报告使用作者处理链，但截图仅展示当前打开的预处理说明，无法恢复实际提取版本、环境、命令、输入PCAP列表和成功日志。不得将“自行从PCAP提取”直接写成不符合官方处理方法。
+
+本次再次读取已核验SHA的官方固定版`GNN4ID.ipynb`全部代码单元：
+
+- cell11指定`feature_Extractor='Utility/Feature_extractor_flow_packet_combined.py'`，对每个PCAP调用`subprocess.run(['python', feature_Extractor, single_pcap_file, Out_path], capture_output=True)`。脚本CLI有两个位置参数：pcap_files和Destination_path，后者在代码中与输出文件名直接拼接，应保留目录尾部分隔符。
+- cell13对每个提取CSV执行`additional_features(file)`，使用默认window_size=350；实际rolling对象是分组内的流记录条数。
+- 随后按README建议执行`Data_preprocessing_CIC-IoT2023.ipynb`中的`split_csv(files)`、`Combining_classes(...)`、列删除与训练/测试CSV聚合；最后回到构图调用`NIDSDataset(...single_file=True)`。
+- NFStream参数及声明版本见第五节，均直接在官方脚本/requirements读取，不把当前安装元数据等同历史运行元数据。
+
+新增代码级发现：官方cell11在subprocess.run之后无条件调用`os.remove(single_pcap_file)`，没有先核对returncode，且capture_output会收集输出。这可能让提取失败不易从notebook表面发现，并删除原PCAP；**尚无证据表明用户实际发生过这种失败**，不能直接用它解释F1。不要为核查重新执行官方整本notebook，以免改变原数据。
+
+另一个待追溯的平台细节：官方name_mapping将BrowserHijacking映射为`Webbased-BrwserHijack`（小写b），而后续主类使用`WebBased`；文件路径还包含Windows反斜线拆分和glob。Linux移植时需要核对实际修订及输入文件覆盖范围。当前CSV数量匹配表4、64张样本匹配并不能恢复所有亚类来源；这仍是待证实项，不是已定位根因。
+
+下一步只读取已有报告中的82列及temporal列，并结合用户保留的原提取记录确认执行顺序；不重复当前已通过的产物/前向核查，不自动重训练。
