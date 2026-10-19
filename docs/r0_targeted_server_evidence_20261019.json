@@ -1,0 +1,130 @@
+{
+  "schema": "xgnid.r0.targeted-audit-user-evidence.v1",
+  "received_date": "2026-10-19",
+  "source": "User-pasted terminal audit JSON",
+  "attachment_sha256": "77aa64a8aa724236fbd6cc2b773223d87bceaccb905d4b9c5cad5c3a26d9265d",
+  "full_server_report_file_received": false,
+  "feature_values_file_received": false,
+  "upstream_candidates_file_received": false,
+  "server_audit": {
+    "schema": "xgnid.r0.targeted-audit.v1",
+    "tool_sha256": "904219733907a02a6cbb1e363646f6fe6dd4c959121c41e26d07fb5952d154db",
+    "checks": [
+      {
+        "name": "binding_and_training_samples",
+        "status": "completed",
+        "detail": {
+          "manifest_id": "22d027fe3d0b0ad9079da9a13614597b0e40bb883a34b2d4d825452d6129d383",
+          "code_root": "/home/nzxn/下载/WX/load/XG-NID/$\\(R0_SOURCE/outputs/r0_code_\\)20261017T025345Z",
+          "sample_selection": "8 fixed interior ranks/class, 64 training graphs",
+          "device": "cpu",
+          "runtime": {
+            "torch": "2.3.1+cu118",
+            "python": "3.9.23",
+            "pyg": "2.5.3",
+            "pandas": "2.0.3"
+          }
+        }
+      },
+      {
+        "name": "paired_training_step",
+        "status": "completed",
+        "detail": {
+          "status": "passed",
+          "device": "cpu",
+          "training_graphs": 64,
+          "classes": 8,
+          "seed": 42,
+          "initialization": "Fresh shared weights and BN state; not the final trained checkpoint",
+          "initial_state_sha256": "ab03f0264656b222d50756076649e258d990ed1b2ccf3b5af5fbf26a642f5a10",
+          "training_sample_ids_sha256": "c8b0330a7dfa96763161a6f37e8d37c1336bef67c5a94db005ada31f6b3320d0",
+          "optimizer_steps_each": 1,
+          "loss": 2.1091785430908203,
+          "max_abs_deltas": {
+            "training_output": 0.0,
+            "loss": 0.0,
+            "gradients": 0.0,
+            "parameters_and_buffers": 0.0,
+            "adam_state": 0.0
+          },
+          "gradient_kinds": {
+            "nonzero": 46,
+            "zero": 10
+          },
+          "updated_parameter_tensors": 46,
+          "batchnorm_counters": {
+            "bns1.flow.num_batches_tracked": 1,
+            "bns1.packet.num_batches_tracked": 1,
+            "bns2.flow.num_batches_tracked": 1,
+            "bns2.packet.num_batches_tracked": 1
+          },
+          "optimizer_groups_equal": true,
+          "post_step_rng_equal": true,
+          "source_snippets": "/home/nzxn/下载/WX/load/XG-NID/outputs/r0_targeted_audit_20261019T015739852831Z/executed_step_source.json",
+          "limits": "One controlled CPU batch; not proof of full-run order/RNG or historical author CUDA behavior"
+        }
+      },
+      {
+        "name": "training_feature_values",
+        "status": "completed",
+        "detail": {
+          "status": "value_constraints_passed_upstream_unverified",
+          "training_rows": 160000,
+          "feature_columns": 82,
+          "hard_findings": [],
+          "violations_or_warnings": {
+            "nonfinite_flow_cells": 0,
+            "packet_size_variation_formula": 0,
+            "negative_added_values": 0,
+            "nonbinary_onehot_cells": 0,
+            "multiple_protocol_flags": 0,
+            "multiple_expiration_flags": 0,
+            "zero_protocol_flags_rows": 0,
+            "zero_expiration_flags_rows": 0,
+            "boolean_or_unique_counts_over_default350_cells": 0,
+            "bipackets_below_source_packets_rows": 0,
+            "independent_sample_numeric_mismatches": 0,
+            "sample_payload_size_disagreements": 0
+          },
+          "formula_checked": "packet_size_variation = std(four packet-size statistics, ddof=1)",
+          "all_zero_columns": [],
+          "independent_training_samples_checked": 64,
+          "detail": "/home/nzxn/下载/WX/load/XG-NID/outputs/r0_targeted_audit_20261019T015739852831Z/feature_values.json",
+          "full_rolling_recalculation": "requires complete upstream CSV"
+        }
+      },
+      {
+        "name": "original_checkpoint_preserved",
+        "status": "completed",
+        "detail": {
+          "original_checkpoint_unchanged": true
+        }
+      }
+    ],
+    "training_run_started": false,
+    "gpu_used": false,
+    "test_graphs_loaded": 0,
+    "test_predictions_read": false,
+    "root_cause_established": false,
+    "upstream_csv_explicit": null,
+    "limits": [
+      "Diagnostic CPU optimizer steps use fresh shared state, not a resumed formal checkpoint",
+      "Numerical constraints do not establish the original temporal context",
+      "Default replay requires complete pre-sampling file; cannot infer lost IP/time from balanced CSV",
+      "No validation/test performance selection or full retraining"
+    ],
+    "upstream_candidates": {
+      "detail": "/home/nzxn/下载/WX/load/XG-NID/outputs/r0_targeted_audit_20261019T015739852831Z/upstream_candidates.json",
+      "count": 0,
+      "auto_selected": false,
+      "paths": []
+    },
+    "official_upstream_replay": {
+      "status": "not_performed_missing_complete_upstream_context"
+    },
+    "status": "targeted_checks_complete_history_unresolved",
+    "failed_checks": [],
+    "findings": [],
+    "output": "/home/nzxn/下载/WX/load/XG-NID/outputs/r0_targeted_audit_20261019T015739852831Z"
+  }
+}
