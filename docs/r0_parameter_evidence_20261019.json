@@ -1,0 +1,136 @@
+{
+  "scope": "static parameter provenance audit; no training or inference performed; no running job changed",
+  "audit_date": "2026-10-19",
+  "paper": {
+    "path": "C:\\Users\\wx\\Desktop\\XG-NID(科研通-ablesci.com).pdf",
+    "sha256": "33a1bdaf53d356ec442d424f91e9f7d4731a65eb636e57325b65eb7e1cb7a83e",
+    "pages": 16,
+    "received": "2024-09-19",
+    "available_online": "2025-05-10",
+    "reported_ciciot_macro_f1_percent_rounded": 97,
+    "result_location": "PDF page 11 Figure 5",
+    "exact_training_run_binding_established": false
+  },
+  "historical_sources": [
+    {
+      "path": "Utility/Training.py",
+      "commit": "18c3bebd89d005336fe08b9a3ebfcd382b417b0e",
+      "commit_time_utc": "2024-07-08T07:27:55Z",
+      "sha256": "cb5411bf9fed082724f0cb9afee281e8adc0a94070a367cdcc4ab4e0d2728e75",
+      "raw_url": "https://raw.githubusercontent.com/Yasir-ali-farrukh/GNN4ID/18c3bebd89d005336fe08b9a3ebfcd382b417b0e/Utility/Training.py",
+      "identical_to_frozen_upstream_bytes": true
+    },
+    {
+      "path": "Utility/Model.py",
+      "commit": "194ffd86ff0a29b446fa0099c68be67cf73ea568",
+      "commit_time_utc": "2024-09-07T08:21:56Z",
+      "sha256": "6127b62f7d720af5c114ac35ff82d30d4a8fe7e99872811623ed03af2df76ffd",
+      "raw_url": "https://raw.githubusercontent.com/Yasir-ali-farrukh/GNN4ID/194ffd86ff0a29b446fa0099c68be67cf73ea568/Utility/Model.py",
+      "identical_to_frozen_upstream_bytes": true
+    },
+    {
+      "path": "GNN4ID_Model.ipynb",
+      "commit": "194ffd86ff0a29b446fa0099c68be67cf73ea568",
+      "commit_time_utc": "2024-09-07T08:21:56Z",
+      "sha256": "aadffb666ee9caa633fa592609f934931f372546b62735cffcc1e16fc9fbe00b",
+      "raw_url": "https://raw.githubusercontent.com/Yasir-ali-farrukh/GNN4ID/194ffd86ff0a29b446fa0099c68be67cf73ea568/GNN4ID_Model.ipynb",
+      "identical_to_frozen_upstream_bytes": true
+    }
+  ],
+  "earlier_notebook": {
+    "commit": "a074923e9261fd0c3e3aea365d16d392719e5549",
+    "sha256": "291e6eb939a3c8f2dd48ddf1b9212ffce6fbabecd3fbf23955cc636f29764bd8",
+    "batch_epochs_lr_same": true
+  },
+  "notebook_cell_source_zero_based": {
+    "8": "## Arguments for running the model\nargs = {\n    'device': torch.device('cuda' if torch.cuda.is_available() else 'cpu'),\n    'hidden_size': 64,\n    'epochs': 30,\n    'weight_decay': 1e-5,\n    'lr': 0.01,\n    'attn_size': 32,\n    'eps': 1.0,\n}",
+    "10": "## Model without edge attributes\nmodel = HeteroGNN(data_model, args, aggr=\"mean\").to(args['device'])\n\n## Model with Edge attributes\n# model = HeteroGNN_Edge(data_model, args, aggr=\"mean\").to(args['device'])",
+    "12": "train_loader = DataLoader(data_Hetero, batch_size=64, shuffle=True)",
+    "13": "# For training the model without edge attributes\ntrain(train_loader, model, args, args[\"device\"])\n\n# # For training the model with edge attributes \n# train_with_edge_Att(train_loader, model, args, args[\"device\"])",
+    "16": "## For testing the model\ntest_loader = DataLoader(data_Hetero, batch_size=1, shuffle=False)",
+    "17": "# For testing the model without edge attributes\nacc, prediction, label = test_cm(test_loader,model)\n\n# # For testing the model with edge attributes \n# acc, prediction, label = test_cm_with_edge_att(test_loader,model)",
+    "23": "torch.save(model, '/scratch/user/yasir.ali/GNN_Project/Saved_Model/GNN4ID_8_Classes/model.pth')\n# model = torch.load('/scratch/user/yasir.ali/GNN_Project/Saved_Model/GNN4ID_8_Classes/model.pth')"
+  },
+  "dependency_default_sources": [
+    {
+      "url": "https://raw.githubusercontent.com/pytorch/pytorch/v2.3.1/torch/optim/adam.py",
+      "sha256": "e28bf1445da23c19304bd84ddc5e94b083d647b04136e3d068f53668199e6c03"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/pytorch/pytorch/v2.3.1/torch/nn/modules/batchnorm.py",
+      "sha256": "f3af8a7e87178d31b25f5b6e84ff15e4b8073e8a520096f9311c950bfe85cc61"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/pyg-team/pytorch_geometric/2.5.3/torch_geometric/nn/conv/gat_conv.py",
+      "sha256": "a737c13a640b450c3ea536976238c13bc6157474887e87589cd4d3bd2f4225b3"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/pyg-team/pytorch_geometric/2.5.3/torch_geometric/nn/conv/hetero_conv.py",
+      "sha256": "cede0cc48a67dc865e03a953c4400616a351b5299dfd7eaf59036146d75c3680"
+    }
+  ],
+  "frozen_config": {
+    "path": "configs\\r0_edge.json",
+    "sha256": "4e1cbda800c8106c8b943584f1b50cbb912ac73a339698529e6ed49f99a26646",
+    "values": {
+      "schema": "xgnid.r0.config.v1",
+      "experiment": "R0",
+      "claim": "protocol_reimplementation",
+      "upstream_commit": "551d1f10189e5259f8f34e32f918d557a2b3a64e",
+      "model": "official_HeteroGNN_Edge",
+      "hidden_size": 64,
+      "eps": 1.0,
+      "optimizer": "Adam",
+      "lr": 0.01,
+      "weight_decay": 0.0,
+      "epochs": 30,
+      "batch_size": 64,
+      "test_batch_size": 1,
+      "scheduler": null,
+      "selection": "last_epoch",
+      "seed": 42,
+      "seed_evidence": "local reproducibility choice; official training seed not published",
+      "flow_dim": 82,
+      "packet_dim": 1500,
+      "labels": [
+        "Benign",
+        "WebBased",
+        "Spoofing",
+        "Recon",
+        "Mirai",
+        "Dos",
+        "DDos",
+        "BruteForce"
+      ]
+    }
+  },
+  "paper_code_differences": [
+    {
+      "item": "FC head activations",
+      "paper": "page 7 Eq. (9) includes ReLU between FC layers",
+      "official_edge": "three consecutive Linear operations; no intermediate head activations",
+      "cause_of_score_gap_established": false
+    },
+    {
+      "item": "edge directions",
+      "paper": "page 6 text describes directed acyclic packet chain; Figure 3 shows bidirectional arrows",
+      "official_code": "ToUndirected"
+    }
+  ],
+  "unknown_actual_paper_run": [
+    "training seed and RNG state",
+    "checkpoint/config/data-member binding to reported 97%",
+    "last versus best model selection",
+    "single run versus repeated runs and selection",
+    "full hyperparameter search history",
+    "exact historical runtime",
+    "350 versus 400 final rolling window and upstream execution context",
+    "formula versus public code implementation used for reported score"
+  ],
+  "source_lock_unchanged_sha256": "c79885ad69f17f9459ca590a87a9d6f85b8904f17183c903fb76b5d9cfe7755c",
+  "review_method": {
+    "paper": "all-page text search plus relevant full-page visual and section review",
+    "historical_code": "raw byte SHA256 equality with frozen source; notebook source cells; commit history and patch dates",
+    "runtime": "no new server runtime evidence collected"
+  }
+}
