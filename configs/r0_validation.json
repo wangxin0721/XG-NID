@@ -1,0 +1,23 @@
+{
+  "schema": "xgnid.r0-validation.config.v1",
+  "experiment": "R0-V",
+  "claim": "validation_selected_variant_not_strict_paper_reproduction",
+  "seed": 42,
+  "val_fraction_of_source_train": 0.1,
+  "group_by": "node_hash",
+  "max_epochs": 100,
+  "patience": 12,
+  "min_delta": 0.0,
+  "selection": "best_validation_macro_f1",
+  "tie_break": "earliest_epoch",
+  "batch_size": 64,
+  "val_batch_size": 64,
+  "test_batch_size": 1,
+  "optimizer": "Adam",
+  "lr": 0.01,
+  "weight_decay": 0.0,
+  "scheduler": null,
+  "hidden_size": 64,
+  "eps": 1.0,
+  "test_passes": 1
+}
