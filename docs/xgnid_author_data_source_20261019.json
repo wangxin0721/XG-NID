@@ -1,0 +1,27 @@
+{
+  "schema": "xgnid.author-data-source-evidence.v1",
+  "observed_date": "2026-10-19",
+  "repository_commit": "551d1f10189e5259f8f34e32f918d557a2b3a64e",
+  "readme_url": "https://raw.githubusercontent.com/Yasir-ali-farrukh/GNN4ID/551d1f10189e5259f8f34e32f918d557a2b3a64e/README.md",
+  "readme_sha256": "b6499dbd0af7bafef905a357b399c21eac5385b4eae6277544ead0cf6018593a",
+  "readme_matches_locked_upstream": true,
+  "folder_url": "https://drive.google.com/drive/folders/1FiZh87vvCZF3gX1Fnj9iTB4j74u-nuR6",
+  "folder_response_sha256": "872a89defc97ac8b9feae25ce9614fb1312978305aebb69a35c91eb6804770fd",
+  "published_files": [
+    {
+      "partition": "train",
+      "file_id": "1IClFYOup0U58WKj2R0p1IJ_ZMc1Os2FD",
+      "filename": "df_class_8_train.csv",
+      "published_bytes": 1027673808
+    },
+    {
+      "partition": "test",
+      "file_id": "1Yxpd-ruxC8B1zz3e8oLOcZcfrahIfhJc",
+      "filename": "df_class_8_test.csv",
+      "published_bytes": 175063419
+    }
+  ],
+  "test_header_verified_via_http_range": true,
+  "paper_historical_membership_verified": false,
+  "local_zip_is_compatible": false
+}

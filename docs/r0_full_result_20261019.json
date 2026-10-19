@@ -7,10 +7,12 @@
   "csv_origin_user_confirmation": {
     "received_date": "2026-10-19",
     "origin": "self-extracted from original PCAP files",
-    "author_published_processed_csv_used": false,
+    "author_published_processed_csv_used": null,
+    "current_author_download_matches_prior_server_csv_sha256": true,
+    "content_identity_evidence_file": "docs/xgnid_author_data_download_20261019.json",
     "historical_extraction_command_known": false,
     "historical_extraction_environment_known": false,
-    "note": "Different provenance is confirmed; it is not proof of the cause or size of the paper-score gap"
+    "note": "Origin records the user's report, not verified historical acquisition. Subsequent complete author downloads have identical train/test SHA256 to prior server evidence; different CSV content is not supported. Historical acquisition behavior and paper-era run membership remain unverified."
   },
   "paper_comparison": {
     "source": "User-provided journal PDF, page 11, Figure 5; plot y-axis explicitly says Macro F1-Score",
