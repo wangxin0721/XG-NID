@@ -1,18 +1,28 @@
 {
   "schema": "xgnid.r0.server-result-transcription.v1",
   "received_date": "2026-10-19",
-  "source": "User-pasted server metrics.json and last three epochs.jsonl records; no local model execution",
+  "source": "User-pasted server metrics.json and last three epochs.jsonl records, followed by two screenshots of run_r0_full_server.py --status; no local model execution",
   "output_relative_path": "outputs/r0_full_s42_20261017T065259974842Z",
   "claim": "protocol_reimplementation",
   "evidence_status": {
     "epoch_30_record_received": true,
     "final_test_metrics_received": true,
-    "server_status_received": false,
-    "supervisor_exit_code_received": false,
-    "final_summary_received": false,
+    "server_status_received": true,
+    "supervisor_exit_code_received": true,
+    "final_summary_received": "compact summary shown in status screenshots; full JSON not received",
     "checkpoint_hash_verified": false,
     "predictions_file_independently_verified": false,
-    "full_artifact_acceptance": "pending"
+    "full_artifact_acceptance": "normal completion confirmed; independent checkpoint/prediction verification pending"
+  },
+  "completion_screenshot": {
+    "training_status": {"status": "completed", "exit_code": 0},
+    "supervisor_exit_code": "0",
+    "process_snapshot": "ps header only; original training PID not present at query time",
+    "summary": {"status": "completed", "exit_code": 0, "mode": "full", "claim": "protocol_reimplementation", "epochs_completed": 30, "selection": "last_epoch"},
+    "parameter_count_from_log": 431704,
+    "wall_seconds_from_log": 56126.535998106,
+    "wall_seconds_scope": "training entry including final evaluation and result writes before summary; not supervisor wall time",
+    "checkpoint_sha256_from_log": "not transcribed from wrapped screenshot; obtain exact value from server JSON for verification"
   },
   "labels": ["Benign", "WebBased", "Spoofing", "Recon", "Mirai", "Dos", "DDos", "BruteForce"],
   "metrics": {
