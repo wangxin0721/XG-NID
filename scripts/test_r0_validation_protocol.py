@@ -62,6 +62,17 @@ class ValidationProtocolTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 selector.observe(15, invalid)
 
+    def test_reviewed_budget_stops_at_patience_and_keeps_best(self):
+        config = protocol.configuration(Path(__file__).resolve().parents[1] / 'configs/r0_validation.json')
+        self.assertEqual((config['max_epochs'], config['early_stopping'], config['patience']), (100, True, 12))
+        selector = protocol.Selection(config['patience'])
+        for epoch in range(1, config['max_epochs'] + 1):
+            _, stop = selector.observe(epoch, .9 if epoch == 2 else .7)
+            if stop:
+                break
+        self.assertEqual(selector.best_epoch, 2)
+        self.assertEqual((epoch, selector.stale), (14, 12))
+
     def test_singleton_merge_keeps_every_sample(self):
         for count in (2, 63, 64, 65, 128, 129, 144001):
             order = list(range(count))

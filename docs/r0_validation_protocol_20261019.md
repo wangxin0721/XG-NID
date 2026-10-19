@@ -1,6 +1,6 @@
 # R0-V：验证集选模、最多100轮、早停12轮
 
-用户于2026-10-19明确确认：从原R0训练部分按输入分组留出约10%作验证，连续12轮验证Macro-F1不提升则早停，最多100轮，加载验证最佳模型后测试一次。这是新的R0-V协议，不覆盖R0/R0-A或分组E0～E3。本地仅实现入口并执行标准库测试；尚无本协议服务器CUDA冒烟、训练或测试结果。
+用户于2026-10-19最新明确选择：从原R0训练部分按输入分组留出约10%作验证，连续12轮验证Macro-F1不提升则早停，最多100轮，加载验证最佳模型后测试一次。固定50轮方案已撤回，不作为执行配置。这是新的R0-V协议，不覆盖R0/R0-A或分组E0～E3。本地仅实现入口并执行标准库测试；尚无本协议服务器CUDA冒烟、训练或测试结果。
 
 ## 固定规则
 
@@ -77,6 +77,6 @@ tail -n 1 outputs/r0_validation_full_s42_v1/epochs.jsonl
 
 ## 本地验证边界
 
-`python -B -m unittest discover -s scripts -p test_r0_validation_protocol.py -v`：5项标准库测试通过，覆盖分组副本/边变体不跨集、确定性与成员保留、拒绝测试成员/冲突标签/重复ID、12轮早停与并列最佳、训练单例尾批合并，以及冒烟绑定与检查点篡改检测。还核对入口Python3.9语法和JSON配置；没有本地torch导入、真实图加载或模型运行。
+`python -B -m unittest discover -s scripts -p test_r0_validation_protocol.py -v`：6项标准库测试通过，覆盖分组副本/边变体不跨集、确定性与成员保留、拒绝测试成员/冲突标签/重复ID、12轮早停与并列最佳、最新100轮预算的早停模拟、训练单例尾批合并，以及冒烟绑定与检查点篡改检测。还核对入口Python3.9语法和JSON配置；没有本地torch导入、真实图加载或模型运行。
 
 入口：[run_r0_validation_server.py](../scripts/run_r0_validation_server.py)；配置：[r0_validation.json](../configs/r0_validation.json)。R0-V当前为“实现与标准库验证完成，服务器执行待回传”，不是已启动或已通过CUDA。

@@ -1,4 +1,4 @@
-"""R0-V: grouped holdout from original TRAIN; best-val selection; test once.
+"""R0-V: up to 100 epochs; early stopping; grouped TRAIN holdout; test once.
 
 Server-only execution. Import and pure split/stopping helpers use stdlib only.
 Never resumes an old run, changes the original split, or stops another job.
@@ -59,12 +59,13 @@ def configuration(path):
     require(config["experiment"] == "R0-V" and config["schema"] == "xgnid.r0-validation.config.v1",
             "Not an R0-V configuration")
     expected = {"seed": 42, "val_fraction_of_source_train": .1, "group_by": "node_hash",
-                "max_epochs": 100, "patience": 12, "min_delta": 0.,
+                "max_epochs": 100, "early_stopping": True, "patience": 12, "min_delta": 0.,
                 "selection": "best_validation_macro_f1", "tie_break": "earliest_epoch",
                 "batch_size": 64, "val_batch_size": 64, "test_batch_size": 1,
                 "optimizer": "Adam", "lr": .01, "weight_decay": 0., "scheduler": None,
                 "hidden_size": 64, "eps": 1., "test_passes": 1}
-    require(all(config.get(key) == value for key, value in expected.items()), "Reviewed R0-V settings changed")
+    require(all(key in config and config[key] == value for key, value in expected.items()),
+            "Reviewed R0-V settings changed")
     return config
 
 
@@ -173,6 +174,7 @@ def prepare(args, config):
 class Selection:
     """Strict improvement; ties retain the earliest best epoch and count as stale."""
     def __init__(self, patience, min_delta=0.):
+        require(patience is None or type(patience) is int and patience > 0, "Invalid patience")
         self.patience, self.min_delta = patience, min_delta
         self.best_score, self.best_epoch, self.stale = -math.inf, None, 0
 
@@ -183,7 +185,7 @@ class Selection:
             self.best_score, self.best_epoch, self.stale = score, epoch, 0
         else:
             self.stale += 1
-        return improved, self.stale >= self.patience
+        return improved, self.patience is not None and self.stale >= self.patience
 
 
 def batches(order, size):
@@ -250,7 +252,7 @@ def train(args, config):
     device = torch.device(args.device)
     require(device.type == "cuda" and torch.cuda.is_available(), "Real server CUDA is required")
     torch.set_num_threads(2)
-    binding = {"experiment": "R0-V", "config": config, "split_id": split["split_id"],
+    binding = {"experiment": config["experiment"], "config": config, "split_id": split["split_id"],
                "source_binding": baseline["binding"], "runtime": base.runtime(device),
                "entry_identity": identity(Path(__file__).read_text(encoding="utf-8-sig"))}
     if args.mode == "full":
@@ -394,8 +396,9 @@ def train(args, config):
                 "Selected checkpoint identity differs")
         model.load_state_dict(checkpoint["model_state"], strict=True)
         result = {"status": "completed", "exit_code": 0, "mode": args.mode, "binding": binding,
-                  "experiment": "R0-V", "claim": config["claim"], "epochs_completed": epoch,
-                  "stop_reason": "patience" if stop else "max_epochs", "selection": config["selection"],
+                  "experiment": config["experiment"], "claim": config["claim"], "epochs_completed": epoch,
+                  "stop_reason": "patience" if stop else "max_epochs",
+                  "selection": config["selection"],
                   "best_epoch": selection.best_epoch, "best_val_macro_f1": selection.best_score,
                   "best_checkpoint_sha256": sha(output / "best.pt"),
                   "last_checkpoint_sha256": sha(output / "last.pt"),
