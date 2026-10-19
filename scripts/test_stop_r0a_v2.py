@@ -9,6 +9,22 @@ import stop_r0a_v2_server as cleanup
 
 
 class CleanupChecks(unittest.TestCase):
+    def test_missing_pidfd_uses_checked_term_and_never_signals_reused_pid(self):
+        info = {'pid': 16724, 'start': '80756', 'args': ['python', 'trainer.py'], 'role': 'trainer'}
+        with patch.object(cleanup.os, 'pidfd_open', None, create=True), \
+                patch.object(cleanup.os, 'kill') as kill, \
+                patch.object(cleanup, 'role_of', return_value='trainer'), \
+                patch.object(cleanup, 'process', side_effect=[info, info, None]):
+            cleanup.terminate(info, Path.cwd())
+            kill.assert_called_once_with(16724, cleanup.signal.SIGTERM)
+        with patch.object(cleanup.os, 'pidfd_open', None, create=True), \
+                patch.object(cleanup.os, 'kill') as kill, \
+                patch.object(cleanup, 'role_of', return_value='trainer'), \
+                patch.object(cleanup, 'process', side_effect=[info, dict(info, start='changed')]):
+            with self.assertRaisesRegex(RuntimeError, 'PID identity changed'):
+                cleanup.terminate(info, Path.cwd())
+            kill.assert_not_called()
+
     def test_scan_does_not_read_unrelated_process_cwd(self):
         with patch.object(cleanup.os, 'getuid', return_value=1000, create=True), \
                 patch.object(cleanup.Path, 'stat', return_value=SimpleNamespace(st_uid=1000)), \

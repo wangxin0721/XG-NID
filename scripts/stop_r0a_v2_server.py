@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import argparse
+import errno
 import json
 import os
 from pathlib import Path
@@ -110,20 +111,44 @@ def terminate(info, repo):
     if current is None:
         return
     require(current["start"] == info["start"] and role_of(current, repo) == info["role"], "PID identity changed")
-    require(hasattr(os, "pidfd_open") and hasattr(signal, "pidfd_send_signal"),
-            "Kernel/Python must support pidfd for identity-safe signaling; nothing deleted")
-    descriptor = os.pidfd_open(info["pid"])
+    descriptor = None
     try:
-        current = process(info["pid"])
-        require(current is not None and current["start"] == info["start"]
-                and role_of(current, repo) == info["role"], "PID identity changed before signaling")
-        signal.pidfd_send_signal(descriptor, signal.SIGTERM)
+        if callable(getattr(os, "pidfd_open", None)) and callable(getattr(signal, "pidfd_send_signal", None)):
+            try:
+                descriptor = os.pidfd_open(info["pid"])
+            except OSError as exc:
+                if exc.errno not in (errno.ENOSYS, errno.EINVAL, errno.ENOTSUP):
+                    raise
+
+        def send(number):
+            current = process(info["pid"])
+            if current is None:
+                return
+            require(current["start"] == info["start"] and current["args"] == info["args"]
+                    and role_of(current, repo) == info["role"], "PID identity changed before signaling")
+            if descriptor is not None:
+                try:
+                    signal.pidfd_send_signal(descriptor, number)
+                    return
+                except OSError as exc:
+                    if exc.errno != errno.ENOSYS:
+                        raise
+                    current = process(info["pid"])
+                    if current is None:
+                        return
+                    require(current["start"] == info["start"] and current["args"] == info["args"]
+                            and role_of(current, repo) == info["role"], "PID identity changed before fallback")
+            # Older server Python/kernel: standard kill after checking identity
+            # again immediately before EACH signal; never signal a whole group.
+            os.kill(info["pid"], number)
+
+        send(signal.SIGTERM)
         deadline = time.monotonic() + 15
         while time.monotonic() < deadline:
             if process(info["pid"]) is None:
                 return
             time.sleep(.25)
-        signal.pidfd_send_signal(descriptor, signal.SIGKILL)
+        send(signal.SIGKILL)
         deadline = time.monotonic() + 5
         while time.monotonic() < deadline:
             if process(info["pid"]) is None:
@@ -133,7 +158,8 @@ def terminate(info, repo):
     except ProcessLookupError:
         return
     finally:
-        os.close(descriptor)
+        if descriptor is not None:
+            os.close(descriptor)
 
 
 def main():
