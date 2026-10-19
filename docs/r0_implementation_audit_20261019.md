@@ -72,3 +72,11 @@ python -B -u /tmp/xgnid_audit_r0_gap.py --repo .
 现阶段没有发现抽样输入被错构、包装器改变官方输出或指标算错的证据；不能扩展为所有代码/所有输入均无问题。64个匹配只证明当前候选CSV与这64张图的一致性，不能证明作者历史样本相同。时间窗口、历史过滤与亚类比例仍缺来源记录；root_cause_established=false。
 
 无需重跑本次审查。下一步可以直接从现有`csv_graph_samples.json`提取82列顺序和temporal列清单，核实可见时间特征，再判断需要哪份原始生成记录。不要因检查通过就反复换seed或修改测试集。
+
+## 五、用户确认：CSV由原始PCAP自行提取
+
+用户在来源问题中明确回答“自己从原始PCAP提取生成”。因此当前候选CSV不是直接使用作者公开网盘的处理后CSV；此前64张匹配证明的是本地处理链在抽样范围内一致，不是作者样本身份已对齐，也不说明自行提取必然错误。该来源差异尚不足以单独解释4.18个百分点。
+
+接下来的核查需恢复实际提取脚本/notebook及执行参数。固定官方代码可确认的对照项为：NFStream6.5.3（requirements声明），accounting_mode=1、idle_timeout=120、statistical_analysis=True、n_dissections=0、My_Custom(limit=20)；additional_features按输入CSV逐文件调用，按bidirectional_first_seen_ms排序，默认每分组350条流记录rolling。原示例先提取、增加temporal特征，再过滤/划分/采样。若实际流程改变了文件合并边界、先采样再算rolling、协议处理或流切分，最终特征可能不同，需要真实命令/源文件证据确认；这些目前都不是已确认错误。
+
+当前安装的NFStream版本只能作为环境快照，不能替代历史提取环境。现有报告可直接读出82列顺序、temporal列和MAC列是否留存；无需重跑CPU前向、重新扫描CSV或重新训练。用户实际提取命令/脚本名称仍待提供。

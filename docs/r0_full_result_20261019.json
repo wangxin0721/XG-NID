@@ -4,6 +4,14 @@
   "source": "User-pasted server metrics.json and last three epochs.jsonl records, followed by two screenshots of run_r0_full_server.py --status; no local model execution",
   "output_relative_path": "outputs/r0_full_s42_20261017T065259974842Z",
   "claim": "protocol_reimplementation",
+  "csv_origin_user_confirmation": {
+    "received_date": "2026-10-19",
+    "origin": "self-extracted from original PCAP files",
+    "author_published_processed_csv_used": false,
+    "historical_extraction_command_known": false,
+    "historical_extraction_environment_known": false,
+    "note": "Different provenance is confirmed; it is not proof of the cause or size of the paper-score gap"
+  },
   "paper_comparison": {
     "source": "User-provided journal PDF, page 11, Figure 5; plot y-axis explicitly says Macro F1-Score",
     "public_paper_url": "https://arxiv.org/html/2408.16021v2#S4.F5",
