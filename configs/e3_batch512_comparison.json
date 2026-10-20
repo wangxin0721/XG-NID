@@ -1,0 +1,34 @@
+{
+  "schema": "xgnid.e3-batch512-comparison.v1",
+  "experiment": "E3",
+  "train_batch_sizes": [512],
+  "initialization_batch_size": 16,
+  "evaluation_batch_size": 16,
+  "epochs": 100,
+  "workers": 2,
+  "split_id": "a8ae9c934eec9fee970cc725e60051d0c709e0f16c7dda14749350ff2006975a",
+  "split_directory": "data/processed/ciciot2023_grouped_input_v1",
+  "reference_e3": "outputs/grouped_full_E3_s42_resume_v1/summary.json",
+  "fusion_control_report": "outputs/grouped_full_E2_s42_v1/summary.json",
+  "paired_e2_batch512": "outputs/e2_batch_full_b512_s42_v1/summary.json",
+  "smoke_report": "outputs/grouped_gpu_smoke_v1/smoke.json",
+  "pilot_report": "outputs/grouped_training_pilot_v1/summary.json",
+  "baseline_report": "outputs/grouped_full_E0_s42_v1/summary.json",
+  "reference_controls": {
+    "seed": 42, "batch_size": 16, "lr": 0.001, "hidden_dim": 64,
+    "optimizer": "Adam", "early_stop_patience": 12, "early_stop_min_delta": 0.0,
+    "auxiliary_losses": false, "calibration": false, "class_weighting": false,
+    "hard_negatives": false, "loss": "plain NLL", "device_family": "cuda"
+  },
+  "probe": {"warmup_steps": 1, "measured_steps": 3},
+  "registration": {
+    "kind": "exploratory_extension_after_prior_results",
+    "requested_by": "user",
+    "date": "2026-10-20",
+    "prior_test_results_available": true,
+    "selection_metric": "validation Macro-F1",
+    "scope": "Explicit E3 training-batch512 request after E3-B16 and E2-B512 results. Record as exploratory; preserve all prior results. No test-driven learning-rate search or automatic further batch candidates."
+  },
+  "comparison": "Keep the original E3 adaptive gate, proxy mixing, edge attributes, seed42 and exact initialization. Change training batch to512; retain initialization/evaluation batch16, Adam lr0.001, max100 epochs and patience12. Pair with completed E2-B512 under the same sources, data, initial weights and controls. Equal epoch ceilings are not equal optimizer updates versus B16.",
+  "scheduling": "Server only. Probe first, then explicitly launch full on the same physical GPU UUID. Reject occupied GPUs by default. No automatic retries, resume, GPU preemption, full launch or edits to frozen E0-E3/E2 batch comparison/E4."
+}
