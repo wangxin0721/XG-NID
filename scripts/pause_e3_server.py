@@ -92,8 +92,16 @@ def main():
         best = torch.load(snapshot / "best.pt", map_location="cpu", weights_only=False)
         required = {"model_state", "optimizer_state", "config", "epoch", "best_epoch", "best_val_macro_f1",
                     "validation", "sampler_rng_state", "torch_rng_state", "cuda_rng_states"}
-        if not required.issubset(last) or last["config"] != config or best["config"] != config:
-            raise RuntimeError("Checkpoint state/config is incomplete")
+        missing = sorted(required - set(last))
+        if missing:
+            raise RuntimeError(f"Checkpoint state is incomplete: missing {missing}")
+        # torch.save retains integer Counter keys; JSON turns those keys into
+        # strings. Compare the JSON representation, not unequal Python types.
+        for label, value in (("last", last), ("best", best)):
+            canonical = json.loads(json.dumps(value["config"]))
+            if canonical != config:
+                keys = sorted(key for key in set(canonical) | set(config) if canonical.get(key) != config.get(key))
+                raise RuntimeError(f"{label} checkpoint config differs in fields: {keys}")
         if not (0 < best["epoch"] <= last["epoch"] <= config["epochs"]):
             raise RuntimeError("Invalid checkpoint epoch ordering")
         if best["epoch"] != last["best_epoch"] and last["best_epoch"] != last["epoch"]:
