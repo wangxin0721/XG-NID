@@ -20,5 +20,5 @@
   },
   "probe": {"warmup_steps": 1, "measured_steps": 3},
   "comparison": "Only training batch changes. Keep E2 architecture, source graph manifest, seed, initial state, lr=0.001, evaluation batch=16 and epoch/early-stop rules fixed. This compares equal epoch ceilings, not equal optimizer updates; do not scale learning rate automatically.",
-  "scheduling": "Server only. Explicitly choose an idle physical GPU; refuse an occupied GPU. Probe each size before its independent full run. Preserve existing E0-E3/R0. No automatic full training, retries, resume, test-based selection or changes to E3."
+  "scheduling": "Server only. Explicitly choose a physical GPU. Refuse occupied GPUs by default; --allow-shared-gpu explicitly permits sharing and records co-running processes and shared timing. Probe each size before its independent full run. Preserve existing E0-E3/R0. No automatic full training, retries, resume, test-based selection or changes to E3."
 }

@@ -52,19 +52,36 @@ def local_path(repo, name):
     return path
 
 
-def idle_gpu(index):
-    def query(*args):
-        result = subprocess.run(["nvidia-smi", *args], capture_output=True, text=True, check=True)
-        return list(csv.reader(result.stdout.splitlines(), skipinitialspace=True))
-    rows = query("-i", str(index), "--query-gpu=index,uuid,name,memory.total", "--format=csv,noheader,nounits")
-    require(len(rows) == 1 and len(rows[0]) == 4, "Cannot identify the selected physical GPU")
-    number, uuid, name, memory = [value.strip() for value in rows[0]]
+def gpu_query(*args):
+    result = subprocess.run(["nvidia-smi", *args], capture_output=True, text=True, check=True)
+    return list(csv.reader(result.stdout.splitlines(), skipinitialspace=True))
+
+
+def compute_processes(uuid):
+    rows = gpu_query("--query-compute-apps=gpu_uuid,pid,process_name", "--format=csv,noheader,nounits")
+    return [{"pid": int(row[1]), "name": row[2].strip()} for row in rows
+            if len(row) == 3 and row[0].strip() == uuid and int(row[1]) != os.getpid()]
+
+
+def other_processes_snapshot(gpu):
+    try:
+        return {"processes": compute_processes(gpu["uuid"]), "scope": "point-in-time observation only"}
+    except (OSError, subprocess.SubprocessError, ValueError) as exc:
+        return {"query_error": str(exc), "scope": "unknown; do not infer timing isolation"}
+
+
+def checked_gpu(index, allow_shared=False):
+    rows = gpu_query("-i", str(index), "--query-gpu=index,uuid,name,memory.total,memory.used,memory.free", "--format=csv,noheader,nounits")
+    require(len(rows) == 1 and len(rows[0]) == 6, "Cannot identify the selected physical GPU")
+    number, uuid, name, memory, used, free = [value.strip() for value in rows[0]]
     require(int(number) == index and uuid.startswith("GPU-"), "GPU identity mismatch")
-    jobs = query("--query-compute-apps=gpu_uuid,pid,process_name", "--format=csv,noheader,nounits")
-    active = [row for row in jobs if row and row[0].strip() == uuid]
-    require(not active, f"Physical GPU {index} has compute processes {active}; existing tasks are preserved, no launch")
+    active = compute_processes(uuid)
+    require(allow_shared or not active, f"Physical GPU {index} has compute processes {active}; use --allow-shared-gpu only for an intentional shared run")
     return {"physical_index": index, "uuid": uuid, "name": name, "memory_mib": int(memory),
-            "availability": "no compute process at query time; not a reservation"}
+            "used_mib_at_query": int(used), "free_mib_at_query": int(free),
+            "sharing_allowed": allow_shared, "existing_compute_processes": active,
+            "availability": "explicit sharing allowed" if allow_shared else "no compute process at query time; not a reservation",
+            "timing_scope": "shared execution; not a standalone speed benchmark" if allow_shared else "isolation requires observation; query does not reserve GPU"}
 
 
 def check_config(config, batch_size):
@@ -119,7 +136,7 @@ def setup(core, args, config, gpu):
                "train_batch_size": args.batch_size, "initial_state_sha256": expected["initial_state_sha256"],
                "runtime": {"python": platform.python_version(), "torch": torch.__version__,
                            "pyg": core.torch_geometric.__version__, "cuda": torch.version.cuda},
-               "gpu_uuid": gpu["uuid"]}
+               "gpu_uuid": gpu["uuid"], "allow_shared_gpu": args.allow_shared_gpu}
     return frozen, device, binding
 
 
@@ -173,7 +190,8 @@ def probe(core, args, config, frozen, device, binding, gpu):
                 "nodes": {name: batch[name].x.size(0) for name in ("flow", "packet")},
                 "edges": {str(name): batch[name].edge_index.size(1) for name in batch.edge_types},
                 "peak_cuda_allocated_bytes": core.torch.cuda.max_memory_allocated(device),
-                "peak_cuda_reserved_bytes": core.torch.cuda.max_memory_reserved(device)}
+                "peak_cuda_reserved_bytes": core.torch.cuda.max_memory_reserved(device),
+                "other_compute_processes_snapshot": other_processes_snapshot(gpu)}
         measured.append(item)
         print("E2 batch probe", json.dumps(item), flush=True)
     require(len(measured) == 3, "Probe incomplete")
@@ -237,7 +255,8 @@ def full(core, args, config, frozen, device, binding, gpu):
                      "val_accuracy": validation["accuracy"], "val_macro_f1": validation["macro_f1"],
                      "val_weighted_f1": validation["weighted_f1"], "val_wall_seconds": validation["wall_seconds_including_graph_io"],
                      "peak_cuda_allocated_bytes": core.torch.cuda.max_memory_allocated(device),
-                     "peak_cuda_reserved_bytes": core.torch.cuda.max_memory_reserved(device)}
+                     "peak_cuda_reserved_bytes": core.torch.cuda.max_memory_reserved(device),
+                     "other_compute_processes_snapshot": other_processes_snapshot(gpu)}
             history.append(entry)
             stream.write(json.dumps(entry) + "\n")
             stream.flush()
@@ -287,6 +306,7 @@ def main():
     parser.add_argument("--mode", choices=("probe", "full"), required=True)
     parser.add_argument("--batch-size", type=int, choices=(256, 512), required=True)
     parser.add_argument("--physical-gpu", type=int, choices=(0, 1), required=True)
+    parser.add_argument("--allow-shared-gpu", action="store_true", help="Explicitly allow other compute processes; record shared timing, preserve existing jobs")
     parser.add_argument("--probe-report", type=Path)
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
@@ -300,7 +320,8 @@ def main():
     require(not args.output.exists(), "Output already exists; no overwrite, automatic retry or resume")
     config = read(args.config)
     check_config(config, args.batch_size)
-    gpu = idle_gpu(args.physical_gpu)  # No CUDA context and no output files if the chosen GPU is occupied.
+    gpu = checked_gpu(args.physical_gpu, args.allow_shared_gpu)
+    print("GPU execution policy", json.dumps(gpu), flush=True)
     os.environ["CUDA_VISIBLE_DEVICES"] = gpu["uuid"]
     os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
     os.environ["OMP_NUM_THREADS"] = "2"

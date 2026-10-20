@@ -23,7 +23,7 @@
 - 原入口会拒绝与 E0 预算控制不一致的 batch。本入口先以原有 batch16 的真实 E2 记录核验原 smoke/pilot/E0 依赖，再显式登记新 batch 对照协议，不修改或伪造原报告让它通过。
 - 所有候选均使用原 16 图初始化批次；初始 state SHA 必须与既有 E2、GPU smoke 一致，否则直接失败。大 batch 容量探测得到的训练后状态不用于正式训练。
 - 读取现有图，不生成新图、不改变划分；逐图哈希核验仍由原 FrozenGraphs 完成。探测只加载训练图，不读取验证/测试图张量。
-- 先用 NVIDIA 官方查询接口确认指定物理 GPU UUID 及其计算进程，忙碌或查询失败时拒绝运行，不终止任何进程；通过 UUID 设置 CUDA_VISIBLE_DEVICES，程序内部使用 cuda:0。查询是时点观察，不是 GPU 资源预留，见 [NVIDIA SMI 文档](https://docs.nvidia.com/deploy/nvidia-smi/index.html)。
+- 先用 NVIDIA 官方查询接口确认指定物理 GPU UUID、已用/可用显存及其计算进程，默认忙碌或查询失败时拒绝运行；用户显式指定 `--allow-shared-gpu` 时允许共享并记录现有进程，不终止任何进程。通过 UUID 设置 CUDA_VISIBLE_DEVICES，程序内部使用 cuda:0。查询是时点观察，不是 GPU 资源预留，见 [NVIDIA SMI 文档](https://docs.nvidia.com/deploy/nvidia-smi/index.html)。
 - 每个容量探测使用首个 seed42 训练顺序的三个完整 batch：第一批先做一次预热，再对三批分别做前向、NLL、反向及 Adam 更新；验证参数确有更新、梯度有限、等权仍为 0.5。记录节点/边数、已分配/保留显存峰值、驻留 GPU 的单步耗时。该耗时排除图读取和传输，不冒充完整 epoch 吞吐量。
 - 探测不是全图最坏尺寸扫描，不能保证后续永不 OOM。OOM/非有限数值保留失败证据，无自动降 batch、重试或恢复；失败探测不能放行正式训练。
 - 正式训练必须提供同一 batch、配置、入口/冻结源码、数据清单、基线报告、运行环境和 GPU UUID 的成功探测。源码或 GPU 改变后重新探测，不绕过绑定。
@@ -41,7 +41,7 @@ git show origin/codex/r0-edge-preparation:configs/e2_batch_comparison.json > /tm
 nvidia-smi
 ```
 
-**仅对空闲 GPU 执行。**下面以物理 GPU1 为例，不宣称它当前空闲；若需要 GPU0，显式改为 `--physical-gpu 0`。不要为了新对照中断现有 E3 或另一张卡的任务。探测前台执行，先做 256；通过后再做 512，均不自动串联正式训练。
+**默认仅对空闲 GPU 执行；有意共享时使用文末的显式选项。**下面以物理 GPU1 为例，不宣称它当前空闲；若需要 GPU0，显式改为 `--physical-gpu 0`。不要为了新对照中断现有 E3 或另一张卡的任务。探测前台执行，先做 256；通过后再做 512，均不自动串联正式训练。
 
 ```bash
 python -B -u /tmp/xgnid_e2_batch.py --repo . --config /tmp/xgnid_e2_batch.json --mode probe --batch-size 256 --physical-gpu 1 --output outputs/e2_batch_probe_b256_s42_v1
@@ -57,7 +57,7 @@ python -B -u /tmp/xgnid_e2_batch.py --repo . --config /tmp/xgnid_e2_batch.json -
 
 ## 正式训练命令（仅在相应探测实际通过后）
 
-以下示例仍为 GPU1，须与相应探测 UUID 相同。每项只启动一次，目录和日志不存在才执行；原有产物不覆盖。**不要同时提交两项到同一张卡**；先完成 256，再运行 512。入口会再次拒绝已有计算进程；没有后台自动队列。
+以下示例仍为 GPU1，须与相应探测 UUID 相同。每项只启动一次，目录和日志不存在才执行；原有产物不覆盖。**不要同时提交 B256 和 B512 到同一张卡**；先完成 256，再运行 512。默认入口再次拒绝已有计算进程；显式共享另见下节，没有后台自动队列。
 
 ```bash
 if [ -e outputs/e2_batch_full_b256_s42_v1 ] || [ -e outputs/e2_batch_full_b256_s42_v1.log ]; then
@@ -86,3 +86,31 @@ fi
 本地 Python 3.9 AST 语法、复用的冻结模块接口名称、JSON 配置与原冻结控制的一致性、batch 更新次数算术、探测/正式模式约束静态检查均通过；冻结文件 Git 差异为空。没有执行新入口，也没有运行模型或合成/真实数据实验。
 
 服务器容量探测、训练/评价时的显存和吞吐量、同初始化哈希的实际比对、正式训练及性能结论全部待真实执行。新入口与冻结循环分开实现，尚未用服务器小规模轨迹验证；先以真实探测检查运行路径，不能把静态通过当作训练正确性已完全证明。原 E2 batch16 测试为 Accuracy 96.9438%、Macro-F1 95.0161%、Weighted-F1 96.8974%，用作已登记对照，不用新测试结果反复调学习率或批大小。
+
+## 用户追加：E2-B256 与 E3 共用 GPU0
+
+2026-10-20 用户询问是否可以让 E2-B256 和 E3 同时在 GPU0 运行。技术上可以让多个 CUDA 进程使用同一张卡；此前默认拒绝是入口的资源/计时保护策略，不是硬件只能运行一个进程。见 [NVIDIA 多进程架构说明](https://docs.nvidia.com/deploy/mps/latest/architecture.html)。本次只放开显式选项，不启用 MPS、不重启驱动、不修改现有 E3。
+
+新选项 `--allow-shared-gpu` 同时适用于 probe / full；两个阶段的绑定都记录该选项、同一 GPU UUID、代码和配置哈希，不能混用旧版本或不同策略的探测。硬件记录包含启动时的其他计算进程、已用/可用显存；每个探测 batch 和正式 epoch 末另记录其他进程快照，快照查询失败会明确记录 unknown，不影响训练本身。
+
+共享时两个模型/优化器仍属于各自独立进程，分别保存结果；但显存与计算资源共同使用。探测通过仅说明抽样 batch 可以运行，不保证未来峰值不冲突。共享执行的墙钟与单步耗时标记为共享环境，不用来独立证明 batch 提速。若要比较纯性能开销，另选无其他计算进程的时段测量；不据现有单次 GPU-Util 或显存截图保证容量。
+
+获取新提交中的入口和配置后，在 GPU0 做 B256 的短探测，E3 保持原样运行：
+
+```bash
+python -B -u /tmp/xgnid_e2_batch.py --repo . --config /tmp/xgnid_e2_batch.json --mode probe --batch-size 256 --physical-gpu 0 --allow-shared-gpu --output outputs/e2_batch_probe_b256_s42_shared_v1
+```
+
+这份探测真实通过后，再启动相应正式任务：
+
+```bash
+if [ -e outputs/e2_batch_full_b256_s42_shared_v1 ] || [ -e outputs/e2_batch_full_b256_s42_shared_v1.log ]; then
+    echo "共享B256产物已存在，核查状态，不重复提交。"
+else
+    nohup python -B -u /tmp/xgnid_e2_batch.py --repo . --config /tmp/xgnid_e2_batch.json --mode full --batch-size 256 --physical-gpu 0 --allow-shared-gpu --probe-report outputs/e2_batch_probe_b256_s42_shared_v1/summary.json --output outputs/e2_batch_full_b256_s42_shared_v1 >> outputs/e2_batch_full_b256_s42_shared_v1.log 2>&1 < /dev/null &
+    echo "$!" > outputs/e2_batch_full_b256_s42_shared_v1.pid
+    echo "共享B256请求已提交，检查日志确认实际训练。"
+fi
+```
+
+本次没有真实执行共享探测或启动共享训练。B512 继续保留既有候选，先完成 B256 共享容量核对；没有新增同时并发三项任务的安排。
