@@ -1,0 +1,24 @@
+{
+  "schema": "xgnid.e2-batch-comparison.v1",
+  "experiment": "E2",
+  "train_batch_sizes": [256, 512],
+  "initialization_batch_size": 16,
+  "evaluation_batch_size": 16,
+  "epochs": 100,
+  "workers": 2,
+  "split_id": "a8ae9c934eec9fee970cc725e60051d0c709e0f16c7dda14749350ff2006975a",
+  "split_directory": "data/processed/ciciot2023_grouped_input_v1",
+  "reference_e2": "outputs/grouped_full_E2_s42_v1/summary.json",
+  "smoke_report": "outputs/grouped_gpu_smoke_v1/smoke.json",
+  "pilot_report": "outputs/grouped_training_pilot_v1/summary.json",
+  "baseline_report": "outputs/grouped_full_E0_s42_v1/summary.json",
+  "reference_controls": {
+    "seed": 42, "batch_size": 16, "lr": 0.001, "hidden_dim": 64,
+    "optimizer": "Adam", "early_stop_patience": 12, "early_stop_min_delta": 0.0,
+    "auxiliary_losses": false, "calibration": false, "class_weighting": false,
+    "hard_negatives": false, "loss": "plain NLL", "device_family": "cuda"
+  },
+  "probe": {"warmup_steps": 1, "measured_steps": 3},
+  "comparison": "Only training batch changes. Keep E2 architecture, source graph manifest, seed, initial state, lr=0.001, evaluation batch=16 and epoch/early-stop rules fixed. This compares equal epoch ceilings, not equal optimizer updates; do not scale learning rate automatically.",
+  "scheduling": "Server only. Explicitly choose an idle physical GPU; refuse an occupied GPU. Probe each size before its independent full run. Preserve existing E0-E3/R0. No automatic full training, retries, resume, test-based selection or changes to E3."
+}
