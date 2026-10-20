@@ -1,0 +1,33 @@
+{
+  "schema": "xgnid.e2-batch-comparison.v1",
+  "experiment": "E2",
+  "train_batch_sizes": [1024],
+  "registration": {
+    "kind": "exploratory_extension_after_prior_results",
+    "requested_by": "user",
+    "date": "2026-10-20",
+    "prior_test_results_available": true,
+    "prior_train_batches": [16, 256, 512],
+    "selection_metric": "validation Macro-F1",
+    "scope": "One additional E2 batch1024 trial explicitly requested after prior results. Preserve the original three-run comparison and report this as an exploratory extension, not as an originally preregistered candidate."
+  },
+  "initialization_batch_size": 16,
+  "evaluation_batch_size": 16,
+  "epochs": 100,
+  "workers": 2,
+  "split_id": "a8ae9c934eec9fee970cc725e60051d0c709e0f16c7dda14749350ff2006975a",
+  "split_directory": "data/processed/ciciot2023_grouped_input_v1",
+  "reference_e2": "outputs/grouped_full_E2_s42_v1/summary.json",
+  "smoke_report": "outputs/grouped_gpu_smoke_v1/smoke.json",
+  "pilot_report": "outputs/grouped_training_pilot_v1/summary.json",
+  "baseline_report": "outputs/grouped_full_E0_s42_v1/summary.json",
+  "reference_controls": {
+    "seed": 42, "batch_size": 16, "lr": 0.001, "hidden_dim": 64,
+    "optimizer": "Adam", "early_stop_patience": 12, "early_stop_min_delta": 0.0,
+    "auxiliary_losses": false, "calibration": false, "class_weighting": false,
+    "hard_negatives": false, "loss": "plain NLL", "device_family": "cuda"
+  },
+  "probe": {"warmup_steps": 1, "measured_steps": 3},
+  "comparison": "Exploratory E2 batch1024 extension after batch16/256/512 results. Change only training batch; retain seed42, the same initial state and frozen data, lr=0.001, evaluation batch16, max100 epochs and patience12. Equal epoch ceiling is not equal optimizer updates. Do not scale learning rate automatically or replace the prior results.",
+  "scheduling": "Server only. Choose physical GPU explicitly; default refuses other compute processes. Intentional sharing requires --allow-shared-gpu in both probe and full and is recorded. Require a matching successful 1024 probe on the same GPU UUID. No automatic full training, retries, resume, stop/cleanup of other jobs, or changes to E3."
+}

@@ -267,3 +267,47 @@ B512 回传 config_sha256 为 `0a297a4a42c86785ce59ac4eec64b771ad4e5ce774b1379f6
 本地仅对用户回传 JSON 做算术检查：三组验证/测试混淆矩阵的样本总数、Accuracy、每类 F1、Macro/Weighted-F1 均一致（误差 <1e-12）；三组初始哈希一致，B512 更新次数及样本曝光量正确。未执行本地模型、训练、冒烟、重建图或新测试推断。
 
 本次用户明确登记的 E2-B256/B512 两项均已回传完成，产物独立保留，不覆盖原冻结结果，不自动追加训练。下一步先收齐/核对 E3-B16 的真实状态和结果；如后续确需新 batch 下的门控对照，再独立登记匹配设置，当前不提前实现 M1 或自动启动 E3-B512。B512 完成不能说明 GPU0 上 E3 也已完成。
+
+## 用户明确追加 E2-B1024（2026-10-20）
+
+用户在三组结果回传后要求“再来一组1024的”。本次按明确指令增加一项独立 E2-B1024。此项如实登记为已知前序测试结果之后的探索性追加，不追溯修改原 B16/B256/B512 比较的登记范围或结论，不声称新增了一份未接触的确认性测试集。
+
+独立配置为 `configs/e2_batch1024_comparison.json`，训练候选只含 [1024]；原 `configs/e2_batch_comparison.json` 不变。入口扩展 CLI 支持 1024，但要求匹配的新配置及探索性登记信息，不能把旧配置的 batch 参数直接改为 1024。登记信息会保存到 summary、训练 config 和 metrics。
+
+训练设置：原 E2 双编码器/0.5 等权融合，参数 846800；训练 batch1024，初始化/评价 batch16；seed42；Adam lr0.001、weight_decay0；max100 epoch、验证 Macro-F1 严格改善选 best、patience12；workers2；无学习率自动缩放、scheduler、梯度累积或 AMP。每个完整 epoch 为 106 次更新（105 个 1024 图 batch 加 1 个 101 图 batch），相同 epoch 上限不等于相同更新次数。数据、初始化及代码依赖检查仍沿用既有绑定，不修改冻结模型、训练源码、E3 暂停/恢复工具或任何历史结果。
+
+新入口与旧入口的初始化、单步更新、容量探测和 epoch 循环保持相同实现，仅扩展候选校验并增加登记字段。新入口字节 SHA 与旧版不同，因此必须新做 B1024 容量探测，不能复用 256/512 探测。历史 256/512 已用入口仍可从提交 `db232e4` 取回；下面特意采用新的 `/tmp/xgnid_e2_b1024.py` 和配置文件名，不覆盖先前 `/tmp` 入口。
+
+### 服务器获取与探测
+
+在服务器 wx 环境、仓库根目录执行，只 fetch/提取新文件，不切换训练工作树。下面分支 ref 在最终交付中替换为实际提交 SHA，确保探测与正式阶段同版本。
+
+```bash
+. /home/nzxn/miniconda3/etc/profile.d/conda.sh && conda activate wx
+cd /home/nzxn/下载/WX/load/XG-NID
+git fetch origin codex/r0-edge-preparation
+git show origin/codex/r0-edge-preparation:scripts/run_e2_batch_comparison.py > /tmp/xgnid_e2_b1024.py
+git show origin/codex/r0-edge-preparation:configs/e2_batch1024_comparison.json > /tmp/xgnid_e2_b1024.json
+
+python -B -u /tmp/xgnid_e2_b1024.py --repo . --config /tmp/xgnid_e2_b1024.json --mode probe --batch-size 1024 --physical-gpu 1 --output outputs/e2_batch_probe_b1024_s42_v1
+```
+
+默认以 GPU1 为例，先核对该卡；若有计算任务会拒绝，不中断任何现有任务。需要选 GPU0 时显式改索引，正式阶段也须与探测的 GPU UUID 一致。若另行明确选择共享，probe 和 full 均加 `--allow-shared-gpu`，保持两阶段策略一致，记录共享条件，不把耗时解释为独占性能。
+
+探测只用真实训练图，第一批预热 1 步、三个完整 1024 图 batch 各实测 1 步，检查初始哈希/有限损失梯度/参数更新/等权/显存；不读取验证或测试图张量，不自动进入正式训练。必须真实返回 completed，summary 中 mode=probe、optimizer_update_verified=true、warmup_updates=1、measured_updates=3、test=null；抽样通过不保证全数据最坏峰值不会 OOM。
+
+### 探测通过后的独立正式启动
+
+```bash
+if [ -e outputs/e2_batch_full_b1024_s42_v1 ] || [ -e outputs/e2_batch_full_b1024_s42_v1.log ]; then
+    echo "B1024产物已存在，核查状态，不重复提交。"
+else
+    nohup python -B -u /tmp/xgnid_e2_b1024.py --repo . --config /tmp/xgnid_e2_b1024.json --mode full --batch-size 1024 --physical-gpu 1 --probe-report outputs/e2_batch_probe_b1024_s42_v1/summary.json --output outputs/e2_batch_full_b1024_s42_v1 >> outputs/e2_batch_full_b1024_s42_v1.log 2>&1 < /dev/null &
+    echo "$!" > outputs/e2_batch_full_b1024_s42_v1.pid
+    echo "B1024正式训练请求已提交，检查日志确认实际训练。"
+fi
+```
+
+日志：`tail -n 30 -F outputs/e2_batch_full_b1024_s42_v1.log`；根状态：`cat outputs/e2_batch_full_b1024_s42_v1/status.json`；最终指标：`cat outputs/e2_batch_full_b1024_s42_v1/E2/metrics.json`。PID/提交提示不能替代 epoch 日志或最终完成状态；不重复提交已有结果目录。
+
+此项当前为代码/配置交付，服务器探测、正式训练和结果待真实执行；不标记已通过或已启动。本地 Python3.9 AST、配置与既有控制一致性、复用接口和批次数量算术检查均通过；初始化、单步更新、探测、依赖 setup 和完整 epoch 循环的 AST 与扩展前一致，冻结文件无本次差异。没有执行入口，也不运行模型、合成实验或实际数据实验。原三组真实结果继续保留，不能因新增 1024 而覆盖或删除。后续选择依据验证集并报告全部候选，不自动再增加更大 batch 或更换学习率。

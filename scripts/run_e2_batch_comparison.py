@@ -1,4 +1,4 @@
-"""Independent, server-only E2 training-batch comparison (256 / 512).
+"""Independent, server-only E2 training-batch comparison (256 / 512 / 1024).
 
 The frozen trainer/model files stay unchanged. Reuse its verified loader,
 initialization, sampler, metrics and checkpoints; hold initialization/evaluation
@@ -86,7 +86,13 @@ def checked_gpu(index, allow_shared=False):
 
 def check_config(config, batch_size):
     require(config["schema"] == "xgnid.e2-batch-comparison.v1" and config["experiment"] == "E2", "Wrong comparison protocol")
-    require(config["train_batch_sizes"] == [256, 512] and batch_size in config["train_batch_sizes"], "Only E2 batch 256 and 512 are registered")
+    registered = config["train_batch_sizes"]
+    require(registered in ([256, 512], [1024]) and batch_size in registered, "Batch must match its separate comparison registration")
+    if registered == [1024]:
+        registration = config.get("registration", {})
+        require(registration.get("kind") == "exploratory_extension_after_prior_results"
+                and registration.get("prior_test_results_available") is True,
+                "B1024 requires its explicit exploratory-extension config; do not edit the original B256/B512 registration")
     require((config["initialization_batch_size"], config["evaluation_batch_size"], config["epochs"], config["workers"]) ==
             (16, 16, 100, 2), "Fixed initialization/evaluation batch or budget changed")
     require(config["probe"] == {"warmup_steps": 1, "measured_steps": 3}, "Probe budget changed")
@@ -230,6 +236,8 @@ def full(core, args, config, frozen, device, binding, gpu):
                   "binding": binding, "hardware": gpu, "probe_report": str(probe_path), "probe_sha256": sha(probe_path),
                   "comparison": config["comparison"], "partition_sizes": frozen.metadata["partition_sizes"],
                   "optimizer_updates_per_full_epoch": len(sampler)}
+    if "registration" in config:
+        run_config["registration"] = config["registration"]
     core.write(directory / "config.json", run_config)
     best, best_epoch, stale, updates, history = -1., 0, 0, 0, []
     started = time.perf_counter()
@@ -293,6 +301,8 @@ def full(core, args, config, frozen, device, binding, gpu):
                "training_validation_checkpoint_wall_seconds": training_wall, "run_wall_seconds": time.perf_counter() - started,
                "config_sha256": sha(directory / "config.json"),
                "checkpoint_sha256": {name: sha(directory / name) for name in ("best.pt", "last.pt")}}
+    if "registration" in config:
+        metrics["registration"] = config["registration"]
     core.write(directory / "metrics.json", metrics)
     core.write(directory / "status.json", {"status": "completed", "exit_code": 0})
     return {"status": "completed", "exit_code": 0, "mode": "full", "protocol": config["schema"],
@@ -304,7 +314,7 @@ def main():
     parser.add_argument("--repo", type=Path, default=Path.cwd())
     parser.add_argument("--config", type=Path, required=True)
     parser.add_argument("--mode", choices=("probe", "full"), required=True)
-    parser.add_argument("--batch-size", type=int, choices=(256, 512), required=True)
+    parser.add_argument("--batch-size", type=int, choices=(256, 512, 1024), required=True)
     parser.add_argument("--physical-gpu", type=int, choices=(0, 1), required=True)
     parser.add_argument("--allow-shared-gpu", action="store_true", help="Explicitly allow other compute processes; record shared timing, preserve existing jobs")
     parser.add_argument("--probe-report", type=Path)
@@ -340,6 +350,8 @@ def main():
         started = time.perf_counter()
         result = probe(core, args, config, frozen, device, binding, gpu) if args.mode == "probe" else full(core, args, config, frozen, device, binding, gpu)
         result["wall_seconds_after_setup"] = time.perf_counter() - started
+        if "registration" in config:
+            result["registration"] = config["registration"]
         core.write(args.output / "summary.json", result)
         write_status({"status": "completed", "exit_code": 0, "mode": args.mode, "batch_size": args.batch_size})
         print(json.dumps({"status": "completed", "mode": args.mode, "batch_size": args.batch_size,
