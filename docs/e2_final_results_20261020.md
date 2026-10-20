@@ -4,7 +4,7 @@
 
 ## 完成范围与身份
 
-`mode=full`，最佳轮 48，停止轮 60；两轮次相差 12，与冻结早停 patience 12 一致。已生成最终测试指标，但本次附件没有根目录 `status.json`、`summary.json` 或退出码的可解析内容；附件开头单独的右花括号不作为状态证据。不能仅凭 metrics 文件把根运行状态标记为 completed、exit_code=0。
+`mode=full`，最佳轮 48，停止轮 60；两轮次相差 12，与冻结早停 patience 12 一致。首次 metrics 回传未包含可解析的根状态；随后用户在 2026-10-20 补充截图 `codex-clipboard-1df8bc42-3b9d-4b9f-ba83-5048fd7fee95.png`，明确执行 `cat outputs/grouped_full_E2_s42_v1/status.json`，输出 `status=completed`、`exit_code=0`。因此现已确认 E2 根运行状态正常结束，最终测试指标已保存。未将首次附件开头单独的右花括号作为状态证据。
 
 模型参数总量 846800；initial_state_sha256 为 `0270349d613f11b453b92e4e928a3c2e7b67d062b5e3ba73c8ba4fb58dbd521a`；config_sha256 为 `71a18ef1ed9bbdd201a0ca7172c563f161d427ec9c4df7575ba104e0cd191184`。完整 config、权重、预测 CSV 和训练日志尚未在本次独立取回核对；不能据此声称已经完成所有产物的逐文件验收。
 
@@ -66,4 +66,4 @@ WebBased 正确 401/544，108 个被预测为 Recon，另有 12→Benign、14→
 
 已用标准库对回传的验证/测试混淆矩阵分别核对总样本、对角线 Accuracy、每类 support/F1、Macro-F1、Weighted-F1，与回传指标相符（误差小于 1e-12）。这只是回传数值的一致性核对，不是重新执行测试集评价。
 
-下一步先在服务器读取 `outputs/grouped_full_E2_s42_v1/status.json`，补齐正常结束证据。E3 启动前还须使用真实完成的 E2 `summary.json` 校验源码、split、预算及初始状态，并确认目标 GPU 空闲。不能仅凭本次 metrics 回传自动启动 E3，不能由此推断另一张卡上 R0 的当前状态。
+E2 正常结束证据已补齐。下一步准备 E3；启动前还须使用真实完成的 E2 `summary.json` 校验源码、split、预算及初始状态，并确认目标 GPU1 空闲。冻结训练入口会再次校验 E2 依赖，仍须核对 E3 与 E2 的配对初始状态。当前没有 E3 启动或结果回传，也不能由此推断另一张卡上 R0 的当前状态。只检查目标 GPU，不暂停或中断其他训练任务。
