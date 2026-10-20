@@ -10,7 +10,7 @@
   "split_directory": "data/processed/ciciot2023_grouped_input_v1",
   "reference_e3": "outputs/grouped_full_E3_s42_resume_v1/summary.json",
   "fusion_control_report": "outputs/grouped_full_E2_s42_v1/summary.json",
-  "paired_e2_batch512": "outputs/e2_batch_full_b512_s42_v1/summary.json",
+  "paired_e2_batch512": "outputs/e2_batch_full_b512_s42_shared_v1/summary.json",
   "smoke_report": "outputs/grouped_gpu_smoke_v1/smoke.json",
   "pilot_report": "outputs/grouped_training_pilot_v1/summary.json",
   "baseline_report": "outputs/grouped_full_E0_s42_v1/summary.json",
