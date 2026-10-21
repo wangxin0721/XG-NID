@@ -1,0 +1,32 @@
+{
+  "schema": "xgnid.e3a-initialization-comparison-fix.v1",
+  "date": "2026-10-21",
+  "status": "static_regression_checks_passed_server_reprobe_pending",
+  "bug": "Exact dictionary comparison included a GPU forward-derived float mean. Exact state identities had already passed before the failing comparison.",
+  "old_probe_certificate_received": false,
+  "old_pair_float_difference_quantified": false,
+  "comparison": {
+    "identity_fields": "all exact",
+    "GPU_mean_absolute_tolerance": 1e-05,
+    "GPU_mean_normalization_tolerance": 1e-06
+  },
+  "tests": {
+    "command": "python -B -m unittest discover -s scripts -p test_e3_gate_initialization_comparison.py -v",
+    "passed": 4,
+    "failed": 0,
+    "skipped": 0
+  },
+  "original_model_probe_update_epoch_loop_AST_unchanged": true,
+  "original_diagnostic_entry_and_shared_helper_SHA_unchanged": true,
+  "files": {
+    "scripts/run_e3_gate_ablation_server.py": "c78d15f9d473e7c4e9e30980d39baeda1bfbf5d76b20493f41110d586f6ef881",
+    "scripts/test_e3_gate_initialization_comparison.py": "3f8cd78a3e2b0d6de565f4202fb9f6476cd15f08b442a6ccee40eadab0e6a713",
+    "configs/e3_gate_study.json": "c70e292c89878f462fcac012bc1158340d163ddbca4dca8a3c6beb1a04ba7745",
+    "scripts/e3_gate_study.py": "94b8e537798cca3af76b260f0bca6c9cfaffb75cff404bb6a4f423017445738f"
+  },
+  "old_probe_reused_by_mutating_binding": false,
+  "new_probe_required_due_to_changed_entry_hash": true,
+  "local_model_execution": false,
+  "server_fixed_probe_completed": false,
+  "server_screening_started": false
+}

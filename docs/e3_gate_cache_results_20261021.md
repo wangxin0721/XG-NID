@@ -2,6 +2,8 @@
 
 用户回传`xgnid.e3-gate-cache-analysis.v1`完整报告：completed、exit_code0、val13446，未加载模型、未推断测试。服务器源目录为`outputs/e3_gate_cache_analysis_b512_s42_v1`。真实回传及本地核对见[机器证据](e3_gate_cache_results_20261021.json)。
 
+后续执行更新：旧E3a probe已完成，screen因初始化浮点观测被精确比较而退出，尚未训练。请使用[修复入口及新probe_v2/screen_v2](e3a_initialization_check_fix_20261021.md)，本文下方旧版命令保留作历史记录，不再用旧入口启动screen。
+
 ## 结果与证据界限
 
 分析入口SHA与交付`28f14d2`一致；原诊断报告SHA与其原服务器JSON序列化字节相符，两个缓存SHA与已接收原诊断的记录一致。各类别样本数、成功/失败总数、E2/E3配对正确数与原验证矩阵一致，尺度/概率汇总有限且均值位于记录范围内。

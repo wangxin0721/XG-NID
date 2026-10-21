@@ -10,6 +10,7 @@ from __future__ import annotations
 import argparse
 from itertools import islice
 import json
+import math
 import os
 from pathlib import Path
 import sys
@@ -90,6 +91,30 @@ def new_model(core, frozen, device, variant):
     return model, certificate
 
 
+def compare_initialization(current, saved):
+    """Keep exact identity checks; bound GPU forward summary roundoff separately."""
+    identity_fields = {"variant", "forward_ast_sha256", "removed_statements", "initialization_changed_tensors",
+                       "original_initial_state_sha256", "variant_initial_state_sha256"}
+    expected_fields = identity_fields | {"actual_initial_weight_mean"}
+    require(set(current) == set(saved) == expected_fields, "Initialization certificate fields differ")
+    for key in sorted(identity_fields):
+        require(current[key] == saved[key], f"Initialization identity differs at {key}: screen={current[key]!r}, probe={saved[key]!r}")
+    left, right = current["actual_initial_weight_mean"], saved["actual_initial_weight_mean"]
+    for values in (left, right):
+        require(isinstance(values, list) and len(values) == 2
+                and all(isinstance(value, (int, float)) and not isinstance(value, bool)
+                        and math.isfinite(value) and 0 <= value <= 1 for value in values)
+                and abs(sum(values) - 1) <= 1e-6, "Invalid initial GPU mean weights")
+    max_difference = max(abs(a - b) for a, b in zip(left, right))
+    tolerance = 1e-5
+    require(max_difference <= tolerance,
+            f"Initial GPU mean weights exceed tolerance: screen={left}, probe={right}, max_difference={max_difference}, tolerance={tolerance}")
+    return {"policy": "exact identity/hash fields; absolute tolerance only for GPU forward means",
+            "identity_fields_match_exactly": True, "screen_initial_weight_mean": left,
+            "probe_initial_weight_mean": right, "mean_max_abs_difference": max_difference,
+            "mean_absolute_tolerance": tolerance}
+
+
 def update(core, model, optimizer, batch):
     model.train()
     optimizer.zero_grad(set_to_none=True)
@@ -163,7 +188,8 @@ def screen(core, args, spec, frozen, device, binding, gpu):
     folder.mkdir()
     write(folder / "status.json", {"status": "running", "mode": "screen"})
     model, certificate = new_model(core, frozen, device, args.variant)
-    require(certificate == report["initialization"], "Probe and screening initialization differ")
+    initialization_comparison = compare_initialization(certificate, report["initialization"])
+    print(json.dumps({"variant": args.variant, "initialization_comparison": initialization_comparison}), flush=True)
     optimizer = core.torch.optim.Adam(model.parameters(), lr=.001)
     rows = {part: core.select_rows(frozen, part) for part in ("train", "val")}
     sampler = core.TrainBatches(len(rows["train"]), 512, 42)
@@ -172,7 +198,8 @@ def screen(core, args, spec, frozen, device, binding, gpu):
     val_loader = core.DataLoader(core.GraphRows(frozen, rows["val"]), batch_size=16, shuffle=False, **kwargs)
     cfg = {"schema": spec["schema"], "mode": "screen", "variant": args.variant, "controls": spec["controls"],
            "epochs": 100, "workers": 2, "initialization_batch_size": 16, "evaluation_batch_size": 16,
-           "binding": binding, "initialization": certificate, "probe_sha256": sha(probe_path),
+           "binding": binding, "initialization": certificate, "initialization_comparison": initialization_comparison,
+           "probe_sha256": sha(probe_path),
            "test": "disabled", "same_epoch_ceiling_not_equal_optimizer_update_total": True}
     write(folder / "config.json", cfg)
     best, best_epoch, stale, updates, stopped = -1., 0, 0, 0, 0
@@ -231,7 +258,8 @@ def screen(core, args, spec, frozen, device, binding, gpu):
     model.load_state_dict(selected["model_state"], strict=True)
     metrics = {"mode": "screen", "variant": args.variant, "best_epoch": best_epoch, "stopped_epoch": stopped,
                "best_validation": selected["validation"], "test": None, "test_evaluated": False,
-               "parameter_count": 846800, "initialization": certificate, "train_batch_size": 512,
+               "parameter_count": 846800, "initialization": certificate,
+               "initialization_comparison": initialization_comparison, "train_batch_size": 512,
                "evaluation_batch_size": 16, "total_optimizer_updates": updates, "training_samples_seen": 107621 * stopped,
                "run_wall_seconds": time.perf_counter() - started, "config_sha256": sha(folder / "config.json"),
                "checkpoint_sha256": {file: sha(folder / file) for file in ("best.pt", "last.pt")}}
