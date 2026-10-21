@@ -1,0 +1,88 @@
+{
+  "schema": "xgnid.e3-gate-study-static-checks.v1",
+  "date": "2026-10-21",
+  "status": "static_and_reference_artifact_checks_passed",
+  "scope": "Standard library only; no torch import, checkpoint deserialization, graphs, synthetic model tests or model execution",
+  "unit_test_command": "python -B -m unittest discover -s scripts -p test_e3_gate_study.py -v",
+  "unit_tests_passed": 8,
+  "unit_tests_failed": 0,
+  "unit_tests_skipped": 0,
+  "python39_ast_passed": true,
+  "local_actual_reference_metadata": {
+    "schema": "xgnid.e3-gate-study-reference.v1",
+    "specification_id": "d7e02d614d5e67c22914ba470ac59e7d9a4400e2dfcf89e7d752cbc9b9d66c45",
+    "split_id": "a8ae9c934eec9fee970cc725e60051d0c709e0f16c7dda14749350ff2006975a",
+    "references": {
+      "E2": {
+        "directory": "outputs/e2_batch_full_b512_s42_shared_v1",
+        "summary_sha256": "e29e1ecf4e4a5c3dc4e5d8859ea6b0c74622404a09fcffed2d32dac041d45ef5",
+        "config_sha256": "0a297a4a42c86785ce59ac4eec64b771ad4e5ce774b1379f6aafd6d45830b089",
+        "metrics_sha256": "09eb335a7c62cb9fccff2db036911edf88ee13f0de4233ca430f6b8a19b91f91",
+        "checkpoints": {
+          "best.pt": "1709ed1a19b8a2e20b9b1ef3dac6cc6a5906fd93937e8d18a51cc64f85c44b08",
+          "last.pt": "3b4a503e44d27a0dcb667bce232731c16765e46a13c2d40e8fefe28972a67ddc"
+        },
+        "sources": {
+          "scripts/train_grouped.py": "06a493b18faa97b4e1f2b99b6aae38c67ad3c5f39b130f112079c9393432f5d1",
+          "scripts/grouped_graphs.py": "c1b1273d62fc44d91f7c9b300b66a083c1f80ef2c9c4314a62c4bbd5d708bbb4",
+          "scripts/smoke_grouped_gpu.py": "7bce1218e1b55a812855d50c70973fe300da97ad7e9b4005a52deac77d8b1517",
+          "scripts/audit_graph_split.py": "c19164930e8ecb75636cf16d6fa9bb51d6f29e1384e8d8ebf040e683536ffcb6",
+          "scripts/build_grouped_split.py": "24e07766189aec9d03f6161dee15587612a5b2f13e23eab67d7ba4aaf89a3401",
+          "src/xgnid/__init__.py": "2515233a0cdac6c5447c9dbd6b0d54c89284f191d8cb41473d89b347ee296ae7",
+          "src/xgnid/model.py": "28e21e94118db0a4110d17923d2840e18959669d798f628018c98c91c0202631",
+          "src/xgnid/edge_experiments.py": "3e6305d83c06c7ce32e901a2aba9d9d26baa1f2b394af14997b0e359929b4da5",
+          "third_party/GNN4ID/Utility/Model.py": "e17c3905e3c9f437c269bdd0e4d115656cfba6054b6a4474bbd06b5453010688"
+        },
+        "samples_sha256": "b8e9b0810471d0c2b52033488fab640625c3731315afd5d2add1571bd2518827",
+        "best_epoch": 53
+      },
+      "E3": {
+        "directory": "outputs/e3_batch_full_b512_s42_shared_v3",
+        "summary_sha256": "255b38ca1026351678f213310082f93d03d631b543a8a8bfd2deb4059d785144",
+        "config_sha256": "18f1d6bd5d156b2b13767aa24fe6bc02f242a14c0014993bb2a29fd7ca6066a5",
+        "metrics_sha256": "b18029c33f68b8666912d77f84845ffe397aadc722258359fbc47470a5650c0f",
+        "checkpoints": {
+          "best.pt": "b1f66770299a6fb9f1bc9d573a6bdc9937cb6d643381bfeac7750ae559963ce3",
+          "last.pt": "739ab2bbff0e0c389202e094db80ae30eefe347115b793fe7fd018e3c9f9e43e"
+        },
+        "sources": {
+          "scripts/train_grouped.py": "06a493b18faa97b4e1f2b99b6aae38c67ad3c5f39b130f112079c9393432f5d1",
+          "scripts/grouped_graphs.py": "c1b1273d62fc44d91f7c9b300b66a083c1f80ef2c9c4314a62c4bbd5d708bbb4",
+          "scripts/smoke_grouped_gpu.py": "7bce1218e1b55a812855d50c70973fe300da97ad7e9b4005a52deac77d8b1517",
+          "scripts/audit_graph_split.py": "c19164930e8ecb75636cf16d6fa9bb51d6f29e1384e8d8ebf040e683536ffcb6",
+          "scripts/build_grouped_split.py": "24e07766189aec9d03f6161dee15587612a5b2f13e23eab67d7ba4aaf89a3401",
+          "src/xgnid/__init__.py": "2515233a0cdac6c5447c9dbd6b0d54c89284f191d8cb41473d89b347ee296ae7",
+          "src/xgnid/model.py": "28e21e94118db0a4110d17923d2840e18959669d798f628018c98c91c0202631",
+          "src/xgnid/edge_experiments.py": "3e6305d83c06c7ce32e901a2aba9d9d26baa1f2b394af14997b0e359929b4da5",
+          "third_party/GNN4ID/Utility/Model.py": "e17c3905e3c9f437c269bdd0e4d115656cfba6054b6a4474bbd06b5453010688"
+        },
+        "samples_sha256": "b8e9b0810471d0c2b52033488fab640625c3731315afd5d2add1571bd2518827",
+        "best_epoch": 47
+      }
+    },
+    "split_sha256": "2f6a7c307121454b881520379f0a298b7e2a179b1db4a7cb03741b7f648a774a"
+  },
+  "local_reference_source_files_verified": 9,
+  "local_reference_checkpoint_file_hashes_verified": 4,
+  "files": {
+    "configs/e3_gate_study.json": "c70e292c89878f462fcac012bc1158340d163ddbca4dca8a3c6beb1a04ba7745",
+    "scripts/e3_gate_study.py": "94b8e537798cca3af76b260f0bca6c9cfaffb75cff404bb6a4f423017445738f",
+    "scripts/diagnose_e3_gate_server.py": "08fa8afcb3ef13886c0dbf6fd3ca744b60c8a758750e6af73de0020ddc531fe1",
+    "scripts/run_e3_gate_ablation_server.py": "12fd6dd1730b03e5ed22e950ad874491dd1424bcc48109a050e6c36632cd34a4",
+    "scripts/test_e3_gate_study.py": "a3aefcff2f2e3fee6e8bc6ce079e17a01cac9313e3a0f6df8e4e8fcf42f8f422",
+    "docs/e3_gate_improvement_plan_20261021.md": "bfc0d3da09192ca54f78b5f42df7f455af0940371c300aa9566702f914667614"
+  },
+  "server_checks": {
+    "metadata_cli_rerun": "pending",
+    "cuda_diagnostics": "pending",
+    "validation_predictions_reproduced": "pending",
+    "probe_gradient_and_update_checks": "pending",
+    "E3a_screening": "pending",
+    "E3a_equal_init_screening": "pending"
+  },
+  "test_graphs_loaded_locally": 0,
+  "gpu_touched_locally": false,
+  "training_started": false,
+  "external_environment_aedf3e8": "Not present in this local repository; forwarded plan reviewed, code/CPU-model-test claims not imported as local evidence",
+  "publication_authorization": "User explicitly approved public push of plan, config, tools and check record; no dataset, checkpoints or predictions included"
+}

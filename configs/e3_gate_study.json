@@ -1,0 +1,59 @@
+{
+  "schema": "xgnid.e3-gate-study.v1",
+  "registered_date": "2026-10-21",
+  "kind": "exploratory_mechanism_study_after_prior_test_results",
+  "prior_test_results_available": true,
+  "split_id": "a8ae9c934eec9fee970cc725e60051d0c709e0f16c7dda14749350ff2006975a",
+  "split_directory": "data/processed/ciciot2023_grouped_input_v1",
+  "references": {
+    "E2": "outputs/e2_batch_full_b512_s42_shared_v1",
+    "E3": "outputs/e3_batch_full_b512_s42_shared_v3"
+  },
+  "reference_initial_state_sha256": "0270349d613f11b453b92e4e928a3c2e7b67d062b5e3ba73c8ba4fb58dbd521a",
+  "controls": {
+    "seed": 42,
+    "batch_size": 512,
+    "lr": 0.001,
+    "hidden_dim": 64,
+    "optimizer": "Adam",
+    "early_stop_patience": 12,
+    "early_stop_min_delta": 0.0,
+    "auxiliary_losses": false,
+    "calibration": false,
+    "class_weighting": false,
+    "hard_negatives": false,
+    "loss": "plain NLL",
+    "device_family": "cuda"
+  },
+  "epochs": 100,
+  "workers": 2,
+  "initialization_batch_size": 16,
+  "evaluation_batch_size": 16,
+  "diagnostics": {
+    "partition": "val",
+    "alpha_grid_numerators_over_20": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
+    "alpha_selection": "maximum validation Macro-F1; ties nearest 0.5 then smaller alpha",
+    "saved_validation_metric_tolerance": 1e-10,
+    "temperature_scaling": false,
+    "parameter_gradients": "not collected in eval/no_grad; probe records training gate gradients separately"
+  },
+  "variants": {
+    "E3a": "Remove only the two post-gate entropy-proxy mixing/normalization statements; retain every learned gate input, including entropy/margin/cosine. Fresh paired initialization.",
+    "E3a_equal_init": "Same pure-gate forward as E3a; additionally zero the gate final Linear weight/bias AFTER original paired initialization. All other tensors and random states unchanged. Requires completed E3a screening first."
+  },
+  "screening": {
+    "selection": "strict best validation Macro-F1",
+    "test": "disabled; no test graph loader or inference",
+    "probe_warmup_updates": 1,
+    "probe_measured_updates": 3,
+    "probe_initial_gradient_check": "nonzero aggregate gate gradient; zero upstream gate gradient on the very first equal-init step is allowed",
+    "no_automatic_retry_resume_or_batch_change": true
+  },
+  "budget": {
+    "diagnostics_gpu_hour_ceiling": 8,
+    "screening_round_configuration_ceiling": 2,
+    "screening_round_gpu_hour_ceiling": 8,
+    "enforcement": "record elapsed time, estimate after first 2-3 epochs, and do not add jobs beyond budget; no automatic kill or partial-run performance claim"
+  },
+  "scheduling": "Linux server only. Metadata check does not import torch. No local models, automatic GPU choice, preemption, automatic probe-to-screen chain, new graph/split, or edits to frozen sources. Occupied GPU needs explicit --allow-shared-gpu; snapshots are not reservations."
+}
