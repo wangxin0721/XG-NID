@@ -1,0 +1,46 @@
+{
+  "schema": "xgnid.e0-batch512.v1",
+  "experiment": "E0",
+  "train_batch_sizes": [
+    512
+  ],
+  "initialization_batch_size": 16,
+  "evaluation_batch_size": 16,
+  "epochs": 100,
+  "workers": 2,
+  "split_id": "a8ae9c934eec9fee970cc725e60051d0c709e0f16c7dda14749350ff2006975a",
+  "split_directory": "data/processed/ciciot2023_grouped_input_v1",
+  "smoke_report": "outputs/grouped_gpu_smoke_v1/smoke.json",
+  "pilot_report": "outputs/grouped_training_pilot_v1/summary.json",
+  "baseline_report": "outputs/grouped_full_E0_s42_v1/summary.json",
+  "reference_controls": {
+    "seed": 42,
+    "batch_size": 16,
+    "lr": 0.001,
+    "hidden_dim": 64,
+    "optimizer": "Adam",
+    "early_stop_patience": 12,
+    "early_stop_min_delta": 0.0,
+    "auxiliary_losses": false,
+    "calibration": false,
+    "class_weighting": false,
+    "hard_negatives": false,
+    "loss": "plain NLL",
+    "device_family": "cuda"
+  },
+  "probe": {
+    "warmup_steps": 1,
+    "measured_steps": 3
+  },
+  "comparison": "E0-B16 to E0-B512 changes training batch only. E0-B512 and E2-B512 have matched input split, training batch, lr, seed, epoch ceiling and validation selection; architecture, aggregation, heads, parameter counts and their initial state hashes remain different. Equal ceilings are not equal total optimizer updates.",
+  "scheduling": "Linux server only. Explicit GPU UUID selection; occupied GPUs require --allow-shared-gpu. Preserve E3a and all other jobs. Metadata check then a new train-only probe, separately invoked full training. Best validation checkpoint evaluated once on the existing test set; no automatic retry, resume, LR scaling or further batch search.",
+  "reference_e0": "outputs/grouped_full_E0_s42_v1/summary.json",
+  "paired_e2_batch512": "outputs/e2_batch_full_b512_s42_shared_v1/summary.json",
+  "registration": {
+    "kind": "exploratory_structural_control_after_prior_results",
+    "date": "2026-10-21",
+    "requested_by": "user",
+    "prior_test_results_available": true,
+    "purpose": "Keep original E0 architecture and match E2-B512 training/evaluation controls. Not a parameter-matched isolation of dual encoding."
+  }
+}
