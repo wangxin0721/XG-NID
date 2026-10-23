@@ -1,0 +1,359 @@
+{
+  "schema": "xgnid.e0-b512-received.v1",
+  "received_date": "2026-10-23",
+  "source": "User-pasted complete metrics; not direct server inspection",
+  "source_sha256": "98f1343c35df573cf41bdd4bd8f1bcca004e7aec9481cd4b14b7c96eb60b6e99",
+  "checks": {
+    "validation_and_test_matrix_and_class_metrics_recomputed": true,
+    "epoch_updates_exposures_consistent": true,
+    "root_status_summary_received": false,
+    "checkpoint_hashes_independently_recomputed": false,
+    "local_model_execution": false
+  },
+  "E2_minus_E0_percentage_points": {
+    "best_validation": {
+      "accuracy": -0.11155734047300081,
+      "macro_f1": -0.07347421038823576,
+      "weighted_f1": -0.09911752525501027
+    },
+    "test": {
+      "accuracy": 0.2156454491374249,
+      "macro_f1": 0.31117140646533814,
+      "weighted_f1": 0.21933432522669438
+    }
+  },
+  "metrics": {
+    "mode": "full",
+    "protocol": "xgnid.e0-batch512.v1",
+    "best_epoch": 56,
+    "stopped_epoch": 68,
+    "best_validation": {
+      "accuracy": 0.9768704447419306,
+      "macro_f1": 0.9667287438289962,
+      "weighted_f1": 0.9768715130706521,
+      "per_class": {
+        "Benign": {
+          "precision": 0.9574642126789366,
+          "recall": 0.9799079112599414,
+          "f1-score": 0.9685560612329334,
+          "support": 2389.0
+        },
+        "WebBased": {
+          "precision": 0.8697247706422019,
+          "recall": 0.8713235294117647,
+          "f1-score": 0.8705234159779615,
+          "support": 544.0
+        },
+        "Spoofing": {
+          "precision": 0.9648300117233294,
+          "recall": 0.9465209890741806,
+          "f1-score": 0.9555878084179972,
+          "support": 1739.0
+        },
+        "Recon": {
+          "precision": 0.970432480141218,
+          "recall": 0.9653204565408253,
+          "f1-score": 0.9678697183098591,
+          "support": 2278.0
+        },
+        "Mirai": {
+          "precision": 0.9991673605328892,
+          "recall": 1.0,
+          "f1-score": 0.9995835068721366,
+          "support": 2400.0
+        },
+        "Dos": {
+          "precision": 0.9993188010899182,
+          "recall": 0.9945762711864407,
+          "f1-score": 0.9969418960244648,
+          "support": 1475.0
+        },
+        "DDos": {
+          "precision": 1.0,
+          "recall": 0.9966499162479062,
+          "f1-score": 0.9983221476510068,
+          "support": 2388.0
+        },
+        "BruteForce": {
+          "precision": 0.9743589743589743,
+          "recall": 0.9785407725321889,
+          "f1-score": 0.9764453961456103,
+          "support": 233.0
+        },
+        "accuracy": 0.9768704447419306,
+        "macro avg": {
+          "precision": 0.9669120763959335,
+          "recall": 0.9666049807816559,
+          "f1-score": 0.9667287438289962,
+          "support": 13446.0
+        },
+        "weighted avg": {
+          "precision": 0.9769462589156704,
+          "recall": 0.9768704447419306,
+          "f1-score": 0.9768715130706521,
+          "support": 13446.0
+        }
+      },
+      "confusion_matrix": [
+        [
+          2341,
+          8,
+          34,
+          6,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          12,
+          474,
+          9,
+          46,
+          0,
+          0,
+          0,
+          3
+        ],
+        [
+          78,
+          7,
+          1646,
+          4,
+          2,
+          0,
+          0,
+          2
+        ],
+        [
+          14,
+          51,
+          12,
+          2199,
+          0,
+          1,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          2400,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          3,
+          0,
+          5,
+          0,
+          1467,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1,
+          6,
+          0,
+          0,
+          2380,
+          0
+        ],
+        [
+          0,
+          1,
+          4,
+          0,
+          0,
+          0,
+          0,
+          228
+        ]
+      ],
+      "samples": 13446,
+      "wall_seconds_including_graph_io": 26.5595667269954,
+      "forward_seconds": 9.446178528785705,
+      "forward_timing_method": "CUDA events around model call"
+    },
+    "test": {
+      "accuracy": 0.9759071980963712,
+      "macro_f1": 0.9634716082881734,
+      "weighted_f1": 0.9759985750785002,
+      "per_class": {
+        "Benign": {
+          "precision": 0.9563086974275214,
+          "recall": 0.980326496442026,
+          "f1-score": 0.9681686647374949,
+          "support": 2389.0
+        },
+        "WebBased": {
+          "precision": 0.8385964912280702,
+          "recall": 0.8786764705882353,
+          "f1-score": 0.8581687612208257,
+          "support": 544.0
+        },
+        "Spoofing": {
+          "precision": 0.9647058823529412,
+          "recall": 0.9430707303047728,
+          "f1-score": 0.953765629543472,
+          "support": 1739.0
+        },
+        "Recon": {
+          "precision": 0.9771505376344086,
+          "recall": 0.9574187884108868,
+          "f1-score": 0.9671840354767184,
+          "support": 2278.0
+        },
+        "Mirai": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 2400.0
+        },
+        "Dos": {
+          "precision": 0.9979647218453188,
+          "recall": 0.9972881355932204,
+          "f1-score": 0.9976263140047474,
+          "support": 1475.0
+        },
+        "DDos": {
+          "precision": 1.0,
+          "recall": 0.997907949790795,
+          "f1-score": 0.9989528795811519,
+          "support": 2390.0
+        },
+        "BruteForce": {
+          "precision": 0.9537815126050421,
+          "recall": 0.9742489270386266,
+          "f1-score": 0.9639065817409767,
+          "support": 233.0
+        },
+        "accuracy": 0.9759071980963712,
+        "macro avg": {
+          "precision": 0.9610634803866628,
+          "recall": 0.9661171872710703,
+          "f1-score": 0.9634716082881734,
+          "support": 13448.0
+        },
+        "weighted avg": {
+          "precision": 0.9762507049884135,
+          "recall": 0.9759071980963712,
+          "f1-score": 0.9759985750785002,
+          "support": 13448.0
+        }
+      },
+      "confusion_matrix": [
+        [
+          2342,
+          4,
+          35,
+          5,
+          0,
+          2,
+          0,
+          1
+        ],
+        [
+          15,
+          478,
+          12,
+          34,
+          0,
+          0,
+          0,
+          5
+        ],
+        [
+          74,
+          15,
+          1640,
+          6,
+          0,
+          0,
+          0,
+          4
+        ],
+        [
+          18,
+          66,
+          11,
+          2181,
+          0,
+          1,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          2400,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          4,
+          0,
+          1471,
+          0,
+          0
+        ],
+        [
+          0,
+          3,
+          0,
+          2,
+          0,
+          0,
+          2385,
+          0
+        ],
+        [
+          0,
+          4,
+          2,
+          0,
+          0,
+          0,
+          0,
+          227
+        ]
+      ],
+      "samples": 13448,
+      "wall_seconds_including_graph_io": 26.73426637199009,
+      "forward_seconds": 9.852918122291564,
+      "forward_timing_method": "CUDA events around model call"
+    },
+    "parameter_count": 431704,
+    "initial_state_sha256": "906e125925a8a2cc53a526602db0f047f76b1e41b8087c893f5cf1af41f64a6b",
+    "train_batch_size": 512,
+    "evaluation_batch_size": 16,
+    "total_optimizer_updates": 14348,
+    "training_samples_seen": 7318228,
+    "training_validation_checkpoint_wall_seconds": 12196.905897403005,
+    "run_wall_seconds": 12223.732090882011,
+    "config_sha256": "f789bd2d510cad58e12dd794246920e992b458d1ac7d142913b7b850fec450be",
+    "checkpoint_sha256": {
+      "best.pt": "e6575a490f354fe1345b6e5bbdae394d6f72223e6f2723f1c2947e3ad0bcc494",
+      "last.pt": "5ffea9b1dba2b72f973550486aa21607537d0ec23d281de0fd73c6d91cbed9cd"
+    },
+    "registration": {
+      "kind": "exploratory_structural_control_after_prior_results",
+      "date": "2026-10-21",
+      "requested_by": "user",
+      "prior_test_results_available": true,
+      "purpose": "Keep original E0 architecture and match E2-B512 training/evaluation controls. Not a parameter-matched isolation of dual encoding."
+    }
+  }
+}

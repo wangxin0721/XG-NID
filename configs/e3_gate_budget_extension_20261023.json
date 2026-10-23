@@ -1,7 +1,10 @@
 {
   "schema": "xgnid.e3-gate-study-scheduling-addendum.v1",
   "authorized_date": "2026-10-23",
-  "authorization": "User explicitly selected: 扩至10小时，继续E3a-Z",
+  "authorization": "Superseded: user subsequently cancelled GPU-hour budget limits for this and future scheduling.",
+  "gpu_hour_budget_enforced": false,
+  "current_round_gpu_hour_ceiling": null,
+  "superseding_instruction": "不需要这个了，之后不用了",
   "scope": [
     "E3a",
     "E3a_equal_init"
@@ -17,7 +20,7 @@
   "parent_screen_directory": "outputs/e3_gate_screen_E3a_b512_s42_v2",
   "parent_config_sha256": "74062d6ccf59f7f29ab659470759d085606342a79e33e3f7445b5ba2c4a87f7b",
   "parent_metrics_screen_wall_seconds": 16451.50713456,
-  "accounting": "Count both jobs by their recorded wall time, plus probes/setup overhead. Active 10h ceiling is a scheduling authorization, not a model/selection change.",
-  "binding": "Preserve original config/helper/runner bytes so the completed diagnostic and parent screen stay bound. Original program projection warnings still reference the historical 8h value; use this addendum for current scheduling.",
+  "accounting": "Record elapsed time for information only. Historical 8h/10h ceilings no longer restrict scheduling or require further budget approval. Normal epoch and early-stopping rules remain unchanged.",
+  "binding": "Preserve original config/helper/runner bytes for existing diagnostic and parent bindings. Their historical budget warnings are superseded by the user instruction; future entrypoints must not introduce GPU-hour scheduling limits unless requested.",
   "next_action": "Independent E3a_equal_init probe, then separately launch screen after success; never load parent trained weights."
 }
