@@ -1,0 +1,23 @@
+{
+  "schema": "xgnid.e3-gate-study-scheduling-addendum.v1",
+  "authorized_date": "2026-10-23",
+  "authorization": "User explicitly selected: 扩至10小时，继续E3a-Z",
+  "scope": [
+    "E3a",
+    "E3a_equal_init"
+  ],
+  "original_round_gpu_hours": 8,
+  "authorized_round_gpu_hours": 10,
+  "screening_round_configuration_ceiling": 2,
+  "split_id": "a8ae9c934eec9fee970cc725e60051d0c709e0f16c7dda14749350ff2006975a",
+  "unchanged_study_specification_id": "d7e02d614d5e67c22914ba470ac59e7d9a4400e2dfcf89e7d752cbc9b9d66c45",
+  "unchanged_study_config_sha256": "c70e292c89878f462fcac012bc1158340d163ddbca4dca8a3c6beb1a04ba7745",
+  "runner_delivery_commit": "5d90df3",
+  "unchanged_runner_sha256": "c78d15f9d473e7c4e9e30980d39baeda1bfbf5d76b20493f41110d586f6ef881",
+  "parent_screen_directory": "outputs/e3_gate_screen_E3a_b512_s42_v2",
+  "parent_config_sha256": "74062d6ccf59f7f29ab659470759d085606342a79e33e3f7445b5ba2c4a87f7b",
+  "parent_metrics_screen_wall_seconds": 16451.50713456,
+  "accounting": "Count both jobs by their recorded wall time, plus probes/setup overhead. Active 10h ceiling is a scheduling authorization, not a model/selection change.",
+  "binding": "Preserve original config/helper/runner bytes so the completed diagnostic and parent screen stay bound. Original program projection warnings still reference the historical 8h value; use this addendum for current scheduling.",
+  "next_action": "Independent E3a_equal_init probe, then separately launch screen after success; never load parent trained weights."
+}
