@@ -1,5 +1,9 @@
 # 融合诊断与A/C/B对照修订（2026-10-23）
 
+执行更新：E3a候选真实诊断已回传并核对，见[E3a诊断结果](e3a_candidate_diagnostic_results_20261023.md)。E3a-Z仍待完成回传；以下原“真实诊断尚未执行”仅指交付时状态。A/C/B尚未训练，范围保持。
+
+已补[离线缓存与样本配对工具](candidate_cache_execution_20261023.md)，分析仅Packet正确的成功/失败组、WebBased/Recon双向混淆和E3→候选修复/退步；无需重跑模型诊断。A/C/B和lambda=.05保持，新工具真实服务器分析尚待执行。
+
 状态：代码静态核对和旧报告整理已完成；E3a-Z结果待回传。候选诊断工具已实现并通过标准库检查，真实诊断尚未执行；A/C/B仅完成明确配置登记，训练入口尚未实现。E3a诊断可先运行，E3a-Z完成后复用同一入口，见[执行说明](candidate_diagnostic_execution_20261023.md)及[明确配置](../configs/fusion_acb_study_20261023.json)。取消GPU小时预算，保留既定100轮上限和patience12。
 
 ## 代码事实与数学边界
