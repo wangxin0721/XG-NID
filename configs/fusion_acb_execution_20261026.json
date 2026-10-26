@@ -1,0 +1,100 @@
+{
+  "schema": "xgnid.fusion-acb-execution.v1",
+  "status": "implementation_ready_pending_server_probe",
+  "registered_date": "2026-10-26",
+  "design": {
+    "schema": "xgnid.fusion-acb-design.v1",
+    "status": "registered_design_only_training_entry_not_implemented",
+    "date": "2026-10-23",
+    "start_condition": "Complete E3a-Z and candidate validation diagnostics before scheduling this trio",
+    "scope": [
+      "A_equal",
+      "C_global",
+      "B_dynamic"
+    ],
+    "gpu_hour_budget_enforced": false,
+    "split_id": "a8ae9c934eec9fee970cc725e60051d0c709e0f16c7dda14749350ff2006975a",
+    "architecture": {
+      "encoders": "existing two full-heterograph Edge encoders, hidden64, flow/packet pooling",
+      "z": "separate Linear(64,8) representation projections, not directly supervised class logits",
+      "H": "shared Linear(8,32), LeakyReLU, Linear(32,8)",
+      "fusion_logits": "H(w_flow*z_flow + (1-w_flow)*z_packet)",
+      "branch_logits": [
+        "H(z_flow)",
+        "H(z_packet)"
+      ],
+      "post_gate_proxy_mix": false,
+      "new_independent_heads": false,
+      "prediction": "log_softmax(fusion_logits)"
+    },
+    "loss": {
+      "formula": "CE(fusion_logits,y) + lambda/2 * (CE(H(z_flow),y) + CE(H(z_packet),y))",
+      "lambda": 0.05,
+      "reduction": "mean over batch for each CE; average the two branch CE values",
+      "auxiliary_supervision_target": "H(z), not z",
+      "class_weighting": false,
+      "other_auxiliary_losses": false
+    },
+    "fusion_variants": {
+      "A_equal": {
+        "w_flow": "0.5",
+        "trainable_fusion_parameters": 0
+      },
+      "C_global": {
+        "w_flow": "sigmoid(s)",
+        "s_initial": 0.0,
+        "s_scope": "one scalar shared by all samples/classes",
+        "fit_on": "training loss only"
+      },
+      "B_dynamic": {
+        "w_flow": "softmax(existing_21_to_16_to_2_gate(inputs))[0]",
+        "initialization": "final gate Linear weight and bias zero; all samples start at 0.5",
+        "inputs": "z_flow,z_packet,entropy_complement_of_softmax_z,top_two_gap_of_softmax_z,cosine_of_z; existing E3a definitions",
+        "input_semantics": "representation statistics, not supervised/calibrated confidence features",
+        "gradient_check": "nonzero final-layer gradient and actual update; zero upstream gradient on first equal-init step allowed; verify gate learns in real probe"
+      }
+    },
+    "controls": {
+      "screen_seed": 42,
+      "batch_size": 512,
+      "evaluation_batch_size": 16,
+      "initialization_batch_size": 16,
+      "optimizer": "Adam",
+      "lr": 0.001,
+      "weight_decay": 0.0,
+      "epochs": 100,
+      "patience": 12,
+      "min_delta": 0.0,
+      "selection": "strict best validation Macro-F1",
+      "workers": 2,
+      "paired_initialization": "clone all common encoder/projection/H tensors from same initial state; verify hashes; restore RNG before loaders and optimizer; do not claim equal fusion parameter counts",
+      "data_order": "same existing TrainBatches implementation per seed; record train_order_sha256 each epoch",
+      "test_during_screening": false
+    },
+    "decision": {
+      "seed42": "exploratory screening; compare B-A and B-C validation Macro in percentage points plus class precision/recall/F1 and fusion failures",
+      "candidate_for_confirmation": "B exceeds both A and C on validation and diagnostics reproduce; a small single-seed lead only nominates confirmation, never justifies adding modules",
+      "confirmation": "freeze config first; paired seed43/44 plus disclosed exploratory seed42; report each seed difference, mean difference and sample standard deviation; no every-seed-win requirement or three-seed significance claim",
+      "no_dynamic_gain": "If B is close to C or gains are inconsistent, do not claim sample adaptation; retain simple fusion and pause architecture expansion",
+      "followup_ablation": "Only for promising results, remove branch supervision from candidate and matching simple-fusion control",
+      "cost": "report total/trainable/active parameters and forward cost under matched batch/runtime; shared-device timings are descriptive",
+      "test": "freeze all candidate/config choices before unified test evaluation; disclose prior known test results"
+    }
+  },
+  "seed": 42,
+  "probe_updates": 3,
+  "test_evaluated": false,
+  "original_diagnostic": "outputs/e3_gate_diagnostic_b512_s42_v1/report.json",
+  "completed_candidates": {
+    "E3a": {
+      "diagnostic": "outputs/e3_gate_candidate_E3a_b512_s42_v1/report.json",
+      "cache_analysis": "outputs/e3_gate_candidate_cache_E3a_b512_s42_v1/report.json",
+      "screen": "outputs/e3_gate_screen_E3a_b512_s42_v2/summary.json"
+    },
+    "E3a_equal_init": {
+      "diagnostic": "outputs/e3_gate_candidate_E3aZ_b512_s42_v1/report.json",
+      "cache_analysis": "outputs/e3_gate_candidate_cache_E3aZ_b512_s42_v1/report.json",
+      "screen": "outputs/e3_gate_screen_E3aZ_b512_s42_v1/summary.json"
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "schema": "xgnid.fusion-acb-local-verification.v1",
+  "date": "2026-10-26",
+  "scope": "standard-library, AST, configuration and shell syntax only",
+  "tests": {
+    "test_fusion_acb.py": 7,
+    "test_gate_candidate_diagnostic.py": 7,
+    "test_e3_gate_initialization_comparison.py": 4
+  },
+  "bash_syntax_check_passed": true,
+  "python39_syntax_check_passed": true,
+  "frozen_historical_source_bytes_unchanged": true,
+  "local_ml_runtime_imported": false,
+  "local_model_or_graph_execution": false,
+  "server_probe_executed": false,
+  "server_training_executed": false,
+  "sha256": {
+    "scripts/fusion_acb.py": "e2dc72f02214a3f6e9a9016176fb994973bb8f4a969e68d6591f25a743cac4c0",
+    "scripts/run_fusion_acb_server.py": "8961034fb314854ceeae152b14726810a37d62685becc4a3462eb6f28a43c8a4",
+    "scripts/launch_fusion_acb.sh": "0df91546ac891c601b3fcd648d5e5ba9035ec43b68c0bf397d4f975b4c51acf4",
+    "scripts/test_fusion_acb.py": "dd8178c82dc7dc1563798c8fb77acea5350733f3ad8b3818604853a376689e45",
+    "configs/fusion_acb_execution_20261026.json": "76964cd9ceb66b651dc07b1ceae0da4fdd3f7de95c776e16771ed46d148de728"
+  },
+  "source_hash_scope": "LF-normalized release bytes; verified against staged Git blobs"
+}

@@ -1,0 +1,253 @@
+{
+  "schema": "xgnid.e3az-screen-result-received.v1",
+  "received_date": "2026-10-26",
+  "source_attachment_sha256": "4bb1783c524c99d1045b1cd73b36692fb6042f4e4f2fefbef65a702bce48f889",
+  "server_output_relative_path": "outputs/e3_gate_screen_E3aZ_b512_s42_v1",
+  "verification": {
+    "validation_matrix_and_class_metrics_recomputed": true,
+    "epoch_gap_updates_exposures_consistent": true,
+    "reported_equal_initialization_and_two_changed_tensors_match_design": true,
+    "config_and_checkpoint_file_hashes_independently_recomputed": false,
+    "root_status_summary_received_as_files": false,
+    "local_model_execution": false
+  },
+  "differences_percentage_points": {
+    "E3a": {
+      "accuracy": -0.14874312063066775,
+      "macro_f1": -0.10189633448566271,
+      "weighted_f1": -0.12749398858047378
+    },
+    "E2": {
+      "accuracy": -0.014874312063062334,
+      "macro_f1": -0.14000225945089984,
+      "weighted_f1": -0.006116055981553181
+    },
+    "E0": {
+      "accuracy": -0.12643165253606314,
+      "macro_f1": -0.2134764698391356,
+      "weighted_f1": -0.10523358123656346
+    }
+  },
+  "server_metrics": {
+    "mode": "screen",
+    "variant": "E3a_equal_init",
+    "best_epoch": 56,
+    "stopped_epoch": 68,
+    "best_validation": {
+      "accuracy": 0.97560612821657,
+      "macro_f1": 0.9645939791306049,
+      "weighted_f1": 0.9758191772582865,
+      "per_class": {
+        "Benign": {
+          "precision": 0.9673776662484316,
+          "recall": 0.9681875261615739,
+          "f1-score": 0.9677824267782427,
+          "support": 2389.0
+        },
+        "WebBased": {
+          "precision": 0.8288590604026845,
+          "recall": 0.9080882352941176,
+          "f1-score": 0.8666666666666667,
+          "support": 544.0
+        },
+        "Spoofing": {
+          "precision": 0.9505400795906765,
+          "recall": 0.9614721104082806,
+          "f1-score": 0.9559748427672955,
+          "support": 1739.0
+        },
+        "Recon": {
+          "precision": 0.9774571686203787,
+          "recall": 0.95171202809482,
+          "f1-score": 0.9644128113879004,
+          "support": 2278.0
+        },
+        "Mirai": {
+          "precision": 0.9995835068721366,
+          "recall": 1.0,
+          "f1-score": 0.9997917100604041,
+          "support": 2400.0
+        },
+        "Dos": {
+          "precision": 0.9986366734832992,
+          "recall": 0.9932203389830508,
+          "f1-score": 0.9959211420802174,
+          "support": 1475.0
+        },
+        "DDos": {
+          "precision": 1.0,
+          "recall": 0.9966499162479062,
+          "f1-score": 0.9983221476510068,
+          "support": 2388.0
+        },
+        "BruteForce": {
+          "precision": 0.9658119658119658,
+          "recall": 0.9699570815450643,
+          "f1-score": 0.9678800856531049,
+          "support": 233.0
+        },
+        "accuracy": 0.97560612821657,
+        "macro avg": {
+          "precision": 0.9610332651286966,
+          "recall": 0.9686609045918517,
+          "f1-score": 0.9645939791306049,
+          "support": 13446.0
+        },
+        "weighted avg": {
+          "precision": 0.976247575484691,
+          "recall": 0.97560612821657,
+          "f1-score": 0.9758191772582865,
+          "support": 13446.0
+        }
+      },
+      "confusion_matrix": [
+        [
+          2313,
+          11,
+          55,
+          7,
+          0,
+          0,
+          0,
+          3
+        ],
+        [
+          7,
+          494,
+          13,
+          26,
+          0,
+          0,
+          0,
+          4
+        ],
+        [
+          52,
+          9,
+          1672,
+          5,
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          18,
+          75,
+          14,
+          2168,
+          1,
+          1,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          2400,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          3,
+          0,
+          7,
+          0,
+          1465,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          2,
+          5,
+          0,
+          0,
+          2380,
+          0
+        ],
+        [
+          1,
+          3,
+          3,
+          0,
+          0,
+          0,
+          0,
+          226
+        ]
+      ],
+      "samples": 13446,
+      "wall_seconds_including_graph_io": 64.84220271999948,
+      "forward_seconds": 32.14778861045838,
+      "forward_timing_method": "CUDA events around model call",
+      "gate_weights": {
+        "mean": [
+          0.39978137612342834,
+          0.600218653678894
+        ],
+        "std": [
+          0.389541894197464,
+          0.389541894197464
+        ],
+        "min": [
+          6.747541920049116e-05,
+          0.00021221308270469308
+        ],
+        "max": [
+          0.9997877478599548,
+          0.9999325275421143
+        ],
+        "fraction_flow_above_0_95": 0.035995833575725555,
+        "fraction_packet_above_0_95": 0.32686302065849304
+      }
+    },
+    "test": null,
+    "test_evaluated": false,
+    "parameter_count": 846800,
+    "initialization": {
+      "variant": "E3a_equal_init",
+      "forward_ast_sha256": "92768b2a46b64228eeb8605c4a7d5440bcd4c77cf50a06aece9e0d5812ede224",
+      "removed_statements": 2,
+      "initialization_changed_tensors": [
+        "gate.net.2.bias",
+        "gate.net.2.weight"
+      ],
+      "original_initial_state_sha256": "0270349d613f11b453b92e4e928a3c2e7b67d062b5e3ba73c8ba4fb58dbd521a",
+      "variant_initial_state_sha256": "e634f28e28e66ed2fc61341372a814a5a147cdcaa101022e8a394a211f8ed540",
+      "actual_initial_weight_mean": [
+        0.5,
+        0.5
+      ]
+    },
+    "initialization_comparison": {
+      "policy": "exact identity/hash fields; absolute tolerance only for GPU forward means",
+      "identity_fields_match_exactly": true,
+      "screen_initial_weight_mean": [
+        0.5,
+        0.5
+      ],
+      "probe_initial_weight_mean": [
+        0.5,
+        0.5
+      ],
+      "mean_max_abs_difference": 0.0,
+      "mean_absolute_tolerance": 1e-05
+    },
+    "train_batch_size": 512,
+    "evaluation_batch_size": 16,
+    "total_optimizer_updates": 14348,
+    "training_samples_seen": 7318228,
+    "run_wall_seconds": 14953.762118400016,
+    "config_sha256": "d4faffe9fff168bb9d301e502d4d6f89ddd93c5488d8289c230ae85e104d6ffe",
+    "checkpoint_sha256": {
+      "best.pt": "8938edfe8cce670c38670393f8002378cc92b4240d82877885f456eff417297f",
+      "last.pt": "aca89f39febe1d4a1a8f3ad059e8c8ede3f0237735d632a1955e860d403d5bab"
+    }
+  }
+}
