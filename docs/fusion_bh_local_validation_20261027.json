@@ -111,5 +111,6 @@
   "server_probe_executed": false,
   "training_started": false,
   "offline_analysis_fixture_passed": true,
-  "fixture_note": "Existing B reused as synthetic candidate: zero B differences, 0/64 recovery, Z rescue retention220; not BH training."
+  "fixture_note": "Existing B reused as synthetic candidate: zero B differences, 0/64 recovery, Z rescue retention220; not BH training.",
+  "committed_bundle_metadata_check": "passed with git -c core.autocrlf=false archive; preserves bound LF bytes across platforms"
 }

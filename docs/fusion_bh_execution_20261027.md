@@ -41,7 +41,7 @@ B-H 模型前向调用 H 三次，训练损失合计五次；旧 B 分别为一�
 cd /home/nzxn/下载/WX/load/XG-NID
 git fetch origin codex/r0-edge-preparation
 bundle=$(mktemp -d /tmp/xgnid_bh.XXXXXX)
-git archive FETCH_HEAD scripts configs | tar -x -C "$bundle"
+git -c core.autocrlf=false archive FETCH_HEAD scripts configs | tar -x -C "$bundle"
 bash "$bundle/scripts/launch_fusion_bh.sh" 1
 tail -n 30 -F outputs/fusion_bh_b512_s42_v1.log
 ```
