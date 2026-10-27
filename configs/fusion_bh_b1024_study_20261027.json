@@ -1,0 +1,56 @@
+{
+  "schema": "xgnid.fusion-bh-b1024-study.v1",
+  "variant": "B_Hstats",
+  "controls": {
+    "seed": 42,
+    "batch_size": 1024,
+    "evaluation_batch_size": 16,
+    "initialization_batch_size": 16,
+    "optimizer": "Adam",
+    "lr": 0.001,
+    "weight_decay": 0.0,
+    "epochs": 100,
+    "patience": 12,
+    "min_delta": 0.0,
+    "workers": 2,
+    "lambda": 0.05,
+    "probe_updates": 3
+  },
+  "acb_root": "outputs/fusion_acb_b512_s42_v1",
+  "acb_summary_sha256": "a310d2b75f143e1fa9d8d5ab508c5b51d09dbec687f7bc33ff7c62281761ea93",
+  "baselines": {
+    "B_dynamic": {
+      "path": "outputs/fusion_acb_b512_s42_v1/B_dynamic/metrics.json",
+      "sha256": "115e8b41eedcac08ed110bebd4c20ed79e4934a8be96e28ac7821d2ee8cc4730",
+      "macro_f1": 0.9621918682153585
+    },
+    "C_global": {
+      "path": "outputs/fusion_acb_b512_s42_v1/C_global/metrics.json",
+      "sha256": "cca49958690a97d16a23d7ae68783515640a909813ed5386e97500365113a1e9",
+      "macro_f1": 0.9649409450822386
+    },
+    "E2": {
+      "path": "outputs/e2_batch_full_b512_s42_shared_v1/E2/metrics.json",
+      "sha256": "09eb335a7c62cb9fccff2db036911edf88ee13f0de4233ca430f6b8a19b91f91",
+      "macro_f1": 0.9659940017251138
+    },
+    "E0": {
+      "path": "outputs/e0_batch_full_b512_s42_shared_v1/E0/metrics.json",
+      "sha256": "fb5cfce614228e75f0b39b1529212722455adfe7281100cc27f01c8edf6654f4",
+      "macro_f1": 0.9667287438289962
+    }
+  },
+  "original_diagnostic": "outputs/e3_gate_diagnostic_b512_s42_v1/report.json",
+  "z_diagnostic": "outputs/e3_gate_candidate_E3aZ_b512_s42_v1/report.json",
+  "gate": "21->16->2; replace only columns 16,17,18,19 with H(z) probability statistics",
+  "gradient": "no detach; new H->statistics->gate route included",
+  "loss": "unchanged fusion_acb.losses, lambda=.05; H(z) auxiliary predictions recomputed",
+  "test_evaluated": false,
+  "automatic_additional_training": false,
+  "acb_epoch_sha256": {
+    "A_equal": "16cf244aa4f31a17b84c4f9d81e83d95a3d7c38de96425757c6a394e2941ac67",
+    "C_global": "08977f34d2d9c60c4567741bcdb7f2b4e5b4ec183868a95caa219e0ceab7956c",
+    "B_dynamic": "b7c008960f701bf1db25ff50c19d03078bc9a28e214414348fe028c44a74c4d5"
+  },
+  "purpose": "Single exploratory training-batch comparison; do not attribute differences versus B512 controls solely to H statistics"
+}
