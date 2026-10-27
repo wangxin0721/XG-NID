@@ -1,0 +1,21 @@
+{
+  "schema": "xgnid.bh-preflight-web-rescue-subset.v1",
+  "date": "2026-10-27",
+  "samples": 64,
+  "definition": "True WebBased, Z both branches wrong but fusion correct, B fusion wrong",
+  "B_groups": {
+    "both_correct": 0,
+    "flow_only_correct": 2,
+    "packet_only_correct": 23,
+    "both_wrong": 39
+  },
+  "B_predicted_class_counts": {
+    "3": 62,
+    "2": 2
+  },
+  "cache_sha256": {
+    "Z": "d4dd93f625a39dba95e6f0b6f4bc4ab437b94e96cf9d1aa63ba8b6e41fb5488b",
+    "B": "261d23efb943e0bbd6906909e2f3fceffeb37ff95f714ea95b142dd21b7ba67a"
+  },
+  "interpretation": "Label-based offline description only, not a training sample filter or gating feature; no new scan or model execution."
+}
