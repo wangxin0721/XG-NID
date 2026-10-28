@@ -1,0 +1,384 @@
+{
+  "date": "2026-10-28",
+  "scope": "seed42 validation only; B-H512 and resumed B-H1024 closure",
+  "checks": {
+    "1024": {
+      "report_internal_counts_consistent": true,
+      "all_three_prediction_matrices_recomputed": true,
+      "bound_sources_match": true,
+      "analysis_reconstructed_sha_matches_summary": true,
+      "saved_checkpoints_replayed": false,
+      "raw_prediction_cache_replayed": false
+    },
+    "512": {
+      "report_internal_counts_consistent": true,
+      "all_three_prediction_matrices_recomputed": true,
+      "bound_sources_match": true,
+      "analysis_reconstructed_sha_matches_summary": true,
+      "saved_checkpoints_replayed": false,
+      "raw_prediction_cache_replayed": false
+    }
+  },
+  "BH512": {
+    "best_epoch": 37,
+    "stopped_epoch": 49,
+    "macro_f1": 0.9604738092232066,
+    "accuracy": 0.9731518667261639,
+    "best_epoch_optimizer_updates": 7807,
+    "total_optimizer_updates": 10339,
+    "training_samples_seen": 5273429,
+    "per_class": {
+      "Benign": {
+        "precision": 0.9648829431438127,
+        "recall": 0.9660946002511511,
+        "f1-score": 0.965488391549885,
+        "support": 2389.0
+      },
+      "WebBased": {
+        "precision": 0.8394833948339483,
+        "recall": 0.8363970588235294,
+        "f1-score": 0.837937384898711,
+        "support": 544.0
+      },
+      "Spoofing": {
+        "precision": 0.9461145774248441,
+        "recall": 0.9591719378953422,
+        "f1-score": 0.952598515134209,
+        "support": 1739.0
+      },
+      "Recon": {
+        "precision": 0.9592105263157895,
+        "recall": 0.9600526777875329,
+        "f1-score": 0.9596314172882844,
+        "support": 2278.0
+      },
+      "Mirai": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 2400.0
+      },
+      "Dos": {
+        "precision": 0.9993174061433447,
+        "recall": 0.9925423728813559,
+        "f1-score": 0.9959183673469388,
+        "support": 1475.0
+      },
+      "DDos": {
+        "precision": 1.0,
+        "recall": 0.9970686767169179,
+        "f1-score": 0.9985321870413084,
+        "support": 2388.0
+      },
+      "BruteForce": {
+        "precision": 0.9955156950672646,
+        "recall": 0.9527896995708155,
+        "f1-score": 0.9736842105263159,
+        "support": 233.0
+      },
+      "accuracy": 0.9731518667261639,
+      "macro avg": {
+        "precision": 0.9630655678661255,
+        "recall": 0.9580146279908306,
+        "f1-score": 0.9604738092232066,
+        "support": 13446.0
+      },
+      "weighted avg": {
+        "precision": 0.9732342315976139,
+        "recall": 0.9731518667261639,
+        "f1-score": 0.9731772844520815,
+        "support": 13446.0
+      }
+    },
+    "confusion_matrix": [
+      [
+        2308,
+        11,
+        66,
+        4,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        7,
+        455,
+        8,
+        73,
+        0,
+        0,
+        0,
+        1
+      ],
+      [
+        57,
+        9,
+        1668,
+        5,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        18,
+        55,
+        17,
+        2187,
+        0,
+        1,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        2400,
+        0,
+        0,
+        0
+      ],
+      [
+        1,
+        4,
+        0,
+        6,
+        0,
+        1464,
+        0,
+        0
+      ],
+      [
+        0,
+        2,
+        0,
+        5,
+        0,
+        0,
+        2381,
+        0
+      ],
+      [
+        1,
+        6,
+        4,
+        0,
+        0,
+        0,
+        0,
+        222
+      ]
+    ],
+    "registered64_recovered": 22,
+    "Z_rescue_retained": 239,
+    "Z_WebBased_rescue_retained": 61
+  },
+  "BH1024": {
+    "best_epoch": 64,
+    "stopped_epoch": 76,
+    "macro_f1": 0.9586683691655854,
+    "accuracy": 0.9729287520452179,
+    "best_epoch_optimizer_updates": 6784,
+    "total_optimizer_updates": 8056,
+    "training_samples_seen": 8179196,
+    "per_class": {
+      "Benign": {
+        "precision": 0.9654166666666667,
+        "recall": 0.969861866889912,
+        "f1-score": 0.9676341616203801,
+        "support": 2389.0
+      },
+      "WebBased": {
+        "precision": 0.8517786561264822,
+        "recall": 0.7922794117647058,
+        "f1-score": 0.8209523809523809,
+        "support": 544.0
+      },
+      "Spoofing": {
+        "precision": 0.9556451612903226,
+        "recall": 0.9539965497412306,
+        "f1-score": 0.954820143884892,
+        "support": 1739.0
+      },
+      "Recon": {
+        "precision": 0.9471422432316287,
+        "recall": 0.9675153643546971,
+        "f1-score": 0.9572204125950055,
+        "support": 2278.0
+      },
+      "Mirai": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 2400.0
+      },
+      "Dos": {
+        "precision": 0.9993178717598908,
+        "recall": 0.9932203389830508,
+        "f1-score": 0.9962597755865352,
+        "support": 1475.0
+      },
+      "DDos": {
+        "precision": 1.0,
+        "recall": 0.9966499162479062,
+        "f1-score": 0.9983221476510068,
+        "support": 2388.0
+      },
+      "BruteForce": {
+        "precision": 0.9783549783549783,
+        "recall": 0.9699570815450643,
+        "f1-score": 0.9741379310344827,
+        "support": 233.0
+      },
+      "accuracy": 0.9729287520452179,
+      "macro avg": {
+        "precision": 0.9622069471787462,
+        "recall": 0.9554350661908209,
+        "f1-score": 0.9586683691655854,
+        "support": 13446.0
+      },
+      "weighted avg": {
+        "precision": 0.9727172052630926,
+        "recall": 0.9729287520452179,
+        "f1-score": 0.972758220509312,
+        "support": 13446.0
+      }
+    },
+    "confusion_matrix": [
+      [
+        2317,
+        7,
+        52,
+        13,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        7,
+        431,
+        10,
+        93,
+        0,
+        0,
+        0,
+        3
+      ],
+      [
+        60,
+        12,
+        1659,
+        7,
+        0,
+        0,
+        0,
+        1
+      ],
+      [
+        14,
+        46,
+        12,
+        2204,
+        0,
+        1,
+        0,
+        1
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        2400,
+        0,
+        0,
+        0
+      ],
+      [
+        1,
+        4,
+        0,
+        5,
+        0,
+        1465,
+        0,
+        0
+      ],
+      [
+        0,
+        3,
+        0,
+        5,
+        0,
+        0,
+        2380,
+        0
+      ],
+      [
+        1,
+        3,
+        3,
+        0,
+        0,
+        0,
+        0,
+        226
+      ]
+    ],
+    "registered64_recovered": 3,
+    "Z_rescue_retained": 226,
+    "Z_WebBased_rescue_retained": 42,
+    "paired_with_B": {
+      "repaired": 81,
+      "regressed": 106,
+      "both_correct": 13001,
+      "both_wrong": 258
+    },
+    "paired_with_C": {
+      "repaired": 127,
+      "regressed": 161,
+      "both_correct": 12955,
+      "both_wrong": 203
+    },
+    "recovery_from_epoch": 21,
+    "recovery_next_epoch": 22,
+    "recovery_optimizer_updates": 2226,
+    "bitwise_uninterrupted_equivalence_claimed": false,
+    "wall_seconds_scope": "resume_segment_only"
+  },
+  "BH1024_minus_BH512_macro_percentage_points": -0.1805440057621177,
+  "BH1024_minus_BH512_class_f1_percentage_points": {
+    "Benign": 0.2145770070495101,
+    "WebBased": -1.6985003946330068,
+    "Spoofing": 0.22216287506829913,
+    "Recon": -0.24110046932789286,
+    "Mirai": 0.0,
+    "Dos": 0.03414082395963858,
+    "DDos": -0.021003939030161956,
+    "BruteForce": 0.04537205081667217
+  },
+  "baseline_macro_f1": {
+    "B_dynamic": 0.9621918682153585,
+    "C_global": 0.9649409450822386,
+    "E2": 0.9659940017251138,
+    "E0": 0.9667287438289962
+  },
+  "BH1024_minus_baseline_macro_percentage_points": {
+    "B_dynamic": -0.35234990497730045,
+    "C_global": -0.6272575916653089,
+    "E2": -0.7325632559528339,
+    "E0": -0.8060374663410697
+  },
+  "decision": "Close current BH input and batch exploration; no additional BH seeds or budget extensions; prioritize E0/E2 paired seeds43/44 next, not launched.",
+  "limitations": [
+    "Single exploratory seed42; validation only",
+    "B1024 used fewer updates/epoch and checkpoint recovery; not a controlled gate mechanism comparison against B512 baselines",
+    "Only pasted aggregate reports validated; raw predictions/checkpoints not replayed",
+    "No B-H512 to B-H1024 paired sample transitions are available in these reports",
+    "Recovery checkpoint_tensors_loaded=false is a preflight flag retained in the receipt; subsequent model/optimizer/RNG restoration flags are true; worker RNG was not saved"
+  ]
+}
