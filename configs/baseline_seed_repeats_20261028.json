@@ -1,0 +1,99 @@
+{
+  "schema": "xgnid.baseline-seed-repeats.v1",
+  "registered_date": "2026-10-28",
+  "jobs": [
+    {
+      "model": "E0",
+      "seed": 43
+    },
+    {
+      "model": "E2",
+      "seed": 43
+    },
+    {
+      "model": "E0",
+      "seed": 44
+    },
+    {
+      "model": "E2",
+      "seed": 44
+    }
+  ],
+  "existing_seed": 42,
+  "train_batch_size": 512,
+  "evaluation_batch_size": 16,
+  "initialization_batch_size": 16,
+  "lr": 0.001,
+  "optimizer": "Adam",
+  "weight_decay": 0.0,
+  "epochs": 100,
+  "patience": 12,
+  "workers": 2,
+  "selection": "strict validation Macro-F1",
+  "split_directory": "data/processed/ciciot2023_grouped_input_v1",
+  "split_id": "a8ae9c934eec9fee970cc725e60051d0c709e0f16c7dda14749350ff2006975a",
+  "references": {
+    "E0": {
+      "directory": "outputs/e0_batch_full_b512_s42_shared_v1",
+      "entry": "scripts/baseline_seed42_frozen/e0_batch512.py",
+      "entry_sha256": "33dfd3d6ff0acdae2dcdb31e986d3044200b32f11ed7e1b1b251be2115fb2b61",
+      "historical_entry": "scripts/run_e0_batch512.py",
+      "study_config": "configs/baseline_seed42_frozen/e0_batch512.json",
+      "study_config_sha256": "4780c3c221d4fa143c448c974cf60a692ff2891bf4d2268add128c1fdd8a0cc1",
+      "summary_sha256": "b7a8f53ceb0c4a15f6cf387590247839a2042f64a2803bbe8e75023e71b4df98",
+      "config_sha256": "f789bd2d510cad58e12dd794246920e992b458d1ac7d142913b7b850fec450be",
+      "metrics_sha256": "fb5cfce614228e75f0b39b1529212722455adfe7281100cc27f01c8edf6654f4",
+      "epochs_sha256": "9a74a313cd9496204166e3e99d601c8d888c5a12f0e69065b386802f61183e6c",
+      "checkpoint_sha256": {
+        "best.pt": "e6575a490f354fe1345b6e5bbdae394d6f72223e6f2723f1c2947e3ad0bcc494",
+        "last.pt": "5ffea9b1dba2b72f973550486aa21607537d0ec23d281de0fd73c6d91cbed9cd"
+      },
+      "initial_state_sha256": "906e125925a8a2cc53a526602db0f047f76b1e41b8087c893f5cf1af41f64a6b",
+      "sources": {
+        "scripts/train_grouped.py": "06a493b18faa97b4e1f2b99b6aae38c67ad3c5f39b130f112079c9393432f5d1",
+        "scripts/grouped_graphs.py": "c1b1273d62fc44d91f7c9b300b66a083c1f80ef2c9c4314a62c4bbd5d708bbb4",
+        "scripts/smoke_grouped_gpu.py": "7bce1218e1b55a812855d50c70973fe300da97ad7e9b4005a52deac77d8b1517",
+        "scripts/audit_graph_split.py": "c19164930e8ecb75636cf16d6fa9bb51d6f29e1384e8d8ebf040e683536ffcb6",
+        "scripts/build_grouped_split.py": "24e07766189aec9d03f6161dee15587612a5b2f13e23eab67d7ba4aaf89a3401",
+        "src/xgnid/__init__.py": "2515233a0cdac6c5447c9dbd6b0d54c89284f191d8cb41473d89b347ee296ae7",
+        "src/xgnid/model.py": "28e21e94118db0a4110d17923d2840e18959669d798f628018c98c91c0202631",
+        "src/xgnid/edge_experiments.py": "3e6305d83c06c7ce32e901a2aba9d9d26baa1f2b394af14997b0e359929b4da5",
+        "third_party/GNN4ID/Utility/Model.py": "e17c3905e3c9f437c269bdd0e4d115656cfba6054b6a4474bbd06b5453010688"
+      },
+      "snapshot_extracted_from_commit": "6fd3255"
+    },
+    "E2": {
+      "directory": "outputs/e2_batch_full_b512_s42_shared_v1",
+      "entry": "scripts/baseline_seed42_frozen/e2_batch512.py",
+      "entry_sha256": "a290381515e74b2aeba3e40fcdc8e51ad798aa094d564c27f06ac0da3b78cabd",
+      "historical_entry": "scripts/run_e2_batch_comparison.py",
+      "study_config": "configs/baseline_seed42_frozen/e2_batch512.json",
+      "study_config_sha256": "b6746bc24d28bcdf911f51e9994ab6ef5b4395a2b7114f73107ba37f1fb6e4a0",
+      "summary_sha256": "e29e1ecf4e4a5c3dc4e5d8859ea6b0c74622404a09fcffed2d32dac041d45ef5",
+      "config_sha256": "0a297a4a42c86785ce59ac4eec64b771ad4e5ce774b1379f6aafd6d45830b089",
+      "metrics_sha256": "09eb335a7c62cb9fccff2db036911edf88ee13f0de4233ca430f6b8a19b91f91",
+      "epochs_sha256": "0f8553e93154ef333fffce1b9c7acae0756f626e4d10ac3de7036abf1895edef",
+      "checkpoint_sha256": {
+        "best.pt": "1709ed1a19b8a2e20b9b1ef3dac6cc6a5906fd93937e8d18a51cc64f85c44b08",
+        "last.pt": "3b4a503e44d27a0dcb667bce232731c16765e46a13c2d40e8fefe28972a67ddc"
+      },
+      "initial_state_sha256": "0270349d613f11b453b92e4e928a3c2e7b67d062b5e3ba73c8ba4fb58dbd521a",
+      "sources": {
+        "scripts/train_grouped.py": "06a493b18faa97b4e1f2b99b6aae38c67ad3c5f39b130f112079c9393432f5d1",
+        "scripts/grouped_graphs.py": "c1b1273d62fc44d91f7c9b300b66a083c1f80ef2c9c4314a62c4bbd5d708bbb4",
+        "scripts/smoke_grouped_gpu.py": "7bce1218e1b55a812855d50c70973fe300da97ad7e9b4005a52deac77d8b1517",
+        "scripts/audit_graph_split.py": "c19164930e8ecb75636cf16d6fa9bb51d6f29e1384e8d8ebf040e683536ffcb6",
+        "scripts/build_grouped_split.py": "24e07766189aec9d03f6161dee15587612a5b2f13e23eab67d7ba4aaf89a3401",
+        "src/xgnid/__init__.py": "2515233a0cdac6c5447c9dbd6b0d54c89284f191d8cb41473d89b347ee296ae7",
+        "src/xgnid/model.py": "28e21e94118db0a4110d17923d2840e18959669d798f628018c98c91c0202631",
+        "src/xgnid/edge_experiments.py": "3e6305d83c06c7ce32e901a2aba9d9d26baa1f2b394af14997b0e359929b4da5",
+        "third_party/GNN4ID/Utility/Model.py": "e17c3905e3c9f437c269bdd0e4d115656cfba6054b6a4474bbd06b5453010688"
+      },
+      "snapshot_extracted_from_commit": "db232e4"
+    }
+  },
+  "test_evaluated": false,
+  "gpu_hour_limit": null,
+  "automatic_frozen_fusion_jobs": false,
+  "interpretation": "Three seeds describe initial direction and variability; no significance or stable superiority claim from a small mean difference. E0/E2 architectures and parameter counts differ."
+}

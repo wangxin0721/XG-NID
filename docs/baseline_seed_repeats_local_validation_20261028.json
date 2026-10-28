@@ -1,0 +1,55 @@
+{
+  "status": "stdlib_static_checks_passed",
+  "unit_tests": 8,
+  "historical_seed42_artifact_binding_checks": "passed",
+  "historical_seed42_snapshot_byte_checks": "passed",
+  "bash_syntax": "passed",
+  "report_integration_fixture": "passed; copies seed42 aggregates into synthetic labels and fake checkpoint bytes, not new training results",
+  "fixture_expected_paired_mean_percentage_points": -0.07347421038823576,
+  "fixture_expected_paired_sample_std_percentage_points": 0,
+  "torch_imported": false,
+  "server_probe_executed": false,
+  "new_training_started": false,
+  "binding": {
+    "study_sha256": "ebbb7da8ed6b20e94023cba7983a418f1ebc9be1988add6fa2ff0be079e16a62",
+    "seed42": {
+      "E0": {
+        "metrics_sha256": "fb5cfce614228e75f0b39b1529212722455adfe7281100cc27f01c8edf6654f4",
+        "config_sha256": "f789bd2d510cad58e12dd794246920e992b458d1ac7d142913b7b850fec450be",
+        "entry_sha256": "33dfd3d6ff0acdae2dcdb31e986d3044200b32f11ed7e1b1b251be2115fb2b61",
+        "study_config_sha256": "4780c3c221d4fa143c448c974cf60a692ff2891bf4d2268add128c1fdd8a0cc1"
+      },
+      "E2": {
+        "metrics_sha256": "09eb335a7c62cb9fccff2db036911edf88ee13f0de4233ca430f6b8a19b91f91",
+        "config_sha256": "0a297a4a42c86785ce59ac4eec64b771ad4e5ce774b1379f6aafd6d45830b089",
+        "entry_sha256": "a290381515e74b2aeba3e40fcdc8e51ad798aa094d564c27f06ac0da3b78cabd",
+        "study_config_sha256": "b6746bc24d28bcdf911f51e9994ab6ef5b4395a2b7114f73107ba37f1fb6e4a0"
+      }
+    },
+    "split_id": "a8ae9c934eec9fee970cc725e60051d0c709e0f16c7dda14749350ff2006975a",
+    "manifest_sha256": "b8e9b0810471d0c2b52033488fab640625c3731315afd5d2add1571bd2518827",
+    "adapter_sources": {
+      "baseline_seed_repeats.py": "ae95df2f6493b40c5df3cf9222d34f778eea6f759f1ba59d6752a1afecf5bf25",
+      "run_baseline_seed_repeats_server.py": "90a317333174d3fc42c4eb4014d5d0815250584db00ac657d5e2c3ce97ecd894",
+      "analyze_baseline_seed_repeats.py": "666e1e099a33ba9491247099e9207a8b6e57db5ba8fc77a909f8903a7d33276c"
+    },
+    "jobs": [
+      {
+        "model": "E0",
+        "seed": 43
+      },
+      {
+        "model": "E2",
+        "seed": 43
+      },
+      {
+        "model": "E0",
+        "seed": 44
+      },
+      {
+        "model": "E2",
+        "seed": 44
+      }
+    ]
+  }
+}
