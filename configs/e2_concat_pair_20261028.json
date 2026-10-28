@@ -1,0 +1,22 @@
+{
+  "schema": "xgnid.e2-concat-pair.v1",
+  "reference_registry": "baseline_seed_repeats_20261028.json",
+  "variants": ["N0", "N1"],
+  "seed": 42,
+  "batch_size": 512,
+  "evaluation_batch_size": 16,
+  "workers": 2,
+  "epochs": 30,
+  "early_stop": true,
+  "patience": 12,
+  "probe_batches": 3,
+  "optimizer": "Adam",
+  "lr": 0.0001,
+  "weight_decay": 0.0,
+  "include_initial_checkpoint": true,
+  "selection": "strict validation Macro-F1, epoch 0 eligible, ties keep earlier epoch",
+  "loss": "plain NLL, no auxiliary supervision or class weights",
+  "optimizer_initialization": "reset both arms; do not migrate historical moments",
+  "test_evaluated": false,
+  "automatic_followup": false
+}
