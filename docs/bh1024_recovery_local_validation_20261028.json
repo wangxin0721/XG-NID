@@ -1,0 +1,11 @@
+{
+  "status": "stdlib_checks_passed",
+  "new_recovery_unit_tests": 8,
+  "original_b1024_metadata_checks": "passed",
+  "python_syntax": "passed",
+  "torch_imported": false,
+  "checkpoint_tensor_deserialization": false,
+  "server_checkpoint_epoch21_available_locally": false,
+  "actual_server_recovery_tested": false,
+  "original_experiment_sources_modified": false
+}
