@@ -1,0 +1,14 @@
+{
+  "schema": "xgnid.fair-vector.v1",
+  "jobs": ["E0FT42", "E0FT43", "E0FT44", "V1", "V2"],
+  "baseline_registry": "baseline_seed_repeats_20261028.json",
+  "baseline_directory": "outputs/baseline_seed_repeats_b512_s43_s44_v1",
+  "n0_references": "fair_vector_n0_references_20261029.json",
+  "N0_protocol": "e2_concat_pair_20261028.json",
+  "fusion_protocol": "frozen_fusion_20261029.json",
+  "V2_minus_N0_min_pp": 0.10,
+  "V2_minus_V1_min_pp": 0.05,
+  "class_tradeoff_review_required": true,
+  "test_evaluated": false,
+  "automatic_followup": false
+}
