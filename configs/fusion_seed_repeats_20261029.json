@@ -1,0 +1,14 @@
+{
+  "schema": "xgnid.fusion-seed-repeats.v1",
+  "seeds": [43, 44],
+  "training_jobs": [[43, "N0"], [43, "F1"], [43, "F2"], [44, "N0"], [44, "F1"], [44, "F2"]],
+  "baseline_registry": "baseline_seed_repeats_20261028.json",
+  "baseline_directory": "outputs/baseline_seed_repeats_b512_s43_s44_v1",
+  "expected_E2_macro_f1_percent_rounded4": {"43": 97.0766, "44": 96.9707},
+  "seed42_directory": "outputs/frozen_fusion_n0_b512_s42_v1",
+  "seed42_result": "frozen_fusion_seed42_result_20261029.json",
+  "N0_protocol": "e2_concat_pair_20261028.json",
+  "fusion_protocol": "frozen_fusion_20261029.json",
+  "test_evaluated": false,
+  "automatic_followup": false
+}
