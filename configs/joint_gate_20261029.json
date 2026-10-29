@@ -1,0 +1,17 @@
+{
+  "schema":"xgnid.joint-gate.v1",
+  "seed":42,
+  "variants":["J0","J2"],
+  "encoder_lr":0.00001,
+  "head_lr":0.0001,
+  "gate_lr":0.0001,
+  "weight_decay":0.0,
+  "epochs":30,
+  "patience":12,
+  "batch_size":512,
+  "eval_batch_size":16,
+  "stage_A":"outputs/fair_vector_five_runs_v1/V2",
+  "fair_config":"fair_vector_20261029.json",
+  "test_evaluated":false,
+  "automatic_followup":false
+}
