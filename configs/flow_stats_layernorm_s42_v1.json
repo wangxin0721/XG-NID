@@ -1,0 +1,51 @@
+{
+  "schema": "xgnid.flow-stats-layernorm.v1",
+  "variant": "J2_flow_stats_ln",
+  "parent_config": "flow_stats_residual_s42_v1.json",
+  "parent_config_sha256": "b7f9c2a8b3b1a0a4a5404010046001e6a992f7a63da643df8df3673e446ce74b",
+  "seed": 42,
+  "reference_config": "joint_gate_lrscale01_20261030.json",
+  "reference_directory": "outputs/joint_gate_lrscale01_s42_v1",
+  "reference_config_sha256": "b1d2cdbeff2489f2fdba33b6d806524edb56f5db64caee5fb6e11b93469a7368",
+  "reference_source_sha256": "b0fb58aebc6483ccda52f52df2d537ee191feebe85ed85f7ee3912b3267da871",
+  "reference_J2_best_sha256": "097cef933f3b0b049d8f0c31c3a8e99dedae7a25ccc8d00c4c9d23f86bd936eb",
+  "reference_J2_best_epoch": 9,
+  "start": "same_N0_plus_frozen_V2_not_joint_best",
+  "encoder_lr": 0.000001,
+  "head_lr": 0.00001,
+  "gate_lr": 0.00001,
+  "stats_lr": 0.0001,
+  "weight_decay": 0.0,
+  "epochs": 30,
+  "patience": 12,
+  "batch_size": 512,
+  "eval_batch_size": 16,
+  "encoder_mode": "train",
+  "loss": "plain_NLL",
+  "optimizer": "fresh_Adam",
+  "stats_path": {
+    "hidden_dim": 64,
+    "activation": "LeakyReLU_default",
+    "normalization": "LayerNorm64_eps1e-5_affine",
+    "dropout": 0.0,
+    "pooling": "flow_global_mean",
+    "last_layer_zero_init": true,
+    "coefficient": "fixed_one"
+  },
+  "probe": {
+    "updates": 3,
+    "ratio_median_ceiling": 0.10,
+    "ratio_p95_ceiling": 0.25,
+    "ratio_max_ceiling": 1.0,
+    "eval_nll_increase_ceiling": 0.10,
+    "prediction_change_fraction_ceiling": 0.05
+  },
+  "screening": {
+    "minimum_gain_over_stronger_reference_pp": 0.10,
+    "class_tradeoff_review_required": true,
+    "statistical_significance_claimed": false
+  },
+  "test_evaluated": false,
+  "automatic_followup": false,
+  "training_jobs": 1
+}
