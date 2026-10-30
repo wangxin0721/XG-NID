@@ -9,9 +9,13 @@ def summarize(root):
         rows.append({'model':name,'macro_f1':m['best_validation']['macro_f1'],
             'per_class':m['best_validation']['per_class'],'best_epoch':m['best_epoch'],
             'updates':m.get('updates',m.get('optimizer_updates')),
-            'wall_seconds':m.get('joint_wall_seconds')})
+            'wall_seconds':m.get('joint_wall_seconds'),'selected_epoch_zero':m['best_epoch']==0,
+            'training_evidence':m.get('training_evidence')})
     lines=['| model | validation Macro-F1 | best epoch | updates | joint seconds |','|---|---:|---:|---:|---:|']
     for row in rows:lines.append(f"| {row['model']} | {100*row['macro_f1']:.6f}% | {row['best_epoch']} | {row['updates']} | {row['wall_seconds']} |")
+    for row in rows:
+        if row['training_evidence']:
+            e=row['training_evidence'];lines.append(f"\n{row['model']}: best trained epoch {e['best_trained_epoch']}, change from own start {e['best_trained_minus_start_pp']:+.6f} pp; selected epoch0={row['selected_epoch_zero']}.")
     lines+=['','Stage A accounting: '+json.dumps(r['stage_A']),
         'Missing historical durations are unavailable, not zero. J2 includes extra warmup. No isolated component attribution.']
     (root/'report.md').write_text('\n'.join(lines)+'\n',encoding='utf-8')

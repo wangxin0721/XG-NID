@@ -1,0 +1,28 @@
+{
+  "schema": "xgnid.joint-gate.v1",
+  "seed": 42,
+  "variants": [
+    "J0",
+    "J2"
+  ],
+  "encoder_lr": 1e-06,
+  "head_lr": 1e-05,
+  "gate_lr": 1e-05,
+  "weight_decay": 0.0,
+  "epochs": 30,
+  "patience": 12,
+  "batch_size": 512,
+  "eval_batch_size": 16,
+  "stage_A": "outputs/fair_vector_five_runs_recovery_v1/V2",
+  "stage_A_policy": "completed_only",
+  "require_trained_gate": true,
+  "require_recovery_plan": true,
+  "fair_config": "fair_vector_20261029.json",
+  "test_evaluated": false,
+  "automatic_followup": false,
+  "lr_scale": 0.1,
+  "scaled_from_config": "joint_gate_recovery_v2_20261030.json",
+  "stage_A_expected_best_sha256": "ebc151b5bd60f3d9fc6808d6f1b551ef5559da439ea109487ecded31929d06a7",
+  "stage_A_expected_epoch": 13,
+  "comparison_reference": "outputs/joint_gate_recovery_v2_s42_v1"
+}

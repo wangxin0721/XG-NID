@@ -1,6 +1,6 @@
 """N0 warm-start equal control and pretrained vector gate joint fine-tuning."""
 from __future__ import annotations
-import argparse,json,os,sys,time,traceback
+import argparse,json,math,os,sys,time,traceback
 from pathlib import Path
 from types import MethodType,SimpleNamespace
 from itertools import islice
@@ -14,6 +14,29 @@ def check_config(c):
         and (c['epochs'],c['patience'],c['batch_size'],c['eval_batch_size'])==(30,12,512,16)
         and c['test_evaluated'] is False and c['automatic_followup'] is False,'Wrong joint protocol')
     require(all(0<c[k]<1 for k in ('encoder_lr','head_lr','gate_lr')) and c['weight_decay']>=0,'Invalid hyperparameters')
+
+
+def validate_scaled_config(path,c):
+    if 'lr_scale' not in c:return
+    base=read(inside(path.parent,c['scaled_from_config']))
+    require(c['lr_scale']==.1,'Only registered scale .1 is allowed')
+    metadata={'lr_scale','scaled_from_config','stage_A_expected_best_sha256','stage_A_expected_epoch','comparison_reference'}
+    actual={k:v for k,v in c.items() if k not in metadata}
+    for key in ('encoder_lr','head_lr','gate_lr'):
+        require(math.isclose(c[key],base[key]*c['lr_scale'],rel_tol=1e-12,abs_tol=0.),'Learning rates must scale together')
+        actual[key]=base[key]
+    require(actual==base,'Only group learning rates may change')
+
+
+def trained_evidence(initial,history):
+    require(bool(history),'No trained epochs')
+    require([r['epoch'] for r in history]==list(range(1,len(history)+1)), 'Noncontiguous history')
+    require(all(math.isfinite(r['val_macro_f1']) and 0<=r['val_macro_f1']<=1 for r in history),'Invalid score')
+    best=max(history,key=lambda r:r['val_macro_f1'])
+    return {'best_trained_epoch':best['epoch'],'best_trained_macro_f1':best['val_macro_f1'],
+            'best_trained_minus_start_pp':100*(best['val_macro_f1']-initial),
+            'last_trained_macro_f1':history[-1]['val_macro_f1'],
+            'last_trained_minus_start_pp':100*(history[-1]['val_macro_f1']-initial)}
 
 
 def stage_receipt(repo,c,parent,fusion):
@@ -38,6 +61,9 @@ def stage_receipt(repo,c,parent,fusion):
             and cfg['trainable_parameters']==488,'V2 actual configuration differs')
     vector.verify_metrics(m['best_validation'])
     if c.get('require_trained_gate',False):require(m['best_epoch']>0,'Expected trained V2, found epoch0')
+    if 'stage_A_expected_best_sha256' in c:
+        require(m['checkpoint_sha256']['best.pt']==c['stage_A_expected_best_sha256'] and
+                m['best_epoch']==c['stage_A_expected_epoch'],'Selected V2 differs from previous joint start')
     for name,digest in m['checkpoint_sha256'].items():
         require(sha(stage/'V2'/name)==digest,'V2 checkpoint changed: '+name)
     require(sha(stage/'V2/validation_predictions.jsonl.gz')==m['predictions_sha256'],'V2 predictions changed')
@@ -122,16 +148,16 @@ def train(core,args,c,data,device,m,variant,binding):
     sampler=core.TrainBatches(len(rows['train']),512,42)
     loader=core.DataLoader(core.GraphRows(data,rows['train']),batch_sampler=sampler,**kwargs)
     core.seed_all(42);opt=core.torch.optim.Adam(groups(m,variant,c),weight_decay=c['weight_decay'])
-    best,best_epoch,stale=zero['macro_f1'],0,0;orders=[];started=time.perf_counter()
+    best,best_epoch,stale=zero['macro_f1'],0,0;orders=[];history=[];started=time.perf_counter()
     cfg={'binding':binding,'protocol':c,'variant':variant,'optimizer_reset':True}
     core.checkpoint(folder/'best.pt',{'model_state':m.state_dict(),'validation':zero,'epoch':0,'config':cfg})
     with (folder/'epochs.jsonl').open('x',encoding='utf-8') as log:
         for epoch in range(1,c['epochs']+1):
-            m.train();steps=count=0
+            m.train();steps=count=0;loss_sum=0.
             for batch in loader:
                 batch=batch.to(device);opt.zero_grad(set_to_none=True)
                 loss=core.F.nll_loss(m(batch),batch.y.view(-1));require(bool(core.torch.isfinite(loss)),'Nonfinite loss')
-                loss.backward();opt.step();steps+=1;count+=batch.num_graphs
+                loss.backward();opt.step();steps+=1;count+=batch.num_graphs;loss_sum+=float(loss.detach())*batch.num_graphs
             require(steps==211 and count==107621,'Incomplete epoch');orders.append(sampler.last_order_sha256)
             metrics,_=core.evaluate(m,val,device);best,stale,improved=pair.selection_state(metrics['macro_f1'],best,stale)
             if improved:best_epoch=epoch
@@ -139,8 +165,12 @@ def train(core,args,c,data,device,m,variant,binding):
                 'config':cfg,'sampler_rng':sampler.generator.get_state(),'rng':pair.rng_state(core)}
             core.checkpoint(folder/'last.pt',payload)
             if improved:core.checkpoint(folder/'best.pt',payload)
-            entry={'epoch':epoch,'val_macro_f1':metrics['macro_f1'],'optimizer_updates':steps,'train_order_sha256':orders[-1]}
+            entry={'epoch':epoch,'val_macro_f1':metrics['macro_f1'],'optimizer_updates':steps,'train_order_sha256':orders[-1],
+                   'train_loss':loss_sum/count,'stale_epochs':stale,'best_epoch':best_epoch}
+            history.append(entry)
             log.write(json.dumps(entry)+'\n');log.flush();print(json.dumps({'variant':variant,**entry}),flush=True)
+            write(args.output/'progress.json',{'status':'running','variant':variant,'epoch':epoch,
+                'best_epoch':best_epoch,'stale_epochs':stale,'updates':epoch*211})
             if stale>=c['patience']:break
     selected=core.torch.load(folder/'best.pt',map_location=device,weights_only=False)
     # Reconstruct the appropriate architecture, not just reload a mutated model.
@@ -150,7 +180,9 @@ def train(core,args,c,data,device,m,variant,binding):
     require(measured['confusion_matrix']==selected['validation']['confusion_matrix'],'Checkpoint replay failed')
     pair.save_predictions(folder/'validation_predictions.jsonl.gz',exports)
     result={'best_validation':measured,'best_epoch':best_epoch,'epochs':epoch,'updates':epoch*211,'orders':orders,
-            'joint_wall_seconds':time.perf_counter()-started,'epoch_zero':zero,'checkpoint_sha256':sha(folder/'best.pt')}
+            'joint_wall_seconds':time.perf_counter()-started,'epoch_zero':zero,'checkpoint_sha256':sha(folder/'best.pt'),
+            'last_validation':metrics,'selected_epoch_zero':best_epoch==0,
+            'training_evidence':trained_evidence(zero['macro_f1'],history)}
     write(folder/'metrics.json',result);return result
 
 
@@ -159,15 +191,29 @@ def main():
     p.add_argument('--physical-gpu',type=int,default=1);p.add_argument('--allow-shared-gpu',action='store_true');p.add_argument('--output',type=Path,required=True)
     p.add_argument('--mode',choices=('check','run'),default='run')
     args=p.parse_args();args.repo=args.repo.resolve();args.config=(args.repo/args.config).resolve();c=read(args.config);check_config(c)
+    validate_scaled_config(args.config,c)
     fa=SimpleNamespace(repo=args.repo,config=args.config.parent/c['fair_config'])
     _,reg,_,fusion,refs,parent=vector.metadata(fa)
     stage,report,receipt=stage_receipt(args.repo,c,parent,fusion)
+    previous=None
+    if 'comparison_reference' in c:
+        previous_root=inside(args.repo/'outputs',inside(args.repo,c['comparison_reference']))
+        status=read(previous_root/'status.json');require((status['status'],status['exit_code'])==('completed',0),'Previous joint pair incomplete')
+        previous=read(previous_root/'summary.json')
+        require(previous['binding']['joint_config_sha256']==sha(inside(args.config.parent,c['scaled_from_config']))
+                and previous['binding']['stage_A_best_sha256']==receipt['best_sha256']
+                and previous['N0']==refs['42']['metrics'],'Previous pair used a different start/config')
+        previous_evidence={}
+        for variant in ('J0','J2'):
+            history=[json.loads(line) for line in (previous_root/variant/'epochs.jsonl').read_text(encoding='utf-8').splitlines()]
+            previous_evidence[variant]=trained_evidence(previous['joint'][variant]['epoch_zero']['macro_f1'],history)
     if args.mode=='check':
         print(json.dumps({'status':'metadata_and_recovery_V2_checks_passed','stage_A':receipt,
                           'training_started':False,'tensor_checks_executed':False}),flush=True);return
     require(os.name=='posix','Execute training on Linux server only')
     args.output=inside(args.repo/'outputs',inside(args.repo,args.output));require(not args.output.exists(),'Refuse overwrite/resume')
     args.output.mkdir(parents=True)
+    write(args.output/'status.json',{'status':'running','phase':'preflight'})
     try:
         fairroot=inside(args.repo,c['stage_A']).parent
         snapshot={}
@@ -209,13 +255,23 @@ def main():
         binding={'joint_config_sha256':sha(args.config),'joint_source_sha256':sha(Path(__file__)),
                  'parent':parent,'stage_A_best_sha256':sha(stage/'V2/best.pt'),'stage_A_receipt':receipt}
         results={}
-        for variant,m in [('J0',base),('J2',warmed)]:results[variant]=train(core,args,c,data,device,m,variant,binding)
+        for variant,m in [('J0',base),('J2',warmed)]:
+            write(args.output/'status.json',{'status':'running','phase':'joint_training','variant':variant})
+            results[variant]=train(core,args,c,data,device,m,variant,binding)
         common=min(len(r['orders']) for r in results.values());require(results['J0']['orders'][:common]==results['J2']['orders'][:common],'Joint data order differs')
-        write(args.output/'summary.json',{'status':'completed','binding':binding,'N0':refs['42']['metrics'],'frozen_V2':vm,
+        summary={'status':'completed','binding':binding,'N0':refs['42']['metrics'],'frozen_V2':vm,
             'joint':results,'stage_A':{'directory':str(stage),'updates':vm['optimizer_updates'],
             'elapsed_seconds':stage_seconds,'timing_available':stage_seconds is not None,
             'timing_note':'Historical V2 did not record wall time; never infer duration from file timestamps'},
-            'test_evaluated':False,'attribution':'J2 includes gate warmup plus joint adaptation; gains are not isolated gate-component effects'})
+            'test_evaluated':False,'attribution':'J2 includes gate warmup plus joint adaptation; gains are not isolated gate-component effects'}
+        if previous:
+            summary['previous_pair_comparison']={v:{'previous_macro_f1':previous['joint'][v]['best_validation']['macro_f1'],
+                'current_minus_previous_pp':100*(results[v]['best_validation']['macro_f1']-previous['joint'][v]['best_validation']['macro_f1']),
+                'previous_training_evidence':previous_evidence[v],
+                'current_best_trained_minus_previous_best_trained_pp':100*(results[v]['training_evidence']['best_trained_macro_f1']-
+                    previous_evidence[v]['best_trained_macro_f1'])}
+                for v in ('J0','J2')}
+        write(args.output/'summary.json',summary)
         write(args.output/'status.json',{'status':'completed','exit_code':0})
         from summarize_joint_gate import summarize
         summarize(args.output)
