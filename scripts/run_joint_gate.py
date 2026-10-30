@@ -1,6 +1,6 @@
 """N0 warm-start equal control and pretrained vector gate joint fine-tuning."""
 from __future__ import annotations
-import argparse,copy,json,os,subprocess,sys,time,traceback
+import argparse,json,os,sys,time,traceback
 from pathlib import Path
 from types import MethodType,SimpleNamespace
 from itertools import islice
@@ -14,6 +14,38 @@ def check_config(c):
         and (c['epochs'],c['patience'],c['batch_size'],c['eval_batch_size'])==(30,12,512,16)
         and c['test_evaluated'] is False and c['automatic_followup'] is False,'Wrong joint protocol')
     require(all(0<c[k]<1 for k in ('encoder_lr','head_lr','gate_lr')) and c['weight_decay']>=0,'Invalid hyperparameters')
+
+
+def stage_receipt(repo,c,parent,fusion):
+    """Read only the explicitly selected completed stage; never discover/fallback."""
+    require(c.get('stage_A_policy','completed_only')=='completed_only','Prewarm retraining is disabled')
+    stage=inside(repo/'outputs',inside(repo,c['stage_A']));root=stage.parent
+    if c.get('require_recovery_plan',False):
+        require(read(root/'recovery_plan.json')['binding']==parent,'Recovery plan binding differs')
+    for folder in (root,stage,stage/'V2'):
+        status=read(folder/'status.json')
+        require((status.get('status'),status.get('exit_code'))==('completed',0),
+                'Selected recovery queue/V2 not completed; no training started: '+str(folder))
+    report=read(stage/'result.json');summary=read(root/'summary.json');m=report['metrics']
+    require(report['job']=='V2' and report['binding']==parent and report['test_evaluated'] is False
+            and report['frozen_model_unchanged'] is True,'V2 identity/binding differs')
+    require(summary['binding']==parent and summary['results']['V2']==report
+            and summary['test_evaluated'] is False,'Recovery summary/V2 disagree')
+    require(read(stage/'V2/metrics.json')==m and m['variant']=='V2' and m['test_evaluated'] is False,
+            'V2 metrics disagree')
+    cfg=read(stage/'V2/config.json')
+    require(cfg['binding']==parent and cfg['variant']=='V2' and cfg['protocol']==fusion
+            and cfg['trainable_parameters']==488,'V2 actual configuration differs')
+    vector.verify_metrics(m['best_validation'])
+    if c.get('require_trained_gate',False):require(m['best_epoch']>0,'Expected trained V2, found epoch0')
+    for name,digest in m['checkpoint_sha256'].items():
+        require(sha(stage/'V2'/name)==digest,'V2 checkpoint changed: '+name)
+    require(sha(stage/'V2/validation_predictions.jsonl.gz')==m['predictions_sha256'],'V2 predictions changed')
+    return stage,report,{'directory':str(stage),'result_sha256':sha(stage/'result.json'),
+        'recovery_summary_sha256':sha(root/'summary.json'),'config_sha256':sha(stage/'V2/config.json'),
+        'best_sha256':m['checkpoint_sha256']['best.pt'],'selected_epoch':m['best_epoch'],
+        'validation_macro_f1':m['best_validation']['macro_f1'],
+        'existing_vector_screening':summary.get('vector_screening'), 'reused':True,'prewarm_training_started':False}
 
 
 def group_name(name,variant):
@@ -125,9 +157,15 @@ def train(core,args,c,data,device,m,variant,binding):
 def main():
     p=argparse.ArgumentParser();p.add_argument('--repo',type=Path,default=Path.cwd());p.add_argument('--config',type=Path,required=True)
     p.add_argument('--physical-gpu',type=int,default=1);p.add_argument('--allow-shared-gpu',action='store_true');p.add_argument('--output',type=Path,required=True)
+    p.add_argument('--mode',choices=('check','run'),default='run')
     args=p.parse_args();args.repo=args.repo.resolve();args.config=(args.repo/args.config).resolve();c=read(args.config);check_config(c)
     fa=SimpleNamespace(repo=args.repo,config=args.config.parent/c['fair_config'])
     _,reg,_,fusion,refs,parent=vector.metadata(fa)
+    stage,report,receipt=stage_receipt(args.repo,c,parent,fusion)
+    if args.mode=='check':
+        print(json.dumps({'status':'metadata_and_recovery_V2_checks_passed','stage_A':receipt,
+                          'training_started':False,'tensor_checks_executed':False}),flush=True);return
+    require(os.name=='posix','Execute training on Linux server only')
     args.output=inside(args.repo/'outputs',inside(args.repo,args.output));require(not args.output.exists(),'Refuse overwrite/resume')
     args.output.mkdir(parents=True)
     try:
@@ -139,27 +177,18 @@ def main():
             if (folder/'result.json').exists():item={**item,'metrics':read(folder/'result.json')['metrics']}
             snapshot[job]=item
         write(args.output/'fair_queue_snapshot.json',snapshot)
-        stage=inside(args.repo,c['stage_A']);queue=stage.parent
-        # Never compete with or terminate an already running fair/vector queue.
-        while not (stage/'status.json').exists() and (queue/'status.json').exists() and read(queue/'status.json')['status']=='running':
-            write(args.output/'status.json',{'status':'waiting_for_existing_V2'});time.sleep(30)
-        while (stage/'status.json').exists() and read(stage/'status.json')['status']=='running':
-            write(args.output/'status.json',{'status':'waiting_for_existing_V2'});time.sleep(30)
         stage_seconds=None
-        if not (stage/'status.json').exists():
-            stage=args.output/'stage_A'
-            cmd=[sys.executable,'-B','-u',str(Path(__file__).with_name('run_fair_vector.py')),'--repo',str(args.repo),
-                 '--config',str(fa.config),'--mode','job','--job','V2','--physical-gpu',str(args.physical_gpu),'--output',str(stage)]
-            if args.allow_shared_gpu:cmd.append('--allow-shared-gpu')
-            tick=time.perf_counter();require(subprocess.run(cmd).returncode==0,'Existing V2 entry failed');stage_seconds=time.perf_counter()-tick
-        require(read(stage/'status.json')['status']=='completed','V2 failed; inspect existing run, no auto retry')
-        report=read(stage/'result.json');require(report['binding']==parent and report['frozen_model_unchanged'],'V2 binding/config/cache mismatch')
+        write(args.output/'stage_A_receipt.json',receipt)
         vm=report['metrics'];require(sha(stage/'V2/best.pt')==vm['checkpoint_sha256']['best.pt'],'V2 changed')
         gpu=checked_gpu(args.physical_gpu,args.allow_shared_gpu);activate_gpu(gpu)
         sys.path.insert(0,str(args.repo/'scripts'));import train_grouped as core
         device=runtime(core);data=core.FrozenGraphs(inside(args.repo,reg['split_directory']),reg['split_id']);guard_graph_loads(data,{'train','val'})
         args.n0=core.torch.load(inside(args.repo,refs['42']['directory'])/'best.pt',map_location=device,weights_only=False)
-        args.gate=core.torch.load(stage/'V2/best.pt',map_location=device,weights_only=False)['fusion_state']
+        selected_gate=core.torch.load(stage/'V2/best.pt',map_location=device,weights_only=False)
+        require(selected_gate['epoch']==vm['best_epoch'] and selected_gate['config']==read(stage/'V2/config.json')
+                and selected_gate['validation']['confusion_matrix']==vm['best_validation']['confusion_matrix'],
+                'V2 checkpoint payload/config disagrees with receipt')
+        args.gate=selected_gate['fusion_state']
         before=build(core,data,device,args.n0,'J2');base=build(core,data,device,args.n0,'J0')
         loader=core.DataLoader(core.GraphRows(data,core.select_rows(data,'val')),batch_size=16,shuffle=False,num_workers=2)
         with core.torch.no_grad():
@@ -178,7 +207,7 @@ def main():
             args.probes[variant]=probe(core,m,pl,device,c,variant)
         write(args.output/'joint_probes.json',args.probes)
         binding={'joint_config_sha256':sha(args.config),'joint_source_sha256':sha(Path(__file__)),
-                 'parent':parent,'stage_A_best_sha256':sha(stage/'V2/best.pt')}
+                 'parent':parent,'stage_A_best_sha256':sha(stage/'V2/best.pt'),'stage_A_receipt':receipt}
         results={}
         for variant,m in [('J0',base),('J2',warmed)]:results[variant]=train(core,args,c,data,device,m,variant,binding)
         common=min(len(r['orders']) for r in results.values());require(results['J0']['orders'][:common]==results['J2']['orders'][:common],'Joint data order differs')
