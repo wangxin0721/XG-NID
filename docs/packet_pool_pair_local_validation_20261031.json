@@ -1,0 +1,39 @@
+{
+  "date": "2026-10-31",
+  "status": "local_implementation_checks_passed_server_execution_pending",
+  "standard_library_regression_tests": {
+    "command": "python -B -m unittest discover -s scripts -p test_packet_pool_pair.py -v",
+    "passed": 8,
+    "failed": 0
+  },
+  "python39_syntax": {
+    "passed": true,
+    "files": 5
+  },
+  "bash_syntax": {
+    "command": "bash -n scripts/launch_packet_pool_pair.sh",
+    "exit_code": 0
+  },
+  "new_file_whitespace": "passed",
+  "historical_model_and_protocol_files": "git_diff_quiet_passed",
+  "tensor_tests_executed": false,
+  "tensor_test_cases_prepared": 8,
+  "metadata_source_artifact_checks_executed": false,
+  "full_raw_graph_preflight_executed": false,
+  "formal_training_started": false,
+  "reason_pending": "Local torch/PyG and completed server D32-Gate artifacts are unavailable; no server connection is configured in this session.",
+  "dependencies_available": {
+    "torch": false,
+    "torch_geometric": false
+  },
+  "files_sha256": {
+    "src/xgnid/packet_pooling.py": "475cd89d9ab52ddcc360ee5a8c02e8a1601b783a917fcaca56354b33fb2ef8b1",
+    "scripts/run_packet_pool_pair.py": "b0e3a3c8f6f2628d8de3684f557f9d7a3828891ef78aa7ab0b06eabdb0cfd448",
+    "scripts/summarize_packet_pool_pair.py": "dc6f0414980d72d72a2309b9c35dd9e9a9fbba21bdb42f701ef3ef4266310fb3",
+    "scripts/test_packet_pooling_tensor.py": "dc7c21119f96767536bbf883d4d52be65cb898821dd1cbe408607b498501ca17",
+    "scripts/test_packet_pool_pair.py": "716bbfddcd2251d740134962e3c8476f62a616bc2eab2005119d880ee9debbd2",
+    "scripts/launch_packet_pool_pair.sh": "5ad78b106ac18bad846f6d45842ce4054bd22569ba6c8568076b303d2ac67baa",
+    "configs/packet_pool_pair_s42_v1.json": "70bb0c6b0e3c01f5797fbd567b17d7b9c3a324c9deb8f8ccc1c51f7c12ca0333",
+    "docs/packet_pool_pair_s42_v1.md": "9dbb8e113d248633449ff94aebf556f5e91d7840efb4be3d52478bdcf964e89c"
+  }
+}
