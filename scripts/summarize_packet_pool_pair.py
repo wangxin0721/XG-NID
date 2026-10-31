@@ -18,13 +18,21 @@ def budget(p0, p1, baseline, threshold):
 
 
 def analyze(r):
-    from run_packet_pool_pair import architecture, check_config
+    from run_packet_pool_pair import architecture, check_config, graph_load_accounting, graph_load_stage
     check_config(r['protocol'])
     require(r['status'] == 'completed' and r['exit_code'] == 0
             and all(r[k] is True for k in ('tensor_preflight_passed', 'encoder_parameters_and_BN_unchanged',
                 'node_caches_unchanged', 'source_artifacts_unchanged'))
             and r['test_evaluated'] is False and r['automatic_followup'] is False
             and r['graph_load_counts']['test'] == 0, 'Incomplete P0/P1 validation experiment')
+    accounting = r['graph_load_accounting']
+    require(accounting == graph_load_accounting(accounting['main_process_counts'], accounting['loader_stages'])
+            and accounting['totals'] == r['graph_load_counts'], 'Graph-load accounting differs')
+    expected_stages = [graph_load_stage('extract_train', 'train', 107621, r['protocol']['workers']),
+                       graph_load_stage('extract_val', 'val', 13446, r['protocol']['workers'])]
+    expected_stages += [graph_load_stage(phase + '_' + name, 'val', 13446, r['protocol']['workers'])
+                        for phase in ('initial', 'best') for name in ('P0', 'P1')]
+    require(accounting['loader_stages'] == expected_stages, 'Missing/incomplete verified loader stage')
     baseline = r['source_model']['best_validation']
     require(all(r['initialization'][k] is True for k in ('P0_P1_outputs_allclose',
                 'source_predictions_identical', 'uniform_packet_attention', 'epoch_zero_eligible')),
@@ -55,6 +63,7 @@ def analyze(r):
     a = budget(p0['best_validation']['macro_f1'], p1['best_validation']['macro_f1'], baseline['macro_f1'],
                r['protocol']['budget_above_stronger_reference_pp'])
     a.update(P0_gain_from_D32_pp=100 * (p0['best_validation']['macro_f1'] - baseline['macro_f1']),
+        graph_load_accounting=accounting, cache_memory_estimates=r['cache_memory_estimates'],
         selected_epoch_zero={n: m['selected_epoch_zero'] for n, m in r['models'].items()},
         class_tradeoff_review_required=True, statistical_significance_claimed=False, automatic_followup=False,
         attribution='P1-P0 measures the packet readout change including its 1,056 added parameters and training. '
@@ -123,6 +132,22 @@ def summarize(root):
               f"Common epochs with identical order/RNG: {r['common_epochs_order_checked']}; discarded probe updates=6.",
               'Both best checkpoints strictly reconstructed and replayed on every original validation graph.',
               a['attribution'], 'No test evaluation or automatic follow-up experiment.']
+    loads = a['graph_load_accounting']
+    lines += ['', f"Graph sample loads (including repeated reads): {loads['totals']}.",
+              f"Main-process guard counts: {loads['main_process_counts']}; worker loads use parent-verified stage samples.",
+              'These counts describe sample loads, not physical disk IO operations.', '',
+              '| loader phase | partition | parent-verified samples | workers |', '|---|---|---:|---:|']
+    for stage in loads['loader_stages']:
+        lines.append(f"| {stage['phase']} | {stage['partition']} | {stage['verified_samples']} | {stage['workers']} |")
+    lines += ['', '| cache | graphs | packet nodes | final tensor GiB | concatenation tensor peak GiB including retained cache |',
+              '|---|---:|---:|---:|---:|']
+    for part, memory in a['cache_memory_estimates'].items():
+        lines.append(f"| {part} | {memory['graph_samples']} | {memory['packet_nodes']} | "
+                     f"{memory['final_cache_tensor_bytes']/2**30:.6f} | {memory['estimated_cache_tensor_peak_bytes']/2**30:.6f} |")
+    lines += ['', 'Memory estimates cover cache tensor storage at concatenation, not whole-process RSS.',
+              'Python objects, source graphs, worker prefetch, models, batches and allocator/serialization buffers are excluded.',
+              'Full byte estimates and host MemAvailable before concatenation: cache_memory_estimates.json.',
+              'Full load-count receipts: graph_load_accounting.json.']
     (root / 'report.md').write_text('\n'.join(lines) + '\n', encoding='utf-8')
     with (root / 'per_class.csv').open('w', encoding='utf-8', newline='') as stream:
         writer = csv.writer(stream)

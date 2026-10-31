@@ -24,6 +24,16 @@ P1采用PyG `AttentionalAggregation(gate_nn=score)`，不添加特征变换网�
 
 `packet_diagnostics.json`按划分及八类报告每图Packet数量直方图、多报文比例、表示有差异的多报文图数，以及图内节点到均值的RMS欧氏距离。单报文距离为0；表示差异统计单独看多报文图，避免大量单报文掩盖差异。报告突出WebBased／Recon所在类别，不能因为大多数图只有一个报文便跳过实验。诊断只用训练／验证图，不打开测试图。
 
+整体拼接前先输出总Packet节点数和 `cache_memory_estimates.json`：最终缓存张量大小、分批张量与拼接结果同时存在时的峰值、指针输入／cumsum输出的短暂重叠，以及已保留的另一份缓存。另记录此时Linux的MemAvailable，用新增分配量与可用内存比较，避免把已驻留缓存再扣一次。该估算仅覆盖拼接阶段的缓存张量，不是进程RSS；Python对象、原图、worker预取、模型／batch及分配器／序列化缓冲均未计入。拼接完成立即释放批次张量列表，不再让两份表示持续占用内存。
+
+当前仍用原格式缓存，不预先改为分片。若新增张量分配估算已超过实际MemAvailable，先保留估算并在拼接前退出，再依据服务器数据考虑分片；内存未知时明确记为null，不编造可用容量。
+
+## 图加载计数修正
+
+cb830e8中普通字典无法汇总两个worker里的更新。分区拦截保留，最终 `graph_load_counts` 改为主进程字典中记录的直接加载，加上主进程已核验样本ID／标签的worker阶段样本数。六个阶段分别是训练／验证缓存提取、P0／P1初始回放、P0／P1最佳检查点回放。完整执行时worker阶段应贡献train=107,621、val=67,230；另加模型构造预热、梯度探测等主进程直接加载。若worker数为0，阶段样本已经在主进程字典中，不重复相加。
+
+分阶段依据保存在 `graph_load_accounting.json`，同时写入summary、analysis和report；汇总报告会重新计算总数并核对六个阶段的完整样本量。计量单位是包含重复读取的样本加载次数，不是物理磁盘IO次数，也不是每轮缓存训练消费的样本量。失败或未完成阶段不作为完整验收证据。
+
 ## 阻断式验收
 
 1. 启动前核对成熟源结果、协议、划分、编码器来源和权重SHA；两组公共状态严格加载且摘要相同。
@@ -52,7 +62,7 @@ cat outputs/packet_pool_pair_s42_v1/progress.json
 cat outputs/packet_pool_pair_s42_v1/status.json
 ```
 
-完成后读取 `report.md`、`analysis.json`、`summary.json`、`status.json`。保留两组的第0轮、best／last完整权重与优化器状态、逐轮日志、逐类P/R/F1、混淆矩阵、每例32维融合权重和每报文注意力、初始化验收、探测／回放收据、缓存／来源摘要及耗时。
+完成后优先读取 `status.json`、`report.md`、`analysis.json`、`packet_diagnostics.json`。另保留 `summary.json`、`graph_load_accounting.json`、`cache_memory_estimates.json`，以及两组的第0轮、best／last完整权重与优化器状态、逐轮日志、逐类P/R/F1、混淆矩阵、每例32维融合权重和每报文注意力、初始化验收、探测／回放收据、缓存／来源摘要及耗时。
 
 预算判断为 `Δ=F1(P1)-max(F1(P0),F1(D32-Gate))`，按百分点报告。Δ≥0.10个百分点才考虑扩大实验；P0不超过成熟D32时，目标为97.42070542814468%。小于门槛的收益同样记录，门槛不代表统计显著。
 

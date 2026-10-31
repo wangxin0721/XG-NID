@@ -1,6 +1,7 @@
 """Standard-library regression tests for selection, provenance and accounting."""
 import copy
 import json
+import multiprocessing
 from pathlib import Path
 import sys
 import tempfile
@@ -12,6 +13,13 @@ import run_packet_pool_pair as run
 from summarize_packet_pool_pair import analyze, budget, summarize
 
 ROOT = Path(__file__).resolve().parents[1]
+
+
+def child_counts(counts, connection):
+    counts['train'] += 1
+    counts['val'] += 1
+    connection.send(counts)
+    connection.close()
 
 
 class Contracts(unittest.TestCase):
@@ -115,6 +123,63 @@ class Contracts(unittest.TestCase):
         with self.assertRaises(ValueError):
             run.optimizer(core, graph, self.config())
 
+    def test_parent_verified_counts_include_worker_reads_despite_private_dictionaries(self):
+        counts = {'train': 0, 'val': 0, 'test': 0}
+        context = multiprocessing.get_context('spawn')
+        receive, send = context.Pipe(duplex=False)
+        worker = context.Process(target=child_counts, args=(counts, send))
+        worker.start()
+        send.close()
+        try:
+            self.assertTrue(receive.poll(10), 'Worker failed to report')
+            self.assertEqual(receive.recv(), {'train': 1, 'val': 1, 'test': 0})
+            worker.join(10)
+            self.assertEqual(worker.exitcode, 0)
+        finally:
+            receive.close()
+            if worker.is_alive():
+                worker.terminate()
+                worker.join(10)
+        self.assertEqual(counts, {'train': 0, 'val': 0, 'test': 0})
+        stages = [run.graph_load_stage('extract_train', 'train', 1, 2),
+                  run.graph_load_stage('initial_P0', 'val', 1, 2)]
+        accounting = run.graph_load_accounting(counts, stages)
+        self.assertEqual(accounting['totals'], {'train': 1, 'val': 1, 'test': 0})
+
+    def test_counts_include_direct_warmups_probes_and_all_replays_without_double_counting(self):
+        counts = {'train': 1120, 'val': 0, 'test': 0}
+        stages = [run.graph_load_stage('extract_train', 'train', 107621, 2),
+                  run.graph_load_stage('extract_val', 'val', 13446, 2)]
+        stages += [run.graph_load_stage(phase + '_' + name, 'val', 13446, 2)
+                   for phase in ('initial', 'best') for name in ('P0', 'P1')]
+        accounting = run.graph_load_accounting(counts, stages)
+        self.assertEqual(accounting['totals'], {'train': 108741, 'val': 67230, 'test': 0})
+        direct = {'train': 19, 'val': 0, 'test': 0}
+        self.assertEqual(run.graph_load_accounting(direct, [run.graph_load_stage('extract_train', 'train', 3, 0)])['totals'], direct)
+        for bad in ([stages[0], stages[0]], [dict(stages[0], partition='test')],
+                    [run.graph_load_stage('too_many_direct', 'val', 1, 0)]):
+            with self.assertRaises(ValueError):
+                run.graph_load_accounting(counts, bad)
+
+    def test_memory_estimate_accounts_for_two_copies_and_retained_cache(self):
+        m = run.cache_memory_estimate(3, 6, retained_bytes=1000, available_bytes=3000)
+        self.assertEqual((m['flow64_bytes'], m['packet64_bytes'], m['labels_bytes'], m['ptr_bytes']), (768, 1536, 24, 32))
+        self.assertEqual(m['final_cache_tensor_bytes'], 2360)
+        self.assertEqual(m['concat_additional_allocation_bytes'], 2392)
+        self.assertEqual(m['estimated_cache_tensor_peak_bytes'], 5720)
+        # Available memory is sampled after the chunks/previous cache exist.
+        self.assertTrue(m['additional_allocation_fits_host_available'])
+        self.assertFalse(run.cache_memory_estimate(3, 6, available_bytes=2000)['additional_allocation_fits_host_available'])
+        self.assertIsNone(run.cache_memory_estimate(3, 6)['additional_allocation_fits_host_available'])
+        with self.assertRaises(ValueError):
+            run.cache_memory_estimate(3, 2)
+
+    def test_host_memory_reads_memavailable_and_reports_unknown_when_missing(self):
+        with patch.object(Path, 'read_text', return_value='MemTotal: 99999 kB\nMemAvailable: 123 kB\n'):
+            self.assertEqual(run.available_host_memory(), 123 * 1024)
+        with patch.object(Path, 'read_text', side_effect=OSError):
+            self.assertIsNone(run.available_host_memory())
+
     def fixture(self):
         # Synthetic reports isolate report arithmetic from checkpoint metadata.
         labels = ['Benign', 'WebBased', 'Spoofing', 'Recon', 'Mirai', 'Dos', 'DDos', 'BruteForce']
@@ -143,6 +208,14 @@ class Contracts(unittest.TestCase):
             'graph_replays': {n: {'strict_state_load': True, 'predictions_identical': True,
                                   'confusion_matrix_reproduced': True} for n in run.VARIANTS},
             'comparisons': comparisons, 'prediction_transitions': {n: [] for n in comparisons}, 'packet_diagnostics': {}}
+        stages = [run.graph_load_stage('extract_train', 'train', 107621, 2),
+                  run.graph_load_stage('extract_val', 'val', 13446, 2)]
+        stages += [run.graph_load_stage(phase + '_' + name, 'val', 13446, 2)
+                   for phase in ('initial', 'best') for name in ('P0', 'P1')]
+        r['graph_load_accounting'] = run.graph_load_accounting(r['graph_load_counts'], stages)
+        r['graph_load_counts'] = r['graph_load_accounting']['totals']
+        r['cache_memory_estimates'] = {part: run.cache_memory_estimate(n, n)
+                                       for part, n in (('train', 107621), ('val', 13446))}
         return r, history
 
     def test_report_keeps_zero_epoch_and_class_tradeoffs_without_claiming_gain(self):
@@ -164,6 +237,8 @@ class Contracts(unittest.TestCase):
                 self.assertIn('P1-max(P0,D32)', report)
                 self.assertIn('WebBased/Recon', report)
                 self.assertIn('Spoofing/BruteForce', report)
+                self.assertIn('parent-verified samples', report)
+                self.assertIn('concatenation tensor peak', report)
                 self.assertEqual(len((root / 'per_class.csv').read_text().splitlines()), 41)
                 self.assertTrue((root / 'prediction_transitions.csv').exists())
 
@@ -179,7 +254,9 @@ class Contracts(unittest.TestCase):
                            lambda x: x['models']['P1']['orders'].__setitem__(0, 'wrong'),
                            lambda x: x['probes']['P1'].update(clean_model_and_rng_restored=False),
                            lambda x: x['initialization'].update(uniform_packet_attention=False),
-                           lambda x: x['models']['P1']['architecture'].update(trainable_parameters=7144)):
+                           lambda x: x['models']['P1']['architecture'].update(trainable_parameters=7144),
+                           lambda x: x['graph_load_accounting']['loader_stages'].pop(),
+                           lambda x: x['graph_load_counts'].update(val=0)):
                 bad = copy.deepcopy(r)
                 mutate(bad)
                 with self.assertRaises(ValueError):

@@ -145,7 +145,73 @@ def tensor_hash(core, cache):
     return core.state_hash((n, cache[n]) for n in TENSORS)
 
 
-def extract(core, args, model, data, device, part, c, encoder_hash, split_binding):
+def graph_load_stage(phase, part, samples, workers):
+    require(isinstance(phase, str) and bool(phase) and part in ('train', 'val')
+            and type(samples) is int and samples > 0 and type(workers) is int and workers >= 0,
+            'Invalid verified graph-load stage')
+    return {'phase': phase, 'partition': part, 'verified_samples': samples, 'workers': workers}
+
+
+def graph_load_accounting(main_counts, stages):
+    """Worker dictionaries are private; count their parent-verified samples."""
+    require(set(main_counts) == {'train', 'val', 'test'}
+            and all(type(n) is int and n >= 0 for n in main_counts.values()) and main_counts['test'] == 0,
+            'Invalid main-process graph-load counts')
+    totals, checked, zero_worker = dict(main_counts), [], {'train': 0, 'val': 0}
+    for stage in stages:
+        item = graph_load_stage(stage['phase'], stage['partition'], stage['verified_samples'], stage['workers'])
+        require(item == stage and all(s['phase'] != item['phase'] for s in checked), 'Duplicate/invalid load stage')
+        checked.append(item)
+        if item['workers']:
+            totals[item['partition']] += item['verified_samples']
+        else:
+            # With zero workers these samples are already in the main dictionary.
+            zero_worker[item['partition']] += item['verified_samples']
+    require(all(n <= main_counts[part] for part, n in zero_worker.items()), 'Missing zero-worker main loads')
+    return {'basis': 'main_process_guard_plus_parent_verified_loader_samples',
+            'main_process_counts': dict(main_counts), 'loader_stages': checked, 'totals': totals,
+            'unit': 'verified_sample_loads_including_repeated_reads_not_disk_io_operations'}
+
+
+def available_host_memory():
+    """Linux MemAvailable includes reclaimable pages; unknown elsewhere."""
+    try:
+        for line in Path('/proc/meminfo').read_text(encoding='ascii').splitlines():
+            fields = line.split()
+            if fields[:1] == ['MemAvailable:'] and len(fields) == 3 and fields[2] == 'kB':
+                return int(fields[1]) * 1024
+    except (OSError, ValueError):
+        pass
+    return None
+
+
+def cache_memory_estimate(samples, packet_nodes, retained_bytes=0, available_bytes=None,
+                          flow_element_bytes=4, packet_element_bytes=4, label_element_bytes=8):
+    values = (samples, packet_nodes, retained_bytes, flow_element_bytes, packet_element_bytes, label_element_bytes)
+    require(all(type(n) is int and n >= 0 for n in values) and samples > 0 and packet_nodes >= samples
+            and min(flow_element_bytes, packet_element_bytes, label_element_bytes) > 0
+            and (available_bytes is None or type(available_bytes) is int and available_bytes >= 0),
+            'Invalid cache memory estimate inputs')
+    flow = samples * 64 * flow_element_bytes
+    packet = packet_nodes * 64 * packet_element_bytes
+    labels, ptr = samples * label_element_bytes, (samples + 1) * 8
+    chunks = flow + packet + labels
+    final = chunks + ptr
+    # The pointer input and cumsum output may briefly coexist too.
+    additional = final + ptr
+    return {'graph_samples': samples, 'packet_nodes': packet_nodes, 'flow64_bytes': flow,
+        'packet64_bytes': packet, 'labels_bytes': labels, 'ptr_bytes': ptr,
+        'retained_cache_tensor_bytes': retained_bytes, 'final_cache_tensor_bytes': final,
+        'concat_additional_allocation_bytes': additional,
+        'estimated_cache_tensor_peak_bytes': retained_bytes + chunks + additional,
+        'host_MemAvailable_bytes_before_concat': available_bytes,
+        'additional_allocation_fits_host_available': additional <= available_bytes if available_bytes is not None else None,
+        'excludes': ['Python objects and lists', 'source graphs and worker prefetch',
+                     'model and batch tensors', 'allocator and serialization/hash buffers'],
+        'scope': 'cache tensor storage at concatenation; not whole-process peak RSS'}
+
+
+def extract(core, args, model, data, device, part, c, encoder_hash, split_binding, retained_bytes=0):
     rows = core.select_rows(data, part)
     ids, flows, nodes, labels, counts, variation = [], [], [], [], [], []
     started = time.perf_counter()
@@ -174,16 +240,28 @@ def extract(core, args, model, data, device, part, c, encoder_hash, split_bindin
         if step == 1 or step % 200 == 0:
             dim.progress(args, 'extract_packet_nodes', partition=part, samples=len(ids), total=len(rows))
     require(len(ids) == len(rows), 'Incomplete extraction')
+    memory = cache_memory_estimate(len(ids), sum(counts), retained_bytes, available_host_memory(),
+                                   flows[0].element_size(), nodes[0].element_size(), labels[0].element_size())
+    memory_path = args.output / 'cache_memory_estimates.json'
+    memory_reports = read(memory_path) if memory_path.exists() else {}
+    memory_reports[part] = memory
+    write(memory_path, memory_reports)
+    dim.progress(args, 'cache_before_concat', partition=part, **memory)
+    require(memory['additional_allocation_fits_host_available'] is not False,
+            'Insufficient host MemAvailable for concatenation; see cache_memory_estimates.json before considering shards')
     cache = {'ids': ids, 'flow64': core.torch.cat(flows), 'packet64': core.torch.cat(nodes),
         'labels': core.torch.cat(labels), 'ptr': core.torch.tensor([0] + counts, dtype=core.torch.long).cumsum(0),
         'packet_rms_distance': variation,
         'metadata': {'schema': 'xgnid.packet-node64-cache.v1', 'partition': part,
             'encoder_sha256': encoder_hash, 'split_binding': split_binding,
             'sample_order_sha256': identity(ids), 'samples': len(rows)}}
+    del flows, nodes, labels
     path = args.output / (part + '_packet_nodes.pt')
     core.checkpoint(path, cache)
     receipt = {'sha256': sha(path), 'tensor_sha256': tensor_hash(core, cache),
-               'metadata': cache['metadata'], 'wall_seconds': time.perf_counter() - started}
+               'metadata': cache['metadata'], 'wall_seconds': time.perf_counter() - started,
+               'graph_load_stage': graph_load_stage('extract_' + part, part, len(ids), c['workers']),
+               'memory_estimate': memory}
     dim.assert_frozen(core, model, encoder_hash)
     return cache, receipt
 
@@ -444,7 +522,7 @@ def check_history(history, result, c):
             and (stale >= c['patience'] or len(history) == c['epochs']), 'Selection/budget mismatch')
 
 
-def graph_replay(core, args, model, data, cache, device, c, expected, encoder_hash, original=None):
+def graph_replay(core, args, model, data, cache, device, c, expected, encoder_hash, original=None, phase='replay_val'):
     """Compare every raw validation graph with its cached-node output."""
     model.eval()
     if original is not None:
@@ -481,7 +559,8 @@ def graph_replay(core, args, model, data, cache, device, c, expected, encoder_ha
     return {'samples': offset, 'outputs_allclose': True, 'max_abs_raw_cached_error': error,
         'predictions_identical': True, 'confusion_matrix_reproduced': True,
         'strict_state_load': True, 'max_abs_original_D32_error': source_error if original is not None else None,
-        'encoder_parameters_and_BN_unchanged': True, 'wall_seconds': time.perf_counter() - started}, exports
+        'encoder_parameters_and_BN_unchanged': True, 'wall_seconds': time.perf_counter() - started,
+        'graph_load_stage': graph_load_stage(phase, 'val', offset, c['workers'])}, exports
 
 
 def run(args, meta):
@@ -500,7 +579,7 @@ def run(args, meta):
     device = runtime(core)
     write(args.output / 'gpu.json', gpu)
     data = core.FrozenGraphs(inside(args.repo, spec['split_directory']), ref['binding']['split_id'])
-    load_counts = guard_graph_loads(data, {'train', 'val'})
+    main_load_counts = guard_graph_loads(data, {'train', 'val'})
     n0 = core.torch.load(nroot / 'N0/best.pt', map_location=device, weights_only=False)
     mature = core.torch.load(root / 'D32-Gate/best.pt', map_location=device, weights_only=False)
     expected = source['models']['D32-Gate']['best_validation']
@@ -519,7 +598,9 @@ def run(args, meta):
         optimizer(core, model, c)
     caches, receipts = {}, {}
     for part in ('train', 'val'):
-        caches[part], receipts[part] = extract(core, args, models['P0'], data, device, part, c, encoder_hash, ref['binding'])
+        retained_bytes = sum(cache[k].numel() * cache[k].element_size() for cache in caches.values() for k in TENSORS)
+        caches[part], receipts[part] = extract(core, args, models['P0'], data, device, part, c, encoder_hash,
+                                              ref['binding'], retained_bytes)
         validate_cache(core, caches[part], core.select_rows(data, part), part, encoder_hash, ref['binding'])
     write(args.output / 'cache_receipts.json', receipts)
     write(args.output / 'packet_diagnostics.json', {p: diagnostics(core, x) for p, x in caches.items()})
@@ -531,7 +612,7 @@ def run(args, meta):
     initial_replays = {}
     for name, model in models.items():
         initial_replays[name], _ = graph_replay(core, args, model, data, caches['val'], device, c,
-                                               expected, encoder_hash, original)
+                                               expected, encoder_hash, original, phase='initial_' + name)
     del original
     initialization['raw_graph_replays'] = initial_replays
     write(args.output / 'initialization.json', initialization)
@@ -563,7 +644,7 @@ def run(args, meta):
         replay = build(core, classes, data, device, n0, mature['model_state'], model.pooling)
         replay.load_state_dict(saved['model_state'], strict=True)
         replays[name], raw = graph_replay(core, args, replay, data, caches['val'], device, c,
-            saved['validation'], encoder_hash)
+            saved['validation'], encoder_hash, phase='best_' + name)
         require([r['prediction'] for r in raw] == [r['prediction'] for r in exports[name]], 'Best raw predictions differ')
         write(args.output / name / 'graph_replay.json', replays[name])
         del replay
@@ -586,13 +667,18 @@ def run(args, meta):
         changes[name] = pair.compare_predictions(a, b)
         transitions[name] = prediction_transitions(a, b, core.LABELS)
         pair.save_predictions(args.output / (name + '_changed_samples.jsonl.gz'), changed_samples(a, b, core.LABELS))
+    stages = [r['graph_load_stage'] for group in (receipts, initial_replays, replays) for r in group.values()]
+    accounting = graph_load_accounting(main_load_counts, stages)
+    write(args.output / 'graph_load_accounting.json', accounting)
     summary = {'status': 'completed', 'exit_code': 0, 'protocol': c, 'binding': binding,
         'source_model': source['models']['D32-Gate'], 'models': results, 'initialization': initialization,
         'probes': probes, 'packet_diagnostics': read(args.output / 'packet_diagnostics.json'),
         'comparisons': changes, 'prediction_transitions': transitions, 'graph_replays': replays,
         'common_epochs_order_checked': common, 'encoder_parameters_and_BN_unchanged': True,
         'node_caches_unchanged': True, 'source_artifacts_unchanged': True, 'tensor_preflight_passed': True,
-        'preflight_wall_seconds': preflight_seconds, 'cache_receipts': receipts, 'graph_load_counts': load_counts,
+        'preflight_wall_seconds': preflight_seconds, 'cache_receipts': receipts,
+        'graph_load_counts': accounting['totals'], 'graph_load_accounting': accounting,
+        'cache_memory_estimates': {part: r['memory_estimate'] for part, r in receipts.items()},
         'discarded_probe_updates': 6, 'training_jobs': 2, 'test_evaluated': False, 'automatic_followup': False}
     write(args.output / 'summary.json', summary)
     print(summarize(args.output), flush=True)

@@ -3,7 +3,7 @@
   "status": "local_implementation_checks_passed_server_execution_pending",
   "standard_library_regression_tests": {
     "command": "python -B -m unittest discover -s scripts -p test_packet_pool_pair.py -v",
-    "passed": 8,
+    "passed": 12,
     "failed": 0
   },
   "python39_syntax": {
@@ -28,12 +28,28 @@
   },
   "files_sha256": {
     "src/xgnid/packet_pooling.py": "475cd89d9ab52ddcc360ee5a8c02e8a1601b783a917fcaca56354b33fb2ef8b1",
-    "scripts/run_packet_pool_pair.py": "b0e3a3c8f6f2628d8de3684f557f9d7a3828891ef78aa7ab0b06eabdb0cfd448",
-    "scripts/summarize_packet_pool_pair.py": "dc6f0414980d72d72a2309b9c35dd9e9a9fbba21bdb42f701ef3ef4266310fb3",
+    "scripts/run_packet_pool_pair.py": "29f8d91553b4f232cd46748565b9c0e360a5be780cb61df9445aa6d6e9fdddbb",
+    "scripts/summarize_packet_pool_pair.py": "a234e5045112c50a04fccfa17dfac5725ec6774eec41c77d40229a23d48863c7",
     "scripts/test_packet_pooling_tensor.py": "dc7c21119f96767536bbf883d4d52be65cb898821dd1cbe408607b498501ca17",
-    "scripts/test_packet_pool_pair.py": "716bbfddcd2251d740134962e3c8476f62a616bc2eab2005119d880ee9debbd2",
+    "scripts/test_packet_pool_pair.py": "f90ed8a293fb70ed8ad960648526c608cdbdf34cbaa594fd5145bc63f11d750b",
     "scripts/launch_packet_pool_pair.sh": "5ad78b106ac18bad846f6d45842ce4054bd22569ba6c8568076b303d2ac67baa",
     "configs/packet_pool_pair_s42_v1.json": "70bb0c6b0e3c01f5797fbd567b17d7b9c3a324c9deb8f8ccc1c51f7c12ca0333",
-    "docs/packet_pool_pair_s42_v1.md": "9dbb8e113d248633449ff94aebf556f5e91d7840efb4be3d52478bdcf964e89c"
-  }
+    "docs/packet_pool_pair_s42_v1.md": "c87af580385ad8e834c44fe2b1537e260a25befacbe64188c2316732cd65217b"
+  },
+  "reviewed_base_commit": "cb830e888909bc27971a37beed2ca5e90bd5ff2c",
+  "fix_scope": [
+    "parent-verified worker sample counts plus direct main-process loads",
+    "cache tensor memory estimate before concatenation and early release of chunk lists"
+  ],
+  "process_regression_executed": "real spawned child proves private dict updates are absent in parent; stage aggregation includes verified reads",
+  "memory_unit_checks": "two copies, retained cache, pointer temporary, additional allocation versus MemAvailable, unknown memory",
+  "unchanged_vs_reviewed_base": [
+    "src/xgnid/packet_pooling.py",
+    "src/xgnid/model.py",
+    "src/xgnid/fusion_dimension.py",
+    "configs/packet_pool_pair_s42_v1.json",
+    "scripts/launch_packet_pool_pair.sh",
+    "scripts/test_packet_pooling_tensor.py"
+  ],
+  "server_cache_memory_measurement_executed": false
 }
