@@ -33,7 +33,7 @@ class Checks(unittest.TestCase):
         historical = joint.read(ROOT/'configs/joint_gate_lrscale01_20261030.json')
         self.assertEqual((historical['epochs'], historical['patience']), (30, 12))
         for key, value in [('encoder_mode', 'train'), ('inputs', 'cached_64D'), ('epochs', 30), ('patience', 12),
-                           ('include_epoch_zero', False), ('seed', 43), ('warmup_training', True),
+                           ('include_epoch_zero', 'false'), ('seed', 43), ('warmup_training', True),
                            ('head_reinitialization', True), ('automatic_followup', True)]:
             with self.subTest(key=key), self.assertRaises(ValueError):
                 joint.check_config({**c, key: value})
@@ -80,8 +80,8 @@ class Checks(unittest.TestCase):
         param.requires_grad = True
         with self.assertRaises(ValueError): joint.assert_modes_buffers(core, model, 'changed_BN')
 
-    def history(self, scores, start=.97):
-        best, selected, stale = start, 0, 0
+    def history(self, scores, start=.97, eligible=True):
+        best, selected, stale = joint.initial_selection(start, {'include_epoch_zero': eligible})
         history = []
         for epoch, value in enumerate(scores, 1):
             best, stale, improved = joint.pair.selection_state(value, best, stale)
@@ -90,6 +90,7 @@ class Checks(unittest.TestCase):
                 'stale_epochs': stale, 'optimizer_updates': 211, 'train_order_sha256': str(epoch)})
         return history, {'epoch_zero': {'macro_f1': start}, 'best_validation': {'macro_f1': best},
             'best_epoch': selected, 'selected_epoch_zero': selected == 0, 'epochs': len(scores),
+            'epoch_zero_eligible': eligible,
             'optimizer_updates': len(scores)*211, 'orders': [str(x) for x in range(1, len(scores)+1)]}
 
     def test_epoch_zero_is_retained_on_ties_or_degradation_with_patience20(self):
@@ -106,6 +107,26 @@ class Checks(unittest.TestCase):
         history, result = self.history([.97+i*.00001 for i in range(1, 101)])
         joint.check_history(history, result, self.config())
         self.assertEqual(result['best_epoch'], 100)
+
+    def test_trained_epochs_only_selects_lower_than_start_and_does_not_fall_back(self):
+        c = joint.read(ROOT/'configs/joint_fusion32_s42_e100_p20_noepoch0_v1.json')
+        joint.check_config(c)
+        self.assertFalse(c['include_epoch_zero'])
+        baseline = self.config()
+        self.assertEqual({k: v for k, v in c.items() if k != 'include_epoch_zero'},
+                         {k: v for k, v in baseline.items() if k != 'include_epoch_zero'})
+        self.assertTrue(baseline['include_epoch_zero'])
+        history, result = self.history([.96]*21, start=.97, eligible=False)
+        joint.check_history(history, result, c)
+        self.assertEqual(result['best_epoch'], 1)
+        self.assertFalse(result['selected_epoch_zero'])
+        self.assertLess(result['best_validation']['macro_f1'], result['epoch_zero']['macro_f1'])
+        self.assertEqual(history[-1]['stale_epochs'], 20)
+        corrupted = {**result, 'best_epoch': 0, 'selected_epoch_zero': True}
+        with self.assertRaises(ValueError): joint.check_history(history, corrupted, c)
+        history, result = self.history([.97]*21, eligible=False)
+        joint.check_history(history, result, c)
+        self.assertEqual(result['best_epoch'], 1)
 
     def test_changed_samples_export_ids_and_correct_transition_types(self):
         ref = [{'sample_id': str(i), 'label': 1, 'prediction': p} for i, p in enumerate([3, 1, 0, 1])]
@@ -185,6 +206,34 @@ class Checks(unittest.TestCase):
         self.assertEqual(a['stronger_reference_macro_f1'], higher['macro_f1'])
         self.assertTrue(a['Equal_overtook_Gate'])
         self.assertFalse(a['budget_screen_passed'])
+
+    def test_excluded_epoch_zero_report_keeps_negative_gains(self):
+        r = self.fixture()
+        r['protocol'] = joint.read(ROOT/'configs/joint_fusion32_s42_e100_p20_noepoch0_v1.json')
+        for name, m in r['models'].items():
+            cm = copy.deepcopy(m['epoch_zero']['confusion_matrix'])
+            cm[1][1] -= 2
+            cm[1][3] += 2
+            worse = joint.dim.frozen.matrix_report(cm, LABELS)
+            m.update(best_validation=worse, last_validation=worse, best_epoch=1, selected_epoch_zero=False,
+                     epoch_zero_eligible=False, epochs=21, optimizer_updates=4431, orders=['order']*21)
+            r['own_start_changes'][name] = {'counts': {'repaired': 0, 'regressed': 2}, 'net_correct': -2}
+            r['own_start_transitions'][name] = [{'kind': 'regressed', 'true_class': 'WebBased',
+                'equal_prediction': 'WebBased', 'gate_prediction': 'Recon', 'count': 2}]
+        r['common_epochs_order_checked'] = 21
+        a = analyze(r)
+        self.assertLess(a['Gate_gain_from_own_start_pp'], 0.)
+        self.assertLess(a['Equal_gain_from_own_start_pp'], 0.)
+        self.assertFalse(a['epoch_zero_eligible'])
+        self.assertFalse(a['budget_screen_passed'])
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            joint.write(root/'summary.json', r)
+            text = summarize(root)
+            self.assertIn('Epoch0 is recorded but excluded', text)
+            self.assertLess(joint.read(root/'analysis.json')['Gate_gain_from_own_start_pp'], 0.)
+        r['models']['J32-Gate'].update(best_epoch=0, selected_epoch_zero=True)
+        with self.assertRaises(ValueError): analyze(r)
 
     def source_fixture(self, root):
         c = self.config()

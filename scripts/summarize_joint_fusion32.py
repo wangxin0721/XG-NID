@@ -29,6 +29,8 @@ def analyze(r):
             and r['test_evaluated'] is False and r['automatic_followup'] is False, 'Incomplete raw-graph J32 experiment')
     e, g = r['models']['J32-Equal'], r['models']['J32-Gate']
     se, sg = r['source_models']['D32-Equal'], r['source_models']['D32-Gate']
+    eligible = r['protocol']['include_epoch_zero']
+    require(type(eligible) is bool, 'Explicit epoch0 selection policy required')
     common = min(e['epochs'], g['epochs'])
     require(e['orders'][:common] == g['orders'][:common] and r['common_epochs_order_checked'] == common
             and e['training_start_rng_sha256'] == g['training_start_rng_sha256'], 'Paired order/RNG differs')
@@ -38,8 +40,10 @@ def analyze(r):
             verify_metrics(m[phase])
         verify_metrics(start['best_validation'])
         require(m['epoch_zero']['confusion_matrix'] == start['best_validation']['confusion_matrix']
-                and m['epoch_zero_eligible'] and m['selected_epoch_zero'] == (m['best_epoch'] == 0)
-                and m['best_validation']['macro_f1'] >= m['epoch_zero']['macro_f1'], 'Own-start selection differs')
+                and m['epoch_zero_eligible'] == eligible and m['selected_epoch_zero'] == (m['best_epoch'] == 0)
+                and m['best_epoch'] >= (0 if eligible else 1), 'Own-start selection differs')
+        if eligible:
+            require(m['best_validation']['macro_f1'] >= m['epoch_zero']['macro_f1'], 'Eligible starting model was lost')
         for kind in ('repaired', 'regressed'):
             require(sum(x['count'] for x in r['own_start_transitions'][name] if x['kind'] == kind)
                     == r['own_start_changes'][name]['counts'][kind], 'Own-start transitions disagree')
@@ -57,6 +61,7 @@ def analyze(r):
         'stronger_reference_macro_f1': stronger, 'Gate_minus_stronger_reference_pp': margin,
         'required_Gate_macro_f1_for_budget': stronger+threshold/100,
         'budget_threshold_pp': threshold, 'budget_screen_passed': margin >= threshold,
+        'epoch_zero_eligible': eligible,
         'Gate_selected_epoch_zero': g['selected_epoch_zero'], 'Equal_selected_epoch_zero': e['selected_epoch_zero'],
         'Gate_improved_over_own_start': delta_g > 0, 'Equal_improved_over_own_start': delta_e > 0,
         'Equal_overtook_Gate': best_e > best_g, 'class_tradeoff_review_required': True,
@@ -90,7 +95,9 @@ def summarize(root):
               f"Budget screen >= +{a['budget_threshold_pp']:.2f} pp: {a['budget_screen_passed']}; "
               f"required score={100*a['required_Gate_macro_f1_for_budget']:.6f}%.",
               f"Selected epoch0: Equal={a['Equal_selected_epoch_zero']}, Gate={a['Gate_selected_epoch_zero']}.",
-              'Epoch0 is eligible. Matching the starting score alone is not evidence of benefit.',
+              ('Epoch0 is eligible. Matching the starting score alone is not evidence of benefit.'
+               if a['epoch_zero_eligible'] else
+               'Epoch0 is recorded but excluded. Select trained epochs only, even when all are below the starting score.'),
               'No head reinitialization or warmup. Fresh Adam: encoders1e-6, projections/head1e-5, gate1e-5; WD0.',
               f"Raw graphs, batch512/16, max{r['protocol']['epochs']}/patience{r['protocol']['patience']}. "
               'Encoder modules remain eval but allow gradients; BN buffers fixed.',

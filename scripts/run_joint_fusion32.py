@@ -35,10 +35,11 @@ def check_config(c):
         'inputs': 'raw_train_val_graphs_only', 'optimizer': 'fresh_Adam',
         'encoder_lr': 1e-6, 'head_lr': 1e-5, 'gate_lr': 1e-5, 'weight_decay': 0.,
         'batch_size': 512, 'eval_batch_size': 16, 'workers': 2, 'epochs': 100,
-        'patience': 20, 'include_epoch_zero': True, 'probe_batches': 3, 'loss': 'plain_final_NLL',
+        'patience': 20, 'probe_batches': 3, 'loss': 'plain_final_NLL',
         'budget_gate_above_stronger_reference_pp': .10, 'head_reinitialization': False,
         'warmup_training': False, 'training_jobs': 2, 'test_evaluated': False, 'automatic_followup': False}
     require(all(c.get(k) == v for k, v in expected.items()), 'Unregistered J32 protocol')
+    require(type(c.get('include_epoch_zero')) is bool, 'Epoch0 eligibility must be an explicit boolean')
     require(set(c['variants']) == set(VARIANTS), 'Only J32-Equal and J32-Gate are registered')
     for name, (source, mode) in VARIANTS.items():
         require(c['variants'][name]['source'] == source and c['variants'][name]['mode'] == mode,
@@ -257,10 +258,15 @@ def probe(core, model, data, device, c, mode, expected_buffers):
         'wall_seconds': time.perf_counter()-started}
 
 
+def initial_selection(initial_score, c):
+    require(type(c.get('include_epoch_zero')) is bool, 'Explicit epoch0 policy required')
+    return (initial_score, 0, 0) if c['include_epoch_zero'] else (-math.inf, None, 0)
+
+
 def check_history(history, result, c):
-    require(c['include_epoch_zero'] is True and [r['epoch'] for r in history] == list(range(1, result['epochs']+1))
+    require([r['epoch'] for r in history] == list(range(1, result['epochs']+1))
             and 1 <= len(history) <= c['epochs'], 'Invalid joint history')
-    best, selected, stale = result['epoch_zero']['macro_f1'], 0, 0
+    best, selected, stale = initial_selection(result['epoch_zero']['macro_f1'], c)
     for r in history:
         require(math.isfinite(r['val_macro_f1']) and 0 <= r['val_macro_f1'] <= 1 and r['optimizer_updates'] == 211,
                 'Invalid epoch metrics/updates')
@@ -269,7 +275,8 @@ def check_history(history, result, c):
             selected = r['epoch']
         require(r['best_epoch'] == selected and r['stale_epochs'] == stale
                 and (r['epoch'] == len(history) or stale < c['patience']), 'Selection history differs')
-    require(result['best_epoch'] == selected and result['selected_epoch_zero'] == (selected == 0)
+    require(result['epoch_zero_eligible'] == c['include_epoch_zero']
+            and result['best_epoch'] == selected and result['selected_epoch_zero'] == (selected == 0)
             and abs(best-result['best_validation']['macro_f1']) < 1e-12
             and result['optimizer_updates'] == 211*len(history)
             and result['orders'] == [r['train_order_sha256'] for r in history]
@@ -296,11 +303,12 @@ def train(core, args, c, model, data, device, name, binding, zero, expected_buff
     core.seed_all(42)
     start_rng = pair.rng_hash(core, pair.rng_state(core))
     opt = optimizer(core, model, mode, c)
-    best, best_epoch, stale = zero['macro_f1'], 0, 0
+    best, best_epoch, stale = initial_selection(zero['macro_f1'], c)
     orders, history = [], []
     payload = {'model_state': model.state_dict(), 'epoch': 0, 'validation': zero, 'config': cfg}
     core.checkpoint(folder / 'epoch_zero.pt', payload)
-    core.checkpoint(folder / 'best.pt', payload)
+    if c['include_epoch_zero']:
+        core.checkpoint(folder / 'best.pt', payload)
     core.sync(device)
     started = time.perf_counter()
     with (folder / 'epochs.jsonl').open('x', encoding='utf-8') as log:
@@ -350,7 +358,7 @@ def train(core, args, c, model, data, device, name, binding, zero, expected_buff
     elapsed = time.perf_counter()-started
     result = {'best_validation': zero if best_epoch == 0 else None, 'last_validation': metrics,
         'best_epoch': best_epoch, 'epochs': epoch, 'optimizer_updates': epoch*211, 'orders': orders,
-        'epoch_zero': zero, 'epoch_zero_eligible': True, 'selected_epoch_zero': best_epoch == 0,
+        'epoch_zero': zero, 'epoch_zero_eligible': c['include_epoch_zero'], 'selected_epoch_zero': best_epoch == 0,
         'training_start_rng_sha256': start_rng, 'training_wall_seconds': elapsed,
         'parameter_groups': group_report, 'joint_trainable_parameters': sum(g['parameters'] for g in group_report),
         'training_evidence': dim.trained_evidence(zero['macro_f1'], history),
