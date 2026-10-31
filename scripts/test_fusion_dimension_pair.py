@@ -49,6 +49,19 @@ class Checks(unittest.TestCase):
         with self.assertRaises(ValueError):
             pair.architecture(64)
 
+    def test_equal_start_uses_elementwise_error_not_exact_reduced_mean(self):
+        observed = {'mean': [.5000000596046448] * 8, 'min': [.5] * 8, 'max': [.5] * 8,
+                    'max_abs_deviation_from_half': 0.}
+        # Regression: the old assertion rejected this valid all-half tensor.
+        self.assertFalse(all(v == .5 for key in ('mean', 'min', 'max') for v in observed[key]))
+        receipt = pair.validate_equal_start(observed)
+        self.assertEqual(receipt['max_abs_error'], 0.)
+        self.assertEqual(receipt['observed_mean'], observed['mean'])
+        for error in (1e-4, float('nan'), float('inf')):
+            bad = {**observed, 'mean': [.5] * 8, 'max_abs_deviation_from_half': error}
+            with self.subTest(error=error), self.assertRaises(ValueError):
+                pair.validate_equal_start(bad)
+
     def test_old_projected_cache_or_wrong_checkpoint_or_order_cannot_be_reused(self):
         source = {'encoder_sha256': 'same', 'N0_best_sha256': 'same'}
         rows = [{'sample_id': 'a'}, {'sample_id': 'b'}]
@@ -192,6 +205,13 @@ class Checks(unittest.TestCase):
             with (root / 'per_class.csv').open(newline='') as stream:
                 rows = list(csv.reader(stream))
             self.assertEqual(len(rows), 33)
+            r.update(cache_reused=True, recovery_source='/source/unchanged',
+                     original_cache_extraction_wall_seconds=2.)
+            pair.write(root / 'summary.json', r)
+            recovered_text = summarize(root)
+            self.assertIn('cache reuse/load/validate seconds', recovered_text)
+            self.assertIn('New recovery probe updates: 0', recovered_text)
+            self.assertTrue(pair.read(root / 'analysis.json')['cache_reused'])
 
 
 if __name__ == '__main__':

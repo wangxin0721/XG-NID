@@ -227,8 +227,26 @@ def evaluate(core, head, cache):
     a = core.torch.cat(weights)
     metrics = frozen.matrix_report(cm, core.LABELS)
     metrics['flow_weight_distribution'] = {'mean': a.mean(0).tolist(), 'std': a.std(0, unbiased=False).tolist(),
-                                         'min': a.min(0).values.tolist(), 'max': a.max(0).values.tolist()}
+                                         'min': a.min(0).values.tolist(), 'max': a.max(0).values.tolist(),
+                                         'max_abs_deviation_from_half': float((a - .5).abs().max())}
     return metrics, exports
+
+
+def validate_equal_start(distribution):
+    # A parallel mean reduction need not return exactly 0.5, even for a tensor
+    # filled with exactly 0.5. Validate the elementwise maximum error instead.
+    error = distribution['max_abs_deviation_from_half']
+    require(math.isfinite(error) and 0 <= error <= 1e-7,
+            'Fresh epoch0 gate weights differ from equal fusion: max_abs_error=' + str(error))
+    return {'elementwise_atol': 1e-7, 'max_abs_error': error,
+            'observed_mean': distribution['mean'], 'observed_min': distribution['min'],
+            'observed_max': distribution['max'], 'legacy_aggregate_exact_check_would_pass':
+                all(v == .5 for key in ('mean', 'min', 'max') for v in distribution[key])}
+
+
+def assert_zero_gate_output(core, head):
+    require(bool((head.gate[-1].weight == 0).all()) and bool((head.gate[-1].bias == 0).all()),
+            'Fresh gate output parameters are not zero')
 
 
 def probe(core, graph, data, cache, device, c, encoder_hash):
@@ -307,9 +325,11 @@ def check_history(history, metrics, c):
 def train(core, args, c, graph, caches, variant, binding, encoder_hash, expected_orders=None):
     folder = args.output / variant
     folder.mkdir()
+    assert_zero_gate_output(core, graph.fusion)
     initial, _ = evaluate(core, graph.fusion, caches['val'])
-    require(all(v == .5 for key in ('mean', 'min', 'max') for v in initial['flow_weight_distribution'][key]),
-            'Fresh epoch0 fusion is not equal-weight')
+    receipt = validate_equal_start(initial['flow_weight_distribution'])
+    write(folder / 'equal_weight_start.json', receipt)
+    print(json.dumps({'phase': 'elementwise_equal_gate_check', 'variant': variant, **receipt}), flush=True)
     cfg = {'variant': variant, 'architecture': architecture(VARIANTS[variant]), 'protocol': c,
            'binding': binding, 'labels': list(core.LABELS), 'optimizer_state': 'reset',
            'frozen_encoder_sha256': encoder_hash, 'heads_loaded_from_N0_or_J2': False}

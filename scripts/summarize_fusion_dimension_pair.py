@@ -23,6 +23,8 @@ def analyze(r):
         'automatic_followup': False, 'epoch_zero_eligible': False,
         'only_this_pair_budget': {'epochs': r['protocol']['epochs'], 'patience': r['protocol']['patience']},
         'shared_cache_wall_seconds': r['shared_cache_wall_seconds'],
+        'cache_reused': r.get('cache_reused', False), 'recovery_source': r.get('recovery_source'),
+        'original_cache_extraction_wall_seconds': r.get('original_cache_extraction_wall_seconds'),
         'common_epochs_order_checked': r['common_epochs_order_checked'], 'attribution': r['attribution']}
 
 
@@ -52,13 +54,19 @@ def summarize(root):
         right = ' / '.join(f'{100*y[label][key]:.4f}' for key in fields)
         lines.append(f"| {label} | {left} | {right} | {100*(y[label]['f1-score']-x[label]['f1-score']):+.6f} |")
     paired = r['D32_versus_D8']
+    cache_phase = 'reuse/load/validate' if r.get('cache_reused') else 'build'
     lines += ['', f"D32 versus D8: repaired={paired['counts']['repaired']}, regressed={paired['counts']['regressed']}, "
               f"net_correct={paired['net_correct']}.",
-              f"Shared 64D train/val cache build seconds: {r['shared_cache_wall_seconds']:.3f} (charged once).",
+              f"Shared 64D train/val cache {cache_phase} seconds: {r['shared_cache_wall_seconds']:.3f} (charged once).",
               f"Encoder/BN state unchanged: {r['frozen_encoder_unchanged']}; raw graph checkpoint replays passed."]
+    if r.get('cache_reused'):
+        lines += ['Source: ' + r['recovery_source'],
+                  'Original cache extraction seconds (recorded receipts): ' + str(r['original_cache_extraction_wall_seconds']),
+                  'Original gradient probes reused: 3 discarded updates per arm. New recovery probe updates: 0.']
     for name, m in r['models'].items():
+        probe_note = 'reused original probe updates=3; new probe updates=0' if r.get('cache_reused') else 'discarded probe updates=3'
         lines += [f"{name}: trainable parameters={m['architecture']['trainable_parameters']}; "
-                  f"gate={m['architecture']['gate']}; discarded probe updates=3; evidence={m['training_evidence']}."]
+                  f"gate={m['architecture']['gate']}; {probe_note}; evidence={m['training_evidence']}."]
     lines += [r['attribution'], 'No statistical significance claim. Review class tradeoffs before retaining D32.',
               'Dynamic-versus-equal 32D fusion and other seeds are not automatically launched. No test evaluation.']
     (root / 'report.md').write_text('\n'.join(lines) + '\n', encoding='utf-8')
