@@ -3,7 +3,7 @@ import torch
 from torch import nn
 from torch_geometric.nn import global_mean_pool
 from torch_geometric.nn.aggr import AttentionalAggregation
-from torch_geometric.utils import softmax
+from torch_geometric.utils import scatter, softmax
 
 from .fusion_dimension import FrozenEncoderClassifier
 
@@ -20,7 +20,14 @@ class PacketAttentionPool(nn.Module):
         self.aggregation = AttentionalAggregation(gate_nn=score)
 
     def forward(self, nodes, index, size):
-        return self.aggregation(nodes, index=index, dim_size=size)
+        # Equivalent attention in real arithmetic, with an exact zero correction
+        # at uniform initialization. sum(x)/n and sum(x/n) differ in float32.
+        mean = global_mean_pool(nodes, index, size=size)
+        beta = self.weights(nodes, index, size)
+        counts = torch.bincount(index, minlength=size).clamp_min(1)
+        uniform = counts[index].to(nodes.dtype).reciprocal()
+        correction = (beta - uniform)[:, None] * (nodes - mean[index])
+        return mean + scatter(correction, index, dim=0, dim_size=size, reduce='sum')
 
     def weights(self, nodes, index, size):
         return softmax(self.aggregation.gate_nn(nodes), index=index, num_nodes=size).view(-1)

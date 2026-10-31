@@ -30,6 +30,10 @@ def analyze(r):
             and accounting['totals'] == r['graph_load_counts'], 'Graph-load accounting differs')
     expected_stages = [graph_load_stage('extract_train', 'train', 107621, r['protocol']['workers']),
                        graph_load_stage('extract_val', 'val', 13446, r['protocol']['workers'])]
+    if r.get('cache_reused', False):
+        require(r['cache_recovery']['formal_training_updates_before_failure'] == 0
+                and r['cache_recovery']['probe_updates_before_failure'] == 0, 'Recovery discarded training/probe progress')
+        expected_stages = []
     expected_stages += [graph_load_stage(phase + '_' + name, 'val', 13446, r['protocol']['workers'])
                         for phase in ('initial', 'best') for name in ('P0', 'P1')]
     require(accounting['loader_stages'] == expected_stages, 'Missing/incomplete verified loader stage')
@@ -64,6 +68,7 @@ def analyze(r):
                r['protocol']['budget_above_stronger_reference_pp'])
     a.update(P0_gain_from_D32_pp=100 * (p0['best_validation']['macro_f1'] - baseline['macro_f1']),
         graph_load_accounting=accounting, cache_memory_estimates=r['cache_memory_estimates'],
+        cache_reused=r.get('cache_reused', False), cache_recovery=r.get('cache_recovery'),
         selected_epoch_zero={n: m['selected_epoch_zero'] for n, m in r['models'].items()},
         class_tradeoff_review_required=True, statistical_significance_claimed=False, automatic_followup=False,
         attribution='P1-P0 measures the packet readout change including its 1,056 added parameters and training. '
@@ -133,6 +138,11 @@ def summarize(root):
               'Both best checkpoints strictly reconstructed and replayed on every original validation graph.',
               a['attribution'], 'No test evaluation or automatic follow-up experiment.']
     loads = a['graph_load_accounting']
+    if a['cache_reused']:
+        lines += ['', 'Prepared node caches reused from the preserved failed run: ' + a['cache_recovery']['directory'],
+                  'Original cache-extraction reads are provenance only and are excluded from current-run graph-load totals.',
+                  'The cache memory estimates below describe the original extraction, not current copying/loading.',
+                  'No formal or probe updates existed before the known initial readout failure.']
     lines += ['', f"Graph sample loads (including repeated reads): {loads['totals']}.",
               f"Main-process guard counts: {loads['main_process_counts']}; worker loads use parent-verified stage samples.",
               'These counts describe sample loads, not physical disk IO operations.', '',

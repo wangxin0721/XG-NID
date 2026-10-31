@@ -2,22 +2,35 @@
   "date": "2026-10-31",
   "status": "local_implementation_checks_passed_server_execution_pending",
   "standard_library_regression_tests": {
-    "command": "python -B -m unittest discover -s scripts -p test_packet_pool_pair.py -v",
-    "passed": 12,
-    "failed": 0
+    "commands": [
+      "python -B -m unittest discover -s scripts -p test_packet_pool_pair.py -v",
+      "python -B -m unittest discover -s scripts -p test_packet_pool_recovery.py -v"
+    ],
+    "passed": 19,
+    "failed": 0,
+    "per_suite": {
+      "protocol_and_accounting": 13,
+      "cache_recovery": 6
+    }
   },
   "python39_syntax": {
     "passed": true,
-    "files": 5
+    "files": 7
   },
   "bash_syntax": {
-    "command": "bash -n scripts/launch_packet_pool_pair.sh",
-    "exit_code": 0
+    "commands": [
+      "bash -n scripts/launch_packet_pool_pair.sh",
+      "bash -n scripts/launch_packet_pool_pair_recovery.sh"
+    ],
+    "exit_codes": [
+      0,
+      0
+    ]
   },
   "new_file_whitespace": "passed",
   "historical_model_and_protocol_files": "git_diff_quiet_passed",
   "tensor_tests_executed": false,
-  "tensor_test_cases_prepared": 8,
+  "tensor_test_cases_prepared": 9,
   "metadata_source_artifact_checks_executed": false,
   "full_raw_graph_preflight_executed": false,
   "formal_training_started": false,
@@ -27,29 +40,45 @@
     "torch_geometric": false
   },
   "files_sha256": {
-    "src/xgnid/packet_pooling.py": "475cd89d9ab52ddcc360ee5a8c02e8a1601b783a917fcaca56354b33fb2ef8b1",
-    "scripts/run_packet_pool_pair.py": "29f8d91553b4f232cd46748565b9c0e360a5be780cb61df9445aa6d6e9fdddbb",
-    "scripts/summarize_packet_pool_pair.py": "a234e5045112c50a04fccfa17dfac5725ec6774eec41c77d40229a23d48863c7",
-    "scripts/test_packet_pooling_tensor.py": "dc7c21119f96767536bbf883d4d52be65cb898821dd1cbe408607b498501ca17",
-    "scripts/test_packet_pool_pair.py": "f90ed8a293fb70ed8ad960648526c608cdbdf34cbaa594fd5145bc63f11d750b",
+    "src/xgnid/packet_pooling.py": "d0e2a846b8bb0705ca4b42e3030ac37cd42a203866a901f575149724a88a27db",
+    "scripts/run_packet_pool_pair.py": "b090fc0afd15e37d585985c8d8de9685153e61c511451f54de4c26ea26b38884",
+    "scripts/summarize_packet_pool_pair.py": "302ec2196356f743493c07de4a7518e1ed44f44e5c43ecc724f3939f276a7550",
+    "scripts/test_packet_pooling_tensor.py": "d6d3a100b6c86837068c01470ec0c9d5275740dfaafce3d8291b8734953e0bc1",
+    "scripts/test_packet_pool_pair.py": "b5fb1f8067e67ef9e80ee9007cb4f6ed5f73a376254e286892ee69dacd45d333",
     "scripts/launch_packet_pool_pair.sh": "5ad78b106ac18bad846f6d45842ce4054bd22569ba6c8568076b303d2ac67baa",
     "configs/packet_pool_pair_s42_v1.json": "70bb0c6b0e3c01f5797fbd567b17d7b9c3a324c9deb8f8ccc1c51f7c12ca0333",
-    "docs/packet_pool_pair_s42_v1.md": "c87af580385ad8e834c44fe2b1537e260a25befacbe64188c2316732cd65217b"
+    "docs/packet_pool_pair_s42_v1.md": "164c1545f708c40dcf6534a68118ee6fabee3285b13f44de440e882ae150095c",
+    "scripts/recover_packet_pool_pair.py": "5ebbbf6a351421111b1d80bbb0753f51c09eab3670c056f9287c4ba8b298340f",
+    "scripts/launch_packet_pool_pair_recovery.sh": "b3dc84bf5ad40d2ba21c14cdb511d8dbc7373d21168d72646cb8b02b7f3ac066",
+    "scripts/test_packet_pool_recovery.py": "43fbf4f25ec11ab2460511f3d42bd2cb1d4effbf4de143add91ceef825019643",
+    "docs/packet_pool_recovery_20261031.md": "a3760eec7e18ec96bdac7fd280f903850b2256169ba98e01ba7b0d410b3693d6"
   },
-  "reviewed_base_commit": "cb830e888909bc27971a37beed2ca5e90bd5ff2c",
+  "reviewed_base_commit": "fbf812ef01a69781d2ee734e7e53a95fb16506ed",
   "fix_scope": [
-    "parent-verified worker sample counts plus direct main-process loads",
-    "cache tensor memory estimate before concatenation and early release of chunk lists"
+    "mean plus centered attention correction preserves exact uniform-start mean while keeping gradients",
+    "unchanged 1e-6 initialization tolerances and recorded legacy/new numerical diagnostics",
+    "cache-only recovery from the bound pre-training epoch0 failure into a separate output directory"
   ],
   "process_regression_executed": "real spawned child proves private dict updates are absent in parent; stage aggregation includes verified reads",
   "memory_unit_checks": "two copies, retained cache, pointer temporary, additional allocation versus MemAvailable, unknown memory",
   "unchanged_vs_reviewed_base": [
-    "src/xgnid/packet_pooling.py",
     "src/xgnid/model.py",
     "src/xgnid/fusion_dimension.py",
     "configs/packet_pool_pair_s42_v1.json",
-    "scripts/launch_packet_pool_pair.sh",
-    "scripts/test_packet_pooling_tensor.py"
+    "scripts/e3_gate_study.py",
+    "scripts/launch_packet_pool_pair.sh"
   ],
-  "server_cache_memory_measurement_executed": false
+  "server_cache_memory_measurement_executed": false,
+  "recovery_original_source_hashes_verified_against_git_objects": true,
+  "rounding_counterexample": {
+    "input_float32": [
+      1000000.0,
+      1,
+      -1000000.0
+    ],
+    "mean": 0.3333333432674408,
+    "legacy_uniform_weighted_sum": 0.34375,
+    "centered_correction_result": 0.3333333432674408,
+    "server_cache_values_measured_locally": false
+  }
 }

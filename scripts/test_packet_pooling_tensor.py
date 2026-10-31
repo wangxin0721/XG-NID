@@ -83,6 +83,20 @@ class Tensors(unittest.TestCase):
         torch.testing.assert_close(pool(other, index, 2)[0], out[0])
         torch.testing.assert_close(pool(nodes[:1], torch.tensor([0]), 1), nodes[:1])
 
+    def test_uniform_start_matches_mean_with_cancellation_and_keeps_gradient(self):
+        pool = PacketAttentionPool()
+        nodes = torch.ones(3, 64)
+        nodes[:, 0] = torch.tensor([1e6, 1., -1e6])
+        index = torch.zeros(3, dtype=torch.long)
+        mean = global_mean_pool(nodes, index, size=1)
+        legacy = pool.aggregation(nodes, index=index, dim_size=1)
+        result = pool(nodes, index, 1)
+        self.assertTrue(torch.equal(result, mean))
+        self.assertGreater(float((legacy - mean).abs().max()), 1e-6)
+        result[:, 0].sum().backward()
+        self.assertGreater(float(pool.aggregation.gate_nn[-1].weight.grad.abs().sum()), 0.)
+        self.assertEqual(float(pool.aggregation.gate_nn[0].weight.grad.abs().sum()), 0.)
+
     def test_zero_output_initialization_delays_hidden_gradient_then_learns(self):
         pool = PacketAttentionPool()
         nodes, index = torch.randn(6, 64), torch.tensor([0, 0, 0, 1, 1, 1])

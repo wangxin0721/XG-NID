@@ -14,7 +14,7 @@
 | 新池化学习率 | 无 | 1e-4 |
 | 编码器／BN | 参数和所有缓冲区冻结，eval | 相同 |
 
-P1采用PyG `AttentionalAggregation(gate_nn=score)`，不添加特征变换网络；输出仍为64维。评分末层权重为零，初始池化复现平均池化。构造新模块只使用独立CPU随机流，不改变CPU／CUDA训练随机状态。[PyG 2.5.3源码](https://pytorch-geometric.readthedocs.io/en/2.5.3/_modules/torch_geometric/nn/aggr/attention.html)支持按图索引归一化和省略特征变换。
+P1保留PyG `AttentionalAggregation` 的gate_nn评分参数布局，权重按图softmax，不添加特征变换网络；输出仍为64维。实际读出使用等价的 `mean(h) + sum((beta-1/n)*(h-mean(h)))`，使评分末层零初始化时修正项为零，数值上复现平均池化，同时保留评分梯度。构造新模块只使用独立CPU随机流，不改变CPU／CUDA训练随机状态。[PyG 2.5.3源码](https://pytorch-geometric.readthedocs.io/en/2.5.3/_modules/torch_geometric/nn/aggr/attention.html)提供评分及分组权重的原始实现；本次数值修正和已失败目录的缓存恢复见 `docs/packet_pool_recovery_20261031.md`。
 
 协议固定为seed42、原分组划分，新建Adam、weight_decay=0、原最终输出NLL，train/eval batch=512/16，最多100轮、patience20。以验证Macro-F1严格改善选模；第0轮参与，若后续均未改善则保留第0轮。两组独立重置训练随机状态和优化器，校验所有共同轮次的样本顺序。学习率仅是本轮筛选设置，不声称最优。
 

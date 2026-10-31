@@ -2,6 +2,7 @@
 import copy
 import json
 import multiprocessing
+import struct
 from pathlib import Path
 import sys
 import tempfile
@@ -25,6 +26,20 @@ def child_counts(counts, connection):
 class Contracts(unittest.TestCase):
     def config(self):
         return run.read(ROOT / 'configs/packet_pool_pair_s42_v1.json')
+
+    def test_uniform_weighting_can_differ_from_mean_in_float32_without_tolerance_changes(self):
+        f32 = lambda x: struct.unpack('f', struct.pack('f', x))[0]
+        nodes, u = [1e6, 1., -1e6], f32(1 / 3)
+        def add(values):
+            total = f32(0.)
+            for x in values:
+                total = f32(total + x)
+            return total
+        mean = f32(add(nodes) / 3)
+        legacy = add([f32(x * u) for x in nodes])
+        centered = f32(mean + add([f32(f32(u - u) * f32(x - mean)) for x in nodes]))
+        self.assertGreater(abs(legacy - mean), 1e-6)
+        self.assertEqual(centered, mean)
 
     def test_exact_screen_and_mature_start(self):
         self.assertNotIn('torch', sys.modules)

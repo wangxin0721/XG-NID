@@ -333,21 +333,55 @@ def evaluate(core, model, cache, device, export=False):
     return metrics, exports
 
 
-def initial_equivalence(core, models, cache, device, gold, expected):
+def initial_equivalence(core, models, cache, device, gold, expected, output=None):
     error = 0.
+    diagnostic = {'samples': len(cache['ids']), 'atol': 1e-6, 'rtol': 1e-6,
+        'new_failed_batches': 0, 'legacy_failed_batches': 0, 'new_prediction_mismatches': 0,
+        'legacy_prediction_mismatches': 0, 'max_abs_new_vs_P0_log_probability_error': 0.,
+        'max_abs_legacy_vs_P0_log_probability_error': 0., 'max_abs_new_vs_mean_packet_error': 0.,
+        'max_abs_legacy_vs_mean_packet_error': 0., 'first_new_mismatch_ids': [], 'first_legacy_mismatch_ids': [],
+        'max_abs_new_vs_P0_gate_error': 0., 'max_abs_legacy_vs_P0_gate_error': 0.,
+        'explanation': 'Different floating-point reduction orders are a candidate cause; measured legacy/new differences are recorded here.'}
     for model in models.values():
         model.eval()
+    require(not bool(core.torch.count_nonzero(models['P1'].packet_pool.aggregation.gate_nn[-1].weight)),
+            'Initial packet score output must be exactly zero')
     with core.torch.no_grad():
         for offset in range(0, len(cache['ids']), 16):
             features, _ = minibatch(core, cache, list(range(offset, min(offset + 16, len(cache['ids'])))), device)
             a, aw = models['P0'].forward_features(*features)
             b, bw = models['P1'].forward_features(*features)
-            require(core.torch.allclose(a, b, atol=1e-6, rtol=1e-6)
-                    and core.torch.allclose(aw, bw, atol=1e-6, rtol=1e-6), 'Non-equivalent epoch0 readout')
+            pool = models['P1'].packet_pool
+            legacy_packet = pool.aggregation(features[1], index=features[2], dim_size=features[3])
+            legacy, legacy_aw = models['P1'].fusion(features[0], legacy_packet)
+            mean_packet = core.torch_geometric.nn.global_mean_pool(features[1], features[2], size=features[3])
+            new_packet = pool(features[1], features[2], features[3])
+            require(all(bool(core.torch.isfinite(x).all()) for x in (a, b, aw, bw, legacy, legacy_aw)),
+                    'Nonfinite initialization outputs')
+            for label, scores, weights in (('new', b, bw), ('legacy', legacy, legacy_aw)):
+                good = bool(core.torch.allclose(a, scores, atol=1e-6, rtol=1e-6)
+                            and core.torch.allclose(aw, weights, atol=1e-6, rtol=1e-6))
+                diagnostic[label + '_failed_batches'] += int(not good)
+                mismatch = (a.argmax(-1) != scores.argmax(-1)).nonzero().view(-1).tolist()
+                diagnostic[label + '_prediction_mismatches'] += len(mismatch)
+                diagnostic['first_' + label + '_mismatch_ids'].extend(
+                    cache['ids'][offset + j] for j in mismatch[:max(0, 20 - len(diagnostic['first_' + label + '_mismatch_ids']))])
+                key = 'max_abs_' + label + '_vs_P0_log_probability_error'
+                diagnostic[key] = max(diagnostic[key], float((a - scores).abs().max()))
+                key = 'max_abs_' + label + '_vs_P0_gate_error'
+                diagnostic[key] = max(diagnostic[key], float((aw - weights).abs().max()))
+            for label, packet in (('new', new_packet), ('legacy', legacy_packet)):
+                key = 'max_abs_' + label + '_vs_mean_packet_error'
+                diagnostic[key] = max(diagnostic[key], float((packet - mean_packet).abs().max()))
             error = max(error, float((a - b).abs().max()))
             beta = models['P1'].packet_weights(features[1], features[2], features[3])
             uniform = models['P0'].packet_weights(features[1], features[2], features[3])
             require(core.torch.allclose(beta, uniform, atol=1e-7, rtol=1e-7), 'Initial packet weights nonuniform')
+    if output is not None:
+        write(output / 'initialization_comparison.json', diagnostic)
+        print(json.dumps({'phase': 'initialization_comparison', **diagnostic}), flush=True)
+    require(diagnostic['new_failed_batches'] == 0 and diagnostic['new_prediction_mismatches'] == 0,
+            'Non-equivalent epoch0 readout; inspect initialization_comparison.json')
     for name, model in models.items():
         m, exports = evaluate(core, model, cache, device, export=True)
         require(m['confusion_matrix'] == expected['confusion_matrix'], 'Epoch0 source score differs: ' + name)
@@ -355,7 +389,7 @@ def initial_equivalence(core, models, cache, device, gold, expected):
                 == [(r['sample_id'], r['label'], r['prediction']) for r in gold], 'Epoch0 source predictions differ')
     return {'samples': len(cache['ids']), 'max_abs_P0_P1_log_probability_error': error,
         'P0_P1_outputs_allclose': True, 'source_predictions_identical': True,
-        'uniform_packet_attention': True, 'epoch_zero_eligible': True}
+        'uniform_packet_attention': True, 'epoch_zero_eligible': True, 'comparison': diagnostic}
 
 
 def probe(core, args, model, data, cache, device, c, encoder_hash):
@@ -563,7 +597,8 @@ def graph_replay(core, args, model, data, cache, device, c, expected, encoder_ha
         'graph_load_stage': graph_load_stage(phase, 'val', offset, c['workers'])}, exports
 
 
-def run(args, meta):
+def run(args, meta, cache_provider=None, verify_cache_source=None):
+    require((cache_provider is None) == (verify_cache_source is None), 'Cache reuse must verify its source')
     started = time.perf_counter()
     c, previous, root, source, binding = meta
     _, spec, ref, nroot, _, _ = previous[1]
@@ -597,15 +632,16 @@ def run(args, meta):
         dim.assert_frozen(core, model, encoder_hash)
         optimizer(core, model, c)
     caches, receipts = {}, {}
+    prepare_cache = extract if cache_provider is None else cache_provider
     for part in ('train', 'val'):
         retained_bytes = sum(cache[k].numel() * cache[k].element_size() for cache in caches.values() for k in TENSORS)
-        caches[part], receipts[part] = extract(core, args, models['P0'], data, device, part, c, encoder_hash,
-                                              ref['binding'], retained_bytes)
+        caches[part], receipts[part] = prepare_cache(core, args, models['P0'], data, device, part, c, encoder_hash,
+                                                    ref['binding'], retained_bytes)
         validate_cache(core, caches[part], core.select_rows(data, part), part, encoder_hash, ref['binding'])
     write(args.output / 'cache_receipts.json', receipts)
     write(args.output / 'packet_diagnostics.json', {p: diagnostics(core, x) for p, x in caches.items()})
     gold = dim.predictions(root / 'D32-Gate/validation_predictions.jsonl.gz')
-    initialization = initial_equivalence(core, models, caches['val'], device, gold, expected)
+    initialization = initial_equivalence(core, models, caches['val'], device, gold, expected, args.output)
     # Use the unchanged historical class as an independent raw-graph reference.
     _, Original = dim.load_classes()
     original = Original(models['P0'].flow_encoder, models['P0'].packet_encoder, models['P0'].fusion).eval()
@@ -632,6 +668,8 @@ def run(args, meta):
         del fresh
     write(args.output / 'probes.json', probes)
     source_pair.assert_source_unchanged(binding)
+    if verify_cache_source is not None:
+        verify_cache_source()
     preflight_seconds = time.perf_counter() - started
     write(args.output / 'status.json', {'status': 'running', 'phase': 'training', 'tensor_preflight_passed': True})
     results, exports, replays = {}, {}, {}
@@ -657,6 +695,8 @@ def run(args, meta):
     for model in models.values():
         dim.assert_frozen(core, model, encoder_hash)
     source_pair.assert_source_unchanged(binding)
+    if verify_cache_source is not None:
+        verify_cache_source()
     from summarize_joint_fusion32 import changed_samples
     from summarize_fusion_gate_pair import prediction_transitions
     from summarize_packet_pool_pair import summarize
@@ -667,7 +707,8 @@ def run(args, meta):
         changes[name] = pair.compare_predictions(a, b)
         transitions[name] = prediction_transitions(a, b, core.LABELS)
         pair.save_predictions(args.output / (name + '_changed_samples.jsonl.gz'), changed_samples(a, b, core.LABELS))
-    stages = [r['graph_load_stage'] for group in (receipts, initial_replays, replays) for r in group.values()]
+    stages = [r['graph_load_stage'] for group in (receipts, initial_replays, replays)
+              for r in group.values() if not r.get('reused', False)]
     accounting = graph_load_accounting(main_load_counts, stages)
     write(args.output / 'graph_load_accounting.json', accounting)
     summary = {'status': 'completed', 'exit_code': 0, 'protocol': c, 'binding': binding,
@@ -679,6 +720,8 @@ def run(args, meta):
         'preflight_wall_seconds': preflight_seconds, 'cache_receipts': receipts,
         'graph_load_counts': accounting['totals'], 'graph_load_accounting': accounting,
         'cache_memory_estimates': {part: r['memory_estimate'] for part, r in receipts.items()},
+        'cache_reused': cache_provider is not None,
+        'cache_recovery': binding.get('cache_recovery'),
         'discarded_probe_updates': 6, 'training_jobs': 2, 'test_evaluated': False, 'automatic_followup': False}
     write(args.output / 'summary.json', summary)
     print(summarize(args.output), flush=True)
