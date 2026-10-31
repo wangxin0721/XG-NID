@@ -34,8 +34,8 @@ def check_config(c):
         'encoder_mode': 'eval_with_gradients', 'encoder_buffers': 'fixed',
         'inputs': 'raw_train_val_graphs_only', 'optimizer': 'fresh_Adam',
         'encoder_lr': 1e-6, 'head_lr': 1e-5, 'gate_lr': 1e-5, 'weight_decay': 0.,
-        'batch_size': 512, 'eval_batch_size': 16, 'workers': 2, 'epochs': 30,
-        'patience': 12, 'include_epoch_zero': True, 'probe_batches': 3, 'loss': 'plain_final_NLL',
+        'batch_size': 512, 'eval_batch_size': 16, 'workers': 2, 'epochs': 100,
+        'patience': 20, 'include_epoch_zero': True, 'probe_batches': 3, 'loss': 'plain_final_NLL',
         'budget_gate_above_stronger_reference_pp': .10, 'head_reinitialization': False,
         'warmup_training': False, 'training_jobs': 2, 'test_evaluated': False, 'automatic_followup': False}
     require(all(c.get(k) == v for k, v in expected.items()), 'Unregistered J32 protocol')

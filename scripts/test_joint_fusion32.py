@@ -25,12 +25,14 @@ class Checks(unittest.TestCase):
         self.assertNotIn('torch', sys.modules)
         c = self.config()
         joint.check_config(c)
-        self.assertEqual((c['epochs'], c['patience'], c['include_epoch_zero']), (30, 12, True))
+        self.assertEqual((c['epochs'], c['patience'], c['include_epoch_zero']), (100, 20, True))
         self.assertEqual([c['variants'][n]['epoch'] for n in joint.VARIANTS], [72, 62])
         self.assertNotEqual(c['variants']['J32-Equal']['macro_f1'], c['variants']['J32-Gate']['macro_f1'])
         old = joint.read(ROOT/'configs/fusion_gate_pair_s42_v1.json')
         self.assertEqual((old['epochs'], old['patience'], old['include_epoch_zero'], old['lr']), (100, 20, False, .001))
-        for key, value in [('encoder_mode', 'train'), ('inputs', 'cached_64D'), ('epochs', 100),
+        historical = joint.read(ROOT/'configs/joint_gate_lrscale01_20261030.json')
+        self.assertEqual((historical['epochs'], historical['patience']), (30, 12))
+        for key, value in [('encoder_mode', 'train'), ('inputs', 'cached_64D'), ('epochs', 30), ('patience', 12),
                            ('include_epoch_zero', False), ('seed', 43), ('warmup_training', True),
                            ('head_reinitialization', True), ('automatic_followup', True)]:
             with self.subTest(key=key), self.assertRaises(ValueError):
@@ -90,18 +92,20 @@ class Checks(unittest.TestCase):
             'best_epoch': selected, 'selected_epoch_zero': selected == 0, 'epochs': len(scores),
             'optimizer_updates': len(scores)*211, 'orders': [str(x) for x in range(1, len(scores)+1)]}
 
-    def test_epoch_zero_is_retained_on_ties_or_degradation_with_patience12(self):
-        history, result = self.history([.97]*12)
+    def test_epoch_zero_is_retained_on_ties_or_degradation_with_patience20(self):
+        history, result = self.history([.97]*20)
         joint.check_history(history, result, self.config())
         self.assertTrue(result['selected_epoch_zero'])
-        history, result = self.history([.971]+[.9705]*12)
+        history, result = self.history([.971]+[.9705]*20)
         joint.check_history(history, result, self.config())
         self.assertEqual(result['best_epoch'], 1)
-        history, result = self.history([.96]*11)
+        history, result = self.history([.96]*19)
         with self.assertRaises(ValueError): joint.check_history(history, result, self.config())
-        history, result = self.history([.97+i*.00001 for i in range(1, 31)])
+        short, short_result = self.history([.97+i*.00001 for i in range(1, 31)])
+        with self.assertRaises(ValueError): joint.check_history(short, short_result, self.config())
+        history, result = self.history([.97+i*.00001 for i in range(1, 101)])
         joint.check_history(history, result, self.config())
-        self.assertEqual(result['best_epoch'], 30)
+        self.assertEqual(result['best_epoch'], 100)
 
     def test_changed_samples_export_ids_and_correct_transition_types(self):
         ref = [{'sample_id': str(i), 'label': 1, 'prediction': p} for i, p in enumerate([3, 1, 0, 1])]
@@ -126,8 +130,8 @@ class Checks(unittest.TestCase):
                 best = joint.dim.frozen.matrix_report(cm, LABELS)
             result[name] = {'epoch_zero': zero, 'best_validation': best, 'last_validation': zero,
                 'epoch_zero_eligible': True, 'selected_epoch_zero': not (improved and mode == 'dynamic'),
-                'best_epoch': 1 if improved and mode == 'dynamic' else 0, 'epochs': 12,
-                'optimizer_updates': 2532, 'orders': ['order']*12, 'training_start_rng_sha256': 'rng',
+                'best_epoch': 1 if improved and mode == 'dynamic' else 0, 'epochs': 20,
+                'optimizer_updates': 4220, 'orders': ['order']*20, 'training_start_rng_sha256': 'rng',
                 'training_evidence': {}, 'training_wall_seconds': 1., 'parameter_groups': [], 'joint_trainable_parameters': 99}
         sources = {'D32-Equal': source['D32-Equal'], 'D32-Gate': source['D32-Gate']}
         counts = {n: {'counts': {'repaired': int(improved and n == 'J32-Gate'), 'regressed': 0},
@@ -141,7 +145,7 @@ class Checks(unittest.TestCase):
             'protocol': self.config(), 'models': result, 'source_models': sources,
             'own_start_changes': counts, 'own_start_transitions': transitions,
             'Gate_versus_Equal': {'counts': {'repaired': 1, 'regressed': 0}, 'net_correct': 1},
-            'Gate_versus_Equal_transitions': [], 'common_epochs_order_checked': 12,
+            'Gate_versus_Equal_transitions': [], 'common_epochs_order_checked': 20,
             'graph_replays': {}, 'discarded_probe_updates': 6, 'preflight_wall_seconds': 2.}
 
     def test_report_separates_inherited_advantage_from_new_joint_gain(self):
@@ -160,6 +164,7 @@ class Checks(unittest.TestCase):
             joint.write(root/'summary.json', r)
             text = summarize(root)
             self.assertIn('Inherited Gate-Equal gap', text)
+            self.assertIn('max100/patience20', text)
             self.assertIn('Matching the starting score alone is not evidence', text)
             self.assertTrue((root/'analysis.json').exists())
             with (root/'per_class.csv').open(newline='') as stream:

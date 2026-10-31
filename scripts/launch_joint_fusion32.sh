@@ -3,7 +3,7 @@ set -euo pipefail
 repo=$(pwd)
 bundle=$(cd -- "$(dirname -- "$0")/.." && pwd)
 python_bin=${XGNID_PYTHON:-/home/nzxn/miniconda3/envs/wx/bin/python}
-output="$repo/outputs/joint_fusion32_s42_v1"
+output="$repo/outputs/joint_fusion32_s42_e100_p20_v1"
 if [[ -e "$output" || -e "$output.log" || -e "$output.pid" ]]; then
   echo 'Output/log/PID exists; refusing duplicate launch'; exit 1
 fi

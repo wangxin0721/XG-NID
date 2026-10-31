@@ -92,7 +92,8 @@ def summarize(root):
               f"Selected epoch0: Equal={a['Equal_selected_epoch_zero']}, Gate={a['Gate_selected_epoch_zero']}.",
               'Epoch0 is eligible. Matching the starting score alone is not evidence of benefit.',
               'No head reinitialization or warmup. Fresh Adam: encoders1e-6, projections/head1e-5, gate1e-5; WD0.',
-              'Raw graphs, batch512/16, max30/patience12. Encoder modules remain eval but allow gradients; BN buffers fixed.',
+              f"Raw graphs, batch512/16, max{r['protocol']['epochs']}/patience{r['protocol']['patience']}. "
+              'Encoder modules remain eval but allow gradients; BN buffers fixed.',
               '', '| class | J32-Equal P/R/F1 (%) | J32-Gate P/R/F1 (%) | Gate F1 gain from own start pp |', '|---|---:|---:|---:|']
     e, g = r['models']['J32-Equal'], r['models']['J32-Gate']
     start_g = r['source_models']['D32-Gate']['best_validation']['per_class']
