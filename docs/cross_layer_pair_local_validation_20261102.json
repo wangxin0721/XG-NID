@@ -1,0 +1,65 @@
+{
+  "date": "2026-11-02",
+  "status": "local_checks_passed_server_tensor_cuda_and_graph_acceptance_pending",
+  "protocol": {
+    "variants": [
+      "CL-Last",
+      "CL-Multi"
+    ],
+    "epochs_each": 150,
+    "early_stopping": false,
+    "updates_each": 31650,
+    "new_parameters_each": 8256,
+    "trainable_parameters_each": 15400,
+    "final_selection": "max(epoch0,best_trained); epoch0 wins ties"
+  },
+  "standard_library_checks": {
+    "cross_layer": 6,
+    "historical_relation": 9,
+    "total_passed": 15,
+    "failed": 0
+  },
+  "python39_syntax": {
+    "files": 5,
+    "passed": true
+  },
+  "runner_and_report_function_global_names_resolve": true,
+  "bash_syntax": {
+    "command": "bash -n scripts/launch_cross_layer_pair.sh",
+    "exit_code": 0
+  },
+  "isolated_archive_bundle": {
+    "standard_checks_passed": 6,
+    "includes_reference_doc": "docs/packet_pool_results_20261102.json"
+  },
+  "historical_files_byte_identical_to": "e008b3bc9ec2f373c48b596649d783f3d86adc63",
+  "historical_files_checked": [
+    "src/xgnid/model.py",
+    "src/xgnid/fusion_dimension.py",
+    "src/xgnid/packet_pooling.py",
+    "src/xgnid/relation_selection.py",
+    "scripts/run_packet_pool_pair.py",
+    "scripts/run_relation_pair.py",
+    "configs/relation_pair_s42_v1.json"
+  ],
+  "dependencies_available": {
+    "torch": false,
+    "torch_geometric": false
+  },
+  "cpu_tensor_cases_prepared": 5,
+  "cpu_tensor_cases_executed_locally": false,
+  "cuda_preflight_executed": false,
+  "real_graph_probes_executed": false,
+  "graph_replays_executed": false,
+  "formal_training_started": false,
+  "files_sha256": {
+    "src/xgnid/cross_layer.py": "b95600a3f085f043e9ed7f2afd24aa6f351f85d9f98544639bae911dd5387dfd",
+    "configs/cross_layer_pair_s42_v1.json": "a380bee34dba790c24f9b0a217f1c625fb476e306a88f12f12960dac5c7a2718",
+    "scripts/run_cross_layer_pair.py": "33be844a76b4fabe64d677813d7c4b618b1bd0fe7bdae81f513d17e45ee364fa",
+    "scripts/summarize_cross_layer_pair.py": "68cb416ab14ccdbbd0d67bf860da82349c1acc00a8637673e07366983cbe1699",
+    "scripts/test_cross_layer_pair.py": "95b0a8eb9d79d681b461793fca56b11c6dcbf030cdc20c7b0679a513787834af",
+    "scripts/test_cross_layer_pair_tensor.py": "42ec3314bfe9534e1a14356209bf9ff7c038eb065047b223e77b6c1da3ad4c75",
+    "scripts/launch_cross_layer_pair.sh": "78f4c4a6a885f0d3c5f66d3f82acb3fdf5ba9652796810fa24db38a0e6183ba4",
+    "docs/cross_layer_pair_s42_v1.md": "0b11bc9c8d008be1ce8b872f8eb60f906e04c75e48e043744f23608ad7c63bec"
+  }
+}
