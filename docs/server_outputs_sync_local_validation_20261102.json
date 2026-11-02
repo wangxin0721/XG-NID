@@ -1,0 +1,41 @@
+{
+  "date": "2026-11-02",
+  "status": "local_end_to_end_tests_passed_actual_server_upload_pending",
+  "server_inventory_user_reported": {
+    "files": 1480,
+    "GiB": 4.125,
+    "over_100MiB_files": 7,
+    "over_2GiB_files": 0
+  },
+  "remote_branch": "codex/server-outputs",
+  "local_destination": "D:/XG-NID/server_outputs_sync/outputs",
+  "local_tests": {
+    "passed": 3,
+    "failed": 0,
+    "command": "python -B scripts/test_sync_server_outputs.py -v",
+    "covers": [
+      "two publishes to temporary local bare remote",
+      "LFS binary download",
+      "spaces and brackets in LFS paths",
+      "exact manifest verification",
+      "missing/changed/extra file rejection",
+      "original source HEAD and index preservation"
+    ]
+  },
+  "python39_syntax": {
+    "files": 2,
+    "passed": true
+  },
+  "official_lfs_release_sha256_manifest_checked": true,
+  "bootstrap_version": "3.8.1",
+  "bootstrap_linux_binary_execution_tested_locally": false,
+  "actual_server_connection": "SSH jump host banner exchange timed out",
+  "actual_server_upload_completed": false,
+  "actual_server_outputs_downloaded": false,
+  "files_sha256": {
+    "scripts/sync_server_outputs.py": "d654d0caf8fed4d11a5ce394180a5e84484edef9dbf2eb33fe23dc5cc09f425c",
+    "scripts/test_sync_server_outputs.py": "c09040b17cb84eb5fbd49983d36c1192d1d0cf0c5993c4883fcedfd9e4f19177",
+    "docs/server_outputs_sync.md": "32562b213fac9d58e3d63660b0565eac84393d1bcc003bc466e6fc51aa202038",
+    ".gitignore": "80b31ddebb885f55526a2a7a22f12f282be6a74acd7c8f147057cb42dac291a1"
+  }
+}

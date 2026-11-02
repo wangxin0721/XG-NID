@@ -16,3 +16,6 @@ data/processed/
 *.pt
 *.pth
 *.ckpt
+server_outputs_sync/
+.outputs-publish-*/
+.output-sync-tools/
