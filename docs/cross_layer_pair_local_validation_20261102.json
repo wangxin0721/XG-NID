@@ -1,6 +1,6 @@
 {
   "date": "2026-11-02",
-  "status": "local_checks_passed_server_tensor_cuda_and_graph_acceptance_pending",
+  "status": "rng_fixture_scope_repaired_local_checks_passed_server_tensor_rerun_pending",
   "protocol": {
     "variants": [
       "CL-Last",
@@ -58,8 +58,23 @@
     "scripts/run_cross_layer_pair.py": "33be844a76b4fabe64d677813d7c4b618b1bd0fe7bdae81f513d17e45ee364fa",
     "scripts/summarize_cross_layer_pair.py": "68cb416ab14ccdbbd0d67bf860da82349c1acc00a8637673e07366983cbe1699",
     "scripts/test_cross_layer_pair.py": "95b0a8eb9d79d681b461793fca56b11c6dcbf030cdc20c7b0679a513787834af",
-    "scripts/test_cross_layer_pair_tensor.py": "42ec3314bfe9534e1a14356209bf9ff7c038eb065047b223e77b6c1da3ad4c75",
+    "scripts/test_cross_layer_pair_tensor.py": "0030128bd2f77495b647a940080a477071c17591b87e02dd53e03031b28a6bfd",
     "scripts/launch_cross_layer_pair.sh": "78f4c4a6a885f0d3c5f66d3f82acb3fdf5ba9652796810fa24db38a0e6183ba4",
-    "docs/cross_layer_pair_s42_v1.md": "0b11bc9c8d008be1ce8b872f8eb60f906e04c75e48e043744f23608ad7c63bec"
+    "docs/cross_layer_pair_s42_v1.md": "0b11bc9c8d008be1ce8b872f8eb60f906e04c75e48e043744f23608ad7c63bec",
+    "docs/cross_layer_rng_fixture_fix_20261102.md": "d0e0a1149c8ce6b82033a1d73e1b6f98a18e77e4a66a0eb9b0fcdeb4f1609683"
+  },
+  "server_observation_before_fix": {
+    "commit": "a0a867a1856ca3dec91bfc041e42eef5275037d7",
+    "standard_checks_passed": 6,
+    "tensor_cases_run": 5,
+    "tensor_failures": 5,
+    "failure_scope": "same shared fixture RNG assertion before individual checks",
+    "formal_training_started": false
+  },
+  "fixture_repair": {
+    "deepcopies_prepared_before_rng_snapshot": true,
+    "constructor_rng_invariance_asserted_per_variant": true,
+    "production_files_unchanged": 5,
+    "tensor_rerun_required": true
   }
 }

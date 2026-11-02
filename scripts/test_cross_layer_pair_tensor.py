@@ -21,9 +21,16 @@ class Tensors(unittest.TestCase):
     def models(self,empty=False):
         fixture=fixtures.TensorChecks();graphs=fixture.graphs(empty)
         original,_,batch=fixture.models(graphs)
-        rng=torch.get_rng_state().clone()
-        models=[CrossLayerClassifier(copy.deepcopy(original.flow_encoder),copy.deepcopy(original.packet_encoder),copy.deepcopy(original.fusion),mode).eval() for mode in ('last','multi')]
-        self.assertTrue(torch.equal(rng,torch.get_rng_state()))
+        # PyG deep-copy reconstruction can consume RNG. Prepare independent
+        # inputs first, then measure only the constructor under test, exactly
+        # as build() does after creating the pretrained backbone and head.
+        prepared=[(copy.deepcopy(original.flow_encoder),copy.deepcopy(original.packet_encoder),copy.deepcopy(original.fusion)) for _ in ('last','multi')]
+        models=[]
+        for mode,inputs in zip(('last','multi'),prepared):
+            rng=torch.get_rng_state().clone()
+            model=CrossLayerClassifier(*inputs,mode).eval()
+            self.assertTrue(torch.equal(rng,torch.get_rng_state()),'Cross-layer construction changed RNG: '+mode)
+            models.append(model)
         return models,graphs,batch,original
 
     def test_initial_identity_post_activation_and_capacity_including_empty_edges(self):
