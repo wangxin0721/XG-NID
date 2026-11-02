@@ -32,22 +32,38 @@ def command(args,cwd,env=None,capture=False):
         stdout=subprocess.PIPE if capture else None).stdout
 
 
+def link_metadata(path):
+    target=os.readlink(path)
+    data=target.encode('utf-8')
+    return {'kind':'symlink','target':target,'bytes':len(data),'sha256':hashlib.sha256(data).hexdigest()}
+
+
 def inventory(root):
     require(root.is_dir(),'Missing outputs directory: '+str(root))
     files={}
-    for p in sorted(root.rglob('*')):
-        require(not p.is_symlink(),'Refuse symlink; inspect separately: '+str(p))
-        if p.is_file():
-            before=p.stat();digest=sha(p);after=p.stat()
-            require((before.st_size,before.st_mtime_ns)==(after.st_size,after.st_mtime_ns),
-                'Source changed during hashing; retry after training completes: '+str(p))
-            files[p.relative_to(root).as_posix()]={'bytes':after.st_size,'sha256':digest}
-    return files
+    def failed(error):raise error
+    for directory,dirs,names in os.walk(root,followlinks=False,onerror=failed):
+        for name in sorted(dirs+names):
+            p=Path(directory)/name
+            if p.is_symlink():
+                before=p.lstat();meta=link_metadata(p);after=p.lstat()
+                require((before.st_size,before.st_mtime_ns)==(after.st_size,after.st_mtime_ns)
+                        and meta==link_metadata(p),'Symlink changed during inventory: '+str(p))
+                files[p.relative_to(root).as_posix()]=meta
+                if name in dirs:dirs.remove(name)
+            elif name in names:
+                require(p.is_file(),'Unsupported special file: '+str(p))
+                before=p.stat();digest=sha(p);after=p.stat()
+                require((before.st_size,before.st_mtime_ns)==(after.st_size,after.st_mtime_ns),
+                    'Source changed during hashing; retry after training completes: '+str(p))
+                files[p.relative_to(root).as_posix()]={'bytes':after.st_size,'sha256':digest}
+    return dict(sorted(files.items()))
 
 
 def attributes(files):
     lines=['# Reports remain ordinary Git text; binary/large artifacts use LFS.']
     for name,meta in files.items():
+        if meta.get('kind')=='symlink':continue
         if meta['bytes']>=10*2**20 or Path(name).suffix.lower() in ('.pt','.pth','.ckpt','.sqlite','.db'):
             # .gitattributes uses C-quoted strings followed by wildmatch parsing.
             pattern='outputs/'+''.join('\\'+c if c in '\\*?[' else c for c in name)
@@ -105,29 +121,39 @@ def publish(args):
     if exists.returncode==0:
         command(['git','fetch','--depth=1','origin',BRANCH],stage,env)
         old=json.loads(command(['git','show','FETCH_HEAD:outputs-manifest.json'],stage,env,True))
-        require(old.get('schema')=='xgnid.outputs-snapshot.v1','Remote branch is not an outputs snapshot')
+        require(old.get('schema') in ('xgnid.outputs-snapshot.v1','xgnid.outputs-snapshot.v2'),'Remote branch is not an outputs snapshot')
         command(['git','read-tree','FETCH_HEAD'],stage,env)
         command(['git','update-ref','HEAD','FETCH_HEAD'],stage,env)
     for key,default in (('user.name','XG-NID artifacts'),('user.email','artifacts@users.noreply.github.com')):
         value=subprocess.run(['git','config',key],cwd=repo,stdout=subprocess.PIPE,text=True).stdout.strip() or default
         command(['git','config',key,value],stage,env)
     command(['git','config','core.autocrlf','false'],stage,env)
+    command(['git','config','core.symlinks','false'],stage,env)
     command(['git','lfs','install','--local'],stage,env)
     for name,meta in files.items():
         dst=stage/'outputs'/name;dst.parent.mkdir(parents=True,exist_ok=True)
-        shutil.copy2(source/name,dst)
+        if meta.get('kind')=='symlink':dst.write_bytes(meta['target'].encode('utf-8'))
+        else:shutil.copy2(source/name,dst)
         require(sha(dst)==meta['sha256'],'Source changed during copy: '+name)
     require(inventory(source)==files,'Source inventory changed; finish training before retrying')
     with (stage/'.gitattributes').open('w',encoding='utf-8',newline='\n') as out:out.write(attributes(files))
-    manifest={'schema':'xgnid.outputs-snapshot.v1','created_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),
-        'source_directory':str(source),'files':files,'file_count':len(files),'total_bytes':total}
+    links=sum(x.get('kind')=='symlink' for x in files.values())
+    manifest={'schema':'xgnid.outputs-snapshot.v2','created_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),
+        'source_directory':str(source),'files':files,'file_count':len(files),'symlink_count':links,
+        'regular_file_count':len(files)-links,'total_bytes':total}
     with (stage/'outputs-manifest.json').open('w',encoding='utf-8',newline='\n') as out:out.write(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n')
     command(['git','add','-A','--','.gitattributes','outputs-manifest.json','outputs'],stage,env)
+    # Store links as Git mode120000 even where the OS cannot create symlinks.
+    for name,meta in files.items():
+        if meta.get('kind')=='symlink':
+            path='outputs/'+name
+            blob=command(['git','hash-object','-w','--',path],stage,env,True).strip()
+            command(['git','update-index','--add','--cacheinfo','120000',blob,path],stage,env)
     command(['git','commit','-m','Snapshot all server outputs with verified SHA256 inventory'],stage,env)
     command(['git','lfs','fsck'],stage,env)
     command(['git','push','origin','HEAD:refs/heads/'+BRANCH],stage,env)
     head=command(['git','rev-parse','HEAD'],stage,env,True).strip()
-    print(json.dumps({'status':'uploaded','branch':BRANCH,'commit':head,'files':len(files),'bytes':total,
+    print(json.dumps({'status':'uploaded','branch':BRANCH,'commit':head,'files':len(files),'symlinks':links,'bytes':total,
         'staging_directory_preserved':str(stage)},ensure_ascii=False),flush=True)
 
 
@@ -135,7 +161,7 @@ def download(args):
     target=args.destination.resolve()
     require(not target.exists(),'Destination exists; use a new directory to preserve local changes')
     env=os.environ.copy();env['GIT_LFS_SKIP_SMUDGE']='1'
-    command(['git','clone','--single-branch','--branch',BRANCH,args.remote,str(target)],args.repo.resolve(),env)
+    command(['git','clone','--config','core.symlinks=false','--single-branch','--branch',BRANCH,args.remote,str(target)],args.repo.resolve(),env)
     command(['git','lfs','install','--local'],target,env)
     command(['git','lfs','pull','origin',BRANCH],target,env)
     verify(target)
@@ -144,6 +170,13 @@ def download(args):
 def verify(root):
     manifest=json.loads((root/'outputs-manifest.json').read_text(encoding='utf-8'))
     actual=inventory(root/'outputs')
+    for name,expected in manifest['files'].items():
+        if expected.get('kind')=='symlink' and name in actual and actual[name].get('kind')!='symlink':
+            # core.symlinks=false represents a Git link as its target text.
+            raw=(root/'outputs'/name).read_bytes()
+            require(raw==expected['target'].encode('utf-8'),'Git symlink target text differs: '+name)
+            actual[name]={'kind':'symlink','target':raw.decode('utf-8'),
+                          'bytes':len(raw),'sha256':hashlib.sha256(raw).hexdigest()}
     require(actual==manifest['files'],'Snapshot files differ from manifest (or LFS objects are missing)')
     require(len(actual)==manifest['file_count'] and sum(x['bytes'] for x in actual.values())==manifest['total_bytes'],'Manifest totals differ')
     print(json.dumps({'status':'verified','files':len(actual),'bytes':manifest['total_bytes'],'directory':str(root)},ensure_ascii=False),flush=True)
