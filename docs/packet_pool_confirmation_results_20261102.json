@@ -1680,5 +1680,10 @@
     "best_validation_candidate": "P1_epoch146_preserve_as_candidate",
     "statistical_significance_claimed": false,
     "automatic_followup": false
+  },
+  "archived_report": {
+    "file": "docs/packet_pool_confirmation_server_report_20261102.md",
+    "normalization": "CRLF to LF only; input_sha256 retains original attachment byte hash",
+    "sha256": "6958b490b3cef20792d2eaf66dd91263d280ac6b46ba0c2ee2fdf03fa992c4f7"
   }
 }
