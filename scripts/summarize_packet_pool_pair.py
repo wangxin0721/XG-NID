@@ -25,6 +25,9 @@ def analyze(r):
                 'node_caches_unchanged', 'source_artifacts_unchanged'))
             and r['test_evaluated'] is False and r['automatic_followup'] is False
             and r['graph_load_counts']['test'] == 0, 'Incomplete P0/P1 validation experiment')
+    device_check = r['cuda_readout_preflight']
+    require(device_check['status'] == 'passed' and device_check['optimizer_updates'] == 0
+            and device_check['model_and_rng_unchanged'], 'Device readout preflight missing/failed')
     accounting = r['graph_load_accounting']
     require(accounting == graph_load_accounting(accounting['main_process_counts'], accounting['loader_stages'])
             and accounting['totals'] == r['graph_load_counts'], 'Graph-load accounting differs')
@@ -68,6 +71,10 @@ def analyze(r):
                r['protocol']['budget_above_stronger_reference_pp'])
     a.update(P0_gain_from_D32_pp=100 * (p0['best_validation']['macro_f1'] - baseline['macro_f1']),
         graph_load_accounting=accounting, cache_memory_estimates=r['cache_memory_estimates'],
+        cuda_readout_preflight=device_check, previous_recovery_failure=r.get('previous_recovery_failure'),
+        source_comparison_policy={'paired_and_matched_source_atol': 1e-6, 'paired_and_matched_source_rtol': 1e-6,
+            'legacy_independent_source_predictions_and_CM': 'must_match_exactly',
+            'legacy_independent_source_log_probability_errors': 'recorded_separately_from_matched_readout_identity'},
         cache_reused=r.get('cache_reused', False), cache_recovery=r.get('cache_recovery'),
         selected_epoch_zero={n: m['selected_epoch_zero'] for n, m in r['models'].items()},
         class_tradeoff_review_required=True, statistical_significance_claimed=False, automatic_followup=False,
@@ -158,6 +165,11 @@ def summarize(root):
               'Python objects, source graphs, worker prefetch, models, batches and allocator/serialization buffers are excluded.',
               'Full byte estimates and host MemAvailable before concatenation: cache_memory_estimates.json.',
               'Full load-count receipts: graph_load_accounting.json.']
+    lines += ['', 'Packet readout uses PyTorch 2.3.1 ordered segment reductions in both arms, with the same zero-score softmax for uniform weights.',
+              'Device repeat/uniform/backward preflight passed without model/RNG changes or optimizer updates.',
+              'Paired readouts and the source head on identical raw features retain atol/rtol=1e-6.',
+              'Independent legacy CUDA graph outputs must reproduce every prediction and the confusion matrix; their log-probability errors are recorded separately.',
+              'See initialization.json raw_graph_replays, initialization_comparison.json and cuda_readout_preflight.json.']
     (root / 'report.md').write_text('\n'.join(lines) + '\n', encoding='utf-8')
     with (root / 'per_class.csv').open('w', encoding='utf-8', newline='') as stream:
         writer = csv.writer(stream)

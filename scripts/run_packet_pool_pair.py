@@ -45,6 +45,7 @@ def check_config(c):
 def architecture(mode):
     require(mode in VARIANTS.values(), 'Unknown pooling mode')
     return {**dim.architecture(32), 'packet_pooling': mode,
+        'packet_reduction': 'torch_2.3.1_ordered_segment_reduce_float32',
         'pool_parameters': 1056 if mode == 'attention' else 0,
         'trainable_parameters': 8200 if mode == 'attention' else 7144,
         'packet_score': [64, 16, 1] if mode == 'attention' else None}
@@ -333,6 +334,57 @@ def evaluate(core, model, cache, device, export=False):
     return metrics, exports
 
 
+def cuda_readout_preflight(core, models, device, output):
+    """Exercise the actual device/backend before loading any prepared cache."""
+    rng = pair.rng_state(core)
+    digest = {name: core.state_hash(m.state_dict().items()) for name, m in models.items()}
+    receipt = {'status': 'running', 'device': str(device), 'repeats': 16, 'optimizer_updates': 0,
+               'scope': 'synthetic grouped packet readout and backward, not encoder validation'}
+    try:
+        generator = core.torch.Generator(device='cpu').manual_seed(42)
+        lengths = core.torch.tensor([3, 7, 11, 32], device=device)
+        index = core.torch.repeat_interleave(core.torch.arange(4, device=device), lengths)
+        nodes = core.torch.randn(53, 64, generator=generator).to(device)
+        nodes[:3, 0] = core.torch.tensor([1e6, 1., -1e6], device=device)
+        flow = core.torch.randn(4, 64, generator=generator).to(device)
+        features = (flow, nodes, index, 4)
+        with core.torch.no_grad():
+            reference = models['P0'].packet_mean(nodes, index, 4)
+            maximum, score_error = 0., 0.
+            for _ in range(receipt['repeats']):
+                mean = models['P0'].packet_mean(nodes, index, 4)
+                packet = models['P1'].packet_pool(nodes, index, 4)
+                beta = models['P1'].packet_weights(nodes, index, 4)
+                uniform = models['P0'].packet_weights(nodes, index, 4)
+                require(core.torch.equal(reference, mean) and core.torch.equal(reference, packet)
+                        and core.torch.equal(beta, uniform), 'Device readout repeat/uniform identity failed')
+                a, aw = models['P0'].forward_features(*features)
+                b, bw = models['P1'].forward_features(*features)
+                require(core.torch.allclose(a, b, atol=1e-6, rtol=1e-6)
+                        and core.torch.allclose(aw, bw, atol=1e-6, rtol=1e-6), 'Device paired head identity failed')
+                maximum = max(maximum, float((reference - packet).abs().max()))
+                score_error = max(score_error, float((a - b).abs().max()))
+        with core.torch.enable_grad():
+            pool = models['P1'].packet_pool
+            parameters = list(pool.parameters())
+            grads = core.torch.autograd.grad(pool(nodes, index, 4).square().sum(), parameters)
+            require(all(bool(core.torch.isfinite(g).all()) for g in grads)
+                    and float(grads[-1].abs().sum()) > 0, 'Device segment-reduce backward disconnected')
+        receipt.update(status='passed', max_abs_pool_error=maximum,
+                       max_abs_pair_score_error=score_error, output_weight_gradient_l1=float(grads[-1].abs().sum()))
+    except BaseException as error:
+        receipt.update(status='failed', error=str(error))
+        raise
+    finally:
+        pair.restore_rng(core, rng)
+        receipt['model_and_rng_unchanged'] = (
+            all(core.state_hash(m.state_dict().items()) == digest[name] for name, m in models.items())
+            and pair.rng_hash(core, rng) == pair.rng_hash(core, pair.rng_state(core)))
+        write(output / 'cuda_readout_preflight.json', receipt)
+        require(receipt['model_and_rng_unchanged'], 'Device readout preflight changed model/RNG')
+    return receipt
+
+
 def initial_equivalence(core, models, cache, device, gold, expected, output=None):
     error = 0.
     diagnostic = {'samples': len(cache['ids']), 'atol': 1e-6, 'rtol': 1e-6,
@@ -341,7 +393,9 @@ def initial_equivalence(core, models, cache, device, gold, expected, output=None
         'max_abs_legacy_vs_P0_log_probability_error': 0., 'max_abs_new_vs_mean_packet_error': 0.,
         'max_abs_legacy_vs_mean_packet_error': 0., 'first_new_mismatch_ids': [], 'first_legacy_mismatch_ids': [],
         'max_abs_new_vs_P0_gate_error': 0., 'max_abs_legacy_vs_P0_gate_error': 0.,
-        'explanation': 'Different floating-point reduction orders are a candidate cause; measured legacy/new differences are recorded here.'}
+        'max_abs_legacy_mean_repeat_error': 0., 'max_abs_beta_minus_uniform': 0.,
+        'ordered_mean_repeat_mismatches': 0,
+        'explanation': 'Paired readouts use ordered segment reductions. Legacy scatter reduction and its independent repeat noise are diagnostics only.'}
     for model in models.values():
         model.eval()
     require(not bool(core.torch.count_nonzero(models['P1'].packet_pool.aggregation.gate_nn[-1].weight)),
@@ -354,7 +408,13 @@ def initial_equivalence(core, models, cache, device, gold, expected, output=None
             pool = models['P1'].packet_pool
             legacy_packet = pool.aggregation(features[1], index=features[2], dim_size=features[3])
             legacy, legacy_aw = models['P1'].fusion(features[0], legacy_packet)
-            mean_packet = core.torch_geometric.nn.global_mean_pool(features[1], features[2], size=features[3])
+            mean_packet = models['P0'].packet_mean(features[1], features[2], features[3])
+            repeated_mean = models['P0'].packet_mean(features[1], features[2], features[3])
+            diagnostic['ordered_mean_repeat_mismatches'] += int(not core.torch.equal(mean_packet, repeated_mean))
+            legacy_mean = core.torch_geometric.nn.global_mean_pool(features[1], features[2], size=features[3])
+            legacy_repeat = core.torch_geometric.nn.global_mean_pool(features[1], features[2], size=features[3])
+            diagnostic['max_abs_legacy_mean_repeat_error'] = max(
+                diagnostic['max_abs_legacy_mean_repeat_error'], float((legacy_mean - legacy_repeat).abs().max()))
             new_packet = pool(features[1], features[2], features[3])
             require(all(bool(core.torch.isfinite(x).all()) for x in (a, b, aw, bw, legacy, legacy_aw)),
                     'Nonfinite initialization outputs')
@@ -376,11 +436,14 @@ def initial_equivalence(core, models, cache, device, gold, expected, output=None
             error = max(error, float((a - b).abs().max()))
             beta = models['P1'].packet_weights(features[1], features[2], features[3])
             uniform = models['P0'].packet_weights(features[1], features[2], features[3])
-            require(core.torch.allclose(beta, uniform, atol=1e-7, rtol=1e-7), 'Initial packet weights nonuniform')
+            diagnostic['max_abs_beta_minus_uniform'] = max(diagnostic['max_abs_beta_minus_uniform'],
+                                                           float((beta - uniform).abs().max()))
+            require(core.torch.equal(beta, uniform), 'Initial packet weights must exactly equal the uniform reference')
     if output is not None:
         write(output / 'initialization_comparison.json', diagnostic)
         print(json.dumps({'phase': 'initialization_comparison', **diagnostic}), flush=True)
-    require(diagnostic['new_failed_batches'] == 0 and diagnostic['new_prediction_mismatches'] == 0,
+    require(diagnostic['new_failed_batches'] == 0 and diagnostic['new_prediction_mismatches'] == 0
+            and diagnostic['ordered_mean_repeat_mismatches'] == 0,
             'Non-equivalent epoch0 readout; inspect initialization_comparison.json')
     for name, model in models.items():
         m, exports = evaluate(core, model, cache, device, export=True)
@@ -426,8 +489,7 @@ def probe(core, args, model, data, cache, device, c, encoder_hash):
             changed = {n: not core.torch.equal(before[n], p) for n, p in model.named_parameters() if p.requires_grad}
             with core.torch.no_grad():
                 beta = model.packet_weights(features[1], features[2], features[3])
-                counts = core.torch.bincount(features[2], minlength=len(numbers))
-                uniform = counts[features[2]].to(beta.dtype).reciprocal()
+                uniform = model.uniform_packet_weights(features[1], features[2], features[3])
             receipts.append({'step': step, 'loss': float(loss.detach()), 'gradient_l1': norms,
                 'changed': changed, 'max_abs_attention_from_uniform': float((beta - uniform).abs().max())})
             dim.assert_frozen(core, model, encoder_hash)
@@ -561,13 +623,16 @@ def graph_replay(core, args, model, data, cache, device, c, expected, encoder_ha
     model.eval()
     if original is not None:
         original.eval()
-    offset, error, source_error = 0, 0., 0.
+    offset, error, source_error, matched_source_error = 0, 0., 0., 0.
+    legacy_source_allclose = True
     cm, exports = [[0] * 8 for _ in range(8)], []
     started = time.perf_counter()
     with core.torch.no_grad():
         for step, batch in enumerate(loader(core, data, 'val', c), 1):
             batch = batch.to(device)
-            raw = model(batch)
+            # Keep one raw encoder result for both readout identity checks.
+            raw_features = model.encode(batch)
+            raw, _ = model.forward_features(*raw_features)
             size = batch.num_graphs
             numbers = list(range(offset, offset + size))
             features, labels = minibatch(core, cache, numbers, device)
@@ -578,9 +643,15 @@ def graph_replay(core, args, model, data, cache, device, c, expected, encoder_ha
                     and bool((raw.argmax(-1) == cached.argmax(-1)).all()), 'Raw/cache output differs')
             error = max(error, float((raw - cached).abs().max()))
             if original is not None:
+                matched_packet = model.packet_mean(raw_features[1], raw_features[2], raw_features[3])
+                matched, _ = original.fusion(raw_features[0], matched_packet)
+                require(core.torch.allclose(raw, matched, atol=1e-6, rtol=1e-6)
+                        and bool((raw.argmax(-1) == matched.argmax(-1)).all()),
+                        'Source head/readout identity differs on matched raw features')
+                matched_source_error = max(matched_source_error, float((raw - matched).abs().max()))
                 old = original(batch)
-                require(core.torch.allclose(raw, old, atol=1e-6, rtol=1e-6)
-                        and bool((raw.argmax(-1) == old.argmax(-1)).all()), 'Original D32 raw output differs')
+                require(bool((raw.argmax(-1) == old.argmax(-1)).all()), 'Original D32 raw predictions differ')
+                legacy_source_allclose = legacy_source_allclose and bool(core.torch.allclose(raw, old, atol=1e-6, rtol=1e-6))
                 source_error = max(source_error, float((raw - old).abs().max()))
             for sid, y, p in zip(batch.sample_id, labels.tolist(), raw.argmax(-1).tolist()):
                 cm[y][p] += 1
@@ -593,6 +664,9 @@ def graph_replay(core, args, model, data, cache, device, c, expected, encoder_ha
     return {'samples': offset, 'outputs_allclose': True, 'max_abs_raw_cached_error': error,
         'predictions_identical': True, 'confusion_matrix_reproduced': True,
         'strict_state_load': True, 'max_abs_original_D32_error': source_error if original is not None else None,
+        'max_abs_matched_source_readout_error': matched_source_error if original is not None else None,
+        'legacy_independent_source_outputs_allclose_1e6': legacy_source_allclose if original is not None else None,
+        'legacy_source_predictions_identical': True if original is not None else None,
         'encoder_parameters_and_BN_unchanged': True, 'wall_seconds': time.perf_counter() - started,
         'graph_load_stage': graph_load_stage(phase, 'val', offset, c['workers'])}, exports
 
@@ -631,6 +705,7 @@ def run(args, meta, cache_provider=None, verify_cache_source=None):
     for model in models.values():
         dim.assert_frozen(core, model, encoder_hash)
         optimizer(core, model, c)
+    device_preflight = cuda_readout_preflight(core, models, device, args.output)
     caches, receipts = {}, {}
     prepare_cache = extract if cache_provider is None else cache_provider
     for part in ('train', 'val'):
@@ -713,6 +788,7 @@ def run(args, meta, cache_provider=None, verify_cache_source=None):
     write(args.output / 'graph_load_accounting.json', accounting)
     summary = {'status': 'completed', 'exit_code': 0, 'protocol': c, 'binding': binding,
         'source_model': source['models']['D32-Gate'], 'models': results, 'initialization': initialization,
+        'cuda_readout_preflight': device_preflight,
         'probes': probes, 'packet_diagnostics': read(args.output / 'packet_diagnostics.json'),
         'comparisons': changes, 'prediction_transitions': transitions, 'graph_replays': replays,
         'common_epochs_order_checked': common, 'encoder_parameters_and_BN_unchanged': True,
@@ -722,6 +798,7 @@ def run(args, meta, cache_provider=None, verify_cache_source=None):
         'cache_memory_estimates': {part: r['memory_estimate'] for part, r in receipts.items()},
         'cache_reused': cache_provider is not None,
         'cache_recovery': binding.get('cache_recovery'),
+        'previous_recovery_failure': binding.get('previous_recovery_failure'),
         'discarded_probe_updates': 6, 'training_jobs': 2, 'test_evaluated': False, 'automatic_followup': False}
     write(args.output / 'summary.json', summary)
     print(summarize(args.output), flush=True)

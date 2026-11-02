@@ -17,7 +17,7 @@ import run_packet_pool_pair as run
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'src'))
 from xgnid.fusion_dimension import FusionHead, FrozenEncoderClassifier
-from xgnid.packet_pooling import PacketAttentionPool, PacketReadoutClassifier
+from xgnid.packet_pooling import PacketAttentionPool, PacketReadoutClassifier, ordered_mean_pool
 
 
 class Encoder(nn.Module):
@@ -96,6 +96,27 @@ class Tensors(unittest.TestCase):
         result[:, 0].sum().backward()
         self.assertGreater(float(pool.aggregation.gate_nn[-1].weight.grad.abs().sum()), 0.)
         self.assertEqual(float(pool.aggregation.gate_nn[0].weight.grad.abs().sum()), 0.)
+
+    def test_ordered_grouping_repeats_exactly_and_rejects_unsorted_nodes(self):
+        nodes, index = torch.randn(6, 64), torch.tensor([0, 0, 1, 1, 1, 2])
+        expected = torch.stack([nodes[index == i].sum(0) / int((index == i).sum()) for i in range(3)])
+        first = ordered_mean_pool(nodes, index, 3)
+        torch.testing.assert_close(first, expected)
+        for _ in range(16):
+            self.assertTrue(torch.equal(first, ordered_mean_pool(nodes, index, 3)))
+        with self.assertRaises(ValueError):
+            ordered_mean_pool(nodes, torch.tensor([0, 1, 0, 1, 1, 2]), 3)
+
+    def test_device_readout_preflight_checks_backward_without_updating_model(self):
+        import tempfile
+        models = {'P0': self.graph('mean').eval(), 'P1': self.graph().eval()}
+        core = SimpleNamespace(torch=torch, state_hash=state_hash)
+        with tempfile.TemporaryDirectory() as directory:
+            receipt = run.cuda_readout_preflight(core, models, torch.device('cpu'), Path(directory))
+        self.assertEqual(receipt['status'], 'passed')
+        self.assertEqual(receipt['max_abs_pool_error'], 0.)
+        self.assertEqual(receipt['optimizer_updates'], 0)
+        self.assertTrue(receipt['model_and_rng_unchanged'])
 
     def test_zero_output_initialization_delays_hidden_gradient_then_learns(self):
         pool = PacketAttentionPool()

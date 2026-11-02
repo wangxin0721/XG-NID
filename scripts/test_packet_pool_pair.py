@@ -223,6 +223,7 @@ class Contracts(unittest.TestCase):
             'graph_replays': {n: {'strict_state_load': True, 'predictions_identical': True,
                                   'confusion_matrix_reproduced': True} for n in run.VARIANTS},
             'comparisons': comparisons, 'prediction_transitions': {n: [] for n in comparisons}, 'packet_diagnostics': {}}
+        r['cuda_readout_preflight'] = {'status': 'passed', 'optimizer_updates': 0, 'model_and_rng_unchanged': True}
         stages = [run.graph_load_stage('extract_train', 'train', 107621, 2),
                   run.graph_load_stage('extract_val', 'val', 13446, 2)]
         stages += [run.graph_load_stage(phase + '_' + name, 'val', 13446, 2)
@@ -270,6 +271,7 @@ class Contracts(unittest.TestCase):
                            lambda x: x['probes']['P1'].update(clean_model_and_rng_restored=False),
                            lambda x: x['initialization'].update(uniform_packet_attention=False),
                            lambda x: x['models']['P1']['architecture'].update(trainable_parameters=7144),
+                           lambda x: x['cuda_readout_preflight'].update(status='failed'),
                            lambda x: x['graph_load_accounting']['loader_stages'].pop(),
                            lambda x: x['graph_load_counts'].update(val=0)):
                 bad = copy.deepcopy(r)

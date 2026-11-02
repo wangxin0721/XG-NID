@@ -1,0 +1,89 @@
+{
+  "date": "2026-11-02",
+  "status": "local_non_tensor_checks_passed_server_execution_pending",
+  "reviewed_base_commit": "2bf57a5352a5ed65918b759dfb33459bcaadd770",
+  "standard_library_regression_tests": {
+    "passed": 23,
+    "failed": 0,
+    "per_suite": {
+      "protocol_and_accounting": 13,
+      "first_recovery": 6,
+      "second_recovery": 4
+    },
+    "commands": [
+      "python -B -m unittest discover -s scripts -p test_packet_pool_pair.py -v",
+      "python -B -m unittest discover -s scripts -p test_packet_pool_recovery.py -v",
+      "python -B -m unittest discover -s scripts -p test_packet_pool_recovery_v2.py -v"
+    ]
+  },
+  "python39_syntax": {
+    "files": 9,
+    "passed": true
+  },
+  "bash_syntax": {
+    "commands": [
+      "bash -n scripts/launch_packet_pool_pair.sh",
+      "bash -n scripts/launch_packet_pool_pair_recovery.sh",
+      "bash -n scripts/launch_packet_pool_pair_recovery_v2.sh"
+    ],
+    "exit_codes": [
+      0,
+      0,
+      0
+    ]
+  },
+  "previous_recovery_source_hashes_verified_against_git_objects": 4,
+  "unchanged_vs_reviewed_base": [
+    "src/xgnid/model.py",
+    "src/xgnid/fusion_dimension.py",
+    "configs/packet_pool_pair_s42_v1.json",
+    "scripts/recover_packet_pool_pair.py",
+    "scripts/launch_packet_pool_pair.sh",
+    "scripts/launch_packet_pool_pair_recovery.sh"
+  ],
+  "fix_scope": [
+    "ordered torch.segment_reduce Packet mean and softmax in both arms",
+    "exact shared zero-score softmax uniform reference",
+    "actual-device repeat/backward check before cache reuse",
+    "separate matched-source identity from legacy independent CUDA numeric error",
+    "v2 audits and preserves both known failed runs"
+  ],
+  "source_comparison_policy": {
+    "paired_and_matched_source_atol": 1e-06,
+    "paired_and_matched_source_rtol": 1e-06,
+    "legacy_independent_source_predictions_and_CM": "must_match_exactly",
+    "legacy_independent_source_log_probability_error": "recorded_separately"
+  },
+  "tensor_test_cases_prepared": 11,
+  "tensor_tests_executed_locally": false,
+  "cuda_readout_preflight_executed_locally": false,
+  "server_graph_preflight_executed_locally": false,
+  "formal_training_started_by_assistant": false,
+  "dependencies_available": {
+    "torch": false,
+    "torch_geometric": false
+  },
+  "failure_evidence": {
+    "source": "user screenshot, full server JSON not read locally",
+    "samples": 13446,
+    "new_failed_batches": 1,
+    "legacy_failed_batches": 11,
+    "new_prediction_mismatches": 0,
+    "legacy_prediction_mismatches": 0,
+    "max_abs_new_vs_P0_log_probability_error": 2.288818359375e-05,
+    "max_abs_new_vs_mean_packet_error": 1.1920928955078125e-06
+  },
+  "files_sha256": {
+    "src/xgnid/packet_pooling.py": "c423c573b624a98a40ee03b5b286f2dcd3297db43a0eedcf1a654590b163742d",
+    "scripts/run_packet_pool_pair.py": "bb4946a153c9a5c2c805ec8a55cf5f9697b16edc63c95c07c4d9d0f732f58537",
+    "scripts/summarize_packet_pool_pair.py": "2f9481e48ee0efc568b13b39d2c704b58dbf1325ddc2dfeb6f8d0b1e004e0e01",
+    "scripts/test_packet_pool_pair.py": "84994f0d5dcc6a8aefe250e30681df6719797915691c8d75457819971632d35b",
+    "scripts/test_packet_pooling_tensor.py": "1e2f3aa7ee1ace8621231f4af2aa930ae37be542a75a84d44b6ce27fccbf44b5",
+    "scripts/recover_packet_pool_pair_v2.py": "b4a6516b816bd18b2731e4c4b8e4009d0167be508331ee064e5e99dd2306bd1d",
+    "scripts/test_packet_pool_recovery_v2.py": "614906e39a460b9ccf4813bdb9a8f4206ad9304b00458d29e414aff6a2e92aae",
+    "scripts/launch_packet_pool_pair_recovery_v2.sh": "60bb973f6aa536bed2b033e7bb04d00c1eb4c8ecb031ba1de5e18613fcdf5a0d",
+    "docs/packet_pool_recovery_v2_20261102.md": "a9d58aad6c906621f1112f975470ed0cdbe15d1f8dfe8e8ae3c5061e2632750b",
+    "docs/packet_pool_pair_s42_v1.md": "fcedbdf2c6f841380a86d3d3b342acfc988fc3d1c886de48eca007c7f4c7c77e",
+    "configs/packet_pool_pair_s42_v1.json": "70bb0c6b0e3c01f5797fbd567b17d7b9c3a324c9deb8f8ccc1c51f7c12ca0333"
+  }
+}
