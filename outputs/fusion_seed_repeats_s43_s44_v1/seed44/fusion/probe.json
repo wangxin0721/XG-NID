@@ -1,0 +1,68 @@
+{
+  "status": "completed",
+  "variants": {
+    "F1": {
+      "initial_fusion_sha256": "b0913d6066c9a8b4ed2ae5d09ecef496689478349b7e7c2cb78a6d495475c4b2",
+      "updates": [
+        {
+          "head_input_gradient_l1": 0.09114515036344528,
+          "fusion_gradients_l1": {
+            "logit": 0.009800529107451439
+          },
+          "parameters_changed": true
+        },
+        {
+          "head_input_gradient_l1": 0.20257917046546936,
+          "fusion_gradients_l1": {
+            "logit": 0.010387582704424858
+          },
+          "parameters_changed": true
+        },
+        {
+          "head_input_gradient_l1": 0.16050395369529724,
+          "fusion_gradients_l1": {
+            "logit": 0.005446372553706169
+          },
+          "parameters_changed": true
+        }
+      ],
+      "probe_discarded": true
+    },
+    "F2": {
+      "initial_fusion_sha256": "9b5a9e396d2fa695993b1ebb999af83d2922e62aeebae69651db62990ffce608",
+      "updates": [
+        {
+          "head_input_gradient_l1": 0.09114515036344528,
+          "fusion_gradients_l1": {
+            "0.weight": 0.0,
+            "0.bias": 0.0,
+            "2.weight": 0.18983131647109985,
+            "2.bias": 0.01960105635225773
+          },
+          "parameters_changed": true
+        },
+        {
+          "head_input_gradient_l1": 0.20131006836891174,
+          "fusion_gradients_l1": {
+            "0.weight": 0.003555161412805319,
+            "0.bias": 0.00010264880256727338,
+            "2.weight": 0.07989908009767532,
+            "2.bias": 0.014934439212083817
+          },
+          "parameters_changed": true
+        },
+        {
+          "head_input_gradient_l1": 0.15942628681659698,
+          "fusion_gradients_l1": {
+            "0.weight": 0.004659709520637989,
+            "0.bias": 9.890829096548259e-05,
+            "2.weight": 0.06330594420433044,
+            "2.bias": 0.006203505210578442
+          },
+          "parameters_changed": true
+        }
+      ],
+      "probe_discarded": true
+    }
+  }
+}

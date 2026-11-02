@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/tmp/xgnid_e3_gate_fda02b1/run_e3_gate_ablation_server.py", line 287, in main
+    result = probe(core, args, spec, frozen, device, binding, gpu) if args.mode == "probe" else screen(core, args, spec, frozen, device, binding, gpu)
+  File "/tmp/xgnid_e3_gate_fda02b1/run_e3_gate_ablation_server.py", line 166, in screen
+    require(certificate == report["initialization"], "Probe and screening initialization differ")
+  File "/tmp/xgnid_e3_gate_fda02b1/e3_gate_study.py", line 33, in require
+    raise ValueError(message)
+ValueError: Probe and screening initialization differ

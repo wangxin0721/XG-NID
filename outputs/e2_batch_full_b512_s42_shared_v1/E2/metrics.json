@@ -1,0 +1,367 @@
+{
+  "mode": "full",
+  "protocol": "xgnid.e2-batch-comparison.v1",
+  "best_epoch": 53,
+  "stopped_epoch": 65,
+  "best_validation": {
+    "accuracy": 0.9757548713372006,
+    "macro_f1": 0.9659940017251138,
+    "weighted_f1": 0.975880337818102,
+    "per_class": {
+      "Benign": {
+        "precision": 0.9619047619047619,
+        "recall": 0.9723733779824194,
+        "f1-score": 0.9671107410491258,
+        "support": 2389.0
+      },
+      "WebBased": {
+        "precision": 0.8457538994800693,
+        "recall": 0.8970588235294118,
+        "f1-score": 0.8706512042818911,
+        "support": 544.0
+      },
+      "Spoofing": {
+        "precision": 0.9589120370370371,
+        "recall": 0.9528464634847613,
+        "f1-score": 0.9558696279203922,
+        "support": 1739.0
+      },
+      "Recon": {
+        "precision": 0.9705882352941176,
+        "recall": 0.9561018437225637,
+        "f1-score": 0.9632905793896505,
+        "support": 2278.0
+      },
+      "Mirai": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 2400.0
+      },
+      "Dos": {
+        "precision": 0.9986376021798365,
+        "recall": 0.9938983050847457,
+        "f1-score": 0.9962623173632348,
+        "support": 1475.0
+      },
+      "DDos": {
+        "precision": 1.0,
+        "recall": 0.9966499162479062,
+        "f1-score": 0.9983221476510068,
+        "support": 2388.0
+      },
+      "BruteForce": {
+        "precision": 0.9743589743589743,
+        "recall": 0.9785407725321889,
+        "f1-score": 0.9764453961456103,
+        "support": 233.0
+      },
+      "accuracy": 0.9757548713372006,
+      "macro avg": {
+        "precision": 0.9637694387818496,
+        "recall": 0.9684336878229995,
+        "f1-score": 0.9659940017251138,
+        "support": 13446.0
+      },
+      "weighted avg": {
+        "precision": 0.976100307463628,
+        "recall": 0.9757548713372006,
+        "f1-score": 0.975880337818102,
+        "support": 13446.0
+      }
+    },
+    "confusion_matrix": [
+      [
+        2323,
+        7,
+        51,
+        8,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        11,
+        488,
+        6,
+        36,
+        0,
+        1,
+        0,
+        2
+      ],
+      [
+        63,
+        5,
+        1657,
+        11,
+        0,
+        0,
+        0,
+        3
+      ],
+      [
+        17,
+        69,
+        12,
+        2178,
+        0,
+        1,
+        0,
+        1
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        2400,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        3,
+        0,
+        6,
+        0,
+        1466,
+        0,
+        0
+      ],
+      [
+        0,
+        2,
+        1,
+        5,
+        0,
+        0,
+        2380,
+        0
+      ],
+      [
+        1,
+        3,
+        1,
+        0,
+        0,
+        0,
+        0,
+        228
+      ]
+    ],
+    "samples": 13446,
+    "wall_seconds_including_graph_io": 29.599860090005677,
+    "forward_seconds": 22.120831214904786,
+    "forward_timing_method": "CUDA events around model call",
+    "gate_weights": {
+      "mean": [
+        0.5,
+        0.5
+      ],
+      "std": [
+        0.0,
+        0.0
+      ],
+      "min": [
+        0.5,
+        0.5
+      ],
+      "max": [
+        0.5,
+        0.5
+      ],
+      "fraction_flow_above_0_95": 0.0,
+      "fraction_packet_above_0_95": 0.0
+    }
+  },
+  "test": {
+    "accuracy": 0.9780636525877454,
+    "macro_f1": 0.9665833223528267,
+    "weighted_f1": 0.9781919183307671,
+    "per_class": {
+      "Benign": {
+        "precision": 0.9602459016393443,
+        "recall": 0.9807450816241106,
+        "f1-score": 0.9703872437357631,
+        "support": 2389.0
+      },
+      "WebBased": {
+        "precision": 0.848381601362862,
+        "recall": 0.9154411764705882,
+        "f1-score": 0.8806366047745358,
+        "support": 544.0
+      },
+      "Spoofing": {
+        "precision": 0.9698581560283688,
+        "recall": 0.9436457734330075,
+        "f1-score": 0.9565724278635966,
+        "support": 1739.0
+      },
+      "Recon": {
+        "precision": 0.9798747763864043,
+        "recall": 0.9618086040386303,
+        "f1-score": 0.9707576428887904,
+        "support": 2278.0
+      },
+      "Mirai": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 2400.0
+      },
+      "Dos": {
+        "precision": 0.9986431478968792,
+        "recall": 0.9979661016949153,
+        "f1-score": 0.998304510003391,
+        "support": 1475.0
+      },
+      "DDos": {
+        "precision": 1.0,
+        "recall": 0.9974895397489539,
+        "f1-score": 0.9987431922915794,
+        "support": 2390.0
+      },
+      "BruteForce": {
+        "precision": 0.9531914893617022,
+        "recall": 0.9613733905579399,
+        "f1-score": 0.9572649572649574,
+        "support": 233.0
+      },
+      "accuracy": 0.9780636525877454,
+      "macro avg": {
+        "precision": 0.963774384084445,
+        "recall": 0.9698087084460182,
+        "f1-score": 0.9665833223528267,
+        "support": 13448.0
+      },
+      "weighted avg": {
+        "precision": 0.9785378780687483,
+        "recall": 0.9780636525877454,
+        "f1-score": 0.9781919183307671,
+        "support": 13448.0
+      }
+    },
+    "confusion_matrix": [
+      [
+        2343,
+        4,
+        33,
+        8,
+        0,
+        1,
+        0,
+        0
+      ],
+      [
+        11,
+        498,
+        10,
+        21,
+        0,
+        0,
+        0,
+        4
+      ],
+      [
+        67,
+        14,
+        1641,
+        11,
+        0,
+        0,
+        0,
+        6
+      ],
+      [
+        17,
+        61,
+        7,
+        2191,
+        0,
+        1,
+        0,
+        1
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        2400,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        3,
+        0,
+        1472,
+        0,
+        0
+      ],
+      [
+        0,
+        4,
+        0,
+        2,
+        0,
+        0,
+        2384,
+        0
+      ],
+      [
+        2,
+        6,
+        1,
+        0,
+        0,
+        0,
+        0,
+        224
+      ]
+    ],
+    "samples": 13448,
+    "wall_seconds_including_graph_io": 29.640265948008164,
+    "forward_seconds": 18.673729640007018,
+    "forward_timing_method": "CUDA events around model call",
+    "gate_weights": {
+      "mean": [
+        0.5,
+        0.5
+      ],
+      "std": [
+        0.0,
+        0.0
+      ],
+      "min": [
+        0.5,
+        0.5
+      ],
+      "max": [
+        0.5,
+        0.5
+      ],
+      "fraction_flow_above_0_95": 0.0,
+      "fraction_packet_above_0_95": 0.0
+    }
+  },
+  "parameter_count": 846800,
+  "initial_state_sha256": "0270349d613f11b453b92e4e928a3c2e7b67d062b5e3ba73c8ba4fb58dbd521a",
+  "train_batch_size": 512,
+  "evaluation_batch_size": 16,
+  "total_optimizer_updates": 13715,
+  "training_samples_seen": 6995365,
+  "training_validation_checkpoint_wall_seconds": 11754.318534571008,
+  "run_wall_seconds": 11784.07251198501,
+  "config_sha256": "0a297a4a42c86785ce59ac4eec64b771ad4e5ce774b1379f6aafd6d45830b089",
+  "checkpoint_sha256": {
+    "best.pt": "1709ed1a19b8a2e20b9b1ef3dac6cc6a5906fd93937e8d18a51cc64f85c44b08",
+    "last.pt": "3b4a503e44d27a0dcb667bce232731c16765e46a13c2d40e8fefe28972a67ddc"
+  }
+}

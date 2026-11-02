@@ -1,0 +1,2017 @@
+{
+  "time_utc": "2026-10-16T08:51:37.848074+00:00",
+  "hostname": "nepu-Standard-PC-i440FX-PIIX-1996",
+  "python": "/home/nzxn/miniconda3/envs/wx/bin/python",
+  "python_version": "3.9.23",
+  "packages": {
+    "torch": "2.3.1+cu118",
+    "torch-geometric": "2.5.3",
+    "pandas": "2.0.3",
+    "numpy": "1.23.5",
+    "scikit-learn": "1.3.2",
+    "tqdm": "4.66.4"
+  },
+  "git": {
+    "head": {
+      "exit_code": 0,
+      "stdout": "d19177f4f9f3029bca256df5b0ed1b92a452760c",
+      "stderr": ""
+    },
+    "status": {
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  },
+  "inventory": [
+    {
+      "root": "/home/nzxn/下载/WX/load/XG-NID/data/processed/CICIoT2023_processed/train",
+      "exists": true,
+      "counts": {
+        ".csv": 1
+      },
+      "bytes": {
+        ".csv": 1027673808
+      },
+      "csv_files": [
+        {
+          "path": "/home/nzxn/下载/WX/load/XG-NID/data/processed/CICIoT2023_processed/train/df_class_8_train.csv",
+          "bytes": 1027673808,
+          "columns": [
+            "src2dst_duration_ms",
+            "src2dst_packets",
+            "src2dst_bytes",
+            "dst2src_duration_ms",
+            "dst2src_packets",
+            "dst2src_bytes",
+            "bidirectional_min_ps",
+            "bidirectional_mean_ps",
+            "bidirectional_stddev_ps",
+            "bidirectional_max_ps",
+            "src2dst_min_ps",
+            "src2dst_mean_ps",
+            "src2dst_stddev_ps",
+            "src2dst_max_ps",
+            "dst2src_min_ps",
+            "dst2src_mean_ps",
+            "dst2src_stddev_ps",
+            "dst2src_max_ps",
+            "bidirectional_min_piat_ms",
+            "bidirectional_mean_piat_ms",
+            "bidirectional_stddev_piat_ms",
+            "bidirectional_max_piat_ms",
+            "src2dst_min_piat_ms",
+            "src2dst_mean_piat_ms",
+            "src2dst_stddev_piat_ms",
+            "src2dst_max_piat_ms",
+            "dst2src_min_piat_ms",
+            "dst2src_mean_piat_ms",
+            "dst2src_stddev_piat_ms",
+            "dst2src_max_piat_ms",
+            "src2dst_syn_packets",
+            "src2dst_cwr_packets",
+            "src2dst_ece_packets",
+            "src2dst_urg_packets",
+            "src2dst_ack_packets",
+            "src2dst_psh_packets",
+            "src2dst_rst_packets",
+            "src2dst_fin_packets",
+            "dst2src_syn_packets",
+            "dst2src_cwr_packets",
+            "dst2src_ece_packets",
+            "dst2src_urg_packets",
+            "dst2src_ack_packets",
+            "dst2src_psh_packets",
+            "dst2src_rst_packets",
+            "dst2src_fin_packets",
+            "udps.payload_data",
+            "udps.delta_time",
+            "udps.packet_direction",
+            "udps.ip_size",
+            "udps.transport_size",
+            "udps.payload_size",
+            "udps.syn",
+            "udps.cwr",
+            "udps.ece",
+            "udps.urg",
+            "udps.ack",
+            "udps.psh",
+            "udps.rst",
+            "udps.fin",
+            "packet_size_variation",
+            "Rolling_UDP_Requests_SourceDestination",
+            "Rolling_UDP_Requests_Destination",
+            "Rolling_TCP_Requests_SourceDestination",
+            "Rolling_TCP_Requests_Destination",
+            "Rolling_ACK_Packets_SourceDestination",
+            "Rolling_ACK_Packets_Destination",
+            "Rolling_FIN_Packets_SourceDestination",
+            "Rolling_FIN_Packets_Destination",
+            "Rolling_rst_Packets_SourceDestination",
+            "Rolling_rst_Packets_Destination",
+            "Rolling_psh_Packets_SourceDestination",
+            "Rolling_psh_Packets_Destination",
+            "Rolling_SYN_Packets_SourceDestination",
+            "Rolling_SYN_Packets_Destination",
+            "Unique_Ports_In_SourceDestinationIP",
+            "Rolling_ICMP_Requests_SourceDestination",
+            "Rolling_ICMP_Requests_Destination",
+            "Rolling_http_port_SourceDestination",
+            "Rolling_http_port_Destination",
+            "Rolling_Duration_Destination",
+            "Rolling_Duration_SourceDestination",
+            "Rolling_DNS_request_SourceDestination",
+            "Rolling_DNS_request_Destination",
+            "Rolling_DNS_request_SourceDestination2",
+            "Rolling_DNS_request_Destination2",
+            "Rolling_vulnerable_port",
+            "Rolling_packets_destination",
+            "Rolling_bipackets_destination",
+            "Exp_0",
+            "Exp_-1",
+            "proto_1",
+            "proto_2",
+            "proto_6",
+            "proto_17",
+            "proto_58",
+            "Label"
+          ]
+        }
+      ],
+      "pt_examples": [],
+      "identity_candidates": []
+    }
+  ],
+  "splits": [],
+  "errors": [],
+  "assessment": "Inventory only; formal readiness requires source identity, split/graph mapping, leakage audit and Edge smoke evidence.",
+  "runtime": {
+    "torch": "2.3.1+cu118",
+    "pyg": "2.5.3",
+    "cuda_available": true,
+    "torch_cuda": "11.8",
+    "devices": [
+      "Tesla T4",
+      "Tesla T4"
+    ]
+  },
+  "graph_samples": [
+    {
+      "path": "/home/nzxn/下载/WX/load/XG-NID/data/processed/CICIoT2023_processed/processed/data_0.pt",
+      "sha256": "7e0d0aa043fbe0289ac86a6f4fb2feca8fe5b1f2b4bc236c3ba3227e432d13c6",
+      "graph_count": 1,
+      "sample_only": true,
+      "checked_graphs": [
+        {
+          "index": 0,
+          "nodes": {
+            "flow": [
+              1,
+              82
+            ],
+            "packet": [
+              1,
+              1500
+            ]
+          },
+          "edges": {
+            "('flow', 'contain', 'packet')": {
+              "edge_index": [
+                2,
+                1
+              ],
+              "edge_attr": [
+                1,
+                4
+              ]
+            },
+            "('packet', 'link', 'packet')": {
+              "edge_index": [
+                2,
+                0
+              ],
+              "edge_attr": [
+                0
+              ]
+            },
+            "('packet', 'rev_contain', 'flow')": {
+              "edge_index": [
+                2,
+                1
+              ],
+              "edge_attr": [
+                1,
+                4
+              ]
+            }
+          },
+          "link_topology": {
+            "edges": 0,
+            "unique_edges_with_reverse": 0,
+            "max_in_degree": 0
+          },
+          "edge_contract": "passed"
+        }
+      ]
+    },
+    {
+      "path": "/home/nzxn/下载/WX/load/XG-NID/data/processed/CICIoT2023_processed/processed/data_1.pt",
+      "sha256": "d64b6dcc7ad9dc33c7526cc5c5a9bc82a0adfd4399ac6c77ac581f2858dfdfcc",
+      "graph_count": 1,
+      "sample_only": true,
+      "checked_graphs": [
+        {
+          "index": 0,
+          "nodes": {
+            "flow": [
+              1,
+              82
+            ],
+            "packet": [
+              20,
+              1500
+            ]
+          },
+          "edges": {
+            "('flow', 'contain', 'packet')": {
+              "edge_index": [
+                2,
+                20
+              ],
+              "edge_attr": [
+                20,
+                4
+              ]
+            },
+            "('packet', 'link', 'packet')": {
+              "edge_index": [
+                2,
+                38
+              ],
+              "edge_attr": [
+                38
+              ]
+            },
+            "('packet', 'rev_contain', 'flow')": {
+              "edge_index": [
+                2,
+                20
+              ],
+              "edge_attr": [
+                20,
+                4
+              ]
+            }
+          },
+          "link_topology": {
+            "edges": 38,
+            "unique_edges_with_reverse": 38,
+            "max_in_degree": 2
+          },
+          "edge_contract": "passed"
+        }
+      ]
+    },
+    {
+      "path": "/home/nzxn/下载/WX/load/XG-NID/data/processed/CICIoT2023_processed/processed/data_10.pt",
+      "sha256": "a4609f7b8072bcfda1150be9fd2e813c5d24a099827594b46fb25036db472de0",
+      "graph_count": 1,
+      "sample_only": true,
+      "checked_graphs": [
+        {
+          "index": 0,
+          "nodes": {
+            "flow": [
+              1,
+              82
+            ],
+            "packet": [
+              3,
+              1500
+            ]
+          },
+          "edges": {
+            "('flow', 'contain', 'packet')": {
+              "edge_index": [
+                2,
+                3
+              ],
+              "edge_attr": [
+                3,
+                4
+              ]
+            },
+            "('packet', 'link', 'packet')": {
+              "edge_index": [
+                2,
+                4
+              ],
+              "edge_attr": [
+                4
+              ]
+            },
+            "('packet', 'rev_contain', 'flow')": {
+              "edge_index": [
+                2,
+                3
+              ],
+              "edge_attr": [
+                3,
+                4
+              ]
+            }
+          },
+          "link_topology": {
+            "edges": 4,
+            "unique_edges_with_reverse": 4,
+            "max_in_degree": 2
+          },
+          "edge_contract": "passed"
+        }
+      ]
+    },
+    {
+      "path": "/home/nzxn/下载/WX/load/XG-NID/data/processed/CICIoT2023_processed/processed/data_100.pt",
+      "sha256": "209c47c057a4f1e72d236878267a8979801ca4f6fcab2ed09499e43c06b2de92",
+      "graph_count": 1,
+      "sample_only": true,
+      "checked_graphs": [
+        {
+          "index": 0,
+          "nodes": {
+            "flow": [
+              1,
+              82
+            ],
+            "packet": [
+              17,
+              1500
+            ]
+          },
+          "edges": {
+            "('flow', 'contain', 'packet')": {
+              "edge_index": [
+                2,
+                17
+              ],
+              "edge_attr": [
+                17,
+                4
+              ]
+            },
+            "('packet', 'link', 'packet')": {
+              "edge_index": [
+                2,
+                32
+              ],
+              "edge_attr": [
+                32
+              ]
+            },
+            "('packet', 'rev_contain', 'flow')": {
+              "edge_index": [
+                2,
+                17
+              ],
+              "edge_attr": [
+                17,
+                4
+              ]
+            }
+          },
+          "link_topology": {
+            "edges": 32,
+            "unique_edges_with_reverse": 32,
+            "max_in_degree": 2
+          },
+          "edge_contract": "passed"
+        }
+      ]
+    },
+    {
+      "path": "/home/nzxn/下载/WX/load/XG-NID/data/processed/CICIoT2023_processed/processed/data_1000.pt",
+      "sha256": "9642739c79b319ef77b36c09c2c17e1909a9e0c3d7c376df792b2722ce0874ec",
+      "graph_count": 1,
+      "sample_only": true,
+      "checked_graphs": [
+        {
+          "index": 0,
+          "nodes": {
+            "flow": [
+              1,
+              82
+            ],
+            "packet": [
+              20,
+              1500
+            ]
+          },
+          "edges": {
+            "('flow', 'contain', 'packet')": {
+              "edge_index": [
+                2,
+                20
+              ],
+              "edge_attr": [
+                20,
+                4
+              ]
+            },
+            "('packet', 'link', 'packet')": {
+              "edge_index": [
+                2,
+                38
+              ],
+              "edge_attr": [
+                38
+              ]
+            },
+            "('packet', 'rev_contain', 'flow')": {
+              "edge_index": [
+                2,
+                20
+              ],
+              "edge_attr": [
+                20,
+                4
+              ]
+            }
+          },
+          "link_topology": {
+            "edges": 38,
+            "unique_edges_with_reverse": 38,
+            "max_in_degree": 2
+          },
+          "edge_contract": "passed"
+        }
+      ]
+    },
+    {
+      "path": "/home/nzxn/下载/WX/load/XG-NID/data/processed/CICIoT2023_processed/processed/data_10000.pt",
+      "sha256": "ccd8e40ea8ea77c99561fc2260c7453a7b0365b26b32d805e571f72e75724eff",
+      "graph_count": 1,
+      "sample_only": true,
+      "checked_graphs": [
+        {
+          "index": 0,
+          "nodes": {
+            "flow": [
+              1,
+              82
+            ],
+            "packet": [
+              20,
+              1500
+            ]
+          },
+          "edges": {
+            "('flow', 'contain', 'packet')": {
+              "edge_index": [
+                2,
+                20
+              ],
+              "edge_attr": [
+                20,
+                4
+              ]
+            },
+            "('packet', 'link', 'packet')": {
+              "edge_index": [
+                2,
+                38
+              ],
+              "edge_attr": [
+                38
+              ]
+            },
+            "('packet', 'rev_contain', 'flow')": {
+              "edge_index": [
+                2,
+                20
+              ],
+              "edge_attr": [
+                20,
+                4
+              ]
+            }
+          },
+          "link_topology": {
+            "edges": 38,
+            "unique_edges_with_reverse": 38,
+            "max_in_degree": 2
+          },
+          "edge_contract": "passed"
+        }
+      ]
+    },
+    {
+      "path": "/home/nzxn/下载/WX/load/XG-NID/data/processed/CICIoT2023_processed/processed/data_100000.pt",
+      "sha256": "293d74a5ce441e514f97ba68b7c11ba012abd3abd0b6ee87c30cd1d895b3fa9a",
+      "graph_count": 1,
+      "sample_only": true,
+      "checked_graphs": [
+        {
+          "index": 0,
+          "nodes": {
+            "flow": [
+              1,
+              82
+            ],
+            "packet": [
+              2,
+              1500
+            ]
+          },
+          "edges": {
+            "('flow', 'contain', 'packet')": {
+              "edge_index": [
+                2,
+                2
+              ],
+              "edge_attr": [
+                2,
+                4
+              ]
+            },
+            "('packet', 'link', 'packet')": {
+              "edge_index": [
+                2,
+                2
+              ],
+              "edge_attr": [
+                2
+              ]
+            },
+            "('packet', 'rev_contain', 'flow')": {
+              "edge_index": [
+                2,
+                2
+              ],
+              "edge_attr": [
+                2,
+                4
+              ]
+            }
+          },
+          "link_topology": {
+            "edges": 2,
+            "unique_edges_with_reverse": 2,
+            "max_in_degree": 1
+          },
+          "edge_contract": "passed"
+        }
+      ]
+    },
+    {
+      "path": "/home/nzxn/下载/WX/load/XG-NID/data/processed/CICIoT2023_processed/processed/data_100001.pt",
+      "sha256": "822f11a386ccb23a30570ea53e286daaf0f7ceb53bdda55e9b37162e1d85085d",
+      "graph_count": 1,
+      "sample_only": true,
+      "checked_graphs": [
+        {
+          "index": 0,
+          "nodes": {
+            "flow": [
+              1,
+              82
+            ],
+            "packet": [
+              2,
+              1500
+            ]
+          },
+          "edges": {
+            "('flow', 'contain', 'packet')": {
+              "edge_index": [
+                2,
+                2
+              ],
+              "edge_attr": [
+                2,
+                4
+              ]
+            },
+            "('packet', 'link', 'packet')": {
+              "edge_index": [
+                2,
+                2
+              ],
+              "edge_attr": [
+                2
+              ]
+            },
+            "('packet', 'rev_contain', 'flow')": {
+              "edge_index": [
+                2,
+                2
+              ],
+              "edge_attr": [
+                2,
+                4
+              ]
+            }
+          },
+          "link_topology": {
+            "edges": 2,
+            "unique_edges_with_reverse": 2,
+            "max_in_degree": 1
+          },
+          "edge_contract": "passed"
+        }
+      ]
+    },
+    {
+      "path": "/home/nzxn/下载/WX/load/XG-NID/data/processed/CICIoT2023_processed/processed/data_100002.pt",
+      "sha256": "dfa320d59436c34f8d47e9ec435685b0486628ca46d3e14c060eee9eda0299e0",
+      "graph_count": 1,
+      "sample_only": true,
+      "checked_graphs": [
+        {
+          "index": 0,
+          "nodes": {
+            "flow": [
+              1,
+              82
+            ],
+            "packet": [
+              1,
+              1500
+            ]
+          },
+          "edges": {
+            "('flow', 'contain', 'packet')": {
+              "edge_index": [
+                2,
+                1
+              ],
+              "edge_attr": [
+                1,
+                4
+              ]
+            },
+            "('packet', 'link', 'packet')": {
+              "edge_index": [
+                2,
+                0
+              ],
+              "edge_attr": [
+                0
+              ]
+            },
+            "('packet', 'rev_contain', 'flow')": {
+              "edge_index": [
+                2,
+                1
+              ],
+              "edge_attr": [
+                1,
+                4
+              ]
+            }
+          },
+          "link_topology": {
+            "edges": 0,
+            "unique_edges_with_reverse": 0,
+            "max_in_degree": 0
+          },
+          "edge_contract": "passed"
+        }
+      ]
+    },
+    {
+      "path": "/home/nzxn/下载/WX/load/XG-NID/data/processed/CICIoT2023_processed/processed/data_100003.pt",
+      "sha256": "3e4c77525cdc4b47e3a41924cfb88e964e7fceb4e3eaca81497bda7cf53183a2",
+      "graph_count": 1,
+      "sample_only": true,
+      "checked_graphs": [
+        {
+          "index": 0,
+          "nodes": {
+            "flow": [
+              1,
+              82
+            ],
+            "packet": [
+              2,
+              1500
+            ]
+          },
+          "edges": {
+            "('flow', 'contain', 'packet')": {
+              "edge_index": [
+                2,
+                2
+              ],
+              "edge_attr": [
+                2,
+                4
+              ]
+            },
+            "('packet', 'link', 'packet')": {
+              "edge_index": [
+                2,
+                2
+              ],
+              "edge_attr": [
+                2
+              ]
+            },
+            "('packet', 'rev_contain', 'flow')": {
+              "edge_index": [
+                2,
+                2
+              ],
+              "edge_attr": [
+                2,
+                4
+              ]
+            }
+          },
+          "link_topology": {
+            "edges": 2,
+            "unique_edges_with_reverse": 2,
+            "max_in_degree": 1
+          },
+          "edge_contract": "passed"
+        }
+      ]
+    },
+    {
+      "path": "/home/nzxn/下载/WX/load/XG-NID/data/processed/CICIoT2023_processed/processed/data_100004.pt",
+      "sha256": "e0b9a5d137229065c87ab88facd846d8608c06c19273b9759e2a927b0c99e84e",
+      "graph_count": 1,
+      "sample_only": true,
+      "checked_graphs": [
+        {
+          "index": 0,
+          "nodes": {
+            "flow": [
+              1,
+              82
+            ],
+            "packet": [
+              2,
+              1500
+            ]
+          },
+          "edges": {
+            "('flow', 'contain', 'packet')": {
+              "edge_index": [
+                2,
+                2
+              ],
+              "edge_attr": [
+                2,
+                4
+              ]
+            },
+            "('packet', 'link', 'packet')": {
+              "edge_index": [
+                2,
+                2
+              ],
+              "edge_attr": [
+                2
+              ]
+            },
+            "('packet', 'rev_contain', 'flow')": {
+              "edge_index": [
+                2,
+                2
+              ],
+              "edge_attr": [
+                2,
+                4
+              ]
+            }
+          },
+          "link_topology": {
+            "edges": 2,
+            "unique_edges_with_reverse": 2,
+            "max_in_degree": 1
+          },
+          "edge_contract": "passed"
+        }
+      ]
+    },
+    {
+      "path": "/home/nzxn/下载/WX/load/XG-NID/data/processed/CICIoT2023_processed/processed/data_100005.pt",
+      "sha256": "4952c77f3020ec86ea9c881f69c5a59f6480b4c41a50c5379bcee89d16cde407",
+      "graph_count": 1,
+      "sample_only": true,
+      "checked_graphs": [
+        {
+          "index": 0,
+          "nodes": {
+            "flow": [
+              1,
+              82
+            ],
+            "packet": [
+              3,
+              1500
+            ]
+          },
+          "edges": {
+            "('flow', 'contain', 'packet')": {
+              "edge_index": [
+                2,
+                3
+              ],
+              "edge_attr": [
+                3,
+                4
+              ]
+            },
+            "('packet', 'link', 'packet')": {
+              "edge_index": [
+                2,
+                4
+              ],
+              "edge_attr": [
+                4
+              ]
+            },
+            "('packet', 'rev_contain', 'flow')": {
+              "edge_index": [
+                2,
+                3
+              ],
+              "edge_attr": [
+                3,
+                4
+              ]
+            }
+          },
+          "link_topology": {
+            "edges": 4,
+            "unique_edges_with_reverse": 4,
+            "max_in_degree": 2
+          },
+          "edge_contract": "passed"
+        }
+      ]
+    },
+    {
+      "path": "/home/nzxn/下载/WX/load/XG-NID/data/processed/CICIoT2023_processed/processed/data_100006.pt",
+      "sha256": "ce44c40f71bdfa7c508117b24a70939a8f4e6c465aa77a177f1f51bba442b9d2",
+      "graph_count": 1,
+      "sample_only": true,
+      "checked_graphs": [
+        {
+          "index": 0,
+          "nodes": {
+            "flow": [
+              1,
+              82
+            ],
+            "packet": [
+              2,
+              1500
+            ]
+          },
+          "edges": {
+            "('flow', 'contain', 'packet')": {
+              "edge_index": [
+                2,
+                2
+              ],
+              "edge_attr": [
+                2,
+                4
+              ]
+            },
+            "('packet', 'link', 'packet')": {
+              "edge_index": [
+                2,
+                2
+              ],
+              "edge_attr": [
+                2
+              ]
+            },
+            "('packet', 'rev_contain', 'flow')": {
+              "edge_index": [
+                2,
+                2
+              ],
+              "edge_attr": [
+                2,
+                4
+              ]
+            }
+          },
+          "link_topology": {
+            "edges": 2,
+            "unique_edges_with_reverse": 2,
+            "max_in_degree": 1
+          },
+          "edge_contract": "passed"
+        }
+      ]
+    },
+    {
+      "path": "/home/nzxn/下载/WX/load/XG-NID/data/processed/CICIoT2023_processed/processed/data_100007.pt",
+      "sha256": "08ebf3c5b4a6bad8e682a49729a7e292364b3ce20c9170a045840caffba3099c",
+      "graph_count": 1,
+      "sample_only": true,
+      "checked_graphs": [
+        {
+          "index": 0,
+          "nodes": {
+            "flow": [
+              1,
+              82
+            ],
+            "packet": [
+              2,
+              1500
+            ]
+          },
+          "edges": {
+            "('flow', 'contain', 'packet')": {
+              "edge_index": [
+                2,
+                2
+              ],
+              "edge_attr": [
+                2,
+                4
+              ]
+            },
+            "('packet', 'link', 'packet')": {
+              "edge_index": [
+                2,
+                2
+              ],
+              "edge_attr": [
+                2
+              ]
+            },
+            "('packet', 'rev_contain', 'flow')": {
+              "edge_index": [
+                2,
+                2
+              ],
+              "edge_attr": [
+                2,
+                4
+              ]
+            }
+          },
+          "link_topology": {
+            "edges": 2,
+            "unique_edges_with_reverse": 2,
+            "max_in_degree": 1
+          },
+          "edge_contract": "passed"
+        }
+      ]
+    },
+    {
+      "path": "/home/nzxn/下载/WX/load/XG-NID/data/processed/CICIoT2023_processed/processed/data_100008.pt",
+      "sha256": "4d85fd3fc3237c75dfc24e0b3c119999ba01b013e8b9bfe60833299dfa615ce4",
+      "graph_count": 1,
+      "sample_only": true,
+      "checked_graphs": [
+        {
+          "index": 0,
+          "nodes": {
+            "flow": [
+              1,
+              82
+            ],
+            "packet": [
+              2,
+              1500
+            ]
+          },
+          "edges": {
+            "('flow', 'contain', 'packet')": {
+              "edge_index": [
+                2,
+                2
+              ],
+              "edge_attr": [
+                2,
+                4
+              ]
+            },
+            "('packet', 'link', 'packet')": {
+              "edge_index": [
+                2,
+                2
+              ],
+              "edge_attr": [
+                2
+              ]
+            },
+            "('packet', 'rev_contain', 'flow')": {
+              "edge_index": [
+                2,
+                2
+              ],
+              "edge_attr": [
+                2,
+                4
+              ]
+            }
+          },
+          "link_topology": {
+            "edges": 2,
+            "unique_edges_with_reverse": 2,
+            "max_in_degree": 1
+          },
+          "edge_contract": "passed"
+        }
+      ]
+    },
+    {
+      "path": "/home/nzxn/下载/WX/load/XG-NID/data/processed/CICIoT2023_processed/processed/data_100009.pt",
+      "sha256": "410bfe02af91a63f1f5643071fc2ebed63e34c78ee14a7648c98a7d7273a6e9d",
+      "graph_count": 1,
+      "sample_only": true,
+      "checked_graphs": [
+        {
+          "index": 0,
+          "nodes": {
+            "flow": [
+              1,
+              82
+            ],
+            "packet": [
+              2,
+              1500
+            ]
+          },
+          "edges": {
+            "('flow', 'contain', 'packet')": {
+              "edge_index": [
+                2,
+                2
+              ],
+              "edge_attr": [
+                2,
+                4
+              ]
+            },
+            "('packet', 'link', 'packet')": {
+              "edge_index": [
+                2,
+                2
+              ],
+              "edge_attr": [
+                2
+              ]
+            },
+            "('packet', 'rev_contain', 'flow')": {
+              "edge_index": [
+                2,
+                2
+              ],
+              "edge_attr": [
+                2,
+                4
+              ]
+            }
+          },
+          "link_topology": {
+            "edges": 2,
+            "unique_edges_with_reverse": 2,
+            "max_in_degree": 1
+          },
+          "edge_contract": "passed"
+        }
+      ]
+    },
+    {
+      "path": "/home/nzxn/下载/WX/load/XG-NID/data/processed/CICIoT2023_processed/processed/data_10001.pt",
+      "sha256": "42e11bbecc5c7b7c086f9c4f32e4e9ca271f58efc95ae0b85ad10391885d35ac",
+      "graph_count": 1,
+      "sample_only": true,
+      "checked_graphs": [
+        {
+          "index": 0,
+          "nodes": {
+            "flow": [
+              1,
+              82
+            ],
+            "packet": [
+              5,
+              1500
+            ]
+          },
+          "edges": {
+            "('flow', 'contain', 'packet')": {
+              "edge_index": [
+                2,
+                5
+              ],
+              "edge_attr": [
+                5,
+                4
+              ]
+            },
+            "('packet', 'link', 'packet')": {
+              "edge_index": [
+                2,
+                8
+              ],
+              "edge_attr": [
+                8
+              ]
+            },
+            "('packet', 'rev_contain', 'flow')": {
+              "edge_index": [
+                2,
+                5
+              ],
+              "edge_attr": [
+                5,
+                4
+              ]
+            }
+          },
+          "link_topology": {
+            "edges": 8,
+            "unique_edges_with_reverse": 8,
+            "max_in_degree": 2
+          },
+          "edge_contract": "passed"
+        }
+      ]
+    },
+    {
+      "path": "/home/nzxn/下载/WX/load/XG-NID/data/processed/CICIoT2023_processed/processed/data_100010.pt",
+      "sha256": "c7c0770de0ec6b95364666c76f4945fbd41d78d3edcc40f69d5d6dd09331a08c",
+      "graph_count": 1,
+      "sample_only": true,
+      "checked_graphs": [
+        {
+          "index": 0,
+          "nodes": {
+            "flow": [
+              1,
+              82
+            ],
+            "packet": [
+              1,
+              1500
+            ]
+          },
+          "edges": {
+            "('flow', 'contain', 'packet')": {
+              "edge_index": [
+                2,
+                1
+              ],
+              "edge_attr": [
+                1,
+                4
+              ]
+            },
+            "('packet', 'link', 'packet')": {
+              "edge_index": [
+                2,
+                0
+              ],
+              "edge_attr": [
+                0
+              ]
+            },
+            "('packet', 'rev_contain', 'flow')": {
+              "edge_index": [
+                2,
+                1
+              ],
+              "edge_attr": [
+                1,
+                4
+              ]
+            }
+          },
+          "link_topology": {
+            "edges": 0,
+            "unique_edges_with_reverse": 0,
+            "max_in_degree": 0
+          },
+          "edge_contract": "passed"
+        }
+      ]
+    },
+    {
+      "path": "/home/nzxn/下载/WX/load/XG-NID/data/processed/CICIoT2023_processed/processed/data_100011.pt",
+      "sha256": "64c3d1af033b8eb173f7c30f2cfcd6c8d107c5de0817cbe2e19a69cbeb3fec61",
+      "graph_count": 1,
+      "sample_only": true,
+      "checked_graphs": [
+        {
+          "index": 0,
+          "nodes": {
+            "flow": [
+              1,
+              82
+            ],
+            "packet": [
+              2,
+              1500
+            ]
+          },
+          "edges": {
+            "('flow', 'contain', 'packet')": {
+              "edge_index": [
+                2,
+                2
+              ],
+              "edge_attr": [
+                2,
+                4
+              ]
+            },
+            "('packet', 'link', 'packet')": {
+              "edge_index": [
+                2,
+                2
+              ],
+              "edge_attr": [
+                2
+              ]
+            },
+            "('packet', 'rev_contain', 'flow')": {
+              "edge_index": [
+                2,
+                2
+              ],
+              "edge_attr": [
+                2,
+                4
+              ]
+            }
+          },
+          "link_topology": {
+            "edges": 2,
+            "unique_edges_with_reverse": 2,
+            "max_in_degree": 1
+          },
+          "edge_contract": "passed"
+        }
+      ]
+    },
+    {
+      "path": "/home/nzxn/下载/WX/load/XG-NID/data/processed/CICIoT2023_processed/processed/data_100012.pt",
+      "sha256": "03d24bcf713ca8039636f27ecf4185517856478f54547f2daa0d12bc5f452935",
+      "graph_count": 1,
+      "sample_only": true,
+      "checked_graphs": [
+        {
+          "index": 0,
+          "nodes": {
+            "flow": [
+              1,
+              82
+            ],
+            "packet": [
+              2,
+              1500
+            ]
+          },
+          "edges": {
+            "('flow', 'contain', 'packet')": {
+              "edge_index": [
+                2,
+                2
+              ],
+              "edge_attr": [
+                2,
+                4
+              ]
+            },
+            "('packet', 'link', 'packet')": {
+              "edge_index": [
+                2,
+                2
+              ],
+              "edge_attr": [
+                2
+              ]
+            },
+            "('packet', 'rev_contain', 'flow')": {
+              "edge_index": [
+                2,
+                2
+              ],
+              "edge_attr": [
+                2,
+                4
+              ]
+            }
+          },
+          "link_topology": {
+            "edges": 2,
+            "unique_edges_with_reverse": 2,
+            "max_in_degree": 1
+          },
+          "edge_contract": "passed"
+        }
+      ]
+    },
+    {
+      "path": "/home/nzxn/下载/WX/load/XG-NID/data/processed/CICIoT2023_processed/processed/data_100013.pt",
+      "sha256": "26a7b2200ff3c161fbf0c5987bfd4b584325e4b16d2e8bfbd613a33db8429d2c",
+      "graph_count": 1,
+      "sample_only": true,
+      "checked_graphs": [
+        {
+          "index": 0,
+          "nodes": {
+            "flow": [
+              1,
+              82
+            ],
+            "packet": [
+              2,
+              1500
+            ]
+          },
+          "edges": {
+            "('flow', 'contain', 'packet')": {
+              "edge_index": [
+                2,
+                2
+              ],
+              "edge_attr": [
+                2,
+                4
+              ]
+            },
+            "('packet', 'link', 'packet')": {
+              "edge_index": [
+                2,
+                2
+              ],
+              "edge_attr": [
+                2
+              ]
+            },
+            "('packet', 'rev_contain', 'flow')": {
+              "edge_index": [
+                2,
+                2
+              ],
+              "edge_attr": [
+                2,
+                4
+              ]
+            }
+          },
+          "link_topology": {
+            "edges": 2,
+            "unique_edges_with_reverse": 2,
+            "max_in_degree": 1
+          },
+          "edge_contract": "passed"
+        }
+      ]
+    },
+    {
+      "path": "/home/nzxn/下载/WX/load/XG-NID/data/processed/CICIoT2023_processed/processed/data_100014.pt",
+      "sha256": "2c8abb4037d89aca64adfaf0027b6c0a21ae7c12e43582ffc10b9f6e87e9a47d",
+      "graph_count": 1,
+      "sample_only": true,
+      "checked_graphs": [
+        {
+          "index": 0,
+          "nodes": {
+            "flow": [
+              1,
+              82
+            ],
+            "packet": [
+              2,
+              1500
+            ]
+          },
+          "edges": {
+            "('flow', 'contain', 'packet')": {
+              "edge_index": [
+                2,
+                2
+              ],
+              "edge_attr": [
+                2,
+                4
+              ]
+            },
+            "('packet', 'link', 'packet')": {
+              "edge_index": [
+                2,
+                2
+              ],
+              "edge_attr": [
+                2
+              ]
+            },
+            "('packet', 'rev_contain', 'flow')": {
+              "edge_index": [
+                2,
+                2
+              ],
+              "edge_attr": [
+                2,
+                4
+              ]
+            }
+          },
+          "link_topology": {
+            "edges": 2,
+            "unique_edges_with_reverse": 2,
+            "max_in_degree": 1
+          },
+          "edge_contract": "passed"
+        }
+      ]
+    },
+    {
+      "path": "/home/nzxn/下载/WX/load/XG-NID/data/processed/CICIoT2023_processed/processed/data_100015.pt",
+      "sha256": "607b6b33e504d83d9cac3fdffc15d0ae7826cef706b0a783bac9624ab36a4459",
+      "graph_count": 1,
+      "sample_only": true,
+      "checked_graphs": [
+        {
+          "index": 0,
+          "nodes": {
+            "flow": [
+              1,
+              82
+            ],
+            "packet": [
+              2,
+              1500
+            ]
+          },
+          "edges": {
+            "('flow', 'contain', 'packet')": {
+              "edge_index": [
+                2,
+                2
+              ],
+              "edge_attr": [
+                2,
+                4
+              ]
+            },
+            "('packet', 'link', 'packet')": {
+              "edge_index": [
+                2,
+                2
+              ],
+              "edge_attr": [
+                2
+              ]
+            },
+            "('packet', 'rev_contain', 'flow')": {
+              "edge_index": [
+                2,
+                2
+              ],
+              "edge_attr": [
+                2,
+                4
+              ]
+            }
+          },
+          "link_topology": {
+            "edges": 2,
+            "unique_edges_with_reverse": 2,
+            "max_in_degree": 1
+          },
+          "edge_contract": "passed"
+        }
+      ]
+    },
+    {
+      "path": "/home/nzxn/下载/WX/load/XG-NID/data/processed/CICIoT2023_processed/processed/data_100016.pt",
+      "sha256": "ef1eb2104a24e1f07d214a0c550fb578f9eb97f7eaac8bcb8909060ad3f8f9db",
+      "graph_count": 1,
+      "sample_only": true,
+      "checked_graphs": [
+        {
+          "index": 0,
+          "nodes": {
+            "flow": [
+              1,
+              82
+            ],
+            "packet": [
+              2,
+              1500
+            ]
+          },
+          "edges": {
+            "('flow', 'contain', 'packet')": {
+              "edge_index": [
+                2,
+                2
+              ],
+              "edge_attr": [
+                2,
+                4
+              ]
+            },
+            "('packet', 'link', 'packet')": {
+              "edge_index": [
+                2,
+                2
+              ],
+              "edge_attr": [
+                2
+              ]
+            },
+            "('packet', 'rev_contain', 'flow')": {
+              "edge_index": [
+                2,
+                2
+              ],
+              "edge_attr": [
+                2,
+                4
+              ]
+            }
+          },
+          "link_topology": {
+            "edges": 2,
+            "unique_edges_with_reverse": 2,
+            "max_in_degree": 1
+          },
+          "edge_contract": "passed"
+        }
+      ]
+    },
+    {
+      "path": "/home/nzxn/下载/WX/load/XG-NID/data/processed/CICIoT2023_processed/processed/data_100017.pt",
+      "sha256": "1ee267399200177f298c3a9affcb54e078b39ef02b949c8b2f0610c680c49e40",
+      "graph_count": 1,
+      "sample_only": true,
+      "checked_graphs": [
+        {
+          "index": 0,
+          "nodes": {
+            "flow": [
+              1,
+              82
+            ],
+            "packet": [
+              10,
+              1500
+            ]
+          },
+          "edges": {
+            "('flow', 'contain', 'packet')": {
+              "edge_index": [
+                2,
+                10
+              ],
+              "edge_attr": [
+                10,
+                4
+              ]
+            },
+            "('packet', 'link', 'packet')": {
+              "edge_index": [
+                2,
+                18
+              ],
+              "edge_attr": [
+                18
+              ]
+            },
+            "('packet', 'rev_contain', 'flow')": {
+              "edge_index": [
+                2,
+                10
+              ],
+              "edge_attr": [
+                10,
+                4
+              ]
+            }
+          },
+          "link_topology": {
+            "edges": 18,
+            "unique_edges_with_reverse": 18,
+            "max_in_degree": 2
+          },
+          "edge_contract": "passed"
+        }
+      ]
+    },
+    {
+      "path": "/home/nzxn/下载/WX/load/XG-NID/data/processed/CICIoT2023_processed/processed/data_100018.pt",
+      "sha256": "aa37406d1475740af02e89b5c4f054f5a9d34c49266a7fa88b2d82a4fe3430c1",
+      "graph_count": 1,
+      "sample_only": true,
+      "checked_graphs": [
+        {
+          "index": 0,
+          "nodes": {
+            "flow": [
+              1,
+              82
+            ],
+            "packet": [
+              2,
+              1500
+            ]
+          },
+          "edges": {
+            "('flow', 'contain', 'packet')": {
+              "edge_index": [
+                2,
+                2
+              ],
+              "edge_attr": [
+                2,
+                4
+              ]
+            },
+            "('packet', 'link', 'packet')": {
+              "edge_index": [
+                2,
+                2
+              ],
+              "edge_attr": [
+                2
+              ]
+            },
+            "('packet', 'rev_contain', 'flow')": {
+              "edge_index": [
+                2,
+                2
+              ],
+              "edge_attr": [
+                2,
+                4
+              ]
+            }
+          },
+          "link_topology": {
+            "edges": 2,
+            "unique_edges_with_reverse": 2,
+            "max_in_degree": 1
+          },
+          "edge_contract": "passed"
+        }
+      ]
+    },
+    {
+      "path": "/home/nzxn/下载/WX/load/XG-NID/data/processed/CICIoT2023_processed/processed/data_100019.pt",
+      "sha256": "0546b1deae9a71f12ad79959e55041618aefb7bd376ff8ad15b2b89b2e89d8d6",
+      "graph_count": 1,
+      "sample_only": true,
+      "checked_graphs": [
+        {
+          "index": 0,
+          "nodes": {
+            "flow": [
+              1,
+              82
+            ],
+            "packet": [
+              2,
+              1500
+            ]
+          },
+          "edges": {
+            "('flow', 'contain', 'packet')": {
+              "edge_index": [
+                2,
+                2
+              ],
+              "edge_attr": [
+                2,
+                4
+              ]
+            },
+            "('packet', 'link', 'packet')": {
+              "edge_index": [
+                2,
+                2
+              ],
+              "edge_attr": [
+                2
+              ]
+            },
+            "('packet', 'rev_contain', 'flow')": {
+              "edge_index": [
+                2,
+                2
+              ],
+              "edge_attr": [
+                2,
+                4
+              ]
+            }
+          },
+          "link_topology": {
+            "edges": 2,
+            "unique_edges_with_reverse": 2,
+            "max_in_degree": 1
+          },
+          "edge_contract": "passed"
+        }
+      ]
+    },
+    {
+      "path": "/home/nzxn/下载/WX/load/XG-NID/data/processed/CICIoT2023_processed/processed/data_10002.pt",
+      "sha256": "d83bc088e680cbdd5498bc849c5a4b64b29f5152c2fdc75b24137b65596974c3",
+      "graph_count": 1,
+      "sample_only": true,
+      "checked_graphs": [
+        {
+          "index": 0,
+          "nodes": {
+            "flow": [
+              1,
+              82
+            ],
+            "packet": [
+              1,
+              1500
+            ]
+          },
+          "edges": {
+            "('flow', 'contain', 'packet')": {
+              "edge_index": [
+                2,
+                1
+              ],
+              "edge_attr": [
+                1,
+                4
+              ]
+            },
+            "('packet', 'link', 'packet')": {
+              "edge_index": [
+                2,
+                0
+              ],
+              "edge_attr": [
+                0
+              ]
+            },
+            "('packet', 'rev_contain', 'flow')": {
+              "edge_index": [
+                2,
+                1
+              ],
+              "edge_attr": [
+                1,
+                4
+              ]
+            }
+          },
+          "link_topology": {
+            "edges": 0,
+            "unique_edges_with_reverse": 0,
+            "max_in_degree": 0
+          },
+          "edge_contract": "passed"
+        }
+      ]
+    },
+    {
+      "path": "/home/nzxn/下载/WX/load/XG-NID/data/processed/CICIoT2023_processed/processed/data_100020.pt",
+      "sha256": "76f4803d073f7d395284d68becf8079ec2c48e608177cdc6503265541a6f6d07",
+      "graph_count": 1,
+      "sample_only": true,
+      "checked_graphs": [
+        {
+          "index": 0,
+          "nodes": {
+            "flow": [
+              1,
+              82
+            ],
+            "packet": [
+              2,
+              1500
+            ]
+          },
+          "edges": {
+            "('flow', 'contain', 'packet')": {
+              "edge_index": [
+                2,
+                2
+              ],
+              "edge_attr": [
+                2,
+                4
+              ]
+            },
+            "('packet', 'link', 'packet')": {
+              "edge_index": [
+                2,
+                2
+              ],
+              "edge_attr": [
+                2
+              ]
+            },
+            "('packet', 'rev_contain', 'flow')": {
+              "edge_index": [
+                2,
+                2
+              ],
+              "edge_attr": [
+                2,
+                4
+              ]
+            }
+          },
+          "link_topology": {
+            "edges": 2,
+            "unique_edges_with_reverse": 2,
+            "max_in_degree": 1
+          },
+          "edge_contract": "passed"
+        }
+      ]
+    },
+    {
+      "path": "/home/nzxn/下载/WX/load/XG-NID/data/processed/CICIoT2023_processed/processed/data_100021.pt",
+      "sha256": "ae15004b6dbeef940f145fb36a12b5cae85458f45e75b1b2794b9c6fb3d98282",
+      "graph_count": 1,
+      "sample_only": true,
+      "checked_graphs": [
+        {
+          "index": 0,
+          "nodes": {
+            "flow": [
+              1,
+              82
+            ],
+            "packet": [
+              2,
+              1500
+            ]
+          },
+          "edges": {
+            "('flow', 'contain', 'packet')": {
+              "edge_index": [
+                2,
+                2
+              ],
+              "edge_attr": [
+                2,
+                4
+              ]
+            },
+            "('packet', 'link', 'packet')": {
+              "edge_index": [
+                2,
+                2
+              ],
+              "edge_attr": [
+                2
+              ]
+            },
+            "('packet', 'rev_contain', 'flow')": {
+              "edge_index": [
+                2,
+                2
+              ],
+              "edge_attr": [
+                2,
+                4
+              ]
+            }
+          },
+          "link_topology": {
+            "edges": 2,
+            "unique_edges_with_reverse": 2,
+            "max_in_degree": 1
+          },
+          "edge_contract": "passed"
+        }
+      ]
+    },
+    {
+      "path": "/home/nzxn/下载/WX/load/XG-NID/data/processed/CICIoT2023_processed/processed/data_100022.pt",
+      "sha256": "670fc5638bd11679fcf8b3f77d3145694b1f4f0779fc9d4781683bd368035b1a",
+      "graph_count": 1,
+      "sample_only": true,
+      "checked_graphs": [
+        {
+          "index": 0,
+          "nodes": {
+            "flow": [
+              1,
+              82
+            ],
+            "packet": [
+              2,
+              1500
+            ]
+          },
+          "edges": {
+            "('flow', 'contain', 'packet')": {
+              "edge_index": [
+                2,
+                2
+              ],
+              "edge_attr": [
+                2,
+                4
+              ]
+            },
+            "('packet', 'link', 'packet')": {
+              "edge_index": [
+                2,
+                2
+              ],
+              "edge_attr": [
+                2
+              ]
+            },
+            "('packet', 'rev_contain', 'flow')": {
+              "edge_index": [
+                2,
+                2
+              ],
+              "edge_attr": [
+                2,
+                4
+              ]
+            }
+          },
+          "link_topology": {
+            "edges": 2,
+            "unique_edges_with_reverse": 2,
+            "max_in_degree": 1
+          },
+          "edge_contract": "passed"
+        }
+      ]
+    },
+    {
+      "path": "/home/nzxn/下载/WX/load/XG-NID/data/processed/CICIoT2023_processed/processed/data_100023.pt",
+      "sha256": "58a9e2330e941362ca8a51da562c1cce2b6a2013c0357ea136c349093aaacb62",
+      "graph_count": 1,
+      "sample_only": true,
+      "checked_graphs": [
+        {
+          "index": 0,
+          "nodes": {
+            "flow": [
+              1,
+              82
+            ],
+            "packet": [
+              2,
+              1500
+            ]
+          },
+          "edges": {
+            "('flow', 'contain', 'packet')": {
+              "edge_index": [
+                2,
+                2
+              ],
+              "edge_attr": [
+                2,
+                4
+              ]
+            },
+            "('packet', 'link', 'packet')": {
+              "edge_index": [
+                2,
+                2
+              ],
+              "edge_attr": [
+                2
+              ]
+            },
+            "('packet', 'rev_contain', 'flow')": {
+              "edge_index": [
+                2,
+                2
+              ],
+              "edge_attr": [
+                2,
+                4
+              ]
+            }
+          },
+          "link_topology": {
+            "edges": 2,
+            "unique_edges_with_reverse": 2,
+            "max_in_degree": 1
+          },
+          "edge_contract": "passed"
+        }
+      ]
+    }
+  ],
+  "exit_code": 0
+}

@@ -1,0 +1,30 @@
+/home/nzxn/miniconda3/envs/wx/lib/python3.9/site-packages/torch_geometric/typing.py:99: UserWarning: An issue occurred while importing 'torch-spline-conv'. Disabling its usage. Stacktrace: /home/nzxn/miniconda3/envs/wx/lib/python3.9/site-packages/torch_spline_conv/_version_cuda.so: undefined symbol: _ZN3c1017RegisterOperatorsD1Ev
+  warnings.warn(
+/home/nzxn/miniconda3/envs/wx/lib/python3.9/site-packages/torch/cuda/__init__.py:619: UserWarning: Can't initialize NVML
+  warnings.warn("Can't initialize NVML")
+epoch=1 batches=100/2500
+epoch=1 batches=200/2500
+epoch=1 batches=300/2500
+epoch=1 batches=400/2500
+epoch=1 batches=500/2500
+epoch=1 batches=600/2500
+epoch=1 batches=700/2500
+epoch=1 batches=800/2500
+epoch=1 batches=900/2500
+epoch=1 batches=1000/2500
+epoch=1 batches=1100/2500
+epoch=1 batches=1200/2500
+epoch=1 batches=1300/2500
+epoch=1 batches=1400/2500
+epoch=1 batches=1500/2500
+epoch=1 batches=1600/2500
+epoch=1 batches=1700/2500
+epoch=1 batches=1800/2500
+epoch=1 batches=1900/2500
+epoch=1 batches=2000/2500
+epoch=1 batches=2100/2500
+epoch=1 batches=2200/2500
+epoch=1 batches=2300/2500
+epoch=1 batches=2400/2500
+epoch=1 batches=2500/2500
+Terminated

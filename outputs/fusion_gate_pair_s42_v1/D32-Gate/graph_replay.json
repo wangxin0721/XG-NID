@@ -1,0 +1,8 @@
+{
+  "samples": 13446,
+  "max_abs_raw_cached_error": 1.52587890625e-05,
+  "strict_state_load": true,
+  "confusion_matrix_reproduced": true,
+  "frozen_encoder_unchanged": true,
+  "wall_seconds": 30.79288884892594
+}

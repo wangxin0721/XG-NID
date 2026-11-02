@@ -1,0 +1,7 @@
+{
+  "flow_encoder.": 19.9574895212439,
+  "packet_encoder.": 22.594785679285927,
+  "flow_classifier.": 0.9495922662317753,
+  "packet_classifier.": 1.303502295166254,
+  "shared_head.": 3.171519299969077
+}

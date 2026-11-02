@@ -1,0 +1,8 @@
+{
+  "samples": 13446,
+  "strict_state_load": true,
+  "raw_graphs_only": true,
+  "confusion_matrix_reproduced": true,
+  "encoder_BN_buffers_unchanged": true,
+  "wall_seconds": 32.85209610208403
+}

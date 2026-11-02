@@ -1,0 +1,128 @@
+{
+  "train": {
+    "sha256": "bbadf7499506f7d5968ffc9061bf4e58445c2c7a67ae85dfb3620a22491bf42c",
+    "tensor_sha256": "24c911e48f4c5d647de9a20dd53a55a450bc548737190f4eb2b629c8934dc82b",
+    "metadata": {
+      "schema": "xgnid.packet-node64-cache.v1",
+      "partition": "train",
+      "encoder_sha256": "923217d8026a56f1ffc7fb7bbda8e910aa6a97d51cd18a006412c8766df57033",
+      "split_binding": {
+        "config_sha256": "a53576c80e548ca143e566cf88cb190636ee7a6cfd4d2e89ad8b6bfd0363367a",
+        "registry_sha256": "ebbb7da8ed6b20e94023cba7983a418f1ebc9be1988add6fa2ff0be079e16a62",
+        "checkpoint_sha256": "1709ed1a19b8a2e20b9b1ef3dac6cc6a5906fd93937e8d18a51cc64f85c44b08",
+        "sources": {
+          "scripts/train_grouped.py": "06a493b18faa97b4e1f2b99b6aae38c67ad3c5f39b130f112079c9393432f5d1",
+          "scripts/grouped_graphs.py": "c1b1273d62fc44d91f7c9b300b66a083c1f80ef2c9c4314a62c4bbd5d708bbb4",
+          "scripts/smoke_grouped_gpu.py": "7bce1218e1b55a812855d50c70973fe300da97ad7e9b4005a52deac77d8b1517",
+          "scripts/audit_graph_split.py": "c19164930e8ecb75636cf16d6fa9bb51d6f29e1384e8d8ebf040e683536ffcb6",
+          "scripts/build_grouped_split.py": "24e07766189aec9d03f6161dee15587612a5b2f13e23eab67d7ba4aaf89a3401",
+          "src/xgnid/__init__.py": "2515233a0cdac6c5447c9dbd6b0d54c89284f191d8cb41473d89b347ee296ae7",
+          "src/xgnid/model.py": "28e21e94118db0a4110d17923d2840e18959669d798f628018c98c91c0202631",
+          "src/xgnid/edge_experiments.py": "3e6305d83c06c7ce32e901a2aba9d9d26baa1f2b394af14997b0e359929b4da5",
+          "third_party/GNN4ID/Utility/Model.py": "e17c3905e3c9f437c269bdd0e4d115656cfba6054b6a4474bbd06b5453010688"
+        },
+        "split_id": "a8ae9c934eec9fee970cc725e60051d0c709e0f16c7dda14749350ff2006975a",
+        "manifest_sha256": "b8e9b0810471d0c2b52033488fab640625c3731315afd5d2add1571bd2518827",
+        "entry_sha256": "8202a33d97949b72c9779e5b72fdcad8655bb58550060f29dabcd305e848b48f",
+        "wrappers": {
+          "N0": "e19cb329c5495480f6a85824a5a70e3f6158f8ff2878178d46875eb8111b5351",
+          "N1": "9e5fe4f502111b67d03222664bb16026937a23e6b85537bfc8d3df4b70d8422e"
+        },
+        "helper_sha256": "94b8e537798cca3af76b260f0bca6c9cfaffb75cff404bb6a4f423017445738f"
+      },
+      "sample_order_sha256": "e55904a2bf640d68a278dfb571a296f0c9d0b7b4b8ae0e0ef179a9e3c8ea629a",
+      "samples": 107621
+    },
+    "wall_seconds": 337.282319938,
+    "graph_load_stage": {
+      "phase": "extract_train",
+      "partition": "train",
+      "verified_samples": 107621,
+      "workers": 2
+    },
+    "memory_estimate": {
+      "graph_samples": 107621,
+      "packet_nodes": 1170720,
+      "flow64_bytes": 27550976,
+      "packet64_bytes": 299704320,
+      "labels_bytes": 860968,
+      "ptr_bytes": 860976,
+      "retained_cache_tensor_bytes": 0,
+      "final_cache_tensor_bytes": 328977240,
+      "concat_additional_allocation_bytes": 329838216,
+      "estimated_cache_tensor_peak_bytes": 657954480,
+      "host_MemAvailable_bytes_before_concat": 25168109568,
+      "additional_allocation_fits_host_available": true,
+      "excludes": [
+        "Python objects and lists",
+        "source graphs and worker prefetch",
+        "model and batch tensors",
+        "allocator and serialization/hash buffers"
+      ],
+      "scope": "cache tensor storage at concatenation; not whole-process peak RSS"
+    }
+  },
+  "val": {
+    "sha256": "fc70d58c519ef31eb5cc524c4914814f7e959f1f79664e5e478a99c7db5a40ab",
+    "tensor_sha256": "3a28cc51ef52911d951ac01da3a47caaa825f906d2829dc6e8bff2bd1a5aeb96",
+    "metadata": {
+      "schema": "xgnid.packet-node64-cache.v1",
+      "partition": "val",
+      "encoder_sha256": "923217d8026a56f1ffc7fb7bbda8e910aa6a97d51cd18a006412c8766df57033",
+      "split_binding": {
+        "config_sha256": "a53576c80e548ca143e566cf88cb190636ee7a6cfd4d2e89ad8b6bfd0363367a",
+        "registry_sha256": "ebbb7da8ed6b20e94023cba7983a418f1ebc9be1988add6fa2ff0be079e16a62",
+        "checkpoint_sha256": "1709ed1a19b8a2e20b9b1ef3dac6cc6a5906fd93937e8d18a51cc64f85c44b08",
+        "sources": {
+          "scripts/train_grouped.py": "06a493b18faa97b4e1f2b99b6aae38c67ad3c5f39b130f112079c9393432f5d1",
+          "scripts/grouped_graphs.py": "c1b1273d62fc44d91f7c9b300b66a083c1f80ef2c9c4314a62c4bbd5d708bbb4",
+          "scripts/smoke_grouped_gpu.py": "7bce1218e1b55a812855d50c70973fe300da97ad7e9b4005a52deac77d8b1517",
+          "scripts/audit_graph_split.py": "c19164930e8ecb75636cf16d6fa9bb51d6f29e1384e8d8ebf040e683536ffcb6",
+          "scripts/build_grouped_split.py": "24e07766189aec9d03f6161dee15587612a5b2f13e23eab67d7ba4aaf89a3401",
+          "src/xgnid/__init__.py": "2515233a0cdac6c5447c9dbd6b0d54c89284f191d8cb41473d89b347ee296ae7",
+          "src/xgnid/model.py": "28e21e94118db0a4110d17923d2840e18959669d798f628018c98c91c0202631",
+          "src/xgnid/edge_experiments.py": "3e6305d83c06c7ce32e901a2aba9d9d26baa1f2b394af14997b0e359929b4da5",
+          "third_party/GNN4ID/Utility/Model.py": "e17c3905e3c9f437c269bdd0e4d115656cfba6054b6a4474bbd06b5453010688"
+        },
+        "split_id": "a8ae9c934eec9fee970cc725e60051d0c709e0f16c7dda14749350ff2006975a",
+        "manifest_sha256": "b8e9b0810471d0c2b52033488fab640625c3731315afd5d2add1571bd2518827",
+        "entry_sha256": "8202a33d97949b72c9779e5b72fdcad8655bb58550060f29dabcd305e848b48f",
+        "wrappers": {
+          "N0": "e19cb329c5495480f6a85824a5a70e3f6158f8ff2878178d46875eb8111b5351",
+          "N1": "9e5fe4f502111b67d03222664bb16026937a23e6b85537bfc8d3df4b70d8422e"
+        },
+        "helper_sha256": "94b8e537798cca3af76b260f0bca6c9cfaffb75cff404bb6a4f423017445738f"
+      },
+      "sample_order_sha256": "efb5f9d81137f974a1bb244783831533bbab4b78f6d62bea511ebbd61e9b8c01",
+      "samples": 13446
+    },
+    "wall_seconds": 35.392516634,
+    "graph_load_stage": {
+      "phase": "extract_val",
+      "partition": "val",
+      "verified_samples": 13446,
+      "workers": 2
+    },
+    "memory_estimate": {
+      "graph_samples": 13446,
+      "packet_nodes": 147485,
+      "flow64_bytes": 3442176,
+      "packet64_bytes": 37756160,
+      "labels_bytes": 107568,
+      "ptr_bytes": 107576,
+      "retained_cache_tensor_bytes": 328977240,
+      "final_cache_tensor_bytes": 41413480,
+      "concat_additional_allocation_bytes": 41521056,
+      "estimated_cache_tensor_peak_bytes": 411804200,
+      "host_MemAvailable_bytes_before_concat": 24793825280,
+      "additional_allocation_fits_host_available": true,
+      "excludes": [
+        "Python objects and lists",
+        "source graphs and worker prefetch",
+        "model and batch tensors",
+        "allocator and serialization/hash buffers"
+      ],
+      "scope": "cache tensor storage at concatenation; not whole-process peak RSS"
+    }
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "status": "completed",
+  "variants": {
+    "F1": {
+      "initial_fusion_sha256": "b0913d6066c9a8b4ed2ae5d09ecef496689478349b7e7c2cb78a6d495475c4b2",
+      "updates": [
+        {
+          "head_input_gradient_l1": 0.23243600130081177,
+          "fusion_gradients_l1": {
+            "logit": 0.0314246267080307
+          },
+          "parameters_changed": true
+        },
+        {
+          "head_input_gradient_l1": 0.22614748775959015,
+          "fusion_gradients_l1": {
+            "logit": 0.004021152853965759
+          },
+          "parameters_changed": true
+        },
+        {
+          "head_input_gradient_l1": 0.23468442261219025,
+          "fusion_gradients_l1": {
+            "logit": 0.02884349785745144
+          },
+          "parameters_changed": true
+        }
+      ],
+      "probe_discarded": true
+    },
+    "F2": {
+      "initial_fusion_sha256": "c72ac5ab65489ec25f2b98662ed8282f1391ab58bfd878149c6954e60d90f070",
+      "updates": [
+        {
+          "head_input_gradient_l1": 0.23243600130081177,
+          "fusion_gradients_l1": {
+            "0.weight": 0.0,
+            "0.bias": 0.0,
+            "2.weight": 0.6722171306610107,
+            "2.bias": 0.0628492534160614
+          },
+          "parameters_changed": true
+        },
+        {
+          "head_input_gradient_l1": 0.23172177374362946,
+          "fusion_gradients_l1": {
+            "0.weight": 0.01956227980554104,
+            "0.bias": 0.00022111849102657288,
+            "2.weight": 0.29127198457717896,
+            "2.bias": 0.009681982919573784
+          },
+          "parameters_changed": true
+        },
+        {
+          "head_input_gradient_l1": 0.22814789414405823,
+          "fusion_gradients_l1": {
+            "0.weight": 0.018734434619545937,
+            "0.bias": 0.0005992033984512091,
+            "2.weight": 0.4068586826324463,
+            "2.bias": 0.04331251233816147
+          },
+          "parameters_changed": true
+        }
+      ],
+      "probe_discarded": true
+    }
+  },
+  "frozen_state_unchanged": true
+}

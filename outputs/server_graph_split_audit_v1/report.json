@@ -1,0 +1,149 @@
+{
+  "status": "completed",
+  "exit_code": 0,
+  "data_root": "/home/nzxn/下载/WX/load/XG-NID/data/processed/CICIoT2023_processed/processed",
+  "split_path": "/home/nzxn/下载/WX/load/XG-NID/outputs/baselines/GNN4ID_paper_align/split.json",
+  "split_sha256": "ad26f00f97894251c716791e7d4cd469b0bd85bfc5682c113aab1185c5a69a4e",
+  "script_sha256": "3abf99449a4eeab0da7e4f605ebdf377554fbc8f8586871d3eac8a27e398e2c8",
+  "torch": "2.3.1+cu118",
+  "ordering": "sorted recursive *.pt, graph order within each container; unsupported containers skipped",
+  "historical_order_verified": false,
+  "limitation": "Matching counts/labels is necessary but cannot prove historical graph ordering; require original manifest/code provenance. Exact input hashes cannot establish flow independence.",
+  "definitions": {
+    "edge_hash": "node features + topology + edge attributes; excludes label/graph_index/sample_id",
+    "node_hash": "node features + topology; excludes edge attributes and label",
+    "equality": "exact tensor dtype/shape/bytes; no normalization or isomorphism matching"
+  },
+  "graph_count": 185557,
+  "split_label_counts": {
+    "train": {
+      "0": 18000,
+      "3": 18000,
+      "2": 18000,
+      "1": 18000,
+      "7": 18000,
+      "6": 18000,
+      "5": 18000,
+      "4": 18000
+    },
+    "val": {
+      "3": 2000,
+      "0": 2000,
+      "2": 2000,
+      "1": 2000,
+      "7": 2000,
+      "6": 2000,
+      "5": 2000,
+      "4": 2000
+    },
+    "test": {
+      "0": 4000,
+      "3": 4000,
+      "2": 4000,
+      "1": 1090,
+      "7": 467,
+      "6": 4000,
+      "5": 4000,
+      "4": 4000
+    },
+    "unassigned": {}
+  },
+  "metadata_checks": {
+    "total_matches_record": true,
+    "all_indices_in_range": true,
+    "complete_partition": true,
+    "label_counts_match_record": true
+  },
+  "input_shapes": {
+    "flow.x width=82 dtype=torch.float32": 185557,
+    "packet.x width=1500 dtype=torch.float32": 185557,
+    "empty ('packet', 'link', 'packet') attr_shape=(0,)": 36433
+  },
+  "graph_issues": {
+    "invalid attributes ('packet', 'link', 'packet')": 149124
+  },
+  "skipped_files": [
+    {
+      "path": "pre_filter.pt",
+      "reason": "Unsupported graph container: str"
+    },
+    {
+      "path": "pre_transform.pt",
+      "reason": "Unsupported graph container: str"
+    }
+  ],
+  "overlap_under_current_order": {
+    "edge_hash": {
+      "train/val": {
+        "shared_input_groups": 3869,
+        "left_affected_samples": 25215,
+        "right_affected_samples": 5564
+      },
+      "train/test": {
+        "shared_input_groups": 2979,
+        "left_affected_samples": 17326,
+        "right_affected_samples": 4775
+      },
+      "val/test": {
+        "shared_input_groups": 1149,
+        "left_affected_samples": 1987,
+        "right_affected_samples": 2472
+      },
+      "within_split": {
+        "train": {
+          "samples": 144000,
+          "unique_inputs": 103413,
+          "duplicate_rows": 40587
+        },
+        "val": {
+          "samples": 16000,
+          "unique_inputs": 14292,
+          "duplicate_rows": 1708
+        },
+        "test": {
+          "samples": 25557,
+          "unique_inputs": 23706,
+          "duplicate_rows": 1851
+        }
+      },
+      "conflicting_label_group_examples": []
+    },
+    "node_hash": {
+      "train/val": {
+        "shared_input_groups": 3875,
+        "left_affected_samples": 25225,
+        "right_affected_samples": 5570
+      },
+      "train/test": {
+        "shared_input_groups": 2986,
+        "left_affected_samples": 17333,
+        "right_affected_samples": 4783
+      },
+      "val/test": {
+        "shared_input_groups": 1149,
+        "left_affected_samples": 1987,
+        "right_affected_samples": 2472
+      },
+      "within_split": {
+        "train": {
+          "samples": 144000,
+          "unique_inputs": 103377,
+          "duplicate_rows": 40623
+        },
+        "val": {
+          "samples": 16000,
+          "unique_inputs": 14291,
+          "duplicate_rows": 1709
+        },
+        "test": {
+          "samples": 25557,
+          "unique_inputs": 23704,
+          "duplicate_rows": 1853
+        }
+      },
+      "conflicting_label_group_examples": []
+    }
+  },
+  "manifest_sha256": "c1c85bda9d36f0379b75dc0089851daaa954df2f958fd8d18a0426aef178d900",
+  "elapsed_seconds": 836.7583562550135
+}

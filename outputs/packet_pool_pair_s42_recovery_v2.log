@@ -1,0 +1,209 @@
+/home/nzxn/miniconda3/envs/wx/lib/python3.9/site-packages/torch_geometric/typing.py:99: UserWarning: An issue occurred while importing 'torch-spline-conv'. Disabling its usage. Stacktrace: /home/nzxn/miniconda3/envs/wx/lib/python3.9/site-packages/torch_spline_conv/_version_cuda.so: undefined symbol: _ZN3c1017RegisterOperatorsD1Ev
+  warnings.warn(
+{"status": "running", "phase": "copy_and_validate_prepared_packet_nodes", "pid": 206045, "partition": "train"}
+{"status": "running", "phase": "copy_and_validate_prepared_packet_nodes", "pid": 206045, "partition": "val"}
+{"phase": "initialization_comparison", "samples": 13446, "atol": 1e-06, "rtol": 1e-06, "new_failed_batches": 0, "legacy_failed_batches": 11, "new_prediction_mismatches": 0, "legacy_prediction_mismatches": 0, "max_abs_new_vs_P0_log_probability_error": 0.0, "max_abs_legacy_vs_P0_log_probability_error": 2.288818359375e-05, "max_abs_new_vs_mean_packet_error": 0.0, "max_abs_legacy_vs_mean_packet_error": 2.384185791015625e-06, "first_new_mismatch_ids": [], "first_legacy_mismatch_ids": [], "max_abs_new_vs_P0_gate_error": 0.0, "max_abs_legacy_vs_P0_gate_error": 8.344650268554688e-07, "max_abs_legacy_mean_repeat_error": 9.5367431640625e-07, "max_abs_beta_minus_uniform": 0.0, "ordered_mean_repeat_mismatches": 0, "explanation": "Paired readouts use ordered segment reductions. Legacy scatter reduction and its independent repeat noise are diagnostics only."}
+{"status": "running", "phase": "raw_validation_replay", "pid": 206045, "pooling": "mean", "samples": 16}
+{"status": "running", "phase": "raw_validation_replay", "pid": 206045, "pooling": "mean", "samples": 3200}
+{"status": "running", "phase": "raw_validation_replay", "pid": 206045, "pooling": "mean", "samples": 6400}
+{"status": "running", "phase": "raw_validation_replay", "pid": 206045, "pooling": "mean", "samples": 9600}
+{"status": "running", "phase": "raw_validation_replay", "pid": 206045, "pooling": "mean", "samples": 12800}
+{"status": "running", "phase": "raw_validation_replay", "pid": 206045, "pooling": "attention", "samples": 16}
+{"status": "running", "phase": "raw_validation_replay", "pid": 206045, "pooling": "attention", "samples": 3200}
+{"status": "running", "phase": "raw_validation_replay", "pid": 206045, "pooling": "attention", "samples": 6400}
+{"status": "running", "phase": "raw_validation_replay", "pid": 206045, "pooling": "attention", "samples": 9600}
+{"status": "running", "phase": "raw_validation_replay", "pid": 206045, "pooling": "attention", "samples": 12800}
+{"status": "running", "phase": "raw_training_gradient_probe", "pid": 206045, "variant": "P0"}
+{"status": "running", "phase": "raw_training_gradient_probe", "pid": 206045, "variant": "P1"}
+{"status": "running", "phase": "training", "pid": 206045, "variant": "P0", "epoch": 1, "train_nll": 0.0240813092757928, "val_macro_f1": 0.9715447651287945, "train_order_sha256": "158f1b7e3dedc2c8b265252f9e23e6a6b37e9629dac203c4a27bf8f1f8408079", "optimizer_updates": 211, "best_epoch": 0, "stale_epochs": 1}
+{"status": "running", "phase": "training", "pid": 206045, "variant": "P0", "epoch": 2, "train_nll": 0.02375902346871026, "val_macro_f1": 0.9717156104423824, "train_order_sha256": "16e4198ee3915b7807cb8fffd9c85d4e580e3b92aacab4bc01b4218e93fe28a6", "optimizer_updates": 211, "best_epoch": 0, "stale_epochs": 2}
+{"status": "running", "phase": "training", "pid": 206045, "variant": "P0", "epoch": 3, "train_nll": 0.02361391055357718, "val_macro_f1": 0.97202654452443, "train_order_sha256": "e0328504ac2f06e5b237aa2baf15eabf9f1c424e4ed31e92ba0d1a2209d6fda9", "optimizer_updates": 211, "best_epoch": 0, "stale_epochs": 3}
+{"status": "running", "phase": "training", "pid": 206045, "variant": "P0", "epoch": 4, "train_nll": 0.023537943135310803, "val_macro_f1": 0.9721568599597672, "train_order_sha256": "ab527e0e38e51ec98a0d214088053ae16a909911dc7d49f83c4022dcd388260e", "optimizer_updates": 211, "best_epoch": 0, "stale_epochs": 4}
+{"status": "running", "phase": "training", "pid": 206045, "variant": "P0", "epoch": 5, "train_nll": 0.023487960606213346, "val_macro_f1": 0.9715464421954992, "train_order_sha256": "4683bde992d3fd293488e09fe685a782c20055ab37c51f103f7befd9f8423eea", "optimizer_updates": 211, "best_epoch": 0, "stale_epochs": 5}
+{"status": "running", "phase": "training", "pid": 206045, "variant": "P0", "epoch": 6, "train_nll": 0.023438943500673073, "val_macro_f1": 0.9719918175571117, "train_order_sha256": "af55a9897e786dda7df9c53c7d95239057afe227e720ce2fd924cd99537c453a", "optimizer_updates": 211, "best_epoch": 0, "stale_epochs": 6}
+{"status": "running", "phase": "training", "pid": 206045, "variant": "P0", "epoch": 7, "train_nll": 0.0233997832516907, "val_macro_f1": 0.9721443341094637, "train_order_sha256": "ecd018e838d3126088e935f4d6e19a2cccb306c50cd59516fbf1891323dddab3", "optimizer_updates": 211, "best_epoch": 0, "stale_epochs": 7}
+{"status": "running", "phase": "training", "pid": 206045, "variant": "P0", "epoch": 8, "train_nll": 0.023372046520628013, "val_macro_f1": 0.9725378030203531, "train_order_sha256": "6849214586e3e22d882308aed02f4c3d1d3bd5df367774220d1875d7ae72ff20", "optimizer_updates": 211, "best_epoch": 0, "stale_epochs": 8}
+{"status": "running", "phase": "training", "pid": 206045, "variant": "P0", "epoch": 9, "train_nll": 0.023353917976847337, "val_macro_f1": 0.9719968849248106, "train_order_sha256": "33376df80867fbe8704ac6f571997f6fb1e4c5e4e631081d43f83e1704010c8f", "optimizer_updates": 211, "best_epoch": 0, "stale_epochs": 9}
+{"status": "running", "phase": "training", "pid": 206045, "variant": "P0", "epoch": 10, "train_nll": 0.023330535696322405, "val_macro_f1": 0.9720187685219198, "train_order_sha256": "4aa26014bb17d860c6af257ff492b95caf9347d5df3d9924c32dc3240e166bb5", "optimizer_updates": 211, "best_epoch": 0, "stale_epochs": 10}
+{"status": "running", "phase": "training", "pid": 206045, "variant": "P0", "epoch": 11, "train_nll": 0.023322068994993398, "val_macro_f1": 0.9724750147001342, "train_order_sha256": "eef18c61e883db468fcbc62571c256334f386728e43781f64a6bddeac51e7436", "optimizer_updates": 211, "best_epoch": 0, "stale_epochs": 11}
+{"status": "running", "phase": "training", "pid": 206045, "variant": "P0", "epoch": 12, "train_nll": 0.02329801500228238, "val_macro_f1": 0.9719482907625394, "train_order_sha256": "a1ca9c55f26899fabf3947b02d8323dcf7cb904b1dedbdfed7834e7982c569ff", "optimizer_updates": 211, "best_epoch": 0, "stale_epochs": 12}
+{"status": "running", "phase": "training", "pid": 206045, "variant": "P0", "epoch": 13, "train_nll": 0.023287332137780035, "val_macro_f1": 0.9724673243000995, "train_order_sha256": "e8d385bf19630827c021f7854d79d37ff3c613608fef69489c0d89796ce2683e", "optimizer_updates": 211, "best_epoch": 0, "stale_epochs": 13}
+{"status": "running", "phase": "training", "pid": 206045, "variant": "P0", "epoch": 14, "train_nll": 0.02327674194396275, "val_macro_f1": 0.9724461686943998, "train_order_sha256": "7401523b2c84e8b2c24c858c343b6886d1b2ddcafbd4935196d2b3e001e2a19a", "optimizer_updates": 211, "best_epoch": 0, "stale_epochs": 14}
+{"status": "running", "phase": "training", "pid": 206045, "variant": "P0", "epoch": 15, "train_nll": 0.02326746193055676, "val_macro_f1": 0.9726189736584797, "train_order_sha256": "0469cc94e8707c1ee1f51d41376a59896fc01c370bb495ca41894483af2fdc97", "optimizer_updates": 211, "best_epoch": 0, "stale_epochs": 15}
+{"status": "running", "phase": "training", "pid": 206045, "variant": "P0", "epoch": 16, "train_nll": 0.023261402820446808, "val_macro_f1": 0.9724673243000995, "train_order_sha256": "519b0bf29f1f0a523a517d8af8868399b848c6b4a2e6eb6f311886475f40ef4c", "optimizer_updates": 211, "best_epoch": 0, "stale_epochs": 16}
+{"status": "running", "phase": "training", "pid": 206045, "variant": "P0", "epoch": 17, "train_nll": 0.023250761882473544, "val_macro_f1": 0.9723154591716879, "train_order_sha256": "fb41c069a69858c0a677960144a0c3f28a6e606528129bbdfb594a5ed61617b1", "optimizer_updates": 211, "best_epoch": 0, "stale_epochs": 17}
+{"status": "running", "phase": "training", "pid": 206045, "variant": "P0", "epoch": 18, "train_nll": 0.023236758860417588, "val_macro_f1": 0.9723154591716879, "train_order_sha256": "d0a1d20f5010ca1e2fc4d927a0e46c4be5450a96e5d52392e682c963f207ebcd", "optimizer_updates": 211, "best_epoch": 0, "stale_epochs": 18}
+{"status": "running", "phase": "training", "pid": 206045, "variant": "P0", "epoch": 19, "train_nll": 0.02323161057720878, "val_macro_f1": 0.9723154591716879, "train_order_sha256": "0a2868d549121dc860dd1a7b0d940deea07d3e5cf16d189a32e85c394af2fa3f", "optimizer_updates": 211, "best_epoch": 0, "stale_epochs": 19}
+{"status": "running", "phase": "training", "pid": 206045, "variant": "P0", "epoch": 20, "train_nll": 0.023222645656794123, "val_macro_f1": 0.9724659219697434, "train_order_sha256": "1c49362e4cb6596f7e7f32638556bc7f585e76862a2cc862603fc40d09a2f593", "optimizer_updates": 211, "best_epoch": 0, "stale_epochs": 20}
+{"status": "running", "phase": "raw_validation_replay", "pid": 206045, "pooling": "mean", "samples": 16}
+{"status": "running", "phase": "raw_validation_replay", "pid": 206045, "pooling": "mean", "samples": 3200}
+{"status": "running", "phase": "raw_validation_replay", "pid": 206045, "pooling": "mean", "samples": 6400}
+{"status": "running", "phase": "raw_validation_replay", "pid": 206045, "pooling": "mean", "samples": 9600}
+{"status": "running", "phase": "raw_validation_replay", "pid": 206045, "pooling": "mean", "samples": 12800}
+{"status": "running", "phase": "training", "pid": 206045, "variant": "P1", "epoch": 1, "train_nll": 0.024085158656146806, "val_macro_f1": 0.9716752628580387, "train_order_sha256": "158f1b7e3dedc2c8b265252f9e23e6a6b37e9629dac203c4a27bf8f1f8408079", "optimizer_updates": 211, "best_epoch": 0, "stale_epochs": 1}
+{"status": "running", "phase": "training", "pid": 206045, "variant": "P1", "epoch": 2, "train_nll": 0.023757942959995372, "val_macro_f1": 0.9717156104423824, "train_order_sha256": "16e4198ee3915b7807cb8fffd9c85d4e580e3b92aacab4bc01b4218e93fe28a6", "optimizer_updates": 211, "best_epoch": 0, "stale_epochs": 2}
+{"status": "running", "phase": "training", "pid": 206045, "variant": "P1", "epoch": 3, "train_nll": 0.023612593530154685, "val_macro_f1": 0.972178583995361, "train_order_sha256": "e0328504ac2f06e5b237aa2baf15eabf9f1c424e4ed31e92ba0d1a2209d6fda9", "optimizer_updates": 211, "best_epoch": 0, "stale_epochs": 3}
+{"status": "running", "phase": "training", "pid": 206045, "variant": "P1", "epoch": 4, "train_nll": 0.02353711282746437, "val_macro_f1": 0.9716993740408989, "train_order_sha256": "ab527e0e38e51ec98a0d214088053ae16a909911dc7d49f83c4022dcd388260e", "optimizer_updates": 211, "best_epoch": 0, "stale_epochs": 4}
+{"status": "running", "phase": "training", "pid": 206045, "variant": "P1", "epoch": 5, "train_nll": 0.02348483014495656, "val_macro_f1": 0.9720125868375443, "train_order_sha256": "4683bde992d3fd293488e09fe685a782c20055ab37c51f103f7befd9f8423eea", "optimizer_updates": 211, "best_epoch": 0, "stale_epochs": 5}
+{"status": "running", "phase": "training", "pid": 206045, "variant": "P1", "epoch": 6, "train_nll": 0.023435362191896198, "val_macro_f1": 0.971999834615332, "train_order_sha256": "af55a9897e786dda7df9c53c7d95239057afe227e720ce2fd924cd99537c453a", "optimizer_updates": 211, "best_epoch": 0, "stale_epochs": 6}
+{"status": "running", "phase": "training", "pid": 206045, "variant": "P1", "epoch": 7, "train_nll": 0.023394588007440407, "val_macro_f1": 0.9726085504442925, "train_order_sha256": "ecd018e838d3126088e935f4d6e19a2cccb306c50cd59516fbf1891323dddab3", "optimizer_updates": 211, "best_epoch": 0, "stale_epochs": 7}
+{"status": "running", "phase": "training", "pid": 206045, "variant": "P1", "epoch": 8, "train_nll": 0.02336647950693727, "val_macro_f1": 0.9728488330893352, "train_order_sha256": "6849214586e3e22d882308aed02f4c3d1d3bd5df367774220d1875d7ae72ff20", "optimizer_updates": 211, "best_epoch": 0, "stale_epochs": 8}
+{"status": "running", "phase": "training", "pid": 206045, "variant": "P1", "epoch": 9, "train_nll": 0.023343615665628193, "val_macro_f1": 0.9720049000651206, "train_order_sha256": "33376df80867fbe8704ac6f571997f6fb1e4c5e4e631081d43f83e1704010c8f", "optimizer_updates": 211, "best_epoch": 0, "stale_epochs": 9}
+{"status": "running", "phase": "training", "pid": 206045, "variant": "P1", "epoch": 10, "train_nll": 0.023327414534081947, "val_macro_f1": 0.9721790594348761, "train_order_sha256": "4aa26014bb17d860c6af257ff492b95caf9347d5df3d9924c32dc3240e166bb5", "optimizer_updates": 211, "best_epoch": 0, "stale_epochs": 10}
+{"status": "running", "phase": "training", "pid": 206045, "variant": "P1", "epoch": 11, "train_nll": 0.02331350922621468, "val_macro_f1": 0.9724829832635681, "train_order_sha256": "eef18c61e883db468fcbc62571c256334f386728e43781f64a6bddeac51e7436", "optimizer_updates": 211, "best_epoch": 0, "stale_epochs": 11}
+{"status": "running", "phase": "training", "pid": 206045, "variant": "P1", "epoch": 12, "train_nll": 0.023291865430056537, "val_macro_f1": 0.9719562948389147, "train_order_sha256": "a1ca9c55f26899fabf3947b02d8323dcf7cb904b1dedbdfed7834e7982c569ff", "optimizer_updates": 211, "best_epoch": 0, "stale_epochs": 12}
+{"status": "running", "phase": "training", "pid": 206045, "variant": "P1", "epoch": 13, "train_nll": 0.023279961275015353, "val_macro_f1": 0.9726269315925454, "train_order_sha256": "e8d385bf19630827c021f7854d79d37ff3c613608fef69489c0d89796ce2683e", "optimizer_updates": 211, "best_epoch": 0, "stale_epochs": 13}
+{"status": "running", "phase": "training", "pid": 206045, "variant": "P1", "epoch": 14, "train_nll": 0.023269620624945888, "val_macro_f1": 0.9721497506043526, "train_order_sha256": "7401523b2c84e8b2c24c858c343b6886d1b2ddcafbd4935196d2b3e001e2a19a", "optimizer_updates": 211, "best_epoch": 0, "stale_epochs": 14}
+{"status": "running", "phase": "training", "pid": 206045, "variant": "P1", "epoch": 15, "train_nll": 0.023257789523650176, "val_macro_f1": 0.9726269315925454, "train_order_sha256": "0469cc94e8707c1ee1f51d41376a59896fc01c370bb495ca41894483af2fdc97", "optimizer_updates": 211, "best_epoch": 0, "stale_epochs": 15}
+{"status": "running", "phase": "training", "pid": 206045, "variant": "P1", "epoch": 16, "train_nll": 0.023250459272602164, "val_macro_f1": 0.9723862186529069, "train_order_sha256": "519b0bf29f1f0a523a517d8af8868399b848c6b4a2e6eb6f311886475f40ef4c", "optimizer_updates": 211, "best_epoch": 0, "stale_epochs": 16}
+{"status": "running", "phase": "training", "pid": 206045, "variant": "P1", "epoch": 17, "train_nll": 0.023241826632446578, "val_macro_f1": 0.9722341488562201, "train_order_sha256": "fb41c069a69858c0a677960144a0c3f28a6e606528129bbdfb594a5ed61617b1", "optimizer_updates": 211, "best_epoch": 0, "stale_epochs": 17}
+{"status": "running", "phase": "training", "pid": 206045, "variant": "P1", "epoch": 18, "train_nll": 0.02322032212241981, "val_macro_f1": 0.9723862186529069, "train_order_sha256": "d0a1d20f5010ca1e2fc4d927a0e46c4be5450a96e5d52392e682c963f207ebcd", "optimizer_updates": 211, "best_epoch": 0, "stale_epochs": 18}
+{"status": "running", "phase": "training", "pid": 206045, "variant": "P1", "epoch": 19, "train_nll": 0.02322383370803644, "val_macro_f1": 0.9725380720418934, "train_order_sha256": "0a2868d549121dc860dd1a7b0d940deea07d3e5cf16d189a32e85c394af2fa3f", "optimizer_updates": 211, "best_epoch": 0, "stale_epochs": 19}
+{"status": "running", "phase": "training", "pid": 206045, "variant": "P1", "epoch": 20, "train_nll": 0.023211730627872476, "val_macro_f1": 0.9722327922964583, "train_order_sha256": "1c49362e4cb6596f7e7f32638556bc7f585e76862a2cc862603fc40d09a2f593", "optimizer_updates": 211, "best_epoch": 0, "stale_epochs": 20}
+{"status": "running", "phase": "raw_validation_replay", "pid": 206045, "pooling": "attention", "samples": 16}
+{"status": "running", "phase": "raw_validation_replay", "pid": 206045, "pooling": "attention", "samples": 3200}
+{"status": "running", "phase": "raw_validation_replay", "pid": 206045, "pooling": "attention", "samples": 6400}
+{"status": "running", "phase": "raw_validation_replay", "pid": 206045, "pooling": "attention", "samples": 9600}
+{"status": "running", "phase": "raw_validation_replay", "pid": 206045, "pooling": "attention", "samples": 12800}
+| model | start Macro-F1 | best Macro-F1 | last Macro-F1 | best epoch | stop epoch | updates | seconds |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| P0 | 97.320705% | 97.320705% | 97.246592% | 0 | 20 | 4220 | 94.313 |
+| P1 | 97.320705% | 97.320705% | 97.223279% | 0 | 20 | 4220 | 122.972 |
+
+P1-P0=+0.000000 pp; P1-D32=+0.000000 pp; P0-D32=+0.000000 pp.
+Delta=P1-max(P0,D32)=+0.000000 pp; budget >= 0.10 pp: False; required P1=97.420705%.
+Both start from D32-Gate epoch62. Epoch0 is eligible; retaining it is not evidence of a gain.
+Frozen encoders/BN; existing projection/gate/head lr1e-5; new pool lr1e-4; fresh Adam WD0.
+Final NLL, seed42, batch512/16, max100/patience20; active parameters P0=7144, P1=8200.
+
+| class | D32 recall | P0 recall | P1 recall | P1-P0 recall pp | P1-D32 recall pp | P1-P0 F1 pp |
+|---|---:|---:|---:|---:|---:|---:|
+| Benign | 97.028045% | 97.028045% | 97.028045% | +0.000000 | +0.000000 | +0.000000 |
+| WebBased | 91.727941% | 91.727941% | 91.727941% | +0.000000 | +0.000000 | +0.000000 |
+| Spoofing | 96.147211% | 96.147211% | 96.147211% | +0.000000 | +0.000000 | +0.000000 |
+| Recon | 97.234416% | 97.234416% | 97.234416% | +0.000000 | +0.000000 | +0.000000 |
+| Mirai | 100.000000% | 100.000000% | 100.000000% | +0.000000 | +0.000000 | +0.000000 |
+| Dos | 99.457627% | 99.457627% | 99.457627% | +0.000000 | +0.000000 | +0.000000 |
+| DDos | 99.790620% | 99.790620% | 99.790620% | +0.000000 | +0.000000 | +0.000000 |
+| BruteForce | 98.712446% | 98.712446% | 98.712446% | +0.000000 | +0.000000 | +0.000000 |
+
+Review WebBased/Recon recall and Spoofing/BruteForce tradeoffs with support counts in per_class.csv.
+P1_vs_P0: repaired=0, regressed=0, net_correct=0.
+P0_vs_D32: repaired=0, regressed=0, net_correct=0.
+P1_vs_D32: repaired=0, regressed=0, net_correct=0.
+
+| partition | class | graphs | multi-packet graphs | varying multi-packet graphs | mean packets | mean multi-packet RMS distance |
+|---|---|---:|---:|---:|---:|---:|
+| train | Benign | 19112 | 14543 | 12813 | 8.1999 | 2.0558123096873 |
+| train | WebBased | 4359 | 4298 | 4061 | 8.5632 | 2.3877429682792304 |
+| train | Spoofing | 13914 | 12476 | 11119 | 7.8513 | 1.3806825091337531 |
+| train | Recon | 18224 | 16221 | 4854 | 3.0855 | 0.9766663940659497 |
+| train | Mirai | 19200 | 19195 | 19191 | 19.9784 | 0.815344297315532 |
+| train | Dos | 11802 | 4700 | 3586 | 1.7855 | 0.0017627813463821367 |
+| train | DDos | 19140 | 19140 | 14717 | 19.9738 | 0.005811141473812911 |
+| train | BruteForce | 1870 | 1857 | 1813 | 12.9663 | 1.231667028699153 |
+| val | Benign | 2389 | 1804 | 1588 | 8.3152 | 2.0344241635689646 |
+| val | WebBased | 544 | 539 | 512 | 9.0864 | 2.461851774662442 |
+| val | Spoofing | 1739 | 1569 | 1399 | 8.2616 | 1.3915693326092011 |
+| val | Recon | 2278 | 2014 | 612 | 3.0189 | 0.9677996227153606 |
+| val | Mirai | 2400 | 2400 | 2400 | 19.9800 | 0.8156828046993663 |
+| val | Dos | 1475 | 603 | 443 | 1.8129 | 0.012706439780444482 |
+| val | DDos | 2388 | 2388 | 1790 | 19.9615 | 0.006336692036093847 |
+| val | BruteForce | 233 | 231 | 228 | 13.4721 | 1.3041508135818018 |
+
+P0 trained-epoch evidence: {'best_trained_epoch': 15, 'best_trained_macro_f1': 0.9726189736584797, 'best_trained_minus_start_pp': -0.058808062296711316, 'last_trained_macro_f1': 0.9724659219697434, 'last_trained_minus_start_pp': -0.0741132311703474}; parameter groups: [{'name': 'existing_head', 'lr': 1e-05, 'parameters': 7144}].
+
+P0 best_validation confusion matrix (rows=true):
+
+| true / predicted | Benign | WebBased | Spoofing | Recon | Mirai | Dos | DDos | BruteForce |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| Benign | 2318 | 11 | 49 | 8 | 1 | 1 | 0 | 1 |
+| WebBased | 7 | 499 | 6 | 29 | 0 | 1 | 0 | 2 |
+| Spoofing | 48 | 10 | 1672 | 8 | 0 | 0 | 0 | 1 |
+| Recon | 10 | 41 | 9 | 2215 | 0 | 0 | 2 | 1 |
+| Mirai | 0 | 0 | 0 | 0 | 2400 | 0 | 0 | 0 |
+| Dos | 0 | 3 | 0 | 5 | 0 | 1467 | 0 | 0 |
+| DDos | 0 | 0 | 0 | 5 | 0 | 0 | 2383 | 0 |
+| BruteForce | 1 | 0 | 2 | 0 | 0 | 0 | 0 | 230 |
+
+P0 last_validation confusion matrix (rows=true):
+
+| true / predicted | Benign | WebBased | Spoofing | Recon | Mirai | Dos | DDos | BruteForce |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| Benign | 2326 | 11 | 41 | 8 | 1 | 1 | 0 | 1 |
+| WebBased | 7 | 495 | 6 | 33 | 0 | 1 | 0 | 2 |
+| Spoofing | 57 | 7 | 1666 | 7 | 0 | 0 | 0 | 2 |
+| Recon | 10 | 39 | 10 | 2216 | 0 | 1 | 1 | 1 |
+| Mirai | 0 | 0 | 0 | 0 | 2400 | 0 | 0 | 0 |
+| Dos | 1 | 2 | 0 | 6 | 0 | 1466 | 0 | 0 |
+| DDos | 0 | 0 | 1 | 5 | 0 | 0 | 2382 | 0 |
+| BruteForce | 1 | 1 | 2 | 0 | 0 | 0 | 0 | 229 |
+
+P1 trained-epoch evidence: {'best_trained_epoch': 8, 'best_trained_macro_f1': 0.9728488330893352, 'best_trained_minus_start_pp': -0.03582211921115963, 'last_trained_macro_f1': 0.9722327922964583, 'last_trained_minus_start_pp': -0.09742619849885115}; parameter groups: [{'name': 'existing_head', 'lr': 1e-05, 'parameters': 7144}, {'name': 'new_packet_pool', 'lr': 0.0001, 'parameters': 1056}].
+
+P1 best_validation confusion matrix (rows=true):
+
+| true / predicted | Benign | WebBased | Spoofing | Recon | Mirai | Dos | DDos | BruteForce |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| Benign | 2318 | 11 | 49 | 8 | 1 | 1 | 0 | 1 |
+| WebBased | 7 | 499 | 6 | 29 | 0 | 1 | 0 | 2 |
+| Spoofing | 48 | 10 | 1672 | 8 | 0 | 0 | 0 | 1 |
+| Recon | 10 | 41 | 9 | 2215 | 0 | 0 | 2 | 1 |
+| Mirai | 0 | 0 | 0 | 0 | 2400 | 0 | 0 | 0 |
+| Dos | 0 | 3 | 0 | 5 | 0 | 1467 | 0 | 0 |
+| DDos | 0 | 0 | 0 | 5 | 0 | 0 | 2383 | 0 |
+| BruteForce | 1 | 0 | 2 | 0 | 0 | 0 | 0 | 230 |
+
+P1 last_validation confusion matrix (rows=true):
+
+| true / predicted | Benign | WebBased | Spoofing | Recon | Mirai | Dos | DDos | BruteForce |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| Benign | 2326 | 11 | 41 | 8 | 1 | 1 | 0 | 1 |
+| WebBased | 7 | 493 | 5 | 36 | 0 | 1 | 0 | 2 |
+| Spoofing | 56 | 7 | 1667 | 7 | 0 | 0 | 0 | 2 |
+| Recon | 10 | 39 | 10 | 2216 | 0 | 1 | 1 | 1 |
+| Mirai | 0 | 0 | 0 | 0 | 2400 | 0 | 0 | 0 |
+| Dos | 1 | 2 | 0 | 6 | 0 | 1466 | 0 | 0 |
+| DDos | 0 | 0 | 1 | 5 | 0 | 0 | 2382 | 0 |
+| BruteForce | 1 | 1 | 2 | 0 | 0 | 0 | 0 | 229 |
+
+Full class P/R/F1/support: per_class.csv; prediction destinations: prediction_transitions.csv.
+Changed sample IDs: *_changed_samples.jsonl.gz, for both arms versus D32 and P1 versus P0.
+Each validation prediction retains all 32 fusion weights and per-packet attention in original node order.
+Packet counts and within-graph representation distances: packet_diagnostics.json.
+Common epochs with identical order/RNG: 20; discarded probe updates=6.
+Both best checkpoints strictly reconstructed and replayed on every original validation graph.
+P1-P0 measures the packet readout change including its 1,056 added parameters and training. P0 measures the same mature checkpoint with continued downstream training. The budget threshold is not a statistical significance criterion.
+No test evaluation or automatic follow-up experiment.
+
+Prepared node caches reused from the preserved failed run: /home/nzxn/下载/WX/load/XG-NID/outputs/packet_pool_pair_s42_v1
+Original cache-extraction reads are provenance only and are excluded from current-run graph-load totals.
+The cache memory estimates below describe the original extraction, not current copying/loading.
+No formal or probe updates existed before the known initial readout failure.
+
+Graph sample loads (including repeated reads): {'train': 1120, 'val': 53784, 'test': 0}.
+Main-process guard counts: {'train': 1120, 'val': 0, 'test': 0}; worker loads use parent-verified stage samples.
+These counts describe sample loads, not physical disk IO operations.
+
+| loader phase | partition | parent-verified samples | workers |
+|---|---|---:|---:|
+| initial_P0 | val | 13446 | 2 |
+| initial_P1 | val | 13446 | 2 |
+| best_P0 | val | 13446 | 2 |
+| best_P1 | val | 13446 | 2 |
+
+| cache | graphs | packet nodes | final tensor GiB | concatenation tensor peak GiB including retained cache |
+|---|---:|---:|---:|---:|
+| train | 107621 | 1170720 | 0.306384 | 0.612768 |
+| val | 13446 | 147485 | 0.038569 | 0.383523 |
+
+Memory estimates cover cache tensor storage at concatenation, not whole-process RSS.
+Python objects, source graphs, worker prefetch, models, batches and allocator/serialization buffers are excluded.
+Full byte estimates and host MemAvailable before concatenation: cache_memory_estimates.json.
+Full load-count receipts: graph_load_accounting.json.
+
+Packet readout uses PyTorch 2.3.1 ordered segment reductions in both arms, with the same zero-score softmax for uniform weights.
+Device repeat/uniform/backward preflight passed without model/RNG changes or optimizer updates.
+Paired readouts and the source head on identical raw features retain atol/rtol=1e-6.
+Independent legacy CUDA graph outputs must reproduce every prediction and the confusion matrix; their log-probability errors are recorded separately.
+See initialization.json raw_graph_replays, initialization_comparison.json and cuda_readout_preflight.json.

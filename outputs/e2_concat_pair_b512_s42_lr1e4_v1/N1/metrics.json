@@ -1,0 +1,401 @@
+{
+  "variant": "N1",
+  "best_epoch": 5,
+  "best_validation": {
+    "accuracy": 0.9782835043879221,
+    "macro_f1": 0.9702267124070483,
+    "weighted_f1": 0.9782790640912418,
+    "per_class": {
+      "Benign": {
+        "precision": 0.9642857142857143,
+        "recall": 0.9719547928003349,
+        "f1-score": 0.9681050656660413,
+        "support": 2389.0
+      },
+      "WebBased": {
+        "precision": 0.8903345724907064,
+        "recall": 0.8805147058823529,
+        "f1-score": 0.8853974121996302,
+        "support": 544.0
+      },
+      "Spoofing": {
+        "precision": 0.9618717504332756,
+        "recall": 0.9574468085106383,
+        "f1-score": 0.9596541786743517,
+        "support": 1739.0
+      },
+      "Recon": {
+        "precision": 0.9667977282656182,
+        "recall": 0.9714661984196664,
+        "f1-score": 0.9691263411429822,
+        "support": 2278.0
+      },
+      "Mirai": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 2400.0
+      },
+      "Dos": {
+        "precision": 0.9986376021798365,
+        "recall": 0.9938983050847457,
+        "f1-score": 0.9962623173632348,
+        "support": 1475.0
+      },
+      "DDos": {
+        "precision": 1.0,
+        "recall": 0.9966499162479062,
+        "f1-score": 0.9983221476510068,
+        "support": 2388.0
+      },
+      "BruteForce": {
+        "precision": 0.9870689655172413,
+        "recall": 0.9828326180257511,
+        "f1-score": 0.9849462365591397,
+        "support": 233.0
+      },
+      "accuracy": 0.9782835043879221,
+      "macro avg": {
+        "precision": 0.971124541646549,
+        "recall": 0.9693454181214245,
+        "f1-score": 0.9702267124070483,
+        "support": 13446.0
+      },
+      "weighted avg": {
+        "precision": 0.9782878409963435,
+        "recall": 0.9782835043879221,
+        "f1-score": 0.9782790640912418,
+        "support": 13446.0
+      }
+    },
+    "confusion_matrix": [
+      [
+        2322,
+        11,
+        47,
+        8,
+        0,
+        1,
+        0,
+        0
+      ],
+      [
+        6,
+        479,
+        6,
+        52,
+        0,
+        0,
+        0,
+        1
+      ],
+      [
+        62,
+        6,
+        1665,
+        5,
+        0,
+        0,
+        0,
+        1
+      ],
+      [
+        16,
+        37,
+        10,
+        2213,
+        0,
+        1,
+        0,
+        1
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        2400,
+        0,
+        0,
+        0
+      ],
+      [
+        1,
+        2,
+        0,
+        6,
+        0,
+        1466,
+        0,
+        0
+      ],
+      [
+        0,
+        2,
+        1,
+        5,
+        0,
+        0,
+        2380,
+        0
+      ],
+      [
+        1,
+        1,
+        2,
+        0,
+        0,
+        0,
+        0,
+        229
+      ]
+    ],
+    "samples": 13446,
+    "wall_seconds_including_graph_io": 29.359445629059337,
+    "forward_seconds": 17.335149757385253,
+    "forward_timing_method": "CUDA events around model call"
+  },
+  "last_validation": {
+    "accuracy": 0.9780603897069761,
+    "macro_f1": 0.9681618036658803,
+    "weighted_f1": 0.9779746306655984,
+    "per_class": {
+      "Benign": {
+        "precision": 0.9631164525486946,
+        "recall": 0.972791963164504,
+        "f1-score": 0.967930029154519,
+        "support": 2389.0
+      },
+      "WebBased": {
+        "precision": 0.9029126213592233,
+        "recall": 0.8547794117647058,
+        "f1-score": 0.8781869688385269,
+        "support": 544.0
+      },
+      "Spoofing": {
+        "precision": 0.9640995946728431,
+        "recall": 0.9574468085106383,
+        "f1-score": 0.9607616849394114,
+        "support": 1739.0
+      },
+      "Recon": {
+        "precision": 0.9631715771230502,
+        "recall": 0.97585601404741,
+        "f1-score": 0.9694723070213693,
+        "support": 2278.0
+      },
+      "Mirai": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 2400.0
+      },
+      "Dos": {
+        "precision": 0.9986376021798365,
+        "recall": 0.9938983050847457,
+        "f1-score": 0.9962623173632348,
+        "support": 1475.0
+      },
+      "DDos": {
+        "precision": 1.0,
+        "recall": 0.9966499162479062,
+        "f1-score": 0.9983221476510068,
+        "support": 2388.0
+      },
+      "BruteForce": {
+        "precision": 0.9702127659574468,
+        "recall": 0.9785407725321889,
+        "f1-score": 0.9743589743589745,
+        "support": 233.0
+      },
+      "accuracy": 0.9780603897069761,
+      "macro avg": {
+        "precision": 0.9702688267301369,
+        "recall": 0.9662453989190123,
+        "f1-score": 0.9681618036658803,
+        "support": 13446.0
+      },
+      "weighted avg": {
+        "precision": 0.9779706795079559,
+        "recall": 0.9780603897069761,
+        "f1-score": 0.9779746306655984,
+        "support": 13446.0
+      }
+    },
+    "confusion_matrix": [
+      [
+        2324,
+        11,
+        44,
+        8,
+        0,
+        1,
+        0,
+        1
+      ],
+      [
+        11,
+        465,
+        6,
+        59,
+        0,
+        0,
+        0,
+        3
+      ],
+      [
+        61,
+        4,
+        1665,
+        7,
+        0,
+        0,
+        0,
+        2
+      ],
+      [
+        15,
+        29,
+        9,
+        2223,
+        0,
+        1,
+        0,
+        1
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        2400,
+        0,
+        0,
+        0
+      ],
+      [
+        1,
+        2,
+        0,
+        6,
+        0,
+        1466,
+        0,
+        0
+      ],
+      [
+        0,
+        2,
+        1,
+        5,
+        0,
+        0,
+        2380,
+        0
+      ],
+      [
+        1,
+        2,
+        2,
+        0,
+        0,
+        0,
+        0,
+        228
+      ]
+    ],
+    "samples": 13446,
+    "wall_seconds_including_graph_io": 29.659107755986042,
+    "forward_seconds": 18.286015356063842,
+    "forward_timing_method": "CUDA events around model call"
+  },
+  "epochs": 17,
+  "optimizer_updates": 3587,
+  "training_samples_seen": 1829557,
+  "versus_original": {
+    "counts": {
+      "repaired": 82,
+      "regressed": 48,
+      "both_correct": 13072,
+      "both_wrong": 244
+    },
+    "by_class": {
+      "0": {
+        "repaired": 16,
+        "regressed": 17,
+        "both_correct": 2306,
+        "both_wrong": 50
+      },
+      "1": {
+        "repaired": 12,
+        "regressed": 21,
+        "both_correct": 467,
+        "both_wrong": 44
+      },
+      "2": {
+        "repaired": 16,
+        "regressed": 8,
+        "both_correct": 1649,
+        "both_wrong": 66
+      },
+      "3": {
+        "repaired": 37,
+        "regressed": 2,
+        "both_correct": 2176,
+        "both_wrong": 63
+      },
+      "4": {
+        "repaired": 0,
+        "regressed": 0,
+        "both_correct": 2400,
+        "both_wrong": 0
+      },
+      "5": {
+        "repaired": 0,
+        "regressed": 0,
+        "both_correct": 1466,
+        "both_wrong": 9
+      },
+      "6": {
+        "repaired": 0,
+        "regressed": 0,
+        "both_correct": 2380,
+        "both_wrong": 8
+      },
+      "7": {
+        "repaired": 1,
+        "regressed": 0,
+        "both_correct": 228,
+        "both_wrong": 4
+      }
+    },
+    "net_correct": 34
+  },
+  "macro_f1_minus_original_pp": 0.4232710681934426,
+  "training_start_rng_sha256": "26320174263d05b5f2b6e8eb6bd553a48135ecca36f1c8453ebfee64691d5425",
+  "orders": [
+    "158f1b7e3dedc2c8b265252f9e23e6a6b37e9629dac203c4a27bf8f1f8408079",
+    "16e4198ee3915b7807cb8fffd9c85d4e580e3b92aacab4bc01b4218e93fe28a6",
+    "e0328504ac2f06e5b237aa2baf15eabf9f1c424e4ed31e92ba0d1a2209d6fda9",
+    "ab527e0e38e51ec98a0d214088053ae16a909911dc7d49f83c4022dcd388260e",
+    "4683bde992d3fd293488e09fe685a782c20055ab37c51f103f7befd9f8423eea",
+    "af55a9897e786dda7df9c53c7d95239057afe227e720ce2fd924cd99537c453a",
+    "ecd018e838d3126088e935f4d6e19a2cccb306c50cd59516fbf1891323dddab3",
+    "6849214586e3e22d882308aed02f4c3d1d3bd5df367774220d1875d7ae72ff20",
+    "33376df80867fbe8704ac6f571997f6fb1e4c5e4e631081d43f83e1704010c8f",
+    "4aa26014bb17d860c6af257ff492b95caf9347d5df3d9924c32dc3240e166bb5",
+    "eef18c61e883db468fcbc62571c256334f386728e43781f64a6bddeac51e7436",
+    "a1ca9c55f26899fabf3947b02d8323dcf7cb904b1dedbdfed7834e7982c569ff",
+    "e8d385bf19630827c021f7854d79d37ff3c613608fef69489c0d89796ce2683e",
+    "7401523b2c84e8b2c24c858c343b6886d1b2ddcafbd4935196d2b3e001e2a19a",
+    "0469cc94e8707c1ee1f51d41376a59896fc01c370bb495ca41894483af2fdc97",
+    "519b0bf29f1f0a523a517d8af8868399b848c6b4a2e6eb6f311886475f40ef4c",
+    "fb41c069a69858c0a677960144a0c3f28a6e606528129bbdfb594a5ed61617b1"
+  ],
+  "test_evaluated": false,
+  "predictions_sha256": "93b7968992bfdac9b857a47d7d5829c59df15b0548b46e3c264a85119e4e30ee",
+  "checkpoint_sha256": {
+    "best.pt": "c8975327a11851822ad07164b5cc71c0041bf4e1b285aa1d42d0a0821683a21b",
+    "last.pt": "99d79ac45a6422b1568587b420fb12da9f4901f1905063e994fb103f82221ec4"
+  }
+}

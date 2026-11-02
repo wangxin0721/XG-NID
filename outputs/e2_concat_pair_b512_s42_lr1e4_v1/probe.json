@@ -1,0 +1,83 @@
+{
+  "status": "completed",
+  "variants": {
+    "N0": {
+      "batches": [
+        {
+          "loss": 0.03852853551506996,
+          "gradient_l1": {
+            "flow_encoder.": 19.95748689869345,
+            "packet_encoder.": 22.594837085250724,
+            "flow_classifier.": 0.9495924487709999,
+            "packet_classifier.": 1.3035025373101234,
+            "shared_head.": 1.877842951565981
+          },
+          "head_updated": true
+        },
+        {
+          "loss": 0.0401172898709774,
+          "gradient_l1": {
+            "flow_encoder.": 28.94788559628902,
+            "packet_encoder.": 24.560816695829168,
+            "flow_classifier.": 1.201444074511528,
+            "packet_classifier.": 1.5420312136411667,
+            "shared_head.": 1.6116063380613923
+          },
+          "head_updated": true
+        },
+        {
+          "loss": 0.03065565787255764,
+          "gradient_l1": {
+            "flow_encoder.": 12.23007388969941,
+            "packet_encoder.": 17.14259379985287,
+            "flow_classifier.": 0.6223449036478996,
+            "packet_classifier.": 0.8730432316660881,
+            "shared_head.": 1.3275710195302963
+          },
+          "head_updated": true
+        }
+      ],
+      "clean_start_restored": true,
+      "initial_state_sha256": "02ca01bd0525a337c4e12d0f9bbb986be2c3e1e350551ff0d8d95f89a8606208"
+    },
+    "N1": {
+      "batches": [
+        {
+          "loss": 0.03852853551506996,
+          "gradient_l1": {
+            "flow_encoder.": 19.957488167270885,
+            "packet_encoder.": 22.594838717403334,
+            "flow_classifier.": 0.9495925717055798,
+            "packet_classifier.": 1.3035025410354137,
+            "shared_head.": 3.17152027413249
+          },
+          "head_updated": true
+        },
+        {
+          "loss": 0.040053557604551315,
+          "gradient_l1": {
+            "flow_encoder.": 28.96366659133014,
+            "packet_encoder.": 24.53688992865045,
+            "flow_classifier.": 1.2012817561626434,
+            "packet_classifier.": 1.5327270030975342,
+            "shared_head.": 2.8870558068156242
+          },
+          "head_updated": true
+        },
+        {
+          "loss": 0.03053043782711029,
+          "gradient_l1": {
+            "flow_encoder.": 12.13245742700813,
+            "packet_encoder.": 17.006726196127612,
+            "flow_classifier.": 0.6128877550363541,
+            "packet_classifier.": 0.8572997599840164,
+            "shared_head.": 2.213082332164049
+          },
+          "head_updated": true
+        }
+      ],
+      "clean_start_restored": true,
+      "initial_state_sha256": "1da6164caab6de04d0218ff067a554cdee080db20d26d5be5781b1a2e5d8a033"
+    }
+  }
+}

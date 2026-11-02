@@ -1,0 +1,2 @@
+{"epoch": 1, "train_loss": 1.878309428691864, "train_accuracy": 0.34765625, "train_samples": 256, "lr": 0.01, "seconds": 5.420528411865234, "train_order_sha256": "ce7a8aca58deb1f0cdb469125a7e749dc7e7527ea936bdd51b19272f179138d2", "optimizer_steps": 4}
+{"epoch": 2, "train_loss": 1.2582197487354279, "train_accuracy": 0.69921875, "train_samples": 256, "lr": 0.01, "seconds": 1.325369119644165, "train_order_sha256": "92a3ca0ac25e69b8d5ff55e51bb1fd73ddd305321fa2718a79b38fda13e70d2c", "optimizer_steps": 8}

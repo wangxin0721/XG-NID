@@ -1,0 +1,82 @@
+{
+  "variant": "F2",
+  "protocol": {
+    "schema": "xgnid.frozen-fusion.v1",
+    "reference": "n0_seed42_reference_20261029.json",
+    "split_directory": "data/processed/ciciot2023_grouped_input_v1",
+    "variants": [
+      "F1",
+      "F2"
+    ],
+    "seed": 42,
+    "batch_size": 512,
+    "cache_batch_size": 16,
+    "evaluation_batch_size": 16,
+    "workers": 2,
+    "optimizer": "Adam",
+    "lr": 0.001,
+    "weight_decay": 0.0,
+    "epochs": 30,
+    "patience": 12,
+    "probe_batches": 3,
+    "include_epoch_zero": true,
+    "loss": "plain NLL after frozen H; only fusion weights train",
+    "dynamic_input": "original 21-dimensional representation statistics",
+    "dynamic_initialization": "copy unused N0 gate first layer; zero final layer",
+    "proxy_weight_mixture": false,
+    "test_evaluated": false,
+    "automatic_followup": false
+  },
+  "binding": {
+    "config_sha256": "8db50d0312d35569ea0ef6b49bc29ae579d472af238bfe3e6d63da98475da2f2",
+    "reference_sha256": "cf4809091f2d974e6c2454e92ab5d090e8e75ffa2c0f37ade52deacaa3b8bfbf",
+    "n0_best_sha256": "ae65d352ff927026bfcada8759b62f1b22c5d8f0166103d2a2d556618e7a3563",
+    "n0_binding": {
+      "config_sha256": "a53576c80e548ca143e566cf88cb190636ee7a6cfd4d2e89ad8b6bfd0363367a",
+      "registry_sha256": "ebbb7da8ed6b20e94023cba7983a418f1ebc9be1988add6fa2ff0be079e16a62",
+      "checkpoint_sha256": "1709ed1a19b8a2e20b9b1ef3dac6cc6a5906fd93937e8d18a51cc64f85c44b08",
+      "sources": {
+        "scripts/train_grouped.py": "06a493b18faa97b4e1f2b99b6aae38c67ad3c5f39b130f112079c9393432f5d1",
+        "scripts/grouped_graphs.py": "c1b1273d62fc44d91f7c9b300b66a083c1f80ef2c9c4314a62c4bbd5d708bbb4",
+        "scripts/smoke_grouped_gpu.py": "7bce1218e1b55a812855d50c70973fe300da97ad7e9b4005a52deac77d8b1517",
+        "scripts/audit_graph_split.py": "c19164930e8ecb75636cf16d6fa9bb51d6f29e1384e8d8ebf040e683536ffcb6",
+        "scripts/build_grouped_split.py": "24e07766189aec9d03f6161dee15587612a5b2f13e23eab67d7ba4aaf89a3401",
+        "src/xgnid/__init__.py": "2515233a0cdac6c5447c9dbd6b0d54c89284f191d8cb41473d89b347ee296ae7",
+        "src/xgnid/model.py": "28e21e94118db0a4110d17923d2840e18959669d798f628018c98c91c0202631",
+        "src/xgnid/edge_experiments.py": "3e6305d83c06c7ce32e901a2aba9d9d26baa1f2b394af14997b0e359929b4da5",
+        "third_party/GNN4ID/Utility/Model.py": "e17c3905e3c9f437c269bdd0e4d115656cfba6054b6a4474bbd06b5453010688"
+      },
+      "split_id": "a8ae9c934eec9fee970cc725e60051d0c709e0f16c7dda14749350ff2006975a",
+      "manifest_sha256": "b8e9b0810471d0c2b52033488fab640625c3731315afd5d2add1571bd2518827",
+      "entry_sha256": "8202a33d97949b72c9779e5b72fdcad8655bb58550060f29dabcd305e848b48f",
+      "wrappers": {
+        "N0": "e19cb329c5495480f6a85824a5a70e3f6158f8ff2878178d46875eb8111b5351",
+        "N1": "9e5fe4f502111b67d03222664bb16026937a23e6b85537bfc8d3df4b70d8422e"
+      },
+      "helper_sha256": "94b8e537798cca3af76b260f0bca6c9cfaffb75cff404bb6a4f423017445738f"
+    },
+    "sources": {
+      "run_frozen_fusion.py": "ae6877118398c8586f9aa24d2e7e1632cd8ed29f18fafb8b62030cbd47309624",
+      "run_e2_concat_pair.py": "8202a33d97949b72c9779e5b72fdcad8655bb58550060f29dabcd305e848b48f",
+      "e3_gate_study.py": "94b8e537798cca3af76b260f0bca6c9cfaffb75cff404bb6a4f423017445738f"
+    },
+    "caches": {
+      "train": {
+        "samples": 107621,
+        "sample_order_sha256": "e55904a2bf640d68a278dfb571a296f0c9d0b7b4b8ae0e0ef179a9e3c8ea629a",
+        "file_sha256": "7b5c05844903d3e5c6797848515e46c52b8fe2885f5930a50c7379778aaddf9a",
+        "max_f0_output_error": 0.0
+      },
+      "val": {
+        "samples": 13446,
+        "sample_order_sha256": "efb5f9d81137f974a1bb244783831533bbab4b78f6d62bea511ebbd61e9b8c01",
+        "file_sha256": "1f0aa3855fbad7121ae6e11fd87df15798649323974ec973eedb26b14267f710",
+        "max_f0_output_error": 0.0
+      }
+    },
+    "frozen_state_sha256": "29aec04f4787bd1bf1afc51e2c6fe0c487b990f96e15eefe620f42ca18927984"
+  },
+  "training_start_rng_sha256": "3b444f3cea5860447fc5c79435ee4361c0e8d1e92d3831a18f48c7c78f9bd405",
+  "trainable_parameters": 386,
+  "frozen_model_parameters_trainable": 0
+}

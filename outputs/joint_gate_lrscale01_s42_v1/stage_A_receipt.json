@@ -1,0 +1,19 @@
+{
+  "directory": "/home/nzxn/下载/WX/load/XG-NID/outputs/fair_vector_five_runs_recovery_v1/V2",
+  "result_sha256": "d02804252f418e9c1b6fbc44bf034fd019abd9bd26932b272778a0cd4ef9ede2",
+  "recovery_summary_sha256": "d8bcb906b4f5c2d5c3f7d7ab58fa5bb584c130da6827a0ed5e8483261fa1bb30",
+  "config_sha256": "c653c4c9854b415b84c314da8f788d04583434dfc086e02e85bc35ebca83ace4",
+  "best_sha256": "ebc151b5bd60f3d9fc6808d6f1b551ef5559da439ea109487ecded31929d06a7",
+  "selected_epoch": 13,
+  "validation_macro_f1": 0.97093667251942,
+  "existing_vector_screening": {
+    "V2_minus_N0_pp": 0.09743370914427896,
+    "V2_minus_V1_pp": 0.054214716797373885,
+    "budget_threshold_passed": false,
+    "class_tradeoff_review_required": true,
+    "statistical_significance_claimed": false,
+    "automatic_followup": false
+  },
+  "reused": true,
+  "prewarm_training_started": false
+}

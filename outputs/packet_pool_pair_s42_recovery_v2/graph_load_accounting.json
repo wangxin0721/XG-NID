@@ -1,0 +1,40 @@
+{
+  "basis": "main_process_guard_plus_parent_verified_loader_samples",
+  "main_process_counts": {
+    "train": 1120,
+    "val": 0,
+    "test": 0
+  },
+  "loader_stages": [
+    {
+      "phase": "initial_P0",
+      "partition": "val",
+      "verified_samples": 13446,
+      "workers": 2
+    },
+    {
+      "phase": "initial_P1",
+      "partition": "val",
+      "verified_samples": 13446,
+      "workers": 2
+    },
+    {
+      "phase": "best_P0",
+      "partition": "val",
+      "verified_samples": 13446,
+      "workers": 2
+    },
+    {
+      "phase": "best_P1",
+      "partition": "val",
+      "verified_samples": 13446,
+      "workers": 2
+    }
+  ],
+  "totals": {
+    "train": 1120,
+    "val": 53784,
+    "test": 0
+  },
+  "unit": "verified_sample_loads_including_repeated_reads_not_disk_io_operations"
+}

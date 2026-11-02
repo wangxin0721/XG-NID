@@ -1,0 +1,184 @@
+{
+  "status": "completed",
+  "exit_code": 0,
+  "mode": "full",
+  "claim": "protocol_reimplementation",
+  "binding": {
+    "manifest_id": "22d027fe3d0b0ad9079da9a13614597b0e40bb883a34b2d4d825452d6129d383",
+    "config_id": "7463253af0c7d165dc7c3b681895e6d918e8c83f80994ac896ef5045f84e414b",
+    "code": {
+      "scripts/run_r0_edge.py": "b8dd03260fd1bb5963a4f27b825028bb60125a021870c1cdbbeff1a568330626",
+      "scripts/r0_data.py": "b1d812cf0fb137200a1707a554b1e907c25fe988ea89f7f094b341e60d8cfff5",
+      "scripts/audit_graph_split.py": "f015ad28326e1aa697f5f1aa94ce0d65122c044f6396ad1a8059978b9cef9355",
+      "scripts/build_grouped_split.py": "63689d2130edf831c1e9b2a4c3ea49146d8c1c39d23303c96927618111a3d1e1",
+      "src/xgnid/edge_experiments.py": "028299120dbc4f22b682f7e180062a15ffb9d59f72c34d6444cd6ad0a9cc4f97",
+      "src/xgnid/model.py": "e56860fedda32af7acfaec85c3f6b10b6e67547e6557d3dcf222570c9d3d2d89",
+      "third_party/GNN4ID/Utility/Model.py": "72a6c12aed6acbea50555686e1540ccbed0ba03d589951accce3fc1d453bfcb0",
+      "docs/r0_source_lock.json": "3657c8f5a37039e81dffdda7e88a0977de288c5ebd19650e6f3914894b63b01c"
+    },
+    "runtime": {
+      "python": "3.9.23",
+      "torch": "2.3.1+cu118",
+      "pyg": "2.5.3",
+      "cuda": "11.8",
+      "device_type": "cuda",
+      "gpu": "Tesla T4"
+    }
+  },
+  "epochs_completed": 30,
+  "selection": "last_epoch",
+  "test": {
+    "samples": 25557,
+    "accuracy": 0.949798489650585,
+    "macro_f1": 0.9282109573752342,
+    "weighted_f1": 0.9527271796968293,
+    "classification_report": {
+      "Benign": {
+        "precision": 0.9593098120010302,
+        "recall": 0.93125,
+        "f1-score": 0.9450716732208551,
+        "support": 4000.0
+      },
+      "WebBased": {
+        "precision": 0.5710412147505423,
+        "recall": 0.9660550458715597,
+        "f1-score": 0.7177914110429447,
+        "support": 1090.0
+      },
+      "Spoofing": {
+        "precision": 0.9480153649167734,
+        "recall": 0.9255,
+        "f1-score": 0.9366223908918406,
+        "support": 4000.0
+      },
+      "Recon": {
+        "precision": 0.9853629976580797,
+        "recall": 0.8415,
+        "f1-score": 0.9077669902912622,
+        "support": 4000.0
+      },
+      "Mirai": {
+        "precision": 1.0,
+        "recall": 0.99925,
+        "f1-score": 0.9996248593222459,
+        "support": 4000.0
+      },
+      "Dos": {
+        "precision": 0.9942657691348791,
+        "recall": 0.997,
+        "f1-score": 0.9956310073648732,
+        "support": 4000.0
+      },
+      "DDos": {
+        "precision": 1.0,
+        "recall": 0.998,
+        "f1-score": 0.998998998998999,
+        "support": 4000.0
+      },
+      "BruteForce": {
+        "precision": 0.8860510805500982,
+        "recall": 0.9657387580299786,
+        "f1-score": 0.9241803278688524,
+        "support": 467.0
+      },
+      "accuracy": 0.949798489650585,
+      "macro avg": {
+        "precision": 0.9180057798764254,
+        "recall": 0.9530367254876922,
+        "f1-score": 0.9282109573752342,
+        "support": 25557.0
+      },
+      "weighted avg": {
+        "precision": 0.9619296691136688,
+        "recall": 0.949798489650585,
+        "f1-score": 0.9527271796968293,
+        "support": 25557.0
+      }
+    },
+    "confusion_matrix_true_rows_predicted_columns": [
+      [
+        3725,
+        96,
+        156,
+        17,
+        0,
+        0,
+        0,
+        6
+      ],
+      [
+        4,
+        1053,
+        4,
+        3,
+        0,
+        0,
+        0,
+        26
+      ],
+      [
+        126,
+        127,
+        3702,
+        21,
+        0,
+        0,
+        0,
+        24
+      ],
+      [
+        28,
+        546,
+        35,
+        3366,
+        0,
+        23,
+        0,
+        2
+      ],
+      [
+        0,
+        1,
+        2,
+        0,
+        3997,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        3,
+        1,
+        8,
+        0,
+        3988,
+        0,
+        0
+      ],
+      [
+        0,
+        5,
+        2,
+        1,
+        0,
+        0,
+        3992,
+        0
+      ],
+      [
+        0,
+        13,
+        3,
+        0,
+        0,
+        0,
+        0,
+        451
+      ]
+    ]
+  },
+  "parameters": 431704,
+  "last_checkpoint_sha256": "7a86dbc2b7345295be9b564cb581eb9dff20227018449aaf8e1a47aeba6ff581",
+  "wall_seconds": 56126.535998106
+}

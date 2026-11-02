@@ -1,0 +1,8 @@
+{
+  "status": "completed",
+  "exit_code": 0,
+  "mode": "queue",
+  "batch_size": 512,
+  "model": null,
+  "seed": null
+}

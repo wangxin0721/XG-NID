@@ -1,0 +1,26 @@
+{
+  "updates": [
+    {
+      "flow_encoder.": 17.056177096987298,
+      "packet_encoder.": 16.80214729659925,
+      "flow_classifier.": 0.6634781807661057,
+      "packet_classifier.": 1.0047522634267807,
+      "shared_head.": 1.2289627129212022
+    },
+    {
+      "flow_encoder.": 12.152899096197716,
+      "packet_encoder.": 13.315293589227274,
+      "flow_classifier.": 0.6992379482835531,
+      "packet_classifier.": 0.9100722130388021,
+      "shared_head.": 1.2129433266818523
+    },
+    {
+      "flow_encoder.": 15.43372596067276,
+      "packet_encoder.": 15.623429596228416,
+      "flow_classifier.": 0.7694994211196899,
+      "packet_classifier.": 0.9183478355407715,
+      "shared_head.": 1.255033865571022
+    }
+  ],
+  "discarded": true
+}

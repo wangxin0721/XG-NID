@@ -1,0 +1,135 @@
+{
+  "status": "completed",
+  "exit_code": 0,
+  "split_id": "a8ae9c934eec9fee970cc725e60051d0c709e0f16c7dda14749350ff2006975a",
+  "device": "cuda:0",
+  "models": {
+    "E3": {
+      "initial_state_sha256": "0270349d613f11b453b92e4e928a3c2e7b67d062b5e3ba73c8ba4fb58dbd521a",
+      "finite_loss": 2.0817530155181885,
+      "actual_GAT_inputs": {
+        "flow_encoder.convs1.convs.<flow___contain___packet>": [
+          211,
+          4
+        ],
+        "flow_encoder.convs1.convs.<packet___rev_contain___flow>": [
+          211,
+          4
+        ],
+        "flow_encoder.convs1.convs.<packet___link___packet>": [
+          390,
+          1
+        ],
+        "flow_encoder.convs2.convs.<flow___contain___packet>": [
+          211,
+          4
+        ],
+        "flow_encoder.convs2.convs.<packet___rev_contain___flow>": [
+          211,
+          4
+        ],
+        "flow_encoder.convs2.convs.<packet___link___packet>": [
+          390,
+          1
+        ],
+        "packet_encoder.convs1.convs.<flow___contain___packet>": [
+          211,
+          4
+        ],
+        "packet_encoder.convs1.convs.<packet___rev_contain___flow>": [
+          211,
+          4
+        ],
+        "packet_encoder.convs1.convs.<packet___link___packet>": [
+          390,
+          1
+        ],
+        "packet_encoder.convs2.convs.<flow___contain___packet>": [
+          211,
+          4
+        ],
+        "packet_encoder.convs2.convs.<packet___rev_contain___flow>": [
+          211,
+          4
+        ],
+        "packet_encoder.convs2.convs.<packet___link___packet>": [
+          390,
+          1
+        ]
+      },
+      "attribute_sensitivity": {
+        "('flow', 'contain', 'packet')": 0.0001354217529296875,
+        "('packet', 'rev_contain', 'flow')": 12.620365142822266,
+        "('packet', 'link', 'packet')": 1.1939382553100586
+      },
+      "repeat_forward_jitter": 0.0001125335693359375,
+      "comparison_tolerance": 0.00225067138671875,
+      "edge_projection_gradient_max": {
+        "flow_encoder.convs1.convs.<flow___contain___packet>": 0.0,
+        "flow_encoder.convs1.convs.<packet___rev_contain___flow>": 5.57581216441283e-13,
+        "flow_encoder.convs1.convs.<packet___link___packet>": 8.219110895879567e-06,
+        "flow_encoder.convs2.convs.<flow___contain___packet>": null,
+        "flow_encoder.convs2.convs.<packet___rev_contain___flow>": 6.901856977492571e-06,
+        "flow_encoder.convs2.convs.<packet___link___packet>": null,
+        "packet_encoder.convs1.convs.<flow___contain___packet>": 0.0,
+        "packet_encoder.convs1.convs.<packet___rev_contain___flow>": 1.2000354487895493e-08,
+        "packet_encoder.convs1.convs.<packet___link___packet>": 3.3590777093195356e-07,
+        "packet_encoder.convs2.convs.<flow___contain___packet>": 0.0,
+        "packet_encoder.convs2.convs.<packet___rev_contain___flow>": null,
+        "packet_encoder.convs2.convs.<packet___link___packet>": 4.6296736400108784e-07
+      },
+      "gate_gradient_max": 0.0012615160085260868,
+      "parameter_update_verified": true,
+      "input_graph_unchanged": true,
+      "parameter_count": 846800
+    },
+    "E4": {
+      "initial_state_sha256": "0270349d613f11b453b92e4e928a3c2e7b67d062b5e3ba73c8ba4fb58dbd521a",
+      "finite_loss": 2.081847667694092,
+      "actual_GAT_inputs": {
+        "flow_encoder.convs1.convs.<flow___contain___packet>": null,
+        "flow_encoder.convs1.convs.<packet___rev_contain___flow>": null,
+        "flow_encoder.convs1.convs.<packet___link___packet>": null,
+        "flow_encoder.convs2.convs.<flow___contain___packet>": null,
+        "flow_encoder.convs2.convs.<packet___rev_contain___flow>": null,
+        "flow_encoder.convs2.convs.<packet___link___packet>": null,
+        "packet_encoder.convs1.convs.<flow___contain___packet>": null,
+        "packet_encoder.convs1.convs.<packet___rev_contain___flow>": null,
+        "packet_encoder.convs1.convs.<packet___link___packet>": null,
+        "packet_encoder.convs2.convs.<flow___contain___packet>": null,
+        "packet_encoder.convs2.convs.<packet___rev_contain___flow>": null,
+        "packet_encoder.convs2.convs.<packet___link___packet>": null
+      },
+      "attribute_sensitivity": {
+        "('flow', 'contain', 'packet')": 9.72747802734375e-05,
+        "('packet', 'rev_contain', 'flow')": 0.000209808349609375,
+        "('packet', 'link', 'packet')": 4.38690185546875e-05
+      },
+      "repeat_forward_jitter": 0.000209808349609375,
+      "comparison_tolerance": 0.0041961669921875,
+      "edge_projection_gradient_max": {
+        "flow_encoder.convs1.convs.<flow___contain___packet>": null,
+        "flow_encoder.convs1.convs.<packet___rev_contain___flow>": null,
+        "flow_encoder.convs1.convs.<packet___link___packet>": null,
+        "flow_encoder.convs2.convs.<flow___contain___packet>": null,
+        "flow_encoder.convs2.convs.<packet___rev_contain___flow>": null,
+        "flow_encoder.convs2.convs.<packet___link___packet>": null,
+        "packet_encoder.convs1.convs.<flow___contain___packet>": null,
+        "packet_encoder.convs1.convs.<packet___rev_contain___flow>": null,
+        "packet_encoder.convs1.convs.<packet___link___packet>": null,
+        "packet_encoder.convs2.convs.<flow___contain___packet>": null,
+        "packet_encoder.convs2.convs.<packet___rev_contain___flow>": null,
+        "packet_encoder.convs2.convs.<packet___link___packet>": null
+      },
+      "gate_gradient_max": 0.0015322573017328978,
+      "parameter_update_verified": true,
+      "input_graph_unchanged": true,
+      "parameter_count": 846800
+    }
+  },
+  "paired_initial_states_identical": {},
+  "verified_candidate_graphs": 32,
+  "batch_graphs": 16,
+  "elapsed_seconds": 5.032467766000082,
+  "scope": "train-only one-batch smoke; no epochs, performance evaluation or formal training"
+}

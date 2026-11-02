@@ -1,0 +1,38 @@
+{
+  "samples": 13446,
+  "paired_max_abs_error": 0.0,
+  "legacy_independent_mean_max_abs_error": 2.288818359375e-05,
+  "pair_allclose_1e6": true,
+  "uniform_relations": true,
+  "source_predictions_and_CM_identical": true,
+  "raw_graph_replays": {
+    "Rel-Mean": {
+      "strict_state_load": true,
+      "predictions_identical": true,
+      "confusion_matrix_reproduced": true,
+      "samples": 13446,
+      "max_abs_raw_cached_error": 1.52587890625e-05,
+      "legacy_source_max_abs_error": 1.52587890625e-05,
+      "graph_load_stage": {
+        "phase": "initial_Rel-Mean",
+        "partition": "val",
+        "verified_samples": 13446,
+        "workers": 2
+      }
+    },
+    "Rel-Gate": {
+      "strict_state_load": true,
+      "predictions_identical": true,
+      "confusion_matrix_reproduced": true,
+      "samples": 13446,
+      "max_abs_raw_cached_error": 1.52587890625e-05,
+      "legacy_source_max_abs_error": 2.288818359375e-05,
+      "graph_load_stage": {
+        "phase": "initial_Rel-Gate",
+        "partition": "val",
+        "verified_samples": 13446,
+        "workers": 2
+      }
+    }
+  }
+}

@@ -1,0 +1,108 @@
+{
+  "P1_minus_P0_pp": 0.06660690307067618,
+  "P1_minus_D32_pp": 0.10648577739176268,
+  "stronger_reference_macro_f1": 0.9736058430246577,
+  "P1_minus_stronger_reference_pp": 0.06660690307067618,
+  "budget_threshold_pp": 0.1,
+  "required_P1_macro_f1": 0.9746058430246577,
+  "budget_screen_passed": false,
+  "experiment_kind": "one_round_training_budget_confirmation_not_new_model",
+  "confirmation_rounds": 1,
+  "epochs_per_arm": 150,
+  "early_stop_enabled": false,
+  "budget_confirmation": {
+    "P0": {
+      "first20_orders_identical": true,
+      "first20_validation_scores_identical": true,
+      "first20_train_nll_max_abs_error": 0.0,
+      "first20_exact_train_nll": true,
+      "first20_selected_macro_f1": 0.9732070542814468,
+      "full150_selected_macro_f1": 0.9736058430246577,
+      "gain_after20_pp": 0.0398788743210865,
+      "first20_reproduced": true,
+      "best_trained_epoch": 129,
+      "interpretation": "matched_prefix_budget_confirmation"
+    },
+    "P1": {
+      "first20_orders_identical": true,
+      "first20_validation_scores_identical": true,
+      "first20_train_nll_max_abs_error": 0.0,
+      "first20_exact_train_nll": true,
+      "first20_selected_macro_f1": 0.9732070542814468,
+      "full150_selected_macro_f1": 0.9742719120553645,
+      "gain_after20_pp": 0.10648577739176268,
+      "first20_reproduced": true,
+      "best_trained_epoch": 146,
+      "interpretation": "matched_prefix_budget_confirmation"
+    }
+  },
+  "first20_budget": {
+    "P1_minus_P0_pp": 0.0,
+    "P1_minus_D32_pp": 0.0,
+    "stronger_reference_macro_f1": 0.9732070542814468,
+    "P1_minus_stronger_reference_pp": 0.0,
+    "budget_threshold_pp": 0.1,
+    "required_P1_macro_f1": 0.9742070542814468,
+    "budget_screen_passed": false
+  },
+  "first20_reproduced": true,
+  "budget_verdict_changed_after20": false,
+  "selected_epoch_zero": {
+    "P0": false,
+    "P1": false
+  },
+  "class_tradeoff_review_required": true,
+  "statistical_significance_claimed": false,
+  "automatic_followup": false,
+  "attribution": "Same P0/P1 models and hyperparameters; only the fixed training budget changes. If the first20 trajectory differs, do not attribute differences solely to removing early stopping.",
+  "class_changes": {
+    "Benign": {
+      "P1_minus_P0_recall_pp": 0.12557555462536785,
+      "P1_minus_D32_recall_pp": 0.3348681456676439,
+      "P1_minus_P0_F1_pp": 0.165828628634912,
+      "support": 2389
+    },
+    "WebBased": {
+      "P1_minus_P0_recall_pp": 0.3676470588235281,
+      "P1_minus_D32_recall_pp": 0.9191176470588314,
+      "P1_minus_P0_F1_pp": 0.1147618118594873,
+      "support": 544
+    },
+    "Spoofing": {
+      "P1_minus_P0_recall_pp": 0.23001725129384587,
+      "P1_minus_D32_recall_pp": -0.23001725129384587,
+      "P1_minus_P0_F1_pp": 0.230813618003467,
+      "support": 1739
+    },
+    "Recon": {
+      "P1_minus_P0_recall_pp": 0.0,
+      "P1_minus_D32_recall_pp": 0.17559262510974394,
+      "P1_minus_P0_F1_pp": 0.021451166067609773,
+      "support": 2278
+    },
+    "Mirai": {
+      "P1_minus_P0_recall_pp": 0.0,
+      "P1_minus_D32_recall_pp": 0.0,
+      "P1_minus_P0_F1_pp": 0.0,
+      "support": 2400
+    },
+    "Dos": {
+      "P1_minus_P0_recall_pp": 0.0,
+      "P1_minus_D32_recall_pp": -0.06779661016949046,
+      "P1_minus_P0_F1_pp": 0.0,
+      "support": 1475
+    },
+    "DDos": {
+      "P1_minus_P0_recall_pp": 0.0,
+      "P1_minus_D32_recall_pp": -0.041876046901168085,
+      "P1_minus_P0_F1_pp": 0.0,
+      "support": 2388
+    },
+    "BruteForce": {
+      "P1_minus_P0_recall_pp": 0.0,
+      "P1_minus_D32_recall_pp": -0.42918454935622075,
+      "P1_minus_P0_F1_pp": 0.0,
+      "support": 233
+    }
+  }
+}

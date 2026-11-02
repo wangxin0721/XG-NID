@@ -1,0 +1,12 @@
+{
+  "D32-Equal": {
+    "strict_reload": true,
+    "samples": 16,
+    "checkpoint_sha256": "669cd35854073e79ad3c3a7427607882a6c4d7100b10e7ea35712e6c36c4d78e"
+  },
+  "D32-Gate": {
+    "strict_reload": true,
+    "samples": 16,
+    "checkpoint_sha256": "ef9044a5f826728749f68ffd511e46c8ac314d042403dd916e48572cff2be768"
+  }
+}

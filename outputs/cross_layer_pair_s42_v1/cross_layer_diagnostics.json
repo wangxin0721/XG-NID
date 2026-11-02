@@ -1,0 +1,134 @@
+{
+  "train": {
+    "Benign": {
+      "graphs": 19112,
+      "varying_graphs": 19112,
+      "mean_layer1_norm": 6.586158752441406,
+      "mean_layer2_norm": 7.9118804931640625,
+      "mean_difference": 7.997217655181885,
+      "mean_cosine": 0.4438622295856476
+    },
+    "WebBased": {
+      "graphs": 4359,
+      "varying_graphs": 4359,
+      "mean_layer1_norm": 6.3077168464660645,
+      "mean_layer2_norm": 6.474983215332031,
+      "mean_difference": 6.812379360198975,
+      "mean_cosine": 0.45032966136932373
+    },
+    "Spoofing": {
+      "graphs": 13914,
+      "varying_graphs": 13914,
+      "mean_layer1_norm": 6.806955337524414,
+      "mean_layer2_norm": 8.089232444763184,
+      "mean_difference": 8.25793743133545,
+      "mean_cosine": 0.4241223633289337
+    },
+    "Recon": {
+      "graphs": 18224,
+      "varying_graphs": 18224,
+      "mean_layer1_norm": 6.189812183380127,
+      "mean_layer2_norm": 5.916126251220703,
+      "mean_difference": 6.382613182067871,
+      "mean_cosine": 0.4533365070819855
+    },
+    "Mirai": {
+      "graphs": 19200,
+      "varying_graphs": 19200,
+      "mean_layer1_norm": 4.053996562957764,
+      "mean_layer2_norm": 4.180020332336426,
+      "mean_difference": 4.746936798095703,
+      "mean_cosine": 0.338441401720047
+    },
+    "Dos": {
+      "graphs": 11802,
+      "varying_graphs": 11802,
+      "mean_layer1_norm": 5.731853485107422,
+      "mean_layer2_norm": 6.331323623657227,
+      "mean_difference": 6.237511157989502,
+      "mean_cosine": 0.46328362822532654
+    },
+    "DDos": {
+      "graphs": 19140,
+      "varying_graphs": 19140,
+      "mean_layer1_norm": 5.221790313720703,
+      "mean_layer2_norm": 3.2576494216918945,
+      "mean_difference": 4.516232490539551,
+      "mean_cosine": 0.5142602324485779
+    },
+    "BruteForce": {
+      "graphs": 1870,
+      "varying_graphs": 1870,
+      "mean_layer1_norm": 8.164868354797363,
+      "mean_layer2_norm": 7.789865493774414,
+      "mean_difference": 8.978524208068848,
+      "mean_cosine": 0.4030247926712036
+    }
+  },
+  "val": {
+    "Benign": {
+      "graphs": 2389,
+      "varying_graphs": 2389,
+      "mean_layer1_norm": 6.671724796295166,
+      "mean_layer2_norm": 8.009063720703125,
+      "mean_difference": 8.1416015625,
+      "mean_cosine": 0.4406328499317169
+    },
+    "WebBased": {
+      "graphs": 544,
+      "varying_graphs": 544,
+      "mean_layer1_norm": 6.3820085525512695,
+      "mean_layer2_norm": 6.443965911865234,
+      "mean_difference": 6.848720073699951,
+      "mean_cosine": 0.4485030174255371
+    },
+    "Spoofing": {
+      "graphs": 1739,
+      "varying_graphs": 1739,
+      "mean_layer1_norm": 6.8739118576049805,
+      "mean_layer2_norm": 8.044384002685547,
+      "mean_difference": 8.290761947631836,
+      "mean_cosine": 0.42110148072242737
+    },
+    "Recon": {
+      "graphs": 2278,
+      "varying_graphs": 2278,
+      "mean_layer1_norm": 6.174432754516602,
+      "mean_layer2_norm": 5.93840217590332,
+      "mean_difference": 6.384079933166504,
+      "mean_cosine": 0.4534265398979187
+    },
+    "Mirai": {
+      "graphs": 2400,
+      "varying_graphs": 2400,
+      "mean_layer1_norm": 4.057352542877197,
+      "mean_layer2_norm": 4.182685852050781,
+      "mean_difference": 4.755086421966553,
+      "mean_cosine": 0.3371718227863312
+    },
+    "Dos": {
+      "graphs": 1475,
+      "varying_graphs": 1475,
+      "mean_layer1_norm": 5.7480573654174805,
+      "mean_layer2_norm": 6.31997013092041,
+      "mean_difference": 6.257517337799072,
+      "mean_cosine": 0.46016085147857666
+    },
+    "DDos": {
+      "graphs": 2388,
+      "varying_graphs": 2388,
+      "mean_layer1_norm": 5.223402976989746,
+      "mean_layer2_norm": 3.260096788406372,
+      "mean_difference": 4.519014358520508,
+      "mean_cosine": 0.5140852928161621
+    },
+    "BruteForce": {
+      "graphs": 233,
+      "varying_graphs": 233,
+      "mean_layer1_norm": 8.441511154174805,
+      "mean_layer2_norm": 7.856197834014893,
+      "mean_difference": 9.231278419494629,
+      "mean_cosine": 0.39872321486473083
+    }
+  }
+}

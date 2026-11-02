@@ -1,0 +1,480 @@
+[
+  {
+    "name": "e0_batch_full_b512_s42_shared_v1",
+    "category": "01_batch_comparisons",
+    "recorded_status": "文件记录：running；exit_code=未记录（非进程检查）",
+    "original_paths": [
+      "outputs/e0_batch_full_b512_s42_shared_v1",
+      "outputs/e0_batch_full_b512_s42_shared_v1.log",
+      "outputs/e0_batch_full_b512_s42_shared_v1.pid"
+    ]
+  },
+  {
+    "name": "e2_batch_full_b1024_s42_v1",
+    "category": "01_batch_comparisons",
+    "recorded_status": "未核实（仅旁文件或未知类型）",
+    "original_paths": [
+      "outputs/e2_batch_full_b1024_s42_v1.log",
+      "outputs/e2_batch_full_b1024_s42_v1.pid"
+    ]
+  },
+  {
+    "name": "e2_batch_full_b256_s42_shared_v1",
+    "category": "01_batch_comparisons",
+    "recorded_status": "文件记录：completed；exit_code=0（非进程检查）",
+    "original_paths": [
+      "outputs/e2_batch_full_b256_s42_shared_v1",
+      "outputs/e2_batch_full_b256_s42_shared_v1.log",
+      "outputs/e2_batch_full_b256_s42_shared_v1.pid"
+    ]
+  },
+  {
+    "name": "e2_batch_full_b512_s42_shared_v1",
+    "category": "01_batch_comparisons",
+    "recorded_status": "文件记录：completed；exit_code=0（非进程检查）",
+    "original_paths": [
+      "outputs/e2_batch_full_b512_s42_shared_v1",
+      "outputs/e2_batch_full_b512_s42_shared_v1.log",
+      "outputs/e2_batch_full_b512_s42_shared_v1.pid"
+    ]
+  },
+  {
+    "name": "e3_batch_full_b512_s42_shared_v2",
+    "category": "01_batch_comparisons",
+    "recorded_status": "文件记录：failed；exit_code=1（非进程检查）",
+    "original_paths": [
+      "outputs/e3_batch_full_b512_s42_shared_v2",
+      "outputs/e3_batch_full_b512_s42_shared_v2.log",
+      "outputs/e3_batch_full_b512_s42_shared_v2.pid"
+    ]
+  },
+  {
+    "name": "e3_batch_full_b512_s42_shared_v3",
+    "category": "01_batch_comparisons",
+    "recorded_status": "文件记录：completed；exit_code=0（非进程检查）",
+    "original_paths": [
+      "outputs/e3_batch_full_b512_s42_shared_v3",
+      "outputs/e3_batch_full_b512_s42_shared_v3.log",
+      "outputs/e3_batch_full_b512_s42_shared_v3.pid"
+    ]
+  },
+  {
+    "name": "e3_batch_full_b512_s42_v1",
+    "category": "01_batch_comparisons",
+    "recorded_status": "未核实（仅旁文件或未知类型）",
+    "original_paths": [
+      "outputs/e3_batch_full_b512_s42_v1.log",
+      "outputs/e3_batch_full_b512_s42_v1.pid"
+    ]
+  },
+  {
+    "name": "grouped_full_E0_s42_v1",
+    "category": "02_grouped_E0_E4",
+    "recorded_status": "文件记录：completed；exit_code=0（非进程检查）",
+    "original_paths": [
+      "outputs/grouped_full_E0_s42_v1",
+      "outputs/grouped_full_E0_s42_v1.log"
+    ]
+  },
+  {
+    "name": "grouped_full_E1_s42_v1",
+    "category": "02_grouped_E0_E4",
+    "recorded_status": "文件记录：completed；exit_code=0（非进程检查）",
+    "original_paths": [
+      "outputs/grouped_full_E1_s42_v1",
+      "outputs/grouped_full_E1_s42_v1.log",
+      "outputs/grouped_full_E1_s42_v1.pid"
+    ]
+  },
+  {
+    "name": "grouped_full_E2_s42_v1",
+    "category": "02_grouped_E0_E4",
+    "recorded_status": "文件记录：completed；exit_code=0（非进程检查）",
+    "original_paths": [
+      "outputs/grouped_full_E2_s42_v1",
+      "outputs/grouped_full_E2_s42_v1.log"
+    ]
+  },
+  {
+    "name": "grouped_full_E3_s42_resume_v1",
+    "category": "02_grouped_E0_E4",
+    "recorded_status": "文件记录：completed；exit_code=0（非进程检查）",
+    "original_paths": [
+      "outputs/grouped_full_E3_s42_resume_v1",
+      "outputs/grouped_full_E3_s42_resume_v1.log",
+      "outputs/grouped_full_E3_s42_resume_v1.pid"
+    ]
+  },
+  {
+    "name": "grouped_full_E3_s42_v1",
+    "category": "02_grouped_E0_E4",
+    "recorded_status": "文件记录：running；exit_code=未记录（非进程检查）",
+    "original_paths": [
+      "outputs/grouped_full_E3_s42_v1",
+      "outputs/grouped_full_E3_s42_v1.log",
+      "outputs/grouped_full_E3_s42_v1.pid",
+      "outputs/grouped_full_E3_s42_v1.restart.json"
+    ]
+  },
+  {
+    "name": "grouped_full_E4_s42_v1",
+    "category": "02_grouped_E0_E4",
+    "recorded_status": "文件记录：completed；exit_code=0（非进程检查）",
+    "original_paths": [
+      "outputs/grouped_full_E4_s42_v1",
+      "outputs/grouped_full_E4_s42_v1.log",
+      "outputs/grouped_full_E4_s42_v1.pid"
+    ]
+  },
+  {
+    "name": "e3_gate_probe_E3a_b512_s42_v1",
+    "category": "03_gate_studies",
+    "recorded_status": "文件记录：completed；exit_code=0（非进程检查）",
+    "original_paths": [
+      "outputs/e3_gate_probe_E3a_b512_s42_v1"
+    ]
+  },
+  {
+    "name": "e3_gate_probe_E3a_b512_s42_v2",
+    "category": "03_gate_studies",
+    "recorded_status": "文件记录：completed；exit_code=0（非进程检查）",
+    "original_paths": [
+      "outputs/e3_gate_probe_E3a_b512_s42_v2"
+    ]
+  },
+  {
+    "name": "e3_gate_screen_E3a_b512_s42_v1",
+    "category": "03_gate_studies",
+    "recorded_status": "文件记录：failed；exit_code=1（非进程检查）",
+    "original_paths": [
+      "outputs/e3_gate_screen_E3a_b512_s42_v1",
+      "outputs/e3_gate_screen_E3a_b512_s42_v1.log",
+      "outputs/e3_gate_screen_E3a_b512_s42_v1.pid"
+    ]
+  },
+  {
+    "name": "e3_gate_screen_E3a_b512_s42_v2",
+    "category": "03_gate_studies",
+    "recorded_status": "文件记录：running；exit_code=未记录（非进程检查）",
+    "original_paths": [
+      "outputs/e3_gate_screen_E3a_b512_s42_v2",
+      "outputs/e3_gate_screen_E3a_b512_s42_v2.log",
+      "outputs/e3_gate_screen_E3a_b512_s42_v2.pid"
+    ]
+  },
+  {
+    "name": "e3_gate_cache_analysis_b512_s42_v1",
+    "category": "04_gate_diagnostics",
+    "recorded_status": "文件记录：completed；exit_code=0（非进程检查）",
+    "original_paths": [
+      "outputs/e3_gate_cache_analysis_b512_s42_v1"
+    ]
+  },
+  {
+    "name": "e3_gate_diagnostic_b512_s42_v1",
+    "category": "04_gate_diagnostics",
+    "recorded_status": "文件记录：completed；exit_code=0（非进程检查）",
+    "original_paths": [
+      "outputs/e3_gate_diagnostic_b512_s42_v1",
+      "outputs/e3_gate_diagnostic_b512_s42_v1.log",
+      "outputs/e3_gate_diagnostic_b512_s42_v1.pid"
+    ]
+  },
+  {
+    "name": "r0_aligned_full_s42_v1",
+    "category": "05_R0_references",
+    "recorded_status": "文件记录：running；exit_code=未记录（非进程检查）",
+    "original_paths": [
+      "outputs/r0_aligned_full_s42_v1",
+      "outputs/r0_aligned_full_s42_v1.exitcode",
+      "outputs/r0_aligned_full_s42_v1.log",
+      "outputs/r0_aligned_full_s42_v1.pid",
+      "outputs/r0_aligned_full_s42_v1.supervisor.pid"
+    ]
+  },
+  {
+    "name": "r0_aligned_smoke_s42_v1",
+    "category": "05_R0_references",
+    "recorded_status": "文件记录：completed；exit_code=0（非进程检查）",
+    "original_paths": [
+      "outputs/r0_aligned_smoke_s42_v1"
+    ]
+  },
+  {
+    "name": "r0_cpu_smoke_server_v1",
+    "category": "05_R0_references",
+    "recorded_status": "文件记录：completed；exit_code=0（非进程检查）",
+    "original_paths": [
+      "outputs/r0_cpu_smoke_server_v1",
+      "outputs/r0_cpu_smoke_server_v1.exitcode",
+      "outputs/r0_cpu_smoke_server_v1.log"
+    ]
+  },
+  {
+    "name": "r0_cuda_smoke_20261017T064602357890Z",
+    "category": "05_R0_references",
+    "recorded_status": "文件记录：completed；exit_code=0（非进程检查）",
+    "original_paths": [
+      "outputs/r0_cuda_smoke_20261017T064602357890Z",
+      "outputs/r0_cuda_smoke_20261017T064602357890Z.exitcode",
+      "outputs/r0_cuda_smoke_20261017T064602357890Z.log"
+    ]
+  },
+  {
+    "name": "r0_full_launch.json",
+    "category": "05_R0_references",
+    "recorded_status": "未核实（仅旁文件或未知类型）",
+    "original_paths": [
+      "outputs/r0_full_launch.json"
+    ]
+  },
+  {
+    "name": "r0_full_s42_20261017T065259974842Z",
+    "category": "05_R0_references",
+    "recorded_status": "文件记录：completed；exit_code=0（非进程检查）",
+    "original_paths": [
+      "outputs/r0_full_s42_20261017T065259974842Z",
+      "outputs/r0_full_s42_20261017T065259974842Z.exitcode",
+      "outputs/r0_full_s42_20261017T065259974842Z.log",
+      "outputs/r0_full_s42_20261017T065259974842Z.pid",
+      "outputs/r0_full_s42_20261017T065259974842Z.supervisor.pid"
+    ]
+  },
+  {
+    "name": "r0_gap_audit_20261019T011605512759Z",
+    "category": "05_R0_references",
+    "recorded_status": "文件记录：checks_passed_with_unresolved_protocol_differences；exit_code=0（非进程检查）",
+    "original_paths": [
+      "outputs/r0_gap_audit_20261019T011605512759Z"
+    ]
+  },
+  {
+    "name": "r0_graph_rebuild_author_offline_v2",
+    "category": "05_R0_references",
+    "recorded_status": "文件记录：completed；exit_code=0（非进程检查）",
+    "original_paths": [
+      "outputs/r0_graph_rebuild_author_offline_v2"
+    ]
+  },
+  {
+    "name": "r0_graph_rebuild_author_v1",
+    "category": "05_R0_references",
+    "recorded_status": "文件记录：failed；exit_code=1（非进程检查）",
+    "original_paths": [
+      "outputs/r0_graph_rebuild_author_v1"
+    ]
+  },
+  {
+    "name": "r0_targeted_audit_20261019T015739852831Z",
+    "category": "05_R0_references",
+    "recorded_status": "文件记录：targeted_checks_complete_history_unresolved；exit_code=0（非进程检查）",
+    "original_paths": [
+      "outputs/r0_targeted_audit_20261019T015739852831Z"
+    ]
+  },
+  {
+    "name": "r0_validation_full_s42_v1",
+    "category": "05_R0_references",
+    "recorded_status": "文件记录：completed；exit_code=0（非进程检查）",
+    "original_paths": [
+      "outputs/r0_validation_full_s42_v1",
+      "outputs/r0_validation_full_s42_v1.log"
+    ]
+  },
+  {
+    "name": "r0_validation_smoke_s42_v1",
+    "category": "05_R0_references",
+    "recorded_status": "文件记录：completed；exit_code=0（非进程检查）",
+    "original_paths": [
+      "outputs/r0_validation_smoke_s42_v1"
+    ]
+  },
+  {
+    "name": "r0_validation_split_s42_v1",
+    "category": "05_R0_references",
+    "recorded_status": "无可读根级 status.json；待核实",
+    "original_paths": [
+      "outputs/r0_validation_split_s42_v1"
+    ]
+  },
+  {
+    "name": "r0a_v2_cleanup_receipt.json",
+    "category": "05_R0_references",
+    "recorded_status": "未核实（仅旁文件或未知类型）",
+    "original_paths": [
+      "outputs/r0a_v2_cleanup_receipt.json"
+    ]
+  },
+  {
+    "name": "e0_batch_probe_b512_s42_shared_v1",
+    "category": "06_probes_and_checks",
+    "recorded_status": "文件记录：completed；exit_code=0（非进程检查）",
+    "original_paths": [
+      "outputs/e0_batch_probe_b512_s42_shared_v1"
+    ]
+  },
+  {
+    "name": "e2_batch_probe_b1024_s42_v1",
+    "category": "06_probes_and_checks",
+    "recorded_status": "文件记录：completed；exit_code=0（非进程检查）",
+    "original_paths": [
+      "outputs/e2_batch_probe_b1024_s42_v1"
+    ]
+  },
+  {
+    "name": "e2_batch_probe_b256_s42_shared_v1",
+    "category": "06_probes_and_checks",
+    "recorded_status": "文件记录：completed；exit_code=0（非进程检查）",
+    "original_paths": [
+      "outputs/e2_batch_probe_b256_s42_shared_v1"
+    ]
+  },
+  {
+    "name": "e2_batch_probe_b512_s42_shared_v1",
+    "category": "06_probes_and_checks",
+    "recorded_status": "文件记录：completed；exit_code=0（非进程检查）",
+    "original_paths": [
+      "outputs/e2_batch_probe_b512_s42_shared_v1"
+    ]
+  },
+  {
+    "name": "e2_e3_preflight_20261017T081529305925Z",
+    "category": "06_probes_and_checks",
+    "recorded_status": "无可读根级 status.json；待核实",
+    "original_paths": [
+      "outputs/e2_e3_preflight_20261017T081529305925Z"
+    ]
+  },
+  {
+    "name": "e2_e3_preflight_20261019T103529458611Z",
+    "category": "06_probes_and_checks",
+    "recorded_status": "无可读根级 status.json；待核实",
+    "original_paths": [
+      "outputs/e2_e3_preflight_20261019T103529458611Z"
+    ]
+  },
+  {
+    "name": "e3_batch_probe_b512_s42_shared_v2",
+    "category": "06_probes_and_checks",
+    "recorded_status": "文件记录：failed；exit_code=1（非进程检查）",
+    "original_paths": [
+      "outputs/e3_batch_probe_b512_s42_shared_v2"
+    ]
+  },
+  {
+    "name": "e3_batch_probe_b512_s42_shared_v3",
+    "category": "06_probes_and_checks",
+    "recorded_status": "文件记录：completed；exit_code=0（非进程检查）",
+    "original_paths": [
+      "outputs/e3_batch_probe_b512_s42_shared_v3"
+    ]
+  },
+  {
+    "name": "grouped_gpu_smoke_E4_s42_v1",
+    "category": "06_probes_and_checks",
+    "recorded_status": "文件记录：completed；exit_code=0（非进程检查）",
+    "original_paths": [
+      "outputs/grouped_gpu_smoke_E4_s42_v1"
+    ]
+  },
+  {
+    "name": "grouped_gpu_smoke_v1",
+    "category": "06_probes_and_checks",
+    "recorded_status": "文件记录：completed；exit_code=0（非进程检查）",
+    "original_paths": [
+      "outputs/grouped_gpu_smoke_v1",
+      "outputs/grouped_gpu_smoke_v1.exitcode",
+      "outputs/grouped_gpu_smoke_v1.log"
+    ]
+  },
+  {
+    "name": "grouped_training_pilot_v1",
+    "category": "06_probes_and_checks",
+    "recorded_status": "文件记录：completed；exit_code=0（非进程检查）",
+    "original_paths": [
+      "outputs/grouped_training_pilot_v1",
+      "outputs/grouped_training_pilot_v1.exitcode",
+      "outputs/grouped_training_pilot_v1.log"
+    ]
+  },
+  {
+    "name": "server_graph_split_audit_v1",
+    "category": "06_probes_and_checks",
+    "recorded_status": "无可读根级 status.json；待核实",
+    "original_paths": [
+      "outputs/server_graph_split_audit_v1"
+    ]
+  },
+  {
+    "name": "e3_restart_snapshot_20261020T102912701250Z",
+    "category": "07_restart_snapshots",
+    "recorded_status": "无可读根级 status.json；待核实",
+    "original_paths": [
+      "outputs/e3_restart_snapshot_20261020T102912701250Z"
+    ]
+  },
+  {
+    "name": "e3_restart_snapshot_20261020T103302548182Z",
+    "category": "07_restart_snapshots",
+    "recorded_status": "无可读根级 status.json；待核实",
+    "original_paths": [
+      "outputs/e3_restart_snapshot_20261020T103302548182Z"
+    ]
+  },
+  {
+    "name": "GNN4ID",
+    "category": "08_legacy",
+    "recorded_status": "无可读根级 status.json；待核实",
+    "original_paths": [
+      "outputs/GNN4ID"
+    ]
+  },
+  {
+    "name": "GNN4ID_edge",
+    "category": "08_legacy",
+    "recorded_status": "无可读根级 status.json；待核实",
+    "original_paths": [
+      "outputs/GNN4ID_edge"
+    ]
+  },
+  {
+    "name": "_archive",
+    "category": "08_legacy",
+    "recorded_status": "无可读根级 status.json；待核实",
+    "original_paths": [
+      "outputs/_archive"
+    ]
+  },
+  {
+    "name": "baseline_rerun_paper_align_v2",
+    "category": "08_legacy",
+    "recorded_status": "无可读根级 status.json；待核实",
+    "original_paths": [
+      "outputs/baseline_rerun_paper_align_v2"
+    ]
+  },
+  {
+    "name": "baselines",
+    "category": "08_legacy",
+    "recorded_status": "无可读根级 status.json；待核实",
+    "original_paths": [
+      "outputs/baselines"
+    ]
+  },
+  {
+    "name": "good",
+    "category": "08_legacy",
+    "recorded_status": "无可读根级 status.json；待核实",
+    "original_paths": [
+      "outputs/good"
+    ]
+  },
+  {
+    "name": "innov2",
+    "category": "08_legacy",
+    "recorded_status": "无可读根级 status.json；待核实",
+    "original_paths": [
+      "outputs/innov2"
+    ]
+  }
+]

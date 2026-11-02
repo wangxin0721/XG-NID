@@ -1,0 +1,68 @@
+{
+  "binding": {
+    "experiment": "R0-V",
+    "config": {
+      "schema": "xgnid.r0-validation.config.v1",
+      "experiment": "R0-V",
+      "claim": "validation_selected_variant_not_strict_paper_reproduction",
+      "seed": 42,
+      "val_fraction_of_source_train": 0.1,
+      "group_by": "node_hash",
+      "max_epochs": 100,
+      "early_stopping": true,
+      "patience": 12,
+      "min_delta": 0.0,
+      "selection": "best_validation_macro_f1",
+      "tie_break": "earliest_epoch",
+      "batch_size": 64,
+      "val_batch_size": 64,
+      "test_batch_size": 1,
+      "optimizer": "Adam",
+      "lr": 0.01,
+      "weight_decay": 0.0,
+      "scheduler": null,
+      "hidden_size": 64,
+      "eps": 1.0,
+      "test_passes": 1
+    },
+    "split_id": "3b4a411a3efb063319c3483797251437253a1864f85256d4652388904989fa7b",
+    "source_binding": {
+      "manifest_id": "22d027fe3d0b0ad9079da9a13614597b0e40bb883a34b2d4d825452d6129d383",
+      "config_id": "7463253af0c7d165dc7c3b681895e6d918e8c83f80994ac896ef5045f84e414b",
+      "code": {
+        "scripts/run_r0_edge.py": "b8dd03260fd1bb5963a4f27b825028bb60125a021870c1cdbbeff1a568330626",
+        "scripts/r0_data.py": "b1d812cf0fb137200a1707a554b1e907c25fe988ea89f7f094b341e60d8cfff5",
+        "scripts/audit_graph_split.py": "f015ad28326e1aa697f5f1aa94ce0d65122c044f6396ad1a8059978b9cef9355",
+        "scripts/build_grouped_split.py": "63689d2130edf831c1e9b2a4c3ea49146d8c1c39d23303c96927618111a3d1e1",
+        "src/xgnid/edge_experiments.py": "028299120dbc4f22b682f7e180062a15ffb9d59f72c34d6444cd6ad0a9cc4f97",
+        "src/xgnid/model.py": "e56860fedda32af7acfaec85c3f6b10b6e67547e6557d3dcf222570c9d3d2d89",
+        "third_party/GNN4ID/Utility/Model.py": "72a6c12aed6acbea50555686e1540ccbed0ba03d589951accce3fc1d453bfcb0",
+        "docs/r0_source_lock.json": "3657c8f5a37039e81dffdda7e88a0977de288c5ebd19650e6f3914894b63b01c"
+      },
+      "runtime": {
+        "python": "3.9.23",
+        "torch": "2.3.1+cu118",
+        "pyg": "2.5.3",
+        "cuda": "11.8",
+        "device_type": "cuda",
+        "gpu": "Tesla T4"
+      }
+    },
+    "runtime": {
+      "python": "3.9.23",
+      "torch": "2.3.1+cu118",
+      "pyg": "2.5.3",
+      "cuda": "11.8",
+      "device_type": "cuda",
+      "gpu": "Tesla T4"
+    },
+    "entry_identity": "b7e70615c44f60b2fafc38268f0c48cb84f621920f70baf4a596a7a93425e41e"
+  },
+  "mode": "full",
+  "samples": {
+    "train": 143926,
+    "val": 16074
+  },
+  "workers": 0,
+  "singleton_policy": "merge final singleton into previous training batch"
+}

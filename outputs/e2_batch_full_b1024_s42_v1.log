@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/tmp/xgnid_e2_b1024.py", line 372, in <module>
+    sys.exit(main())
+  File "/tmp/xgnid_e2_b1024.py", line 333, in main
+    gpu = checked_gpu(args.physical_gpu, args.allow_shared_gpu)
+  File "/tmp/xgnid_e2_b1024.py", line 79, in checked_gpu
+    require(allow_shared or not active, f"Physical GPU {index} has compute processes {active}; use --allow-shared-gpu only for an intentional shared run")
+  File "/tmp/xgnid_e2_b1024.py", line 34, in require
+    raise ValueError(message)
+ValueError: Physical GPU 1 has compute processes [{'pid': 12639, 'name': 'python'}]; use --allow-shared-gpu only for an intentional shared run

@@ -1,0 +1,28 @@
+{
+  "recon_webbased": {
+    "threshold": 0.46,
+    "pair_f1": 0.9320037982915668,
+    "macro_f1": 0.9721744721969979,
+    "webbased_precision": 0.8913043478260869,
+    "recon_to_webbased": 207
+  },
+  "pair_calibrators": [],
+  "logit_bias": {
+    "name": "logit_bias",
+    "target_labels": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "class_biases": {
+      "0": -0.1,
+      "1": 0.2,
+      "2": 0.15,
+      "3": 0.1
+    },
+    "accuracy": 0.9696875,
+    "macro_f1": 0.969657986890807,
+    "focus_macro_f1": 0.941567323194296
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "status": "failed",
+  "phase": "source_checks",
+  "pid": 391610,
+  "gpu_used": false,
+  "training_started": false,
+  "graphs_completed": 0,
+  "exit_code": 1,
+  "error": "<urlopen error timed out>"
+}

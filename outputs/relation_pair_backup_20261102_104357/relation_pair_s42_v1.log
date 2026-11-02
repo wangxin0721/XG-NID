@@ -1,0 +1,31 @@
+/home/nzxn/miniconda3/envs/wx/lib/python3.9/site-packages/torch_geometric/typing.py:99: UserWarning: An issue occurred while importing 'torch-spline-conv'. Disabling its usage. Stacktrace: /home/nzxn/miniconda3/envs/wx/lib/python3.9/site-packages/torch_spline_conv/_version_cuda.so: undefined symbol: _ZN3c1017RegisterOperatorsD1Ev
+  warnings.warn(
+{"status": "running", "phase": "extract_pre_relation", "pid": 219296, "partition": "train", "samples": 16, "total": 107621}
+{"status": "running", "phase": "extract_pre_relation", "pid": 219296, "partition": "train", "samples": 3200, "total": 107621}
+{"status": "running", "phase": "extract_pre_relation", "pid": 219296, "partition": "train", "samples": 6400, "total": 107621}
+{"status": "running", "phase": "extract_pre_relation", "pid": 219296, "partition": "train", "samples": 9600, "total": 107621}
+{"status": "running", "phase": "extract_pre_relation", "pid": 219296, "partition": "train", "samples": 12800, "total": 107621}
+{"status": "running", "phase": "extract_pre_relation", "pid": 219296, "partition": "train", "samples": 16000, "total": 107621}
+{"status": "running", "phase": "extract_pre_relation", "pid": 219296, "partition": "train", "samples": 19200, "total": 107621}
+{"status": "running", "phase": "extract_pre_relation", "pid": 219296, "partition": "train", "samples": 22400, "total": 107621}
+{"status": "running", "phase": "extract_pre_relation", "pid": 219296, "partition": "train", "samples": 25600, "total": 107621}
+{"status": "running", "phase": "extract_pre_relation", "pid": 219296, "partition": "train", "samples": 28800, "total": 107621}
+{"status": "running", "phase": "extract_pre_relation", "pid": 219296, "partition": "train", "samples": 32000, "total": 107621}
+{"status": "running", "phase": "extract_pre_relation", "pid": 219296, "partition": "train", "samples": 35200, "total": 107621}
+{"status": "running", "phase": "extract_pre_relation", "pid": 219296, "partition": "train", "samples": 38400, "total": 107621}
+{"status": "running", "phase": "extract_pre_relation", "pid": 219296, "partition": "train", "samples": 41600, "total": 107621}
+{"status": "running", "phase": "extract_pre_relation", "pid": 219296, "partition": "train", "samples": 44800, "total": 107621}
+{"status": "running", "phase": "extract_pre_relation", "pid": 219296, "partition": "train", "samples": 48000, "total": 107621}
+{"status": "running", "phase": "extract_pre_relation", "pid": 219296, "partition": "train", "samples": 51200, "total": 107621}
+{"status": "running", "phase": "extract_pre_relation", "pid": 219296, "partition": "train", "samples": 54400, "total": 107621}
+{"status": "running", "phase": "extract_pre_relation", "pid": 219296, "partition": "train", "samples": 57600, "total": 107621}
+{"status": "running", "phase": "extract_pre_relation", "pid": 219296, "partition": "train", "samples": 60800, "total": 107621}
+{"status": "running", "phase": "extract_pre_relation", "pid": 219296, "partition": "train", "samples": 64000, "total": 107621}
+{"status": "running", "phase": "extract_pre_relation", "pid": 219296, "partition": "train", "samples": 67200, "total": 107621}
+{"status": "running", "phase": "extract_pre_relation", "pid": 219296, "partition": "train", "samples": 70400, "total": 107621}
+{"status": "running", "phase": "extract_pre_relation", "pid": 219296, "partition": "train", "samples": 73600, "total": 107621}
+{"status": "running", "phase": "extract_pre_relation", "pid": 219296, "partition": "train", "samples": 76800, "total": 107621}
+{"status": "running", "phase": "extract_pre_relation", "pid": 219296, "partition": "train", "samples": 80000, "total": 107621}
+{"status": "running", "phase": "extract_pre_relation", "pid": 219296, "partition": "train", "samples": 83200, "total": 107621}
+{"status": "running", "phase": "extract_pre_relation", "pid": 219296, "partition": "train", "samples": 86400, "total": 107621}
+{"status": "running", "phase": "extract_pre_relation", "pid": 219296, "partition": "train", "samples": 89600, "total": 107621}

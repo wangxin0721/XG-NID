@@ -1,0 +1,375 @@
+{
+  "mode": "full",
+  "protocol": "xgnid.e3-batch512-comparison.v1",
+  "best_epoch": 47,
+  "stopped_epoch": 59,
+  "best_validation": {
+    "accuracy": 0.9738955823293173,
+    "macro_f1": 0.9636692515103147,
+    "weighted_f1": 0.9738394541981615,
+    "per_class": {
+      "Benign": {
+        "precision": 0.9478615071283095,
+        "recall": 0.9740477187107577,
+        "f1-score": 0.9607762180016514,
+        "support": 2389.0
+      },
+      "WebBased": {
+        "precision": 0.8752362948960303,
+        "recall": 0.8511029411764706,
+        "f1-score": 0.8630009319664491,
+        "support": 544.0
+      },
+      "Spoofing": {
+        "precision": 0.9661921708185054,
+        "recall": 0.9367452558941921,
+        "f1-score": 0.9512408759124088,
+        "support": 1739.0
+      },
+      "Recon": {
+        "precision": 0.9607158446093409,
+        "recall": 0.966198419666374,
+        "f1-score": 0.9634493324578682,
+        "support": 2278.0
+      },
+      "Mirai": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 2400.0
+      },
+      "Dos": {
+        "precision": 0.9993174061433447,
+        "recall": 0.9925423728813559,
+        "f1-score": 0.9959183673469388,
+        "support": 1475.0
+      },
+      "DDos": {
+        "precision": 0.9995801847187238,
+        "recall": 0.9970686767169179,
+        "f1-score": 0.9983228511530398,
+        "support": 2388.0
+      },
+      "BruteForce": {
+        "precision": 0.9663865546218487,
+        "recall": 0.9871244635193133,
+        "f1-score": 0.9766454352441613,
+        "support": 233.0
+      },
+      "accuracy": 0.9738955823293173,
+      "macro avg": {
+        "precision": 0.9644112453670128,
+        "recall": 0.9631037310706727,
+        "f1-score": 0.9636692515103147,
+        "support": 13446.0
+      },
+      "weighted avg": {
+        "precision": 0.9739288477185087,
+        "recall": 0.9738955823293173,
+        "f1-score": 0.9738394541981615,
+        "support": 13446.0
+      }
+    },
+    "confusion_matrix": [
+      [
+        2327,
+        10,
+        39,
+        12,
+        0,
+        0,
+        0,
+        1
+      ],
+      [
+        14,
+        463,
+        5,
+        57,
+        0,
+        0,
+        0,
+        5
+      ],
+      [
+        90,
+        11,
+        1629,
+        8,
+        0,
+        0,
+        0,
+        1
+      ],
+      [
+        21,
+        41,
+        12,
+        2201,
+        0,
+        1,
+        1,
+        1
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        2400,
+        0,
+        0,
+        0
+      ],
+      [
+        1,
+        3,
+        0,
+        7,
+        0,
+        1464,
+        0,
+        0
+      ],
+      [
+        0,
+        1,
+        0,
+        6,
+        0,
+        0,
+        2381,
+        0
+      ],
+      [
+        2,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        230
+      ]
+    ],
+    "samples": 13446,
+    "wall_seconds_including_graph_io": 53.64034422900113,
+    "forward_seconds": 27.273294659614564,
+    "forward_timing_method": "CUDA events around model call",
+    "gate_weights": {
+      "mean": [
+        0.45504412055015564,
+        0.5449559092521667
+      ],
+      "std": [
+        0.4043199419975281,
+        0.4043199419975281
+      ],
+      "min": [
+        0.01644640415906906,
+        0.001320335199125111
+      ],
+      "max": [
+        0.9986796379089355,
+        0.9835535883903503
+      ],
+      "fraction_flow_above_0_95": 0.27145618200302124,
+      "fraction_packet_above_0_95": 0.07957757264375687
+    }
+  },
+  "test": {
+    "accuracy": 0.9743456276026174,
+    "macro_f1": 0.9616525626321346,
+    "weighted_f1": 0.974313156643329,
+    "per_class": {
+      "Benign": {
+        "precision": 0.9424083769633508,
+        "recall": 0.9794893260778569,
+        "f1-score": 0.9605911330049262,
+        "support": 2389.0
+      },
+      "WebBased": {
+        "precision": 0.8558225508317929,
+        "recall": 0.8511029411764706,
+        "f1-score": 0.8534562211981566,
+        "support": 544.0
+      },
+      "Spoofing": {
+        "precision": 0.9693509615384616,
+        "recall": 0.9275445658424382,
+        "f1-score": 0.9479870702321482,
+        "support": 1739.0
+      },
+      "Recon": {
+        "precision": 0.9726751873071838,
+        "recall": 0.9688323090430202,
+        "f1-score": 0.9707499450186936,
+        "support": 2278.0
+      },
+      "Mirai": {
+        "precision": 1.0,
+        "recall": 0.9995833333333334,
+        "f1-score": 0.9997916232548448,
+        "support": 2400.0
+      },
+      "Dos": {
+        "precision": 0.9993206521739131,
+        "recall": 0.9972881355932204,
+        "f1-score": 0.99830335934849,
+        "support": 1475.0
+      },
+      "DDos": {
+        "precision": 0.9995808885163453,
+        "recall": 0.997907949790795,
+        "f1-score": 0.9987437185929647,
+        "support": 2390.0
+      },
+      "BruteForce": {
+        "precision": 0.9615384615384616,
+        "recall": 0.9656652360515021,
+        "f1-score": 0.9635974304068523,
+        "support": 233.0
+      },
+      "accuracy": 0.9743456276026174,
+      "macro avg": {
+        "precision": 0.9625871348586886,
+        "recall": 0.9609267246135795,
+        "f1-score": 0.9616525626321346,
+        "support": 13448.0
+      },
+      "weighted avg": {
+        "precision": 0.9745293892079223,
+        "recall": 0.9743456276026174,
+        "f1-score": 0.974313156643329,
+        "support": 13448.0
+      }
+    },
+    "confusion_matrix": [
+      [
+        2340,
+        5,
+        31,
+        11,
+        0,
+        0,
+        0,
+        2
+      ],
+      [
+        26,
+        463,
+        11,
+        41,
+        0,
+        0,
+        0,
+        3
+      ],
+      [
+        94,
+        25,
+        1613,
+        3,
+        0,
+        0,
+        0,
+        4
+      ],
+      [
+        18,
+        43,
+        8,
+        2207,
+        0,
+        1,
+        1,
+        0
+      ],
+      [
+        1,
+        0,
+        0,
+        0,
+        2399,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        4,
+        0,
+        1471,
+        0,
+        0
+      ],
+      [
+        0,
+        2,
+        0,
+        3,
+        0,
+        0,
+        2385,
+        0
+      ],
+      [
+        4,
+        3,
+        1,
+        0,
+        0,
+        0,
+        0,
+        225
+      ]
+    ],
+    "samples": 13448,
+    "wall_seconds_including_graph_io": 111.94698407200121,
+    "forward_seconds": 24.026438583374023,
+    "forward_timing_method": "CUDA events around model call",
+    "gate_weights": {
+      "mean": [
+        0.4503785967826843,
+        0.5496214032173157
+      ],
+      "std": [
+        0.40403831005096436,
+        0.40403831005096436
+      ],
+      "min": [
+        0.011949596926569939,
+        0.0019470894476398826
+      ],
+      "max": [
+        0.9980528950691223,
+        0.9880504012107849
+      ],
+      "fraction_flow_above_0_95": 0.27312612533569336,
+      "fraction_packet_above_0_95": 0.08224271237850189
+    }
+  },
+  "parameter_count": 846800,
+  "initial_state_sha256": "0270349d613f11b453b92e4e928a3c2e7b67d062b5e3ba73c8ba4fb58dbd521a",
+  "train_batch_size": 512,
+  "evaluation_batch_size": 16,
+  "total_optimizer_updates": 12449,
+  "training_samples_seen": 6349639,
+  "training_validation_checkpoint_wall_seconds": 12250.488884932,
+  "run_wall_seconds": 12362.588952446999,
+  "config_sha256": "18f1d6bd5d156b2b13767aa24fe6bc02f242a14c0014993bb2a29fd7ca6066a5",
+  "checkpoint_sha256": {
+    "best.pt": "b1f66770299a6fb9f1bc9d573a6bdc9937cb6d643381bfeac7750ae559963ce3",
+    "last.pt": "739ab2bbff0e0c389202e094db80ae30eefe347115b793fe7fd018e3c9f9e43e"
+  },
+  "registration": {
+    "kind": "exploratory_extension_after_prior_results",
+    "requested_by": "user",
+    "date": "2026-10-20",
+    "prior_test_results_available": true,
+    "selection_metric": "validation Macro-F1",
+    "scope": "Explicit E3 training-batch512 request after E3-B16 and E2-B512 results. Record as exploratory; preserve all prior results. No test-driven learning-rate search or automatic further batch candidates."
+  }
+}

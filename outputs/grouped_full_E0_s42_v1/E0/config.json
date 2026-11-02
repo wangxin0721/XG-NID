@@ -1,0 +1,113 @@
+{
+  "experiment": "E0",
+  "mode": "full",
+  "controls": {
+    "seed": 42,
+    "batch_size": 16,
+    "lr": 0.001,
+    "hidden_dim": 64,
+    "optimizer": "Adam",
+    "early_stop_patience": 12,
+    "early_stop_min_delta": 0.0,
+    "auxiliary_losses": false,
+    "calibration": false,
+    "class_weighting": false,
+    "hard_negatives": false,
+    "loss": "plain NLL",
+    "device_family": "cuda"
+  },
+  "device": "cuda:0",
+  "device_name": "Tesla T4",
+  "epochs": 100,
+  "workers": 2,
+  "use_edge_attr": true,
+  "fusion": null,
+  "split_id": "a8ae9c934eec9fee970cc725e60051d0c709e0f16c7dda14749350ff2006975a",
+  "sample_manifest_sha256": "b8e9b0810471d0c2b52033488fab640625c3731315afd5d2add1571bd2518827",
+  "data_root": "/home/nzxn/下载/WX/load/XG-NID/data/processed/CICIoT2023_processed/processed",
+  "split_directory": "/home/nzxn/下载/WX/load/XG-NID/data/processed/ciciot2023_grouped_input_v1",
+  "source_manifest_sha256": "c1c85bda9d36f0379b75dc0089851daaa954df2f958fd8d18a0426aef178d900",
+  "protocol": {
+    "schema": "xgnid.grouped-input.v1",
+    "seed": 42,
+    "grouping": "No Edge input SHA256 (nodes + topology), excluding label",
+    "deduplication": "One representative per Edge input SHA256; preserve edge-only variants",
+    "representative": "minimum source audit index within each exact Edge input group",
+    "ratios_by_group": {
+      "train": 0.8,
+      "val": 0.1,
+      "test": 0.1
+    },
+    "rounding": "floor val/test groups per class, minimum one; remainder train",
+    "label_mapping": {
+      "0": "Benign",
+      "1": "WebBased",
+      "2": "Spoofing",
+      "3": "Recon",
+      "4": "Mirai",
+      "5": "Dos",
+      "6": "DDos",
+      "7": "BruteForce"
+    },
+    "train_balancing": false,
+    "class_weighting": false,
+    "evaluation_unit": "one unique exact Edge input; edge-only variants in one No Edge group stay in one partition",
+    "scope": "new benchmark over pooled existing graphs; not historical split reproduction",
+    "flow_independence": "unverified: no original flow/capture identity; input grouping is not flow grouping"
+  },
+  "initial_state_sha256": "906e125925a8a2cc53a526602db0f047f76b1e41b8087c893f5cf1af41f64a6b",
+  "torch": "2.3.1+cu118",
+  "pyg": "2.5.3",
+  "git_head": "60144d197b1925a031acab4997c5f20bd7d82ac7",
+  "source_hashes": {
+    "scripts/train_grouped.py": "06a493b18faa97b4e1f2b99b6aae38c67ad3c5f39b130f112079c9393432f5d1",
+    "scripts/grouped_graphs.py": "c1b1273d62fc44d91f7c9b300b66a083c1f80ef2c9c4314a62c4bbd5d708bbb4",
+    "scripts/smoke_grouped_gpu.py": "7bce1218e1b55a812855d50c70973fe300da97ad7e9b4005a52deac77d8b1517",
+    "src/xgnid/model.py": "28e21e94118db0a4110d17923d2840e18959669d798f628018c98c91c0202631",
+    "src/xgnid/edge_experiments.py": "3e6305d83c06c7ce32e901a2aba9d9d26baa1f2b394af14997b0e359929b4da5",
+    "third_party/GNN4ID/Utility/Model.py": "e17c3905e3c9f437c269bdd0e4d115656cfba6054b6a4474bbd06b5453010688"
+  },
+  "selected_partition_sizes": {
+    "train": 107621,
+    "val": 13446,
+    "test": 13448
+  },
+  "selected_label_counts": {
+    "train": {
+      "0": 19112,
+      "1": 4359,
+      "2": 13914,
+      "3": 18224,
+      "4": 19200,
+      "5": 11802,
+      "6": 19140,
+      "7": 1870
+    },
+    "val": {
+      "0": 2389,
+      "1": 544,
+      "2": 1739,
+      "3": 2278,
+      "4": 2400,
+      "5": 1475,
+      "6": 2388,
+      "7": 233
+    },
+    "test": {
+      "0": 2389,
+      "1": 544,
+      "2": 1739,
+      "3": 2278,
+      "4": 2400,
+      "5": 1475,
+      "6": 2390,
+      "7": 233
+    }
+  },
+  "train_sample_ids_sha256": "e55904a2bf640d68a278dfb571a296f0c9d0b7b4b8ae0e0ef179a9e3c8ea629a",
+  "val_sample_ids_sha256": "efb5f9d81137f974a1bb244783831533bbab4b78f6d62bea511ebbd61e9b8c01",
+  "gradient_monitor": "clip_grad_norm_(infinity,error_if_nonfinite=True); no finite gradient clipping",
+  "singleton_batch": "merge into preceding batch; no training sample dropped",
+  "smoke_report_sha256": "4bd73bde4de918987f222a0c223f12c0172b5e1fc2f4ba8e0c97ee2cbfe1bc8f",
+  "scope": "new grouped-input benchmark; flow independence unverified"
+}

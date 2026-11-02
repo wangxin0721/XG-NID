@@ -1,0 +1,133 @@
+{
+  "status": "completed",
+  "exit_code": 0,
+  "mode": "probe",
+  "binding": {
+    "config_sha256": "6cc401bb718f7f311fcd6ad85b7fe0d05dae3df2be5538678a56a37493d171a5",
+    "entry_sha256": "a5180ec1226d8ffe6b3e5453beca0e6492130a19743acddee2725f9f7ba3c09c",
+    "sources": {
+      "scripts/train_grouped.py": "06a493b18faa97b4e1f2b99b6aae38c67ad3c5f39b130f112079c9393432f5d1",
+      "scripts/grouped_graphs.py": "c1b1273d62fc44d91f7c9b300b66a083c1f80ef2c9c4314a62c4bbd5d708bbb4",
+      "scripts/smoke_grouped_gpu.py": "7bce1218e1b55a812855d50c70973fe300da97ad7e9b4005a52deac77d8b1517",
+      "scripts/audit_graph_split.py": "c19164930e8ecb75636cf16d6fa9bb51d6f29e1384e8d8ebf040e683536ffcb6",
+      "scripts/build_grouped_split.py": "24e07766189aec9d03f6161dee15587612a5b2f13e23eab67d7ba4aaf89a3401",
+      "src/xgnid/__init__.py": "2515233a0cdac6c5447c9dbd6b0d54c89284f191d8cb41473d89b347ee296ae7",
+      "src/xgnid/model.py": "28e21e94118db0a4110d17923d2840e18959669d798f628018c98c91c0202631",
+      "src/xgnid/edge_experiments.py": "3e6305d83c06c7ce32e901a2aba9d9d26baa1f2b394af14997b0e359929b4da5",
+      "third_party/GNN4ID/Utility/Model.py": "e17c3905e3c9f437c269bdd0e4d115656cfba6054b6a4474bbd06b5453010688"
+    },
+    "reference_e2_sha256": "60f2c7cf9413f6d118a5a24a2089abb242296436424f8b83ad96f84067ac2251",
+    "reference_config_sha256": "71a18ef1ed9bbdd201a0ca7172c563f161d427ec9c4df7575ba104e0cd191184",
+    "smoke_sha256": "4bd73bde4de918987f222a0c223f12c0172b5e1fc2f4ba8e0c97ee2cbfe1bc8f",
+    "pilot_sha256": "6165d1cc7819cca1e95bbe3f43e45f90d4a4c634128e45b84ccc0bd12c17fb72",
+    "baseline_sha256": "5add5c311a8ff8356a7840a52c54d6a33d47798344c72a08467f509ab071d857",
+    "split_id": "a8ae9c934eec9fee970cc725e60051d0c709e0f16c7dda14749350ff2006975a",
+    "samples_sha256": "b8e9b0810471d0c2b52033488fab640625c3731315afd5d2add1571bd2518827",
+    "train_batch_size": 1024,
+    "initial_state_sha256": "0270349d613f11b453b92e4e928a3c2e7b67d062b5e3ba73c8ba4fb58dbd521a",
+    "runtime": {
+      "python": "3.9.23",
+      "torch": "2.3.1+cu118",
+      "pyg": "2.5.3",
+      "cuda": "11.8"
+    },
+    "gpu_uuid": "GPU-a9142835-62e0-974e-aebe-80ab25f7ef02",
+    "allow_shared_gpu": false
+  },
+  "hardware": {
+    "physical_index": 1,
+    "uuid": "GPU-a9142835-62e0-974e-aebe-80ab25f7ef02",
+    "name": "Tesla T4",
+    "memory_mib": 15360,
+    "used_mib_at_query": 8,
+    "free_mib_at_query": 14904,
+    "sharing_allowed": false,
+    "existing_compute_processes": [],
+    "availability": "no compute process at query time; not a reservation",
+    "timing_scope": "isolation requires observation; query does not reserve GPU"
+  },
+  "warmup_updates": 1,
+  "measured_updates": 3,
+  "test": null,
+  "optimizer_update_verified": true,
+  "batches": [
+    {
+      "batch": 1,
+      "graphs": 1024,
+      "loss": 2.0411152839660645,
+      "resident_step_seconds_excluding_graph_io_and_transfer": 0.03906723399995826,
+      "nodes": {
+        "flow": 1024,
+        "packet": 11291
+      },
+      "edges": {
+        "('flow', 'contain', 'packet')": 11291,
+        "('packet', 'link', 'packet')": 20534,
+        "('packet', 'rev_contain', 'flow')": 11291
+      },
+      "peak_cuda_allocated_bytes": 247670784,
+      "peak_cuda_reserved_bytes": 281018368,
+      "other_compute_processes_snapshot": {
+        "processes": [],
+        "scope": "point-in-time observation only"
+      }
+    },
+    {
+      "batch": 2,
+      "graphs": 1024,
+      "loss": 2.031088352203369,
+      "resident_step_seconds_excluding_graph_io_and_transfer": 0.04181570799994461,
+      "nodes": {
+        "flow": 1024,
+        "packet": 11112
+      },
+      "edges": {
+        "('flow', 'contain', 'packet')": 11112,
+        "('packet', 'link', 'packet')": 20176,
+        "('packet', 'rev_contain', 'flow')": 11112
+      },
+      "peak_cuda_allocated_bytes": 242020864,
+      "peak_cuda_reserved_bytes": 283115520,
+      "other_compute_processes_snapshot": {
+        "processes": [],
+        "scope": "point-in-time observation only"
+      }
+    },
+    {
+      "batch": 3,
+      "graphs": 1024,
+      "loss": 2.0168142318725586,
+      "resident_step_seconds_excluding_graph_io_and_transfer": 0.041034128999967834,
+      "nodes": {
+        "flow": 1024,
+        "packet": 11636
+      },
+      "edges": {
+        "('flow', 'contain', 'packet')": 11636,
+        "('packet', 'link', 'packet')": 21224,
+        "('packet', 'rev_contain', 'flow')": 11636
+      },
+      "peak_cuda_allocated_bytes": 252396032,
+      "peak_cuda_reserved_bytes": 354418688,
+      "other_compute_processes_snapshot": {
+        "processes": [],
+        "scope": "point-in-time observation only"
+      }
+    }
+  ],
+  "scope": "First three seeded training batches only; no worst-case capacity guarantee or epoch-throughput claim",
+  "wall_seconds_after_setup": 10.875828683000009,
+  "registration": {
+    "kind": "exploratory_extension_after_prior_results",
+    "requested_by": "user",
+    "date": "2026-10-20",
+    "prior_test_results_available": true,
+    "prior_train_batches": [
+      16,
+      256,
+      512
+    ],
+    "selection_metric": "validation Macro-F1",
+    "scope": "One additional E2 batch1024 trial explicitly requested after prior results. Preserve the original three-run comparison and report this as an exploratory extension, not as an originally preregistered candidate."
+  }
+}

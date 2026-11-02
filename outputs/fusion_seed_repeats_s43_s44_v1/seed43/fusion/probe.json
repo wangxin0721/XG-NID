@@ -1,0 +1,68 @@
+{
+  "status": "completed",
+  "variants": {
+    "F1": {
+      "initial_fusion_sha256": "b0913d6066c9a8b4ed2ae5d09ecef496689478349b7e7c2cb78a6d495475c4b2",
+      "updates": [
+        {
+          "head_input_gradient_l1": 0.21014127135276794,
+          "fusion_gradients_l1": {
+            "logit": 0.0027299621142446995
+          },
+          "parameters_changed": true
+        },
+        {
+          "head_input_gradient_l1": 0.2600638270378113,
+          "fusion_gradients_l1": {
+            "logit": 0.022434165701270103
+          },
+          "parameters_changed": true
+        },
+        {
+          "head_input_gradient_l1": 0.2835042178630829,
+          "fusion_gradients_l1": {
+            "logit": 0.02038528025150299
+          },
+          "parameters_changed": true
+        }
+      ],
+      "probe_discarded": true
+    },
+    "F2": {
+      "initial_fusion_sha256": "46a3908d8eee5edb9476e0e85cd5e7ed4a0bb339df60bcf71bdcf50b3eb2289a",
+      "updates": [
+        {
+          "head_input_gradient_l1": 0.21014127135276794,
+          "fusion_gradients_l1": {
+            "0.weight": 0.0,
+            "0.bias": 0.0,
+            "2.weight": 0.2719743847846985,
+            "2.bias": 0.005459924228489399
+          },
+          "parameters_changed": true
+        },
+        {
+          "head_input_gradient_l1": 0.25488728284835815,
+          "fusion_gradients_l1": {
+            "0.weight": 0.022508341819047928,
+            "0.bias": 0.0005240851314738393,
+            "2.weight": 0.7932760715484619,
+            "2.bias": 0.04103770852088928
+          },
+          "parameters_changed": true
+        },
+        {
+          "head_input_gradient_l1": 0.29005491733551025,
+          "fusion_gradients_l1": {
+            "0.weight": 0.02579762041568756,
+            "0.bias": 0.0008066286682151258,
+            "2.weight": 0.7254021167755127,
+            "2.bias": 0.05096922069787979
+          },
+          "parameters_changed": true
+        }
+      ],
+      "probe_discarded": true
+    }
+  }
+}

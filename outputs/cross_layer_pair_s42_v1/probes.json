@@ -1,0 +1,288 @@
+{
+  "CL-Last": {
+    "updates": [
+      {
+        "step": 1,
+        "loss": 0.04148326441645622,
+        "gradient_l1": {
+          "fusion.flow_projection.weight": 7.518036365509033,
+          "fusion.flow_projection.bias": 0.2819574475288391,
+          "fusion.packet_projection.weight": 8.012199401855469,
+          "fusion.packet_projection.bias": 0.24801965057849884,
+          "fusion.gate.0.weight": 2.360206365585327,
+          "fusion.gate.0.bias": 0.031871188431978226,
+          "fusion.gate.2.weight": 1.644696593284607,
+          "fusion.gate.2.bias": 0.03633621335029602,
+          "fusion.shared_head.0.weight": 4.664312362670898,
+          "fusion.shared_head.0.bias": 0.12806949019432068,
+          "fusion.shared_head.2.weight": 3.116583824157715,
+          "fusion.shared_head.2.bias": 0.03852364048361778,
+          "cross_layer.weight": 92.13825225830078,
+          "cross_layer.bias": 1.4396781921386719
+        },
+        "changed": {
+          "fusion.flow_projection.weight": true,
+          "fusion.flow_projection.bias": true,
+          "fusion.packet_projection.weight": true,
+          "fusion.packet_projection.bias": true,
+          "fusion.gate.0.weight": true,
+          "fusion.gate.0.bias": true,
+          "fusion.gate.2.weight": true,
+          "fusion.gate.2.bias": true,
+          "fusion.shared_head.0.weight": true,
+          "fusion.shared_head.0.bias": true,
+          "fusion.shared_head.2.weight": true,
+          "fusion.shared_head.2.bias": true,
+          "cross_layer.weight": true,
+          "cross_layer.bias": true
+        },
+        "projection_gradient_l1": 92.13825225830078,
+        "projection_block_gradients_l1": [
+          46.069129943847656,
+          46.069129943847656
+        ],
+        "projection_blocks_changed": [
+          true,
+          true
+        ]
+      },
+      {
+        "step": 2,
+        "loss": 0.033012714236974716,
+        "gradient_l1": {
+          "fusion.flow_projection.weight": 5.863423824310303,
+          "fusion.flow_projection.bias": 0.21760496497154236,
+          "fusion.packet_projection.weight": 6.166836261749268,
+          "fusion.packet_projection.bias": 0.19125549495220184,
+          "fusion.gate.0.weight": 1.7181408405303955,
+          "fusion.gate.0.bias": 0.023941196501255035,
+          "fusion.gate.2.weight": 1.2387813329696655,
+          "fusion.gate.2.bias": 0.029298489913344383,
+          "fusion.shared_head.0.weight": 3.824547529220581,
+          "fusion.shared_head.0.bias": 0.1074703261256218,
+          "fusion.shared_head.2.weight": 2.5069360733032227,
+          "fusion.shared_head.2.bias": 0.032183729112148285,
+          "cross_layer.weight": 70.41386413574219,
+          "cross_layer.bias": 1.1064772605895996
+        },
+        "changed": {
+          "fusion.flow_projection.weight": true,
+          "fusion.flow_projection.bias": true,
+          "fusion.packet_projection.weight": true,
+          "fusion.packet_projection.bias": true,
+          "fusion.gate.0.weight": true,
+          "fusion.gate.0.bias": true,
+          "fusion.gate.2.weight": true,
+          "fusion.gate.2.bias": true,
+          "fusion.shared_head.0.weight": true,
+          "fusion.shared_head.0.bias": true,
+          "fusion.shared_head.2.weight": true,
+          "fusion.shared_head.2.bias": true,
+          "cross_layer.weight": true,
+          "cross_layer.bias": true
+        },
+        "projection_gradient_l1": 70.41386413574219,
+        "projection_block_gradients_l1": [
+          35.206932067871094,
+          35.206932067871094
+        ],
+        "projection_blocks_changed": [
+          true,
+          true
+        ]
+      },
+      {
+        "step": 3,
+        "loss": 0.026968350633978844,
+        "gradient_l1": {
+          "fusion.flow_projection.weight": 4.269410133361816,
+          "fusion.flow_projection.bias": 0.16030538082122803,
+          "fusion.packet_projection.weight": 4.4369683265686035,
+          "fusion.packet_projection.bias": 0.13903872668743134,
+          "fusion.gate.0.weight": 1.1739768981933594,
+          "fusion.gate.0.bias": 0.017289893701672554,
+          "fusion.gate.2.weight": 0.9245157241821289,
+          "fusion.gate.2.bias": 0.023824090138077736,
+          "fusion.shared_head.0.weight": 3.1341066360473633,
+          "fusion.shared_head.0.bias": 0.09105299413204193,
+          "fusion.shared_head.2.weight": 2.007533550262451,
+          "fusion.shared_head.2.bias": 0.027048127725720406,
+          "cross_layer.weight": 50.82933044433594,
+          "cross_layer.bias": 0.8086196780204773
+        },
+        "changed": {
+          "fusion.flow_projection.weight": true,
+          "fusion.flow_projection.bias": true,
+          "fusion.packet_projection.weight": true,
+          "fusion.packet_projection.bias": true,
+          "fusion.gate.0.weight": true,
+          "fusion.gate.0.bias": true,
+          "fusion.gate.2.weight": true,
+          "fusion.gate.2.bias": true,
+          "fusion.shared_head.0.weight": true,
+          "fusion.shared_head.0.bias": true,
+          "fusion.shared_head.2.weight": true,
+          "fusion.shared_head.2.bias": true,
+          "cross_layer.weight": true,
+          "cross_layer.bias": true
+        },
+        "projection_gradient_l1": 50.82933044433594,
+        "projection_block_gradients_l1": [
+          25.41466522216797,
+          25.41466522216797
+        ],
+        "projection_blocks_changed": [
+          true,
+          true
+        ]
+      }
+    ],
+    "clean_model_and_rng_restored": true,
+    "optimizer_discarded": true,
+    "discarded": true,
+    "train_graphs": 512
+  },
+  "CL-Multi": {
+    "updates": [
+      {
+        "step": 1,
+        "loss": 0.04148326441645622,
+        "gradient_l1": {
+          "fusion.flow_projection.weight": 7.518036365509033,
+          "fusion.flow_projection.bias": 0.2819574475288391,
+          "fusion.packet_projection.weight": 8.012199401855469,
+          "fusion.packet_projection.bias": 0.24801965057849884,
+          "fusion.gate.0.weight": 2.360206365585327,
+          "fusion.gate.0.bias": 0.031871188431978226,
+          "fusion.gate.2.weight": 1.644696593284607,
+          "fusion.gate.2.bias": 0.03633621335029602,
+          "fusion.shared_head.0.weight": 4.664312362670898,
+          "fusion.shared_head.0.bias": 0.12806949019432068,
+          "fusion.shared_head.2.weight": 3.116583824157715,
+          "fusion.shared_head.2.bias": 0.03852364048361778,
+          "cross_layer.weight": 88.25885009765625,
+          "cross_layer.bias": 1.4396781921386719
+        },
+        "changed": {
+          "fusion.flow_projection.weight": true,
+          "fusion.flow_projection.bias": true,
+          "fusion.packet_projection.weight": true,
+          "fusion.packet_projection.bias": true,
+          "fusion.gate.0.weight": true,
+          "fusion.gate.0.bias": true,
+          "fusion.gate.2.weight": true,
+          "fusion.gate.2.bias": true,
+          "fusion.shared_head.0.weight": true,
+          "fusion.shared_head.0.bias": true,
+          "fusion.shared_head.2.weight": true,
+          "fusion.shared_head.2.bias": true,
+          "cross_layer.weight": true,
+          "cross_layer.bias": true
+        },
+        "projection_gradient_l1": 88.25885009765625,
+        "projection_block_gradients_l1": [
+          42.189727783203125,
+          46.069129943847656
+        ],
+        "projection_blocks_changed": [
+          true,
+          true
+        ]
+      },
+      {
+        "step": 2,
+        "loss": 0.03323979303240776,
+        "gradient_l1": {
+          "fusion.flow_projection.weight": 5.978365421295166,
+          "fusion.flow_projection.bias": 0.2217635065317154,
+          "fusion.packet_projection.weight": 6.314568519592285,
+          "fusion.packet_projection.bias": 0.19504967331886292,
+          "fusion.gate.0.weight": 1.7753053903579712,
+          "fusion.gate.0.bias": 0.024568427354097366,
+          "fusion.gate.2.weight": 1.27391517162323,
+          "fusion.gate.2.bias": 0.02962145395576954,
+          "fusion.shared_head.0.weight": 3.878124952316284,
+          "fusion.shared_head.0.bias": 0.10845498740673065,
+          "fusion.shared_head.2.weight": 2.5451858043670654,
+          "fusion.shared_head.2.bias": 0.03249337151646614,
+          "cross_layer.weight": 69.66047668457031,
+          "cross_layer.bias": 1.1281323432922363
+        },
+        "changed": {
+          "fusion.flow_projection.weight": true,
+          "fusion.flow_projection.bias": true,
+          "fusion.packet_projection.weight": true,
+          "fusion.packet_projection.bias": true,
+          "fusion.gate.0.weight": true,
+          "fusion.gate.0.bias": true,
+          "fusion.gate.2.weight": true,
+          "fusion.gate.2.bias": true,
+          "fusion.shared_head.0.weight": true,
+          "fusion.shared_head.0.bias": true,
+          "fusion.shared_head.2.weight": true,
+          "fusion.shared_head.2.bias": true,
+          "cross_layer.weight": true,
+          "cross_layer.bias": true
+        },
+        "projection_gradient_l1": 69.66047668457031,
+        "projection_block_gradients_l1": [
+          33.580047607421875,
+          36.0804328918457
+        ],
+        "projection_blocks_changed": [
+          true,
+          true
+        ]
+      },
+      {
+        "step": 3,
+        "loss": 0.027141958475112915,
+        "gradient_l1": {
+          "fusion.flow_projection.weight": 4.450686454772949,
+          "fusion.flow_projection.bias": 0.16657809913158417,
+          "fusion.packet_projection.weight": 4.677748680114746,
+          "fusion.packet_projection.bias": 0.14507029950618744,
+          "fusion.gate.0.weight": 1.262229323387146,
+          "fusion.gate.0.bias": 0.018236149102449417,
+          "fusion.gate.2.weight": 0.9809554815292358,
+          "fusion.gate.2.bias": 0.024307478219270706,
+          "fusion.shared_head.0.weight": 3.231623649597168,
+          "fusion.shared_head.0.bias": 0.0927383303642273,
+          "fusion.shared_head.2.weight": 2.0745580196380615,
+          "fusion.shared_head.2.bias": 0.02755105122923851,
+          "cross_layer.weight": 52.345420837402344,
+          "cross_layer.bias": 0.8440464735031128
+        },
+        "changed": {
+          "fusion.flow_projection.weight": true,
+          "fusion.flow_projection.bias": true,
+          "fusion.packet_projection.weight": true,
+          "fusion.packet_projection.bias": true,
+          "fusion.gate.0.weight": true,
+          "fusion.gate.0.bias": true,
+          "fusion.gate.2.weight": true,
+          "fusion.gate.2.bias": true,
+          "fusion.shared_head.0.weight": true,
+          "fusion.shared_head.0.bias": true,
+          "fusion.shared_head.2.weight": true,
+          "fusion.shared_head.2.bias": true,
+          "cross_layer.weight": true,
+          "cross_layer.bias": true
+        },
+        "projection_gradient_l1": 52.345420837402344,
+        "projection_block_gradients_l1": [
+          25.500226974487305,
+          26.845195770263672
+        ],
+        "projection_blocks_changed": [
+          true,
+          true
+        ]
+      }
+    ],
+    "clean_model_and_rng_restored": true,
+    "optimizer_discarded": true,
+    "discarded": true,
+    "train_graphs": 512
+  }
+}

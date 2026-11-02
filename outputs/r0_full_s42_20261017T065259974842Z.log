@@ -1,0 +1,971 @@
+Starting one fixed R0 full run: 30 epochs, no automatic retry or resume.
+Training PID: 3865455
+/home/nzxn/miniconda3/envs/wx/lib/python3.9/site-packages/torch_geometric/typing.py:99: UserWarning: An issue occurred while importing 'torch-spline-conv'. Disabling its usage. Stacktrace: /home/nzxn/miniconda3/envs/wx/lib/python3.9/site-packages/torch_spline_conv/_version_cuda.so: undefined symbol: _ZN3c1017RegisterOperatorsD1Ev
+  warnings.warn(
+/home/nzxn/miniconda3/envs/wx/lib/python3.9/site-packages/torch/cuda/__init__.py:619: UserWarning: Can't initialize NVML
+  warnings.warn("Can't initialize NVML")
+epoch=1 batches=100/2500 samples=6400
+epoch=1 batches=200/2500 samples=12800
+epoch=1 batches=300/2500 samples=19200
+epoch=1 batches=400/2500 samples=25600
+epoch=1 batches=500/2500 samples=32000
+epoch=1 batches=600/2500 samples=38400
+epoch=1 batches=700/2500 samples=44800
+epoch=1 batches=800/2500 samples=51200
+epoch=1 batches=900/2500 samples=57600
+epoch=1 batches=1000/2500 samples=64000
+epoch=1 batches=1100/2500 samples=70400
+epoch=1 batches=1200/2500 samples=76800
+epoch=1 batches=1300/2500 samples=83200
+epoch=1 batches=1400/2500 samples=89600
+epoch=1 batches=1500/2500 samples=96000
+epoch=1 batches=1600/2500 samples=102400
+epoch=1 batches=1700/2500 samples=108800
+epoch=1 batches=1800/2500 samples=115200
+epoch=1 batches=1900/2500 samples=121600
+epoch=1 batches=2000/2500 samples=128000
+epoch=1 batches=2100/2500 samples=134400
+epoch=1 batches=2200/2500 samples=140800
+epoch=1 batches=2300/2500 samples=147200
+epoch=1 batches=2400/2500 samples=153600
+epoch=1 batches=2500/2500 samples=160000
+{"epoch": 1, "train_loss": 0.28023547160327433, "train_samples": 160000, "train_accuracy": 0.92701875, "lr": 0.01, "seconds": 1672.7794754505157}
+epoch=2 batches=100/2500 samples=6400
+epoch=2 batches=200/2500 samples=12800
+epoch=2 batches=300/2500 samples=19200
+epoch=2 batches=400/2500 samples=25600
+epoch=2 batches=500/2500 samples=32000
+epoch=2 batches=600/2500 samples=38400
+epoch=2 batches=700/2500 samples=44800
+epoch=2 batches=800/2500 samples=51200
+epoch=2 batches=900/2500 samples=57600
+epoch=2 batches=1000/2500 samples=64000
+epoch=2 batches=1100/2500 samples=70400
+epoch=2 batches=1200/2500 samples=76800
+epoch=2 batches=1300/2500 samples=83200
+epoch=2 batches=1400/2500 samples=89600
+epoch=2 batches=1500/2500 samples=96000
+epoch=2 batches=1600/2500 samples=102400
+epoch=2 batches=1700/2500 samples=108800
+epoch=2 batches=1800/2500 samples=115200
+epoch=2 batches=1900/2500 samples=121600
+epoch=2 batches=2000/2500 samples=128000
+epoch=2 batches=2100/2500 samples=134400
+epoch=2 batches=2200/2500 samples=140800
+epoch=2 batches=2300/2500 samples=147200
+epoch=2 batches=2400/2500 samples=153600
+epoch=2 batches=2500/2500 samples=160000
+{"epoch": 2, "train_loss": 0.20590473676100374, "train_samples": 160000, "train_accuracy": 0.9348375, "lr": 0.01, "seconds": 1963.9773139953613}
+epoch=3 batches=100/2500 samples=6400
+epoch=3 batches=200/2500 samples=12800
+epoch=3 batches=300/2500 samples=19200
+epoch=3 batches=400/2500 samples=25600
+epoch=3 batches=500/2500 samples=32000
+epoch=3 batches=600/2500 samples=38400
+epoch=3 batches=700/2500 samples=44800
+epoch=3 batches=800/2500 samples=51200
+epoch=3 batches=900/2500 samples=57600
+epoch=3 batches=1000/2500 samples=64000
+epoch=3 batches=1100/2500 samples=70400
+epoch=3 batches=1200/2500 samples=76800
+epoch=3 batches=1300/2500 samples=83200
+epoch=3 batches=1400/2500 samples=89600
+epoch=3 batches=1500/2500 samples=96000
+epoch=3 batches=1600/2500 samples=102400
+epoch=3 batches=1700/2500 samples=108800
+epoch=3 batches=1800/2500 samples=115200
+epoch=3 batches=1900/2500 samples=121600
+epoch=3 batches=2000/2500 samples=128000
+epoch=3 batches=2100/2500 samples=134400
+epoch=3 batches=2200/2500 samples=140800
+epoch=3 batches=2300/2500 samples=147200
+epoch=3 batches=2400/2500 samples=153600
+epoch=3 batches=2500/2500 samples=160000
+{"epoch": 3, "train_loss": 0.18194774563759566, "train_samples": 160000, "train_accuracy": 0.93379375, "lr": 0.01, "seconds": 1899.3148310184479}
+epoch=4 batches=100/2500 samples=6400
+epoch=4 batches=200/2500 samples=12800
+epoch=4 batches=300/2500 samples=19200
+epoch=4 batches=400/2500 samples=25600
+epoch=4 batches=500/2500 samples=32000
+epoch=4 batches=600/2500 samples=38400
+epoch=4 batches=700/2500 samples=44800
+epoch=4 batches=800/2500 samples=51200
+epoch=4 batches=900/2500 samples=57600
+epoch=4 batches=1000/2500 samples=64000
+epoch=4 batches=1100/2500 samples=70400
+epoch=4 batches=1200/2500 samples=76800
+epoch=4 batches=1300/2500 samples=83200
+epoch=4 batches=1400/2500 samples=89600
+epoch=4 batches=1500/2500 samples=96000
+epoch=4 batches=1600/2500 samples=102400
+epoch=4 batches=1700/2500 samples=108800
+epoch=4 batches=1800/2500 samples=115200
+epoch=4 batches=1900/2500 samples=121600
+epoch=4 batches=2000/2500 samples=128000
+epoch=4 batches=2100/2500 samples=134400
+epoch=4 batches=2200/2500 samples=140800
+epoch=4 batches=2300/2500 samples=147200
+epoch=4 batches=2400/2500 samples=153600
+epoch=4 batches=2500/2500 samples=160000
+{"epoch": 4, "train_loss": 0.17799614379256964, "train_samples": 160000, "train_accuracy": 0.94599375, "lr": 0.01, "seconds": 1874.649118900299}
+epoch=5 batches=100/2500 samples=6400
+epoch=5 batches=200/2500 samples=12800
+epoch=5 batches=300/2500 samples=19200
+epoch=5 batches=400/2500 samples=25600
+epoch=5 batches=500/2500 samples=32000
+epoch=5 batches=600/2500 samples=38400
+epoch=5 batches=700/2500 samples=44800
+epoch=5 batches=800/2500 samples=51200
+epoch=5 batches=900/2500 samples=57600
+epoch=5 batches=1000/2500 samples=64000
+epoch=5 batches=1100/2500 samples=70400
+epoch=5 batches=1200/2500 samples=76800
+epoch=5 batches=1300/2500 samples=83200
+epoch=5 batches=1400/2500 samples=89600
+epoch=5 batches=1500/2500 samples=96000
+epoch=5 batches=1600/2500 samples=102400
+epoch=5 batches=1700/2500 samples=108800
+epoch=5 batches=1800/2500 samples=115200
+epoch=5 batches=1900/2500 samples=121600
+epoch=5 batches=2000/2500 samples=128000
+epoch=5 batches=2100/2500 samples=134400
+epoch=5 batches=2200/2500 samples=140800
+epoch=5 batches=2300/2500 samples=147200
+epoch=5 batches=2400/2500 samples=153600
+epoch=5 batches=2500/2500 samples=160000
+{"epoch": 5, "train_loss": 0.15526214540973304, "train_samples": 160000, "train_accuracy": 0.94965625, "lr": 0.01, "seconds": 1818.0267117023468}
+epoch=6 batches=100/2500 samples=6400
+epoch=6 batches=200/2500 samples=12800
+epoch=6 batches=300/2500 samples=19200
+epoch=6 batches=400/2500 samples=25600
+epoch=6 batches=500/2500 samples=32000
+epoch=6 batches=600/2500 samples=38400
+epoch=6 batches=700/2500 samples=44800
+epoch=6 batches=800/2500 samples=51200
+epoch=6 batches=900/2500 samples=57600
+epoch=6 batches=1000/2500 samples=64000
+epoch=6 batches=1100/2500 samples=70400
+epoch=6 batches=1200/2500 samples=76800
+epoch=6 batches=1300/2500 samples=83200
+epoch=6 batches=1400/2500 samples=89600
+epoch=6 batches=1500/2500 samples=96000
+epoch=6 batches=1600/2500 samples=102400
+epoch=6 batches=1700/2500 samples=108800
+epoch=6 batches=1800/2500 samples=115200
+epoch=6 batches=1900/2500 samples=121600
+epoch=6 batches=2000/2500 samples=128000
+epoch=6 batches=2100/2500 samples=134400
+epoch=6 batches=2200/2500 samples=140800
+epoch=6 batches=2300/2500 samples=147200
+epoch=6 batches=2400/2500 samples=153600
+epoch=6 batches=2500/2500 samples=160000
+{"epoch": 6, "train_loss": 0.15832705268263816, "train_samples": 160000, "train_accuracy": 0.9509625, "lr": 0.01, "seconds": 1807.9669907093048}
+epoch=7 batches=100/2500 samples=6400
+epoch=7 batches=200/2500 samples=12800
+epoch=7 batches=300/2500 samples=19200
+epoch=7 batches=400/2500 samples=25600
+epoch=7 batches=500/2500 samples=32000
+epoch=7 batches=600/2500 samples=38400
+epoch=7 batches=700/2500 samples=44800
+epoch=7 batches=800/2500 samples=51200
+epoch=7 batches=900/2500 samples=57600
+epoch=7 batches=1000/2500 samples=64000
+epoch=7 batches=1100/2500 samples=70400
+epoch=7 batches=1200/2500 samples=76800
+epoch=7 batches=1300/2500 samples=83200
+epoch=7 batches=1400/2500 samples=89600
+epoch=7 batches=1500/2500 samples=96000
+epoch=7 batches=1600/2500 samples=102400
+epoch=7 batches=1700/2500 samples=108800
+epoch=7 batches=1800/2500 samples=115200
+epoch=7 batches=1900/2500 samples=121600
+epoch=7 batches=2000/2500 samples=128000
+epoch=7 batches=2100/2500 samples=134400
+epoch=7 batches=2200/2500 samples=140800
+epoch=7 batches=2300/2500 samples=147200
+epoch=7 batches=2400/2500 samples=153600
+epoch=7 batches=2500/2500 samples=160000
+{"epoch": 7, "train_loss": 0.16673496600743384, "train_samples": 160000, "train_accuracy": 0.9444375, "lr": 0.01, "seconds": 1796.9430842399597}
+epoch=8 batches=100/2500 samples=6400
+epoch=8 batches=200/2500 samples=12800
+epoch=8 batches=300/2500 samples=19200
+epoch=8 batches=400/2500 samples=25600
+epoch=8 batches=500/2500 samples=32000
+epoch=8 batches=600/2500 samples=38400
+epoch=8 batches=700/2500 samples=44800
+epoch=8 batches=800/2500 samples=51200
+epoch=8 batches=900/2500 samples=57600
+epoch=8 batches=1000/2500 samples=64000
+epoch=8 batches=1100/2500 samples=70400
+epoch=8 batches=1200/2500 samples=76800
+epoch=8 batches=1300/2500 samples=83200
+epoch=8 batches=1400/2500 samples=89600
+epoch=8 batches=1500/2500 samples=96000
+epoch=8 batches=1600/2500 samples=102400
+epoch=8 batches=1700/2500 samples=108800
+epoch=8 batches=1800/2500 samples=115200
+epoch=8 batches=1900/2500 samples=121600
+epoch=8 batches=2000/2500 samples=128000
+epoch=8 batches=2100/2500 samples=134400
+epoch=8 batches=2200/2500 samples=140800
+epoch=8 batches=2300/2500 samples=147200
+epoch=8 batches=2400/2500 samples=153600
+epoch=8 batches=2500/2500 samples=160000
+{"epoch": 8, "train_loss": 0.14363255966715516, "train_samples": 160000, "train_accuracy": 0.94403125, "lr": 0.01, "seconds": 1797.340811252594}
+epoch=9 batches=100/2500 samples=6400
+epoch=9 batches=200/2500 samples=12800
+epoch=9 batches=300/2500 samples=19200
+epoch=9 batches=400/2500 samples=25600
+epoch=9 batches=500/2500 samples=32000
+epoch=9 batches=600/2500 samples=38400
+epoch=9 batches=700/2500 samples=44800
+epoch=9 batches=800/2500 samples=51200
+epoch=9 batches=900/2500 samples=57600
+epoch=9 batches=1000/2500 samples=64000
+epoch=9 batches=1100/2500 samples=70400
+epoch=9 batches=1200/2500 samples=76800
+epoch=9 batches=1300/2500 samples=83200
+epoch=9 batches=1400/2500 samples=89600
+epoch=9 batches=1500/2500 samples=96000
+epoch=9 batches=1600/2500 samples=102400
+epoch=9 batches=1700/2500 samples=108800
+epoch=9 batches=1800/2500 samples=115200
+epoch=9 batches=1900/2500 samples=121600
+epoch=9 batches=2000/2500 samples=128000
+epoch=9 batches=2100/2500 samples=134400
+epoch=9 batches=2200/2500 samples=140800
+epoch=9 batches=2300/2500 samples=147200
+epoch=9 batches=2400/2500 samples=153600
+epoch=9 batches=2500/2500 samples=160000
+{"epoch": 9, "train_loss": 0.1604383637152612, "train_samples": 160000, "train_accuracy": 0.95445, "lr": 0.01, "seconds": 1791.0507752895355}
+epoch=10 batches=100/2500 samples=6400
+epoch=10 batches=200/2500 samples=12800
+epoch=10 batches=300/2500 samples=19200
+epoch=10 batches=400/2500 samples=25600
+epoch=10 batches=500/2500 samples=32000
+epoch=10 batches=600/2500 samples=38400
+epoch=10 batches=700/2500 samples=44800
+epoch=10 batches=800/2500 samples=51200
+epoch=10 batches=900/2500 samples=57600
+epoch=10 batches=1000/2500 samples=64000
+epoch=10 batches=1100/2500 samples=70400
+epoch=10 batches=1200/2500 samples=76800
+epoch=10 batches=1300/2500 samples=83200
+epoch=10 batches=1400/2500 samples=89600
+epoch=10 batches=1500/2500 samples=96000
+epoch=10 batches=1600/2500 samples=102400
+epoch=10 batches=1700/2500 samples=108800
+epoch=10 batches=1800/2500 samples=115200
+epoch=10 batches=1900/2500 samples=121600
+epoch=10 batches=2000/2500 samples=128000
+epoch=10 batches=2100/2500 samples=134400
+epoch=10 batches=2200/2500 samples=140800
+epoch=10 batches=2300/2500 samples=147200
+epoch=10 batches=2400/2500 samples=153600
+epoch=10 batches=2500/2500 samples=160000
+{"epoch": 10, "train_loss": 0.14040919752977787, "train_samples": 160000, "train_accuracy": 0.95484375, "lr": 0.01, "seconds": 1914.927630662918}
+epoch=11 batches=100/2500 samples=6400
+epoch=11 batches=200/2500 samples=12800
+epoch=11 batches=300/2500 samples=19200
+epoch=11 batches=400/2500 samples=25600
+epoch=11 batches=500/2500 samples=32000
+epoch=11 batches=600/2500 samples=38400
+epoch=11 batches=700/2500 samples=44800
+epoch=11 batches=800/2500 samples=51200
+epoch=11 batches=900/2500 samples=57600
+epoch=11 batches=1000/2500 samples=64000
+epoch=11 batches=1100/2500 samples=70400
+epoch=11 batches=1200/2500 samples=76800
+epoch=11 batches=1300/2500 samples=83200
+epoch=11 batches=1400/2500 samples=89600
+epoch=11 batches=1500/2500 samples=96000
+epoch=11 batches=1600/2500 samples=102400
+epoch=11 batches=1700/2500 samples=108800
+epoch=11 batches=1800/2500 samples=115200
+epoch=11 batches=1900/2500 samples=121600
+epoch=11 batches=2000/2500 samples=128000
+epoch=11 batches=2100/2500 samples=134400
+epoch=11 batches=2200/2500 samples=140800
+epoch=11 batches=2300/2500 samples=147200
+epoch=11 batches=2400/2500 samples=153600
+epoch=11 batches=2500/2500 samples=160000
+{"epoch": 11, "train_loss": 0.1394992703754455, "train_samples": 160000, "train_accuracy": 0.9548875, "lr": 0.01, "seconds": 2242.9458713531494}
+epoch=12 batches=100/2500 samples=6400
+epoch=12 batches=200/2500 samples=12800
+epoch=12 batches=300/2500 samples=19200
+epoch=12 batches=400/2500 samples=25600
+epoch=12 batches=500/2500 samples=32000
+epoch=12 batches=600/2500 samples=38400
+epoch=12 batches=700/2500 samples=44800
+epoch=12 batches=800/2500 samples=51200
+epoch=12 batches=900/2500 samples=57600
+epoch=12 batches=1000/2500 samples=64000
+epoch=12 batches=1100/2500 samples=70400
+epoch=12 batches=1200/2500 samples=76800
+epoch=12 batches=1300/2500 samples=83200
+epoch=12 batches=1400/2500 samples=89600
+epoch=12 batches=1500/2500 samples=96000
+epoch=12 batches=1600/2500 samples=102400
+epoch=12 batches=1700/2500 samples=108800
+epoch=12 batches=1800/2500 samples=115200
+epoch=12 batches=1900/2500 samples=121600
+epoch=12 batches=2000/2500 samples=128000
+epoch=12 batches=2100/2500 samples=134400
+epoch=12 batches=2200/2500 samples=140800
+epoch=12 batches=2300/2500 samples=147200
+epoch=12 batches=2400/2500 samples=153600
+epoch=12 batches=2500/2500 samples=160000
+{"epoch": 12, "train_loss": 0.12632591219618916, "train_samples": 160000, "train_accuracy": 0.95558125, "lr": 0.01, "seconds": 2368.507492542267}
+epoch=13 batches=100/2500 samples=6400
+epoch=13 batches=200/2500 samples=12800
+epoch=13 batches=300/2500 samples=19200
+epoch=13 batches=400/2500 samples=25600
+epoch=13 batches=500/2500 samples=32000
+epoch=13 batches=600/2500 samples=38400
+epoch=13 batches=700/2500 samples=44800
+epoch=13 batches=800/2500 samples=51200
+epoch=13 batches=900/2500 samples=57600
+epoch=13 batches=1000/2500 samples=64000
+epoch=13 batches=1100/2500 samples=70400
+epoch=13 batches=1200/2500 samples=76800
+epoch=13 batches=1300/2500 samples=83200
+epoch=13 batches=1400/2500 samples=89600
+epoch=13 batches=1500/2500 samples=96000
+epoch=13 batches=1600/2500 samples=102400
+epoch=13 batches=1700/2500 samples=108800
+epoch=13 batches=1800/2500 samples=115200
+epoch=13 batches=1900/2500 samples=121600
+epoch=13 batches=2000/2500 samples=128000
+epoch=13 batches=2100/2500 samples=134400
+epoch=13 batches=2200/2500 samples=140800
+epoch=13 batches=2300/2500 samples=147200
+epoch=13 batches=2400/2500 samples=153600
+epoch=13 batches=2500/2500 samples=160000
+{"epoch": 13, "train_loss": 0.12341624384373426, "train_samples": 160000, "train_accuracy": 0.9495375, "lr": 0.01, "seconds": 1969.1651866436005}
+epoch=14 batches=100/2500 samples=6400
+epoch=14 batches=200/2500 samples=12800
+epoch=14 batches=300/2500 samples=19200
+epoch=14 batches=400/2500 samples=25600
+epoch=14 batches=500/2500 samples=32000
+epoch=14 batches=600/2500 samples=38400
+epoch=14 batches=700/2500 samples=44800
+epoch=14 batches=800/2500 samples=51200
+epoch=14 batches=900/2500 samples=57600
+epoch=14 batches=1000/2500 samples=64000
+epoch=14 batches=1100/2500 samples=70400
+epoch=14 batches=1200/2500 samples=76800
+epoch=14 batches=1300/2500 samples=83200
+epoch=14 batches=1400/2500 samples=89600
+epoch=14 batches=1500/2500 samples=96000
+epoch=14 batches=1600/2500 samples=102400
+epoch=14 batches=1700/2500 samples=108800
+epoch=14 batches=1800/2500 samples=115200
+epoch=14 batches=1900/2500 samples=121600
+epoch=14 batches=2000/2500 samples=128000
+epoch=14 batches=2100/2500 samples=134400
+epoch=14 batches=2200/2500 samples=140800
+epoch=14 batches=2300/2500 samples=147200
+epoch=14 batches=2400/2500 samples=153600
+epoch=14 batches=2500/2500 samples=160000
+{"epoch": 14, "train_loss": 0.12078997313361615, "train_samples": 160000, "train_accuracy": 0.95996875, "lr": 0.01, "seconds": 1882.353256225586}
+epoch=15 batches=100/2500 samples=6400
+epoch=15 batches=200/2500 samples=12800
+epoch=15 batches=300/2500 samples=19200
+epoch=15 batches=400/2500 samples=25600
+epoch=15 batches=500/2500 samples=32000
+epoch=15 batches=600/2500 samples=38400
+epoch=15 batches=700/2500 samples=44800
+epoch=15 batches=800/2500 samples=51200
+epoch=15 batches=900/2500 samples=57600
+epoch=15 batches=1000/2500 samples=64000
+epoch=15 batches=1100/2500 samples=70400
+epoch=15 batches=1200/2500 samples=76800
+epoch=15 batches=1300/2500 samples=83200
+epoch=15 batches=1400/2500 samples=89600
+epoch=15 batches=1500/2500 samples=96000
+epoch=15 batches=1600/2500 samples=102400
+epoch=15 batches=1700/2500 samples=108800
+epoch=15 batches=1800/2500 samples=115200
+epoch=15 batches=1900/2500 samples=121600
+epoch=15 batches=2000/2500 samples=128000
+epoch=15 batches=2100/2500 samples=134400
+epoch=15 batches=2200/2500 samples=140800
+epoch=15 batches=2300/2500 samples=147200
+epoch=15 batches=2400/2500 samples=153600
+epoch=15 batches=2500/2500 samples=160000
+{"epoch": 15, "train_loss": 0.13385840828344225, "train_samples": 160000, "train_accuracy": 0.9564375, "lr": 0.01, "seconds": 1861.8305795192719}
+epoch=16 batches=100/2500 samples=6400
+epoch=16 batches=200/2500 samples=12800
+epoch=16 batches=300/2500 samples=19200
+epoch=16 batches=400/2500 samples=25600
+epoch=16 batches=500/2500 samples=32000
+epoch=16 batches=600/2500 samples=38400
+epoch=16 batches=700/2500 samples=44800
+epoch=16 batches=800/2500 samples=51200
+epoch=16 batches=900/2500 samples=57600
+epoch=16 batches=1000/2500 samples=64000
+epoch=16 batches=1100/2500 samples=70400
+epoch=16 batches=1200/2500 samples=76800
+epoch=16 batches=1300/2500 samples=83200
+epoch=16 batches=1400/2500 samples=89600
+epoch=16 batches=1500/2500 samples=96000
+epoch=16 batches=1600/2500 samples=102400
+epoch=16 batches=1700/2500 samples=108800
+epoch=16 batches=1800/2500 samples=115200
+epoch=16 batches=1900/2500 samples=121600
+epoch=16 batches=2000/2500 samples=128000
+epoch=16 batches=2100/2500 samples=134400
+epoch=16 batches=2200/2500 samples=140800
+epoch=16 batches=2300/2500 samples=147200
+epoch=16 batches=2400/2500 samples=153600
+epoch=16 batches=2500/2500 samples=160000
+{"epoch": 16, "train_loss": 0.11660790653880686, "train_samples": 160000, "train_accuracy": 0.95225625, "lr": 0.01, "seconds": 1804.5831565856934}
+epoch=17 batches=100/2500 samples=6400
+epoch=17 batches=200/2500 samples=12800
+epoch=17 batches=300/2500 samples=19200
+epoch=17 batches=400/2500 samples=25600
+epoch=17 batches=500/2500 samples=32000
+epoch=17 batches=600/2500 samples=38400
+epoch=17 batches=700/2500 samples=44800
+epoch=17 batches=800/2500 samples=51200
+epoch=17 batches=900/2500 samples=57600
+epoch=17 batches=1000/2500 samples=64000
+epoch=17 batches=1100/2500 samples=70400
+epoch=17 batches=1200/2500 samples=76800
+epoch=17 batches=1300/2500 samples=83200
+epoch=17 batches=1400/2500 samples=89600
+epoch=17 batches=1500/2500 samples=96000
+epoch=17 batches=1600/2500 samples=102400
+epoch=17 batches=1700/2500 samples=108800
+epoch=17 batches=1800/2500 samples=115200
+epoch=17 batches=1900/2500 samples=121600
+epoch=17 batches=2000/2500 samples=128000
+epoch=17 batches=2100/2500 samples=134400
+epoch=17 batches=2200/2500 samples=140800
+epoch=17 batches=2300/2500 samples=147200
+epoch=17 batches=2400/2500 samples=153600
+epoch=17 batches=2500/2500 samples=160000
+{"epoch": 17, "train_loss": 0.11799563865307719, "train_samples": 160000, "train_accuracy": 0.9481375, "lr": 0.01, "seconds": 1825.522765636444}
+epoch=18 batches=100/2500 samples=6400
+epoch=18 batches=200/2500 samples=12800
+epoch=18 batches=300/2500 samples=19200
+epoch=18 batches=400/2500 samples=25600
+epoch=18 batches=500/2500 samples=32000
+epoch=18 batches=600/2500 samples=38400
+epoch=18 batches=700/2500 samples=44800
+epoch=18 batches=800/2500 samples=51200
+epoch=18 batches=900/2500 samples=57600
+epoch=18 batches=1000/2500 samples=64000
+epoch=18 batches=1100/2500 samples=70400
+epoch=18 batches=1200/2500 samples=76800
+epoch=18 batches=1300/2500 samples=83200
+epoch=18 batches=1400/2500 samples=89600
+epoch=18 batches=1500/2500 samples=96000
+epoch=18 batches=1600/2500 samples=102400
+epoch=18 batches=1700/2500 samples=108800
+epoch=18 batches=1800/2500 samples=115200
+epoch=18 batches=1900/2500 samples=121600
+epoch=18 batches=2000/2500 samples=128000
+epoch=18 batches=2100/2500 samples=134400
+epoch=18 batches=2200/2500 samples=140800
+epoch=18 batches=2300/2500 samples=147200
+epoch=18 batches=2400/2500 samples=153600
+epoch=18 batches=2500/2500 samples=160000
+{"epoch": 18, "train_loss": 0.11963053711056709, "train_samples": 160000, "train_accuracy": 0.959825, "lr": 0.01, "seconds": 2697.8403871059418}
+epoch=19 batches=100/2500 samples=6400
+epoch=19 batches=200/2500 samples=12800
+epoch=19 batches=300/2500 samples=19200
+epoch=19 batches=400/2500 samples=25600
+epoch=19 batches=500/2500 samples=32000
+epoch=19 batches=600/2500 samples=38400
+epoch=19 batches=700/2500 samples=44800
+epoch=19 batches=800/2500 samples=51200
+epoch=19 batches=900/2500 samples=57600
+epoch=19 batches=1000/2500 samples=64000
+epoch=19 batches=1100/2500 samples=70400
+epoch=19 batches=1200/2500 samples=76800
+epoch=19 batches=1300/2500 samples=83200
+epoch=19 batches=1400/2500 samples=89600
+epoch=19 batches=1500/2500 samples=96000
+epoch=19 batches=1600/2500 samples=102400
+epoch=19 batches=1700/2500 samples=108800
+epoch=19 batches=1800/2500 samples=115200
+epoch=19 batches=1900/2500 samples=121600
+epoch=19 batches=2000/2500 samples=128000
+epoch=19 batches=2100/2500 samples=134400
+epoch=19 batches=2200/2500 samples=140800
+epoch=19 batches=2300/2500 samples=147200
+epoch=19 batches=2400/2500 samples=153600
+epoch=19 batches=2500/2500 samples=160000
+{"epoch": 19, "train_loss": 0.1165173732077703, "train_samples": 160000, "train_accuracy": 0.9582, "lr": 0.01, "seconds": 1897.5952877998352}
+epoch=20 batches=100/2500 samples=6400
+epoch=20 batches=200/2500 samples=12800
+epoch=20 batches=300/2500 samples=19200
+epoch=20 batches=400/2500 samples=25600
+epoch=20 batches=500/2500 samples=32000
+epoch=20 batches=600/2500 samples=38400
+epoch=20 batches=700/2500 samples=44800
+epoch=20 batches=800/2500 samples=51200
+epoch=20 batches=900/2500 samples=57600
+epoch=20 batches=1000/2500 samples=64000
+epoch=20 batches=1100/2500 samples=70400
+epoch=20 batches=1200/2500 samples=76800
+epoch=20 batches=1300/2500 samples=83200
+epoch=20 batches=1400/2500 samples=89600
+epoch=20 batches=1500/2500 samples=96000
+epoch=20 batches=1600/2500 samples=102400
+epoch=20 batches=1700/2500 samples=108800
+epoch=20 batches=1800/2500 samples=115200
+epoch=20 batches=1900/2500 samples=121600
+epoch=20 batches=2000/2500 samples=128000
+epoch=20 batches=2100/2500 samples=134400
+epoch=20 batches=2200/2500 samples=140800
+epoch=20 batches=2300/2500 samples=147200
+epoch=20 batches=2400/2500 samples=153600
+epoch=20 batches=2500/2500 samples=160000
+{"epoch": 20, "train_loss": 0.11551360100135208, "train_samples": 160000, "train_accuracy": 0.95975625, "lr": 0.01, "seconds": 1793.813856601715}
+epoch=21 batches=100/2500 samples=6400
+epoch=21 batches=200/2500 samples=12800
+epoch=21 batches=300/2500 samples=19200
+epoch=21 batches=400/2500 samples=25600
+epoch=21 batches=500/2500 samples=32000
+epoch=21 batches=600/2500 samples=38400
+epoch=21 batches=700/2500 samples=44800
+epoch=21 batches=800/2500 samples=51200
+epoch=21 batches=900/2500 samples=57600
+epoch=21 batches=1000/2500 samples=64000
+epoch=21 batches=1100/2500 samples=70400
+epoch=21 batches=1200/2500 samples=76800
+epoch=21 batches=1300/2500 samples=83200
+epoch=21 batches=1400/2500 samples=89600
+epoch=21 batches=1500/2500 samples=96000
+epoch=21 batches=1600/2500 samples=102400
+epoch=21 batches=1700/2500 samples=108800
+epoch=21 batches=1800/2500 samples=115200
+epoch=21 batches=1900/2500 samples=121600
+epoch=21 batches=2000/2500 samples=128000
+epoch=21 batches=2100/2500 samples=134400
+epoch=21 batches=2200/2500 samples=140800
+epoch=21 batches=2300/2500 samples=147200
+epoch=21 batches=2400/2500 samples=153600
+epoch=21 batches=2500/2500 samples=160000
+{"epoch": 21, "train_loss": 0.12220862240036949, "train_samples": 160000, "train_accuracy": 0.9507625, "lr": 0.01, "seconds": 2529.727939605713}
+epoch=22 batches=100/2500 samples=6400
+epoch=22 batches=200/2500 samples=12800
+epoch=22 batches=300/2500 samples=19200
+epoch=22 batches=400/2500 samples=25600
+epoch=22 batches=500/2500 samples=32000
+epoch=22 batches=600/2500 samples=38400
+epoch=22 batches=700/2500 samples=44800
+epoch=22 batches=800/2500 samples=51200
+epoch=22 batches=900/2500 samples=57600
+epoch=22 batches=1000/2500 samples=64000
+epoch=22 batches=1100/2500 samples=70400
+epoch=22 batches=1200/2500 samples=76800
+epoch=22 batches=1300/2500 samples=83200
+epoch=22 batches=1400/2500 samples=89600
+epoch=22 batches=1500/2500 samples=96000
+epoch=22 batches=1600/2500 samples=102400
+epoch=22 batches=1700/2500 samples=108800
+epoch=22 batches=1800/2500 samples=115200
+epoch=22 batches=1900/2500 samples=121600
+epoch=22 batches=2000/2500 samples=128000
+epoch=22 batches=2100/2500 samples=134400
+epoch=22 batches=2200/2500 samples=140800
+epoch=22 batches=2300/2500 samples=147200
+epoch=22 batches=2400/2500 samples=153600
+epoch=22 batches=2500/2500 samples=160000
+{"epoch": 22, "train_loss": 0.15551897603943943, "train_samples": 160000, "train_accuracy": 0.95725, "lr": 0.01, "seconds": 1956.0437490940094}
+epoch=23 batches=100/2500 samples=6400
+epoch=23 batches=200/2500 samples=12800
+epoch=23 batches=300/2500 samples=19200
+epoch=23 batches=400/2500 samples=25600
+epoch=23 batches=500/2500 samples=32000
+epoch=23 batches=600/2500 samples=38400
+epoch=23 batches=700/2500 samples=44800
+epoch=23 batches=800/2500 samples=51200
+epoch=23 batches=900/2500 samples=57600
+epoch=23 batches=1000/2500 samples=64000
+epoch=23 batches=1100/2500 samples=70400
+epoch=23 batches=1200/2500 samples=76800
+epoch=23 batches=1300/2500 samples=83200
+epoch=23 batches=1400/2500 samples=89600
+epoch=23 batches=1500/2500 samples=96000
+epoch=23 batches=1600/2500 samples=102400
+epoch=23 batches=1700/2500 samples=108800
+epoch=23 batches=1800/2500 samples=115200
+epoch=23 batches=1900/2500 samples=121600
+epoch=23 batches=2000/2500 samples=128000
+epoch=23 batches=2100/2500 samples=134400
+epoch=23 batches=2200/2500 samples=140800
+epoch=23 batches=2300/2500 samples=147200
+epoch=23 batches=2400/2500 samples=153600
+epoch=23 batches=2500/2500 samples=160000
+{"epoch": 23, "train_loss": 0.1170584510024637, "train_samples": 160000, "train_accuracy": 0.96078125, "lr": 0.01, "seconds": 2824.767784833908}
+epoch=24 batches=100/2500 samples=6400
+epoch=24 batches=200/2500 samples=12800
+epoch=24 batches=300/2500 samples=19200
+epoch=24 batches=400/2500 samples=25600
+epoch=24 batches=500/2500 samples=32000
+epoch=24 batches=600/2500 samples=38400
+epoch=24 batches=700/2500 samples=44800
+epoch=24 batches=800/2500 samples=51200
+epoch=24 batches=900/2500 samples=57600
+epoch=24 batches=1000/2500 samples=64000
+epoch=24 batches=1100/2500 samples=70400
+epoch=24 batches=1200/2500 samples=76800
+epoch=24 batches=1300/2500 samples=83200
+epoch=24 batches=1400/2500 samples=89600
+epoch=24 batches=1500/2500 samples=96000
+epoch=24 batches=1600/2500 samples=102400
+epoch=24 batches=1700/2500 samples=108800
+epoch=24 batches=1800/2500 samples=115200
+epoch=24 batches=1900/2500 samples=121600
+epoch=24 batches=2000/2500 samples=128000
+epoch=24 batches=2100/2500 samples=134400
+epoch=24 batches=2200/2500 samples=140800
+epoch=24 batches=2300/2500 samples=147200
+epoch=24 batches=2400/2500 samples=153600
+epoch=24 batches=2500/2500 samples=160000
+{"epoch": 24, "train_loss": 0.11938010414745659, "train_samples": 160000, "train_accuracy": 0.95798125, "lr": 0.01, "seconds": 2578.84783244133}
+epoch=25 batches=100/2500 samples=6400
+epoch=25 batches=200/2500 samples=12800
+epoch=25 batches=300/2500 samples=19200
+epoch=25 batches=400/2500 samples=25600
+epoch=25 batches=500/2500 samples=32000
+epoch=25 batches=600/2500 samples=38400
+epoch=25 batches=700/2500 samples=44800
+epoch=25 batches=800/2500 samples=51200
+epoch=25 batches=900/2500 samples=57600
+epoch=25 batches=1000/2500 samples=64000
+epoch=25 batches=1100/2500 samples=70400
+epoch=25 batches=1200/2500 samples=76800
+epoch=25 batches=1300/2500 samples=83200
+epoch=25 batches=1400/2500 samples=89600
+epoch=25 batches=1500/2500 samples=96000
+epoch=25 batches=1600/2500 samples=102400
+epoch=25 batches=1700/2500 samples=108800
+epoch=25 batches=1800/2500 samples=115200
+epoch=25 batches=1900/2500 samples=121600
+epoch=25 batches=2000/2500 samples=128000
+epoch=25 batches=2100/2500 samples=134400
+epoch=25 batches=2200/2500 samples=140800
+epoch=25 batches=2300/2500 samples=147200
+epoch=25 batches=2400/2500 samples=153600
+epoch=25 batches=2500/2500 samples=160000
+{"epoch": 25, "train_loss": 0.11543157927971333, "train_samples": 160000, "train_accuracy": 0.9609625, "lr": 0.01, "seconds": 1426.7653620243073}
+epoch=26 batches=100/2500 samples=6400
+epoch=26 batches=200/2500 samples=12800
+epoch=26 batches=300/2500 samples=19200
+epoch=26 batches=400/2500 samples=25600
+epoch=26 batches=500/2500 samples=32000
+epoch=26 batches=600/2500 samples=38400
+epoch=26 batches=700/2500 samples=44800
+epoch=26 batches=800/2500 samples=51200
+epoch=26 batches=900/2500 samples=57600
+epoch=26 batches=1000/2500 samples=64000
+epoch=26 batches=1100/2500 samples=70400
+epoch=26 batches=1200/2500 samples=76800
+epoch=26 batches=1300/2500 samples=83200
+epoch=26 batches=1400/2500 samples=89600
+epoch=26 batches=1500/2500 samples=96000
+epoch=26 batches=1600/2500 samples=102400
+epoch=26 batches=1700/2500 samples=108800
+epoch=26 batches=1800/2500 samples=115200
+epoch=26 batches=1900/2500 samples=121600
+epoch=26 batches=2000/2500 samples=128000
+epoch=26 batches=2100/2500 samples=134400
+epoch=26 batches=2200/2500 samples=140800
+epoch=26 batches=2300/2500 samples=147200
+epoch=26 batches=2400/2500 samples=153600
+epoch=26 batches=2500/2500 samples=160000
+{"epoch": 26, "train_loss": 0.12065816701631993, "train_samples": 160000, "train_accuracy": 0.96126875, "lr": 0.01, "seconds": 1095.3529856204987}
+epoch=27 batches=100/2500 samples=6400
+epoch=27 batches=200/2500 samples=12800
+epoch=27 batches=300/2500 samples=19200
+epoch=27 batches=400/2500 samples=25600
+epoch=27 batches=500/2500 samples=32000
+epoch=27 batches=600/2500 samples=38400
+epoch=27 batches=700/2500 samples=44800
+epoch=27 batches=800/2500 samples=51200
+epoch=27 batches=900/2500 samples=57600
+epoch=27 batches=1000/2500 samples=64000
+epoch=27 batches=1100/2500 samples=70400
+epoch=27 batches=1200/2500 samples=76800
+epoch=27 batches=1300/2500 samples=83200
+epoch=27 batches=1400/2500 samples=89600
+epoch=27 batches=1500/2500 samples=96000
+epoch=27 batches=1600/2500 samples=102400
+epoch=27 batches=1700/2500 samples=108800
+epoch=27 batches=1800/2500 samples=115200
+epoch=27 batches=1900/2500 samples=121600
+epoch=27 batches=2000/2500 samples=128000
+epoch=27 batches=2100/2500 samples=134400
+epoch=27 batches=2200/2500 samples=140800
+epoch=27 batches=2300/2500 samples=147200
+epoch=27 batches=2400/2500 samples=153600
+epoch=27 batches=2500/2500 samples=160000
+{"epoch": 27, "train_loss": 0.11456776504777372, "train_samples": 160000, "train_accuracy": 0.96113125, "lr": 0.01, "seconds": 1186.3864295482635}
+epoch=28 batches=100/2500 samples=6400
+epoch=28 batches=200/2500 samples=12800
+epoch=28 batches=300/2500 samples=19200
+epoch=28 batches=400/2500 samples=25600
+epoch=28 batches=500/2500 samples=32000
+epoch=28 batches=600/2500 samples=38400
+epoch=28 batches=700/2500 samples=44800
+epoch=28 batches=800/2500 samples=51200
+epoch=28 batches=900/2500 samples=57600
+epoch=28 batches=1000/2500 samples=64000
+epoch=28 batches=1100/2500 samples=70400
+epoch=28 batches=1200/2500 samples=76800
+epoch=28 batches=1300/2500 samples=83200
+epoch=28 batches=1400/2500 samples=89600
+epoch=28 batches=1500/2500 samples=96000
+epoch=28 batches=1600/2500 samples=102400
+epoch=28 batches=1700/2500 samples=108800
+epoch=28 batches=1800/2500 samples=115200
+epoch=28 batches=1900/2500 samples=121600
+epoch=28 batches=2000/2500 samples=128000
+epoch=28 batches=2100/2500 samples=134400
+epoch=28 batches=2200/2500 samples=140800
+epoch=28 batches=2300/2500 samples=147200
+epoch=28 batches=2400/2500 samples=153600
+epoch=28 batches=2500/2500 samples=160000
+{"epoch": 28, "train_loss": 0.11383533785510808, "train_samples": 160000, "train_accuracy": 0.96228125, "lr": 0.01, "seconds": 1127.8295814990997}
+epoch=29 batches=100/2500 samples=6400
+epoch=29 batches=200/2500 samples=12800
+epoch=29 batches=300/2500 samples=19200
+epoch=29 batches=400/2500 samples=25600
+epoch=29 batches=500/2500 samples=32000
+epoch=29 batches=600/2500 samples=38400
+epoch=29 batches=700/2500 samples=44800
+epoch=29 batches=800/2500 samples=51200
+epoch=29 batches=900/2500 samples=57600
+epoch=29 batches=1000/2500 samples=64000
+epoch=29 batches=1100/2500 samples=70400
+epoch=29 batches=1200/2500 samples=76800
+epoch=29 batches=1300/2500 samples=83200
+epoch=29 batches=1400/2500 samples=89600
+epoch=29 batches=1500/2500 samples=96000
+epoch=29 batches=1600/2500 samples=102400
+epoch=29 batches=1700/2500 samples=108800
+epoch=29 batches=1800/2500 samples=115200
+epoch=29 batches=1900/2500 samples=121600
+epoch=29 batches=2000/2500 samples=128000
+epoch=29 batches=2100/2500 samples=134400
+epoch=29 batches=2200/2500 samples=140800
+epoch=29 batches=2300/2500 samples=147200
+epoch=29 batches=2400/2500 samples=153600
+epoch=29 batches=2500/2500 samples=160000
+{"epoch": 29, "train_loss": 0.13179811293520033, "train_samples": 160000, "train_accuracy": 0.95151875, "lr": 0.01, "seconds": 1110.2083077430725}
+epoch=30 batches=100/2500 samples=6400
+epoch=30 batches=200/2500 samples=12800
+epoch=30 batches=300/2500 samples=19200
+epoch=30 batches=400/2500 samples=25600
+epoch=30 batches=500/2500 samples=32000
+epoch=30 batches=600/2500 samples=38400
+epoch=30 batches=700/2500 samples=44800
+epoch=30 batches=800/2500 samples=51200
+epoch=30 batches=900/2500 samples=57600
+epoch=30 batches=1000/2500 samples=64000
+epoch=30 batches=1100/2500 samples=70400
+epoch=30 batches=1200/2500 samples=76800
+epoch=30 batches=1300/2500 samples=83200
+epoch=30 batches=1400/2500 samples=89600
+epoch=30 batches=1500/2500 samples=96000
+epoch=30 batches=1600/2500 samples=102400
+epoch=30 batches=1700/2500 samples=108800
+epoch=30 batches=1800/2500 samples=115200
+epoch=30 batches=1900/2500 samples=121600
+epoch=30 batches=2000/2500 samples=128000
+epoch=30 batches=2100/2500 samples=134400
+epoch=30 batches=2200/2500 samples=140800
+epoch=30 batches=2300/2500 samples=147200
+epoch=30 batches=2400/2500 samples=153600
+epoch=30 batches=2500/2500 samples=160000
+{"epoch": 30, "train_loss": 0.11756023076064885, "train_samples": 160000, "train_accuracy": 0.9601, "lr": 0.01, "seconds": 1124.2913432121277}
+{
+  "status": "completed",
+  "exit_code": 0,
+  "mode": "full",
+  "claim": "protocol_reimplementation",
+  "binding": {
+    "manifest_id": "22d027fe3d0b0ad9079da9a13614597b0e40bb883a34b2d4d825452d6129d383",
+    "config_id": "7463253af0c7d165dc7c3b681895e6d918e8c83f80994ac896ef5045f84e414b",
+    "code": {
+      "scripts/run_r0_edge.py": "b8dd03260fd1bb5963a4f27b825028bb60125a021870c1cdbbeff1a568330626",
+      "scripts/r0_data.py": "b1d812cf0fb137200a1707a554b1e907c25fe988ea89f7f094b341e60d8cfff5",
+      "scripts/audit_graph_split.py": "f015ad28326e1aa697f5f1aa94ce0d65122c044f6396ad1a8059978b9cef9355",
+      "scripts/build_grouped_split.py": "63689d2130edf831c1e9b2a4c3ea49146d8c1c39d23303c96927618111a3d1e1",
+      "src/xgnid/edge_experiments.py": "028299120dbc4f22b682f7e180062a15ffb9d59f72c34d6444cd6ad0a9cc4f97",
+      "src/xgnid/model.py": "e56860fedda32af7acfaec85c3f6b10b6e67547e6557d3dcf222570c9d3d2d89",
+      "third_party/GNN4ID/Utility/Model.py": "72a6c12aed6acbea50555686e1540ccbed0ba03d589951accce3fc1d453bfcb0",
+      "docs/r0_source_lock.json": "3657c8f5a37039e81dffdda7e88a0977de288c5ebd19650e6f3914894b63b01c"
+    },
+    "runtime": {
+      "python": "3.9.23",
+      "torch": "2.3.1+cu118",
+      "pyg": "2.5.3",
+      "cuda": "11.8",
+      "device_type": "cuda",
+      "gpu": "Tesla T4"
+    }
+  },
+  "epochs_completed": 30,
+  "selection": "last_epoch",
+  "test": {
+    "samples": 25557,
+    "accuracy": 0.949798489650585,
+    "macro_f1": 0.9282109573752342,
+    "weighted_f1": 0.9527271796968293,
+    "classification_report": {
+      "Benign": {
+        "precision": 0.9593098120010302,
+        "recall": 0.93125,
+        "f1-score": 0.9450716732208551,
+        "support": 4000.0
+      },
+      "WebBased": {
+        "precision": 0.5710412147505423,
+        "recall": 0.9660550458715597,
+        "f1-score": 0.7177914110429447,
+        "support": 1090.0
+      },
+      "Spoofing": {
+        "precision": 0.9480153649167734,
+        "recall": 0.9255,
+        "f1-score": 0.9366223908918406,
+        "support": 4000.0
+      },
+      "Recon": {
+        "precision": 0.9853629976580797,
+        "recall": 0.8415,
+        "f1-score": 0.9077669902912622,
+        "support": 4000.0
+      },
+      "Mirai": {
+        "precision": 1.0,
+        "recall": 0.99925,
+        "f1-score": 0.9996248593222459,
+        "support": 4000.0
+      },
+      "Dos": {
+        "precision": 0.9942657691348791,
+        "recall": 0.997,
+        "f1-score": 0.9956310073648732,
+        "support": 4000.0
+      },
+      "DDos": {
+        "precision": 1.0,
+        "recall": 0.998,
+        "f1-score": 0.998998998998999,
+        "support": 4000.0
+      },
+      "BruteForce": {
+        "precision": 0.8860510805500982,
+        "recall": 0.9657387580299786,
+        "f1-score": 0.9241803278688524,
+        "support": 467.0
+      },
+      "accuracy": 0.949798489650585,
+      "macro avg": {
+        "precision": 0.9180057798764254,
+        "recall": 0.9530367254876922,
+        "f1-score": 0.9282109573752342,
+        "support": 25557.0
+      },
+      "weighted avg": {
+        "precision": 0.9619296691136688,
+        "recall": 0.949798489650585,
+        "f1-score": 0.9527271796968293,
+        "support": 25557.0
+      }
+    },
+    "confusion_matrix_true_rows_predicted_columns": [
+      [
+        3725,
+        96,
+        156,
+        17,
+        0,
+        0,
+        0,
+        6
+      ],
+      [
+        4,
+        1053,
+        4,
+        3,
+        0,
+        0,
+        0,
+        26
+      ],
+      [
+        126,
+        127,
+        3702,
+        21,
+        0,
+        0,
+        0,
+        24
+      ],
+      [
+        28,
+        546,
+        35,
+        3366,
+        0,
+        23,
+        0,
+        2
+      ],
+      [
+        0,
+        1,
+        2,
+        0,
+        3997,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        3,
+        1,
+        8,
+        0,
+        3988,
+        0,
+        0
+      ],
+      [
+        0,
+        5,
+        2,
+        1,
+        0,
+        0,
+        3992,
+        0
+      ],
+      [
+        0,
+        13,
+        3,
+        0,
+        0,
+        0,
+        0,
+        451
+      ]
+    ]
+  },
+  "parameters": 431704,
+  "last_checkpoint_sha256": "7a86dbc2b7345295be9b564cb581eb9dff20227018449aaf8e1a47aeba6ff581",
+  "wall_seconds": 56126.535998106
+}
+R0 training process exit code: 0

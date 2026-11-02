@@ -1,0 +1,56 @@
+{
+  "status": "completed",
+  "stopped_processes": [
+    {
+      "pid": 16712,
+      "start": "80702",
+      "args": [
+        "/home/nzxn/miniconda3/envs/wx/bin/python",
+        "-B",
+        "-u",
+        "/home/nzxn/下载/WX/load/XG-NID/outputs/r0_aligned_restart_control_v2/supervisor.py",
+        "--repo",
+        "/home/nzxn/下载/WX/load/XG-NID",
+        "--supervise"
+      ],
+      "cwd": "/home/nzxn/下载/WX/load/XG-NID",
+      "uid": 1004,
+      "role": "supervisor"
+    },
+    {
+      "pid": 16724,
+      "start": "80756",
+      "args": [
+        "/home/nzxn/miniconda3/envs/wx/bin/python",
+        "-B",
+        "-u",
+        "/home/nzxn/下载/WX/load/XG-NID/outputs/r0_aligned_restart_control_v2/run_r0_aligned_server.py",
+        "--repo",
+        "/home/nzxn/下载/WX/load/XG-NID",
+        "--mode",
+        "full",
+        "--device",
+        "cuda:0",
+        "--smoke-report",
+        "/home/nzxn/下载/WX/load/XG-NID/outputs/r0_aligned_smoke_s42_v1/summary.json",
+        "--output",
+        "/home/nzxn/下载/WX/load/XG-NID/outputs/r0_aligned_full_s42_v2"
+      ],
+      "cwd": "/home/nzxn/下载/WX/load/XG-NID",
+      "uid": 1004,
+      "role": "trainer"
+    }
+  ],
+  "deleted": [
+    "/home/nzxn/下载/WX/load/XG-NID/outputs/r0_aligned_full_s42_v2",
+    "/home/nzxn/下载/WX/load/XG-NID/outputs/r0_aligned_restart_control_v2",
+    "/home/nzxn/下载/WX/load/XG-NID/outputs/r0_aligned_train_f1_v2"
+  ],
+  "retained": [
+    "original R0",
+    "R0-A smoke",
+    "R0-V",
+    "graph data",
+    "older R0-A v1"
+  ]
+}

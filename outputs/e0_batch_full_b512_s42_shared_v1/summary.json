@@ -1,0 +1,420 @@
+{
+  "status": "completed",
+  "exit_code": 0,
+  "mode": "full",
+  "protocol": "xgnid.e0-batch512.v1",
+  "binding": {
+    "config_sha256": "4780c3c221d4fa143c448c974cf60a692ff2891bf4d2268add128c1fdd8a0cc1",
+    "entry_sha256": "33dfd3d6ff0acdae2dcdb31e986d3044200b32f11ed7e1b1b251be2115fb2b61",
+    "sources": {
+      "scripts/train_grouped.py": "06a493b18faa97b4e1f2b99b6aae38c67ad3c5f39b130f112079c9393432f5d1",
+      "scripts/grouped_graphs.py": "c1b1273d62fc44d91f7c9b300b66a083c1f80ef2c9c4314a62c4bbd5d708bbb4",
+      "scripts/smoke_grouped_gpu.py": "7bce1218e1b55a812855d50c70973fe300da97ad7e9b4005a52deac77d8b1517",
+      "scripts/audit_graph_split.py": "c19164930e8ecb75636cf16d6fa9bb51d6f29e1384e8d8ebf040e683536ffcb6",
+      "scripts/build_grouped_split.py": "24e07766189aec9d03f6161dee15587612a5b2f13e23eab67d7ba4aaf89a3401",
+      "src/xgnid/__init__.py": "2515233a0cdac6c5447c9dbd6b0d54c89284f191d8cb41473d89b347ee296ae7",
+      "src/xgnid/model.py": "28e21e94118db0a4110d17923d2840e18959669d798f628018c98c91c0202631",
+      "src/xgnid/edge_experiments.py": "3e6305d83c06c7ce32e901a2aba9d9d26baa1f2b394af14997b0e359929b4da5",
+      "third_party/GNN4ID/Utility/Model.py": "e17c3905e3c9f437c269bdd0e4d115656cfba6054b6a4474bbd06b5453010688"
+    },
+    "reference_e0_sha256": "5add5c311a8ff8356a7840a52c54d6a33d47798344c72a08467f509ab071d857",
+    "reference_config_sha256": "2e19b8b08b8ef60c80c47965b1f0592b4c924c2f62228d72dbe03ab76fede8e2",
+    "smoke_sha256": "4bd73bde4de918987f222a0c223f12c0172b5e1fc2f4ba8e0c97ee2cbfe1bc8f",
+    "pilot_sha256": "6165d1cc7819cca1e95bbe3f43e45f90d4a4c634128e45b84ccc0bd12c17fb72",
+    "baseline_sha256": "5add5c311a8ff8356a7840a52c54d6a33d47798344c72a08467f509ab071d857",
+    "split_id": "a8ae9c934eec9fee970cc725e60051d0c709e0f16c7dda14749350ff2006975a",
+    "samples_sha256": "b8e9b0810471d0c2b52033488fab640625c3731315afd5d2add1571bd2518827",
+    "train_batch_size": 512,
+    "initial_state_sha256": "906e125925a8a2cc53a526602db0f047f76b1e41b8087c893f5cf1af41f64a6b",
+    "runtime": {
+      "python": "3.9.23",
+      "torch": "2.3.1+cu118",
+      "pyg": "2.5.3",
+      "cuda": "11.8"
+    },
+    "gpu_uuid": "GPU-e69b98a9-213b-8dba-8ec6-1c3aa33c870f",
+    "allow_shared_gpu": true,
+    "paired_reference_checks": {
+      "reference_e0_initial_state_sha256": "906e125925a8a2cc53a526602db0f047f76b1e41b8087c893f5cf1af41f64a6b",
+      "sources": {
+        "scripts/train_grouped.py": "06a493b18faa97b4e1f2b99b6aae38c67ad3c5f39b130f112079c9393432f5d1",
+        "scripts/grouped_graphs.py": "c1b1273d62fc44d91f7c9b300b66a083c1f80ef2c9c4314a62c4bbd5d708bbb4",
+        "scripts/smoke_grouped_gpu.py": "7bce1218e1b55a812855d50c70973fe300da97ad7e9b4005a52deac77d8b1517",
+        "scripts/audit_graph_split.py": "c19164930e8ecb75636cf16d6fa9bb51d6f29e1384e8d8ebf040e683536ffcb6",
+        "scripts/build_grouped_split.py": "24e07766189aec9d03f6161dee15587612a5b2f13e23eab67d7ba4aaf89a3401",
+        "src/xgnid/__init__.py": "2515233a0cdac6c5447c9dbd6b0d54c89284f191d8cb41473d89b347ee296ae7",
+        "src/xgnid/model.py": "28e21e94118db0a4110d17923d2840e18959669d798f628018c98c91c0202631",
+        "src/xgnid/edge_experiments.py": "3e6305d83c06c7ce32e901a2aba9d9d26baa1f2b394af14997b0e359929b4da5",
+        "third_party/GNN4ID/Utility/Model.py": "e17c3905e3c9f437c269bdd0e4d115656cfba6054b6a4474bbd06b5453010688"
+      },
+      "paired_e2_summary_sha256": "e29e1ecf4e4a5c3dc4e5d8859ea6b0c74622404a09fcffed2d32dac041d45ef5",
+      "paired_e2_config_sha256": "0a297a4a42c86785ce59ac4eec64b771ad4e5ce774b1379f6aafd6d45830b089",
+      "paired_e2_checkpoint_sha256": {
+        "best.pt": "1709ed1a19b8a2e20b9b1ef3dac6cc6a5906fd93937e8d18a51cc64f85c44b08",
+        "last.pt": "3b4a503e44d27a0dcb667bce232731c16765e46a13c2d40e8fefe28972a67ddc"
+      },
+      "sample_manifest_sha256": "b8e9b0810471d0c2b52033488fab640625c3731315afd5d2add1571bd2518827"
+    }
+  },
+  "hardware": {
+    "physical_index": 0,
+    "uuid": "GPU-e69b98a9-213b-8dba-8ec6-1c3aa33c870f",
+    "name": "Tesla T4",
+    "memory_mib": 15360,
+    "used_mib_at_query": 384,
+    "free_mib_at_query": 14528,
+    "sharing_allowed": true,
+    "existing_compute_processes": [
+      {
+        "pid": 168966,
+        "name": "/home/nzxn/miniconda3/envs/wx/bin/python"
+      }
+    ],
+    "availability": "explicit sharing allowed",
+    "timing_scope": "shared execution; not a standalone speed benchmark"
+  },
+  "models": {
+    "E0": {
+      "mode": "full",
+      "protocol": "xgnid.e0-batch512.v1",
+      "best_epoch": 56,
+      "stopped_epoch": 68,
+      "best_validation": {
+        "accuracy": 0.9768704447419306,
+        "macro_f1": 0.9667287438289962,
+        "weighted_f1": 0.9768715130706521,
+        "per_class": {
+          "Benign": {
+            "precision": 0.9574642126789366,
+            "recall": 0.9799079112599414,
+            "f1-score": 0.9685560612329334,
+            "support": 2389.0
+          },
+          "WebBased": {
+            "precision": 0.8697247706422019,
+            "recall": 0.8713235294117647,
+            "f1-score": 0.8705234159779615,
+            "support": 544.0
+          },
+          "Spoofing": {
+            "precision": 0.9648300117233294,
+            "recall": 0.9465209890741806,
+            "f1-score": 0.9555878084179972,
+            "support": 1739.0
+          },
+          "Recon": {
+            "precision": 0.970432480141218,
+            "recall": 0.9653204565408253,
+            "f1-score": 0.9678697183098591,
+            "support": 2278.0
+          },
+          "Mirai": {
+            "precision": 0.9991673605328892,
+            "recall": 1.0,
+            "f1-score": 0.9995835068721366,
+            "support": 2400.0
+          },
+          "Dos": {
+            "precision": 0.9993188010899182,
+            "recall": 0.9945762711864407,
+            "f1-score": 0.9969418960244648,
+            "support": 1475.0
+          },
+          "DDos": {
+            "precision": 1.0,
+            "recall": 0.9966499162479062,
+            "f1-score": 0.9983221476510068,
+            "support": 2388.0
+          },
+          "BruteForce": {
+            "precision": 0.9743589743589743,
+            "recall": 0.9785407725321889,
+            "f1-score": 0.9764453961456103,
+            "support": 233.0
+          },
+          "accuracy": 0.9768704447419306,
+          "macro avg": {
+            "precision": 0.9669120763959335,
+            "recall": 0.9666049807816559,
+            "f1-score": 0.9667287438289962,
+            "support": 13446.0
+          },
+          "weighted avg": {
+            "precision": 0.9769462589156704,
+            "recall": 0.9768704447419306,
+            "f1-score": 0.9768715130706521,
+            "support": 13446.0
+          }
+        },
+        "confusion_matrix": [
+          [
+            2341,
+            8,
+            34,
+            6,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            12,
+            474,
+            9,
+            46,
+            0,
+            0,
+            0,
+            3
+          ],
+          [
+            78,
+            7,
+            1646,
+            4,
+            2,
+            0,
+            0,
+            2
+          ],
+          [
+            14,
+            51,
+            12,
+            2199,
+            0,
+            1,
+            0,
+            1
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            2400,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            3,
+            0,
+            5,
+            0,
+            1467,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            1,
+            6,
+            0,
+            0,
+            2380,
+            0
+          ],
+          [
+            0,
+            1,
+            4,
+            0,
+            0,
+            0,
+            0,
+            228
+          ]
+        ],
+        "samples": 13446,
+        "wall_seconds_including_graph_io": 26.5595667269954,
+        "forward_seconds": 9.446178528785705,
+        "forward_timing_method": "CUDA events around model call"
+      },
+      "test": {
+        "accuracy": 0.9759071980963712,
+        "macro_f1": 0.9634716082881734,
+        "weighted_f1": 0.9759985750785002,
+        "per_class": {
+          "Benign": {
+            "precision": 0.9563086974275214,
+            "recall": 0.980326496442026,
+            "f1-score": 0.9681686647374949,
+            "support": 2389.0
+          },
+          "WebBased": {
+            "precision": 0.8385964912280702,
+            "recall": 0.8786764705882353,
+            "f1-score": 0.8581687612208257,
+            "support": 544.0
+          },
+          "Spoofing": {
+            "precision": 0.9647058823529412,
+            "recall": 0.9430707303047728,
+            "f1-score": 0.953765629543472,
+            "support": 1739.0
+          },
+          "Recon": {
+            "precision": 0.9771505376344086,
+            "recall": 0.9574187884108868,
+            "f1-score": 0.9671840354767184,
+            "support": 2278.0
+          },
+          "Mirai": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 2400.0
+          },
+          "Dos": {
+            "precision": 0.9979647218453188,
+            "recall": 0.9972881355932204,
+            "f1-score": 0.9976263140047474,
+            "support": 1475.0
+          },
+          "DDos": {
+            "precision": 1.0,
+            "recall": 0.997907949790795,
+            "f1-score": 0.9989528795811519,
+            "support": 2390.0
+          },
+          "BruteForce": {
+            "precision": 0.9537815126050421,
+            "recall": 0.9742489270386266,
+            "f1-score": 0.9639065817409767,
+            "support": 233.0
+          },
+          "accuracy": 0.9759071980963712,
+          "macro avg": {
+            "precision": 0.9610634803866628,
+            "recall": 0.9661171872710703,
+            "f1-score": 0.9634716082881734,
+            "support": 13448.0
+          },
+          "weighted avg": {
+            "precision": 0.9762507049884135,
+            "recall": 0.9759071980963712,
+            "f1-score": 0.9759985750785002,
+            "support": 13448.0
+          }
+        },
+        "confusion_matrix": [
+          [
+            2342,
+            4,
+            35,
+            5,
+            0,
+            2,
+            0,
+            1
+          ],
+          [
+            15,
+            478,
+            12,
+            34,
+            0,
+            0,
+            0,
+            5
+          ],
+          [
+            74,
+            15,
+            1640,
+            6,
+            0,
+            0,
+            0,
+            4
+          ],
+          [
+            18,
+            66,
+            11,
+            2181,
+            0,
+            1,
+            0,
+            1
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            2400,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            4,
+            0,
+            1471,
+            0,
+            0
+          ],
+          [
+            0,
+            3,
+            0,
+            2,
+            0,
+            0,
+            2385,
+            0
+          ],
+          [
+            0,
+            4,
+            2,
+            0,
+            0,
+            0,
+            0,
+            227
+          ]
+        ],
+        "samples": 13448,
+        "wall_seconds_including_graph_io": 26.73426637199009,
+        "forward_seconds": 9.852918122291564,
+        "forward_timing_method": "CUDA events around model call"
+      },
+      "parameter_count": 431704,
+      "initial_state_sha256": "906e125925a8a2cc53a526602db0f047f76b1e41b8087c893f5cf1af41f64a6b",
+      "train_batch_size": 512,
+      "evaluation_batch_size": 16,
+      "total_optimizer_updates": 14348,
+      "training_samples_seen": 7318228,
+      "training_validation_checkpoint_wall_seconds": 12196.905897403005,
+      "run_wall_seconds": 12223.732090882011,
+      "config_sha256": "f789bd2d510cad58e12dd794246920e992b458d1ac7d142913b7b850fec450be",
+      "checkpoint_sha256": {
+        "best.pt": "e6575a490f354fe1345b6e5bbdae394d6f72223e6f2723f1c2947e3ad0bcc494",
+        "last.pt": "5ffea9b1dba2b72f973550486aa21607537d0ec23d281de0fd73c6d91cbed9cd"
+      },
+      "registration": {
+        "kind": "exploratory_structural_control_after_prior_results",
+        "date": "2026-10-21",
+        "requested_by": "user",
+        "prior_test_results_available": true,
+        "purpose": "Keep original E0 architecture and match E2-B512 training/evaluation controls. Not a parameter-matched isolation of dual encoding."
+      }
+    }
+  },
+  "wall_seconds_after_setup": 12225.193870964998,
+  "registration": {
+    "kind": "exploratory_structural_control_after_prior_results",
+    "date": "2026-10-21",
+    "requested_by": "user",
+    "prior_test_results_available": true,
+    "purpose": "Keep original E0 architecture and match E2-B512 training/evaluation controls. Not a parameter-matched isolation of dual encoding."
+  }
+}

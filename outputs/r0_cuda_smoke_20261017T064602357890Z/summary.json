@@ -1,0 +1,77 @@
+{
+  "status": "completed",
+  "exit_code": 0,
+  "mode": "smoke",
+  "claim": "protocol_reimplementation",
+  "binding": {
+    "manifest_id": "22d027fe3d0b0ad9079da9a13614597b0e40bb883a34b2d4d825452d6129d383",
+    "config_id": "7463253af0c7d165dc7c3b681895e6d918e8c83f80994ac896ef5045f84e414b",
+    "code": {
+      "scripts/run_r0_edge.py": "b8dd03260fd1bb5963a4f27b825028bb60125a021870c1cdbbeff1a568330626",
+      "scripts/r0_data.py": "b1d812cf0fb137200a1707a554b1e907c25fe988ea89f7f094b341e60d8cfff5",
+      "scripts/audit_graph_split.py": "f015ad28326e1aa697f5f1aa94ce0d65122c044f6396ad1a8059978b9cef9355",
+      "scripts/build_grouped_split.py": "63689d2130edf831c1e9b2a4c3ea49146d8c1c39d23303c96927618111a3d1e1",
+      "src/xgnid/edge_experiments.py": "028299120dbc4f22b682f7e180062a15ffb9d59f72c34d6444cd6ad0a9cc4f97",
+      "src/xgnid/model.py": "e56860fedda32af7acfaec85c3f6b10b6e67547e6557d3dcf222570c9d3d2d89",
+      "third_party/GNN4ID/Utility/Model.py": "72a6c12aed6acbea50555686e1540ccbed0ba03d589951accce3fc1d453bfcb0",
+      "docs/r0_source_lock.json": "3657c8f5a37039e81dffdda7e88a0977de288c5ebd19650e6f3914894b63b01c"
+    },
+    "runtime": {
+      "python": "3.9.23",
+      "torch": "2.3.1+cu118",
+      "pyg": "2.5.3",
+      "cuda": "11.8",
+      "device_type": "cuda",
+      "gpu": "Tesla T4"
+    }
+  },
+  "epochs_completed": 2,
+  "selection": "last_epoch",
+  "gat_attribute_shapes": {
+    "reference.convs1.convs.<flow___contain___packet>": [
+      125,
+      4
+    ],
+    "reference.convs1.convs.<packet___link___packet>": [
+      218,
+      1
+    ],
+    "reference.convs1.convs.<packet___rev_contain___flow>": [
+      125,
+      4
+    ],
+    "reference.convs2.convs.<flow___contain___packet>": [
+      125,
+      4
+    ],
+    "reference.convs2.convs.<packet___link___packet>": [
+      218,
+      1
+    ],
+    "reference.convs2.convs.<packet___rev_contain___flow>": [
+      125,
+      4
+    ]
+  },
+  "edge_projection_gradient_max": {
+    "reference.convs1.convs.<flow___contain___packet>": 0.0,
+    "reference.convs1.convs.<packet___link___packet>": 1.2396429156069644e-05,
+    "reference.convs1.convs.<packet___rev_contain___flow>": 0.0022825277410447598,
+    "reference.convs2.convs.<flow___contain___packet>": 0.0,
+    "reference.convs2.convs.<packet___link___packet>": 4.0541772250435315e-06,
+    "reference.convs2.convs.<packet___rev_contain___flow>": 9.247392881661654e-06
+  },
+  "isolated_attribute_max_logprob_delta": {
+    "('flow', 'contain', 'packet')": 1.9073486328125e-06,
+    "('packet', 'link', 'packet')": 0.03276538848876953,
+    "('packet', 'rev_contain', 'flow')": 0.9016990661621094
+  },
+  "repeat_forward_jitter": 1.9073486328125e-06,
+  "intervention_tolerance": 1.9073486328125e-05,
+  "optimizer_step_passed": true,
+  "loss": 2.004016876220703,
+  "test": null,
+  "parameters": 431704,
+  "last_checkpoint_sha256": "1e1e54111edb108c9877faf1ac1d933e21fe16a1dac5e4c8ad469e5094db1f15",
+  "wall_seconds": 4.083168983459473
+}

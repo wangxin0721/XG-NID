@@ -1,0 +1,71 @@
+{
+  "samples": 13446,
+  "max_abs_P0_P1_log_probability_error": 0.0,
+  "P0_P1_outputs_allclose": true,
+  "source_predictions_identical": true,
+  "uniform_packet_attention": true,
+  "epoch_zero_eligible": true,
+  "comparison": {
+    "samples": 13446,
+    "atol": 1e-06,
+    "rtol": 1e-06,
+    "new_failed_batches": 0,
+    "legacy_failed_batches": 11,
+    "new_prediction_mismatches": 0,
+    "legacy_prediction_mismatches": 0,
+    "max_abs_new_vs_P0_log_probability_error": 0.0,
+    "max_abs_legacy_vs_P0_log_probability_error": 2.288818359375e-05,
+    "max_abs_new_vs_mean_packet_error": 0.0,
+    "max_abs_legacy_vs_mean_packet_error": 2.384185791015625e-06,
+    "first_new_mismatch_ids": [],
+    "first_legacy_mismatch_ids": [],
+    "max_abs_new_vs_P0_gate_error": 0.0,
+    "max_abs_legacy_vs_P0_gate_error": 8.344650268554688e-07,
+    "max_abs_legacy_mean_repeat_error": 9.5367431640625e-07,
+    "max_abs_beta_minus_uniform": 0.0,
+    "ordered_mean_repeat_mismatches": 0,
+    "explanation": "Paired readouts use ordered segment reductions. Legacy scatter reduction and its independent repeat noise are diagnostics only."
+  },
+  "raw_graph_replays": {
+    "P0": {
+      "samples": 13446,
+      "outputs_allclose": true,
+      "max_abs_raw_cached_error": 1.52587890625e-05,
+      "predictions_identical": true,
+      "confusion_matrix_reproduced": true,
+      "strict_state_load": true,
+      "max_abs_original_D32_error": 2.288818359375e-05,
+      "max_abs_matched_source_readout_error": 0.0,
+      "legacy_independent_source_outputs_allclose_1e6": false,
+      "legacy_source_predictions_identical": true,
+      "encoder_parameters_and_BN_unchanged": true,
+      "wall_seconds": 38.88028447100078,
+      "graph_load_stage": {
+        "phase": "initial_P0",
+        "partition": "val",
+        "verified_samples": 13446,
+        "workers": 2
+      }
+    },
+    "P1": {
+      "samples": 13446,
+      "outputs_allclose": true,
+      "max_abs_raw_cached_error": 1.52587890625e-05,
+      "predictions_identical": true,
+      "confusion_matrix_reproduced": true,
+      "strict_state_load": true,
+      "max_abs_original_D32_error": 2.288818359375e-05,
+      "max_abs_matched_source_readout_error": 0.0,
+      "legacy_independent_source_outputs_allclose_1e6": false,
+      "legacy_source_predictions_identical": true,
+      "encoder_parameters_and_BN_unchanged": true,
+      "wall_seconds": 50.52388950801105,
+      "graph_load_stage": {
+        "phase": "initial_P1",
+        "partition": "val",
+        "verified_samples": 13446,
+        "workers": 2
+      }
+    }
+  }
+}

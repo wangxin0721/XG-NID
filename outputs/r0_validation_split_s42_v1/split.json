@@ -1,0 +1,120 @@
+{
+  "status": "completed",
+  "exit_code": 0,
+  "schema": "xgnid.r0-validation.split.v1",
+  "split_id": "3b4a411a3efb063319c3483797251437253a1864f85256d4652388904989fa7b",
+  "binding": {
+    "source_manifest_id": "22d027fe3d0b0ad9079da9a13614597b0e40bb883a34b2d4d825452d6129d383",
+    "source_samples_sha256": "b821c4421795f92624c8cfe747083fe2ce0fcec8e0b85fdf5977dac32715171e",
+    "config_id": "e01b443c789103c8ccbedeec1ef6d8a276b34b55f79b9ccd929ecc2bb31b6704",
+    "samples_sha256": "d612419cb238a24bb50c21f1dbbe367f53366b224104a9e1fa1943178ae24ef1",
+    "builder_identity": "b7e70615c44f60b2fafc38268f0c48cb84f621920f70baf4a596a7a93425e41e"
+  },
+  "source_manifest_dir": "/home/nzxn/下载/WX/load/XG-NID/$\\(R0_SOURCE/outputs/r0_prepare_\\)20261017T025345Z/manifest",
+  "partition_label_counts": {
+    "train": {
+      "0": 18000,
+      "1": 18001,
+      "2": 17928,
+      "3": 18000,
+      "4": 18000,
+      "5": 18001,
+      "6": 18000,
+      "7": 17996
+    },
+    "val": {
+      "0": 2000,
+      "1": 1999,
+      "2": 2072,
+      "3": 2000,
+      "4": 2000,
+      "5": 1999,
+      "6": 2000,
+      "7": 2004
+    }
+  },
+  "per_class_holdout": {
+    "0": {
+      "target_val_samples": 2000.0,
+      "actual_val_samples": 2000,
+      "val_groups": 1991,
+      "train_groups": 17925
+    },
+    "1": {
+      "target_val_samples": 2000.0,
+      "actual_val_samples": 1999,
+      "val_groups": 431,
+      "train_groups": 3927
+    },
+    "2": {
+      "target_val_samples": 2000.0,
+      "actual_val_samples": 2072,
+      "val_groups": 1028,
+      "train_groups": 13563
+    },
+    "3": {
+      "target_val_samples": 2000.0,
+      "actual_val_samples": 2000,
+      "val_groups": 1941,
+      "train_groups": 17095
+    },
+    "4": {
+      "target_val_samples": 2000.0,
+      "actual_val_samples": 2000,
+      "val_groups": 2000,
+      "train_groups": 18000
+    },
+    "5": {
+      "target_val_samples": 2000.0,
+      "actual_val_samples": 1999,
+      "val_groups": 1406,
+      "train_groups": 11226
+    },
+    "6": {
+      "target_val_samples": 2000.0,
+      "actual_val_samples": 2000,
+      "val_groups": 1989,
+      "train_groups": 17920
+    },
+    "7": {
+      "target_val_samples": 2000.0,
+      "actual_val_samples": 2004,
+      "val_groups": 188,
+      "train_groups": 1681
+    }
+  },
+  "source_test_counts_unchanged": {
+    "0": 4000,
+    "5": 4000,
+    "4": 4000,
+    "3": 4000,
+    "2": 4000,
+    "1": 1090,
+    "7": 467,
+    "6": 4000
+  },
+  "inherited_source_overlap": {
+    "edge_overlap": {
+      "shared_groups": 1644,
+      "affected_test_samples": 3346,
+      "within_partition_duplicate_samples": {
+        "train": 47657,
+        "test": 1741
+      },
+      "conflicting_label_groups": 0
+    },
+    "node_overlap": {
+      "shared_groups": 1658,
+      "affected_test_samples": 3363,
+      "within_partition_duplicate_samples": {
+        "train": 47689,
+        "test": 1747
+      },
+      "conflicting_label_groups": 0
+    }
+  },
+  "no_train_val_node_hash_overlap": true,
+  "all_source_train_rows_retained": true,
+  "resampling": "none added; preserve all inherited source-train copies within their input group",
+  "independence": "input groups, not proven PCAP/capture/flow independence; original test overlap is retained"
+}

@@ -1,0 +1,8 @@
+{
+  "training_directory": "/home/nzxn/下载/WX/load/XG-NID/outputs/flow_stats_residual_joint_s42_v1",
+  "training_summary_sha256": "16fa548dd2409b976254382d6d7d1a69f11474c7fc868dfcac97549818daa1ef",
+  "last_sha256": "218e5f6183da626d578d28fc0736ace8aab7f57caa3badc51b22f771d66993d2",
+  "best_sha256": "0ed628421031ad594ecbba820c621dae01ffb1283e9fb2620e83ae0681112069",
+  "diagnostic_source_sha256": "680f2abe9a479c5ed46cada5253198ceb0fbf76259a570587bb840d0b109a4d2",
+  "source_files_will_be_modified": false
+}

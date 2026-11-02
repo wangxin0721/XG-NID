@@ -1,0 +1,96 @@
+{
+  "experiment": "E3",
+  "mode": "full",
+  "protocol": "xgnid.e3-batch512-comparison.v1",
+  "controls": {
+    "seed": 42,
+    "batch_size": 512,
+    "lr": 0.001,
+    "hidden_dim": 64,
+    "optimizer": "Adam",
+    "early_stop_patience": 12,
+    "early_stop_min_delta": 0.0,
+    "auxiliary_losses": false,
+    "calibration": false,
+    "class_weighting": false,
+    "hard_negatives": false,
+    "loss": "plain NLL",
+    "device_family": "cuda"
+  },
+  "use_edge_attr": true,
+  "use_gate": true,
+  "fusion": "adaptive_logits",
+  "epochs": 100,
+  "workers": 2,
+  "initialization_batch_size": 16,
+  "evaluation_batch_size": 16,
+  "binding": {
+    "config_sha256": "53e27f36869034f95d56e80a7017e46af9e18985923f49aa4fd95ce936646486",
+    "entry_sha256": "d88c512ea48fa15a69a9858d22e4684842957f98bc481a8aabc0a5d1741c10ab",
+    "sources": {
+      "scripts/train_grouped.py": "06a493b18faa97b4e1f2b99b6aae38c67ad3c5f39b130f112079c9393432f5d1",
+      "scripts/grouped_graphs.py": "c1b1273d62fc44d91f7c9b300b66a083c1f80ef2c9c4314a62c4bbd5d708bbb4",
+      "scripts/smoke_grouped_gpu.py": "7bce1218e1b55a812855d50c70973fe300da97ad7e9b4005a52deac77d8b1517",
+      "scripts/audit_graph_split.py": "c19164930e8ecb75636cf16d6fa9bb51d6f29e1384e8d8ebf040e683536ffcb6",
+      "scripts/build_grouped_split.py": "24e07766189aec9d03f6161dee15587612a5b2f13e23eab67d7ba4aaf89a3401",
+      "src/xgnid/__init__.py": "2515233a0cdac6c5447c9dbd6b0d54c89284f191d8cb41473d89b347ee296ae7",
+      "src/xgnid/model.py": "28e21e94118db0a4110d17923d2840e18959669d798f628018c98c91c0202631",
+      "src/xgnid/edge_experiments.py": "3e6305d83c06c7ce32e901a2aba9d9d26baa1f2b394af14997b0e359929b4da5",
+      "third_party/GNN4ID/Utility/Model.py": "e17c3905e3c9f437c269bdd0e4d115656cfba6054b6a4474bbd06b5453010688"
+    },
+    "reference_e3_sha256": "fd185cfc9e6527c89030e3bf3ed6aca505212bab694039b9aabaf990491f9aa8",
+    "reference_config_sha256": "2dd9e634ac9895ccd39223665d6b315e3b7e7611b41efb45967de6ba6d41bff3",
+    "smoke_sha256": "4bd73bde4de918987f222a0c223f12c0172b5e1fc2f4ba8e0c97ee2cbfe1bc8f",
+    "pilot_sha256": "6165d1cc7819cca1e95bbe3f43e45f90d4a4c634128e45b84ccc0bd12c17fb72",
+    "baseline_sha256": "5add5c311a8ff8356a7840a52c54d6a33d47798344c72a08467f509ab071d857",
+    "split_id": "a8ae9c934eec9fee970cc725e60051d0c709e0f16c7dda14749350ff2006975a",
+    "samples_sha256": "b8e9b0810471d0c2b52033488fab640625c3731315afd5d2add1571bd2518827",
+    "train_batch_size": 512,
+    "initial_state_sha256": "0270349d613f11b453b92e4e928a3c2e7b67d062b5e3ba73c8ba4fb58dbd521a",
+    "runtime": {
+      "python": "3.9.23",
+      "torch": "2.3.1+cu118",
+      "pyg": "2.5.3",
+      "cuda": "11.8"
+    },
+    "gpu_uuid": "GPU-e69b98a9-213b-8dba-8ec6-1c3aa33c870f",
+    "allow_shared_gpu": true,
+    "paired_e2_batch512_sha256": "e29e1ecf4e4a5c3dc4e5d8859ea6b0c74622404a09fcffed2d32dac041d45ef5",
+    "paired_e2_config_sha256": "0a297a4a42c86785ce59ac4eec64b771ad4e5ce774b1379f6aafd6d45830b089",
+    "fusion_control_sha256": "60f2c7cf9413f6d118a5a24a2089abb242296436424f8b83ad96f84067ac2251"
+  },
+  "hardware": {
+    "physical_index": 0,
+    "uuid": "GPU-e69b98a9-213b-8dba-8ec6-1c3aa33c870f",
+    "name": "Tesla T4",
+    "memory_mib": 15360,
+    "used_mib_at_query": 4916,
+    "free_mib_at_query": 9996,
+    "sharing_allowed": true,
+    "existing_compute_processes": [
+      {
+        "pid": 8764,
+        "name": "python"
+      }
+    ],
+    "availability": "explicit sharing allowed",
+    "timing_scope": "shared execution; not a standalone speed benchmark"
+  },
+  "probe_report": "/home/nzxn/下载/WX/load/XG-NID/outputs/e3_batch_probe_b512_s42_shared_v3/summary.json",
+  "probe_sha256": "59b4e0aebab6a2e1edea83d4c2743fc5f02e1603e2d79623d90882840a5938fb",
+  "comparison": "Keep the original E3 adaptive gate, proxy mixing, edge attributes, seed42 and exact initialization. Change training batch to512; retain initialization/evaluation batch16, Adam lr0.001, max100 epochs and patience12. Pair with completed E2-B512 under the same sources, data, initial weights and controls. Equal epoch ceilings are not equal optimizer updates versus B16.",
+  "partition_sizes": {
+    "train": 107621,
+    "val": 13446,
+    "test": 13448
+  },
+  "optimizer_updates_per_full_epoch": 211,
+  "registration": {
+    "kind": "exploratory_extension_after_prior_results",
+    "requested_by": "user",
+    "date": "2026-10-20",
+    "prior_test_results_available": true,
+    "selection_metric": "validation Macro-F1",
+    "scope": "Explicit E3 training-batch512 request after E3-B16 and E2-B512 results. Record as exploratory; preserve all prior results. No test-driven learning-rate search or automatic further batch candidates."
+  }
+}

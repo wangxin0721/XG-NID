@@ -1,0 +1,9 @@
+,Benign,WebBased,Spoofing,Recon,Mirai,Dos,DDos,BruteForce
+Benign,3789,58,110,37,2,0,0,4
+WebBased,5,1074,3,4,0,0,0,4
+Spoofing,146,93,3674,77,0,0,0,10
+Recon,27,549,19,3401,0,3,0,1
+Mirai,0,1,2,0,3997,0,0,0
+Dos,1,2,0,31,0,3966,0,0
+DDos,0,7,0,1,0,0,3992,0
+BruteForce,1,24,1,0,0,0,0,441

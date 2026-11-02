@@ -1,0 +1,17 @@
+{
+  "status": "checkpoint_checks_passed",
+  "saved_epoch": 58,
+  "next_epoch": 59,
+  "best_epoch": 48,
+  "stale_epochs": 10,
+  "epoch_budget": 100,
+  "check_only": false,
+  "training_started": false,
+  "output": "/home/nzxn/下载/WX/load/XG-NID/outputs/grouped_full_E3_s42_resume_v1"
+}
+/home/nzxn/miniconda3/envs/wx/lib/python3.9/site-packages/torch_geometric/typing.py:99: UserWarning: An issue occurred while importing 'torch-spline-conv'. Disabling its usage. Stacktrace: /home/nzxn/miniconda3/envs/wx/lib/python3.9/site-packages/torch_spline_conv/_version_cuda.so: undefined symbol: _ZN3c1017RegisterOperatorsD1Ev
+  warnings.warn(
+Starting full E3 on cuda:0; partitions={'train': 107621, 'val': 13446, 'test': 13448}
+Restored E3 epoch=58, best_epoch=48, stale=10; budget unchanged
+E3 {"epoch": 59, "train_loss": 0.0730330206239107, "train_samples": 107621, "train_seconds": 578.032756719, "train_order_sha256": "8604f2bd6863d1d82939ee103e3fa892cfcfc8a2b2b65458ed795c4e75c1bea5", "val_accuracy": 0.9569388665774208, "val_macro_f1": 0.9386823050347776, "val_weighted_f1": 0.9569631652257339, "val_wall_seconds": 65.927300113, "peak_cuda_allocated_bytes": 36380672}
+E3 {"epoch": 60, "train_loss": 0.07301554700873214, "train_samples": 107621, "train_seconds": 564.1641179559999, "train_order_sha256": "c30bbd2ac595b393854465966067d2ab0b655632cd0a30e5291c122f80474e99", "val_accuracy": 0.9350736278447122, "val_macro_f1": 0.9216842658620096, "val_weighted_f1": 0.9345227019185618, "val_wall_seconds": 51.86753484499991, "peak_cuda_allocated_bytes": 36380672}

@@ -1,0 +1,177 @@
+/home/nzxn/miniconda3/envs/wx/lib/python3.9/site-packages/torch_geometric/typing.py:99: UserWarning: An issue occurred while importing 'torch-spline-conv'. Disabling its usage. Stacktrace: /home/nzxn/miniconda3/envs/wx/lib/python3.9/site-packages/torch_spline_conv/_version_cuda.so: undefined symbol: _ZN3c1017RegisterOperatorsD1Ev
+  warnings.warn(
+/home/nzxn/miniconda3/envs/wx/lib/python3.9/site-packages/torch/cuda/__init__.py:619: UserWarning: Can't initialize NVML
+  warnings.warn("Can't initialize NVML")
+files=2000/185559 graphs=2000 seconds=8.0
+files=4000/185559 graphs=4000 seconds=12.5
+files=6000/185559 graphs=6000 seconds=17.6
+files=8000/185559 graphs=8000 seconds=23.3
+files=10000/185559 graphs=10000 seconds=31.6
+files=12000/185559 graphs=12000 seconds=38.7
+files=14000/185559 graphs=14000 seconds=45.0
+files=16000/185559 graphs=16000 seconds=52.7
+files=18000/185559 graphs=18000 seconds=61.1
+files=20000/185559 graphs=20000 seconds=68.6
+files=22000/185559 graphs=22000 seconds=73.7
+files=24000/185559 graphs=24000 seconds=80.2
+files=26000/185559 graphs=26000 seconds=86.8
+files=28000/185559 graphs=28000 seconds=92.9
+files=30000/185559 graphs=30000 seconds=99.2
+files=32000/185559 graphs=32000 seconds=105.0
+files=34000/185559 graphs=34000 seconds=111.0
+files=36000/185559 graphs=36000 seconds=116.9
+files=38000/185559 graphs=38000 seconds=123.4
+files=40000/185559 graphs=40000 seconds=129.2
+files=42000/185559 graphs=42000 seconds=135.4
+files=44000/185559 graphs=44000 seconds=140.9
+files=46000/185559 graphs=46000 seconds=149.4
+files=48000/185559 graphs=48000 seconds=155.2
+files=50000/185559 graphs=50000 seconds=162.5
+files=52000/185559 graphs=52000 seconds=169.8
+files=54000/185559 graphs=54000 seconds=176.6
+files=56000/185559 graphs=56000 seconds=185.5
+files=58000/185559 graphs=58000 seconds=191.2
+files=60000/185559 graphs=60000 seconds=198.2
+files=62000/185559 graphs=62000 seconds=205.0
+files=64000/185559 graphs=64000 seconds=211.5
+files=66000/185559 graphs=66000 seconds=218.3
+files=68000/185559 graphs=68000 seconds=227.6
+files=70000/185559 graphs=70000 seconds=236.2
+files=72000/185559 graphs=72000 seconds=247.0
+files=74000/185559 graphs=74000 seconds=258.7
+files=76000/185559 graphs=76000 seconds=270.3
+files=78000/185559 graphs=78000 seconds=283.1
+files=80000/185559 graphs=80000 seconds=292.4
+files=82000/185559 graphs=82000 seconds=304.0
+files=84000/185559 graphs=84000 seconds=315.7
+files=86000/185559 graphs=86000 seconds=327.2
+files=88000/185559 graphs=88000 seconds=338.9
+files=90000/185559 graphs=90000 seconds=352.0
+files=92000/185559 graphs=92000 seconds=364.8
+files=94000/185559 graphs=94000 seconds=377.6
+files=96000/185559 graphs=96000 seconds=395.0
+files=98000/185559 graphs=98000 seconds=413.9
+files=100000/185559 graphs=100000 seconds=431.3
+files=102000/185559 graphs=102000 seconds=447.7
+files=104000/185559 graphs=104000 seconds=465.4
+files=106000/185559 graphs=106000 seconds=481.3
+files=108000/185559 graphs=108000 seconds=495.3
+files=110000/185559 graphs=110000 seconds=511.3
+files=112000/185559 graphs=112000 seconds=527.8
+files=114000/185559 graphs=114000 seconds=541.4
+files=116000/185559 graphs=116000 seconds=554.2
+files=118000/185559 graphs=118000 seconds=558.7
+files=120000/185559 graphs=120000 seconds=563.7
+files=122000/185559 graphs=122000 seconds=569.1
+files=124000/185559 graphs=124000 seconds=573.6
+files=126000/185559 graphs=126000 seconds=578.1
+files=128000/185559 graphs=128000 seconds=582.5
+files=130000/185559 graphs=130000 seconds=587.7
+files=132000/185559 graphs=132000 seconds=591.9
+files=134000/185559 graphs=134000 seconds=595.5
+files=136000/185559 graphs=136000 seconds=599.5
+files=138000/185559 graphs=138000 seconds=604.3
+files=140000/185559 graphs=140000 seconds=616.0
+files=142000/185559 graphs=142000 seconds=630.8
+files=144000/185559 graphs=144000 seconds=645.7
+files=146000/185559 graphs=146000 seconds=660.1
+files=148000/185559 graphs=148000 seconds=674.7
+files=150000/185559 graphs=150000 seconds=688.7
+files=152000/185559 graphs=152000 seconds=702.2
+files=154000/185559 graphs=154000 seconds=713.8
+files=156000/185559 graphs=156000 seconds=725.9
+files=158000/185559 graphs=158000 seconds=739.2
+files=160000/185559 graphs=160000 seconds=753.8
+files=162000/185559 graphs=162000 seconds=758.2
+files=164000/185559 graphs=164000 seconds=766.5
+files=166000/185559 graphs=166000 seconds=775.7
+files=168000/185559 graphs=168000 seconds=782.1
+files=170000/185559 graphs=170000 seconds=786.3
+files=172000/185559 graphs=172000 seconds=790.8
+files=174000/185559 graphs=174000 seconds=795.4
+files=176000/185559 graphs=176000 seconds=800.7
+files=178000/185559 graphs=178000 seconds=806.8
+files=180000/185559 graphs=180000 seconds=814.4
+files=182000/185559 graphs=182000 seconds=822.5
+files=184000/185559 graphs=184000 seconds=830.6
+{
+  "graph_count": 185557,
+  "metadata_checks": {
+    "total_matches_record": true,
+    "all_indices_in_range": true,
+    "complete_partition": true,
+    "label_counts_match_record": true
+  },
+  "overlap_under_current_order": {
+    "edge_hash": {
+      "train/val": {
+        "shared_input_groups": 3869,
+        "left_affected_samples": 25215,
+        "right_affected_samples": 5564
+      },
+      "train/test": {
+        "shared_input_groups": 2979,
+        "left_affected_samples": 17326,
+        "right_affected_samples": 4775
+      },
+      "val/test": {
+        "shared_input_groups": 1149,
+        "left_affected_samples": 1987,
+        "right_affected_samples": 2472
+      },
+      "within_split": {
+        "train": {
+          "samples": 144000,
+          "unique_inputs": 103413,
+          "duplicate_rows": 40587
+        },
+        "val": {
+          "samples": 16000,
+          "unique_inputs": 14292,
+          "duplicate_rows": 1708
+        },
+        "test": {
+          "samples": 25557,
+          "unique_inputs": 23706,
+          "duplicate_rows": 1851
+        }
+      },
+      "conflicting_label_group_examples": []
+    },
+    "node_hash": {
+      "train/val": {
+        "shared_input_groups": 3875,
+        "left_affected_samples": 25225,
+        "right_affected_samples": 5570
+      },
+      "train/test": {
+        "shared_input_groups": 2986,
+        "left_affected_samples": 17333,
+        "right_affected_samples": 4783
+      },
+      "val/test": {
+        "shared_input_groups": 1149,
+        "left_affected_samples": 1987,
+        "right_affected_samples": 2472
+      },
+      "within_split": {
+        "train": {
+          "samples": 144000,
+          "unique_inputs": 103377,
+          "duplicate_rows": 40623
+        },
+        "val": {
+          "samples": 16000,
+          "unique_inputs": 14291,
+          "duplicate_rows": 1709
+        },
+        "test": {
+          "samples": 25557,
+          "unique_inputs": 23704,
+          "duplicate_rows": 1853
+        }
+      },
+      "conflicting_label_group_examples": []
+    }
+  }
+}

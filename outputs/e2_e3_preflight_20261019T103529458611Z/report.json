@@ -1,0 +1,471 @@
+{
+  "schema": "xgnid.e2-e3-preparation-report.v1",
+  "created_utc": "2026-10-19T10:35:29.478323+00:00",
+  "repo": "/home/nzxn/下载/WX/load/XG-NID",
+  "tool_sha256": "4298452bd0aae994d95d06a04cde8b0750fd99522371f61dd9565e96668912a8",
+  "checks": [
+    {
+      "name": "configuration_read",
+      "status": "passed",
+      "detail": {
+        "schema": "xgnid.e2-e3-preparation.v1",
+        "split_id": "a8ae9c934eec9fee970cc725e60051d0c709e0f16c7dda14749350ff2006975a",
+        "labels": [
+          "Benign",
+          "WebBased",
+          "Spoofing",
+          "Recon",
+          "Mirai",
+          "Dos",
+          "DDos",
+          "BruteForce"
+        ],
+        "partition_sizes": {
+          "train": 107621,
+          "val": 13446,
+          "test": 13448
+        },
+        "paths": {
+          "split_dir": "data/processed/ciciot2023_grouped_input_v1",
+          "smoke_report": "outputs/grouped_gpu_smoke_v1/smoke.json",
+          "pilot_report": "outputs/grouped_training_pilot_v1/summary.json",
+          "baseline_report": "outputs/grouped_full_E0_s42_v1/summary.json",
+          "e1_report": "outputs/grouped_full_E1_s42_v1/summary.json",
+          "e2_output": "outputs/grouped_full_E2_s42_v1",
+          "e3_output": "outputs/grouped_full_E3_s42_v1"
+        },
+        "controls": {
+          "seed": 42,
+          "batch_size": 16,
+          "lr": 0.001,
+          "hidden_dim": 64,
+          "optimizer": "Adam",
+          "early_stop_patience": 12,
+          "early_stop_min_delta": 0.0,
+          "auxiliary_losses": false,
+          "calibration": false,
+          "class_weighting": false,
+          "hard_negatives": false,
+          "loss": "plain NLL",
+          "device_family": "cuda"
+        },
+        "epochs": 100,
+        "workers": 2,
+        "device": "cuda:0",
+        "expected_runtime": {
+          "python": "3.9.23",
+          "torch": "2.3.1+cu118",
+          "pyg": "2.5.3"
+        },
+        "model_semantics": {
+          "E2": "Two independent full heterograph encoders; pool Flow/Packet separately; equal 8-dimensional representation fusion; shared classifier",
+          "E3": "Same branches and classifier; adaptive gate with entropy-complement proxy mixing; final NLL only",
+          "parameter_count_each": 846800,
+          "input_dimensions": {
+            "flow": 82,
+            "packet": 1500,
+            "contain": 4,
+            "reverse_contain": 4,
+            "link": 1
+          },
+          "selection": "best validation Macro-F1; strict improvement; patience 12; reload best before one final test",
+          "optimizer_defaults": "Adam weight_decay=0, no scheduler, no finite gradient clipping"
+        },
+        "scheduling": "Preparation only while R0 runs. Start E2 after R0 finishes and GPU availability is confirmed; review E2 completion before starting E3. No automatic training, retry, resume, or dependency installation."
+      }
+    },
+    {
+      "name": "frozen_configuration",
+      "status": "passed",
+      "detail": {
+        "controls": {
+          "seed": 42,
+          "batch_size": 16,
+          "lr": 0.001,
+          "hidden_dim": 64,
+          "optimizer": "Adam",
+          "early_stop_patience": 12,
+          "early_stop_min_delta": 0.0,
+          "auxiliary_losses": false,
+          "calibration": false,
+          "class_weighting": false,
+          "hard_negatives": false,
+          "loss": "plain NLL",
+          "device_family": "cuda"
+        },
+        "epochs": 100,
+        "workers": 2
+      }
+    },
+    {
+      "name": "server_runtime_metadata",
+      "status": "passed",
+      "detail": {
+        "executable": "/home/nzxn/miniconda3/envs/wx/bin/python",
+        "versions": {
+          "python": "3.9.23",
+          "torch": "2.3.1+cu118",
+          "pyg": "2.5.3",
+          "numpy": "1.23.5",
+          "scikit-learn": "1.3.2"
+        },
+        "verification": "distribution metadata only; CUDA availability and binary imports not tested",
+        "historical_numpy_sklearn_versions": "not pinned by old training configs; current versions recorded only"
+      }
+    },
+    {
+      "name": "frozen_manifest",
+      "status": "passed",
+      "detail": {
+        "split_id": "a8ae9c934eec9fee970cc725e60051d0c709e0f16c7dda14749350ff2006975a",
+        "sample_manifest_sha256": "b8e9b0810471d0c2b52033488fab640625c3731315afd5d2add1571bd2518827",
+        "partition_sizes": {
+          "train": 107621,
+          "val": 13446,
+          "test": 13448
+        },
+        "partition_label_counts": {
+          "train": {
+            "0": 19112,
+            "1": 4359,
+            "2": 13914,
+            "3": 18224,
+            "4": 19200,
+            "5": 11802,
+            "6": 19140,
+            "7": 1870
+          },
+          "val": {
+            "0": 2389,
+            "1": 544,
+            "2": 1739,
+            "3": 2278,
+            "4": 2400,
+            "5": 1475,
+            "6": 2388,
+            "7": 233
+          },
+          "test": {
+            "0": 2389,
+            "1": 544,
+            "2": 1739,
+            "3": 2278,
+            "4": 2400,
+            "5": 1475,
+            "6": 2390,
+            "7": 233
+          }
+        }
+      }
+    },
+    {
+      "name": "historical_gpu_smoke",
+      "status": "passed",
+      "detail": {
+        "report_sha256": "4bd73bde4de918987f222a0c223f12c0172b5e1fc2f4ba8e0c97ee2cbfe1bc8f",
+        "paired_initial_states_identical": {
+          "E0/E1": true,
+          "E2/E3": true
+        },
+        "E2_E3_initial_state_sha256": "0270349d613f11b453b92e4e928a3c2e7b67d062b5e3ba73c8ba4fb58dbd521a"
+      }
+    },
+    {
+      "name": "pilot_report",
+      "status": "passed",
+      "detail": {
+        "report_sha256": "6165d1cc7819cca1e95bbe3f43e45f90d4a4c634128e45b84ccc0bd12c17fb72",
+        "models": {
+          "E0": {
+            "best_epoch": 1,
+            "stopped_epoch": 2,
+            "files": {
+              "best.pt": {
+                "bytes": 5261174,
+                "sha256_now": "ae61cd58bd25a184857e3bcd38439cd99f162cd0169ec2c386294ad8c7292f29"
+              },
+              "last.pt": {
+                "bytes": 5261174,
+                "sha256_now": "ac6cc175b280de904c65951372e48b523ca2230b0337139f642a56c26c0fe8e4"
+              },
+              "epochs.jsonl": {
+                "bytes": 751,
+                "sha256_now": "30fc3528ab1ee2f05bdb9cf15fa05c8eb9e40a9a48dc64d1e97c96b11ac12ffd"
+              }
+            }
+          },
+          "E1": {
+            "best_epoch": 2,
+            "stopped_epoch": 2,
+            "files": {
+              "best.pt": {
+                "bytes": 5240426,
+                "sha256_now": "0d2a829be366c046f42dfb388f173446a43145add076c538b0990e9e3df98bc3"
+              },
+              "last.pt": {
+                "bytes": 5240426,
+                "sha256_now": "872a9c76f2f0922f0c80f4a480720bbace5cec5f08f2e052be86aa6a145530fc"
+              },
+              "epochs.jsonl": {
+                "bytes": 753,
+                "sha256_now": "d22405b8d13ce821d954324b90bcdd6eb8f93a7dc6bae18ddc32a4db8ab0fbd3"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "baseline_report",
+      "status": "passed",
+      "detail": {
+        "report_sha256": "5add5c311a8ff8356a7840a52c54d6a33d47798344c72a08467f509ab071d857",
+        "models": {
+          "E0": {
+            "best_epoch": 31,
+            "stopped_epoch": 43,
+            "files": {
+              "best.pt": {
+                "bytes": 5261238,
+                "sha256_now": "fdbdae28f306ccab6fabab87e1b267c533b6d0d6da5b6d7061b88315b96893e9"
+              },
+              "last.pt": {
+                "bytes": 5261238,
+                "sha256_now": "0e7444ad39750f814a81a729c8f7cff6a37a1ed01712cb70bd9e246b2f3b4c39"
+              },
+              "epochs.jsonl": {
+                "bytes": 16704,
+                "sha256_now": "ab6f916a81d6f10f2bc77151dde92e0bd7dfccdb883e0b2a33812bf00e5b1ae7"
+              },
+              "predictions.csv": {
+                "bytes": 1129686,
+                "sha256_now": "f847301166760618facf3e0899576c670e05daf8a4ce124740d87e094b8dc66c"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "e1_report",
+      "status": "passed",
+      "detail": {
+        "report_sha256": "b4ff242e37ea7b8c577275c232df34a3e965447734ecb2488f20c664615432f1",
+        "models": {
+          "E1": {
+            "best_epoch": 35,
+            "stopped_epoch": 47,
+            "files": {
+              "best.pt": {
+                "bytes": 5240554,
+                "sha256_now": "d27c73c86cd03f7266e7bedd827edf1367446ce7216f97501492c6f7ca6dcf4d"
+              },
+              "last.pt": {
+                "bytes": 5240554,
+                "sha256_now": "6581cfacdd5a9b61bfa3630d4da5c473318bce12f56653149e4ff67b531d6b49"
+              },
+              "epochs.jsonl": {
+                "bytes": 18293,
+                "sha256_now": "e4cb307276f77f7f322007ea31feacf57d294a1d34438c206369209880dfe9f2"
+              },
+              "predictions.csv": {
+                "bytes": 1129686,
+                "sha256_now": "97c3717fb1372da0ea5f8bf9f503c5ab7d24de2772c95157623d57ebd2b406fe"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "unused_training_outputs",
+      "status": "passed",
+      "detail": [
+        "/home/nzxn/下载/WX/load/XG-NID/outputs/grouped_full_E2_s42_v1",
+        "/home/nzxn/下载/WX/load/XG-NID/outputs/grouped_full_E3_s42_v1"
+      ]
+    },
+    {
+      "name": "r0_informational_snapshot",
+      "status": "passed",
+      "detail": {
+        "output": "/home/nzxn/下载/WX/load/XG-NID/outputs/r0_full_s42_20261017T065259974842Z",
+        "status_at_read": {
+          "status": "completed",
+          "exit_code": 0
+        },
+        "note": "Informational snapshot only; no process/GPU query, no start/stop action"
+      }
+    }
+  ],
+  "training_started": false,
+  "gpu_touched": false,
+  "graph_tensors_loaded": false,
+  "test_inference_performed": false,
+  "limitations": [
+    "Historical checkpoint SHA references absent: recorded hashes establish an inventory now, not past immutability",
+    "Graph contents/dimensions are not retested; frozen training loader verifies each graph before use",
+    "Binary import compatibility, live GPU availability and other users' GPU jobs not checked",
+    "E3 remains pending completed E2; no training command is executed by this tool"
+  ],
+  "configuration": {
+    "schema": "xgnid.e2-e3-preparation.v1",
+    "split_id": "a8ae9c934eec9fee970cc725e60051d0c709e0f16c7dda14749350ff2006975a",
+    "labels": [
+      "Benign",
+      "WebBased",
+      "Spoofing",
+      "Recon",
+      "Mirai",
+      "Dos",
+      "DDos",
+      "BruteForce"
+    ],
+    "partition_sizes": {
+      "train": 107621,
+      "val": 13446,
+      "test": 13448
+    },
+    "paths": {
+      "split_dir": "data/processed/ciciot2023_grouped_input_v1",
+      "smoke_report": "outputs/grouped_gpu_smoke_v1/smoke.json",
+      "pilot_report": "outputs/grouped_training_pilot_v1/summary.json",
+      "baseline_report": "outputs/grouped_full_E0_s42_v1/summary.json",
+      "e1_report": "outputs/grouped_full_E1_s42_v1/summary.json",
+      "e2_output": "outputs/grouped_full_E2_s42_v1",
+      "e3_output": "outputs/grouped_full_E3_s42_v1"
+    },
+    "controls": {
+      "seed": 42,
+      "batch_size": 16,
+      "lr": 0.001,
+      "hidden_dim": 64,
+      "optimizer": "Adam",
+      "early_stop_patience": 12,
+      "early_stop_min_delta": 0.0,
+      "auxiliary_losses": false,
+      "calibration": false,
+      "class_weighting": false,
+      "hard_negatives": false,
+      "loss": "plain NLL",
+      "device_family": "cuda"
+    },
+    "epochs": 100,
+    "workers": 2,
+    "device": "cuda:0",
+    "expected_runtime": {
+      "python": "3.9.23",
+      "torch": "2.3.1+cu118",
+      "pyg": "2.5.3"
+    },
+    "model_semantics": {
+      "E2": "Two independent full heterograph encoders; pool Flow/Packet separately; equal 8-dimensional representation fusion; shared classifier",
+      "E3": "Same branches and classifier; adaptive gate with entropy-complement proxy mixing; final NLL only",
+      "parameter_count_each": 846800,
+      "input_dimensions": {
+        "flow": 82,
+        "packet": 1500,
+        "contain": 4,
+        "reverse_contain": 4,
+        "link": 1
+      },
+      "selection": "best validation Macro-F1; strict improvement; patience 12; reload best before one final test",
+      "optimizer_defaults": "Adam weight_decay=0, no scheduler, no finite gradient clipping"
+    },
+    "scheduling": "Preparation only while R0 runs. Start E2 after R0 finishes and GPU availability is confirmed; review E2 completion before starting E3. No automatic training, retry, resume, or dependency installation."
+  },
+  "configuration_sha256": "123ad61d0d7b3d4261efd653bfe9880f09a5d97c31f1e73afc32641da449ec6d",
+  "status": "metadata_checks_passed",
+  "exit_code": 0,
+  "failed_checks": [],
+  "gpu_launch_readiness": "not_checked",
+  "future_commands": {
+    "E2": {
+      "argv": [
+        "/home/nzxn/miniconda3/envs/wx/bin/python",
+        "-u",
+        "/home/nzxn/下载/WX/load/XG-NID/scripts/train_grouped.py",
+        "--mode",
+        "full",
+        "--split-dir",
+        "/home/nzxn/下载/WX/load/XG-NID/data/processed/ciciot2023_grouped_input_v1",
+        "--expected-split-id",
+        "a8ae9c934eec9fee970cc725e60051d0c709e0f16c7dda14749350ff2006975a",
+        "--smoke-report",
+        "/home/nzxn/下载/WX/load/XG-NID/outputs/grouped_gpu_smoke_v1/smoke.json",
+        "--pilot-report",
+        "/home/nzxn/下载/WX/load/XG-NID/outputs/grouped_training_pilot_v1/summary.json",
+        "--baseline-report",
+        "/home/nzxn/下载/WX/load/XG-NID/outputs/grouped_full_E0_s42_v1/summary.json",
+        "--device",
+        "cuda:0",
+        "--seed",
+        "42",
+        "--batch-size",
+        "16",
+        "--lr",
+        "0.001",
+        "--epochs",
+        "100",
+        "--patience",
+        "12",
+        "--workers",
+        "2",
+        "--experiments",
+        "E2",
+        "--output",
+        "/home/nzxn/下载/WX/load/XG-NID/outputs/grouped_full_E2_s42_v1"
+      ],
+      "foreground_command_preview": "/home/nzxn/miniconda3/envs/wx/bin/python -u '/home/nzxn/下载/WX/load/XG-NID/scripts/train_grouped.py' --mode full --split-dir '/home/nzxn/下载/WX/load/XG-NID/data/processed/ciciot2023_grouped_input_v1' --expected-split-id a8ae9c934eec9fee970cc725e60051d0c709e0f16c7dda14749350ff2006975a --smoke-report '/home/nzxn/下载/WX/load/XG-NID/outputs/grouped_gpu_smoke_v1/smoke.json' --pilot-report '/home/nzxn/下载/WX/load/XG-NID/outputs/grouped_training_pilot_v1/summary.json' --baseline-report '/home/nzxn/下载/WX/load/XG-NID/outputs/grouped_full_E0_s42_v1/summary.json' --device cuda:0 --seed 42 --batch-size 16 --lr 0.001 --epochs 100 --patience 12 --workers 2 --experiments E2 --output '/home/nzxn/下载/WX/load/XG-NID/outputs/grouped_full_E2_s42_v1'",
+      "execute_now": false,
+      "note": "Preview only; launch after dependency review and GPU availability confirmation"
+    },
+    "E3": {
+      "argv": [
+        "/home/nzxn/miniconda3/envs/wx/bin/python",
+        "-u",
+        "/home/nzxn/下载/WX/load/XG-NID/scripts/train_grouped.py",
+        "--mode",
+        "full",
+        "--split-dir",
+        "/home/nzxn/下载/WX/load/XG-NID/data/processed/ciciot2023_grouped_input_v1",
+        "--expected-split-id",
+        "a8ae9c934eec9fee970cc725e60051d0c709e0f16c7dda14749350ff2006975a",
+        "--smoke-report",
+        "/home/nzxn/下载/WX/load/XG-NID/outputs/grouped_gpu_smoke_v1/smoke.json",
+        "--pilot-report",
+        "/home/nzxn/下载/WX/load/XG-NID/outputs/grouped_training_pilot_v1/summary.json",
+        "--baseline-report",
+        "/home/nzxn/下载/WX/load/XG-NID/outputs/grouped_full_E0_s42_v1/summary.json",
+        "--device",
+        "cuda:0",
+        "--seed",
+        "42",
+        "--batch-size",
+        "16",
+        "--lr",
+        "0.001",
+        "--epochs",
+        "100",
+        "--patience",
+        "12",
+        "--workers",
+        "2",
+        "--experiments",
+        "E3",
+        "--output",
+        "/home/nzxn/下载/WX/load/XG-NID/outputs/grouped_full_E3_s42_v1",
+        "--fusion-control-report",
+        "/home/nzxn/下载/WX/load/XG-NID/outputs/grouped_full_E2_s42_v1/summary.json"
+      ],
+      "foreground_command_preview": "/home/nzxn/miniconda3/envs/wx/bin/python -u '/home/nzxn/下载/WX/load/XG-NID/scripts/train_grouped.py' --mode full --split-dir '/home/nzxn/下载/WX/load/XG-NID/data/processed/ciciot2023_grouped_input_v1' --expected-split-id a8ae9c934eec9fee970cc725e60051d0c709e0f16c7dda14749350ff2006975a --smoke-report '/home/nzxn/下载/WX/load/XG-NID/outputs/grouped_gpu_smoke_v1/smoke.json' --pilot-report '/home/nzxn/下载/WX/load/XG-NID/outputs/grouped_training_pilot_v1/summary.json' --baseline-report '/home/nzxn/下载/WX/load/XG-NID/outputs/grouped_full_E0_s42_v1/summary.json' --device cuda:0 --seed 42 --batch-size 16 --lr 0.001 --epochs 100 --patience 12 --workers 2 --experiments E3 --output '/home/nzxn/下载/WX/load/XG-NID/outputs/grouped_full_E3_s42_v1' --fusion-control-report '/home/nzxn/下载/WX/load/XG-NID/outputs/grouped_full_E2_s42_v1/summary.json'",
+      "execute_now": false,
+      "note": "Preview only; launch after dependency review and GPU availability confirmation"
+    }
+  },
+  "next_gates": [
+    "R0 completed with saved results and no training process remains",
+    "Confirm live GPU availability; metadata checks do not certify it",
+    "Recheck dependencies at launch; E2 must complete successfully before E3"
+  ]
+}

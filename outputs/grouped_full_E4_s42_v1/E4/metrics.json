@@ -1,0 +1,441 @@
+{
+  "mode": "full",
+  "best_epoch": 52,
+  "stopped_epoch": 64,
+  "best_validation": {
+    "accuracy": 0.9694332887103971,
+    "macro_f1": 0.952101377719813,
+    "weighted_f1": 0.9689259896732938,
+    "per_class": {
+      "Benign": {
+        "precision": 0.964509394572025,
+        "recall": 0.9669317706153202,
+        "f1-score": 0.9657190635451506,
+        "support": 2389.0
+      },
+      "WebBased": {
+        "precision": 0.8656387665198237,
+        "recall": 0.7224264705882353,
+        "f1-score": 0.7875751503006012,
+        "support": 544.0
+      },
+      "Spoofing": {
+        "precision": 0.9309961046188091,
+        "recall": 0.9620471535365153,
+        "f1-score": 0.9462669683257919,
+        "support": 1739.0
+      },
+      "Recon": {
+        "precision": 0.9415807560137457,
+        "recall": 0.9622475856014048,
+        "f1-score": 0.9518019973947025,
+        "support": 2278.0
+      },
+      "Mirai": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 2400.0
+      },
+      "Dos": {
+        "precision": 0.9986348122866894,
+        "recall": 0.991864406779661,
+        "f1-score": 0.9952380952380953,
+        "support": 1475.0
+      },
+      "DDos": {
+        "precision": 1.0,
+        "recall": 0.9970686767169179,
+        "f1-score": 0.9985321870413084,
+        "support": 2388.0
+      },
+      "BruteForce": {
+        "precision": 0.9867256637168141,
+        "recall": 0.9570815450643777,
+        "f1-score": 0.971677559912854,
+        "support": 233.0
+      },
+      "accuracy": 0.9694332887103971,
+      "macro avg": {
+        "precision": 0.9610106872159885,
+        "recall": 0.9449584511128041,
+        "f1-score": 0.952101377719813,
+        "support": 13446.0
+      },
+      "weighted avg": {
+        "precision": 0.9690567491090033,
+        "recall": 0.9694332887103971,
+        "f1-score": 0.9689259896732938,
+        "support": 13446.0
+      }
+    },
+    "confusion_matrix": [
+      [
+        2310,
+        9,
+        67,
+        2,
+        0,
+        0,
+        0,
+        1
+      ],
+      [
+        9,
+        393,
+        19,
+        122,
+        0,
+        0,
+        0,
+        1
+      ],
+      [
+        59,
+        6,
+        1673,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        15,
+        37,
+        31,
+        2192,
+        0,
+        2,
+        0,
+        1
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        2400,
+        0,
+        0,
+        0
+      ],
+      [
+        2,
+        3,
+        1,
+        6,
+        0,
+        1463,
+        0,
+        0
+      ],
+      [
+        0,
+        1,
+        1,
+        5,
+        0,
+        0,
+        2381,
+        0
+      ],
+      [
+        0,
+        5,
+        5,
+        0,
+        0,
+        0,
+        0,
+        223
+      ]
+    ],
+    "samples": 13446,
+    "wall_seconds_including_graph_io": 25.996481828999094,
+    "forward_seconds": 15.878244668960571,
+    "forward_timing_method": "CUDA events around model call",
+    "gate_weights": {
+      "mean": [
+        0.6523560285568237,
+        0.34764397144317627
+      ],
+      "std": [
+        0.20590631663799286,
+        0.20590631663799286
+      ],
+      "min": [
+        0.0823536142706871,
+        0.07246506214141846
+      ],
+      "max": [
+        0.9275349378585815,
+        0.9176464080810547
+      ],
+      "fraction_flow_above_0_95": 0.0,
+      "fraction_packet_above_0_95": 0.0
+    }
+  },
+  "training_validation_checkpoint_wall_seconds": 23493.282248246,
+  "parameter_count": 846800,
+  "initial_state_sha256": "0270349d613f11b453b92e4e928a3c2e7b67d062b5e3ba73c8ba4fb58dbd521a",
+  "test": {
+    "accuracy": 0.9707019631171921,
+    "macro_f1": 0.9514676446722832,
+    "weighted_f1": 0.9702271104308821,
+    "per_class": {
+      "Benign": {
+        "precision": 0.962993762993763,
+        "recall": 0.9694432817078276,
+        "f1-score": 0.9662077596996246,
+        "support": 2389.0
+      },
+      "WebBased": {
+        "precision": 0.8482905982905983,
+        "recall": 0.7297794117647058,
+        "f1-score": 0.7845849802371542,
+        "support": 544.0
+      },
+      "Spoofing": {
+        "precision": 0.9389830508474576,
+        "recall": 0.9557216791259344,
+        "f1-score": 0.9472784269022514,
+        "support": 1739.0
+      },
+      "Recon": {
+        "precision": 0.9495472186287193,
+        "recall": 0.9666374012291484,
+        "f1-score": 0.9580160974548619,
+        "support": 2278.0
+      },
+      "Mirai": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 2400.0
+      },
+      "Dos": {
+        "precision": 0.9986431478968792,
+        "recall": 0.9979661016949153,
+        "f1-score": 0.998304510003391,
+        "support": 1475.0
+      },
+      "DDos": {
+        "precision": 0.9995808885163453,
+        "recall": 0.997907949790795,
+        "f1-score": 0.9987437185929647,
+        "support": 2390.0
+      },
+      "BruteForce": {
+        "precision": 0.9734513274336283,
+        "recall": 0.944206008583691,
+        "f1-score": 0.9586056644880174,
+        "support": 233.0
+      },
+      "accuracy": 0.9707019631171921,
+      "macro avg": {
+        "precision": 0.9589362493259238,
+        "recall": 0.9452077292371271,
+        "f1-score": 0.9514676446722832,
+        "support": 13448.0
+      },
+      "weighted avg": {
+        "precision": 0.970169051213276,
+        "recall": 0.9707019631171921,
+        "f1-score": 0.9702271104308821,
+        "support": 13448.0
+      }
+    },
+    "confusion_matrix": [
+      [
+        2316,
+        8,
+        58,
+        4,
+        0,
+        0,
+        0,
+        3
+      ],
+      [
+        13,
+        397,
+        27,
+        107,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        56,
+        18,
+        1662,
+        1,
+        0,
+        0,
+        0,
+        2
+      ],
+      [
+        19,
+        35,
+        18,
+        2202,
+        0,
+        2,
+        1,
+        1
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        2400,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        1,
+        2,
+        0,
+        1472,
+        0,
+        0
+      ],
+      [
+        0,
+        2,
+        0,
+        3,
+        0,
+        0,
+        2385,
+        0
+      ],
+      [
+        1,
+        8,
+        4,
+        0,
+        0,
+        0,
+        0,
+        220
+      ]
+    ],
+    "samples": 13448,
+    "wall_seconds_including_graph_io": 28.219904050998593,
+    "forward_seconds": 15.45768223953247,
+    "forward_timing_method": "CUDA events around model call",
+    "gate_weights": {
+      "mean": [
+        0.6530325412750244,
+        0.3469674289226532
+      ],
+      "std": [
+        0.20560334622859955,
+        0.20560334622859955
+      ],
+      "min": [
+        0.08612067252397537,
+        0.06706757098436356
+      ],
+      "max": [
+        0.932932436466217,
+        0.9138792753219604
+      ],
+      "fraction_flow_above_0_95": 0.0,
+      "fraction_packet_above_0_95": 0.0
+    }
+  },
+  "run_wall_seconds": 23521.657487477,
+  "config_sha256": "3c70d7101a08d0a5a099abaf9bf80968b31599b9dd5bac6ff45a9ceb982e251a",
+  "edge_attribute_ablation": {
+    "definition": {
+      "schema": "xgnid.e4-no-edge.v1",
+      "experiment": "E4",
+      "parent_e3_run": "outputs/grouped_full_E3_s42_resume_v1",
+      "split_id": "a8ae9c934eec9fee970cc725e60051d0c709e0f16c7dda14749350ff2006975a",
+      "split_dir": "data/processed/ciciot2023_grouped_input_v1",
+      "historical_smoke": "outputs/grouped_gpu_smoke_v1/smoke.json",
+      "pilot_report": "outputs/grouped_training_pilot_v1/summary.json",
+      "baseline_report": "outputs/grouped_full_E0_s42_v1/summary.json",
+      "smoke_output": "outputs/grouped_gpu_smoke_E4_s42_v1",
+      "full_output": "outputs/grouped_full_E4_s42_v1",
+      "controls": {
+        "seed": 42,
+        "batch_size": 16,
+        "lr": 0.001,
+        "hidden_dim": 64,
+        "optimizer": "Adam",
+        "early_stop_patience": 12,
+        "early_stop_min_delta": 0.0,
+        "auxiliary_losses": false,
+        "calibration": false,
+        "class_weighting": false,
+        "hard_negatives": false,
+        "loss": "plain NLL",
+        "device_family": "cuda"
+      },
+      "epochs": 100,
+      "workers": 2,
+      "device": "cuda:0",
+      "parameter_count": 846800,
+      "ablation": "E3 architecture, graph topology, node features, gate and entropy-proxy mixing retained; every GAT edge_attr input disabled",
+      "initialization": "fresh seed42 initialization paired with E3; never load trained E3 weights",
+      "selection": "strict best validation Macro-F1; patience12; reload best for one final test",
+      "scheduling": "No automatic GPU choice or full launch. Metadata check may run while GPUs are busy; smoke/full wait for an explicitly available GPU."
+    },
+    "binding": {
+      "schema": "xgnid.e4-binding.v1",
+      "definition_id": "69a84fe7c96e5de70378024fa702a22b2d3ce9cf39ec0708a8eb7ffe77c3fa79",
+      "wrapper_sha256": "4c61590df81b86d446e57d7dd0b9c743e5a2c76c64392f88df7e28e693e6f3ea",
+      "parent_summary_sha256": "fd185cfc9e6527c89030e3bf3ed6aca505212bab694039b9aabaf990491f9aa8",
+      "parent_config_sha256": "2dd9e634ac9895ccd39223665d6b315e3b7e7611b41efb45967de6ba6d41bff3",
+      "parent_initial_state_sha256": "0270349d613f11b453b92e4e928a3c2e7b67d062b5e3ba73c8ba4fb58dbd521a",
+      "historical_smoke_sha256": "4bd73bde4de918987f222a0c223f12c0172b5e1fc2f4ba8e0c97ee2cbfe1bc8f",
+      "historical_smoke_config_sha256": "1a20eb27e813c0e6c08def99afa62cdbcdc48db47013e4d9fe3b0a343b05fa52",
+      "split_id": "a8ae9c934eec9fee970cc725e60051d0c709e0f16c7dda14749350ff2006975a",
+      "sample_manifest_sha256": "b8e9b0810471d0c2b52033488fab640625c3731315afd5d2add1571bd2518827",
+      "source_hashes": {
+        "scripts/train_grouped.py": "06a493b18faa97b4e1f2b99b6aae38c67ad3c5f39b130f112079c9393432f5d1",
+        "scripts/grouped_graphs.py": "c1b1273d62fc44d91f7c9b300b66a083c1f80ef2c9c4314a62c4bbd5d708bbb4",
+        "scripts/smoke_grouped_gpu.py": "7bce1218e1b55a812855d50c70973fe300da97ad7e9b4005a52deac77d8b1517",
+        "src/xgnid/model.py": "28e21e94118db0a4110d17923d2840e18959669d798f628018c98c91c0202631",
+        "src/xgnid/edge_experiments.py": "3e6305d83c06c7ce32e901a2aba9d9d26baa1f2b394af14997b0e359929b4da5",
+        "third_party/GNN4ID/Utility/Model.py": "e17c3905e3c9f437c269bdd0e4d115656cfba6054b6a4474bbd06b5453010688"
+      },
+      "controls": {
+        "seed": 42,
+        "batch_size": 16,
+        "lr": 0.001,
+        "hidden_dim": 64,
+        "optimizer": "Adam",
+        "early_stop_patience": 12,
+        "early_stop_min_delta": 0.0,
+        "auxiliary_losses": false,
+        "calibration": false,
+        "class_weighting": false,
+        "hard_negatives": false,
+        "loss": "plain NLL",
+        "device_family": "cuda"
+      },
+      "epochs": 100
+    },
+    "e4_smoke_sha256": "4087b7f96b4a8007ca65dd964af0ff37a6b9caaf82bc1b1a2b9f4b297b044c91",
+    "e4_smoke_binding_sha256": "f84daf398dfec9766258f6c6ee2bf264cfb43be31b904151e5d5a5e24159c7b3",
+    "smoke_runtime": {
+      "CUDA_VISIBLE_DEVICES": "1",
+      "device_name": "Tesla T4",
+      "torch": "2.3.1+cu118",
+      "pyg": "2.5.3"
+    },
+    "full_CUDA_VISIBLE_DEVICES": "1",
+    "scope": "Disable GAT edge_attr only; adaptive gate/topology/node features unchanged; fresh initialization"
+  }
+}

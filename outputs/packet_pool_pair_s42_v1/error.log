@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/tmp/xgnid_packet_pool.69Xqpl/scripts/run_packet_pool_pair.py", line 711, in main
+    run(args, meta)
+  File "/tmp/xgnid_packet_pool.69Xqpl/scripts/run_packet_pool_pair.py", line 608, in run
+    initialization = initial_equivalence(core, models, caches['val'], device, gold, expected)
+  File "/tmp/xgnid_packet_pool.69Xqpl/scripts/run_packet_pool_pair.py", line 345, in initial_equivalence
+    require(core.torch.allclose(a, b, atol=1e-6, rtol=1e-6)
+  File "/tmp/xgnid_packet_pool.69Xqpl/scripts/e3_gate_study.py", line 33, in require
+    raise ValueError(message)
+ValueError: Non-equivalent epoch0 readout

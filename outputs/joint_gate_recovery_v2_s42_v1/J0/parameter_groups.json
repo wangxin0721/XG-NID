@@ -1,0 +1,12 @@
+[
+  {
+    "name": "encoder",
+    "lr": 1e-05,
+    "parameters": 844544
+  },
+  {
+    "name": "head",
+    "lr": 0.0001,
+    "parameters": 1592
+  }
+]

@@ -1,0 +1,7 @@
+{
+  "status": "failed",
+  "phase": "raw_graph_gradient_probe",
+  "pid": 3320913,
+  "variant": "D32",
+  "exit_code": 1
+}

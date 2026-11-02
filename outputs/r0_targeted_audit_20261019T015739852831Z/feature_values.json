@@ -1,0 +1,1161 @@
+{
+  "training_csv_sha256": "1b546e6c69faad482b98b4c95219ef9b13aba0c13afcfe0b4abe69c1e7f38b02",
+  "training_rows": 160000,
+  "flow_columns": [
+    "src2dst_duration_ms",
+    "src2dst_packets",
+    "src2dst_bytes",
+    "dst2src_duration_ms",
+    "dst2src_packets",
+    "dst2src_bytes",
+    "bidirectional_min_ps",
+    "bidirectional_mean_ps",
+    "bidirectional_stddev_ps",
+    "bidirectional_max_ps",
+    "src2dst_min_ps",
+    "src2dst_mean_ps",
+    "src2dst_stddev_ps",
+    "src2dst_max_ps",
+    "dst2src_min_ps",
+    "dst2src_mean_ps",
+    "dst2src_stddev_ps",
+    "dst2src_max_ps",
+    "bidirectional_min_piat_ms",
+    "bidirectional_mean_piat_ms",
+    "bidirectional_stddev_piat_ms",
+    "bidirectional_max_piat_ms",
+    "src2dst_min_piat_ms",
+    "src2dst_mean_piat_ms",
+    "src2dst_stddev_piat_ms",
+    "src2dst_max_piat_ms",
+    "dst2src_min_piat_ms",
+    "dst2src_mean_piat_ms",
+    "dst2src_stddev_piat_ms",
+    "dst2src_max_piat_ms",
+    "src2dst_syn_packets",
+    "src2dst_cwr_packets",
+    "src2dst_ece_packets",
+    "src2dst_urg_packets",
+    "src2dst_ack_packets",
+    "src2dst_psh_packets",
+    "src2dst_rst_packets",
+    "src2dst_fin_packets",
+    "dst2src_syn_packets",
+    "dst2src_cwr_packets",
+    "dst2src_ece_packets",
+    "dst2src_urg_packets",
+    "dst2src_ack_packets",
+    "dst2src_psh_packets",
+    "dst2src_rst_packets",
+    "dst2src_fin_packets",
+    "packet_size_variation",
+    "Rolling_UDP_Requests_SourceDestination",
+    "Rolling_UDP_Requests_Destination",
+    "Rolling_TCP_Requests_SourceDestination",
+    "Rolling_TCP_Requests_Destination",
+    "Rolling_ACK_Packets_SourceDestination",
+    "Rolling_ACK_Packets_Destination",
+    "Rolling_FIN_Packets_SourceDestination",
+    "Rolling_FIN_Packets_Destination",
+    "Rolling_rst_Packets_SourceDestination",
+    "Rolling_rst_Packets_Destination",
+    "Rolling_psh_Packets_SourceDestination",
+    "Rolling_psh_Packets_Destination",
+    "Rolling_SYN_Packets_SourceDestination",
+    "Rolling_SYN_Packets_Destination",
+    "Unique_Ports_In_SourceDestinationIP",
+    "Rolling_ICMP_Requests_SourceDestination",
+    "Rolling_ICMP_Requests_Destination",
+    "Rolling_http_port_SourceDestination",
+    "Rolling_http_port_Destination",
+    "Rolling_Duration_Destination",
+    "Rolling_Duration_SourceDestination",
+    "Rolling_DNS_request_SourceDestination",
+    "Rolling_DNS_request_Destination",
+    "Rolling_DNS_request_SourceDestination2",
+    "Rolling_DNS_request_Destination2",
+    "Rolling_vulnerable_port",
+    "Rolling_packets_destination",
+    "Rolling_bipackets_destination",
+    "Exp_0",
+    "Exp_-1",
+    "proto_1",
+    "proto_2",
+    "proto_6",
+    "proto_17",
+    "proto_58"
+  ],
+  "added_columns": [
+    "packet_size_variation",
+    "Rolling_UDP_Requests_SourceDestination",
+    "Rolling_UDP_Requests_Destination",
+    "Rolling_TCP_Requests_SourceDestination",
+    "Rolling_TCP_Requests_Destination",
+    "Rolling_ACK_Packets_SourceDestination",
+    "Rolling_ACK_Packets_Destination",
+    "Rolling_FIN_Packets_SourceDestination",
+    "Rolling_FIN_Packets_Destination",
+    "Rolling_rst_Packets_SourceDestination",
+    "Rolling_rst_Packets_Destination",
+    "Rolling_psh_Packets_SourceDestination",
+    "Rolling_psh_Packets_Destination",
+    "Rolling_SYN_Packets_SourceDestination",
+    "Rolling_SYN_Packets_Destination",
+    "Unique_Ports_In_SourceDestinationIP",
+    "Rolling_ICMP_Requests_SourceDestination",
+    "Rolling_ICMP_Requests_Destination",
+    "Rolling_http_port_SourceDestination",
+    "Rolling_http_port_Destination",
+    "Rolling_Duration_Destination",
+    "Rolling_Duration_SourceDestination",
+    "Rolling_DNS_request_SourceDestination",
+    "Rolling_DNS_request_Destination",
+    "Rolling_DNS_request_SourceDestination2",
+    "Rolling_DNS_request_Destination2",
+    "Rolling_vulnerable_port",
+    "Rolling_packets_destination",
+    "Rolling_bipackets_destination"
+  ],
+  "feature_statistics": {
+    "src2dst_duration_ms": {
+      "finite": 160000,
+      "nan_or_inf": 0,
+      "zeros": 73357,
+      "min": 0.0,
+      "max": 69976.0
+    },
+    "src2dst_packets": {
+      "finite": 160000,
+      "nan_or_inf": 0,
+      "zeros": 0,
+      "min": 1.0,
+      "max": 20.0
+    },
+    "src2dst_bytes": {
+      "finite": 160000,
+      "nan_or_inf": 0,
+      "zeros": 0,
+      "min": 16.0,
+      "max": 123888.0
+    },
+    "dst2src_duration_ms": {
+      "finite": 160000,
+      "nan_or_inf": 0,
+      "zeros": 116539,
+      "min": 0.0,
+      "max": 30371.0
+    },
+    "dst2src_packets": {
+      "finite": 160000,
+      "nan_or_inf": 0,
+      "zeros": 78240,
+      "min": 0.0,
+      "max": 19.0
+    },
+    "dst2src_bytes": {
+      "finite": 160000,
+      "nan_or_inf": 0,
+      "zeros": 78240,
+      "min": 0.0,
+      "max": 61804.0
+    },
+    "bidirectional_min_ps": {
+      "finite": 160000,
+      "nan_or_inf": 0,
+      "zeros": 0,
+      "min": 8.0,
+      "max": 2844.0
+    },
+    "bidirectional_mean_ps": {
+      "finite": 160000,
+      "nan_or_inf": 0,
+      "zeros": 0,
+      "min": 8.0,
+      "max": 6194.400000000001
+    },
+    "bidirectional_stddev_ps": {
+      "finite": 160000,
+      "nan_or_inf": 0,
+      "zeros": 77070,
+      "min": 0.0,
+      "max": 5325.914166897351
+    },
+    "bidirectional_max_ps": {
+      "finite": 160000,
+      "nan_or_inf": 0,
+      "zeros": 0,
+      "min": 8.0,
+      "max": 23220.0
+    },
+    "src2dst_min_ps": {
+      "finite": 160000,
+      "nan_or_inf": 0,
+      "zeros": 0,
+      "min": 8.0,
+      "max": 5844.0
+    },
+    "src2dst_mean_ps": {
+      "finite": 160000,
+      "nan_or_inf": 0,
+      "zeros": 0,
+      "min": 8.0,
+      "max": 8740.0
+    },
+    "src2dst_stddev_ps": {
+      "finite": 160000,
+      "nan_or_inf": 0,
+      "zeros": 116998,
+      "min": 0.0,
+      "max": 10435.48893599784
+    },
+    "src2dst_max_ps": {
+      "finite": 160000,
+      "nan_or_inf": 0,
+      "zeros": 0,
+      "min": 8.0,
+      "max": 23220.0
+    },
+    "dst2src_min_ps": {
+      "finite": 160000,
+      "nan_or_inf": 0,
+      "zeros": 78240,
+      "min": 0.0,
+      "max": 10953.0
+    },
+    "dst2src_mean_ps": {
+      "finite": 160000,
+      "nan_or_inf": 0,
+      "zeros": 78240,
+      "min": 0.0,
+      "max": 10953.0
+    },
+    "dst2src_stddev_ps": {
+      "finite": 160000,
+      "nan_or_inf": 0,
+      "zeros": 126001,
+      "min": 0.0,
+      "max": 6857.92593767727
+    },
+    "dst2src_max_ps": {
+      "finite": 160000,
+      "nan_or_inf": 0,
+      "zeros": 78240,
+      "min": 0.0,
+      "max": 21772.0
+    },
+    "bidirectional_min_piat_ms": {
+      "finite": 160000,
+      "nan_or_inf": 0,
+      "zeros": 104784,
+      "min": 0.0,
+      "max": 4999.0
+    },
+    "bidirectional_mean_piat_ms": {
+      "finite": 160000,
+      "nan_or_inf": 0,
+      "zeros": 42374,
+      "min": 0.0,
+      "max": 4999.0
+    },
+    "bidirectional_stddev_piat_ms": {
+      "finite": 160000,
+      "nan_or_inf": 0,
+      "zeros": 73757,
+      "min": 0.0,
+      "max": 3235.013523928455
+    },
+    "bidirectional_max_piat_ms": {
+      "finite": 160000,
+      "nan_or_inf": 0,
+      "zeros": 42374,
+      "min": 0.0,
+      "max": 4999.0
+    },
+    "src2dst_min_piat_ms": {
+      "finite": 160000,
+      "nan_or_inf": 0,
+      "zeros": 123996,
+      "min": 0.0,
+      "max": 5231.0
+    },
+    "src2dst_mean_piat_ms": {
+      "finite": 160000,
+      "nan_or_inf": 0,
+      "zeros": 73357,
+      "min": 0.0,
+      "max": 5231.0
+    },
+    "src2dst_stddev_piat_ms": {
+      "finite": 160000,
+      "nan_or_inf": 0,
+      "zeros": 84988,
+      "min": 0.0,
+      "max": 3569.197570883405
+    },
+    "src2dst_max_piat_ms": {
+      "finite": 160000,
+      "nan_or_inf": 0,
+      "zeros": 73357,
+      "min": 0.0,
+      "max": 10444.0
+    },
+    "dst2src_min_piat_ms": {
+      "finite": 160000,
+      "nan_or_inf": 0,
+      "zeros": 138237,
+      "min": 0.0,
+      "max": 5206.0
+    },
+    "dst2src_mean_piat_ms": {
+      "finite": 160000,
+      "nan_or_inf": 0,
+      "zeros": 116539,
+      "min": 0.0,
+      "max": 5206.0
+    },
+    "dst2src_stddev_piat_ms": {
+      "finite": 160000,
+      "nan_or_inf": 0,
+      "zeros": 120962,
+      "min": 0.0,
+      "max": 3723.624309728359
+    },
+    "dst2src_max_piat_ms": {
+      "finite": 160000,
+      "nan_or_inf": 0,
+      "zeros": 116539,
+      "min": 0.0,
+      "max": 8210.0
+    },
+    "src2dst_syn_packets": {
+      "finite": 160000,
+      "nan_or_inf": 0,
+      "zeros": 109415,
+      "min": 0.0,
+      "max": 5.0
+    },
+    "src2dst_cwr_packets": {
+      "finite": 160000,
+      "nan_or_inf": 0,
+      "zeros": 159939,
+      "min": 0.0,
+      "max": 5.0
+    },
+    "src2dst_ece_packets": {
+      "finite": 160000,
+      "nan_or_inf": 0,
+      "zeros": 159938,
+      "min": 0.0,
+      "max": 5.0
+    },
+    "src2dst_urg_packets": {
+      "finite": 160000,
+      "nan_or_inf": 0,
+      "zeros": 159997,
+      "min": 0.0,
+      "max": 20.0
+    },
+    "src2dst_ack_packets": {
+      "finite": 160000,
+      "nan_or_inf": 0,
+      "zeros": 105922,
+      "min": 0.0,
+      "max": 20.0
+    },
+    "src2dst_psh_packets": {
+      "finite": 160000,
+      "nan_or_inf": 0,
+      "zeros": 121272,
+      "min": 0.0,
+      "max": 20.0
+    },
+    "src2dst_rst_packets": {
+      "finite": 160000,
+      "nan_or_inf": 0,
+      "zeros": 150646,
+      "min": 0.0,
+      "max": 20.0
+    },
+    "src2dst_fin_packets": {
+      "finite": 160000,
+      "nan_or_inf": 0,
+      "zeros": 141371,
+      "min": 0.0,
+      "max": 20.0
+    },
+    "dst2src_syn_packets": {
+      "finite": 160000,
+      "nan_or_inf": 0,
+      "zeros": 131761,
+      "min": 0.0,
+      "max": 5.0
+    },
+    "dst2src_cwr_packets": {
+      "finite": 160000,
+      "nan_or_inf": 0,
+      "zeros": 159997,
+      "min": 0.0,
+      "max": 1.0
+    },
+    "dst2src_ece_packets": {
+      "finite": 160000,
+      "nan_or_inf": 0,
+      "zeros": 159962,
+      "min": 0.0,
+      "max": 1.0
+    },
+    "dst2src_urg_packets": {
+      "finite": 160000,
+      "nan_or_inf": 0,
+      "zeros": 159999,
+      "min": 0.0,
+      "max": 5.0
+    },
+    "dst2src_ack_packets": {
+      "finite": 160000,
+      "nan_or_inf": 0,
+      "zeros": 100390,
+      "min": 0.0,
+      "max": 19.0
+    },
+    "dst2src_psh_packets": {
+      "finite": 160000,
+      "nan_or_inf": 0,
+      "zeros": 121225,
+      "min": 0.0,
+      "max": 19.0
+    },
+    "dst2src_rst_packets": {
+      "finite": 160000,
+      "nan_or_inf": 0,
+      "zeros": 150976,
+      "min": 0.0,
+      "max": 6.0
+    },
+    "dst2src_fin_packets": {
+      "finite": 160000,
+      "nan_or_inf": 0,
+      "zeros": 142180,
+      "min": 0.0,
+      "max": 6.0
+    },
+    "packet_size_variation": {
+      "finite": 160000,
+      "nan_or_inf": 0,
+      "zeros": 2359,
+      "min": 0.0,
+      "max": 11381.985766991627
+    },
+    "Rolling_UDP_Requests_SourceDestination": {
+      "finite": 160000,
+      "nan_or_inf": 0,
+      "zeros": 105420,
+      "min": 0.0,
+      "max": 350.0
+    },
+    "Rolling_UDP_Requests_Destination": {
+      "finite": 160000,
+      "nan_or_inf": 0,
+      "zeros": 90653,
+      "min": 0.0,
+      "max": 350.0
+    },
+    "Rolling_TCP_Requests_SourceDestination": {
+      "finite": 160000,
+      "nan_or_inf": 0,
+      "zeros": 73393,
+      "min": 0.0,
+      "max": 350.0
+    },
+    "Rolling_TCP_Requests_Destination": {
+      "finite": 160000,
+      "nan_or_inf": 0,
+      "zeros": 60084,
+      "min": 0.0,
+      "max": 350.0
+    },
+    "Rolling_ACK_Packets_SourceDestination": {
+      "finite": 160000,
+      "nan_or_inf": 0,
+      "zeros": 76726,
+      "min": 0.0,
+      "max": 7000.0
+    },
+    "Rolling_ACK_Packets_Destination": {
+      "finite": 160000,
+      "nan_or_inf": 0,
+      "zeros": 67882,
+      "min": 0.0,
+      "max": 7000.0
+    },
+    "Rolling_FIN_Packets_SourceDestination": {
+      "finite": 160000,
+      "nan_or_inf": 0,
+      "zeros": 124233,
+      "min": 0.0,
+      "max": 723.0
+    },
+    "Rolling_FIN_Packets_Destination": {
+      "finite": 160000,
+      "nan_or_inf": 0,
+      "zeros": 114767,
+      "min": 0.0,
+      "max": 723.0
+    },
+    "Rolling_rst_Packets_SourceDestination": {
+      "finite": 160000,
+      "nan_or_inf": 0,
+      "zeros": 106823,
+      "min": 0.0,
+      "max": 844.0
+    },
+    "Rolling_rst_Packets_Destination": {
+      "finite": 160000,
+      "nan_or_inf": 0,
+      "zeros": 101964,
+      "min": 0.0,
+      "max": 844.0
+    },
+    "Rolling_psh_Packets_SourceDestination": {
+      "finite": 160000,
+      "nan_or_inf": 0,
+      "zeros": 109570,
+      "min": 0.0,
+      "max": 3641.0
+    },
+    "Rolling_psh_Packets_Destination": {
+      "finite": 160000,
+      "nan_or_inf": 0,
+      "zeros": 98731,
+      "min": 0.0,
+      "max": 3500.0
+    },
+    "Rolling_SYN_Packets_SourceDestination": {
+      "finite": 160000,
+      "nan_or_inf": 0,
+      "zeros": 93387,
+      "min": 0.0,
+      "max": 1297.0
+    },
+    "Rolling_SYN_Packets_Destination": {
+      "finite": 160000,
+      "nan_or_inf": 0,
+      "zeros": 85389,
+      "min": 0.0,
+      "max": 1297.0
+    },
+    "Unique_Ports_In_SourceDestinationIP": {
+      "finite": 160000,
+      "nan_or_inf": 0,
+      "zeros": 0,
+      "min": 1.0,
+      "max": 350.0
+    },
+    "Rolling_ICMP_Requests_SourceDestination": {
+      "finite": 160000,
+      "nan_or_inf": 0,
+      "zeros": 136964,
+      "min": 0.0,
+      "max": 350.0
+    },
+    "Rolling_ICMP_Requests_Destination": {
+      "finite": 160000,
+      "nan_or_inf": 0,
+      "zeros": 129152,
+      "min": 0.0,
+      "max": 350.0
+    },
+    "Rolling_http_port_SourceDestination": {
+      "finite": 160000,
+      "nan_or_inf": 0,
+      "zeros": 137310,
+      "min": 0.0,
+      "max": 350.0
+    },
+    "Rolling_http_port_Destination": {
+      "finite": 160000,
+      "nan_or_inf": 0,
+      "zeros": 135258,
+      "min": 0.0,
+      "max": 350.0
+    },
+    "Rolling_Duration_Destination": {
+      "finite": 160000,
+      "nan_or_inf": 0,
+      "zeros": 4554,
+      "min": 0.0,
+      "max": 35066.0
+    },
+    "Rolling_Duration_SourceDestination": {
+      "finite": 160000,
+      "nan_or_inf": 0,
+      "zeros": 8004,
+      "min": 0.0,
+      "max": 35066.0
+    },
+    "Rolling_DNS_request_SourceDestination": {
+      "finite": 160000,
+      "nan_or_inf": 0,
+      "zeros": 150220,
+      "min": 0.0,
+      "max": 350.0
+    },
+    "Rolling_DNS_request_Destination": {
+      "finite": 160000,
+      "nan_or_inf": 0,
+      "zeros": 150199,
+      "min": 0.0,
+      "max": 346.0
+    },
+    "Rolling_DNS_request_SourceDestination2": {
+      "finite": 160000,
+      "nan_or_inf": 0,
+      "zeros": 151220,
+      "min": 0.0,
+      "max": 350.0
+    },
+    "Rolling_DNS_request_Destination2": {
+      "finite": 160000,
+      "nan_or_inf": 0,
+      "zeros": 145191,
+      "min": 0.0,
+      "max": 350.0
+    },
+    "Rolling_vulnerable_port": {
+      "finite": 160000,
+      "nan_or_inf": 0,
+      "zeros": 120455,
+      "min": 0.0,
+      "max": 350.0
+    },
+    "Rolling_packets_destination": {
+      "finite": 160000,
+      "nan_or_inf": 0,
+      "zeros": 0,
+      "min": 1.0,
+      "max": 7000.0
+    },
+    "Rolling_bipackets_destination": {
+      "finite": 160000,
+      "nan_or_inf": 0,
+      "zeros": 0,
+      "min": 1.0,
+      "max": 7000.0
+    },
+    "Exp_0": {
+      "finite": 160000,
+      "nan_or_inf": 0,
+      "zeros": 62471,
+      "min": 0.0,
+      "max": 1.0
+    },
+    "Exp_-1": {
+      "finite": 160000,
+      "nan_or_inf": 0,
+      "zeros": 97529,
+      "min": 0.0,
+      "max": 1.0
+    },
+    "proto_1": {
+      "finite": 160000,
+      "nan_or_inf": 0,
+      "zeros": 138652,
+      "min": 0.0,
+      "max": 1.0
+    },
+    "proto_2": {
+      "finite": 160000,
+      "nan_or_inf": 0,
+      "zeros": 159974,
+      "min": 0.0,
+      "max": 1.0
+    },
+    "proto_6": {
+      "finite": 160000,
+      "nan_or_inf": 0,
+      "zeros": 74515,
+      "min": 0.0,
+      "max": 1.0
+    },
+    "proto_17": {
+      "finite": 160000,
+      "nan_or_inf": 0,
+      "zeros": 107072,
+      "min": 0.0,
+      "max": 1.0
+    },
+    "proto_58": {
+      "finite": 160000,
+      "nan_or_inf": 0,
+      "zeros": 159787,
+      "min": 0.0,
+      "max": 1.0
+    }
+  },
+  "violations_or_warnings": {
+    "nonfinite_flow_cells": 0,
+    "packet_size_variation_formula": 0,
+    "negative_added_values": 0,
+    "nonbinary_onehot_cells": 0,
+    "multiple_protocol_flags": 0,
+    "multiple_expiration_flags": 0,
+    "zero_protocol_flags_rows": 0,
+    "zero_expiration_flags_rows": 0,
+    "boolean_or_unique_counts_over_default350_cells": 0,
+    "bipackets_below_source_packets_rows": 0,
+    "independent_sample_numeric_mismatches": 0,
+    "sample_payload_size_disagreements": 0
+  },
+  "formula_mismatch_examples": [],
+  "independent_sample_value_checks": [
+    {
+      "sample_id": "r0:1394:0545119473e228f9055736dd25973a05986b16762b756e3841924e496d5584ad",
+      "candidate_csv_row": 101250,
+      "packets": 1,
+      "differences": [],
+      "payload_size_disagreements": 0
+    },
+    {
+      "sample_id": "r0:4171:3771e86e76f27bcbbace1922eaa83ac2e51846837cbb455105fff46998254c71",
+      "candidate_csv_row": 103750,
+      "packets": 2,
+      "differences": [],
+      "payload_size_disagreements": 0
+    },
+    {
+      "sample_id": "r0:6949:66ab13ee49dfd9fb9bb283a74cb4ba6f20a84d7cc6d3343792a8e8cfd706c78a",
+      "candidate_csv_row": 106250,
+      "packets": 2,
+      "differences": [],
+      "payload_size_disagreements": 0
+    },
+    {
+      "sample_id": "r0:9726:b5a1571ffaddf4f0bb07182dfce37978e4d837786887b9300bb9074e550ebbc5",
+      "candidate_csv_row": 108750,
+      "packets": 2,
+      "differences": [],
+      "payload_size_disagreements": 0
+    },
+    {
+      "sample_id": "r0:12460:68dfc2d68585b1cc26c6ae744e0fbd9613a432573849e49f74d86aefdb65e394",
+      "candidate_csv_row": 11121,
+      "packets": 1,
+      "differences": [],
+      "payload_size_disagreements": 0
+    },
+    {
+      "sample_id": "r0:12505:eb284e3fa148170cd3173ad6d6a49161df8b45003c40df75ab1a9ba5f224946b",
+      "candidate_csv_row": 111250,
+      "packets": 2,
+      "differences": [],
+      "payload_size_disagreements": 0
+    },
+    {
+      "sample_id": "r0:15282:2eb0074eaab45400b12c28556444430982dbd4dda1200885f16d7418e9031fec",
+      "candidate_csv_row": 113750,
+      "packets": 2,
+      "differences": [],
+      "payload_size_disagreements": 0
+    },
+    {
+      "sample_id": "r0:18060:a0c354d407d25d2055626e53fd46846aa65ca0bc45669fdca63b03849c78e80d",
+      "candidate_csv_row": 116250,
+      "packets": 2,
+      "differences": [],
+      "payload_size_disagreements": 0
+    },
+    {
+      "sample_id": "r0:20837:e4a7fcb1a5ca15c773f0528e526b5d2ab22962b09e266dd39f6a77e570b9c8d9",
+      "candidate_csv_row": 118750,
+      "packets": 2,
+      "differences": [],
+      "payload_size_disagreements": 0
+    },
+    {
+      "sample_id": "r0:23616:13c41699d194c8194ff0ca878267cae1c07b57f443d9a0f94c35e889c49e62cc",
+      "candidate_csv_row": 121250,
+      "packets": 1,
+      "differences": [],
+      "payload_size_disagreements": 0
+    },
+    {
+      "sample_id": "r0:26393:63a0ed0ef3e5b82da10c109ec509a98125cee04898059814c379c225563a4302",
+      "candidate_csv_row": 123750,
+      "packets": 2,
+      "differences": [],
+      "payload_size_disagreements": 0
+    },
+    {
+      "sample_id": "r0:29171:9ec61fb37bc369149b4f06a1719519f6327b528459ca06506c1c13ba62a8a459",
+      "candidate_csv_row": 126250,
+      "packets": 20,
+      "differences": [],
+      "payload_size_disagreements": 0
+    },
+    {
+      "sample_id": "r0:31948:e0393d8169638d1ceca635abe0cd91884c385e48038d5aa3e68cf5bc0e08458f",
+      "candidate_csv_row": 128750,
+      "packets": 1,
+      "differences": [],
+      "payload_size_disagreements": 0
+    },
+    {
+      "sample_id": "r0:34727:0f9f005b4356011da8b86fc8e49533a460ec60a161ed8c079ddba7ff392e8663",
+      "candidate_csv_row": 131250,
+      "packets": 2,
+      "differences": [],
+      "payload_size_disagreements": 0
+    },
+    {
+      "sample_id": "r0:37470:7d63f2c6991f2f3467750c003e28ae00b5478bc54753ad302d672898a532b559",
+      "candidate_csv_row": 13372,
+      "packets": 20,
+      "differences": [],
+      "payload_size_disagreements": 0
+    },
+    {
+      "sample_id": "r0:37504:7e7035d60bed6b69ca9e930dfa9984886878052cc67feec6b0e6c438251aa525",
+      "candidate_csv_row": 133750,
+      "packets": 3,
+      "differences": [],
+      "payload_size_disagreements": 0
+    },
+    {
+      "sample_id": "r0:40282:d90f1daf9d021221bdfead595e640fc8932b281f7cb23dea28665d269c33f469",
+      "candidate_csv_row": 136250,
+      "packets": 1,
+      "differences": [],
+      "payload_size_disagreements": 0
+    },
+    {
+      "sample_id": "r0:43059:0f0b0c16c632f0dc09661de9824797aca34bd6d393590c256ce276b9369e0c2a",
+      "candidate_csv_row": 138750,
+      "packets": 6,
+      "differences": [],
+      "payload_size_disagreements": 0
+    },
+    {
+      "sample_id": "r0:45838:c68f38127648643e2a5760f0d8f1e845cf4410378e4ea8165ecd164499621456",
+      "candidate_csv_row": 141250,
+      "packets": 2,
+      "differences": [],
+      "payload_size_disagreements": 0
+    },
+    {
+      "sample_id": "r0:48615:1b6a8610f84b62d3935a563550e0d39269b5fafe6d864747fb602e840cf938cb",
+      "candidate_csv_row": 143750,
+      "packets": 10,
+      "differences": [],
+      "payload_size_disagreements": 0
+    },
+    {
+      "sample_id": "r0:51393:49a7d3456f5dfa447eae5b7665fcd127d91de59717769c1aa5046c9c4163bc24",
+      "candidate_csv_row": 146250,
+      "packets": 2,
+      "differences": [],
+      "payload_size_disagreements": 0
+    },
+    {
+      "sample_id": "r0:54170:c95d85bbaa1f37335c05e048b27fee37877969e7282169048d3737cd0732d8cb",
+      "candidate_csv_row": 148750,
+      "packets": 10,
+      "differences": [],
+      "payload_size_disagreements": 0
+    },
+    {
+      "sample_id": "r0:56949:68912836cd745b6136a42398ac37364df5ae8395ec3f68de7da0a82ee235a80d",
+      "candidate_csv_row": 151250,
+      "packets": 11,
+      "differences": [],
+      "payload_size_disagreements": 0
+    },
+    {
+      "sample_id": "r0:59726:95891ca3e749355fd52ae5ded86a813abeb7df48519ddec3907bbaf979413d5e",
+      "candidate_csv_row": 153750,
+      "packets": 3,
+      "differences": [],
+      "payload_size_disagreements": 0
+    },
+    {
+      "sample_id": "r0:62470:582625e10f69f8798cec17b700e4383b82d49529efabf6e8c0b500ea7e676361",
+      "candidate_csv_row": 15622,
+      "packets": 1,
+      "differences": [],
+      "payload_size_disagreements": 0
+    },
+    {
+      "sample_id": "r0:62504:f353de6605e2b1148a6b8f1eebc3656a6344733fc5bba5fc90c6d60fb285b3e5",
+      "candidate_csv_row": 156250,
+      "packets": 7,
+      "differences": [],
+      "payload_size_disagreements": 0
+    },
+    {
+      "sample_id": "r0:65281:0d49bef7c32e4f0223dd1cf8cc446baa935338c730d86741a4ba46f490d3a708",
+      "candidate_csv_row": 158750,
+      "packets": 9,
+      "differences": [],
+      "payload_size_disagreements": 0
+    },
+    {
+      "sample_id": "r0:68750:21e499c46ade726d34b8eb18f1e2a3c77eb285d67e8e1263162a29c58eda87a4",
+      "candidate_csv_row": 17873,
+      "packets": 20,
+      "differences": [],
+      "payload_size_disagreements": 0
+    },
+    {
+      "sample_id": "r0:72470:fd3886f64efe126cffd44934d90db79e25fb5861eb8b403e0f7972c4d183b8a3",
+      "candidate_csv_row": 2122,
+      "packets": 1,
+      "differences": [],
+      "payload_size_disagreements": 0
+    },
+    {
+      "sample_id": "r0:72504:cff7d271fe978bdac550698c8b47a84f6834ebf9e1d8ac5e03e738a22ccf0532",
+      "candidate_csv_row": 21250,
+      "packets": 20,
+      "differences": [],
+      "payload_size_disagreements": 0
+    },
+    {
+      "sample_id": "r0:75281:72507c5c235acc8808125401afc3afb1400faeb453d72e8000f2cfb85df1614f",
+      "candidate_csv_row": 23750,
+      "packets": 15,
+      "differences": [],
+      "payload_size_disagreements": 0
+    },
+    {
+      "sample_id": "r0:78059:57d4d90a1ef74105f7f2241416e5d07b28a6c648d09b404836a4d35d2ea58ca4",
+      "candidate_csv_row": 26250,
+      "packets": 20,
+      "differences": [],
+      "payload_size_disagreements": 0
+    },
+    {
+      "sample_id": "r0:80836:d61096b241ad794b98592488c5e4de869becdc047e810894b9ce13e7ecc0db48",
+      "candidate_csv_row": 28750,
+      "packets": 20,
+      "differences": [],
+      "payload_size_disagreements": 0
+    },
+    {
+      "sample_id": "r0:83615:a175118e30d5193db76603dac3801b5191a081273f3128e4d55b5abf09bfd47f",
+      "candidate_csv_row": 31250,
+      "packets": 3,
+      "differences": [],
+      "payload_size_disagreements": 0
+    },
+    {
+      "sample_id": "r0:86392:2c7c53a14e5c67c14be561600f32645d1e0edd730d81965b60ca132b72d91474",
+      "candidate_csv_row": 33750,
+      "packets": 4,
+      "differences": [],
+      "payload_size_disagreements": 0
+    },
+    {
+      "sample_id": "r0:89170:2bac1e8f3996bfc48e23705e8ca9575f47c19c1a173200e15c04b35c8ce56ca9",
+      "candidate_csv_row": 36250,
+      "packets": 5,
+      "differences": [],
+      "payload_size_disagreements": 0
+    },
+    {
+      "sample_id": "r0:91947:a3a50a732e093660b4513181afd843edc69d29c7046869b52a1281977d0e231e",
+      "candidate_csv_row": 38750,
+      "packets": 20,
+      "differences": [],
+      "payload_size_disagreements": 0
+    },
+    {
+      "sample_id": "r0:94726:ef7f966a3d771d6877ed16f614a14f526265331ece1db83e03c189be71b829f0",
+      "candidate_csv_row": 41250,
+      "packets": 20,
+      "differences": [],
+      "payload_size_disagreements": 0
+    },
+    {
+      "sample_id": "r0:97480:112f475ba7e7cac48e45277ae1b9e855008b32bb3ce7d24f8f1a1962904d1537",
+      "candidate_csv_row": 4373,
+      "packets": 1,
+      "differences": [],
+      "payload_size_disagreements": 0
+    },
+    {
+      "sample_id": "r0:97503:d7b8cfb7aa9ac3d83502c6929fd95028b53d70925df639cb0437fa9b494826a3",
+      "candidate_csv_row": 43750,
+      "packets": 20,
+      "differences": [],
+      "payload_size_disagreements": 0
+    },
+    {
+      "sample_id": "r0:100281:9c953e629416c4128e797aabbb480027aba88ef3d2543b54110d430f96617b37",
+      "candidate_csv_row": 46250,
+      "packets": 20,
+      "differences": [],
+      "payload_size_disagreements": 0
+    },
+    {
+      "sample_id": "r0:103058:077a5d9e2bd85a48cd5de69235625371f70cf0c157ab2e351e091575a0ee087a",
+      "candidate_csv_row": 48750,
+      "packets": 20,
+      "differences": [],
+      "payload_size_disagreements": 0
+    },
+    {
+      "sample_id": "r0:105837:ae9dbdc18dc7545eeca68ecafcebea4ac8bfa6c73cfd4d22ee8ed3644f489c5a",
+      "candidate_csv_row": 51250,
+      "packets": 20,
+      "differences": [],
+      "payload_size_disagreements": 0
+    },
+    {
+      "sample_id": "r0:108614:0da18783ed60da689350c00041e6b88219e8a795abff5488c8ee61cdc0e684c2",
+      "candidate_csv_row": 53750,
+      "packets": 20,
+      "differences": [],
+      "payload_size_disagreements": 0
+    },
+    {
+      "sample_id": "r0:111392:dcd3bcd8d74108a02b64b932682f9392ce0b839d23826021fceab9f1ab343507",
+      "candidate_csv_row": 56250,
+      "packets": 20,
+      "differences": [],
+      "payload_size_disagreements": 0
+    },
+    {
+      "sample_id": "r0:114169:22a91992c2448196619ed1ad94e8d448ccbfd1cc1fe732c7547ebe29dbfb09d8",
+      "candidate_csv_row": 58750,
+      "packets": 20,
+      "differences": [],
+      "payload_size_disagreements": 0
+    },
+    {
+      "sample_id": "r0:116948:f0adf12c8681ac17a363ed6779ca1ec51ad51167ef2e21755448cfd7db6345b5",
+      "candidate_csv_row": 61250,
+      "packets": 1,
+      "differences": [],
+      "payload_size_disagreements": 0
+    },
+    {
+      "sample_id": "r0:119725:5b85ca931f06b817480461d1f23bed6d9c7b69bb48b66b3f8a58f9eef4ccd1f5",
+      "candidate_csv_row": 63750,
+      "packets": 1,
+      "differences": [],
+      "payload_size_disagreements": 0
+    },
+    {
+      "sample_id": "r0:122480:16c2f70731de514228d913ab7adee246abd9c0434aebc8e47fe5b5894c27cea3",
+      "candidate_csv_row": 6623,
+      "packets": 1,
+      "differences": [],
+      "payload_size_disagreements": 0
+    },
+    {
+      "sample_id": "r0:122503:96123565926f1c7457344e74cbb07f655a85a5e2271c833dbba5b134a50b8bb4",
+      "candidate_csv_row": 66250,
+      "packets": 3,
+      "differences": [],
+      "payload_size_disagreements": 0
+    },
+    {
+      "sample_id": "r0:125280:c45cee47139808f90dbb338a856224c9b6ea6833063d8ef935e30ccf46f68394",
+      "candidate_csv_row": 68750,
+      "packets": 1,
+      "differences": [],
+      "payload_size_disagreements": 0
+    },
+    {
+      "sample_id": "r0:128059:ff482c5c22fc2d74688470c0df531ae5691f4030cc14c8893933499ce36bd6fc",
+      "candidate_csv_row": 71250,
+      "packets": 1,
+      "differences": [],
+      "payload_size_disagreements": 0
+    },
+    {
+      "sample_id": "r0:130836:46ade245e16be14a1bf3bf910456c07e11a602b3dff3b591102cd5191ac1cb87",
+      "candidate_csv_row": 73750,
+      "packets": 4,
+      "differences": [],
+      "payload_size_disagreements": 0
+    },
+    {
+      "sample_id": "r0:133614:5b85ca931f06b817480461d1f23bed6d9c7b69bb48b66b3f8a58f9eef4ccd1f5",
+      "candidate_csv_row": 76250,
+      "packets": 1,
+      "differences": [],
+      "payload_size_disagreements": 0
+    },
+    {
+      "sample_id": "r0:136391:c217f01e5183eb84382eb3651c93b71ca332e568963c471427f52d433e17680d",
+      "candidate_csv_row": 78750,
+      "packets": 1,
+      "differences": [],
+      "payload_size_disagreements": 0
+    },
+    {
+      "sample_id": "r0:139170:1cb273a26865aa1636ff4976e232615f8137036632847198b82860b47c885b99",
+      "candidate_csv_row": 81250,
+      "packets": 20,
+      "differences": [],
+      "payload_size_disagreements": 0
+    },
+    {
+      "sample_id": "r0:141947:6bec400858492194e5fe4c576f8d5b1514a54d6a6dd606869c45d4c111c4626e",
+      "candidate_csv_row": 83750,
+      "packets": 20,
+      "differences": [],
+      "payload_size_disagreements": 0
+    },
+    {
+      "sample_id": "r0:144725:3e5ebabe5391f38c67985e47dd5dbe6ded7c7af26b85870f0e9fc93bf3a8356e",
+      "candidate_csv_row": 86250,
+      "packets": 20,
+      "differences": [],
+      "payload_size_disagreements": 0
+    },
+    {
+      "sample_id": "r0:147490:a4418e920ccb94fbef09b6270c9a4e031e28c1ec55e5f1ce5f4990736cc39136",
+      "candidate_csv_row": 8874,
+      "packets": 4,
+      "differences": [],
+      "payload_size_disagreements": 0
+    },
+    {
+      "sample_id": "r0:147502:a5eabe0806b30ba15b5548f77aee43aea696644a57a98f38b18d81c522ad699f",
+      "candidate_csv_row": 88750,
+      "packets": 20,
+      "differences": [],
+      "payload_size_disagreements": 0
+    },
+    {
+      "sample_id": "r0:150281:4bbf231b88340ea6f0904568c72d1308e715bbe7dda14cb7bb70d2b705d4994f",
+      "candidate_csv_row": 91250,
+      "packets": 20,
+      "differences": [],
+      "payload_size_disagreements": 0
+    },
+    {
+      "sample_id": "r0:153058:de2fc9a6c9d56662eca82970f24590c723cf7bb10d15947902a48d2eb8d5528f",
+      "candidate_csv_row": 93750,
+      "packets": 20,
+      "differences": [],
+      "payload_size_disagreements": 0
+    },
+    {
+      "sample_id": "r0:155836:74a407170f40c3dc9d4be062cf1153f6d08ef75ddeb7be956f2a1c597d8f2874",
+      "candidate_csv_row": 96250,
+      "packets": 20,
+      "differences": [],
+      "payload_size_disagreements": 0
+    },
+    {
+      "sample_id": "r0:158613:541da94b035eca45f6b00d1f8ebcbc8779630c1bd9c0436225ec8f87341bcc9c",
+      "candidate_csv_row": 98750,
+      "packets": 20,
+      "differences": [],
+      "payload_size_disagreements": 0
+    }
+  ],
+  "policy": "No normalization/imputation/fitting applied; numeric coercion is diagnostic only. Zero onehot rows may reflect out-of-category inputs. Default350 bounds are a hypothesis, not provenance."
+}

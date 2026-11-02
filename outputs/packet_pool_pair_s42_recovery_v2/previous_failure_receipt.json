@@ -1,0 +1,39 @@
+{
+  "directory": "/home/nzxn/下载/WX/load/XG-NID/outputs/packet_pool_pair_s42_recovery_v1",
+  "source_commit": "2bf57a5352a5ed65918b759dfb33459bcaadd770",
+  "file_sha256": {
+    "binding.json": "74fa536f07d7462be9daa907b8fae30ed9150a508a93a8bef9c2c0a1517cd93e",
+    "cache_memory_estimates.json": "9e009dafbcb2d80c20cfdcb6b42ee5dcba5b2e2b78ba3bd684a9234dd714f7d1",
+    "cache_receipts.json": "8ed86ef5b69edea3a330d60eba2560208ee6d25fae913b7dadf6445751976067",
+    "config.json": "a443f7d37d547256b67a7ae5021f78f1c0f3e976fe08390b13ec84146307fe91",
+    "error.log": "08d9d3990379dc18cd32556c1ba057d07f6d5a2e70fa25ea927821402713d027",
+    "gpu.json": "4f33fe188aa0da8ab30814bbbb5188a3d1a9c4c846b62c212dc68be8630eeb26",
+    "initialization_comparison.json": "fc38e8fe7fc478a04d1dc64a014db2572104dd83b1610825c454ea700ec5ea33",
+    "packet_diagnostics.json": "4d3eab21235abd97d12e1dcad88cdb703024f31ceb4cb2dc9c7be64612260117",
+    "progress.json": "57070594cb5fda72cc38fa6153c8b407d3373bda14b5a163f99e7d5b59d64d5a",
+    "recovery_receipt.json": "6c35c3408f7bb2ee91cd2293a58a2318700ea4549531d651a255b152fae0826f",
+    "status.json": "57070594cb5fda72cc38fa6153c8b407d3373bda14b5a163f99e7d5b59d64d5a",
+    "train_packet_nodes.pt": "bbadf7499506f7d5968ffc9061bf4e58445c2c7a67ae85dfb3620a22491bf42c",
+    "val_packet_nodes.pt": "fc70d58c519ef31eb5cc524c4914814f7e959f1f79664e5e478a99c7db5a40ab"
+  },
+  "initialization_comparison": {
+    "samples": 13446,
+    "atol": 1e-06,
+    "rtol": 1e-06,
+    "new_failed_batches": 1,
+    "legacy_failed_batches": 11,
+    "new_prediction_mismatches": 0,
+    "legacy_prediction_mismatches": 0,
+    "max_abs_new_vs_P0_log_probability_error": 2.288818359375e-05,
+    "max_abs_legacy_vs_P0_log_probability_error": 3.0517578125e-05,
+    "max_abs_new_vs_mean_packet_error": 1.1920928955078125e-06,
+    "max_abs_legacy_vs_mean_packet_error": 2.384185791015625e-06,
+    "first_new_mismatch_ids": [],
+    "first_legacy_mismatch_ids": [],
+    "max_abs_new_vs_P0_gate_error": 7.152557373046875e-07,
+    "max_abs_legacy_vs_P0_gate_error": 6.556510925292969e-07,
+    "explanation": "Different floating-point reduction orders are a candidate cause; measured legacy/new differences are recorded here."
+  },
+  "formal_training_updates_before_failure": 0,
+  "probe_updates_before_failure": 0
+}

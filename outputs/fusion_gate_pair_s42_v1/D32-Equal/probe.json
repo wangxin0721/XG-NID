@@ -1,0 +1,108 @@
+{
+  "updates": [
+    {
+      "step": 1,
+      "loss": 2.1203033924102783,
+      "gradients_l1": {
+        "flow_projection.weight": 6.185136318206787,
+        "flow_projection.bias": 0.09698330610990524,
+        "packet_projection.weight": 5.941408157348633,
+        "packet_projection.bias": 0.09698330610990524,
+        "gate.0.weight": 0.0,
+        "gate.0.bias": 0.0,
+        "gate.2.weight": 0.0,
+        "gate.2.bias": 0.0,
+        "shared_head.0.weight": 3.8905200958251953,
+        "shared_head.0.bias": 0.32984840869903564,
+        "shared_head.2.weight": 2.3323867321014404,
+        "shared_head.2.bias": 0.5648188591003418
+      },
+      "parameters_changed": {
+        "flow_projection.weight": true,
+        "flow_projection.bias": true,
+        "packet_projection.weight": true,
+        "packet_projection.bias": true,
+        "gate.0.weight": false,
+        "gate.0.bias": false,
+        "gate.2.weight": false,
+        "gate.2.bias": false,
+        "shared_head.0.weight": true,
+        "shared_head.0.bias": true,
+        "shared_head.2.weight": true,
+        "shared_head.2.bias": true
+      },
+      "raw_cache_max_error": 7.152557373046875e-07
+    },
+    {
+      "step": 2,
+      "loss": 2.0828824043273926,
+      "gradients_l1": {
+        "flow_projection.weight": 6.212978363037109,
+        "flow_projection.bias": 0.10234689712524414,
+        "packet_projection.weight": 5.545469760894775,
+        "packet_projection.bias": 0.10234689712524414,
+        "gate.0.weight": 0.0,
+        "gate.0.bias": 0.0,
+        "gate.2.weight": 0.0,
+        "gate.2.bias": 0.0,
+        "shared_head.0.weight": 3.8203158378601074,
+        "shared_head.0.bias": 0.27532780170440674,
+        "shared_head.2.weight": 2.186466693878174,
+        "shared_head.2.bias": 0.5075327754020691
+      },
+      "parameters_changed": {
+        "flow_projection.weight": true,
+        "flow_projection.bias": true,
+        "packet_projection.weight": true,
+        "packet_projection.bias": true,
+        "gate.0.weight": false,
+        "gate.0.bias": false,
+        "gate.2.weight": false,
+        "gate.2.bias": false,
+        "shared_head.0.weight": true,
+        "shared_head.0.bias": true,
+        "shared_head.2.weight": true,
+        "shared_head.2.bias": true
+      },
+      "raw_cache_max_error": 4.0531158447265625e-06
+    },
+    {
+      "step": 3,
+      "loss": 2.078047275543213,
+      "gradients_l1": {
+        "flow_projection.weight": 5.992956161499023,
+        "flow_projection.bias": 0.09604831039905548,
+        "packet_projection.weight": 6.061875343322754,
+        "packet_projection.bias": 0.09604831039905548,
+        "gate.0.weight": 0.0,
+        "gate.0.bias": 0.0,
+        "gate.2.weight": 0.0,
+        "gate.2.bias": 0.0,
+        "shared_head.0.weight": 3.9904284477233887,
+        "shared_head.0.bias": 0.29790157079696655,
+        "shared_head.2.weight": 2.122408390045166,
+        "shared_head.2.bias": 0.49213331937789917
+      },
+      "parameters_changed": {
+        "flow_projection.weight": true,
+        "flow_projection.bias": true,
+        "packet_projection.weight": true,
+        "packet_projection.bias": true,
+        "gate.0.weight": false,
+        "gate.0.bias": false,
+        "gate.2.weight": false,
+        "gate.2.bias": false,
+        "shared_head.0.weight": true,
+        "shared_head.0.bias": true,
+        "shared_head.2.weight": true,
+        "shared_head.2.bias": true
+      },
+      "raw_cache_max_error": 1.430511474609375e-06
+    }
+  ],
+  "discarded": true,
+  "clean_state_and_rng_restored": true,
+  "encoder_parameters_and_BN_unchanged": true,
+  "wall_seconds": 22.67457887600176,
+  "initial_head_sha256": "a50f6cd5b316f8c64a970f0aaaae8931f464bbc446c43c1fd56bb144c7057cc6"
+}

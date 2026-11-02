@@ -1,0 +1,7 @@
+{
+  "threshold": 0.5,
+  "pair_f1": 0.8980409033020016,
+  "macro_f1": 0.9639293563688232,
+  "webbased_precision": 0.9399332591768632,
+  "recon_to_webbased": 50
+}

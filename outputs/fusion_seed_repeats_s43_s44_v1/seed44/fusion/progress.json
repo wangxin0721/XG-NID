@@ -1,0 +1,8 @@
+{
+  "status": "running",
+  "phase": "train",
+  "pid": 2862753,
+  "variant": "F2",
+  "epoch": 12,
+  "best_epoch": 0
+}

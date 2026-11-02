@@ -1,0 +1,7 @@
+{
+  "status": "passed",
+  "optimizer_updates": 0,
+  "scope": "synthetic relation readout/BN/backward only",
+  "output_weight_gradient_l1": 156.79324340820312,
+  "model_and_rng_unchanged": true
+}

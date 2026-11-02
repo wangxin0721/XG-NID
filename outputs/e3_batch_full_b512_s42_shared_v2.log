@@ -1,0 +1,19 @@
+GPU execution policy {"physical_index": 0, "uuid": "GPU-e69b98a9-213b-8dba-8ec6-1c3aa33c870f", "name": "Tesla T4", "memory_mib": 15360, "used_mib_at_query": 4916, "free_mib_at_query": 9996, "sharing_allowed": true, "existing_compute_processes": [{"pid": 8764, "name": "python"}], "availability": "explicit sharing allowed", "timing_scope": "shared execution; not a standalone speed benchmark"}
+/home/nzxn/miniconda3/envs/wx/lib/python3.9/site-packages/torch_geometric/typing.py:99: UserWarning: An issue occurred while importing 'torch-spline-conv'. Disabling its usage. Stacktrace: /home/nzxn/miniconda3/envs/wx/lib/python3.9/site-packages/torch_spline_conv/_version_cuda.so: undefined symbol: _ZN3c1017RegisterOperatorsD1Ev
+  warnings.warn(
+Traceback (most recent call last):
+  File "/tmp/xgnid_e3_b512.py", line 394, in <module>
+    sys.exit(main())
+  File "/tmp/xgnid_e3_b512.py", line 371, in main
+    frozen, device, binding = setup(core, args, config, gpu)
+  File "/tmp/xgnid_e3_b512.py", line 144, in setup
+    paired = read(pair_path)
+  File "/tmp/xgnid_e3_b512.py", line 38, in read
+    return json.loads(path.read_text(encoding="utf-8"))
+  File "/home/nzxn/miniconda3/envs/wx/lib/python3.9/pathlib.py", line 1194, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+  File "/home/nzxn/miniconda3/envs/wx/lib/python3.9/pathlib.py", line 1180, in open
+    return io.open(self, mode, buffering, encoding, errors, newline,
+  File "/home/nzxn/miniconda3/envs/wx/lib/python3.9/pathlib.py", line 1038, in _opener
+    return self._accessor.open(self, flags, mode)
+FileNotFoundError: [Errno 2] No such file or directory: '/home/nzxn/下载/WX/load/XG-NID/outputs/e2_batch_full_b512_s42_v1/summary.json'

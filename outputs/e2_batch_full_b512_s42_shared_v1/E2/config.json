@@ -1,0 +1,77 @@
+{
+  "experiment": "E2",
+  "mode": "full",
+  "protocol": "xgnid.e2-batch-comparison.v1",
+  "controls": {
+    "seed": 42,
+    "batch_size": 512,
+    "lr": 0.001,
+    "hidden_dim": 64,
+    "optimizer": "Adam",
+    "early_stop_patience": 12,
+    "early_stop_min_delta": 0.0,
+    "auxiliary_losses": false,
+    "calibration": false,
+    "class_weighting": false,
+    "hard_negatives": false,
+    "loss": "plain NLL",
+    "device_family": "cuda"
+  },
+  "epochs": 100,
+  "workers": 2,
+  "initialization_batch_size": 16,
+  "evaluation_batch_size": 16,
+  "binding": {
+    "config_sha256": "b6746bc24d28bcdf911f51e9994ab6ef5b4395a2b7114f73107ba37f1fb6e4a0",
+    "entry_sha256": "a290381515e74b2aeba3e40fcdc8e51ad798aa094d564c27f06ac0da3b78cabd",
+    "sources": {
+      "scripts/train_grouped.py": "06a493b18faa97b4e1f2b99b6aae38c67ad3c5f39b130f112079c9393432f5d1",
+      "scripts/grouped_graphs.py": "c1b1273d62fc44d91f7c9b300b66a083c1f80ef2c9c4314a62c4bbd5d708bbb4",
+      "scripts/smoke_grouped_gpu.py": "7bce1218e1b55a812855d50c70973fe300da97ad7e9b4005a52deac77d8b1517",
+      "scripts/audit_graph_split.py": "c19164930e8ecb75636cf16d6fa9bb51d6f29e1384e8d8ebf040e683536ffcb6",
+      "scripts/build_grouped_split.py": "24e07766189aec9d03f6161dee15587612a5b2f13e23eab67d7ba4aaf89a3401",
+      "src/xgnid/__init__.py": "2515233a0cdac6c5447c9dbd6b0d54c89284f191d8cb41473d89b347ee296ae7",
+      "src/xgnid/model.py": "28e21e94118db0a4110d17923d2840e18959669d798f628018c98c91c0202631",
+      "src/xgnid/edge_experiments.py": "3e6305d83c06c7ce32e901a2aba9d9d26baa1f2b394af14997b0e359929b4da5",
+      "third_party/GNN4ID/Utility/Model.py": "e17c3905e3c9f437c269bdd0e4d115656cfba6054b6a4474bbd06b5453010688"
+    },
+    "reference_e2_sha256": "60f2c7cf9413f6d118a5a24a2089abb242296436424f8b83ad96f84067ac2251",
+    "reference_config_sha256": "71a18ef1ed9bbdd201a0ca7172c563f161d427ec9c4df7575ba104e0cd191184",
+    "smoke_sha256": "4bd73bde4de918987f222a0c223f12c0172b5e1fc2f4ba8e0c97ee2cbfe1bc8f",
+    "pilot_sha256": "6165d1cc7819cca1e95bbe3f43e45f90d4a4c634128e45b84ccc0bd12c17fb72",
+    "baseline_sha256": "5add5c311a8ff8356a7840a52c54d6a33d47798344c72a08467f509ab071d857",
+    "split_id": "a8ae9c934eec9fee970cc725e60051d0c709e0f16c7dda14749350ff2006975a",
+    "samples_sha256": "b8e9b0810471d0c2b52033488fab640625c3731315afd5d2add1571bd2518827",
+    "train_batch_size": 512,
+    "initial_state_sha256": "0270349d613f11b453b92e4e928a3c2e7b67d062b5e3ba73c8ba4fb58dbd521a",
+    "runtime": {
+      "python": "3.9.23",
+      "torch": "2.3.1+cu118",
+      "pyg": "2.5.3",
+      "cuda": "11.8"
+    },
+    "gpu_uuid": "GPU-a9142835-62e0-974e-aebe-80ab25f7ef02",
+    "allow_shared_gpu": true
+  },
+  "hardware": {
+    "physical_index": 1,
+    "uuid": "GPU-a9142835-62e0-974e-aebe-80ab25f7ef02",
+    "name": "Tesla T4",
+    "memory_mib": 15360,
+    "used_mib_at_query": 8,
+    "free_mib_at_query": 14904,
+    "sharing_allowed": true,
+    "existing_compute_processes": [],
+    "availability": "explicit sharing allowed",
+    "timing_scope": "shared execution; not a standalone speed benchmark"
+  },
+  "probe_report": "/home/nzxn/下载/WX/load/XG-NID/outputs/e2_batch_probe_b512_s42_shared_v1/summary.json",
+  "probe_sha256": "245e07fffb6fcf59538e9d8a379847a54c93ed77ee26c03a23f69ccf1c626f45",
+  "comparison": "Only training batch changes. Keep E2 architecture, source graph manifest, seed, initial state, lr=0.001, evaluation batch=16 and epoch/early-stop rules fixed. This compares equal epoch ceilings, not equal optimizer updates; do not scale learning rate automatically.",
+  "partition_sizes": {
+    "train": 107621,
+    "val": 13446,
+    "test": 13448
+  },
+  "optimizer_updates_per_full_epoch": 211
+}

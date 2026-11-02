@@ -1,0 +1,6 @@
+{
+  "status": "failed",
+  "exit_code": 1,
+  "mode": "full",
+  "batch_size": 512
+}

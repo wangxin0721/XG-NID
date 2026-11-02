@@ -1,0 +1,47 @@
+/home/nzxn/miniconda3/envs/wx/lib/python3.9/site-packages/torch_geometric/typing.py:99: UserWarning: An issue occurred while importing 'torch-spline-conv'. Disabling its usage. Stacktrace: /home/nzxn/miniconda3/envs/wx/lib/python3.9/site-packages/torch_spline_conv/_version_cuda.so: undefined symbol: _ZN3c1017RegisterOperatorsD1Ev
+  warnings.warn(
+{"model": "E2", "validation_samples": 1024, "total": 13446}
+{"model": "E2", "validation_samples": 2048, "total": 13446}
+{"model": "E2", "validation_samples": 3072, "total": 13446}
+{"model": "E2", "validation_samples": 4096, "total": 13446}
+{"model": "E2", "validation_samples": 5120, "total": 13446}
+{"model": "E2", "validation_samples": 6144, "total": 13446}
+{"model": "E2", "validation_samples": 7168, "total": 13446}
+{"model": "E2", "validation_samples": 8192, "total": 13446}
+{"model": "E2", "validation_samples": 9216, "total": 13446}
+{"model": "E2", "validation_samples": 10240, "total": 13446}
+{"model": "E2", "validation_samples": 11264, "total": 13446}
+{"model": "E2", "validation_samples": 12288, "total": 13446}
+{"model": "E2", "validation_samples": 13312, "total": 13446}
+{"model": "E3", "validation_samples": 1024, "total": 13446}
+{"model": "E3", "validation_samples": 2048, "total": 13446}
+{"model": "E3", "validation_samples": 3072, "total": 13446}
+{"model": "E3", "validation_samples": 4096, "total": 13446}
+{"model": "E3", "validation_samples": 5120, "total": 13446}
+{"model": "E3", "validation_samples": 6144, "total": 13446}
+{"model": "E3", "validation_samples": 7168, "total": 13446}
+{"model": "E3", "validation_samples": 8192, "total": 13446}
+{"model": "E3", "validation_samples": 9216, "total": 13446}
+{"model": "E3", "validation_samples": 10240, "total": 13446}
+{"model": "E3", "validation_samples": 11264, "total": 13446}
+{"model": "E3", "validation_samples": 12288, "total": 13446}
+{"model": "E3", "validation_samples": 13312, "total": 13446}
+{
+  "status": "completed",
+  "report": "/home/nzxn/\u4e0b\u8f7d/WX/load/XG-NID/outputs/e3_gate_diagnostic_b512_s42_v1/report.json",
+  "models": {
+    "E2": {
+      "dynamic_val_macro_f1": 0.9659940017251141,
+      "equal_val_macro_f1": 0.9659940017251141,
+      "pure_gate_val_macro_f1": null,
+      "selected_alpha": 0.5
+    },
+    "E3": {
+      "dynamic_val_macro_f1": 0.9636692515103146,
+      "equal_val_macro_f1": 0.8630204568255647,
+      "pure_gate_val_macro_f1": 0.9632449623751494,
+      "selected_alpha": 0.65
+    }
+  },
+  "test_evaluated": false
+}

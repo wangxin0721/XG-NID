@@ -1,0 +1,33 @@
+{
+  "original_run": "/home/nzxn/下载/WX/load/XG-NID/outputs/fusion_bh_b1024_s42_v1",
+  "files_sha256": {
+    "config.json": "e3a306e553b888eec792c185fb7bcc2c75979dbb5628d5b35924f0eb476602c2",
+    "epochs.jsonl": "7297cabd07ec2cf7fbcf4c0bc64e7ce0e10debaa03be73c59b14076c5aa443e9",
+    "best.pt": "ba61bb918f06e590c3e22344f072ac33ece95f7dbb8d72e15b652eaada49e766",
+    "last.pt": "ba61bb918f06e590c3e22344f072ac33ece95f7dbb8d72e15b652eaada49e766"
+  },
+  "last_logged_epoch": 21,
+  "cause_of_exit": "unknown",
+  "checkpoint_tensors_loaded": false,
+  "saved_epoch": 21,
+  "next_epoch": 22,
+  "best_epoch": 21,
+  "stale_epochs": 0,
+  "optimizer_updates": 2226,
+  "epoch_limit": 100,
+  "patience": 12,
+  "partial_epoch_discarded": true,
+  "new_optimizer_updates_for_restoration": 0,
+  "created_utc": "2026-10-28T01:17:09.981286+00:00",
+  "resumed_on_physical_gpu": 1,
+  "model_state_restored": true,
+  "optimizer_state_restored": true,
+  "sampler_rng_and_history_verified": true,
+  "worker_rng_not_saved": true,
+  "dedicated_loader_seed_generators": true,
+  "bitwise_uninterrupted_equivalence_claimed": false,
+  "prior_logged_training_seconds": 3460.7097689911025,
+  "recovery_entry_sha256": "669c08fbfc18515fa5c5667fb2c2e8cde6f328cabe7bdd5ae365e988187ae2c7",
+  "recovery_helper_sha256": "c350444f166f88057dcdd8a1b4cd5254cd1ba11dd35eb93b676a173357c58b3d",
+  "restored_global_rng_sha256": "b27547aebe8b636ed87d008ceb8644abd5b4da6295520460c8262afb558089a9"
+}

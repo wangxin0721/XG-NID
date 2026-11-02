@@ -1,0 +1,60 @@
+{
+  "J0": {
+    "updates": [
+      {
+        "flow_encoder.": 17.056177096987298,
+        "packet_encoder.": 16.80214729659925,
+        "flow_classifier.": 0.6634781807661057,
+        "packet_classifier.": 1.0047522634267807,
+        "shared_head.": 1.2289627129212022
+      },
+      {
+        "flow_encoder.": 12.152899096197716,
+        "packet_encoder.": 13.315293589227274,
+        "flow_classifier.": 0.6992379482835531,
+        "packet_classifier.": 0.9100722130388021,
+        "shared_head.": 1.2129433266818523
+      },
+      {
+        "flow_encoder.": 15.43372596067276,
+        "packet_encoder.": 15.623429596228416,
+        "flow_classifier.": 0.7694994211196899,
+        "packet_classifier.": 0.9183478355407715,
+        "shared_head.": 1.255033865571022
+      }
+    ],
+    "discarded": true
+  },
+  "J2": {
+    "updates": [
+      {
+        "flow_encoder.": 22.135071630696014,
+        "packet_encoder.": 20.3835760247955,
+        "flow_classifier.": 0.8381338641047478,
+        "packet_classifier.": 1.3189175054430962,
+        "shared_head.": 1.559874303638935,
+        "joint_gate.": 0.7825664039701223,
+        "gate_hidden": 0.4842890501022339
+      },
+      {
+        "flow_encoder.": 15.697938171781317,
+        "packet_encoder.": 16.539538470758682,
+        "flow_classifier.": 0.9425559937953949,
+        "packet_classifier.": 1.3377001844346523,
+        "shared_head.": 1.5659855483099818,
+        "joint_gate.": 0.9757994432002306,
+        "gate_hidden": 0.6055368781089783
+      },
+      {
+        "flow_encoder.": 17.33462110345701,
+        "packet_encoder.": 17.43886584646279,
+        "flow_classifier.": 0.9381437078118324,
+        "packet_classifier.": 1.142182532697916,
+        "shared_head.": 1.1902955304831266,
+        "joint_gate.": 0.8357387911528349,
+        "gate_hidden": 0.4903675317764282
+      }
+    ],
+    "discarded": true
+  }
+}

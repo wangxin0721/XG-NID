@@ -1,0 +1,21 @@
+{
+  "samples": 13446,
+  "outputs_allclose": true,
+  "max_abs_raw_cached_error": 1.52587890625e-05,
+  "predictions_identical": true,
+  "confusion_matrix_reproduced": true,
+  "strict_state_load": true,
+  "max_abs_original_D32_error": null,
+  "max_abs_matched_source_readout_error": null,
+  "legacy_independent_source_outputs_allclose_1e6": null,
+  "legacy_source_predictions_identical": null,
+  "encoder_parameters_and_BN_unchanged": true,
+  "wall_seconds": 31.862906216003466,
+  "graph_load_stage": {
+    "phase": "best_P0",
+    "partition": "val",
+    "verified_samples": 13446,
+    "workers": 2
+  },
+  "shared_with_selected_best": true
+}

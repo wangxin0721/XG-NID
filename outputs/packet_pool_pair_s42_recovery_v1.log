@@ -1,0 +1,17 @@
+/home/nzxn/miniconda3/envs/wx/lib/python3.9/site-packages/torch_geometric/typing.py:99: UserWarning: An issue occurred while importing 'torch-spline-conv'. Disabling its usage. Stacktrace: /home/nzxn/miniconda3/envs/wx/lib/python3.9/site-packages/torch_spline_conv/_version_cuda.so: undefined symbol: _ZN3c1017RegisterOperatorsD1Ev
+  warnings.warn(
+{"status": "running", "phase": "copy_and_validate_prepared_packet_nodes", "pid": 27547, "partition": "train"}
+{"status": "running", "phase": "copy_and_validate_prepared_packet_nodes", "pid": 27547, "partition": "val"}
+{"phase": "initialization_comparison", "samples": 13446, "atol": 1e-06, "rtol": 1e-06, "new_failed_batches": 1, "legacy_failed_batches": 11, "new_prediction_mismatches": 0, "legacy_prediction_mismatches": 0, "max_abs_new_vs_P0_log_probability_error": 2.288818359375e-05, "max_abs_legacy_vs_P0_log_probability_error": 3.0517578125e-05, "max_abs_new_vs_mean_packet_error": 1.1920928955078125e-06, "max_abs_legacy_vs_mean_packet_error": 2.384185791015625e-06, "first_new_mismatch_ids": [], "first_legacy_mismatch_ids": [], "max_abs_new_vs_P0_gate_error": 7.152557373046875e-07, "max_abs_legacy_vs_P0_gate_error": 6.556510925292969e-07, "explanation": "Different floating-point reduction orders are a candidate cause; measured legacy/new differences are recorded here."}
+Traceback (most recent call last):
+  File "/tmp/xgnid_packet_recovery.IBzYLA/scripts/recover_packet_pool_pair.py", line 164, in <module>
+    main()
+  File "/tmp/xgnid_packet_recovery.IBzYLA/scripts/recover_packet_pool_pair.py", line 151, in main
+    parent.run(args, meta, cache_provider=cache_provider(receipt),
+  File "/tmp/xgnid_packet_recovery.IBzYLA/scripts/run_packet_pool_pair.py", line 644, in run
+    initialization = initial_equivalence(core, models, caches['val'], device, gold, expected, args.output)
+  File "/tmp/xgnid_packet_recovery.IBzYLA/scripts/run_packet_pool_pair.py", line 383, in initial_equivalence
+    require(diagnostic['new_failed_batches'] == 0 and diagnostic['new_prediction_mismatches'] == 0,
+  File "/tmp/xgnid_packet_recovery.IBzYLA/scripts/e3_gate_study.py", line 33, in require
+    raise ValueError(message)
+ValueError: Non-equivalent epoch0 readout; inspect initialization_comparison.json

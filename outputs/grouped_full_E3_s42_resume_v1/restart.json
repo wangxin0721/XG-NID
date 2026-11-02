@@ -1,0 +1,35 @@
+{
+  "schema": "xgnid.e3-resume.v1",
+  "created_utc": "2026-10-20T10:43:48.227006+00:00",
+  "tool_sha256": "6ac8b4cf8e392501d2ac6a187a97e1e035b249e4a592c8d426b5ba3f588419ac",
+  "snapshot": "/home/nzxn/下载/WX/load/XG-NID/outputs/e3_restart_snapshot_20261020T103302548182Z",
+  "original_run": "/home/nzxn/下载/WX/load/XG-NID/outputs/grouped_full_E3_s42_v1",
+  "output": "/home/nzxn/下载/WX/load/XG-NID/outputs/grouped_full_E3_s42_resume_v1",
+  "snapshot_files_sha256": {
+    "config.json": "2dd9e634ac9895ccd39223665d6b315e3b7e7611b41efb45967de6ba6d41bff3",
+    "last.pt": "073d89edfc5da62f792b6ee2910c741e892534f9ff31b8c9e2aab33fe6f87ba1",
+    "best.pt": "600c4f2c3f37c692c920b8001843a92e3d05469c2f09b88d9a4f9b707549a14d",
+    "epochs.jsonl": "795380fdc68bd57f8a47e5df44f1716eb1ae20afddf12bd2f9fdb31e1bd0942f"
+  },
+  "saved_epoch": 58,
+  "start_epoch": 59,
+  "best_epoch": 48,
+  "stale_epochs": 10,
+  "epoch_budget": 100,
+  "discarded_uncheckpointed_log_records": [],
+  "ast_hooks": {
+    "config": 1,
+    "state": 1,
+    "loop": 1,
+    "log": 1,
+    "metrics": 1,
+    "test": 1
+  },
+  "original_files_modified": false,
+  "limitations": [
+    "Epoch-boundary restoration only; any partial next epoch is repeated",
+    "Original checkpoints did not save Python/NumPy/worker RNG or elapsed wall time",
+    "Workers restart and CUDA can be nondeterministic; bitwise equivalence is not guaranteed",
+    "If original final testing had begun, recovery repeats inference with the same fixed best weights; no test-driven selection"
+  ]
+}

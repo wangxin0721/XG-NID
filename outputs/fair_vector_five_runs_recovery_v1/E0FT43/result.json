@@ -1,0 +1,1163 @@
+{
+  "job": "E0FT43",
+  "binding": {
+    "study_sha256": "8d366b4aabad01031d00a7a5aaccc3fd86cfa887bcb8476b25db6f509e550dbe",
+    "parents": {
+      "42": {
+        "directory": "outputs/e0_batch_full_b512_s42_shared_v1",
+        "metrics": {
+          "mode": "full",
+          "protocol": "xgnid.e0-batch512.v1",
+          "best_epoch": 56,
+          "stopped_epoch": 68,
+          "best_validation": {
+            "accuracy": 0.9768704447419306,
+            "macro_f1": 0.9667287438289962,
+            "weighted_f1": 0.9768715130706521,
+            "per_class": {
+              "Benign": {
+                "precision": 0.9574642126789366,
+                "recall": 0.9799079112599414,
+                "f1-score": 0.9685560612329334,
+                "support": 2389.0
+              },
+              "WebBased": {
+                "precision": 0.8697247706422019,
+                "recall": 0.8713235294117647,
+                "f1-score": 0.8705234159779615,
+                "support": 544.0
+              },
+              "Spoofing": {
+                "precision": 0.9648300117233294,
+                "recall": 0.9465209890741806,
+                "f1-score": 0.9555878084179972,
+                "support": 1739.0
+              },
+              "Recon": {
+                "precision": 0.970432480141218,
+                "recall": 0.9653204565408253,
+                "f1-score": 0.9678697183098591,
+                "support": 2278.0
+              },
+              "Mirai": {
+                "precision": 0.9991673605328892,
+                "recall": 1.0,
+                "f1-score": 0.9995835068721366,
+                "support": 2400.0
+              },
+              "Dos": {
+                "precision": 0.9993188010899182,
+                "recall": 0.9945762711864407,
+                "f1-score": 0.9969418960244648,
+                "support": 1475.0
+              },
+              "DDos": {
+                "precision": 1.0,
+                "recall": 0.9966499162479062,
+                "f1-score": 0.9983221476510068,
+                "support": 2388.0
+              },
+              "BruteForce": {
+                "precision": 0.9743589743589743,
+                "recall": 0.9785407725321889,
+                "f1-score": 0.9764453961456103,
+                "support": 233.0
+              },
+              "accuracy": 0.9768704447419306,
+              "macro avg": {
+                "precision": 0.9669120763959335,
+                "recall": 0.9666049807816559,
+                "f1-score": 0.9667287438289962,
+                "support": 13446.0
+              },
+              "weighted avg": {
+                "precision": 0.9769462589156704,
+                "recall": 0.9768704447419306,
+                "f1-score": 0.9768715130706521,
+                "support": 13446.0
+              }
+            },
+            "confusion_matrix": [
+              [
+                2341,
+                8,
+                34,
+                6,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                12,
+                474,
+                9,
+                46,
+                0,
+                0,
+                0,
+                3
+              ],
+              [
+                78,
+                7,
+                1646,
+                4,
+                2,
+                0,
+                0,
+                2
+              ],
+              [
+                14,
+                51,
+                12,
+                2199,
+                0,
+                1,
+                0,
+                1
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                2400,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                3,
+                0,
+                5,
+                0,
+                1467,
+                0,
+                0
+              ],
+              [
+                0,
+                1,
+                1,
+                6,
+                0,
+                0,
+                2380,
+                0
+              ],
+              [
+                0,
+                1,
+                4,
+                0,
+                0,
+                0,
+                0,
+                228
+              ]
+            ],
+            "samples": 13446,
+            "wall_seconds_including_graph_io": 26.5595667269954,
+            "forward_seconds": 9.446178528785705,
+            "forward_timing_method": "CUDA events around model call"
+          },
+          "test": {
+            "accuracy": 0.9759071980963712,
+            "macro_f1": 0.9634716082881734,
+            "weighted_f1": 0.9759985750785002,
+            "per_class": {
+              "Benign": {
+                "precision": 0.9563086974275214,
+                "recall": 0.980326496442026,
+                "f1-score": 0.9681686647374949,
+                "support": 2389.0
+              },
+              "WebBased": {
+                "precision": 0.8385964912280702,
+                "recall": 0.8786764705882353,
+                "f1-score": 0.8581687612208257,
+                "support": 544.0
+              },
+              "Spoofing": {
+                "precision": 0.9647058823529412,
+                "recall": 0.9430707303047728,
+                "f1-score": 0.953765629543472,
+                "support": 1739.0
+              },
+              "Recon": {
+                "precision": 0.9771505376344086,
+                "recall": 0.9574187884108868,
+                "f1-score": 0.9671840354767184,
+                "support": 2278.0
+              },
+              "Mirai": {
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1-score": 1.0,
+                "support": 2400.0
+              },
+              "Dos": {
+                "precision": 0.9979647218453188,
+                "recall": 0.9972881355932204,
+                "f1-score": 0.9976263140047474,
+                "support": 1475.0
+              },
+              "DDos": {
+                "precision": 1.0,
+                "recall": 0.997907949790795,
+                "f1-score": 0.9989528795811519,
+                "support": 2390.0
+              },
+              "BruteForce": {
+                "precision": 0.9537815126050421,
+                "recall": 0.9742489270386266,
+                "f1-score": 0.9639065817409767,
+                "support": 233.0
+              },
+              "accuracy": 0.9759071980963712,
+              "macro avg": {
+                "precision": 0.9610634803866628,
+                "recall": 0.9661171872710703,
+                "f1-score": 0.9634716082881734,
+                "support": 13448.0
+              },
+              "weighted avg": {
+                "precision": 0.9762507049884135,
+                "recall": 0.9759071980963712,
+                "f1-score": 0.9759985750785002,
+                "support": 13448.0
+              }
+            },
+            "confusion_matrix": [
+              [
+                2342,
+                4,
+                35,
+                5,
+                0,
+                2,
+                0,
+                1
+              ],
+              [
+                15,
+                478,
+                12,
+                34,
+                0,
+                0,
+                0,
+                5
+              ],
+              [
+                74,
+                15,
+                1640,
+                6,
+                0,
+                0,
+                0,
+                4
+              ],
+              [
+                18,
+                66,
+                11,
+                2181,
+                0,
+                1,
+                0,
+                1
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                2400,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                4,
+                0,
+                1471,
+                0,
+                0
+              ],
+              [
+                0,
+                3,
+                0,
+                2,
+                0,
+                0,
+                2385,
+                0
+              ],
+              [
+                0,
+                4,
+                2,
+                0,
+                0,
+                0,
+                0,
+                227
+              ]
+            ],
+            "samples": 13448,
+            "wall_seconds_including_graph_io": 26.73426637199009,
+            "forward_seconds": 9.852918122291564,
+            "forward_timing_method": "CUDA events around model call"
+          },
+          "parameter_count": 431704,
+          "initial_state_sha256": "906e125925a8a2cc53a526602db0f047f76b1e41b8087c893f5cf1af41f64a6b",
+          "train_batch_size": 512,
+          "evaluation_batch_size": 16,
+          "total_optimizer_updates": 14348,
+          "training_samples_seen": 7318228,
+          "training_validation_checkpoint_wall_seconds": 12196.905897403005,
+          "run_wall_seconds": 12223.732090882011,
+          "config_sha256": "f789bd2d510cad58e12dd794246920e992b458d1ac7d142913b7b850fec450be",
+          "checkpoint_sha256": {
+            "best.pt": "e6575a490f354fe1345b6e5bbdae394d6f72223e6f2723f1c2947e3ad0bcc494",
+            "last.pt": "5ffea9b1dba2b72f973550486aa21607537d0ec23d281de0fd73c6d91cbed9cd"
+          },
+          "registration": {
+            "kind": "exploratory_structural_control_after_prior_results",
+            "date": "2026-10-21",
+            "requested_by": "user",
+            "prior_test_results_available": true,
+            "purpose": "Keep original E0 architecture and match E2-B512 training/evaluation controls. Not a parameter-matched isolation of dual encoding."
+          }
+        },
+        "config_sha256": "f789bd2d510cad58e12dd794246920e992b458d1ac7d142913b7b850fec450be"
+      },
+      "43": {
+        "directory": "outputs/baseline_seed_repeats_b512_s43_s44_v1/E0_s43",
+        "metrics": {
+          "mode": "full",
+          "protocol": "xgnid.e0-batch512.v1",
+          "best_epoch": 40,
+          "stopped_epoch": 52,
+          "best_validation": {
+            "accuracy": 0.9747136694927859,
+            "macro_f1": 0.9626527167114569,
+            "weighted_f1": 0.9746792180192401,
+            "per_class": {
+              "Benign": {
+                "precision": 0.9603796945934792,
+                "recall": 0.9740477187107577,
+                "f1-score": 0.9671654197838736,
+                "support": 2389.0
+              },
+              "WebBased": {
+                "precision": 0.8558052434456929,
+                "recall": 0.8400735294117647,
+                "f1-score": 0.8478664192949906,
+                "support": 544.0
+              },
+              "Spoofing": {
+                "precision": 0.9636576787807737,
+                "recall": 0.9453709028177113,
+                "f1-score": 0.9544267053701015,
+                "support": 1739.0
+              },
+              "Recon": {
+                "precision": 0.9566536627654963,
+                "recall": 0.9688323090430202,
+                "f1-score": 0.9627044711014177,
+                "support": 2278.0
+              },
+              "Mirai": {
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1-score": 1.0,
+                "support": 2400.0
+              },
+              "Dos": {
+                "precision": 1.0,
+                "recall": 0.9932203389830508,
+                "f1-score": 0.9965986394557823,
+                "support": 1475.0
+              },
+              "DDos": {
+                "precision": 1.0,
+                "recall": 0.9966499162479062,
+                "f1-score": 0.9983221476510068,
+                "support": 2388.0
+              },
+              "BruteForce": {
+                "precision": 0.9783549783549783,
+                "recall": 0.9699570815450643,
+                "f1-score": 0.9741379310344827,
+                "support": 233.0
+              },
+              "accuracy": 0.9747136694927859,
+              "macro avg": {
+                "precision": 0.9643564072425526,
+                "recall": 0.9610189745949094,
+                "f1-score": 0.9626527167114569,
+                "support": 13446.0
+              },
+              "weighted avg": {
+                "precision": 0.9747076900159568,
+                "recall": 0.9747136694927859,
+                "f1-score": 0.9746792180192401,
+                "support": 13446.0
+              }
+            },
+            "confusion_matrix": [
+              [
+                2327,
+                8,
+                43,
+                11,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                9,
+                457,
+                8,
+                65,
+                0,
+                0,
+                0,
+                5
+              ],
+              [
+                68,
+                17,
+                1644,
+                10,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                16,
+                46,
+                9,
+                2207,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                2400,
+                0,
+                0,
+                0
+              ],
+              [
+                1,
+                1,
+                0,
+                8,
+                0,
+                1465,
+                0,
+                0
+              ],
+              [
+                0,
+                2,
+                0,
+                6,
+                0,
+                0,
+                2380,
+                0
+              ],
+              [
+                2,
+                3,
+                2,
+                0,
+                0,
+                0,
+                0,
+                226
+              ]
+            ],
+            "samples": 13446,
+            "wall_seconds_including_graph_io": 30.221089869970456,
+            "forward_seconds": 11.39467579126358,
+            "forward_timing_method": "CUDA events around model call"
+          },
+          "test": null,
+          "parameter_count": 431704,
+          "initial_state_sha256": "83bd23bfc1f5f26ec626c3643616e2c4da2def774f9c02b0e926e76886eeaf8d",
+          "train_batch_size": 512,
+          "evaluation_batch_size": 16,
+          "total_optimizer_updates": 10972,
+          "training_samples_seen": 5596292,
+          "training_validation_checkpoint_wall_seconds": 10353.785861651064,
+          "run_wall_seconds": 10353.785869732033,
+          "config_sha256": "87932dc51b922266ad77bb717d6219a185a07550a65a8c517cf9b631f27fc660",
+          "checkpoint_sha256": {
+            "best.pt": "3459dd5b58ad6934925bcfe8a6a83dddd0632170842a2e6f826fab4816d55a20",
+            "last.pt": "627b711e8cff862e2b60eb62fcac48381ca1d0f6c8cc15cd1a414509f386db5b"
+          },
+          "test_evaluated": false,
+          "registration": {
+            "kind": "exploratory_structural_control_after_prior_results",
+            "date": "2026-10-21",
+            "requested_by": "user",
+            "prior_test_results_available": true,
+            "purpose": "Keep original E0 architecture and match E2-B512 training/evaluation controls. Not a parameter-matched isolation of dual encoding."
+          }
+        },
+        "config_sha256": "87932dc51b922266ad77bb717d6219a185a07550a65a8c517cf9b631f27fc660"
+      },
+      "44": {
+        "directory": "outputs/baseline_seed_repeats_b512_s43_s44_v1/E0_s44",
+        "metrics": {
+          "mode": "full",
+          "protocol": "xgnid.e0-batch512.v1",
+          "best_epoch": 22,
+          "stopped_epoch": 34,
+          "best_validation": {
+            "accuracy": 0.9697307749516585,
+            "macro_f1": 0.9545650564945206,
+            "weighted_f1": 0.969509723956099,
+            "per_class": {
+              "Benign": {
+                "precision": 0.9550885867325917,
+                "recall": 0.9702804520719966,
+                "f1-score": 0.9626245847176079,
+                "support": 2389.0
+              },
+              "WebBased": {
+                "precision": 0.8531187122736419,
+                "recall": 0.7794117647058824,
+                "f1-score": 0.8146013448607109,
+                "support": 544.0
+              },
+              "Spoofing": {
+                "precision": 0.9383561643835616,
+                "recall": 0.9453709028177113,
+                "f1-score": 0.9418504726439416,
+                "support": 1739.0
+              },
+              "Recon": {
+                "precision": 0.9516550522648084,
+                "recall": 0.9591747146619842,
+                "f1-score": 0.955400087450809,
+                "support": 2278.0
+              },
+              "Mirai": {
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1-score": 1.0,
+                "support": 2400.0
+              },
+              "Dos": {
+                "precision": 0.9993178717598908,
+                "recall": 0.9932203389830508,
+                "f1-score": 0.9962597755865352,
+                "support": 1475.0
+              },
+              "DDos": {
+                "precision": 1.0,
+                "recall": 0.9966499162479062,
+                "f1-score": 0.9983221476510068,
+                "support": 2388.0
+              },
+              "BruteForce": {
+                "precision": 0.9780701754385965,
+                "recall": 0.9570815450643777,
+                "f1-score": 0.9674620390455533,
+                "support": 233.0
+              },
+              "accuracy": 0.9697307749516585,
+              "macro avg": {
+                "precision": 0.9594508203566363,
+                "recall": 0.9501487043191137,
+                "f1-score": 0.9545650564945206,
+                "support": 13446.0
+              },
+              "weighted avg": {
+                "precision": 0.9694599883851185,
+                "recall": 0.9697307749516585,
+                "f1-score": 0.969509723956099,
+                "support": 13446.0
+              }
+            },
+            "confusion_matrix": [
+              [
+                2318,
+                13,
+                52,
+                6,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                11,
+                424,
+                16,
+                89,
+                0,
+                0,
+                0,
+                4
+              ],
+              [
+                78,
+                12,
+                1644,
+                5,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                18,
+                44,
+                29,
+                2185,
+                0,
+                1,
+                0,
+                1
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                2400,
+                0,
+                0,
+                0
+              ],
+              [
+                1,
+                3,
+                0,
+                6,
+                0,
+                1465,
+                0,
+                0
+              ],
+              [
+                0,
+                1,
+                2,
+                5,
+                0,
+                0,
+                2380,
+                0
+              ],
+              [
+                1,
+                0,
+                9,
+                0,
+                0,
+                0,
+                0,
+                223
+              ]
+            ],
+            "samples": 13446,
+            "wall_seconds_including_graph_io": 28.567186755943112,
+            "forward_seconds": 11.553859309196472,
+            "forward_timing_method": "CUDA events around model call"
+          },
+          "test": null,
+          "parameter_count": 431704,
+          "initial_state_sha256": "cc3c8e2c08f13ee94410d1e8c394af59d04d2ab7c0e873b743a677995249a193",
+          "train_batch_size": 512,
+          "evaluation_batch_size": 16,
+          "total_optimizer_updates": 7174,
+          "training_samples_seen": 3659114,
+          "training_validation_checkpoint_wall_seconds": 6211.122082012007,
+          "run_wall_seconds": 6211.122097800951,
+          "config_sha256": "a2e87c48b2db54dec0dd54efd410a5aa270ce8711e0a38c489413c2ecdac0eae",
+          "checkpoint_sha256": {
+            "best.pt": "393e5ce12ca142779f2869eb36bd8101b92a41e89536b1cdb277917ea5d7f0c8",
+            "last.pt": "99edacbe72ecd6e510a751549a73ada764289d828849d54ae6e8091f544350ce"
+          },
+          "test_evaluated": false,
+          "registration": {
+            "kind": "exploratory_structural_control_after_prior_results",
+            "date": "2026-10-21",
+            "requested_by": "user",
+            "prior_test_results_available": true,
+            "purpose": "Keep original E0 architecture and match E2-B512 training/evaluation controls. Not a parameter-matched isolation of dual encoding."
+          }
+        },
+        "config_sha256": "a2e87c48b2db54dec0dd54efd410a5aa270ce8711e0a38c489413c2ecdac0eae"
+      }
+    },
+    "n0_reference_sha256": "63f8d57d3335da174af6046e6188b12397f32c76e75cd26e5cea9ba013c4a29c",
+    "vector_cache": {
+      "train": {
+        "samples": 107621,
+        "sample_order_sha256": "e55904a2bf640d68a278dfb571a296f0c9d0b7b4b8ae0e0ef179a9e3c8ea629a",
+        "file_sha256": "7b5c05844903d3e5c6797848515e46c52b8fe2885f5930a50c7379778aaddf9a",
+        "max_f0_output_error": 0.0
+      },
+      "val": {
+        "samples": 13446,
+        "sample_order_sha256": "efb5f9d81137f974a1bb244783831533bbab4b78f6d62bea511ebbd61e9b8c01",
+        "file_sha256": "1f0aa3855fbad7121ae6e11fd87df15798649323974ec973eedb26b14267f710",
+        "max_f0_output_error": 0.0
+      }
+    },
+    "vector_n0_best_sha256": "ae65d352ff927026bfcada8759b62f1b22c5d8f0166103d2a2d556618e7a3563",
+    "helpers": {
+      "run_fair_vector.py": "db17b45f292f59a4cbca103aa08537dd38834d8db16d25f9aa14fdfd666f51af",
+      "run_e2_concat_pair.py": "8202a33d97949b72c9779e5b72fdcad8655bb58550060f29dabcd305e848b48f",
+      "run_frozen_fusion.py": "ae6877118398c8586f9aa24d2e7e1632cd8ed29f18fafb8b62030cbd47309624",
+      "run_fusion_seed_repeats.py": "e696896fc0260266082e800ecb5cfe7b7d1defbd3058331d61309a600bd8dfd0",
+      "e3_gate_study.py": "94b8e537798cca3af76b260f0bca6c9cfaffb75cff404bb6a4f423017445738f"
+    }
+  },
+  "metrics": {
+    "variant": "E0FT",
+    "best_epoch": 24,
+    "best_validation": {
+      "accuracy": 0.9770191878625614,
+      "macro_f1": 0.9683478469940145,
+      "weighted_f1": 0.9769382833791469,
+      "per_class": {
+        "Benign": {
+          "precision": 0.9684476230542701,
+          "recall": 0.9635830891586438,
+          "f1-score": 0.966009232060428,
+          "support": 2389.0
+        },
+        "WebBased": {
+          "precision": 0.90625,
+          "recall": 0.8529411764705882,
+          "f1-score": 0.8787878787878787,
+          "support": 544.0
+        },
+        "Spoofing": {
+          "precision": 0.9565217391304348,
+          "recall": 0.9614721104082806,
+          "f1-score": 0.9589905362776026,
+          "support": 1739.0
+        },
+        "Recon": {
+          "precision": 0.9545454545454546,
+          "recall": 0.9771729587357331,
+          "f1-score": 0.9657266811279827,
+          "support": 2278.0
+        },
+        "Mirai": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 2400.0
+        },
+        "Dos": {
+          "precision": 0.9986376021798365,
+          "recall": 0.9938983050847457,
+          "f1-score": 0.9962623173632348,
+          "support": 1475.0
+        },
+        "DDos": {
+          "precision": 1.0,
+          "recall": 0.9966499162479062,
+          "f1-score": 0.9983221476510068,
+          "support": 2388.0
+        },
+        "BruteForce": {
+          "precision": 0.9912663755458515,
+          "recall": 0.9742489270386266,
+          "f1-score": 0.9826839826839826,
+          "support": 233.0
+        },
+        "accuracy": 0.9770191878625614,
+        "macro avg": {
+          "precision": 0.9719585993069809,
+          "recall": 0.9649958103930656,
+          "f1-score": 0.9683478469940145,
+          "support": 13446.0
+        },
+        "weighted avg": {
+          "precision": 0.9769762568791065,
+          "recall": 0.9770191878625614,
+          "f1-score": 0.9769382833791469,
+          "support": 13446.0
+        }
+      },
+      "confusion_matrix": [
+        [
+          2302,
+          8,
+          58,
+          21,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          8,
+          464,
+          5,
+          65,
+          0,
+          0,
+          0,
+          2
+        ],
+        [
+          51,
+          10,
+          1672,
+          6,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          14,
+          26,
+          11,
+          2226,
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          2400,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          8,
+          0,
+          1466,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1,
+          6,
+          0,
+          0,
+          2380,
+          0
+        ],
+        [
+          2,
+          2,
+          1,
+          0,
+          0,
+          1,
+          0,
+          227
+        ]
+      ],
+      "samples": 13446,
+      "wall_seconds_including_graph_io": 68.95958348398563,
+      "forward_seconds": 39.578874646663664,
+      "forward_timing_method": "CUDA events around model call"
+    },
+    "last_validation": {
+      "accuracy": 0.9770935594228767,
+      "macro_f1": 0.9667743427850986,
+      "weighted_f1": 0.9769454474329126,
+      "per_class": {
+        "Benign": {
+          "precision": 0.9634854771784233,
+          "recall": 0.9719547928003349,
+          "f1-score": 0.9677016045009377,
+          "support": 2389.0
+        },
+        "WebBased": {
+          "precision": 0.902,
+          "recall": 0.8290441176470589,
+          "f1-score": 0.8639846743295019,
+          "support": 544.0
+        },
+        "Spoofing": {
+          "precision": 0.9646990740740741,
+          "recall": 0.9585968947671075,
+          "f1-score": 0.9616383040092299,
+          "support": 1739.0
+        },
+        "Recon": {
+          "precision": 0.9545454545454546,
+          "recall": 0.9771729587357331,
+          "f1-score": 0.9657266811279827,
+          "support": 2278.0
+        },
+        "Mirai": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 2400.0
+        },
+        "Dos": {
+          "precision": 0.9993178717598908,
+          "recall": 0.9932203389830508,
+          "f1-score": 0.9962597755865352,
+          "support": 1475.0
+        },
+        "DDos": {
+          "precision": 1.0,
+          "recall": 0.9966499162479062,
+          "f1-score": 0.9983221476510068,
+          "support": 2388.0
+        },
+        "BruteForce": {
+          "precision": 0.9869565217391304,
+          "recall": 0.9742489270386266,
+          "f1-score": 0.980561555075594,
+          "support": 233.0
+        },
+        "accuracy": 0.9770935594228767,
+        "macro avg": {
+          "precision": 0.9713755499121217,
+          "recall": 0.9626109932774772,
+          "f1-score": 0.9667743427850986,
+          "support": 13446.0
+        },
+        "weighted avg": {
+          "precision": 0.9769802001085579,
+          "recall": 0.9770935594228767,
+          "f1-score": 0.9769454474329126,
+          "support": 13446.0
+        }
+      },
+      "confusion_matrix": [
+        [
+          2322,
+          10,
+          44,
+          13,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          11,
+          451,
+          4,
+          75,
+          0,
+          0,
+          0,
+          3
+        ],
+        [
+          58,
+          8,
+          1667,
+          6,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          16,
+          26,
+          10,
+          2226,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          2400,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0,
+          8,
+          0,
+          1465,
+          0,
+          0
+        ],
+        [
+          0,
+          2,
+          2,
+          4,
+          0,
+          0,
+          2380,
+          0
+        ],
+        [
+          2,
+          2,
+          1,
+          0,
+          0,
+          1,
+          0,
+          227
+        ]
+      ],
+      "samples": 13446,
+      "wall_seconds_including_graph_io": 70.18970381293911,
+      "forward_seconds": 40.05144989490509,
+      "forward_timing_method": "CUDA events around model call"
+    },
+    "epochs": 30,
+    "optimizer_updates": 6330,
+    "training_samples_seen": 3228630,
+    "versus_original": {
+      "counts": {
+        "repaired": 83,
+        "regressed": 52,
+        "both_correct": 13054,
+        "both_wrong": 257
+      },
+      "by_class": {
+        "0": {
+          "repaired": 6,
+          "regressed": 31,
+          "both_correct": 2296,
+          "both_wrong": 56
+        },
+        "1": {
+          "repaired": 18,
+          "regressed": 11,
+          "both_correct": 446,
+          "both_wrong": 69
+        },
+        "2": {
+          "repaired": 31,
+          "regressed": 3,
+          "both_correct": 1641,
+          "both_wrong": 64
+        },
+        "3": {
+          "repaired": 25,
+          "regressed": 6,
+          "both_correct": 2201,
+          "both_wrong": 46
+        },
+        "4": {
+          "repaired": 0,
+          "regressed": 0,
+          "both_correct": 2400,
+          "both_wrong": 0
+        },
+        "5": {
+          "repaired": 1,
+          "regressed": 0,
+          "both_correct": 1465,
+          "both_wrong": 9
+        },
+        "6": {
+          "repaired": 0,
+          "regressed": 0,
+          "both_correct": 2380,
+          "both_wrong": 8
+        },
+        "7": {
+          "repaired": 2,
+          "regressed": 1,
+          "both_correct": 225,
+          "both_wrong": 5
+        }
+      },
+      "net_correct": 31
+    },
+    "macro_f1_minus_original_pp": 0.5695130282557637,
+    "training_start_rng_sha256": "6bc21df123a0ce6665fb3ed87e054acd88b866903a1f7c0c02fda56e0ab4fb8c",
+    "orders": [
+      "332e3df835de9da075766c42a78d28e625d44501f626b0ed347869c444934061",
+      "a566221fcc98ac2ad612dbc20f29b9fc0d7dd62d9a83163a3615709c7e3f34bb",
+      "c32703f156062d80f8f4b0ff38f40cfcc1d2612684e0d2b15dc82913a1fa6591",
+      "39a2a5d52056380dcdb4bb215226b6167c1d09fb1a30e82a0dfd61de0ff0d80a",
+      "82be5bff0e8cde58536c08111410ed98ff55aa676db63a9261d67d72ba74938c",
+      "c1bc7a6afe46aad0c286ba045728165f76f1e363f00016a697f09733a8823e52",
+      "a630e80781967ec85847a43671b527b1322660083bb5e98834df202dc3a675a8",
+      "684eea3970165de07298e158fcb34e16bfac443c759a9cd7896419425d319aac",
+      "cf244f8ca7ed7f2f069ae2a01fa722af7c69ab7bad98dc1fbaa19ef4535846f2",
+      "f08ac6affb48574b2015061f16725a7129d6d5b9d3e0ac9b00a7609de6f9db18",
+      "3d85e156e20b8aafd70ba84ba2b62d213a494effc23a850da1b4160a640ef526",
+      "2362bc879ff5438807f509b785ff3ad1b99c97c8da6239b2ccd3fb49f6cc0dab",
+      "c6eca1d94854d6c12abd0fa964490dfef44750fb54a640100d1d4b2ceb0e9d4b",
+      "d4b69e0d8136d6504fd12167eb47451d204ac177303e670fd1be10285b17e098",
+      "9bf44b40a44d2a6805f1d20e54740e0da370e4dbaa8e0d37f3e2e1418be4424e",
+      "8f980abbe2c2495ea7386bcc91dd9f6f359e6aa31da165697ceea0e75928bf9b",
+      "33f2e344448e620c5e0b6165150aece9de8737f6243e9ddc959dfd633d53f0b4",
+      "2a1a99e5f316561a884c7392a722a6195924b9fd4ce49a2b076261bce544b115",
+      "9c7b1acb731a1ba92618230a6e556b9a0d7632d803c56e05998ca445c93b087e",
+      "a6fea801341117f319c70a9f77fe0f38189721bed4ba1c46c06b693ba5f1a4d8",
+      "3036636c11c737fa2734e3a1f507369da79bfb44a5156fb81672b89b27536824",
+      "387954d20a57d97b78418bdfb52c6e147ffc8e32db839a3792b6a407b350732f",
+      "71bcd3a238003113688dcbbb7777ae677bd546f55e6813537275b840bd0ea103",
+      "e667a1526e7e07df50a15be202cdcff4ed127ad1deaa1f00c6e3428f6e501204",
+      "79682049b9d34dc976ec02e0d80c476f8960b6df6c9fc53924e8fec6828253d1",
+      "aa27e42d2662730da0fe83cb1cd74e41082c798f8c1b045d8727d2292f1ad5a7",
+      "ee7b3d9521cf4d0215ca541d43b2b49cdafcd4f2e116e6c6784e139c29e76c58",
+      "6039b8646753edbb86624a8aa063437b383f5ecf5fa4bf357f252ed0672b4eae",
+      "f77d3ef486f5968348fc3519b59d2fa6eb511402f9569ebc2051b680a71ba412",
+      "3a5679f50cff7bc352c4015a22c43799f68343648bf37fefe310762fad2a8752"
+    ],
+    "test_evaluated": false,
+    "predictions_sha256": "8ce9407eb4384a6b829e9615bbe940be37bc3fc8267609b6036ced042c63750e",
+    "checkpoint_sha256": {
+      "best.pt": "8ace2b182f4b7b3bf16bf05d21e3b9bbc83fb096e266429a1715d961fde7d305",
+      "last.pt": "02824474d19266470b68bdf9bfc1338840c98fc52a518020992b5ab7bba5629b"
+    }
+  },
+  "training_evidence": {
+    "selected_epoch_zero": false,
+    "best_trained_epoch": 24,
+    "best_trained_macro_f1": 0.9683478469940145,
+    "best_trained_minus_initial_pp": 0.5695130282557637,
+    "last_trained_minus_initial_pp": 0.41216260736416377
+  },
+  "test_evaluated": false
+}

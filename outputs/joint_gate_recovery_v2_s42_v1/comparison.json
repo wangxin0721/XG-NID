@@ -1,0 +1,269 @@
+[
+  {
+    "model": "N0",
+    "macro_f1": 0.9699623354279772,
+    "per_class": {
+      "Benign": {
+        "precision": 0.9639004149377594,
+        "recall": 0.9723733779824194,
+        "f1-score": 0.9681183579912481,
+        "support": 2389.0
+      },
+      "WebBased": {
+        "precision": 0.8899253731343284,
+        "recall": 0.8768382352941176,
+        "f1-score": 0.8833333333333334,
+        "support": 544.0
+      },
+      "Spoofing": {
+        "precision": 0.9613163972286374,
+        "recall": 0.9574468085106383,
+        "f1-score": 0.9593777009507347,
+        "support": 1739.0
+      },
+      "Recon": {
+        "precision": 0.9672202797202797,
+        "recall": 0.9714661984196664,
+        "f1-score": 0.9693385895751204,
+        "support": 2278.0
+      },
+      "Mirai": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 2400.0
+      },
+      "Dos": {
+        "precision": 0.9986376021798365,
+        "recall": 0.9938983050847457,
+        "f1-score": 0.9962623173632348,
+        "support": 1475.0
+      },
+      "DDos": {
+        "precision": 1.0,
+        "recall": 0.9966499162479062,
+        "f1-score": 0.9983221476510068,
+        "support": 2388.0
+      },
+      "BruteForce": {
+        "precision": 0.9870689655172413,
+        "recall": 0.9828326180257511,
+        "f1-score": 0.9849462365591397,
+        "support": 233.0
+      },
+      "accuracy": 0.9782091328276067,
+      "macro avg": {
+        "precision": 0.9710086290897604,
+        "recall": 0.9689381824456555,
+        "f1-score": 0.9699623354279772,
+        "support": 13446.0
+      },
+      "weighted avg": {
+        "precision": 0.9782025909888112,
+        "recall": 0.9782091328276067,
+        "f1-score": 0.9781981183548663,
+        "support": 13446.0
+      }
+    },
+    "best_epoch": 5,
+    "updates": 3587,
+    "wall_seconds": null
+  },
+  {
+    "model": "frozen_V2",
+    "macro_f1": 0.97093667251942,
+    "per_class": {
+      "Benign": {
+        "precision": 0.9659185369908562,
+        "recall": 0.972791963164504,
+        "f1-score": 0.9693430656934306,
+        "support": 2389
+      },
+      "WebBased": {
+        "precision": 0.8882783882783882,
+        "recall": 0.8915441176470589,
+        "f1-score": 0.8899082568807339,
+        "support": 544
+      },
+      "Spoofing": {
+        "precision": 0.962536023054755,
+        "recall": 0.9603220241518113,
+        "f1-score": 0.9614277489925158,
+        "support": 1739
+      },
+      "Recon": {
+        "precision": 0.9688459850811759,
+        "recall": 0.9692712906057945,
+        "f1-score": 0.9690585911784069,
+        "support": 2278
+      },
+      "Mirai": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 2400
+      },
+      "Dos": {
+        "precision": 0.9993183367416496,
+        "recall": 0.9938983050847457,
+        "f1-score": 0.9966009517335146,
+        "support": 1475
+      },
+      "DDos": {
+        "precision": 1.0,
+        "recall": 0.9966499162479062,
+        "f1-score": 0.9983221476510067,
+        "support": 2388
+      },
+      "BruteForce": {
+        "precision": 0.9828326180257511,
+        "recall": 0.9828326180257511,
+        "f1-score": 0.9828326180257511,
+        "support": 233
+      }
+    },
+    "best_epoch": 13,
+    "updates": 5275,
+    "wall_seconds": null
+  },
+  {
+    "model": "J0",
+    "macro_f1": 0.9701927645931994,
+    "per_class": {
+      "Benign": {
+        "precision": 0.9686585875470122,
+        "recall": 0.9702804520719966,
+        "f1-score": 0.9694688414889168,
+        "support": 2389.0
+      },
+      "WebBased": {
+        "precision": 0.8932584269662921,
+        "recall": 0.8768382352941176,
+        "f1-score": 0.8849721706864564,
+        "support": 544.0
+      },
+      "Spoofing": {
+        "precision": 0.9598623853211009,
+        "recall": 0.9626221966647499,
+        "f1-score": 0.9612403100775193,
+        "support": 1739.0
+      },
+      "Recon": {
+        "precision": 0.9647212543554007,
+        "recall": 0.9723441615452151,
+        "f1-score": 0.9685177087888063,
+        "support": 2278.0
+      },
+      "Mirai": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 2400.0
+      },
+      "Dos": {
+        "precision": 0.9986376021798365,
+        "recall": 0.9938983050847457,
+        "f1-score": 0.9962623173632348,
+        "support": 1475.0
+      },
+      "DDos": {
+        "precision": 1.0,
+        "recall": 0.9966499162479062,
+        "f1-score": 0.9983221476510068,
+        "support": 2388.0
+      },
+      "BruteForce": {
+        "precision": 0.987012987012987,
+        "recall": 0.9785407725321889,
+        "f1-score": 0.9827586206896551,
+        "support": 233.0
+      },
+      "accuracy": 0.9785809906291834,
+      "macro avg": {
+        "precision": 0.9715189054228287,
+        "recall": 0.9688967549301151,
+        "f1-score": 0.9701927645931994,
+        "support": 13446.0
+      },
+      "weighted avg": {
+        "precision": 0.9785704406220257,
+        "recall": 0.9785809906291834,
+        "f1-score": 0.9785682826370836,
+        "support": 13446.0
+      }
+    },
+    "best_epoch": 8,
+    "updates": 4220,
+    "wall_seconds": 3977.1428944260115
+  },
+  {
+    "model": "J2",
+    "macro_f1": 0.97093667251942,
+    "per_class": {
+      "Benign": {
+        "precision": 0.9659185369908562,
+        "recall": 0.972791963164504,
+        "f1-score": 0.9693430656934306,
+        "support": 2389.0
+      },
+      "WebBased": {
+        "precision": 0.8882783882783882,
+        "recall": 0.8915441176470589,
+        "f1-score": 0.8899082568807339,
+        "support": 544.0
+      },
+      "Spoofing": {
+        "precision": 0.962536023054755,
+        "recall": 0.9603220241518113,
+        "f1-score": 0.9614277489925157,
+        "support": 1739.0
+      },
+      "Recon": {
+        "precision": 0.9688459850811759,
+        "recall": 0.9692712906057945,
+        "f1-score": 0.9690585911784069,
+        "support": 2278.0
+      },
+      "Mirai": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 2400.0
+      },
+      "Dos": {
+        "precision": 0.9993183367416496,
+        "recall": 0.9938983050847457,
+        "f1-score": 0.9966009517335146,
+        "support": 1475.0
+      },
+      "DDos": {
+        "precision": 1.0,
+        "recall": 0.9966499162479062,
+        "f1-score": 0.9983221476510068,
+        "support": 2388.0
+      },
+      "BruteForce": {
+        "precision": 0.9828326180257511,
+        "recall": 0.9828326180257511,
+        "f1-score": 0.9828326180257511,
+        "support": 233.0
+      },
+      "accuracy": 0.9788784768704447,
+      "macro avg": {
+        "precision": 0.9709662360215721,
+        "recall": 0.9709137793659465,
+        "f1-score": 0.97093667251942,
+        "support": 13446.0
+      },
+      "weighted avg": {
+        "precision": 0.9789289508326394,
+        "recall": 0.9788784768704447,
+        "f1-score": 0.978899947514849,
+        "support": 13446.0
+      }
+    },
+    "best_epoch": 0,
+    "updates": 2532,
+    "wall_seconds": 2987.396197222057
+  }
+]

@@ -1,0 +1,573 @@
+{
+  "rows": [
+    {
+      "model": "N0",
+      "macro_f1": 0.9699623354279772,
+      "per_class": {
+        "Benign": {
+          "precision": 0.9639004149377594,
+          "recall": 0.9723733779824194,
+          "f1-score": 0.9681183579912481,
+          "support": 2389.0
+        },
+        "WebBased": {
+          "precision": 0.8899253731343284,
+          "recall": 0.8768382352941176,
+          "f1-score": 0.8833333333333334,
+          "support": 544.0
+        },
+        "Spoofing": {
+          "precision": 0.9613163972286374,
+          "recall": 0.9574468085106383,
+          "f1-score": 0.9593777009507347,
+          "support": 1739.0
+        },
+        "Recon": {
+          "precision": 0.9672202797202797,
+          "recall": 0.9714661984196664,
+          "f1-score": 0.9693385895751204,
+          "support": 2278.0
+        },
+        "Mirai": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 2400.0
+        },
+        "Dos": {
+          "precision": 0.9986376021798365,
+          "recall": 0.9938983050847457,
+          "f1-score": 0.9962623173632348,
+          "support": 1475.0
+        },
+        "DDos": {
+          "precision": 1.0,
+          "recall": 0.9966499162479062,
+          "f1-score": 0.9983221476510068,
+          "support": 2388.0
+        },
+        "BruteForce": {
+          "precision": 0.9870689655172413,
+          "recall": 0.9828326180257511,
+          "f1-score": 0.9849462365591397,
+          "support": 233.0
+        },
+        "accuracy": 0.9782091328276067,
+        "macro avg": {
+          "precision": 0.9710086290897604,
+          "recall": 0.9689381824456555,
+          "f1-score": 0.9699623354279772,
+          "support": 13446.0
+        },
+        "weighted avg": {
+          "precision": 0.9782025909888112,
+          "recall": 0.9782091328276067,
+          "f1-score": 0.9781981183548663,
+          "support": 13446.0
+        }
+      },
+      "best_epoch": 5,
+      "stop_epoch": 17,
+      "updates": 3587,
+      "joint_wall_seconds": null,
+      "selected_epoch_zero": false,
+      "training_evidence": null
+    },
+    {
+      "model": "frozen_V2",
+      "macro_f1": 0.97093667251942,
+      "per_class": {
+        "Benign": {
+          "precision": 0.9659185369908562,
+          "recall": 0.972791963164504,
+          "f1-score": 0.9693430656934306,
+          "support": 2389
+        },
+        "WebBased": {
+          "precision": 0.8882783882783882,
+          "recall": 0.8915441176470589,
+          "f1-score": 0.8899082568807339,
+          "support": 544
+        },
+        "Spoofing": {
+          "precision": 0.962536023054755,
+          "recall": 0.9603220241518113,
+          "f1-score": 0.9614277489925158,
+          "support": 1739
+        },
+        "Recon": {
+          "precision": 0.9688459850811759,
+          "recall": 0.9692712906057945,
+          "f1-score": 0.9690585911784069,
+          "support": 2278
+        },
+        "Mirai": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 2400
+        },
+        "Dos": {
+          "precision": 0.9993183367416496,
+          "recall": 0.9938983050847457,
+          "f1-score": 0.9966009517335146,
+          "support": 1475
+        },
+        "DDos": {
+          "precision": 1.0,
+          "recall": 0.9966499162479062,
+          "f1-score": 0.9983221476510067,
+          "support": 2388
+        },
+        "BruteForce": {
+          "precision": 0.9828326180257511,
+          "recall": 0.9828326180257511,
+          "f1-score": 0.9828326180257511,
+          "support": 233
+        }
+      },
+      "best_epoch": 13,
+      "stop_epoch": 25,
+      "updates": 5275,
+      "joint_wall_seconds": null,
+      "selected_epoch_zero": false,
+      "training_evidence": null
+    },
+    {
+      "model": "lower_lr_J0",
+      "macro_f1": 0.9702289872622497,
+      "per_class": {
+        "Benign": {
+          "precision": 0.9666944213155704,
+          "recall": 0.9719547928003349,
+          "f1-score": 0.9693174702567314,
+          "support": 2389.0
+        },
+        "WebBased": {
+          "precision": 0.8913857677902621,
+          "recall": 0.875,
+          "f1-score": 0.8831168831168831,
+          "support": 544.0
+        },
+        "Spoofing": {
+          "precision": 0.9592656339644291,
+          "recall": 0.9614721104082806,
+          "f1-score": 0.9603676048248133,
+          "support": 1739.0
+        },
+        "Recon": {
+          "precision": 0.9672346002621232,
+          "recall": 0.9719051799824407,
+          "f1-score": 0.9695642653820888,
+          "support": 2278.0
+        },
+        "Mirai": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 2400.0
+        },
+        "Dos": {
+          "precision": 0.9986376021798365,
+          "recall": 0.9938983050847457,
+          "f1-score": 0.9962623173632348,
+          "support": 1475.0
+        },
+        "DDos": {
+          "precision": 1.0,
+          "recall": 0.9966499162479062,
+          "f1-score": 0.9983221476510068,
+          "support": 2388.0
+        },
+        "BruteForce": {
+          "precision": 0.991304347826087,
+          "recall": 0.9785407725321889,
+          "f1-score": 0.9848812095032398,
+          "support": 233.0
+        },
+        "accuracy": 0.9785809906291834,
+        "macro avg": {
+          "precision": 0.9718152966672886,
+          "recall": 0.9686776346319872,
+          "f1-score": 0.9702289872622497,
+          "support": 13446.0
+        },
+        "weighted avg": {
+          "precision": 0.9785686868452176,
+          "recall": 0.9785809906291834,
+          "f1-score": 0.978567545047248,
+          "support": 13446.0
+        }
+      },
+      "best_epoch": 9,
+      "stop_epoch": 21,
+      "updates": 4431,
+      "joint_wall_seconds": 4165.293931885972,
+      "selected_epoch_zero": false,
+      "training_evidence": {
+        "best_trained_epoch": 9,
+        "best_trained_macro_f1": 0.9702289872622497,
+        "best_trained_minus_start_pp": 0.026665183427254657,
+        "last_trained_macro_f1": 0.9699337343521066,
+        "last_trained_minus_start_pp": -0.0028601075870549053
+      }
+    },
+    {
+      "model": "lower_lr_J2",
+      "macro_f1": 0.9712071203419106,
+      "per_class": {
+        "Benign": {
+          "precision": 0.96630615640599,
+          "recall": 0.9723733779824194,
+          "f1-score": 0.9693302733152513,
+          "support": 2389.0
+        },
+        "WebBased": {
+          "precision": 0.8984962406015038,
+          "recall": 0.8786764705882353,
+          "f1-score": 0.8884758364312267,
+          "support": 544.0
+        },
+        "Spoofing": {
+          "precision": 0.9592422502870264,
+          "recall": 0.960897067280046,
+          "f1-score": 0.960068945705257,
+          "support": 1739.0
+        },
+        "Recon": {
+          "precision": 0.9672489082969432,
+          "recall": 0.9723441615452151,
+          "f1-score": 0.9697898423817863,
+          "support": 2278.0
+        },
+        "Mirai": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 2400.0
+        },
+        "Dos": {
+          "precision": 0.9993183367416496,
+          "recall": 0.9938983050847457,
+          "f1-score": 0.9966009517335146,
+          "support": 1475.0
+        },
+        "DDos": {
+          "precision": 1.0,
+          "recall": 0.9966499162479062,
+          "f1-score": 0.9983221476510068,
+          "support": 2388.0
+        },
+        "BruteForce": {
+          "precision": 0.9913419913419913,
+          "recall": 0.9828326180257511,
+          "f1-score": 0.9870689655172413,
+          "support": 233.0
+        },
+        "accuracy": 0.9788784768704447,
+        "macro avg": {
+          "precision": 0.972744235459388,
+          "recall": 0.9697089895942899,
+          "f1-score": 0.9712071203419106,
+          "support": 13446.0
+        },
+        "weighted avg": {
+          "precision": 0.9788621061704091,
+          "recall": 0.9788784768704447,
+          "f1-score": 0.9788612819320937,
+          "support": 13446.0
+        }
+      },
+      "best_epoch": 9,
+      "stop_epoch": 21,
+      "updates": 4431,
+      "joint_wall_seconds": 3934.2544536161004,
+      "selected_epoch_zero": false,
+      "training_evidence": {
+        "best_trained_epoch": 9,
+        "best_trained_macro_f1": 0.9712071203419106,
+        "best_trained_minus_start_pp": 0.027044782249063815,
+        "last_trained_macro_f1": 0.9696488256663052,
+        "last_trained_minus_start_pp": -0.12878468531147824
+      }
+    },
+    {
+      "model": "J2_flow_stats",
+      "macro_f1": 0.97093667251942,
+      "per_class": {
+        "Benign": {
+          "precision": 0.9659185369908562,
+          "recall": 0.972791963164504,
+          "f1-score": 0.9693430656934306,
+          "support": 2389.0
+        },
+        "WebBased": {
+          "precision": 0.8882783882783882,
+          "recall": 0.8915441176470589,
+          "f1-score": 0.8899082568807339,
+          "support": 544.0
+        },
+        "Spoofing": {
+          "precision": 0.962536023054755,
+          "recall": 0.9603220241518113,
+          "f1-score": 0.9614277489925157,
+          "support": 1739.0
+        },
+        "Recon": {
+          "precision": 0.9688459850811759,
+          "recall": 0.9692712906057945,
+          "f1-score": 0.9690585911784069,
+          "support": 2278.0
+        },
+        "Mirai": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 2400.0
+        },
+        "Dos": {
+          "precision": 0.9993183367416496,
+          "recall": 0.9938983050847457,
+          "f1-score": 0.9966009517335146,
+          "support": 1475.0
+        },
+        "DDos": {
+          "precision": 1.0,
+          "recall": 0.9966499162479062,
+          "f1-score": 0.9983221476510068,
+          "support": 2388.0
+        },
+        "BruteForce": {
+          "precision": 0.9828326180257511,
+          "recall": 0.9828326180257511,
+          "f1-score": 0.9828326180257511,
+          "support": 233.0
+        },
+        "accuracy": 0.9788784768704447,
+        "macro avg": {
+          "precision": 0.9709662360215721,
+          "recall": 0.9709137793659465,
+          "f1-score": 0.97093667251942,
+          "support": 13446.0
+        },
+        "weighted avg": {
+          "precision": 0.9789289508326394,
+          "recall": 0.9788784768704447,
+          "f1-score": 0.978899947514849,
+          "support": 13446.0
+        }
+      },
+      "best_epoch": 0,
+      "stop_epoch": 12,
+      "updates": 2532,
+      "joint_wall_seconds": 2313.2977284520166,
+      "selected_epoch_zero": true,
+      "training_evidence": {
+        "best_trained_epoch": 12,
+        "best_trained_macro_f1": 0.9430319351896747,
+        "best_trained_minus_start_pp": -2.79047373297453,
+        "last_trained_macro_f1": 0.9430319351896747,
+        "last_trained_minus_start_pp": -2.79047373297453
+      }
+    }
+  ],
+  "candidate_minus_N0_pp": 0.09743370914427896,
+  "candidate_minus_frozen_V2_pp": 0.0,
+  "candidate_minus_lower_lr_J2_pp": -0.027044782249063815,
+  "candidate_minus_stronger_reference_pp": -0.027044782249063815,
+  "budget_screening": {
+    "threshold_pp": 0.1,
+    "score_threshold_passed": false,
+    "class_tradeoff_review_required": true,
+    "statistical_significance_claimed": false,
+    "automatic_followup": false
+  },
+  "stats_on_minus_off_pp": 0.0,
+  "comparisons": {
+    "frozen_V2": {
+      "counts": {
+        "repaired": 0,
+        "regressed": 0,
+        "both_correct": 13162,
+        "both_wrong": 284
+      },
+      "by_class": {
+        "0": {
+          "repaired": 0,
+          "regressed": 0,
+          "both_correct": 2324,
+          "both_wrong": 65
+        },
+        "1": {
+          "repaired": 0,
+          "regressed": 0,
+          "both_correct": 485,
+          "both_wrong": 59
+        },
+        "2": {
+          "repaired": 0,
+          "regressed": 0,
+          "both_correct": 1670,
+          "both_wrong": 69
+        },
+        "3": {
+          "repaired": 0,
+          "regressed": 0,
+          "both_correct": 2208,
+          "both_wrong": 70
+        },
+        "4": {
+          "repaired": 0,
+          "regressed": 0,
+          "both_correct": 2400,
+          "both_wrong": 0
+        },
+        "5": {
+          "repaired": 0,
+          "regressed": 0,
+          "both_correct": 1466,
+          "both_wrong": 9
+        },
+        "6": {
+          "repaired": 0,
+          "regressed": 0,
+          "both_correct": 2380,
+          "both_wrong": 8
+        },
+        "7": {
+          "repaired": 0,
+          "regressed": 0,
+          "both_correct": 229,
+          "both_wrong": 4
+        }
+      },
+      "net_correct": 0
+    },
+    "lower_lr_J2": {
+      "counts": {
+        "repaired": 15,
+        "regressed": 15,
+        "both_correct": 13147,
+        "both_wrong": 269
+      },
+      "by_class": {
+        "0": {
+          "repaired": 3,
+          "regressed": 2,
+          "both_correct": 2321,
+          "both_wrong": 63
+        },
+        "1": {
+          "repaired": 9,
+          "regressed": 2,
+          "both_correct": 476,
+          "both_wrong": 57
+        },
+        "2": {
+          "repaired": 2,
+          "regressed": 3,
+          "both_correct": 1668,
+          "both_wrong": 66
+        },
+        "3": {
+          "repaired": 1,
+          "regressed": 8,
+          "both_correct": 2207,
+          "both_wrong": 62
+        },
+        "4": {
+          "repaired": 0,
+          "regressed": 0,
+          "both_correct": 2400,
+          "both_wrong": 0
+        },
+        "5": {
+          "repaired": 0,
+          "regressed": 0,
+          "both_correct": 1466,
+          "both_wrong": 9
+        },
+        "6": {
+          "repaired": 0,
+          "regressed": 0,
+          "both_correct": 2380,
+          "both_wrong": 8
+        },
+        "7": {
+          "repaired": 0,
+          "regressed": 0,
+          "both_correct": 229,
+          "both_wrong": 4
+        }
+      },
+      "net_correct": 0
+    },
+    "stats_off_same_checkpoint": {
+      "counts": {
+        "repaired": 0,
+        "regressed": 0,
+        "both_correct": 13162,
+        "both_wrong": 284
+      },
+      "by_class": {
+        "0": {
+          "repaired": 0,
+          "regressed": 0,
+          "both_correct": 2324,
+          "both_wrong": 65
+        },
+        "1": {
+          "repaired": 0,
+          "regressed": 0,
+          "both_correct": 485,
+          "both_wrong": 59
+        },
+        "2": {
+          "repaired": 0,
+          "regressed": 0,
+          "both_correct": 1670,
+          "both_wrong": 69
+        },
+        "3": {
+          "repaired": 0,
+          "regressed": 0,
+          "both_correct": 2208,
+          "both_wrong": 70
+        },
+        "4": {
+          "repaired": 0,
+          "regressed": 0,
+          "both_correct": 2400,
+          "both_wrong": 0
+        },
+        "5": {
+          "repaired": 0,
+          "regressed": 0,
+          "both_correct": 1466,
+          "both_wrong": 9
+        },
+        "6": {
+          "repaired": 0,
+          "regressed": 0,
+          "both_correct": 2380,
+          "both_wrong": 8
+        },
+        "7": {
+          "repaired": 0,
+          "regressed": 0,
+          "both_correct": 229,
+          "both_wrong": 4
+        }
+      },
+      "net_correct": 0
+    }
+  },
+  "stage_A": {
+    "directory": "/home/nzxn/下载/WX/load/XG-NID/outputs/fair_vector_five_runs_recovery_v1/V2",
+    "updates": 5275,
+    "elapsed_seconds": null,
+    "timing_available": false,
+    "timing_note": "Historical V2 did not record wall time; never infer duration from file timestamps"
+  },
+  "attribution": "Candidate changes the statistics path and adds its parameters/learning-rate group; overall N0 gains are not an isolated gate effect. Path-off is a post-selection dependency diagnostic at the same checkpoint, not a separately trained ablation."
+}

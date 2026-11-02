@@ -1,0 +1,120 @@
+{
+  "schema": "xgnid.r0.config.v1",
+  "experiment": "R0",
+  "claim": "protocol_reimplementation",
+  "upstream_commit": "551d1f10189e5259f8f34e32f918d557a2b3a64e",
+  "model": "official_HeteroGNN_Edge",
+  "hidden_size": 64,
+  "eps": 1.0,
+  "optimizer": "Adam",
+  "lr": 0.01,
+  "weight_decay": 0.0,
+  "epochs": 30,
+  "batch_size": 64,
+  "test_batch_size": 1,
+  "scheduler": null,
+  "selection": "last_epoch",
+  "seed": 42,
+  "seed_evidence": "local reproducibility choice; official training seed not published",
+  "flow_dim": 82,
+  "packet_dim": 1500,
+  "labels": [
+    "Benign",
+    "WebBased",
+    "Spoofing",
+    "Recon",
+    "Mirai",
+    "Dos",
+    "DDos",
+    "BruteForce"
+  ],
+  "mode": "full",
+  "binding": {
+    "manifest_id": "22d027fe3d0b0ad9079da9a13614597b0e40bb883a34b2d4d825452d6129d383",
+    "config_id": "7463253af0c7d165dc7c3b681895e6d918e8c83f80994ac896ef5045f84e414b",
+    "code": {
+      "scripts/run_r0_edge.py": "b8dd03260fd1bb5963a4f27b825028bb60125a021870c1cdbbeff1a568330626",
+      "scripts/r0_data.py": "b1d812cf0fb137200a1707a554b1e907c25fe988ea89f7f094b341e60d8cfff5",
+      "scripts/audit_graph_split.py": "f015ad28326e1aa697f5f1aa94ce0d65122c044f6396ad1a8059978b9cef9355",
+      "scripts/build_grouped_split.py": "63689d2130edf831c1e9b2a4c3ea49146d8c1c39d23303c96927618111a3d1e1",
+      "src/xgnid/edge_experiments.py": "028299120dbc4f22b682f7e180062a15ffb9d59f72c34d6444cd6ad0a9cc4f97",
+      "src/xgnid/model.py": "e56860fedda32af7acfaec85c3f6b10b6e67547e6557d3dcf222570c9d3d2d89",
+      "third_party/GNN4ID/Utility/Model.py": "72a6c12aed6acbea50555686e1540ccbed0ba03d589951accce3fc1d453bfcb0",
+      "docs/r0_source_lock.json": "3657c8f5a37039e81dffdda7e88a0977de288c5ebd19650e6f3914894b63b01c"
+    },
+    "runtime": {
+      "python": "3.9.23",
+      "torch": "2.3.1+cu118",
+      "pyg": "2.5.3",
+      "cuda": "11.8",
+      "device_type": "cuda",
+      "gpu": "Tesla T4"
+    }
+  },
+  "git_commit": "9d52823dd0a20e1001b3aeab9d0074f0a1f6d115",
+  "manifest": {
+    "schema": "xgnid.r0.manifest.v1",
+    "status": "completed",
+    "claim": "protocol_reimplementation",
+    "historical_author_sample_identity_verified": false,
+    "source_data_root": "/home/nzxn/下载/WX/load/XG-NID/data/processed/CICIoT2023_processed/processed",
+    "labels": [
+      "Benign",
+      "WebBased",
+      "Spoofing",
+      "Recon",
+      "Mirai",
+      "Dos",
+      "DDos",
+      "BruteForce"
+    ],
+    "sample_manifest_sha256": "b821c4421795f92624c8cfe747083fe2ce0fcec8e0b85fdf5977dac32715171e",
+    "membership_evidence_sha256": "51500783cc2ac16d5c4e798d6609cd763b130f4e899ea291b89090306817feb5",
+    "partition_label_counts": {
+      "train": {
+        "0": 20000,
+        "3": 20000,
+        "2": 20000,
+        "1": 20000,
+        "7": 20000,
+        "6": 20000,
+        "5": 20000,
+        "4": 20000
+      },
+      "test": {
+        "0": 4000,
+        "5": 4000,
+        "4": 4000,
+        "3": 4000,
+        "2": 4000,
+        "1": 1090,
+        "7": 467,
+        "6": 4000
+      }
+    },
+    "table4_counts_match": true,
+    "membership_mode": "official_filenames",
+    "locations_sha256": null,
+    "edge_overlap": {
+      "shared_groups": 1644,
+      "affected_test_samples": 3346,
+      "within_partition_duplicate_samples": {
+        "train": 47657,
+        "test": 1741
+      },
+      "conflicting_label_groups": 0
+    },
+    "node_overlap": {
+      "shared_groups": 1658,
+      "affected_test_samples": 3363,
+      "within_partition_duplicate_samples": {
+        "train": 47689,
+        "test": 1747
+      },
+      "conflicting_label_groups": 0
+    },
+    "manifest_id": "22d027fe3d0b0ad9079da9a13614597b0e40bb883a34b2d4d825452d6129d383"
+  },
+  "workers": 0,
+  "smoke_report": "/home/nzxn/下载/WX/load/XG-NID/outputs/r0_cuda_smoke_20261017T064602357890Z/summary.json"
+}

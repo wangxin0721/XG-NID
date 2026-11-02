@@ -1,0 +1,343 @@
+{
+  "variant": "D32",
+  "architecture": {
+    "width": 32,
+    "projection": [
+      64,
+      32
+    ],
+    "gate": [
+      69,
+      16,
+      32
+    ],
+    "shared_head": [
+      32,
+      32,
+      8
+    ],
+    "trainable_parameters": 7144
+  },
+  "protocol": {
+    "schema": "xgnid.fusion-dimension-pair.v1",
+    "variants": {
+      "D8": 8,
+      "D32": 32
+    },
+    "seed": 42,
+    "reference_protocol": "frozen_fusion_20261029.json",
+    "n0_best_sha256": "ae65d352ff927026bfcada8759b62f1b22c5d8f0166103d2a2d556618e7a3563",
+    "encoder_hidden_dim": 64,
+    "encoder_mode": "frozen_eval",
+    "head_initialization": "fresh_default_Linear_named_seed42_streams_zero_gate_output",
+    "gate_hidden_dim": 16,
+    "gate_input": "two_projected_vectors_entropy_concentration_margins_cosine_2d_plus_5",
+    "head_hidden_dim": 32,
+    "classes": 8,
+    "cache_dim": 64,
+    "cache_batch_size": 16,
+    "eval_batch_size": 16,
+    "batch_size": 512,
+    "workers": 2,
+    "optimizer": "fresh_Adam",
+    "lr": 0.001,
+    "weight_decay": 0.0,
+    "epochs": 100,
+    "patience": 20,
+    "include_epoch_zero": false,
+    "probe_batches": 3,
+    "loss": "plain_final_NLL",
+    "statistics_residual": false,
+    "historical_J2": {
+      "directory": "outputs/joint_gate_lrscale01_s42_v1",
+      "config": "joint_gate_lrscale01_20261030.json",
+      "config_sha256": "b1d2cdbeff2489f2fdba33b6d806524edb56f5db64caee5fb6e11b93469a7368",
+      "best_sha256": "097cef933f3b0b049d8f0c31c3a8e99dedae7a25ccc8d00c4c9d23f86bd936eb",
+      "macro_f1": 0.9712071203419106
+    },
+    "primary_comparison": "D32_minus_D8",
+    "class_tradeoff_review_required": true,
+    "test_evaluated": false,
+    "automatic_followup": false,
+    "training_jobs": 2
+  },
+  "binding": {
+    "config_sha256": "07635d84a1c00038c5dbbf550e5b0a5fa15761f95d63b0f159e8820e8eb37b2a",
+    "N0_reference_validation": {
+      "config_sha256": "8db50d0312d35569ea0ef6b49bc29ae579d472af238bfe3e6d63da98475da2f2",
+      "reference_sha256": "cf4809091f2d974e6c2454e92ab5d090e8e75ffa2c0f37ade52deacaa3b8bfbf",
+      "n0_best_sha256": "ae65d352ff927026bfcada8759b62f1b22c5d8f0166103d2a2d556618e7a3563",
+      "n0_binding": {
+        "config_sha256": "a53576c80e548ca143e566cf88cb190636ee7a6cfd4d2e89ad8b6bfd0363367a",
+        "registry_sha256": "ebbb7da8ed6b20e94023cba7983a418f1ebc9be1988add6fa2ff0be079e16a62",
+        "checkpoint_sha256": "1709ed1a19b8a2e20b9b1ef3dac6cc6a5906fd93937e8d18a51cc64f85c44b08",
+        "sources": {
+          "scripts/train_grouped.py": "06a493b18faa97b4e1f2b99b6aae38c67ad3c5f39b130f112079c9393432f5d1",
+          "scripts/grouped_graphs.py": "c1b1273d62fc44d91f7c9b300b66a083c1f80ef2c9c4314a62c4bbd5d708bbb4",
+          "scripts/smoke_grouped_gpu.py": "7bce1218e1b55a812855d50c70973fe300da97ad7e9b4005a52deac77d8b1517",
+          "scripts/audit_graph_split.py": "c19164930e8ecb75636cf16d6fa9bb51d6f29e1384e8d8ebf040e683536ffcb6",
+          "scripts/build_grouped_split.py": "24e07766189aec9d03f6161dee15587612a5b2f13e23eab67d7ba4aaf89a3401",
+          "src/xgnid/__init__.py": "2515233a0cdac6c5447c9dbd6b0d54c89284f191d8cb41473d89b347ee296ae7",
+          "src/xgnid/model.py": "28e21e94118db0a4110d17923d2840e18959669d798f628018c98c91c0202631",
+          "src/xgnid/edge_experiments.py": "3e6305d83c06c7ce32e901a2aba9d9d26baa1f2b394af14997b0e359929b4da5",
+          "third_party/GNN4ID/Utility/Model.py": "e17c3905e3c9f437c269bdd0e4d115656cfba6054b6a4474bbd06b5453010688"
+        },
+        "split_id": "a8ae9c934eec9fee970cc725e60051d0c709e0f16c7dda14749350ff2006975a",
+        "manifest_sha256": "b8e9b0810471d0c2b52033488fab640625c3731315afd5d2add1571bd2518827",
+        "entry_sha256": "8202a33d97949b72c9779e5b72fdcad8655bb58550060f29dabcd305e848b48f",
+        "wrappers": {
+          "N0": "e19cb329c5495480f6a85824a5a70e3f6158f8ff2878178d46875eb8111b5351",
+          "N1": "9e5fe4f502111b67d03222664bb16026937a23e6b85537bfc8d3df4b70d8422e"
+        },
+        "helper_sha256": "94b8e537798cca3af76b260f0bca6c9cfaffb75cff404bb6a4f423017445738f"
+      },
+      "sources": {
+        "run_frozen_fusion.py": "ae6877118398c8586f9aa24d2e7e1632cd8ed29f18fafb8b62030cbd47309624",
+        "run_e2_concat_pair.py": "8202a33d97949b72c9779e5b72fdcad8655bb58550060f29dabcd305e848b48f",
+        "e3_gate_study.py": "94b8e537798cca3af76b260f0bca6c9cfaffb75cff404bb6a4f423017445738f"
+      }
+    },
+    "historical_J2_summary_sha256": "2be56fa24e68dbdc9a168bc6135c64680f8ee914b47fe03adf5fa045736b2d71",
+    "historical_J2_best_sha256": "097cef933f3b0b049d8f0c31c3a8e99dedae7a25ccc8d00c4c9d23f86bd936eb",
+    "initialization_streams": {
+      "flow_projection": 588426498550342701,
+      "packet_projection": 598642292426476218,
+      "gate_hidden": 706132857465504583,
+      "gate_output": 890555730455083829,
+      "head_hidden": 94819799494184648,
+      "head_output": 237676001307781809
+    },
+    "sources": {
+      "scripts/run_fusion_dimension_pair.py": "e496bc87a6d265dbb179463567e7d8f851e45c19ffebfa86a0bc5bd5a1d5bfde",
+      "src/xgnid/fusion_dimension.py": "eb8dd5c91a63b424bd421c29e333ff24492e5474cdabe77408abde5f81bb703d",
+      "scripts/summarize_fusion_dimension_pair.py": "88c3a0c861fc21aee3e7c99a705f62ee93aafdf6757215d173a23fc1c981c495"
+    },
+    "recovery": {
+      "source": "/home/nzxn/下载/WX/load/XG-NID/outputs/fusion_dimension_pair_s42_v1",
+      "source_file_sha256": {
+        "status.json": "57070594cb5fda72cc38fa6153c8b407d3373bda14b5a163f99e7d5b59d64d5a",
+        "progress.json": "d87e12fab01bd051a435a597c4ccdf14a0645e20062cb9a9ac4975d7b5ce7fb6",
+        "gpu.json": "bb150234852295d14444000588ebf6b106f74487e2ed7e7bdd6d126244e3c0cf",
+        "error.log": "15a0cc2ec7160f9eb79f1b5b0ca3dc61ae7d8e5911dbd37e0902237af70fbbe7",
+        "config.json": "a2d82416c0633d5c8fbcc20b332da8813e1f717d0ee91d8362a32d4909adca92",
+        "binding.json": "ccb69fbc86c087af7a70dfd42769af165a394c23f383bd8ea4f30d5bfcccbee7",
+        "cache_receipts.json": "7925530fdd726ae0bf46134459328f5a5af4693c1e610a7cd2e1a9baad47d620",
+        "initialization.json": "63bf5660f3f908ed26e0e2dd29c0f9f80991365243ff73dc9e462d1e1bdbed1a",
+        "probes.json": "1d26a18ebbf8cd54c49a7b0f4cb8aa774aa404627594d5f2fee09f49a251d17a",
+        "preflight_roundtrips.json": "34ed912fd641b4931c6f594d7c22b282f14b34944b161e443f390d9d235503c5",
+        "train_encoder64.pt": "94832517e04230b7cca98cf0ff97a55084ff00b74ba97f42a6e301c4b100726b",
+        "val_encoder64.pt": "760e7d5aa34b5e3ebab3b5c54c74c46ad194e858b47d749dd2cd03d85b4d8276",
+        "D8_preflight.pt": "c9d9995f45577d9dfd39f37cf20c35923340cb105ef17531907226d892b11c4e",
+        "D32_preflight.pt": "aa445c82a9e87a1ddabc143151dfe510373a44e50a55b99efa37444b986ce107"
+      },
+      "formal_training_updates_before_failure": 0,
+      "gradient_probe_updates_reused": 6,
+      "original_cache_extraction_wall_seconds": 332.68700449098833,
+      "recovery_entry_sha256": "bdd77b293ad54795903e81bca46ab081b0b123117ac31c7440f95f3343967297"
+    },
+    "encoder_source": {
+      "encoder_sha256": "923217d8026a56f1ffc7fb7bbda8e910aa6a97d51cd18a006412c8766df57033",
+      "N0_best_sha256": "ae65d352ff927026bfcada8759b62f1b22c5d8f0166103d2a2d556618e7a3563",
+      "split_id": "a8ae9c934eec9fee970cc725e60051d0c709e0f16c7dda14749350ff2006975a",
+      "manifest_sha256": "b8e9b0810471d0c2b52033488fab640625c3731315afd5d2add1571bd2518827"
+    },
+    "caches": {
+      "train": {
+        "metadata": {
+          "schema": "xgnid.encoder64-cache.v1",
+          "partition": "train",
+          "embedding_dim": 64,
+          "source": {
+            "encoder_sha256": "923217d8026a56f1ffc7fb7bbda8e910aa6a97d51cd18a006412c8766df57033",
+            "N0_best_sha256": "ae65d352ff927026bfcada8759b62f1b22c5d8f0166103d2a2d556618e7a3563",
+            "split_id": "a8ae9c934eec9fee970cc725e60051d0c709e0f16c7dda14749350ff2006975a",
+            "manifest_sha256": "b8e9b0810471d0c2b52033488fab640625c3731315afd5d2add1571bd2518827"
+          },
+          "samples": 107621,
+          "sample_order_sha256": "e55904a2bf640d68a278dfb571a296f0c9d0b7b4b8ae0e0ef179a9e3c8ea629a"
+        },
+        "sha256": "94832517e04230b7cca98cf0ff97a55084ff00b74ba97f42a6e301c4b100726b",
+        "wall_seconds": 302.67791628604755,
+        "N0_first_batch_max_error": null,
+        "N0_replayed_validation": null,
+        "reused": true,
+        "source_file": "/home/nzxn/下载/WX/load/XG-NID/outputs/fusion_dimension_pair_s42_v1/train_encoder64.pt"
+      },
+      "val": {
+        "metadata": {
+          "schema": "xgnid.encoder64-cache.v1",
+          "partition": "val",
+          "embedding_dim": 64,
+          "source": {
+            "encoder_sha256": "923217d8026a56f1ffc7fb7bbda8e910aa6a97d51cd18a006412c8766df57033",
+            "N0_best_sha256": "ae65d352ff927026bfcada8759b62f1b22c5d8f0166103d2a2d556618e7a3563",
+            "split_id": "a8ae9c934eec9fee970cc725e60051d0c709e0f16c7dda14749350ff2006975a",
+            "manifest_sha256": "b8e9b0810471d0c2b52033488fab640625c3731315afd5d2add1571bd2518827"
+          },
+          "samples": 13446,
+          "sample_order_sha256": "efb5f9d81137f974a1bb244783831533bbab4b78f6d62bea511ebbd61e9b8c01"
+        },
+        "sha256": "760e7d5aa34b5e3ebab3b5c54c74c46ad194e858b47d749dd2cd03d85b4d8276",
+        "wall_seconds": 30.00908820494078,
+        "N0_first_batch_max_error": 3.814697265625e-06,
+        "N0_replayed_validation": {
+          "accuracy": 0.9782091328276067,
+          "macro_f1": 0.9699623354279773,
+          "weighted_f1": 0.9781981183548664,
+          "per_class": {
+            "Benign": {
+              "precision": 0.9639004149377594,
+              "recall": 0.9723733779824194,
+              "f1-score": 0.9681183579912481,
+              "support": 2389
+            },
+            "WebBased": {
+              "precision": 0.8899253731343284,
+              "recall": 0.8768382352941176,
+              "f1-score": 0.8833333333333333,
+              "support": 544
+            },
+            "Spoofing": {
+              "precision": 0.9613163972286374,
+              "recall": 0.9574468085106383,
+              "f1-score": 0.9593777009507347,
+              "support": 1739
+            },
+            "Recon": {
+              "precision": 0.9672202797202797,
+              "recall": 0.9714661984196664,
+              "f1-score": 0.9693385895751204,
+              "support": 2278
+            },
+            "Mirai": {
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1-score": 1.0,
+              "support": 2400
+            },
+            "Dos": {
+              "precision": 0.9986376021798365,
+              "recall": 0.9938983050847457,
+              "f1-score": 0.9962623173632348,
+              "support": 1475
+            },
+            "DDos": {
+              "precision": 1.0,
+              "recall": 0.9966499162479062,
+              "f1-score": 0.9983221476510067,
+              "support": 2388
+            },
+            "BruteForce": {
+              "precision": 0.9870689655172413,
+              "recall": 0.9828326180257511,
+              "f1-score": 0.9849462365591398,
+              "support": 233
+            }
+          },
+          "confusion_matrix": [
+            [
+              2323,
+              11,
+              47,
+              7,
+              0,
+              1,
+              0,
+              0
+            ],
+            [
+              7,
+              477,
+              7,
+              52,
+              0,
+              0,
+              0,
+              1
+            ],
+            [
+              62,
+              6,
+              1665,
+              5,
+              0,
+              0,
+              0,
+              1
+            ],
+            [
+              16,
+              37,
+              10,
+              2213,
+              0,
+              1,
+              0,
+              1
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              2400,
+              0,
+              0,
+              0
+            ],
+            [
+              1,
+              2,
+              0,
+              6,
+              0,
+              1466,
+              0,
+              0
+            ],
+            [
+              0,
+              2,
+              1,
+              5,
+              0,
+              0,
+              2380,
+              0
+            ],
+            [
+              1,
+              1,
+              2,
+              0,
+              0,
+              0,
+              0,
+              229
+            ]
+          ],
+          "samples": 13446
+        },
+        "reused": true,
+        "source_file": "/home/nzxn/下载/WX/load/XG-NID/outputs/fusion_dimension_pair_s42_v1/val_encoder64.pt"
+      }
+    },
+    "cache_tensor_sha256": {
+      "train": "2c81264b0d3e473e4d99a6d1b90de6cffb2ff6a5c95bfa9e4cfea0065c063380",
+      "val": "a11cf46fc05f337e3ebf3e14096d755383509f072eedc7c9a01fc14b3780f5ae"
+    }
+  },
+  "labels": [
+    "Benign",
+    "WebBased",
+    "Spoofing",
+    "Recon",
+    "Mirai",
+    "Dos",
+    "DDos",
+    "BruteForce"
+  ],
+  "optimizer_state": "reset",
+  "frozen_encoder_sha256": "923217d8026a56f1ffc7fb7bbda8e910aa6a97d51cd18a006412c8766df57033",
+  "heads_loaded_from_N0_or_J2": false
+}

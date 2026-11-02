@@ -1,0 +1,5 @@
+{
+  "checkpoint_epoch": 48,
+  "scope": "recovery final inference; no parameter selection",
+  "created_utc": "2026-10-20T11:04:57.702995+00:00"
+}

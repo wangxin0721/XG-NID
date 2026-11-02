@@ -1,0 +1,11 @@
+{
+  "status": "passed",
+  "device": "cuda:0",
+  "repeats": 16,
+  "optimizer_updates": 0,
+  "scope": "synthetic grouped packet readout and backward, not encoder validation",
+  "max_abs_pool_error": 0.0,
+  "max_abs_pair_score_error": 0.0,
+  "output_weight_gradient_l1": 232323055616.0,
+  "model_and_rng_unchanged": true
+}

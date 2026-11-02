@@ -1,0 +1,556 @@
+Verifying existing train against full author SHA: /home/nzxn/下载/WX/load/XG-NID/data/processed/CICIoT2023_processed/df_class_8_train.csv
+copy train: 67108864/1027673808 bytes
+copy train: 134217728/1027673808 bytes
+copy train: 201326592/1027673808 bytes
+copy train: 268435456/1027673808 bytes
+copy train: 335544320/1027673808 bytes
+copy train: 402653184/1027673808 bytes
+copy train: 469762048/1027673808 bytes
+copy train: 536870912/1027673808 bytes
+copy train: 603979776/1027673808 bytes
+copy train: 671088640/1027673808 bytes
+copy train: 738197504/1027673808 bytes
+copy train: 805306368/1027673808 bytes
+copy train: 872415232/1027673808 bytes
+copy train: 939524096/1027673808 bytes
+copy train: 1006632960/1027673808 bytes
+copy train: 1027673808/1027673808 bytes
+author train SHA256=1b546e6c69faad482b98b4c95219ef9b13aba0c13afcfe0b4abe69c1e7f38b02; same as previous candidate=True
+Verifying existing test against full author SHA: /home/nzxn/下载/WX/load/XG-NID/data/processed/CICIoT2023_processed/df_class_8_test.csv
+copy test: 67108864/175063419 bytes
+copy test: 134217728/175063419 bytes
+copy test: 175063419/175063419 bytes
+author test SHA256=08b256997d0368dde6c85a3b43ef3d56b4ce336939fcdce41596725bbdee42ed; same as previous candidate=True
+/home/nzxn/miniconda3/envs/wx/lib/python3.9/site-packages/torch_geometric/typing.py:99: UserWarning: An issue occurred while importing 'torch-spline-conv'. Disabling its usage. Stacktrace: /home/nzxn/miniconda3/envs/wx/lib/python3.9/site-packages/torch_spline_conv/_version_cuda.so: undefined symbol: _ZN3c1017RegisterOperatorsD1Ev
+  warnings.warn(
+Reading File ---> df_class_8_train.csv
+graphs=1000/185557 rate=140.18/s remaining~21.9min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=2000/185557 rate=147.62/s remaining~20.7min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=3000/185557 rate=145.55/s remaining~20.9min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=4000/185557 rate=146.79/s remaining~20.6min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=5000/185557 rate=147.24/s remaining~20.4min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=6000/185557 rate=147.19/s remaining~20.3min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=7000/185557 rate=148.05/s remaining~20.1min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=8000/185557 rate=149.75/s remaining~19.8min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=9000/185557 rate=150.85/s remaining~19.5min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=10000/185557 rate=148.53/s remaining~19.7min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=11000/185557 rate=147.33/s remaining~19.7min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=12000/185557 rate=145.62/s remaining~19.9min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=13000/185557 rate=145.50/s remaining~19.8min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=14000/185557 rate=146.49/s remaining~19.5min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=15000/185557 rate=147.26/s remaining~19.3min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=16000/185557 rate=148.07/s remaining~19.1min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=17000/185557 rate=148.47/s remaining~18.9min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=18000/185557 rate=148.93/s remaining~18.8min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=19000/185557 rate=149.99/s remaining~18.5min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=20000/185557 rate=150.63/s remaining~18.3min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=21000/185557 rate=150.04/s remaining~18.3min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=22000/185557 rate=150.15/s remaining~18.2min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=23000/185557 rate=149.11/s remaining~18.2min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=24000/185557 rate=149.21/s remaining~18.0min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=25000/185557 rate=148.19/s remaining~18.1min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=26000/185557 rate=148.22/s remaining~17.9min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=27000/185557 rate=147.84/s remaining~17.9min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=28000/185557 rate=148.05/s remaining~17.7min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=29000/185557 rate=147.95/s remaining~17.6min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=30000/185557 rate=147.90/s remaining~17.5min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=31000/185557 rate=147.99/s remaining~17.4min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=32000/185557 rate=147.83/s remaining~17.3min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=33000/185557 rate=147.98/s remaining~17.2min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=34000/185557 rate=147.76/s remaining~17.1min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=35000/185557 rate=148.03/s remaining~17.0min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=36000/185557 rate=147.81/s remaining~16.9min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=37000/185557 rate=147.67/s remaining~16.8min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=38000/185557 rate=147.26/s remaining~16.7min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=39000/185557 rate=147.29/s remaining~16.6min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=40000/185557 rate=147.10/s remaining~16.5min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=41000/185557 rate=145.31/s remaining~16.6min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=42000/185557 rate=143.56/s remaining~16.7min differences={}
+graphs=43000/185557 rate=142.34/s remaining~16.7min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=44000/185557 rate=140.77/s remaining~16.8min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=45000/185557 rate=138.71/s remaining~16.9min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=46000/185557 rate=137.05/s remaining~17.0min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=47000/185557 rate=135.18/s remaining~17.1min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=48000/185557 rate=134.00/s remaining~17.1min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=49000/185557 rate=132.29/s remaining~17.2min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=50000/185557 rate=130.86/s remaining~17.3min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=51000/185557 rate=130.39/s remaining~17.2min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=52000/185557 rate=130.06/s remaining~17.1min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=53000/185557 rate=129.56/s remaining~17.1min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=54000/185557 rate=128.84/s remaining~17.0min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=55000/185557 rate=127.97/s remaining~17.0min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=56000/185557 rate=127.25/s remaining~17.0min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=57000/185557 rate=126.80/s remaining~16.9min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=58000/185557 rate=126.34/s remaining~16.8min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=59000/185557 rate=125.74/s remaining~16.8min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=60000/185557 rate=125.29/s remaining~16.7min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=61000/185557 rate=126.09/s remaining~16.5min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=62000/185557 rate=126.92/s remaining~16.2min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=63000/185557 rate=127.63/s remaining~16.0min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=64000/185557 rate=128.41/s remaining~15.8min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=65000/185557 rate=129.18/s remaining~15.6min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=66000/185557 rate=129.90/s remaining~15.3min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=67000/185557 rate=130.61/s remaining~15.1min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=68000/185557 rate=131.31/s remaining~14.9min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=69000/185557 rate=131.92/s remaining~14.7min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=70000/185557 rate=132.44/s remaining~14.5min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=71000/185557 rate=132.93/s remaining~14.4min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=72000/185557 rate=133.41/s remaining~14.2min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=73000/185557 rate=133.90/s remaining~14.0min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=74000/185557 rate=134.47/s remaining~13.8min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=75000/185557 rate=134.98/s remaining~13.7min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=76000/185557 rate=135.52/s remaining~13.5min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=77000/185557 rate=136.03/s remaining~13.3min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=78000/185557 rate=136.54/s remaining~13.1min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=79000/185557 rate=137.01/s remaining~13.0min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=80000/185557 rate=137.21/s remaining~12.8min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=81000/185557 rate=135.77/s remaining~12.8min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=82000/185557 rate=134.65/s remaining~12.8min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=83000/185557 rate=133.75/s remaining~12.8min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=84000/185557 rate=132.74/s remaining~12.8min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=85000/185557 rate=131.93/s remaining~12.7min differences={}
+graphs=86000/185557 rate=131.37/s remaining~12.6min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=87000/185557 rate=130.70/s remaining~12.6min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=88000/185557 rate=129.68/s remaining~12.5min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=89000/185557 rate=129.14/s remaining~12.5min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=90000/185557 rate=128.62/s remaining~12.4min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=91000/185557 rate=127.99/s remaining~12.3min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=92000/185557 rate=127.43/s remaining~12.2min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=93000/185557 rate=127.11/s remaining~12.1min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=94000/185557 rate=126.61/s remaining~12.1min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=95000/185557 rate=126.18/s remaining~12.0min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=96000/185557 rate=125.87/s remaining~11.9min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=97000/185557 rate=125.63/s remaining~11.7min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=98000/185557 rate=125.25/s remaining~11.7min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=99000/185557 rate=124.99/s remaining~11.5min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=100000/185557 rate=124.65/s remaining~11.4min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=101000/185557 rate=125.08/s remaining~11.3min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=102000/185557 rate=125.47/s remaining~11.1min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=103000/185557 rate=125.88/s remaining~10.9min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=104000/185557 rate=126.27/s remaining~10.8min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=105000/185557 rate=126.67/s remaining~10.6min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=106000/185557 rate=127.09/s remaining~10.4min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=107000/185557 rate=127.55/s remaining~10.3min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=108000/185557 rate=128.02/s remaining~10.1min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=109000/185557 rate=128.44/s remaining~9.9min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=110000/185557 rate=128.73/s remaining~9.8min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=111000/185557 rate=129.07/s remaining~9.6min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=112000/185557 rate=129.38/s remaining~9.5min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=113000/185557 rate=129.60/s remaining~9.3min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=114000/185557 rate=129.77/s remaining~9.2min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=115000/185557 rate=130.01/s remaining~9.0min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=116000/185557 rate=130.22/s remaining~8.9min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=117000/185557 rate=130.48/s remaining~8.8min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=118000/185557 rate=130.74/s remaining~8.6min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=119000/185557 rate=131.05/s remaining~8.5min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=120000/185557 rate=131.32/s remaining~8.3min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=121000/185557 rate=131.36/s remaining~8.2min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=122000/185557 rate=131.42/s remaining~8.1min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=123000/185557 rate=131.64/s remaining~7.9min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=124000/185557 rate=131.73/s remaining~7.8min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=125000/185557 rate=131.89/s remaining~7.7min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=126000/185557 rate=131.99/s remaining~7.5min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=127000/185557 rate=132.12/s remaining~7.4min differences={}
+graphs=128000/185557 rate=132.29/s remaining~7.3min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=129000/185557 rate=132.43/s remaining~7.1min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=130000/185557 rate=132.59/s remaining~7.0min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=131000/185557 rate=132.79/s remaining~6.8min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=132000/185557 rate=132.99/s remaining~6.7min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=133000/185557 rate=133.18/s remaining~6.6min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=134000/185557 rate=133.33/s remaining~6.4min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=135000/185557 rate=133.47/s remaining~6.3min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=136000/185557 rate=133.63/s remaining~6.2min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=137000/185557 rate=133.75/s remaining~6.1min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=138000/185557 rate=133.91/s remaining~5.9min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=139000/185557 rate=134.01/s remaining~5.8min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=140000/185557 rate=134.14/s remaining~5.7min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=141000/185557 rate=133.65/s remaining~5.6min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=142000/185557 rate=133.58/s remaining~5.4min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=143000/185557 rate=133.52/s remaining~5.3min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=144000/185557 rate=133.47/s remaining~5.2min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=145000/185557 rate=133.27/s remaining~5.1min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=146000/185557 rate=133.14/s remaining~5.0min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=147000/185557 rate=133.33/s remaining~4.8min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=148000/185557 rate=133.46/s remaining~4.7min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=149000/185557 rate=133.56/s remaining~4.6min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=150000/185557 rate=133.47/s remaining~4.4min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=151000/185557 rate=133.63/s remaining~4.3min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=152000/185557 rate=133.77/s remaining~4.2min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=153000/185557 rate=133.83/s remaining~4.1min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=154000/185557 rate=133.76/s remaining~3.9min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=155000/185557 rate=133.92/s remaining~3.8min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=156000/185557 rate=134.13/s remaining~3.7min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=157000/185557 rate=134.34/s remaining~3.5min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=158000/185557 rate=134.51/s remaining~3.4min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=159000/185557 rate=134.65/s remaining~3.3min differences={}
+Reading File ---> df_class_8_train.csv
+graphs=160000/185557 rate=134.78/s remaining~3.2min differences={}
+Reading File ---> df_class_8_test.csv
+graphs=161000/185557 rate=134.45/s remaining~3.0min differences={}
+Reading File ---> df_class_8_test.csv
+graphs=162000/185557 rate=134.61/s remaining~2.9min differences={}
+Reading File ---> df_class_8_test.csv
+graphs=163000/185557 rate=134.73/s remaining~2.8min differences={}
+Reading File ---> df_class_8_test.csv
+graphs=164000/185557 rate=134.83/s remaining~2.7min differences={}
+Reading File ---> df_class_8_test.csv
+graphs=165000/185557 rate=134.68/s remaining~2.5min differences={}
+Reading File ---> df_class_8_test.csv
+graphs=166000/185557 rate=134.35/s remaining~2.4min differences={}
+Reading File ---> df_class_8_test.csv
+graphs=167000/185557 rate=134.00/s remaining~2.3min differences={}
+Reading File ---> df_class_8_test.csv
+graphs=168000/185557 rate=133.64/s remaining~2.2min differences={}
+Reading File ---> df_class_8_test.csv
+graphs=169000/185557 rate=133.59/s remaining~2.1min differences={}
+Reading File ---> df_class_8_test.csv
+graphs=170000/185557 rate=133.79/s remaining~1.9min differences={}
+Reading File ---> df_class_8_test.csv
+graphs=171000/185557 rate=133.94/s remaining~1.8min differences={}
+Reading File ---> df_class_8_test.csv
+graphs=172000/185557 rate=134.08/s remaining~1.7min differences={}
+Reading File ---> df_class_8_test.csv
+graphs=173000/185557 rate=133.98/s remaining~1.6min differences={}
+Reading File ---> df_class_8_test.csv
+graphs=174000/185557 rate=133.76/s remaining~1.4min differences={}
+Reading File ---> df_class_8_test.csv
+graphs=175000/185557 rate=133.55/s remaining~1.3min differences={}
+Reading File ---> df_class_8_test.csv
+graphs=176000/185557 rate=133.35/s remaining~1.2min differences={}
+Reading File ---> df_class_8_test.csv
+graphs=177000/185557 rate=133.43/s remaining~1.1min differences={}
+Reading File ---> df_class_8_test.csv
+graphs=178000/185557 rate=133.73/s remaining~0.9min differences={}
+Reading File ---> df_class_8_test.csv
+graphs=179000/185557 rate=133.95/s remaining~0.8min differences={}
+Reading File ---> df_class_8_test.csv
+graphs=180000/185557 rate=134.23/s remaining~0.7min differences={}
+Reading File ---> df_class_8_test.csv
+graphs=181000/185557 rate=134.45/s remaining~0.6min differences={}
+Reading File ---> df_class_8_test.csv
+graphs=182000/185557 rate=134.64/s remaining~0.4min differences={}
+Reading File ---> df_class_8_test.csv
+graphs=183000/185557 rate=134.83/s remaining~0.3min differences={}
+Reading File ---> df_class_8_test.csv
+graphs=184000/185557 rate=135.03/s remaining~0.2min differences={}
+Reading File ---> df_class_8_test.csv
+graphs=185000/185557 rate=135.16/s remaining~0.1min differences={}
+graphs=185557/185557 rate=135.27/s remaining~0.0min differences={}
+{
+  "status": "completed",
+  "exit_code": 0,
+  "graphs_completed": 185557,
+  "dataset": "/home/nzxn/下载/WX/load/XG-NID/data/processed/xgnid_author_rebuild_offline_v2",
+  "processed_dir": "/home/nzxn/下载/WX/load/XG-NID/data/processed/xgnid_author_rebuild_offline_v2/processed",
+  "sources": {
+    "train": {
+      "file_id": "1IClFYOup0U58WKj2R0p1IJ_ZMc1Os2FD",
+      "bytes": 1027673808,
+      "sha256": "1b546e6c69faad482b98b4c95219ef9b13aba0c13afcfe0b4abe69c1e7f38b02",
+      "acquisition": "verified_existing_server_csv_copy",
+      "copy_source": "/home/nzxn/下载/WX/load/XG-NID/data/processed/CICIoT2023_processed/df_class_8_train.csv",
+      "author_url": "https://drive.google.com/file/d/1IClFYOup0U58WKj2R0p1IJ_ZMc1Os2FD/view",
+      "network_used": false,
+      "path": "/home/nzxn/下载/WX/load/XG-NID/data/processed/xgnid_author_rebuild_offline_v2/raw/df_class_8_train.csv",
+      "equal_to_previous_candidate_sha256": true
+    },
+    "test": {
+      "file_id": "1Yxpd-ruxC8B1zz3e8oLOcZcfrahIfhJc",
+      "bytes": 175063419,
+      "sha256": "08b256997d0368dde6c85a3b43ef3d56b4ce336939fcdce41596725bbdee42ed",
+      "acquisition": "verified_existing_server_csv_copy",
+      "copy_source": "/home/nzxn/下载/WX/load/XG-NID/data/processed/CICIoT2023_processed/df_class_8_test.csv",
+      "author_url": "https://drive.google.com/file/d/1Yxpd-ruxC8B1zz3e8oLOcZcfrahIfhJc/view",
+      "network_used": false,
+      "path": "/home/nzxn/下载/WX/load/XG-NID/data/processed/xgnid_author_rebuild_offline_v2/raw/df_class_8_test.csv",
+      "equal_to_previous_candidate_sha256": true
+    }
+  },
+  "class_counts": {
+    "train": {
+      "0": 20000,
+      "7": 20000,
+      "6": 20000,
+      "5": 20000,
+      "4": 20000,
+      "3": 20000,
+      "2": 20000,
+      "1": 20000
+    },
+    "test": {
+      "0": 4000,
+      "7": 467,
+      "6": 4000,
+      "5": 4000,
+      "4": 4000,
+      "3": 4000,
+      "2": 4000,
+      "1": 1090
+    }
+  },
+  "flow_feature_order": [
+    "src2dst_duration_ms",
+    "src2dst_packets",
+    "src2dst_bytes",
+    "dst2src_duration_ms",
+    "dst2src_packets",
+    "dst2src_bytes",
+    "bidirectional_min_ps",
+    "bidirectional_mean_ps",
+    "bidirectional_stddev_ps",
+    "bidirectional_max_ps",
+    "src2dst_min_ps",
+    "src2dst_mean_ps",
+    "src2dst_stddev_ps",
+    "src2dst_max_ps",
+    "dst2src_min_ps",
+    "dst2src_mean_ps",
+    "dst2src_stddev_ps",
+    "dst2src_max_ps",
+    "bidirectional_min_piat_ms",
+    "bidirectional_mean_piat_ms",
+    "bidirectional_stddev_piat_ms",
+    "bidirectional_max_piat_ms",
+    "src2dst_min_piat_ms",
+    "src2dst_mean_piat_ms",
+    "src2dst_stddev_piat_ms",
+    "src2dst_max_piat_ms",
+    "dst2src_min_piat_ms",
+    "dst2src_mean_piat_ms",
+    "dst2src_stddev_piat_ms",
+    "dst2src_max_piat_ms",
+    "src2dst_syn_packets",
+    "src2dst_cwr_packets",
+    "src2dst_ece_packets",
+    "src2dst_urg_packets",
+    "src2dst_ack_packets",
+    "src2dst_psh_packets",
+    "src2dst_rst_packets",
+    "src2dst_fin_packets",
+    "dst2src_syn_packets",
+    "dst2src_cwr_packets",
+    "dst2src_ece_packets",
+    "dst2src_urg_packets",
+    "dst2src_ack_packets",
+    "dst2src_psh_packets",
+    "dst2src_rst_packets",
+    "dst2src_fin_packets",
+    "packet_size_variation",
+    "Rolling_UDP_Requests_SourceDestination",
+    "Rolling_UDP_Requests_Destination",
+    "Rolling_TCP_Requests_SourceDestination",
+    "Rolling_TCP_Requests_Destination",
+    "Rolling_ACK_Packets_SourceDestination",
+    "Rolling_ACK_Packets_Destination",
+    "Rolling_FIN_Packets_SourceDestination",
+    "Rolling_FIN_Packets_Destination",
+    "Rolling_rst_Packets_SourceDestination",
+    "Rolling_rst_Packets_Destination",
+    "Rolling_psh_Packets_SourceDestination",
+    "Rolling_psh_Packets_Destination",
+    "Rolling_SYN_Packets_SourceDestination",
+    "Rolling_SYN_Packets_Destination",
+    "Unique_Ports_In_SourceDestinationIP",
+    "Rolling_ICMP_Requests_SourceDestination",
+    "Rolling_ICMP_Requests_Destination",
+    "Rolling_http_port_SourceDestination",
+    "Rolling_http_port_Destination",
+    "Rolling_Duration_Destination",
+    "Rolling_Duration_SourceDestination",
+    "Rolling_DNS_request_SourceDestination",
+    "Rolling_DNS_request_Destination",
+    "Rolling_DNS_request_SourceDestination2",
+    "Rolling_DNS_request_Destination2",
+    "Rolling_vulnerable_port",
+    "Rolling_packets_destination",
+    "Rolling_bipackets_destination",
+    "Exp_0",
+    "Exp_-1",
+    "proto_1",
+    "proto_2",
+    "proto_6",
+    "proto_17",
+    "proto_58"
+  ],
+  "graph_bytes": 12012834816,
+  "wall_seconds": 1409.246089220047,
+  "all_old_inputs_and_labels_equal": true,
+  "differences": {},
+  "graphs_manifest_sha256": "94a17aac37cca3b0c60d04885c7c3da4f2e2f59d8466276307d2e9add0217e6d",
+  "author_commit": "551d1f10189e5259f8f34e32f918d557a2b3a64e",
+  "author_functions_identity": "3161183a6fb585ad64308261a9b7b67a864829f1e4030f49cfe72e6ab115bb04",
+  "old_manifest_id": "22d027fe3d0b0ad9079da9a13614597b0e40bb883a34b2d4d825452d6129d383",
+  "runtime": {
+    "python": "3.9.23",
+    "torch": "2.3.1+cu118",
+    "pyg": "2.5.3",
+    "pandas": "2.0.3",
+    "numpy": "1.23.5"
+  },
+  "gpu_used": false,
+  "training_started": false,
+  "old_data_replaced": false,
+  "offline": true,
+  "historical_paper_sample_identity_verified": false,
+  "processing": "Fresh published processed CSVs; unchanged row-wise official process/helpers, streamed chunks, observed saves",
+  "limitations": [
+    "No PCAP re-extraction or upstream rolling/filter/sampling reconstruction",
+    "New file SHA differs from graph tensor equivalence; test graphs validated without model inference",
+    "New dataset is not automatically attached to frozen R0/E0-E3"
+  ]
+}

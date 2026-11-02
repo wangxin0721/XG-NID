@@ -1,0 +1,34 @@
+/home/nzxn/miniconda3/envs/wx/lib/python3.9/site-packages/torch_geometric/typing.py:99: UserWarning: An issue occurred while importing 'torch-spline-conv'. Disabling its usage. Stacktrace: /home/nzxn/miniconda3/envs/wx/lib/python3.9/site-packages/torch_spline_conv/_version_cuda.so: undefined symbol: _ZN3c1017RegisterOperatorsD1Ev
+  warnings.warn(
+{"variant": "J0", "epoch": 1, "val_macro_f1": 0.9696115556368861, "optimizer_updates": 211, "train_order_sha256": "158f1b7e3dedc2c8b265252f9e23e6a6b37e9629dac203c4a27bf8f1f8408079"}
+{"variant": "J0", "epoch": 2, "val_macro_f1": 0.9694858127643768, "optimizer_updates": 211, "train_order_sha256": "16e4198ee3915b7807cb8fffd9c85d4e580e3b92aacab4bc01b4218e93fe28a6"}
+{"variant": "J0", "epoch": 3, "val_macro_f1": 0.9701643153327048, "optimizer_updates": 211, "train_order_sha256": "e0328504ac2f06e5b237aa2baf15eabf9f1c424e4ed31e92ba0d1a2209d6fda9"}
+{"variant": "J0", "epoch": 4, "val_macro_f1": 0.9686379946474758, "optimizer_updates": 211, "train_order_sha256": "ab527e0e38e51ec98a0d214088053ae16a909911dc7d49f83c4022dcd388260e"}
+{"variant": "J0", "epoch": 5, "val_macro_f1": 0.9698776187418381, "optimizer_updates": 211, "train_order_sha256": "4683bde992d3fd293488e09fe685a782c20055ab37c51f103f7befd9f8423eea"}
+{"variant": "J0", "epoch": 6, "val_macro_f1": 0.9696762144380957, "optimizer_updates": 211, "train_order_sha256": "af55a9897e786dda7df9c53c7d95239057afe227e720ce2fd924cd99537c453a"}
+{"variant": "J0", "epoch": 7, "val_macro_f1": 0.9698819054188973, "optimizer_updates": 211, "train_order_sha256": "ecd018e838d3126088e935f4d6e19a2cccb306c50cd59516fbf1891323dddab3"}
+{"variant": "J0", "epoch": 8, "val_macro_f1": 0.9701927645931994, "optimizer_updates": 211, "train_order_sha256": "6849214586e3e22d882308aed02f4c3d1d3bd5df367774220d1875d7ae72ff20"}
+{"variant": "J0", "epoch": 9, "val_macro_f1": 0.9696421745443529, "optimizer_updates": 211, "train_order_sha256": "33376df80867fbe8704ac6f571997f6fb1e4c5e4e631081d43f83e1704010c8f"}
+{"variant": "J0", "epoch": 10, "val_macro_f1": 0.9689948211130597, "optimizer_updates": 211, "train_order_sha256": "4aa26014bb17d860c6af257ff492b95caf9347d5df3d9924c32dc3240e166bb5"}
+{"variant": "J0", "epoch": 11, "val_macro_f1": 0.9692333590637607, "optimizer_updates": 211, "train_order_sha256": "eef18c61e883db468fcbc62571c256334f386728e43781f64a6bddeac51e7436"}
+{"variant": "J0", "epoch": 12, "val_macro_f1": 0.9701379982172311, "optimizer_updates": 211, "train_order_sha256": "a1ca9c55f26899fabf3947b02d8323dcf7cb904b1dedbdfed7834e7982c569ff"}
+{"variant": "J0", "epoch": 13, "val_macro_f1": 0.9699302584358004, "optimizer_updates": 211, "train_order_sha256": "e8d385bf19630827c021f7854d79d37ff3c613608fef69489c0d89796ce2683e"}
+{"variant": "J0", "epoch": 14, "val_macro_f1": 0.9687554686619113, "optimizer_updates": 211, "train_order_sha256": "7401523b2c84e8b2c24c858c343b6886d1b2ddcafbd4935196d2b3e001e2a19a"}
+{"variant": "J0", "epoch": 15, "val_macro_f1": 0.9691593085781354, "optimizer_updates": 211, "train_order_sha256": "0469cc94e8707c1ee1f51d41376a59896fc01c370bb495ca41894483af2fdc97"}
+{"variant": "J0", "epoch": 16, "val_macro_f1": 0.9689420182008484, "optimizer_updates": 211, "train_order_sha256": "519b0bf29f1f0a523a517d8af8868399b848c6b4a2e6eb6f311886475f40ef4c"}
+{"variant": "J0", "epoch": 17, "val_macro_f1": 0.9688414748293395, "optimizer_updates": 211, "train_order_sha256": "fb41c069a69858c0a677960144a0c3f28a6e606528129bbdfb594a5ed61617b1"}
+{"variant": "J0", "epoch": 18, "val_macro_f1": 0.969963047828851, "optimizer_updates": 211, "train_order_sha256": "d0a1d20f5010ca1e2fc4d927a0e46c4be5450a96e5d52392e682c963f207ebcd"}
+{"variant": "J0", "epoch": 19, "val_macro_f1": 0.9687349476992162, "optimizer_updates": 211, "train_order_sha256": "0a2868d549121dc860dd1a7b0d940deea07d3e5cf16d189a32e85c394af2fa3f"}
+{"variant": "J0", "epoch": 20, "val_macro_f1": 0.9690004074223969, "optimizer_updates": 211, "train_order_sha256": "1c49362e4cb6596f7e7f32638556bc7f585e76862a2cc862603fc40d09a2f593"}
+{"variant": "J2", "epoch": 1, "val_macro_f1": 0.9697401376346687, "optimizer_updates": 211, "train_order_sha256": "158f1b7e3dedc2c8b265252f9e23e6a6b37e9629dac203c4a27bf8f1f8408079"}
+{"variant": "J2", "epoch": 2, "val_macro_f1": 0.9697943966593489, "optimizer_updates": 211, "train_order_sha256": "16e4198ee3915b7807cb8fffd9c85d4e580e3b92aacab4bc01b4218e93fe28a6"}
+{"variant": "J2", "epoch": 3, "val_macro_f1": 0.9698297541433616, "optimizer_updates": 211, "train_order_sha256": "e0328504ac2f06e5b237aa2baf15eabf9f1c424e4ed31e92ba0d1a2209d6fda9"}
+{"variant": "J2", "epoch": 4, "val_macro_f1": 0.9683910239274862, "optimizer_updates": 211, "train_order_sha256": "ab527e0e38e51ec98a0d214088053ae16a909911dc7d49f83c4022dcd388260e"}
+{"variant": "J2", "epoch": 5, "val_macro_f1": 0.9692736529654385, "optimizer_updates": 211, "train_order_sha256": "4683bde992d3fd293488e09fe685a782c20055ab37c51f103f7befd9f8423eea"}
+{"variant": "J2", "epoch": 6, "val_macro_f1": 0.9695664833367159, "optimizer_updates": 211, "train_order_sha256": "af55a9897e786dda7df9c53c7d95239057afe227e720ce2fd924cd99537c453a"}
+{"variant": "J2", "epoch": 7, "val_macro_f1": 0.9696732705880793, "optimizer_updates": 211, "train_order_sha256": "ecd018e838d3126088e935f4d6e19a2cccb306c50cd59516fbf1891323dddab3"}
+{"variant": "J2", "epoch": 8, "val_macro_f1": 0.9697051792686292, "optimizer_updates": 211, "train_order_sha256": "6849214586e3e22d882308aed02f4c3d1d3bd5df367774220d1875d7ae72ff20"}
+{"variant": "J2", "epoch": 9, "val_macro_f1": 0.969444461398475, "optimizer_updates": 211, "train_order_sha256": "33376df80867fbe8704ac6f571997f6fb1e4c5e4e631081d43f83e1704010c8f"}
+{"variant": "J2", "epoch": 10, "val_macro_f1": 0.9681721076639196, "optimizer_updates": 211, "train_order_sha256": "4aa26014bb17d860c6af257ff492b95caf9347d5df3d9924c32dc3240e166bb5"}
+{"variant": "J2", "epoch": 11, "val_macro_f1": 0.968400578234718, "optimizer_updates": 211, "train_order_sha256": "eef18c61e883db468fcbc62571c256334f386728e43781f64a6bddeac51e7436"}
+{"variant": "J2", "epoch": 12, "val_macro_f1": 0.9697366991325892, "optimizer_updates": 211, "train_order_sha256": "a1ca9c55f26899fabf3947b02d8323dcf7cb904b1dedbdfed7834e7982c569ff"}

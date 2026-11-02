@@ -1,0 +1,110 @@
+{
+  "experiment": "E0",
+  "mode": "full",
+  "protocol": "xgnid.e0-batch512.v1",
+  "controls": {
+    "seed": 42,
+    "batch_size": 512,
+    "lr": 0.001,
+    "hidden_dim": 64,
+    "optimizer": "Adam",
+    "early_stop_patience": 12,
+    "early_stop_min_delta": 0.0,
+    "auxiliary_losses": false,
+    "calibration": false,
+    "class_weighting": false,
+    "hard_negatives": false,
+    "loss": "plain NLL",
+    "device_family": "cuda"
+  },
+  "epochs": 100,
+  "workers": 2,
+  "initialization_batch_size": 16,
+  "evaluation_batch_size": 16,
+  "binding": {
+    "config_sha256": "4780c3c221d4fa143c448c974cf60a692ff2891bf4d2268add128c1fdd8a0cc1",
+    "entry_sha256": "33dfd3d6ff0acdae2dcdb31e986d3044200b32f11ed7e1b1b251be2115fb2b61",
+    "sources": {
+      "scripts/train_grouped.py": "06a493b18faa97b4e1f2b99b6aae38c67ad3c5f39b130f112079c9393432f5d1",
+      "scripts/grouped_graphs.py": "c1b1273d62fc44d91f7c9b300b66a083c1f80ef2c9c4314a62c4bbd5d708bbb4",
+      "scripts/smoke_grouped_gpu.py": "7bce1218e1b55a812855d50c70973fe300da97ad7e9b4005a52deac77d8b1517",
+      "scripts/audit_graph_split.py": "c19164930e8ecb75636cf16d6fa9bb51d6f29e1384e8d8ebf040e683536ffcb6",
+      "scripts/build_grouped_split.py": "24e07766189aec9d03f6161dee15587612a5b2f13e23eab67d7ba4aaf89a3401",
+      "src/xgnid/__init__.py": "2515233a0cdac6c5447c9dbd6b0d54c89284f191d8cb41473d89b347ee296ae7",
+      "src/xgnid/model.py": "28e21e94118db0a4110d17923d2840e18959669d798f628018c98c91c0202631",
+      "src/xgnid/edge_experiments.py": "3e6305d83c06c7ce32e901a2aba9d9d26baa1f2b394af14997b0e359929b4da5",
+      "third_party/GNN4ID/Utility/Model.py": "e17c3905e3c9f437c269bdd0e4d115656cfba6054b6a4474bbd06b5453010688"
+    },
+    "reference_e0_sha256": "5add5c311a8ff8356a7840a52c54d6a33d47798344c72a08467f509ab071d857",
+    "reference_config_sha256": "2e19b8b08b8ef60c80c47965b1f0592b4c924c2f62228d72dbe03ab76fede8e2",
+    "smoke_sha256": "4bd73bde4de918987f222a0c223f12c0172b5e1fc2f4ba8e0c97ee2cbfe1bc8f",
+    "pilot_sha256": "6165d1cc7819cca1e95bbe3f43e45f90d4a4c634128e45b84ccc0bd12c17fb72",
+    "baseline_sha256": "5add5c311a8ff8356a7840a52c54d6a33d47798344c72a08467f509ab071d857",
+    "split_id": "a8ae9c934eec9fee970cc725e60051d0c709e0f16c7dda14749350ff2006975a",
+    "samples_sha256": "b8e9b0810471d0c2b52033488fab640625c3731315afd5d2add1571bd2518827",
+    "train_batch_size": 512,
+    "initial_state_sha256": "906e125925a8a2cc53a526602db0f047f76b1e41b8087c893f5cf1af41f64a6b",
+    "runtime": {
+      "python": "3.9.23",
+      "torch": "2.3.1+cu118",
+      "pyg": "2.5.3",
+      "cuda": "11.8"
+    },
+    "gpu_uuid": "GPU-e69b98a9-213b-8dba-8ec6-1c3aa33c870f",
+    "allow_shared_gpu": true,
+    "paired_reference_checks": {
+      "reference_e0_initial_state_sha256": "906e125925a8a2cc53a526602db0f047f76b1e41b8087c893f5cf1af41f64a6b",
+      "sources": {
+        "scripts/train_grouped.py": "06a493b18faa97b4e1f2b99b6aae38c67ad3c5f39b130f112079c9393432f5d1",
+        "scripts/grouped_graphs.py": "c1b1273d62fc44d91f7c9b300b66a083c1f80ef2c9c4314a62c4bbd5d708bbb4",
+        "scripts/smoke_grouped_gpu.py": "7bce1218e1b55a812855d50c70973fe300da97ad7e9b4005a52deac77d8b1517",
+        "scripts/audit_graph_split.py": "c19164930e8ecb75636cf16d6fa9bb51d6f29e1384e8d8ebf040e683536ffcb6",
+        "scripts/build_grouped_split.py": "24e07766189aec9d03f6161dee15587612a5b2f13e23eab67d7ba4aaf89a3401",
+        "src/xgnid/__init__.py": "2515233a0cdac6c5447c9dbd6b0d54c89284f191d8cb41473d89b347ee296ae7",
+        "src/xgnid/model.py": "28e21e94118db0a4110d17923d2840e18959669d798f628018c98c91c0202631",
+        "src/xgnid/edge_experiments.py": "3e6305d83c06c7ce32e901a2aba9d9d26baa1f2b394af14997b0e359929b4da5",
+        "third_party/GNN4ID/Utility/Model.py": "e17c3905e3c9f437c269bdd0e4d115656cfba6054b6a4474bbd06b5453010688"
+      },
+      "paired_e2_summary_sha256": "e29e1ecf4e4a5c3dc4e5d8859ea6b0c74622404a09fcffed2d32dac041d45ef5",
+      "paired_e2_config_sha256": "0a297a4a42c86785ce59ac4eec64b771ad4e5ce774b1379f6aafd6d45830b089",
+      "paired_e2_checkpoint_sha256": {
+        "best.pt": "1709ed1a19b8a2e20b9b1ef3dac6cc6a5906fd93937e8d18a51cc64f85c44b08",
+        "last.pt": "3b4a503e44d27a0dcb667bce232731c16765e46a13c2d40e8fefe28972a67ddc"
+      },
+      "sample_manifest_sha256": "b8e9b0810471d0c2b52033488fab640625c3731315afd5d2add1571bd2518827"
+    }
+  },
+  "hardware": {
+    "physical_index": 0,
+    "uuid": "GPU-e69b98a9-213b-8dba-8ec6-1c3aa33c870f",
+    "name": "Tesla T4",
+    "memory_mib": 15360,
+    "used_mib_at_query": 384,
+    "free_mib_at_query": 14528,
+    "sharing_allowed": true,
+    "existing_compute_processes": [
+      {
+        "pid": 168966,
+        "name": "/home/nzxn/miniconda3/envs/wx/bin/python"
+      }
+    ],
+    "availability": "explicit sharing allowed",
+    "timing_scope": "shared execution; not a standalone speed benchmark"
+  },
+  "probe_report": "/home/nzxn/下载/WX/load/XG-NID/outputs/e0_batch_probe_b512_s42_shared_v1/summary.json",
+  "probe_sha256": "478cd98159b965e2f3d62704ea8b9e2498b75da3a63ffa5ad6cd76c707fdd4e2",
+  "comparison": "E0-B16 to E0-B512 changes training batch only. E0-B512 and E2-B512 have matched input split, training batch, lr, seed, epoch ceiling and validation selection; architecture, aggregation, heads, parameter counts and their initial state hashes remain different. Equal ceilings are not equal total optimizer updates.",
+  "partition_sizes": {
+    "train": 107621,
+    "val": 13446,
+    "test": 13448
+  },
+  "optimizer_updates_per_full_epoch": 211,
+  "registration": {
+    "kind": "exploratory_structural_control_after_prior_results",
+    "date": "2026-10-21",
+    "requested_by": "user",
+    "prior_test_results_available": true,
+    "purpose": "Keep original E0 architecture and match E2-B512 training/evaluation controls. Not a parameter-matched isolation of dual encoding."
+  }
+}

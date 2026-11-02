@@ -1,0 +1,11 @@
+{
+  "physical_index": 1,
+  "uuid": "GPU-a9142835-62e0-974e-aebe-80ab25f7ef02",
+  "name": "Tesla T4",
+  "total_mib": 15360,
+  "used_mib_at_query": 8,
+  "free_mib_at_query": 14904,
+  "allow_shared_gpu": true,
+  "other_processes_at_query": [],
+  "timing_scope": "sharing permitted; no isolated speed claim"
+}

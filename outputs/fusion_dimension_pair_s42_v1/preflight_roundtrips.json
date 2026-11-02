@@ -1,0 +1,12 @@
+{
+  "D8": {
+    "strict_reload": true,
+    "samples": 16,
+    "checkpoint_sha256": "c9d9995f45577d9dfd39f37cf20c35923340cb105ef17531907226d892b11c4e"
+  },
+  "D32": {
+    "strict_reload": true,
+    "samples": 16,
+    "checkpoint_sha256": "aa445c82a9e87a1ddabc143151dfe510373a44e50a55b99efa37444b986ce107"
+  }
+}

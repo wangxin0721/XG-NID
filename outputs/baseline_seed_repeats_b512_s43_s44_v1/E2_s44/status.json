@@ -1,0 +1,8 @@
+{
+  "status": "completed",
+  "exit_code": 0,
+  "mode": "full",
+  "batch_size": 512,
+  "model": "E2",
+  "seed": 44
+}

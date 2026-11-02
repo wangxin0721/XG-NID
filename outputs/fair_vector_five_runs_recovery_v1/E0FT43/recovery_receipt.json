@@ -1,0 +1,42 @@
+{
+  "job": "E0FT43",
+  "files_before_recovery": {
+    "last.pt": "891924e9acc0eeaee3d413848fdf2de79f908313dfc1b1c78f33d9c8c5d2554a",
+    "best.pt": "6782a850934be9fdf7c400e99e74481c9d0867dedd57669657eb1f13e9ece367",
+    "config.json": "305222be0985d052a9799a4b66d36d71252f1ea09bba8ccfb754ecacbffb2bf8",
+    "epochs.jsonl": "068d87d2bc20e29dbadcfb0806502b8f3b0d968bd1513c9fe15658a1c09b8d65"
+  },
+  "saved_epoch": 7,
+  "next_epoch": 8,
+  "best_epoch": 4,
+  "stale_epochs": 3,
+  "updates": 1477,
+  "model_state_restored": true,
+  "Adam_state_restored": true,
+  "sampler_rng_verified": true,
+  "global_rng_restored": true,
+  "worker_rng_not_saved": true,
+  "bitwise_uninterrupted_equivalence_claimed": false,
+  "physical_gpu": 0,
+  "gpu": {
+    "physical_index": 0,
+    "uuid": "GPU-e69b98a9-213b-8dba-8ec6-1c3aa33c870f",
+    "name": "Tesla T4",
+    "total_mib": 15360,
+    "used_mib_at_query": 1312,
+    "free_mib_at_query": 13600,
+    "allow_shared_gpu": true,
+    "other_processes_at_query": [
+      {
+        "pid": 693237,
+        "name": "python"
+      },
+      {
+        "pid": 2935821,
+        "name": "python"
+      }
+    ],
+    "timing_scope": "sharing permitted; no isolated speed claim"
+  },
+  "recovery_entry_sha256": "55a628b4440b87bbee0605c2fc4655370e27a30ed706745a2244a5f677af6f2c"
+}

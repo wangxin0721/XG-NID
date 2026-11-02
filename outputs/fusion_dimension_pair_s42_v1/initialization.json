@@ -1,0 +1,56 @@
+{
+  "architecture": {
+    "D8": {
+      "width": 8,
+      "projection": [
+        64,
+        8
+      ],
+      "gate": [
+        21,
+        16,
+        8
+      ],
+      "shared_head": [
+        8,
+        32,
+        8
+      ],
+      "trainable_parameters": 2080
+    },
+    "D32": {
+      "width": 32,
+      "projection": [
+        64,
+        32
+      ],
+      "gate": [
+        69,
+        16,
+        32
+      ],
+      "shared_head": [
+        32,
+        32,
+        8
+      ],
+      "trainable_parameters": 7144
+    }
+  },
+  "streams": {
+    "flow_projection": 588426498550342701,
+    "packet_projection": 598642292426476218,
+    "gate_hidden": 706132857465504583,
+    "gate_output": 890555730455083829,
+    "head_hidden": 94819799494184648,
+    "head_output": 237676001307781809
+  },
+  "head_state_sha256": {
+    "D8": "17f34c6213641c2a18a171b0a7426f235465140bdbc5972fa43f30b197a8806c",
+    "D32": "a50f6cd5b316f8c64a970f0aaaae8931f464bbc446c43c1fd56bb144c7057cc6"
+  },
+  "all_heads_fresh": true,
+  "shared_output_layer_initialization_identical": true,
+  "encoder_sha256": "923217d8026a56f1ffc7fb7bbda8e910aa6a97d51cd18a006412c8766df57033",
+  "epoch_zero_is_fresh_model": true
+}

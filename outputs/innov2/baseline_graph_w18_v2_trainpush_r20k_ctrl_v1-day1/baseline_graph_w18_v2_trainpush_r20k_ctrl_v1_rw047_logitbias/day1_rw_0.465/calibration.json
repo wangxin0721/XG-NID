@@ -1,0 +1,11 @@
+{
+  "recon_webbased": {
+    "threshold": 0.465,
+    "pair_f1": 0.9403581774515974,
+    "macro_f1": 0.9755588122271297,
+    "webbased_precision": 0.9410876132930514,
+    "recon_to_webbased": 60
+  },
+  "pair_calibrators": [],
+  "logit_bias": null
+}

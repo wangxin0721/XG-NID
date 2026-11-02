@@ -1,0 +1,9 @@
+{
+  "samples": 13446,
+  "changed_predictions": 0,
+  "max_abs_log_probability_error": 1.52587890625e-05,
+  "atol": 1e-05,
+  "rtol": 1e-05,
+  "saved_validation_reproduced": true,
+  "model_state_unchanged": true
+}

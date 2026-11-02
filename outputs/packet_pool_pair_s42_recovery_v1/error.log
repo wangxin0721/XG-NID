@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/tmp/xgnid_packet_recovery.IBzYLA/scripts/recover_packet_pool_pair.py", line 151, in main
+    parent.run(args, meta, cache_provider=cache_provider(receipt),
+  File "/tmp/xgnid_packet_recovery.IBzYLA/scripts/run_packet_pool_pair.py", line 644, in run
+    initialization = initial_equivalence(core, models, caches['val'], device, gold, expected, args.output)
+  File "/tmp/xgnid_packet_recovery.IBzYLA/scripts/run_packet_pool_pair.py", line 383, in initial_equivalence
+    require(diagnostic['new_failed_batches'] == 0 and diagnostic['new_prediction_mismatches'] == 0,
+  File "/tmp/xgnid_packet_recovery.IBzYLA/scripts/e3_gate_study.py", line 33, in require
+    raise ValueError(message)
+ValueError: Non-equivalent epoch0 readout; inspect initialization_comparison.json

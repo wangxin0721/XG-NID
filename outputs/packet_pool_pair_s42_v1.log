@@ -1,0 +1,55 @@
+/home/nzxn/miniconda3/envs/wx/lib/python3.9/site-packages/torch_geometric/typing.py:99: UserWarning: An issue occurred while importing 'torch-spline-conv'. Disabling its usage. Stacktrace: /home/nzxn/miniconda3/envs/wx/lib/python3.9/site-packages/torch_spline_conv/_version_cuda.so: undefined symbol: _ZN3c1017RegisterOperatorsD1Ev
+  warnings.warn(
+{"status": "running", "phase": "extract_packet_nodes", "pid": 7276, "partition": "train", "samples": 16, "total": 107621}
+{"status": "running", "phase": "extract_packet_nodes", "pid": 7276, "partition": "train", "samples": 3200, "total": 107621}
+{"status": "running", "phase": "extract_packet_nodes", "pid": 7276, "partition": "train", "samples": 6400, "total": 107621}
+{"status": "running", "phase": "extract_packet_nodes", "pid": 7276, "partition": "train", "samples": 9600, "total": 107621}
+{"status": "running", "phase": "extract_packet_nodes", "pid": 7276, "partition": "train", "samples": 12800, "total": 107621}
+{"status": "running", "phase": "extract_packet_nodes", "pid": 7276, "partition": "train", "samples": 16000, "total": 107621}
+{"status": "running", "phase": "extract_packet_nodes", "pid": 7276, "partition": "train", "samples": 19200, "total": 107621}
+{"status": "running", "phase": "extract_packet_nodes", "pid": 7276, "partition": "train", "samples": 22400, "total": 107621}
+{"status": "running", "phase": "extract_packet_nodes", "pid": 7276, "partition": "train", "samples": 25600, "total": 107621}
+{"status": "running", "phase": "extract_packet_nodes", "pid": 7276, "partition": "train", "samples": 28800, "total": 107621}
+{"status": "running", "phase": "extract_packet_nodes", "pid": 7276, "partition": "train", "samples": 32000, "total": 107621}
+{"status": "running", "phase": "extract_packet_nodes", "pid": 7276, "partition": "train", "samples": 35200, "total": 107621}
+{"status": "running", "phase": "extract_packet_nodes", "pid": 7276, "partition": "train", "samples": 38400, "total": 107621}
+{"status": "running", "phase": "extract_packet_nodes", "pid": 7276, "partition": "train", "samples": 41600, "total": 107621}
+{"status": "running", "phase": "extract_packet_nodes", "pid": 7276, "partition": "train", "samples": 44800, "total": 107621}
+{"status": "running", "phase": "extract_packet_nodes", "pid": 7276, "partition": "train", "samples": 48000, "total": 107621}
+{"status": "running", "phase": "extract_packet_nodes", "pid": 7276, "partition": "train", "samples": 51200, "total": 107621}
+{"status": "running", "phase": "extract_packet_nodes", "pid": 7276, "partition": "train", "samples": 54400, "total": 107621}
+{"status": "running", "phase": "extract_packet_nodes", "pid": 7276, "partition": "train", "samples": 57600, "total": 107621}
+{"status": "running", "phase": "extract_packet_nodes", "pid": 7276, "partition": "train", "samples": 60800, "total": 107621}
+{"status": "running", "phase": "extract_packet_nodes", "pid": 7276, "partition": "train", "samples": 64000, "total": 107621}
+{"status": "running", "phase": "extract_packet_nodes", "pid": 7276, "partition": "train", "samples": 67200, "total": 107621}
+{"status": "running", "phase": "extract_packet_nodes", "pid": 7276, "partition": "train", "samples": 70400, "total": 107621}
+{"status": "running", "phase": "extract_packet_nodes", "pid": 7276, "partition": "train", "samples": 73600, "total": 107621}
+{"status": "running", "phase": "extract_packet_nodes", "pid": 7276, "partition": "train", "samples": 76800, "total": 107621}
+{"status": "running", "phase": "extract_packet_nodes", "pid": 7276, "partition": "train", "samples": 80000, "total": 107621}
+{"status": "running", "phase": "extract_packet_nodes", "pid": 7276, "partition": "train", "samples": 83200, "total": 107621}
+{"status": "running", "phase": "extract_packet_nodes", "pid": 7276, "partition": "train", "samples": 86400, "total": 107621}
+{"status": "running", "phase": "extract_packet_nodes", "pid": 7276, "partition": "train", "samples": 89600, "total": 107621}
+{"status": "running", "phase": "extract_packet_nodes", "pid": 7276, "partition": "train", "samples": 92800, "total": 107621}
+{"status": "running", "phase": "extract_packet_nodes", "pid": 7276, "partition": "train", "samples": 96000, "total": 107621}
+{"status": "running", "phase": "extract_packet_nodes", "pid": 7276, "partition": "train", "samples": 99200, "total": 107621}
+{"status": "running", "phase": "extract_packet_nodes", "pid": 7276, "partition": "train", "samples": 102400, "total": 107621}
+{"status": "running", "phase": "extract_packet_nodes", "pid": 7276, "partition": "train", "samples": 105600, "total": 107621}
+{"status": "running", "phase": "cache_before_concat", "pid": 7276, "partition": "train", "graph_samples": 107621, "packet_nodes": 1170720, "flow64_bytes": 27550976, "packet64_bytes": 299704320, "labels_bytes": 860968, "ptr_bytes": 860976, "retained_cache_tensor_bytes": 0, "final_cache_tensor_bytes": 328977240, "concat_additional_allocation_bytes": 329838216, "estimated_cache_tensor_peak_bytes": 657954480, "host_MemAvailable_bytes_before_concat": 25168109568, "additional_allocation_fits_host_available": true, "excludes": ["Python objects and lists", "source graphs and worker prefetch", "model and batch tensors", "allocator and serialization/hash buffers"], "scope": "cache tensor storage at concatenation; not whole-process peak RSS"}
+{"status": "running", "phase": "extract_packet_nodes", "pid": 7276, "partition": "val", "samples": 16, "total": 13446}
+{"status": "running", "phase": "extract_packet_nodes", "pid": 7276, "partition": "val", "samples": 3200, "total": 13446}
+{"status": "running", "phase": "extract_packet_nodes", "pid": 7276, "partition": "val", "samples": 6400, "total": 13446}
+{"status": "running", "phase": "extract_packet_nodes", "pid": 7276, "partition": "val", "samples": 9600, "total": 13446}
+{"status": "running", "phase": "extract_packet_nodes", "pid": 7276, "partition": "val", "samples": 12800, "total": 13446}
+{"status": "running", "phase": "cache_before_concat", "pid": 7276, "partition": "val", "graph_samples": 13446, "packet_nodes": 147485, "flow64_bytes": 3442176, "packet64_bytes": 37756160, "labels_bytes": 107568, "ptr_bytes": 107576, "retained_cache_tensor_bytes": 328977240, "final_cache_tensor_bytes": 41413480, "concat_additional_allocation_bytes": 41521056, "estimated_cache_tensor_peak_bytes": 411804200, "host_MemAvailable_bytes_before_concat": 24793825280, "additional_allocation_fits_host_available": true, "excludes": ["Python objects and lists", "source graphs and worker prefetch", "model and batch tensors", "allocator and serialization/hash buffers"], "scope": "cache tensor storage at concatenation; not whole-process peak RSS"}
+Traceback (most recent call last):
+  File "/tmp/xgnid_packet_pool.69Xqpl/scripts/run_packet_pool_pair.py", line 722, in <module>
+    main()
+  File "/tmp/xgnid_packet_pool.69Xqpl/scripts/run_packet_pool_pair.py", line 711, in main
+    run(args, meta)
+  File "/tmp/xgnid_packet_pool.69Xqpl/scripts/run_packet_pool_pair.py", line 608, in run
+    initialization = initial_equivalence(core, models, caches['val'], device, gold, expected)
+  File "/tmp/xgnid_packet_pool.69Xqpl/scripts/run_packet_pool_pair.py", line 345, in initial_equivalence
+    require(core.torch.allclose(a, b, atol=1e-6, rtol=1e-6)
+  File "/tmp/xgnid_packet_pool.69Xqpl/scripts/e3_gate_study.py", line 33, in require
+    raise ValueError(message)
+ValueError: Non-equivalent epoch0 readout

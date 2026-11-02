@@ -1,0 +1,45 @@
+download train interrupted at byte 0; retry 1/4: <urlopen error timed out>
+download train interrupted at byte 0; retry 2/4: <urlopen error timed out>
+download train interrupted at byte 0; retry 3/4: <urlopen error timed out>
+download train interrupted at byte 0; retry 4/4: <urlopen error timed out>
+Traceback (most recent call last):
+  File "/home/nzxn/miniconda3/envs/wx/lib/python3.9/urllib/request.py", line 1346, in do_open
+    h.request(req.get_method(), req.selector, req.data, headers,
+  File "/home/nzxn/miniconda3/envs/wx/lib/python3.9/http/client.py", line 1285, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "/home/nzxn/miniconda3/envs/wx/lib/python3.9/http/client.py", line 1331, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "/home/nzxn/miniconda3/envs/wx/lib/python3.9/http/client.py", line 1280, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/home/nzxn/miniconda3/envs/wx/lib/python3.9/http/client.py", line 1040, in _send_output
+    self.send(msg)
+  File "/home/nzxn/miniconda3/envs/wx/lib/python3.9/http/client.py", line 980, in send
+    self.connect()
+  File "/home/nzxn/miniconda3/envs/wx/lib/python3.9/http/client.py", line 1447, in connect
+    super().connect()
+  File "/home/nzxn/miniconda3/envs/wx/lib/python3.9/http/client.py", line 946, in connect
+    self.sock = self._create_connection(
+  File "/home/nzxn/miniconda3/envs/wx/lib/python3.9/socket.py", line 856, in create_connection
+    raise err
+  File "/home/nzxn/miniconda3/envs/wx/lib/python3.9/socket.py", line 844, in create_connection
+    sock.connect(sa)
+socket.timeout: timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/nzxn/下载/WX/load/XG-NID/outputs/r0_graph_rebuild_author_v1/entry.py", line 217, in worker
+    sources[part] = download(part, destination, download_progress)
+  File "/home/nzxn/下载/WX/load/XG-NID/outputs/r0_graph_rebuild_author_v1/entry.py", line 109, in download
+    response = opener.open(Request(url, headers={"User-Agent": "Mozilla/5.0",
+  File "/home/nzxn/miniconda3/envs/wx/lib/python3.9/urllib/request.py", line 517, in open
+    response = self._open(req, data)
+  File "/home/nzxn/miniconda3/envs/wx/lib/python3.9/urllib/request.py", line 534, in _open
+    result = self._call_chain(self.handle_open, protocol, protocol +
+  File "/home/nzxn/miniconda3/envs/wx/lib/python3.9/urllib/request.py", line 494, in _call_chain
+    result = func(*args)
+  File "/home/nzxn/miniconda3/envs/wx/lib/python3.9/urllib/request.py", line 1389, in https_open
+    return self.do_open(http.client.HTTPSConnection, req,
+  File "/home/nzxn/miniconda3/envs/wx/lib/python3.9/urllib/request.py", line 1349, in do_open
+    raise URLError(err)
+urllib.error.URLError: <urlopen error timed out>

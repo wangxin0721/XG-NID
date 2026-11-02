@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/tmp/xgnid_dim_pair.fFyxpA/scripts/run_fusion_dimension_pair.py", line 580, in main
+    run(args, meta)
+  File "/tmp/xgnid_dim_pair.fFyxpA/scripts/run_fusion_dimension_pair.py", line 519, in run
+    results[name], exports[name] = train(core, args, c, models[name], caches, name, binding, encoder_hash,
+  File "/tmp/xgnid_dim_pair.fFyxpA/scripts/run_fusion_dimension_pair.py", line 311, in train
+    require(all(v == .5 for key in ('mean', 'min', 'max') for v in initial['flow_weight_distribution'][key]),
+  File "/tmp/xgnid_dim_pair.fFyxpA/scripts/e3_gate_study.py", line 33, in require
+    raise ValueError(message)
+ValueError: Fresh epoch0 fusion is not equal-weight

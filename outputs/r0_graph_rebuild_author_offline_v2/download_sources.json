@@ -1,0 +1,24 @@
+{
+  "train": {
+    "file_id": "1IClFYOup0U58WKj2R0p1IJ_ZMc1Os2FD",
+    "bytes": 1027673808,
+    "sha256": "1b546e6c69faad482b98b4c95219ef9b13aba0c13afcfe0b4abe69c1e7f38b02",
+    "acquisition": "verified_existing_server_csv_copy",
+    "copy_source": "/home/nzxn/下载/WX/load/XG-NID/data/processed/CICIoT2023_processed/df_class_8_train.csv",
+    "author_url": "https://drive.google.com/file/d/1IClFYOup0U58WKj2R0p1IJ_ZMc1Os2FD/view",
+    "network_used": false,
+    "path": "/home/nzxn/下载/WX/load/XG-NID/data/processed/xgnid_author_rebuild_offline_v2/raw/df_class_8_train.csv",
+    "equal_to_previous_candidate_sha256": true
+  },
+  "test": {
+    "file_id": "1Yxpd-ruxC8B1zz3e8oLOcZcfrahIfhJc",
+    "bytes": 175063419,
+    "sha256": "08b256997d0368dde6c85a3b43ef3d56b4ce336939fcdce41596725bbdee42ed",
+    "acquisition": "verified_existing_server_csv_copy",
+    "copy_source": "/home/nzxn/下载/WX/load/XG-NID/data/processed/CICIoT2023_processed/df_class_8_test.csv",
+    "author_url": "https://drive.google.com/file/d/1Yxpd-ruxC8B1zz3e8oLOcZcfrahIfhJc/view",
+    "network_used": false,
+    "path": "/home/nzxn/下载/WX/load/XG-NID/data/processed/xgnid_author_rebuild_offline_v2/raw/df_class_8_test.csv",
+    "equal_to_previous_candidate_sha256": true
+  }
+}

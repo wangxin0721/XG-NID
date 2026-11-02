@@ -1,0 +1,369 @@
+{
+  "P1_minus_P0_pp": 0.0,
+  "P1_minus_D32_pp": 0.0,
+  "stronger_reference_macro_f1": 0.9732070542814468,
+  "P1_minus_stronger_reference_pp": 0.0,
+  "budget_threshold_pp": 0.1,
+  "required_P1_macro_f1": 0.9742070542814468,
+  "budget_screen_passed": false,
+  "P0_gain_from_D32_pp": 0.0,
+  "graph_load_accounting": {
+    "basis": "main_process_guard_plus_parent_verified_loader_samples",
+    "main_process_counts": {
+      "train": 1120,
+      "val": 0,
+      "test": 0
+    },
+    "loader_stages": [
+      {
+        "phase": "initial_P0",
+        "partition": "val",
+        "verified_samples": 13446,
+        "workers": 2
+      },
+      {
+        "phase": "initial_P1",
+        "partition": "val",
+        "verified_samples": 13446,
+        "workers": 2
+      },
+      {
+        "phase": "best_P0",
+        "partition": "val",
+        "verified_samples": 13446,
+        "workers": 2
+      },
+      {
+        "phase": "best_P1",
+        "partition": "val",
+        "verified_samples": 13446,
+        "workers": 2
+      }
+    ],
+    "totals": {
+      "train": 1120,
+      "val": 53784,
+      "test": 0
+    },
+    "unit": "verified_sample_loads_including_repeated_reads_not_disk_io_operations"
+  },
+  "cache_memory_estimates": {
+    "train": {
+      "graph_samples": 107621,
+      "packet_nodes": 1170720,
+      "flow64_bytes": 27550976,
+      "packet64_bytes": 299704320,
+      "labels_bytes": 860968,
+      "ptr_bytes": 860976,
+      "retained_cache_tensor_bytes": 0,
+      "final_cache_tensor_bytes": 328977240,
+      "concat_additional_allocation_bytes": 329838216,
+      "estimated_cache_tensor_peak_bytes": 657954480,
+      "host_MemAvailable_bytes_before_concat": 25168109568,
+      "additional_allocation_fits_host_available": true,
+      "excludes": [
+        "Python objects and lists",
+        "source graphs and worker prefetch",
+        "model and batch tensors",
+        "allocator and serialization/hash buffers"
+      ],
+      "scope": "cache tensor storage at concatenation; not whole-process peak RSS"
+    },
+    "val": {
+      "graph_samples": 13446,
+      "packet_nodes": 147485,
+      "flow64_bytes": 3442176,
+      "packet64_bytes": 37756160,
+      "labels_bytes": 107568,
+      "ptr_bytes": 107576,
+      "retained_cache_tensor_bytes": 328977240,
+      "final_cache_tensor_bytes": 41413480,
+      "concat_additional_allocation_bytes": 41521056,
+      "estimated_cache_tensor_peak_bytes": 411804200,
+      "host_MemAvailable_bytes_before_concat": 24793825280,
+      "additional_allocation_fits_host_available": true,
+      "excludes": [
+        "Python objects and lists",
+        "source graphs and worker prefetch",
+        "model and batch tensors",
+        "allocator and serialization/hash buffers"
+      ],
+      "scope": "cache tensor storage at concatenation; not whole-process peak RSS"
+    }
+  },
+  "cuda_readout_preflight": {
+    "status": "passed",
+    "device": "cuda:0",
+    "repeats": 16,
+    "optimizer_updates": 0,
+    "scope": "synthetic grouped packet readout and backward, not encoder validation",
+    "max_abs_pool_error": 0.0,
+    "max_abs_pair_score_error": 0.0,
+    "output_weight_gradient_l1": 232323055616.0,
+    "model_and_rng_unchanged": true
+  },
+  "previous_recovery_failure": {
+    "directory": "/home/nzxn/下载/WX/load/XG-NID/outputs/packet_pool_pair_s42_recovery_v1",
+    "source_commit": "2bf57a5352a5ed65918b759dfb33459bcaadd770",
+    "file_sha256": {
+      "binding.json": "74fa536f07d7462be9daa907b8fae30ed9150a508a93a8bef9c2c0a1517cd93e",
+      "cache_memory_estimates.json": "9e009dafbcb2d80c20cfdcb6b42ee5dcba5b2e2b78ba3bd684a9234dd714f7d1",
+      "cache_receipts.json": "8ed86ef5b69edea3a330d60eba2560208ee6d25fae913b7dadf6445751976067",
+      "config.json": "a443f7d37d547256b67a7ae5021f78f1c0f3e976fe08390b13ec84146307fe91",
+      "error.log": "08d9d3990379dc18cd32556c1ba057d07f6d5a2e70fa25ea927821402713d027",
+      "gpu.json": "4f33fe188aa0da8ab30814bbbb5188a3d1a9c4c846b62c212dc68be8630eeb26",
+      "initialization_comparison.json": "fc38e8fe7fc478a04d1dc64a014db2572104dd83b1610825c454ea700ec5ea33",
+      "packet_diagnostics.json": "4d3eab21235abd97d12e1dcad88cdb703024f31ceb4cb2dc9c7be64612260117",
+      "progress.json": "57070594cb5fda72cc38fa6153c8b407d3373bda14b5a163f99e7d5b59d64d5a",
+      "recovery_receipt.json": "6c35c3408f7bb2ee91cd2293a58a2318700ea4549531d651a255b152fae0826f",
+      "status.json": "57070594cb5fda72cc38fa6153c8b407d3373bda14b5a163f99e7d5b59d64d5a",
+      "train_packet_nodes.pt": "bbadf7499506f7d5968ffc9061bf4e58445c2c7a67ae85dfb3620a22491bf42c",
+      "val_packet_nodes.pt": "fc70d58c519ef31eb5cc524c4914814f7e959f1f79664e5e478a99c7db5a40ab"
+    },
+    "initialization_comparison": {
+      "samples": 13446,
+      "atol": 1e-06,
+      "rtol": 1e-06,
+      "new_failed_batches": 1,
+      "legacy_failed_batches": 11,
+      "new_prediction_mismatches": 0,
+      "legacy_prediction_mismatches": 0,
+      "max_abs_new_vs_P0_log_probability_error": 2.288818359375e-05,
+      "max_abs_legacy_vs_P0_log_probability_error": 3.0517578125e-05,
+      "max_abs_new_vs_mean_packet_error": 1.1920928955078125e-06,
+      "max_abs_legacy_vs_mean_packet_error": 2.384185791015625e-06,
+      "first_new_mismatch_ids": [],
+      "first_legacy_mismatch_ids": [],
+      "max_abs_new_vs_P0_gate_error": 7.152557373046875e-07,
+      "max_abs_legacy_vs_P0_gate_error": 6.556510925292969e-07,
+      "explanation": "Different floating-point reduction orders are a candidate cause; measured legacy/new differences are recorded here."
+    },
+    "formal_training_updates_before_failure": 0,
+    "probe_updates_before_failure": 0
+  },
+  "source_comparison_policy": {
+    "paired_and_matched_source_atol": 1e-06,
+    "paired_and_matched_source_rtol": 1e-06,
+    "legacy_independent_source_predictions_and_CM": "must_match_exactly",
+    "legacy_independent_source_log_probability_errors": "recorded_separately_from_matched_readout_identity"
+  },
+  "cache_reused": true,
+  "cache_recovery": {
+    "directory": "/home/nzxn/下载/WX/load/XG-NID/outputs/packet_pool_pair_s42_v1",
+    "file_sha256": {
+      "binding.json": "f314f891baa48191a145688a5c9faced74c0754d6017e6eb53e8f8d0f713a593",
+      "cache_memory_estimates.json": "61d886edd01290e2ab460d2016e041fc7abe7e7402282993862eb2c705de746f",
+      "cache_receipts.json": "fb0ead9e70da75bd2931c26666ba099009116b4d95f177604acea0ef054523eb",
+      "config.json": "a443f7d37d547256b67a7ae5021f78f1c0f3e976fe08390b13ec84146307fe91",
+      "error.log": "f21b08518ffc63e79eaa64f6f194073d9280828e156bff4955ac068f9e37bcdf",
+      "gpu.json": "4951e2e79704ba1362c02d8593d093a90bb16fae843ea258cf7cbe87490492fd",
+      "packet_diagnostics.json": "4d3eab21235abd97d12e1dcad88cdb703024f31ceb4cb2dc9c7be64612260117",
+      "progress.json": "57070594cb5fda72cc38fa6153c8b407d3373bda14b5a163f99e7d5b59d64d5a",
+      "status.json": "57070594cb5fda72cc38fa6153c8b407d3373bda14b5a163f99e7d5b59d64d5a",
+      "train_packet_nodes.pt": "bbadf7499506f7d5968ffc9061bf4e58445c2c7a67ae85dfb3620a22491bf42c",
+      "val_packet_nodes.pt": "fc70d58c519ef31eb5cc524c4914814f7e959f1f79664e5e478a99c7db5a40ab"
+    },
+    "cache_receipts": {
+      "train": {
+        "sha256": "bbadf7499506f7d5968ffc9061bf4e58445c2c7a67ae85dfb3620a22491bf42c",
+        "tensor_sha256": "24c911e48f4c5d647de9a20dd53a55a450bc548737190f4eb2b629c8934dc82b",
+        "metadata": {
+          "schema": "xgnid.packet-node64-cache.v1",
+          "partition": "train",
+          "encoder_sha256": "923217d8026a56f1ffc7fb7bbda8e910aa6a97d51cd18a006412c8766df57033",
+          "split_binding": {
+            "config_sha256": "a53576c80e548ca143e566cf88cb190636ee7a6cfd4d2e89ad8b6bfd0363367a",
+            "registry_sha256": "ebbb7da8ed6b20e94023cba7983a418f1ebc9be1988add6fa2ff0be079e16a62",
+            "checkpoint_sha256": "1709ed1a19b8a2e20b9b1ef3dac6cc6a5906fd93937e8d18a51cc64f85c44b08",
+            "sources": {
+              "scripts/train_grouped.py": "06a493b18faa97b4e1f2b99b6aae38c67ad3c5f39b130f112079c9393432f5d1",
+              "scripts/grouped_graphs.py": "c1b1273d62fc44d91f7c9b300b66a083c1f80ef2c9c4314a62c4bbd5d708bbb4",
+              "scripts/smoke_grouped_gpu.py": "7bce1218e1b55a812855d50c70973fe300da97ad7e9b4005a52deac77d8b1517",
+              "scripts/audit_graph_split.py": "c19164930e8ecb75636cf16d6fa9bb51d6f29e1384e8d8ebf040e683536ffcb6",
+              "scripts/build_grouped_split.py": "24e07766189aec9d03f6161dee15587612a5b2f13e23eab67d7ba4aaf89a3401",
+              "src/xgnid/__init__.py": "2515233a0cdac6c5447c9dbd6b0d54c89284f191d8cb41473d89b347ee296ae7",
+              "src/xgnid/model.py": "28e21e94118db0a4110d17923d2840e18959669d798f628018c98c91c0202631",
+              "src/xgnid/edge_experiments.py": "3e6305d83c06c7ce32e901a2aba9d9d26baa1f2b394af14997b0e359929b4da5",
+              "third_party/GNN4ID/Utility/Model.py": "e17c3905e3c9f437c269bdd0e4d115656cfba6054b6a4474bbd06b5453010688"
+            },
+            "split_id": "a8ae9c934eec9fee970cc725e60051d0c709e0f16c7dda14749350ff2006975a",
+            "manifest_sha256": "b8e9b0810471d0c2b52033488fab640625c3731315afd5d2add1571bd2518827",
+            "entry_sha256": "8202a33d97949b72c9779e5b72fdcad8655bb58550060f29dabcd305e848b48f",
+            "wrappers": {
+              "N0": "e19cb329c5495480f6a85824a5a70e3f6158f8ff2878178d46875eb8111b5351",
+              "N1": "9e5fe4f502111b67d03222664bb16026937a23e6b85537bfc8d3df4b70d8422e"
+            },
+            "helper_sha256": "94b8e537798cca3af76b260f0bca6c9cfaffb75cff404bb6a4f423017445738f"
+          },
+          "sample_order_sha256": "e55904a2bf640d68a278dfb571a296f0c9d0b7b4b8ae0e0ef179a9e3c8ea629a",
+          "samples": 107621
+        },
+        "wall_seconds": 337.282319938,
+        "graph_load_stage": {
+          "phase": "extract_train",
+          "partition": "train",
+          "verified_samples": 107621,
+          "workers": 2
+        },
+        "memory_estimate": {
+          "graph_samples": 107621,
+          "packet_nodes": 1170720,
+          "flow64_bytes": 27550976,
+          "packet64_bytes": 299704320,
+          "labels_bytes": 860968,
+          "ptr_bytes": 860976,
+          "retained_cache_tensor_bytes": 0,
+          "final_cache_tensor_bytes": 328977240,
+          "concat_additional_allocation_bytes": 329838216,
+          "estimated_cache_tensor_peak_bytes": 657954480,
+          "host_MemAvailable_bytes_before_concat": 25168109568,
+          "additional_allocation_fits_host_available": true,
+          "excludes": [
+            "Python objects and lists",
+            "source graphs and worker prefetch",
+            "model and batch tensors",
+            "allocator and serialization/hash buffers"
+          ],
+          "scope": "cache tensor storage at concatenation; not whole-process peak RSS"
+        }
+      },
+      "val": {
+        "sha256": "fc70d58c519ef31eb5cc524c4914814f7e959f1f79664e5e478a99c7db5a40ab",
+        "tensor_sha256": "3a28cc51ef52911d951ac01da3a47caaa825f906d2829dc6e8bff2bd1a5aeb96",
+        "metadata": {
+          "schema": "xgnid.packet-node64-cache.v1",
+          "partition": "val",
+          "encoder_sha256": "923217d8026a56f1ffc7fb7bbda8e910aa6a97d51cd18a006412c8766df57033",
+          "split_binding": {
+            "config_sha256": "a53576c80e548ca143e566cf88cb190636ee7a6cfd4d2e89ad8b6bfd0363367a",
+            "registry_sha256": "ebbb7da8ed6b20e94023cba7983a418f1ebc9be1988add6fa2ff0be079e16a62",
+            "checkpoint_sha256": "1709ed1a19b8a2e20b9b1ef3dac6cc6a5906fd93937e8d18a51cc64f85c44b08",
+            "sources": {
+              "scripts/train_grouped.py": "06a493b18faa97b4e1f2b99b6aae38c67ad3c5f39b130f112079c9393432f5d1",
+              "scripts/grouped_graphs.py": "c1b1273d62fc44d91f7c9b300b66a083c1f80ef2c9c4314a62c4bbd5d708bbb4",
+              "scripts/smoke_grouped_gpu.py": "7bce1218e1b55a812855d50c70973fe300da97ad7e9b4005a52deac77d8b1517",
+              "scripts/audit_graph_split.py": "c19164930e8ecb75636cf16d6fa9bb51d6f29e1384e8d8ebf040e683536ffcb6",
+              "scripts/build_grouped_split.py": "24e07766189aec9d03f6161dee15587612a5b2f13e23eab67d7ba4aaf89a3401",
+              "src/xgnid/__init__.py": "2515233a0cdac6c5447c9dbd6b0d54c89284f191d8cb41473d89b347ee296ae7",
+              "src/xgnid/model.py": "28e21e94118db0a4110d17923d2840e18959669d798f628018c98c91c0202631",
+              "src/xgnid/edge_experiments.py": "3e6305d83c06c7ce32e901a2aba9d9d26baa1f2b394af14997b0e359929b4da5",
+              "third_party/GNN4ID/Utility/Model.py": "e17c3905e3c9f437c269bdd0e4d115656cfba6054b6a4474bbd06b5453010688"
+            },
+            "split_id": "a8ae9c934eec9fee970cc725e60051d0c709e0f16c7dda14749350ff2006975a",
+            "manifest_sha256": "b8e9b0810471d0c2b52033488fab640625c3731315afd5d2add1571bd2518827",
+            "entry_sha256": "8202a33d97949b72c9779e5b72fdcad8655bb58550060f29dabcd305e848b48f",
+            "wrappers": {
+              "N0": "e19cb329c5495480f6a85824a5a70e3f6158f8ff2878178d46875eb8111b5351",
+              "N1": "9e5fe4f502111b67d03222664bb16026937a23e6b85537bfc8d3df4b70d8422e"
+            },
+            "helper_sha256": "94b8e537798cca3af76b260f0bca6c9cfaffb75cff404bb6a4f423017445738f"
+          },
+          "sample_order_sha256": "efb5f9d81137f974a1bb244783831533bbab4b78f6d62bea511ebbd61e9b8c01",
+          "samples": 13446
+        },
+        "wall_seconds": 35.392516634,
+        "graph_load_stage": {
+          "phase": "extract_val",
+          "partition": "val",
+          "verified_samples": 13446,
+          "workers": 2
+        },
+        "memory_estimate": {
+          "graph_samples": 13446,
+          "packet_nodes": 147485,
+          "flow64_bytes": 3442176,
+          "packet64_bytes": 37756160,
+          "labels_bytes": 107568,
+          "ptr_bytes": 107576,
+          "retained_cache_tensor_bytes": 328977240,
+          "final_cache_tensor_bytes": 41413480,
+          "concat_additional_allocation_bytes": 41521056,
+          "estimated_cache_tensor_peak_bytes": 411804200,
+          "host_MemAvailable_bytes_before_concat": 24793825280,
+          "additional_allocation_fits_host_available": true,
+          "excludes": [
+            "Python objects and lists",
+            "source graphs and worker prefetch",
+            "model and batch tensors",
+            "allocator and serialization/hash buffers"
+          ],
+          "scope": "cache tensor storage at concatenation; not whole-process peak RSS"
+        }
+      }
+    },
+    "formal_training_updates_before_failure": 0,
+    "probe_updates_before_failure": 0,
+    "reused_graph_samples": {
+      "train": 107621,
+      "val": 13446
+    },
+    "original_cache_extraction_wall_seconds": 372.674836572,
+    "original_source_commit": "fbf812ef01a69781d2ee734e7e53a95fb16506ed"
+  },
+  "selected_epoch_zero": {
+    "P0": true,
+    "P1": true
+  },
+  "class_tradeoff_review_required": true,
+  "statistical_significance_claimed": false,
+  "automatic_followup": false,
+  "attribution": "P1-P0 measures the packet readout change including its 1,056 added parameters and training. P0 measures the same mature checkpoint with continued downstream training. The budget threshold is not a statistical significance criterion.",
+  "class_changes": {
+    "Benign": {
+      "P1_minus_P0_recall_pp": 0.0,
+      "P1_minus_D32_recall_pp": 0.0,
+      "P1_minus_P0_F1_pp": 0.0,
+      "P1_minus_D32_F1_pp": 0.0,
+      "support": 2389
+    },
+    "WebBased": {
+      "P1_minus_P0_recall_pp": 0.0,
+      "P1_minus_D32_recall_pp": 0.0,
+      "P1_minus_P0_F1_pp": 0.0,
+      "P1_minus_D32_F1_pp": 0.0,
+      "support": 544
+    },
+    "Spoofing": {
+      "P1_minus_P0_recall_pp": 0.0,
+      "P1_minus_D32_recall_pp": 0.0,
+      "P1_minus_P0_F1_pp": 0.0,
+      "P1_minus_D32_F1_pp": 0.0,
+      "support": 1739
+    },
+    "Recon": {
+      "P1_minus_P0_recall_pp": 0.0,
+      "P1_minus_D32_recall_pp": 0.0,
+      "P1_minus_P0_F1_pp": 0.0,
+      "P1_minus_D32_F1_pp": 0.0,
+      "support": 2278
+    },
+    "Mirai": {
+      "P1_minus_P0_recall_pp": 0.0,
+      "P1_minus_D32_recall_pp": 0.0,
+      "P1_minus_P0_F1_pp": 0.0,
+      "P1_minus_D32_F1_pp": 0.0,
+      "support": 2400
+    },
+    "Dos": {
+      "P1_minus_P0_recall_pp": 0.0,
+      "P1_minus_D32_recall_pp": 0.0,
+      "P1_minus_P0_F1_pp": 0.0,
+      "P1_minus_D32_F1_pp": 0.0,
+      "support": 1475
+    },
+    "DDos": {
+      "P1_minus_P0_recall_pp": 0.0,
+      "P1_minus_D32_recall_pp": 0.0,
+      "P1_minus_P0_F1_pp": 0.0,
+      "P1_minus_D32_F1_pp": 0.0,
+      "support": 2388
+    },
+    "BruteForce": {
+      "P1_minus_P0_recall_pp": 0.0,
+      "P1_minus_D32_recall_pp": 0.0,
+      "P1_minus_P0_F1_pp": 0.0,
+      "P1_minus_D32_F1_pp": 0.0,
+      "support": 233
+    }
+  }
+}

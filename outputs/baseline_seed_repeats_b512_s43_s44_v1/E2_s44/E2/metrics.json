@@ -1,0 +1,195 @@
+{
+  "mode": "full",
+  "protocol": "xgnid.e2-batch-comparison.v1",
+  "best_epoch": 76,
+  "stopped_epoch": 88,
+  "best_validation": {
+    "accuracy": 0.9782835043879221,
+    "macro_f1": 0.9697071790737111,
+    "weighted_f1": 0.978393084244829,
+    "per_class": {
+      "Benign": {
+        "precision": 0.967741935483871,
+        "recall": 0.9669317706153202,
+        "f1-score": 0.9673366834170855,
+        "support": 2389.0
+      },
+      "WebBased": {
+        "precision": 0.8697916666666666,
+        "recall": 0.9209558823529411,
+        "f1-score": 0.8946428571428571,
+        "support": 544.0
+      },
+      "Spoofing": {
+        "precision": 0.9553775743707094,
+        "recall": 0.9603220241518113,
+        "f1-score": 0.9578434184112418,
+        "support": 1739.0
+      },
+      "Recon": {
+        "precision": 0.9764758100310696,
+        "recall": 0.9657594381035997,
+        "f1-score": 0.9710880600308982,
+        "support": 2278.0
+      },
+      "Mirai": {
+        "precision": 0.9995835068721366,
+        "recall": 1.0,
+        "f1-score": 0.9997917100604041,
+        "support": 2400.0
+      },
+      "Dos": {
+        "precision": 0.9993178717598908,
+        "recall": 0.9932203389830508,
+        "f1-score": 0.9962597755865352,
+        "support": 1475.0
+      },
+      "DDos": {
+        "precision": 1.0,
+        "recall": 0.9970686767169179,
+        "f1-score": 0.9985321870413084,
+        "support": 2388.0
+      },
+      "BruteForce": {
+        "precision": 0.9700854700854701,
+        "recall": 0.9742489270386266,
+        "f1-score": 0.9721627408993576,
+        "support": 233.0
+      },
+      "accuracy": 0.9782835043879221,
+      "macro avg": {
+        "precision": 0.9672967294087268,
+        "recall": 0.9723133822452835,
+        "f1-score": 0.9697071790737111,
+        "support": 13446.0
+      },
+      "weighted avg": {
+        "precision": 0.9785765163980332,
+        "recall": 0.9782835043879221,
+        "f1-score": 0.978393084244829,
+        "support": 13446.0
+      }
+    },
+    "confusion_matrix": [
+      [
+        2310,
+        15,
+        54,
+        9,
+        0,
+        0,
+        0,
+        1
+      ],
+      [
+        7,
+        501,
+        8,
+        26,
+        0,
+        0,
+        0,
+        2
+      ],
+      [
+        54,
+        5,
+        1670,
+        6,
+        1,
+        0,
+        0,
+        3
+      ],
+      [
+        14,
+        50,
+        12,
+        2200,
+        0,
+        1,
+        0,
+        1
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        2400,
+        0,
+        0,
+        0
+      ],
+      [
+        1,
+        2,
+        0,
+        7,
+        0,
+        1465,
+        0,
+        0
+      ],
+      [
+        0,
+        2,
+        0,
+        5,
+        0,
+        0,
+        2381,
+        0
+      ],
+      [
+        1,
+        1,
+        4,
+        0,
+        0,
+        0,
+        0,
+        227
+      ]
+    ],
+    "samples": 13446,
+    "wall_seconds_including_graph_io": 32.372772324015386,
+    "forward_seconds": 18.51983802700043,
+    "forward_timing_method": "CUDA events around model call",
+    "gate_weights": {
+      "mean": [
+        0.5,
+        0.5
+      ],
+      "std": [
+        0.0,
+        0.0
+      ],
+      "min": [
+        0.5,
+        0.5
+      ],
+      "max": [
+        0.5,
+        0.5
+      ],
+      "fraction_flow_above_0_95": 0.0,
+      "fraction_packet_above_0_95": 0.0
+    }
+  },
+  "test": null,
+  "parameter_count": 846800,
+  "initial_state_sha256": "2a0760c33ad11c3d6ec8d50d08cbe11e19d589c34d54543813268a8dc2386ed3",
+  "train_batch_size": 512,
+  "evaluation_batch_size": 16,
+  "total_optimizer_updates": 18568,
+  "training_samples_seen": 9470648,
+  "training_validation_checkpoint_wall_seconds": 16064.509426570963,
+  "run_wall_seconds": 16064.509440483991,
+  "config_sha256": "188bbceffc404b1970d6be1f971f964b5416a90dde452ec168d98ac798b01096",
+  "checkpoint_sha256": {
+    "best.pt": "f67af431bbc62fd81bbf63329d1604b7f3aacb55b698eb55fd73afe04c2e4329",
+    "last.pt": "81a0d7801caff2950be1913d111379dd1abe9fbb3b4a15816b96b3b896402083"
+  },
+  "test_evaluated": false
+}

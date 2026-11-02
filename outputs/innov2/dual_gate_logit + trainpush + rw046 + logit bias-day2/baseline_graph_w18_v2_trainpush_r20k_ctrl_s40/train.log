@@ -1,0 +1,68 @@
+dataset label counts: {0: 24000, 1: 21090, 2: 24000, 3: 24000, 4: 24000, 5: 24000, 6: 24000, 7: 20467}
+train label counts: {0: 20000, 1: 20000, 2: 20000, 3: 20000, 4: 20000, 5: 20000, 6: 20000, 7: 20000}
+val label counts: {0: 2000, 1: 2000, 2: 2000, 3: 2000, 4: 2000, 5: 2000, 6: 2000, 7: 2000}
+test label counts: {0: 4000, 1: 1090, 2: 4000, 3: 4000, 4: 4000, 5: 4000, 6: 4000, 7: 467}
+epoch=1 loss=0.3508 val_acc=0.9194 val_f1=0.9194
+epoch=2 loss=0.2553 val_acc=0.9371 val_f1=0.9376
+epoch=3 loss=0.2220 val_acc=0.9453 val_f1=0.9456
+epoch=4 loss=0.2022 val_acc=0.9459 val_f1=0.9463
+epoch=5 loss=0.1877 val_acc=0.9479 val_f1=0.9482
+epoch=6 loss=0.1769 val_acc=0.9395 val_f1=0.9389
+epoch=7 loss=0.1746 val_acc=0.9551 val_f1=0.9552
+epoch=8 loss=0.1757 val_acc=0.9515 val_f1=0.9517
+epoch=9 loss=0.1614 val_acc=0.9573 val_f1=0.9575
+epoch=10 loss=0.1807 val_acc=0.9599 val_f1=0.9602
+epoch=11 loss=0.1562 val_acc=0.9537 val_f1=0.9537
+epoch=12 loss=0.1593 val_acc=0.9597 val_f1=0.9600
+epoch=13 loss=0.1505 val_acc=0.9566 val_f1=0.9567
+epoch=14 loss=0.1495 val_acc=0.9598 val_f1=0.9601
+epoch=15 loss=0.1441 val_acc=0.9603 val_f1=0.9604
+epoch=16 loss=0.1451 val_acc=0.9566 val_f1=0.9566
+epoch=17 loss=0.1453 val_acc=0.9629 val_f1=0.9630
+epoch=18 loss=0.1484 val_acc=0.9637 val_f1=0.9638
+epoch=19 loss=0.1369 val_acc=0.9613 val_f1=0.9614
+epoch=20 loss=0.1406 val_acc=0.9633 val_f1=0.9635
+epoch=21 loss=0.1340 val_acc=0.9601 val_f1=0.9603
+epoch=22 loss=0.1450 val_acc=0.9649 val_f1=0.9650
+epoch=23 loss=0.1324 val_acc=0.9611 val_f1=0.9616
+epoch=24 loss=0.1353 val_acc=0.9629 val_f1=0.9629
+epoch=25 loss=0.1337 val_acc=0.9633 val_f1=0.9633
+epoch=26 loss=0.1304 val_acc=0.9623 val_f1=0.9624
+epoch=27 loss=0.1580 val_acc=0.9650 val_f1=0.9650
+epoch=28 loss=0.1284 val_acc=0.9667 val_f1=0.9668
+epoch=29 loss=0.1318 val_acc=0.9634 val_f1=0.9633
+epoch=30 loss=0.1273 val_acc=0.9644 val_f1=0.9646
+epoch=31 loss=0.1258 val_acc=0.9626 val_f1=0.9629
+epoch=32 loss=0.1247 val_acc=0.9633 val_f1=0.9634
+epoch=33 loss=0.1237 val_acc=0.9682 val_f1=0.9682
+epoch=34 loss=0.1258 val_acc=0.9662 val_f1=0.9664
+epoch=35 loss=0.1178 val_acc=0.9674 val_f1=0.9674
+epoch=36 loss=0.1190 val_acc=0.9655 val_f1=0.9655
+epoch=37 loss=0.1230 val_acc=0.9634 val_f1=0.9636
+epoch=38 loss=0.1227 val_acc=0.9656 val_f1=0.9658
+epoch=39 loss=0.1139 val_acc=0.9651 val_f1=0.9652
+epoch=40 loss=0.1131 val_acc=0.9691 val_f1=0.9692
+epoch=41 loss=0.1128 val_acc=0.9621 val_f1=0.9623
+epoch=42 loss=0.1172 val_acc=0.9685 val_f1=0.9686
+epoch=43 loss=0.1147 val_acc=0.9680 val_f1=0.9680
+epoch=44 loss=0.1121 val_acc=0.9656 val_f1=0.9657
+epoch=45 loss=0.1124 val_acc=0.9694 val_f1=0.9695
+epoch=46 loss=0.1100 val_acc=0.9694 val_f1=0.9694
+epoch=47 loss=0.1079 val_acc=0.9660 val_f1=0.9661
+epoch=48 loss=0.1281 val_acc=0.9703 val_f1=0.9704
+epoch=49 loss=0.1070 val_acc=0.9706 val_f1=0.9706
+epoch=50 loss=0.1100 val_acc=0.9685 val_f1=0.9686
+epoch=51 loss=0.1050 val_acc=0.9688 val_f1=0.9688
+epoch=52 loss=0.1067 val_acc=0.9691 val_f1=0.9691
+epoch=53 loss=0.1079 val_acc=0.9698 val_f1=0.9697
+epoch=54 loss=0.1054 val_acc=0.9696 val_f1=0.9696
+epoch=55 loss=0.1038 val_acc=0.9701 val_f1=0.9701
+epoch=56 loss=0.1019 val_acc=0.9681 val_f1=0.9682
+epoch=57 loss=0.1057 val_acc=0.9702 val_f1=0.9702
+epoch=58 loss=0.1050 val_acc=0.9653 val_f1=0.9654
+epoch=59 loss=0.1010 val_acc=0.9702 val_f1=0.9703
+epoch=60 loss=0.1033 val_acc=0.9640 val_f1=0.9641
+epoch=61 loss=0.1035 val_acc=0.9561 val_f1=0.9553
+early stopping at epoch 61 (best_epoch=49, best_val_f1=0.9706)
+outputs/innov2/baseline_graph_w18_v2_trainpush_r20k_ctrl_s40/best.pt
+{'best_val_f1': 0.9706100275464273, 'best_epoch': 49, 'accuracy': 0.9705625, 'precision_macro': 0.9723823198698432, 'recall_macro': 0.9705625, 'f1_macro': 0.9706100275464273, 'recon_webbased_threshold': 0.5199999809265137, 'recon_webbased_pair_f1': 0.9344502745409653, 'recon_webbased_webbased_precision': 0.8838248436103664, 'recon_webbased_recon_to_webbased': 200.0, 'test_accuracy': 0.9679539852095317, 'test_precision_macro': 0.9465995957120659, 'test_recall_macro': 0.9727097260966937, 'test_f1_macro': 0.9555420325356078, 'split_path': 'outputs/innov2/baseline_graph_w18_v2_trainpush_r20k_ctrl_s40/split.json', 'stopped_epoch': 61}

@@ -1,0 +1,36 @@
+{
+  "initial_fusion_sha256": "7c9de39695fe01ed690182f502c1af34757e72399ce578d35aaee107baf3b578",
+  "updates": [
+    {
+      "head_input_gradient_l1": 0.23243600130081177,
+      "fusion_gradients_l1": {
+        "0.weight": 0.0,
+        "0.bias": 0.0,
+        "2.weight": 0.4512767195701599,
+        "2.bias": 0.03532306104898453
+      },
+      "parameters_changed": true
+    },
+    {
+      "head_input_gradient_l1": 0.22802412509918213,
+      "fusion_gradients_l1": {
+        "0.weight": 0.011387772858142853,
+        "0.bias": 0.0001745178597047925,
+        "2.weight": 0.5785648822784424,
+        "2.bias": 0.032219722867012024
+      },
+      "parameters_changed": true
+    },
+    {
+      "head_input_gradient_l1": 0.23260396718978882,
+      "fusion_gradients_l1": {
+        "0.weight": 0.011929415166378021,
+        "0.bias": 0.00027232422144152224,
+        "2.weight": 0.33098649978637695,
+        "2.bias": 0.028812965378165245
+      },
+      "parameters_changed": true
+    }
+  ],
+  "probe_discarded": true
+}

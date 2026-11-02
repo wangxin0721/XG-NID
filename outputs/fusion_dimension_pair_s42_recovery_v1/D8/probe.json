@@ -1,0 +1,111 @@
+{
+  "updates": [
+    {
+      "step": 1,
+      "loss": 2.1756272315979004,
+      "gradients_l1": {
+        "flow_projection.weight": 3.9181249141693115,
+        "flow_projection.bias": 0.09829870611429214,
+        "packet_projection.weight": 4.176194667816162,
+        "packet_projection.bias": 0.09829870611429214,
+        "gate.0.weight": 0.0,
+        "gate.0.bias": 0.0,
+        "gate.2.weight": 0.046641744673252106,
+        "gate.2.bias": 0.031556494534015656,
+        "shared_head.0.weight": 0.8678399324417114,
+        "shared_head.0.bias": 0.3127196133136749,
+        "shared_head.2.weight": 2.4614129066467285,
+        "shared_head.2.bias": 0.5760942697525024
+      },
+      "parameters_changed": {
+        "flow_projection.weight": true,
+        "flow_projection.bias": true,
+        "packet_projection.weight": true,
+        "packet_projection.bias": true,
+        "gate.0.weight": false,
+        "gate.0.bias": false,
+        "gate.2.weight": true,
+        "gate.2.bias": true,
+        "shared_head.0.weight": true,
+        "shared_head.0.bias": true,
+        "shared_head.2.weight": true,
+        "shared_head.2.bias": true
+      },
+      "raw_cache_max_error": 4.76837158203125e-07
+    },
+    {
+      "step": 2,
+      "loss": 2.1496901512145996,
+      "gradients_l1": {
+        "flow_projection.weight": 3.580217123031616,
+        "flow_projection.bias": 0.08622552454471588,
+        "packet_projection.weight": 3.7213995456695557,
+        "packet_projection.bias": 0.08612093329429626,
+        "gate.0.weight": 0.0009243413223885,
+        "gate.0.bias": 0.0001844828948378563,
+        "gate.2.weight": 0.038445845246315,
+        "gate.2.bias": 0.02883896417915821,
+        "shared_head.0.weight": 0.7626252174377441,
+        "shared_head.0.bias": 0.2765289545059204,
+        "shared_head.2.weight": 2.2273921966552734,
+        "shared_head.2.bias": 0.5190119743347168
+      },
+      "parameters_changed": {
+        "flow_projection.weight": true,
+        "flow_projection.bias": true,
+        "packet_projection.weight": true,
+        "packet_projection.bias": true,
+        "gate.0.weight": true,
+        "gate.0.bias": true,
+        "gate.2.weight": true,
+        "gate.2.bias": true,
+        "shared_head.0.weight": true,
+        "shared_head.0.bias": true,
+        "shared_head.2.weight": true,
+        "shared_head.2.bias": true
+      },
+      "raw_cache_max_error": 3.0994415283203125e-06
+    },
+    {
+      "step": 3,
+      "loss": 2.14786434173584,
+      "gradients_l1": {
+        "flow_projection.weight": 3.451158285140991,
+        "flow_projection.bias": 0.08896946161985397,
+        "packet_projection.weight": 4.032069206237793,
+        "packet_projection.bias": 0.08875764161348343,
+        "gate.0.weight": 0.0019051287090405822,
+        "gate.0.bias": 0.00038072530878707767,
+        "gate.2.weight": 0.042264942079782486,
+        "gate.2.bias": 0.02716224081814289,
+        "shared_head.0.weight": 0.7959921360015869,
+        "shared_head.0.bias": 0.28428584337234497,
+        "shared_head.2.weight": 2.259932041168213,
+        "shared_head.2.bias": 0.507628321647644
+      },
+      "parameters_changed": {
+        "flow_projection.weight": true,
+        "flow_projection.bias": true,
+        "packet_projection.weight": true,
+        "packet_projection.bias": true,
+        "gate.0.weight": true,
+        "gate.0.bias": true,
+        "gate.2.weight": true,
+        "gate.2.bias": true,
+        "shared_head.0.weight": true,
+        "shared_head.0.bias": true,
+        "shared_head.2.weight": true,
+        "shared_head.2.bias": true
+      },
+      "raw_cache_max_error": 4.76837158203125e-07
+    }
+  ],
+  "discarded": true,
+  "clean_state_and_rng_restored": true,
+  "encoder_parameters_and_BN_unchanged": true,
+  "wall_seconds": 5.951648025074974,
+  "initial_head_sha256": "17f34c6213641c2a18a171b0a7426f235465140bdbc5972fa43f30b197a8806c",
+  "reused": true,
+  "new_probe_optimizer_updates": 0,
+  "source": "/home/nzxn/下载/WX/load/XG-NID/outputs/fusion_dimension_pair_s42_v1/probes.json"
+}

@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "/tmp/xgnid_e3_b512.py", line 371, in main
+    frozen, device, binding = setup(core, args, config, gpu)
+  File "/tmp/xgnid_e3_b512.py", line 144, in setup
+    paired = read(pair_path)
+  File "/tmp/xgnid_e3_b512.py", line 38, in read
+    return json.loads(path.read_text(encoding="utf-8"))
+  File "/home/nzxn/miniconda3/envs/wx/lib/python3.9/pathlib.py", line 1194, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+  File "/home/nzxn/miniconda3/envs/wx/lib/python3.9/pathlib.py", line 1180, in open
+    return io.open(self, mode, buffering, encoding, errors, newline,
+  File "/home/nzxn/miniconda3/envs/wx/lib/python3.9/pathlib.py", line 1038, in _opener
+    return self._accessor.open(self, flags, mode)
+FileNotFoundError: [Errno 2] No such file or directory: '/home/nzxn/下载/WX/load/XG-NID/outputs/e2_batch_full_b512_s42_v1/summary.json'

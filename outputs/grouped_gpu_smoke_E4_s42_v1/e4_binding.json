@@ -1,0 +1,55 @@
+{
+  "status": "completed",
+  "exit_code": 0,
+  "binding": {
+    "schema": "xgnid.e4-binding.v1",
+    "definition_id": "69a84fe7c96e5de70378024fa702a22b2d3ce9cf39ec0708a8eb7ffe77c3fa79",
+    "wrapper_sha256": "4c61590df81b86d446e57d7dd0b9c743e5a2c76c64392f88df7e28e693e6f3ea",
+    "parent_summary_sha256": "fd185cfc9e6527c89030e3bf3ed6aca505212bab694039b9aabaf990491f9aa8",
+    "parent_config_sha256": "2dd9e634ac9895ccd39223665d6b315e3b7e7611b41efb45967de6ba6d41bff3",
+    "parent_initial_state_sha256": "0270349d613f11b453b92e4e928a3c2e7b67d062b5e3ba73c8ba4fb58dbd521a",
+    "historical_smoke_sha256": "4bd73bde4de918987f222a0c223f12c0172b5e1fc2f4ba8e0c97ee2cbfe1bc8f",
+    "historical_smoke_config_sha256": "1a20eb27e813c0e6c08def99afa62cdbcdc48db47013e4d9fe3b0a343b05fa52",
+    "split_id": "a8ae9c934eec9fee970cc725e60051d0c709e0f16c7dda14749350ff2006975a",
+    "sample_manifest_sha256": "b8e9b0810471d0c2b52033488fab640625c3731315afd5d2add1571bd2518827",
+    "source_hashes": {
+      "scripts/train_grouped.py": "06a493b18faa97b4e1f2b99b6aae38c67ad3c5f39b130f112079c9393432f5d1",
+      "scripts/grouped_graphs.py": "c1b1273d62fc44d91f7c9b300b66a083c1f80ef2c9c4314a62c4bbd5d708bbb4",
+      "scripts/smoke_grouped_gpu.py": "7bce1218e1b55a812855d50c70973fe300da97ad7e9b4005a52deac77d8b1517",
+      "src/xgnid/model.py": "28e21e94118db0a4110d17923d2840e18959669d798f628018c98c91c0202631",
+      "src/xgnid/edge_experiments.py": "3e6305d83c06c7ce32e901a2aba9d9d26baa1f2b394af14997b0e359929b4da5",
+      "third_party/GNN4ID/Utility/Model.py": "e17c3905e3c9f437c269bdd0e4d115656cfba6054b6a4474bbd06b5453010688"
+    },
+    "controls": {
+      "seed": 42,
+      "batch_size": 16,
+      "lr": 0.001,
+      "hidden_dim": 64,
+      "optimizer": "Adam",
+      "early_stop_patience": 12,
+      "early_stop_min_delta": 0.0,
+      "auxiliary_losses": false,
+      "calibration": false,
+      "class_weighting": false,
+      "hard_negatives": false,
+      "loss": "plain NLL",
+      "device_family": "cuda"
+    },
+    "epochs": 100
+  },
+  "smoke_sha256": "4087b7f96b4a8007ca65dd964af0ff37a6b9caaf82bc1b1a2b9f4b297b044c91",
+  "config_sha256": "2d5dade9e257518d91f594b3c437dfc801fa663b1c18e23f82adb2625ab19b8d",
+  "paired_E3_E4_initialization": true,
+  "E4_all_GAT_attributes_disabled": true,
+  "E4_attribute_intervention_invariant": true,
+  "E4_gate_gradient_verified": true,
+  "runtime": {
+    "CUDA_VISIBLE_DEVICES": "1",
+    "device_name": "Tesla T4",
+    "torch": "2.3.1+cu118",
+    "pyg": "2.5.3"
+  },
+  "test_inference_performed": false,
+  "formal_training_started": false,
+  "created_utc": "2026-10-20T11:47:55.117801+00:00"
+}

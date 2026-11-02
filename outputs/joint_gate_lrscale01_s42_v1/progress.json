@@ -1,0 +1,8 @@
+{
+  "status": "running",
+  "variant": "J2",
+  "epoch": 21,
+  "best_epoch": 9,
+  "stale_epochs": 12,
+  "updates": 4431
+}

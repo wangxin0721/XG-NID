@@ -1,0 +1,27 @@
+{
+  "recon_webbased": {
+    "threshold": 0.44,
+    "pair_f1": 0.9269901102655399,
+    "macro_f1": 0.9726468041590959,
+    "webbased_precision": 0.9391124871001032,
+    "recon_to_webbased": 80
+  },
+  "pair_calibrators": [
+    {
+      "name": "benign_spoofing",
+      "pair_labels": [
+        0,
+        2
+      ],
+      "threshold": 0.48,
+      "pair_f1": 0.9684610595726416,
+      "macro_f1": 0.9770189947513568,
+      "first_precision": 0.9786368260427264,
+      "second_precision": 0.9688598694123556,
+      "first_to_second": 45,
+      "second_to_first": 33,
+      "pair_logits_key": null,
+      "score_source": "base_logits"
+    }
+  ]
+}

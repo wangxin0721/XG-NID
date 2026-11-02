@@ -1,0 +1,32 @@
+{
+  "updates": [
+    {
+      "flow_encoder.": 22.135069018111494,
+      "packet_encoder.": 20.383579287951378,
+      "flow_classifier.": 0.8381338566541672,
+      "packet_classifier.": 1.3189173825085163,
+      "shared_head.": 1.559874176979065,
+      "joint_gate.": 0.7825663611292839,
+      "gate_hidden": 0.4842890202999115
+    },
+    {
+      "flow_encoder.": 16.34949234338237,
+      "packet_encoder.": 17.06187257418467,
+      "flow_classifier.": 0.9708160907030106,
+      "packet_classifier.": 1.4346097595989704,
+      "shared_head.": 1.6690408233553171,
+      "joint_gate.": 1.0078683653846383,
+      "gate_hidden": 0.6295892000198364
+    },
+    {
+      "flow_encoder.": 18.048416754954147,
+      "packet_encoder.": 17.899753625572316,
+      "flow_classifier.": 0.9776933789253235,
+      "packet_classifier.": 1.1873425394296646,
+      "shared_head.": 1.3540058061480522,
+      "joint_gate.": 0.8698805365711451,
+      "gate_hidden": 0.5206396579742432
+    }
+  ],
+  "discarded": true
+}

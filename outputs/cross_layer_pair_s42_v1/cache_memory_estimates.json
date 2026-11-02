@@ -1,0 +1,20 @@
+{
+  "train": {
+    "graphs": 107621,
+    "final_tensor_bytes": 111064872,
+    "additional_concat_bytes": 111064872,
+    "estimated_tensor_peak_bytes": 222129744,
+    "retained_cache_bytes": 0,
+    "host_MemAvailable_bytes": 19609395200,
+    "scope": "cache tensor storage only, not whole-process RSS"
+  },
+  "val": {
+    "graphs": 13446,
+    "final_tensor_bytes": 13876272,
+    "additional_concat_bytes": 13876272,
+    "estimated_tensor_peak_bytes": 138817416,
+    "retained_cache_bytes": 111064872,
+    "host_MemAvailable_bytes": 19512967168,
+    "scope": "cache tensor storage only, not whole-process RSS"
+  }
+}

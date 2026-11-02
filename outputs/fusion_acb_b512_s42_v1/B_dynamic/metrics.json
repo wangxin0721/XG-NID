@@ -1,0 +1,215 @@
+{
+  "variant": "B_dynamic",
+  "best_epoch": 62,
+  "stopped_epoch": 74,
+  "best_validation": {
+    "accuracy": 0.9747880410531012,
+    "macro_f1": 0.9621918682153585,
+    "weighted_f1": 0.9745184343070092,
+    "per_class": {
+      "Benign": {
+        "precision": 0.9623811492352211,
+        "recall": 0.9744663038928422,
+        "f1-score": 0.9683860232945091,
+        "support": 2389.0
+      },
+      "WebBased": {
+        "precision": 0.8842975206611571,
+        "recall": 0.7867647058823529,
+        "f1-score": 0.8326848249027237,
+        "support": 544.0
+      },
+      "Spoofing": {
+        "precision": 0.9667444574095683,
+        "recall": 0.9528464634847613,
+        "f1-score": 0.9597451491456704,
+        "support": 1739.0
+      },
+      "Recon": {
+        "precision": 0.9446808510638298,
+        "recall": 0.974539069359087,
+        "f1-score": 0.9593777009507346,
+        "support": 2278.0
+      },
+      "Mirai": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 2400.0
+      },
+      "Dos": {
+        "precision": 0.9993178717598908,
+        "recall": 0.9932203389830508,
+        "f1-score": 0.9962597755865352,
+        "support": 1475.0
+      },
+      "DDos": {
+        "precision": 0.9995801847187238,
+        "recall": 0.9970686767169179,
+        "f1-score": 0.9983228511530398,
+        "support": 2388.0
+      },
+      "BruteForce": {
+        "precision": 0.987012987012987,
+        "recall": 0.9785407725321889,
+        "f1-score": 0.9827586206896551,
+        "support": 233.0
+      },
+      "accuracy": 0.9747880410531012,
+      "macro avg": {
+        "precision": 0.9680018777326722,
+        "recall": 0.9571807913564001,
+        "f1-score": 0.9621918682153585,
+        "support": 13446.0
+      },
+      "weighted avg": {
+        "precision": 0.9745874888330681,
+        "recall": 0.9747880410531012,
+        "f1-score": 0.9745184343070092,
+        "support": 13446.0
+      }
+    },
+    "confusion_matrix": [
+      [
+        2328,
+        12,
+        38,
+        10,
+        0,
+        0,
+        0,
+        1
+      ],
+      [
+        8,
+        428,
+        6,
+        101,
+        0,
+        0,
+        0,
+        1
+      ],
+      [
+        61,
+        13,
+        1657,
+        8,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        19,
+        26,
+        10,
+        2220,
+        0,
+        1,
+        1,
+        1
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        2400,
+        0,
+        0,
+        0
+      ],
+      [
+        2,
+        3,
+        0,
+        5,
+        0,
+        1465,
+        0,
+        0
+      ],
+      [
+        0,
+        1,
+        0,
+        6,
+        0,
+        0,
+        2381,
+        0
+      ],
+      [
+        1,
+        1,
+        3,
+        0,
+        0,
+        0,
+        0,
+        228
+      ]
+    ],
+    "samples": 13446,
+    "wall_seconds_including_graph_io": 29.053922410006635,
+    "forward_seconds": 20.077127490997313,
+    "forward_timing_method": "CUDA events around model call",
+    "gate_weights": {
+      "mean": [
+        0.4404554069042206,
+        0.5595446228981018
+      ],
+      "std": [
+        0.32889726758003235,
+        0.32889726758003235
+      ],
+      "min": [
+        1.7680167729849927e-05,
+        0.00547475041821599
+      ],
+      "max": [
+        0.9945253133773804,
+        0.9999823570251465
+      ],
+      "fraction_flow_above_0_95": 0.04506916552782059,
+      "fraction_packet_above_0_95": 0.16622044146060944
+    }
+  },
+  "parameters": {
+    "total": 846800,
+    "requires_grad": 846800,
+    "active_in_training_loss": 846522,
+    "fusion_active": 386,
+    "inactive_historical_heads_retained": true,
+    "unused_original_gate_retained": false
+  },
+  "initialization": {
+    "variant": "B_dynamic",
+    "original_equal_init": {
+      "variant": "E3a_equal_init",
+      "forward_ast_sha256": "92768b2a46b64228eeb8605c4a7d5440bcd4c77cf50a06aece9e0d5812ede224",
+      "removed_statements": 2,
+      "initialization_changed_tensors": [
+        "gate.net.2.bias",
+        "gate.net.2.weight"
+      ],
+      "original_initial_state_sha256": "0270349d613f11b453b92e4e928a3c2e7b67d062b5e3ba73c8ba4fb58dbd521a",
+      "variant_initial_state_sha256": "e634f28e28e66ed2fc61341372a814a5a147cdcaa101022e8a394a211f8ed540"
+    },
+    "common_initial_state_sha256": "b0570442f2c77ed441a546cdd830ae1387c30272c380967fa488893a620b7f5a",
+    "full_initial_state_sha256": "e634f28e28e66ed2fc61341372a814a5a147cdcaa101022e8a394a211f8ed540",
+    "training_start_rng_sha256": "348952d0bf8ed55a8a51bb29502ef7920755fb3177c94265f6984f198ac6e6a3"
+  },
+  "optimizer_updates": 15614,
+  "training_samples_seen": 7963954,
+  "wall_seconds": 14617.829495865968,
+  "config_sha256": "1ed59cbcb6277cdf4e2eab0b9541772f166732a5ac342ea8d89adc23ca07e270",
+  "checkpoint_sha256": {
+    "best.pt": "57df499f246a21d49bb2a4a19525254ff5e634067e2ee28a37f18045bb6ec4a1",
+    "last.pt": "b3454443c34197ff32ce452fcc1e5e6b90768cb600d6aa0ad02b1f581f8ede76"
+  },
+  "diagnostics_sha256": "fa1ed36a2e7bfcb4ebf85047870cb7090d763e4dfe2934aafbaa2805ff65b455",
+  "test": null,
+  "test_evaluated": false
+}

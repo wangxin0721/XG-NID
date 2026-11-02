@@ -1,0 +1,10 @@
+/home/nzxn/miniconda3/envs/wx/lib/python3.9/site-packages/torch_geometric/typing.py:99: UserWarning: An issue occurred while importing 'torch-spline-conv'. Disabling its usage. Stacktrace: /home/nzxn/miniconda3/envs/wx/lib/python3.9/site-packages/torch_spline_conv/_version_cuda.so: undefined symbol: _ZN3c1017RegisterOperatorsD1Ev
+  warnings.warn(
+/home/nzxn/miniconda3/envs/wx/lib/python3.9/site-packages/torch/cuda/__init__.py:619: UserWarning: Can't initialize NVML
+  warnings.warn("Can't initialize NVML")
+Starting pilot E0 on cuda:0; partitions={'train': 256, 'val': 128}
+E0 {"epoch": 1, "train_loss": 1.997524008154869, "train_samples": 256, "train_seconds": 3.2202165559865534, "train_order_sha256": "112623a776114fa5de9d0b4b4afeeb066e3a5a18deac1fce55e8764f0f777539", "val_accuracy": 0.484375, "val_macro_f1": 0.4165552584670232, "val_weighted_f1": 0.4165552584670232, "val_wall_seconds": 1.4085662509314716, "peak_cuda_allocated_bytes": 30984192}
+E0 {"epoch": 2, "train_loss": 1.7243284359574318, "train_samples": 256, "train_seconds": 2.3870378038845956, "train_order_sha256": "454025dcc0c69ae0e4a06b115c6371416dea3892db75f9d5fd5759c87ddf938c", "val_accuracy": 0.453125, "val_macro_f1": 0.39109221220476914, "val_weighted_f1": 0.39109221220476914, "val_wall_seconds": 1.20755536807701, "peak_cuda_allocated_bytes": 30667264}
+Starting pilot E1 on cuda:0; partitions={'train': 256, 'val': 128}
+E1 {"epoch": 1, "train_loss": 2.0017803758382797, "train_samples": 256, "train_seconds": 2.304808894172311, "train_order_sha256": "112623a776114fa5de9d0b4b4afeeb066e3a5a18deac1fce55e8764f0f777539", "val_accuracy": 0.4765625, "val_macro_f1": 0.41149492664198545, "val_weighted_f1": 0.41149492664198545, "val_wall_seconds": 1.203856241889298, "peak_cuda_allocated_bytes": 30959616}
+E1 {"epoch": 2, "train_loss": 1.7116407230496407, "train_samples": 256, "train_seconds": 2.32920801686123, "train_order_sha256": "454025dcc0c69ae0e4a06b115c6371416dea3892db75f9d5fd5759c87ddf938c", "val_accuracy": 0.453125, "val_macro_f1": 0.41389018539856903, "val_weighted_f1": 0.41389018539856903, "val_wall_seconds": 1.1823990000411868, "peak_cuda_allocated_bytes": 30642688}

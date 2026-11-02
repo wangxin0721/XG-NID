@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/tmp/xgnid_e2_n01.zKkgI6/scripts/run_e2_concat_pair.py", line 422, in <module>
+    main()
+  File "/tmp/xgnid_e2_n01.zKkgI6/scripts/run_e2_concat_pair.py", line 358, in main
+    gpu = checked_gpu(args.physical_gpu, args.allow_shared_gpu)
+  File "/tmp/xgnid_e2_n01.zKkgI6/scripts/e3_gate_study.py", line 148, in checked_gpu
+    require(shared or not processes, f"Physical GPU {index} is occupied: {processes}; explicit sharing needs --allow-shared-gpu")
+  File "/tmp/xgnid_e2_n01.zKkgI6/scripts/e3_gate_study.py", line 33, in require
+    raise ValueError(message)
+ValueError: Physical GPU 0 is occupied: [{'pid': 693237, 'name': 'python'}, {'pid': 700328, 'name': 'python'}]; explicit sharing needs --allow-shared-gpu

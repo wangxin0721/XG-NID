@@ -1,0 +1,121 @@
+{
+  "updates": [
+    {
+      "loss": 0.02523924596607685,
+      "gradient_l1": {
+        "flow_encoder.": 22.13506825316541,
+        "packet_encoder.": 20.38357746312637,
+        "flow_classifier.": 0.8381339199841022,
+        "packet_classifier.": 1.3189173825085163,
+        "shared_head.": 1.5598742365837097,
+        "joint_gate.": 0.7825663639232516,
+        "flow_stats_mlp.0.": 0.0,
+        "flow_stats_mlp.2.": 1593.6076669096947
+      },
+      "parameters_changed": {
+        "flow_encoder.": true,
+        "packet_encoder.": true,
+        "flow_classifier.": true,
+        "packet_classifier.": true,
+        "shared_head.": true,
+        "joint_gate.": true,
+        "flow_stats_mlp.0.": false,
+        "flow_stats_mlp.2.": true
+      },
+      "max_residual_norm_after_update": 48.71263122558594,
+      "stats_parameter_gradients_l1": {
+        "flow_stats_mlp.0.weight": 0.0,
+        "flow_stats_mlp.0.bias": 0.0,
+        "flow_stats_mlp.2.weight": 1593.301025390625,
+        "flow_stats_mlp.2.bias": 0.30664151906967163
+      },
+      "stats_parameters_changed": {
+        "flow_stats_mlp.0.weight": false,
+        "flow_stats_mlp.0.bias": false,
+        "flow_stats_mlp.2.weight": true,
+        "flow_stats_mlp.2.bias": true
+      }
+    },
+    {
+      "loss": 11.058741569519043,
+      "gradient_l1": {
+        "flow_encoder.": 1513.7652603234283,
+        "packet_encoder.": 895.7507280231406,
+        "flow_classifier.": 257.2089681625366,
+        "packet_classifier.": 64.78789758682251,
+        "shared_head.": 324.44403368234634,
+        "joint_gate.": 132.93093115091324,
+        "flow_stats_mlp.0.": 957.5752762053162,
+        "flow_stats_mlp.2.": 482940.01616477966
+      },
+      "parameters_changed": {
+        "flow_encoder.": true,
+        "packet_encoder.": true,
+        "flow_classifier.": true,
+        "packet_classifier.": true,
+        "shared_head.": true,
+        "joint_gate.": true,
+        "flow_stats_mlp.0.": true,
+        "flow_stats_mlp.2.": true
+      },
+      "max_residual_norm_after_update": 40.192604064941406,
+      "stats_parameter_gradients_l1": {
+        "flow_stats_mlp.0.weight": 957.54541015625,
+        "flow_stats_mlp.0.bias": 0.02986604906618595,
+        "flow_stats_mlp.2.weight": 482921.4375,
+        "flow_stats_mlp.2.bias": 18.578664779663086
+      },
+      "stats_parameters_changed": {
+        "flow_stats_mlp.0.weight": true,
+        "flow_stats_mlp.0.bias": true,
+        "flow_stats_mlp.2.weight": true,
+        "flow_stats_mlp.2.bias": true
+      }
+    },
+    {
+      "loss": 9.555224418640137,
+      "gradient_l1": {
+        "flow_encoder.": 713.7437069107516,
+        "packet_encoder.": 1131.4670305422737,
+        "flow_classifier.": 115.523801445961,
+        "packet_classifier.": 34.70156502723694,
+        "shared_head.": 129.7099151611328,
+        "joint_gate.": 268.30245757102966,
+        "flow_stats_mlp.0.": 343.18890742212534,
+        "flow_stats_mlp.2.": 167295.15744400024
+      },
+      "parameters_changed": {
+        "flow_encoder.": true,
+        "packet_encoder.": true,
+        "flow_classifier.": true,
+        "packet_classifier.": true,
+        "shared_head.": true,
+        "joint_gate.": true,
+        "flow_stats_mlp.0.": true,
+        "flow_stats_mlp.2.": true
+      },
+      "max_residual_norm_after_update": 85.21546936035156,
+      "stats_parameter_gradients_l1": {
+        "flow_stats_mlp.0.weight": 343.1716003417969,
+        "flow_stats_mlp.0.bias": 0.017307080328464508,
+        "flow_stats_mlp.2.weight": 167286.5,
+        "flow_stats_mlp.2.bias": 8.65744400024414
+      },
+      "stats_parameters_changed": {
+        "flow_stats_mlp.0.weight": true,
+        "flow_stats_mlp.0.bias": true,
+        "flow_stats_mlp.2.weight": true,
+        "flow_stats_mlp.2.bias": true
+      }
+    }
+  ],
+  "discarded": true,
+  "clean_start_restored": true,
+  "BN_train_updates_verified": true,
+  "initial_state_sha256": "d01fb3ef3cb4a1320aca9a79aafc95dbf1d5ae80fbf0243a335288fe557e0da9",
+  "checkpoint_roundtrip": {
+    "strict_state_reload": true,
+    "samples": 32,
+    "sha256": "69f18aa6572b7d5d974ea0a18f309dd04dad980bd62ae5305120bfbf127e36df"
+  }
+}

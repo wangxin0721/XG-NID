@@ -1,0 +1,698 @@
+{
+  "train": {
+    "csv_sha256": "1b546e6c69faad482b98b4c95219ef9b13aba0c13afcfe0b4abe69c1e7f38b02",
+    "csv_rows": 160000,
+    "flow_feature_order": [
+      "src2dst_duration_ms",
+      "src2dst_packets",
+      "src2dst_bytes",
+      "dst2src_duration_ms",
+      "dst2src_packets",
+      "dst2src_bytes",
+      "bidirectional_min_ps",
+      "bidirectional_mean_ps",
+      "bidirectional_stddev_ps",
+      "bidirectional_max_ps",
+      "src2dst_min_ps",
+      "src2dst_mean_ps",
+      "src2dst_stddev_ps",
+      "src2dst_max_ps",
+      "dst2src_min_ps",
+      "dst2src_mean_ps",
+      "dst2src_stddev_ps",
+      "dst2src_max_ps",
+      "bidirectional_min_piat_ms",
+      "bidirectional_mean_piat_ms",
+      "bidirectional_stddev_piat_ms",
+      "bidirectional_max_piat_ms",
+      "src2dst_min_piat_ms",
+      "src2dst_mean_piat_ms",
+      "src2dst_stddev_piat_ms",
+      "src2dst_max_piat_ms",
+      "dst2src_min_piat_ms",
+      "dst2src_mean_piat_ms",
+      "dst2src_stddev_piat_ms",
+      "dst2src_max_piat_ms",
+      "src2dst_syn_packets",
+      "src2dst_cwr_packets",
+      "src2dst_ece_packets",
+      "src2dst_urg_packets",
+      "src2dst_ack_packets",
+      "src2dst_psh_packets",
+      "src2dst_rst_packets",
+      "src2dst_fin_packets",
+      "dst2src_syn_packets",
+      "dst2src_cwr_packets",
+      "dst2src_ece_packets",
+      "dst2src_urg_packets",
+      "dst2src_ack_packets",
+      "dst2src_psh_packets",
+      "dst2src_rst_packets",
+      "dst2src_fin_packets",
+      "packet_size_variation",
+      "Rolling_UDP_Requests_SourceDestination",
+      "Rolling_UDP_Requests_Destination",
+      "Rolling_TCP_Requests_SourceDestination",
+      "Rolling_TCP_Requests_Destination",
+      "Rolling_ACK_Packets_SourceDestination",
+      "Rolling_ACK_Packets_Destination",
+      "Rolling_FIN_Packets_SourceDestination",
+      "Rolling_FIN_Packets_Destination",
+      "Rolling_rst_Packets_SourceDestination",
+      "Rolling_rst_Packets_Destination",
+      "Rolling_psh_Packets_SourceDestination",
+      "Rolling_psh_Packets_Destination",
+      "Rolling_SYN_Packets_SourceDestination",
+      "Rolling_SYN_Packets_Destination",
+      "Unique_Ports_In_SourceDestinationIP",
+      "Rolling_ICMP_Requests_SourceDestination",
+      "Rolling_ICMP_Requests_Destination",
+      "Rolling_http_port_SourceDestination",
+      "Rolling_http_port_Destination",
+      "Rolling_Duration_Destination",
+      "Rolling_Duration_SourceDestination",
+      "Rolling_DNS_request_SourceDestination",
+      "Rolling_DNS_request_Destination",
+      "Rolling_DNS_request_SourceDestination2",
+      "Rolling_DNS_request_Destination2",
+      "Rolling_vulnerable_port",
+      "Rolling_packets_destination",
+      "Rolling_bipackets_destination",
+      "Exp_0",
+      "Exp_-1",
+      "proto_1",
+      "proto_2",
+      "proto_6",
+      "proto_17",
+      "proto_58"
+    ],
+    "temporal_columns": [
+      "packet_size_variation",
+      "Rolling_UDP_Requests_SourceDestination",
+      "Rolling_UDP_Requests_Destination",
+      "Rolling_TCP_Requests_SourceDestination",
+      "Rolling_TCP_Requests_Destination",
+      "Rolling_ACK_Packets_SourceDestination",
+      "Rolling_ACK_Packets_Destination",
+      "Rolling_FIN_Packets_SourceDestination",
+      "Rolling_FIN_Packets_Destination",
+      "Rolling_rst_Packets_SourceDestination",
+      "Rolling_rst_Packets_Destination",
+      "Rolling_psh_Packets_SourceDestination",
+      "Rolling_psh_Packets_Destination",
+      "Rolling_SYN_Packets_SourceDestination",
+      "Rolling_SYN_Packets_Destination",
+      "Unique_Ports_In_SourceDestinationIP",
+      "Rolling_ICMP_Requests_SourceDestination",
+      "Rolling_ICMP_Requests_Destination",
+      "Rolling_http_port_SourceDestination",
+      "Rolling_http_port_Destination",
+      "Rolling_Duration_Destination",
+      "Rolling_Duration_SourceDestination",
+      "Rolling_DNS_request_SourceDestination",
+      "Rolling_DNS_request_Destination",
+      "Rolling_DNS_request_SourceDestination2",
+      "Rolling_DNS_request_Destination2",
+      "Rolling_vulnerable_port",
+      "Rolling_packets_destination",
+      "Rolling_bipackets_destination"
+    ],
+    "mac_columns_present": [],
+    "sampled_graphs": [
+      {
+        "sample_id": "r0:0:21ad3e7321eea67adf44f23bfbee30306c03af1bc057e6cbbfcb0d16013ea873",
+        "path": "data_0.pt",
+        "candidate_csv_row": 0,
+        "label": 0,
+        "differences": []
+      },
+      {
+        "sample_id": "r0:93323:d53daa461593df245ecc221bb96a5be5077a6a1f05f7728754f8f0e70b8a6357",
+        "path": "data_3999.pt",
+        "candidate_csv_row": 3999,
+        "label": 0,
+        "differences": []
+      },
+      {
+        "sample_id": "r0:159989:bf91feac965ee940e7fc3b3c20abcdc05d1daf59ff58a7e2694401404fd1641f",
+        "path": "data_9999.pt",
+        "candidate_csv_row": 9999,
+        "label": 0,
+        "differences": []
+      },
+      {
+        "sample_id": "r0:66646:e9019fef34ac13426822ff7d47e75018877a39dde978788773c0bd40c4e575ab",
+        "path": "data_15998.pt",
+        "candidate_csv_row": 15998,
+        "label": 0,
+        "differences": []
+      },
+      {
+        "sample_id": "r0:71116:7943baea13ba7c058051594fff0b0479ad8163d1ac0f0269fd14801bbcd57e2a",
+        "path": "data_20000.pt",
+        "candidate_csv_row": 20000,
+        "label": 7,
+        "differences": []
+      },
+      {
+        "sample_id": "r0:78520:bea190380a5603260237a9ef4cd366c3467e39192b2f3ab750d2cfb497dc72c8",
+        "path": "data_26666.pt",
+        "candidate_csv_row": 26666,
+        "label": 7,
+        "differences": []
+      },
+      {
+        "sample_id": "r0:85929:1415e5640c5d70e610dd53b379144754b76896d5b437d84013af22d701f66fca",
+        "path": "data_33333.pt",
+        "candidate_csv_row": 33333,
+        "label": 7,
+        "differences": []
+      },
+      {
+        "sample_id": "r0:93333:446413bb79832efefd27abff0cc8f721ad16820853566d6e2a4f60424e8a356d",
+        "path": "data_39999.pt",
+        "candidate_csv_row": 39999,
+        "label": 7,
+        "differences": []
+      },
+      {
+        "sample_id": "r0:93338:32de003e830351163cc5293fd19b5a7f10f84e6a50da03d46f2edf32911690c8",
+        "path": "data_40000.pt",
+        "candidate_csv_row": 40000,
+        "label": 6,
+        "differences": []
+      },
+      {
+        "sample_id": "r0:100742:dd4d2c9047022ca32afdf82126abb49e32b62ac1a13e3ab0c32b9466f84a61e2",
+        "path": "data_46666.pt",
+        "candidate_csv_row": 46666,
+        "label": 6,
+        "differences": []
+      },
+      {
+        "sample_id": "r0:108151:85e32b355fb350bf9e4e094314a200ae39da06d708b3fd375581ed53937f8a76",
+        "path": "data_53333.pt",
+        "candidate_csv_row": 53333,
+        "label": 6,
+        "differences": []
+      },
+      {
+        "sample_id": "r0:115555:89308610893d856d9995b900c855e8bbd88a70f3ccb3b4a16257c2f20818b4ac",
+        "path": "data_59999.pt",
+        "candidate_csv_row": 59999,
+        "label": 6,
+        "differences": []
+      },
+      {
+        "sample_id": "r0:115560:c5be17c5a1d9fba1ccb77d00e9f9cc3359823ca2b607e20f7ae3f5be85dbcdab",
+        "path": "data_60000.pt",
+        "candidate_csv_row": 60000,
+        "label": 5,
+        "differences": []
+      },
+      {
+        "sample_id": "r0:122964:ea98ec9492729a9b30ba2ba968b50a19377cf43c763b7b153d8afc130e6d39df",
+        "path": "data_66666.pt",
+        "candidate_csv_row": 66666,
+        "label": 5,
+        "differences": []
+      },
+      {
+        "sample_id": "r0:130373:5b85ca931f06b817480461d1f23bed6d9c7b69bb48b66b3f8a58f9eef4ccd1f5",
+        "path": "data_73333.pt",
+        "candidate_csv_row": 73333,
+        "label": 5,
+        "differences": []
+      },
+      {
+        "sample_id": "r0:137777:3cad6e23963749770bfb163e53f56dce91650d1ce82e98e133b9e05e31f83869",
+        "path": "data_79999.pt",
+        "candidate_csv_row": 79999,
+        "label": 5,
+        "differences": []
+      },
+      {
+        "sample_id": "r0:137782:fca99003b222b9e8135c645ed2d12316009ffa464c5f11e2b85aa44a4678daaa",
+        "path": "data_80000.pt",
+        "candidate_csv_row": 80000,
+        "label": 4,
+        "differences": []
+      },
+      {
+        "sample_id": "r0:145186:5ad80858bbef50662b24c93ab9b3d48e14f445c5e31e598d7dd108a36b01ce95",
+        "path": "data_86666.pt",
+        "candidate_csv_row": 86666,
+        "label": 4,
+        "differences": []
+      },
+      {
+        "sample_id": "r0:152595:6576202f3edc3c142619218304db64f42074ebaf049239fe9a48622d5e98d8e0",
+        "path": "data_93333.pt",
+        "candidate_csv_row": 93333,
+        "label": 4,
+        "differences": []
+      },
+      {
+        "sample_id": "r0:159999:7fa83f058dd21512eb8dc051ca5b461b9bbad4a92e03747dd3d53a1c4c58f42a",
+        "path": "data_99999.pt",
+        "candidate_csv_row": 99999,
+        "label": 4,
+        "differences": []
+      },
+      {
+        "sample_id": "r0:6:8a29de8116b38c41391098826746e0c1c84e2a38afffce4bafda9a9e735a0dbd",
+        "path": "data_100000.pt",
+        "candidate_csv_row": 100000,
+        "label": 3,
+        "differences": []
+      },
+      {
+        "sample_id": "r0:7410:e36941b524a6d97ad9ba8453bd48366eef507c2258e7ea4f8cd20df9041930d6",
+        "path": "data_106666.pt",
+        "candidate_csv_row": 106666,
+        "label": 3,
+        "differences": []
+      },
+      {
+        "sample_id": "r0:14819:32b50e3d8c659b8b828d8a13d5e2ff6eebbf7e4c2854cd94e42f2335dbdb68af",
+        "path": "data_113333.pt",
+        "candidate_csv_row": 113333,
+        "label": 3,
+        "differences": []
+      },
+      {
+        "sample_id": "r0:22223:9b1e5856404e84be125d1c8a8ec5fd2e5b8b78d37ee5c97f3182874a482073b4",
+        "path": "data_119999.pt",
+        "candidate_csv_row": 119999,
+        "label": 3,
+        "differences": []
+      },
+      {
+        "sample_id": "r0:22228:e475ba232192c2ccb9d82c73db549b4fde6fba6e3d8ae63fae32008afc3d3477",
+        "path": "data_120000.pt",
+        "candidate_csv_row": 120000,
+        "label": 2,
+        "differences": []
+      },
+      {
+        "sample_id": "r0:29632:e3d343c7f2c725bc350a4ae706c962f5503a7031f0a5dcef179f3ab66ff10ea5",
+        "path": "data_126666.pt",
+        "candidate_csv_row": 126666,
+        "label": 2,
+        "differences": []
+      },
+      {
+        "sample_id": "r0:37041:6c952cf959e0818018c4297f7559e22601662cb2d76244c9b1eddbaa87d1d250",
+        "path": "data_133333.pt",
+        "candidate_csv_row": 133333,
+        "label": 2,
+        "differences": []
+      },
+      {
+        "sample_id": "r0:44445:5c42daa07656c1f78f5269b351ad110aa1fa5723596709a3c7df679ddd0a7586",
+        "path": "data_139999.pt",
+        "candidate_csv_row": 139999,
+        "label": 2,
+        "differences": []
+      },
+      {
+        "sample_id": "r0:44450:dc9ccff078c1b0fcc5c599c103eff50771e3a5172471d327574909edd07094af",
+        "path": "data_140000.pt",
+        "candidate_csv_row": 140000,
+        "label": 1,
+        "differences": []
+      },
+      {
+        "sample_id": "r0:51854:ece2d49e3618c394609d97b476b5b6bfa925d17493b3d1582385c114b496a47b",
+        "path": "data_146666.pt",
+        "candidate_csv_row": 146666,
+        "label": 1,
+        "differences": []
+      },
+      {
+        "sample_id": "r0:59263:cf76c744fdd2442fe2473c183f9b4d4a3ebb864e591cedd56df55465d4260a2f",
+        "path": "data_153333.pt",
+        "candidate_csv_row": 153333,
+        "label": 1,
+        "differences": []
+      },
+      {
+        "sample_id": "r0:66667:8c391ce53a85726b2c6f6424c89c20ed9f50fd96130ade55d714237614856dca",
+        "path": "data_159999.pt",
+        "candidate_csv_row": 159999,
+        "label": 1,
+        "differences": []
+      }
+    ],
+    "matching_samples": 32,
+    "numeric_row_correspondence_is_a_hypothesis": true
+  },
+  "test": {
+    "csv_sha256": "08b256997d0368dde6c85a3b43ef3d56b4ce336939fcdce41596725bbdee42ed",
+    "csv_rows": 25557,
+    "flow_feature_order": [
+      "src2dst_duration_ms",
+      "src2dst_packets",
+      "src2dst_bytes",
+      "dst2src_duration_ms",
+      "dst2src_packets",
+      "dst2src_bytes",
+      "bidirectional_min_ps",
+      "bidirectional_mean_ps",
+      "bidirectional_stddev_ps",
+      "bidirectional_max_ps",
+      "src2dst_min_ps",
+      "src2dst_mean_ps",
+      "src2dst_stddev_ps",
+      "src2dst_max_ps",
+      "dst2src_min_ps",
+      "dst2src_mean_ps",
+      "dst2src_stddev_ps",
+      "dst2src_max_ps",
+      "bidirectional_min_piat_ms",
+      "bidirectional_mean_piat_ms",
+      "bidirectional_stddev_piat_ms",
+      "bidirectional_max_piat_ms",
+      "src2dst_min_piat_ms",
+      "src2dst_mean_piat_ms",
+      "src2dst_stddev_piat_ms",
+      "src2dst_max_piat_ms",
+      "dst2src_min_piat_ms",
+      "dst2src_mean_piat_ms",
+      "dst2src_stddev_piat_ms",
+      "dst2src_max_piat_ms",
+      "src2dst_syn_packets",
+      "src2dst_cwr_packets",
+      "src2dst_ece_packets",
+      "src2dst_urg_packets",
+      "src2dst_ack_packets",
+      "src2dst_psh_packets",
+      "src2dst_rst_packets",
+      "src2dst_fin_packets",
+      "dst2src_syn_packets",
+      "dst2src_cwr_packets",
+      "dst2src_ece_packets",
+      "dst2src_urg_packets",
+      "dst2src_ack_packets",
+      "dst2src_psh_packets",
+      "dst2src_rst_packets",
+      "dst2src_fin_packets",
+      "packet_size_variation",
+      "Rolling_UDP_Requests_SourceDestination",
+      "Rolling_UDP_Requests_Destination",
+      "Rolling_TCP_Requests_SourceDestination",
+      "Rolling_TCP_Requests_Destination",
+      "Rolling_ACK_Packets_SourceDestination",
+      "Rolling_ACK_Packets_Destination",
+      "Rolling_FIN_Packets_SourceDestination",
+      "Rolling_FIN_Packets_Destination",
+      "Rolling_rst_Packets_SourceDestination",
+      "Rolling_rst_Packets_Destination",
+      "Rolling_psh_Packets_SourceDestination",
+      "Rolling_psh_Packets_Destination",
+      "Rolling_SYN_Packets_SourceDestination",
+      "Rolling_SYN_Packets_Destination",
+      "Unique_Ports_In_SourceDestinationIP",
+      "Rolling_ICMP_Requests_SourceDestination",
+      "Rolling_ICMP_Requests_Destination",
+      "Rolling_http_port_SourceDestination",
+      "Rolling_http_port_Destination",
+      "Rolling_Duration_Destination",
+      "Rolling_Duration_SourceDestination",
+      "Rolling_DNS_request_SourceDestination",
+      "Rolling_DNS_request_Destination",
+      "Rolling_DNS_request_SourceDestination2",
+      "Rolling_DNS_request_Destination2",
+      "Rolling_vulnerable_port",
+      "Rolling_packets_destination",
+      "Rolling_bipackets_destination",
+      "Exp_0",
+      "Exp_-1",
+      "proto_1",
+      "proto_2",
+      "proto_6",
+      "proto_17",
+      "proto_58"
+    ],
+    "temporal_columns": [
+      "packet_size_variation",
+      "Rolling_UDP_Requests_SourceDestination",
+      "Rolling_UDP_Requests_Destination",
+      "Rolling_TCP_Requests_SourceDestination",
+      "Rolling_TCP_Requests_Destination",
+      "Rolling_ACK_Packets_SourceDestination",
+      "Rolling_ACK_Packets_Destination",
+      "Rolling_FIN_Packets_SourceDestination",
+      "Rolling_FIN_Packets_Destination",
+      "Rolling_rst_Packets_SourceDestination",
+      "Rolling_rst_Packets_Destination",
+      "Rolling_psh_Packets_SourceDestination",
+      "Rolling_psh_Packets_Destination",
+      "Rolling_SYN_Packets_SourceDestination",
+      "Rolling_SYN_Packets_Destination",
+      "Unique_Ports_In_SourceDestinationIP",
+      "Rolling_ICMP_Requests_SourceDestination",
+      "Rolling_ICMP_Requests_Destination",
+      "Rolling_http_port_SourceDestination",
+      "Rolling_http_port_Destination",
+      "Rolling_Duration_Destination",
+      "Rolling_Duration_SourceDestination",
+      "Rolling_DNS_request_SourceDestination",
+      "Rolling_DNS_request_Destination",
+      "Rolling_DNS_request_SourceDestination2",
+      "Rolling_DNS_request_Destination2",
+      "Rolling_vulnerable_port",
+      "Rolling_packets_destination",
+      "Rolling_bipackets_destination"
+    ],
+    "mac_columns_present": [],
+    "sampled_graphs": [
+      {
+        "sample_id": "r0:160000:2e9ee999665c86fa1aedc6370c817263c4e5e58ecf2b61ca8c91433dd37dba40",
+        "path": "data_test_0.pt",
+        "candidate_csv_row": 0,
+        "label": 0,
+        "differences": []
+      },
+      {
+        "sample_id": "r0:185546:17c819efffb87a437473c1d5a522cee04796efdff73e44d59989db65493cc3c9",
+        "path": "data_test_999.pt",
+        "candidate_csv_row": 999,
+        "label": 0,
+        "differences": []
+      },
+      {
+        "sample_id": "r0:173313:498d0e243f04af2b9b5bc09154704cf2ff4aa8cbaad8e201318b5da13fe9eecd",
+        "path": "data_test_2198.pt",
+        "candidate_csv_row": 2198,
+        "label": 0,
+        "differences": []
+      },
+      {
+        "sample_id": "r0:178223:c88d29655affc6398096d3b9ae2693054995a5c832ce1ad260eaf33c36c931c7",
+        "path": "data_test_3398.pt",
+        "candidate_csv_row": 3398,
+        "label": 0,
+        "differences": []
+      },
+      {
+        "sample_id": "r0:178894:3a5fdd56d2754f73b7d6321e9f17ca2f99a814927c060dedb6f620714859427d",
+        "path": "data_test_4000.pt",
+        "candidate_csv_row": 4000,
+        "label": 7,
+        "differences": []
+      },
+      {
+        "sample_id": "r0:179065:b1868fa15087d78615d424233e3c162bc72955b6e38579e8496adb08141b4444",
+        "path": "data_test_4155.pt",
+        "candidate_csv_row": 4155,
+        "label": 7,
+        "differences": []
+      },
+      {
+        "sample_id": "r0:179239:0c36d2eee580da6f8cac182318029c061c3132ef1f725caddbafd13fc38cd747",
+        "path": "data_test_4311.pt",
+        "candidate_csv_row": 4311,
+        "label": 7,
+        "differences": []
+      },
+      {
+        "sample_id": "r0:179410:6409493c7dcb82fbac6a9d6c2dec646896746003f94422af4e42c17890d4f492",
+        "path": "data_test_4466.pt",
+        "candidate_csv_row": 4466,
+        "label": 7,
+        "differences": []
+      },
+      {
+        "sample_id": "r0:179411:892a6b0341b00b20c444b7c66cf68489ae6b1ce234e39533e65a4ca4424ee77b",
+        "path": "data_test_4467.pt",
+        "candidate_csv_row": 4467,
+        "label": 6,
+        "differences": []
+      },
+      {
+        "sample_id": "r0:180893:b8732968c416f64f2133c749640030a6731724e94cbbcda395ec007ab3bfae51",
+        "path": "data_test_5800.pt",
+        "candidate_csv_row": 5800,
+        "label": 6,
+        "differences": []
+      },
+      {
+        "sample_id": "r0:182374:756811095ebc3def14d012ec1095aa387739e929fdcc8bfd4599c3e05b550c33",
+        "path": "data_test_7133.pt",
+        "candidate_csv_row": 7133,
+        "label": 6,
+        "differences": []
+      },
+      {
+        "sample_id": "r0:183854:79c343293335f4503a9ec639d5f4e96e5ffdd07b7cc55c9bd0b4ab4c8a91473f",
+        "path": "data_test_8466.pt",
+        "candidate_csv_row": 8466,
+        "label": 6,
+        "differences": []
+      },
+      {
+        "sample_id": "r0:184076:03a1d2493d04c65c5bd0f842a13ba3bfa3832a4ab8f06ac1227b4d7f12b55261",
+        "path": "data_test_8666.pt",
+        "candidate_csv_row": 8666,
+        "label": 5,
+        "differences": []
+      },
+      {
+        "sample_id": "r0:185556:d06a04026efe23389b9cccbf9bd2338d2d658b1f4d9a967fc1b203a6e1c79d83",
+        "path": "data_test_9999.pt",
+        "candidate_csv_row": 9999,
+        "label": 5,
+        "differences": []
+      },
+      {
+        "sample_id": "r0:160005:dc8f2f2ee3a3545c67b2ddaf7307a0a392df896009fca97736b92d3cdd80f038",
+        "path": "data_test_10000.pt",
+        "candidate_csv_row": 10000,
+        "label": 5,
+        "differences": []
+      },
+      {
+        "sample_id": "r0:161485:6002cd2b37dd543a57f9c990c304961bd4106df5c84c116021e61feda0c0c241",
+        "path": "data_test_11333.pt",
+        "candidate_csv_row": 11333,
+        "label": 5,
+        "differences": []
+      },
+      {
+        "sample_id": "r0:162744:7c0b7aff1db904da0bd3a26c2481ac0dc662288f6323cd37fbee5809ce7c3779",
+        "path": "data_test_12467.pt",
+        "candidate_csv_row": 12467,
+        "label": 4,
+        "differences": []
+      },
+      {
+        "sample_id": "r0:164226:a6351d5d0703550844655934092b912ad00cb802130192e32f7df99819a7f15a",
+        "path": "data_test_13800.pt",
+        "candidate_csv_row": 13800,
+        "label": 4,
+        "differences": []
+      },
+      {
+        "sample_id": "r0:165707:fc741c365ff4f24b0429a51fa8e15e0af399f3af2dcfe5a50e1b5153cb699890",
+        "path": "data_test_15133.pt",
+        "candidate_csv_row": 15133,
+        "label": 4,
+        "differences": []
+      },
+      {
+        "sample_id": "r0:167187:1d0666abc9c30da833d56319f7c15bd9f6bb9f4be7ffb52ab9c2449f80077833",
+        "path": "data_test_16466.pt",
+        "candidate_csv_row": 16466,
+        "label": 4,
+        "differences": []
+      },
+      {
+        "sample_id": "r0:167188:289be09658b36114112b2647ba83969e839e24e4d7e695d772bbd428d88f6450",
+        "path": "data_test_16467.pt",
+        "candidate_csv_row": 16467,
+        "label": 3,
+        "differences": []
+      },
+      {
+        "sample_id": "r0:168670:bdf49381b37b7578156315e911a7c8a0a3ec0e2afcf6e4c0d81eab627bfa5806",
+        "path": "data_test_17800.pt",
+        "candidate_csv_row": 17800,
+        "label": 3,
+        "differences": []
+      },
+      {
+        "sample_id": "r0:170151:a26d26dfe98d55d5cca1f7aa6684a88c3e05b47ef3ffa576319eea5f6e125d0b",
+        "path": "data_test_19133.pt",
+        "candidate_csv_row": 19133,
+        "label": 3,
+        "differences": []
+      },
+      {
+        "sample_id": "r0:171632:4d1d7040675c445625567717b1e698016060128f4f519dd7a0b2374204efd590",
+        "path": "data_test_20466.pt",
+        "candidate_csv_row": 20466,
+        "label": 3,
+        "differences": []
+      },
+      {
+        "sample_id": "r0:171633:0e58ab6423e381bcabf3273224981dfdcd25ec6e3deae04011afaafbd5225f2d",
+        "path": "data_test_20467.pt",
+        "candidate_csv_row": 20467,
+        "label": 2,
+        "differences": []
+      },
+      {
+        "sample_id": "r0:173115:dac87570ba7fe6618735d9a8d887ddc405575df5f50a27c0983a72b1215d177a",
+        "path": "data_test_21800.pt",
+        "candidate_csv_row": 21800,
+        "label": 2,
+        "differences": []
+      },
+      {
+        "sample_id": "r0:174596:786e37ddb4f836c9055b730e2b9a0d267c1d659ec06529c55bdc50a92ec68809",
+        "path": "data_test_23133.pt",
+        "candidate_csv_row": 23133,
+        "label": 2,
+        "differences": []
+      },
+      {
+        "sample_id": "r0:176076:783abe44c24bc36a39ae00c7096cf289da1cb21d869b8ff47bf86b5cc1a1f101",
+        "path": "data_test_24466.pt",
+        "candidate_csv_row": 24466,
+        "label": 2,
+        "differences": []
+      },
+      {
+        "sample_id": "r0:176077:a62661875d85f1e00632d70a3d6e56bd2507d5f2b01f468387aec8f5aafe8254",
+        "path": "data_test_24467.pt",
+        "candidate_csv_row": 24467,
+        "label": 1,
+        "differences": []
+      },
+      {
+        "sample_id": "r0:176481:8f24cb21baeead1583fb4cf04262a0fb6d07cdde990a402f81bcfd7d39b48d91",
+        "path": "data_test_24830.pt",
+        "candidate_csv_row": 24830,
+        "label": 1,
+        "differences": []
+      },
+      {
+        "sample_id": "r0:176884:cb693ea4476b3ad5ae3ae29ba41f0a352545426b3d8aa91a24104bd8691de600",
+        "path": "data_test_25193.pt",
+        "candidate_csv_row": 25193,
+        "label": 1,
+        "differences": []
+      },
+      {
+        "sample_id": "r0:177287:2144d89cccb09ff1789ab223c74d2e50f0f2907ba3f12c648ca5e64c5bbfa21e",
+        "path": "data_test_25556.pt",
+        "candidate_csv_row": 25556,
+        "label": 1,
+        "differences": []
+      }
+    ],
+    "matching_samples": 32,
+    "numeric_row_correspondence_is_a_hypothesis": true
+  }
+}

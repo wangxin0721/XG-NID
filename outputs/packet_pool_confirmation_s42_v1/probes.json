@@ -1,0 +1,236 @@
+{
+  "P0": {
+    "updates": [
+      {
+        "step": 1,
+        "loss": 0.024199794977903366,
+        "gradient_l1": {
+          "fusion.flow_projection.weight": 5.080417633056641,
+          "fusion.flow_projection.bias": 0.19723936915397644,
+          "fusion.packet_projection.weight": 5.870649814605713,
+          "fusion.packet_projection.bias": 0.1878276914358139,
+          "fusion.gate.0.weight": 2.1332356929779053,
+          "fusion.gate.0.bias": 0.02715546265244484,
+          "fusion.gate.2.weight": 1.3410941362380981,
+          "fusion.gate.2.bias": 0.03071172535419464,
+          "fusion.shared_head.0.weight": 3.177584171295166,
+          "fusion.shared_head.0.bias": 0.07867687940597534,
+          "fusion.shared_head.2.weight": 2.0585744380950928,
+          "fusion.shared_head.2.bias": 0.024769574403762817
+        },
+        "changed": {
+          "fusion.flow_projection.weight": true,
+          "fusion.flow_projection.bias": true,
+          "fusion.packet_projection.weight": true,
+          "fusion.packet_projection.bias": true,
+          "fusion.gate.0.weight": true,
+          "fusion.gate.0.bias": true,
+          "fusion.gate.2.weight": true,
+          "fusion.gate.2.bias": true,
+          "fusion.shared_head.0.weight": true,
+          "fusion.shared_head.0.bias": true,
+          "fusion.shared_head.2.weight": true,
+          "fusion.shared_head.2.bias": true
+        },
+        "max_abs_attention_from_uniform": 0.0
+      },
+      {
+        "step": 2,
+        "loss": 0.02399861440062523,
+        "gradient_l1": {
+          "fusion.flow_projection.weight": 5.0312180519104,
+          "fusion.flow_projection.bias": 0.1953045129776001,
+          "fusion.packet_projection.weight": 5.817634582519531,
+          "fusion.packet_projection.bias": 0.1861131340265274,
+          "fusion.gate.0.weight": 2.1105494499206543,
+          "fusion.gate.0.bias": 0.026884734630584717,
+          "fusion.gate.2.weight": 1.3275513648986816,
+          "fusion.gate.2.bias": 0.03049657493829727,
+          "fusion.shared_head.0.weight": 3.1514523029327393,
+          "fusion.shared_head.0.bias": 0.07808814942836761,
+          "fusion.shared_head.2.weight": 2.0415139198303223,
+          "fusion.shared_head.2.bias": 0.024593638256192207
+        },
+        "changed": {
+          "fusion.flow_projection.weight": true,
+          "fusion.flow_projection.bias": true,
+          "fusion.packet_projection.weight": true,
+          "fusion.packet_projection.bias": true,
+          "fusion.gate.0.weight": true,
+          "fusion.gate.0.bias": true,
+          "fusion.gate.2.weight": true,
+          "fusion.gate.2.bias": true,
+          "fusion.shared_head.0.weight": true,
+          "fusion.shared_head.0.bias": true,
+          "fusion.shared_head.2.weight": true,
+          "fusion.shared_head.2.bias": true
+        },
+        "max_abs_attention_from_uniform": 0.0
+      },
+      {
+        "step": 3,
+        "loss": 0.023799408227205276,
+        "gradient_l1": {
+          "fusion.flow_projection.weight": 4.982433795928955,
+          "fusion.flow_projection.bias": 0.19338712096214294,
+          "fusion.packet_projection.weight": 5.7650041580200195,
+          "fusion.packet_projection.bias": 0.18441295623779297,
+          "fusion.gate.0.weight": 2.0880699157714844,
+          "fusion.gate.0.bias": 0.026616616174578667,
+          "fusion.gate.2.weight": 1.3141318559646606,
+          "fusion.gate.2.bias": 0.03028269298374653,
+          "fusion.shared_head.0.weight": 3.1254944801330566,
+          "fusion.shared_head.0.bias": 0.07750364392995834,
+          "fusion.shared_head.2.weight": 2.024580478668213,
+          "fusion.shared_head.2.bias": 0.024418970569968224
+        },
+        "changed": {
+          "fusion.flow_projection.weight": true,
+          "fusion.flow_projection.bias": true,
+          "fusion.packet_projection.weight": true,
+          "fusion.packet_projection.bias": true,
+          "fusion.gate.0.weight": true,
+          "fusion.gate.0.bias": true,
+          "fusion.gate.2.weight": true,
+          "fusion.gate.2.bias": true,
+          "fusion.shared_head.0.weight": true,
+          "fusion.shared_head.0.bias": true,
+          "fusion.shared_head.2.weight": true,
+          "fusion.shared_head.2.bias": true
+        },
+        "max_abs_attention_from_uniform": 0.0
+      }
+    ],
+    "train_graphs": 512,
+    "informative_train_graphs": 72154,
+    "discarded": true,
+    "clean_model_and_rng_restored": true,
+    "optimizer_discarded": true
+  },
+  "P1": {
+    "updates": [
+      {
+        "step": 1,
+        "loss": 0.024199794977903366,
+        "gradient_l1": {
+          "fusion.flow_projection.weight": 5.080417633056641,
+          "fusion.flow_projection.bias": 0.19723936915397644,
+          "fusion.packet_projection.weight": 5.870649814605713,
+          "fusion.packet_projection.bias": 0.1878276914358139,
+          "fusion.gate.0.weight": 2.1332356929779053,
+          "fusion.gate.0.bias": 0.02715546265244484,
+          "fusion.gate.2.weight": 1.3410941362380981,
+          "fusion.gate.2.bias": 0.03071172535419464,
+          "fusion.shared_head.0.weight": 3.177584171295166,
+          "fusion.shared_head.0.bias": 0.07867687940597534,
+          "fusion.shared_head.2.weight": 2.0585744380950928,
+          "fusion.shared_head.2.bias": 0.024769574403762817,
+          "packet_pool.aggregation.gate_nn.0.weight": 0.0,
+          "packet_pool.aggregation.gate_nn.0.bias": 0.0,
+          "packet_pool.aggregation.gate_nn.2.weight": 0.0013585109263658524
+        },
+        "changed": {
+          "fusion.flow_projection.weight": true,
+          "fusion.flow_projection.bias": true,
+          "fusion.packet_projection.weight": true,
+          "fusion.packet_projection.bias": true,
+          "fusion.gate.0.weight": true,
+          "fusion.gate.0.bias": true,
+          "fusion.gate.2.weight": true,
+          "fusion.gate.2.bias": true,
+          "fusion.shared_head.0.weight": true,
+          "fusion.shared_head.0.bias": true,
+          "fusion.shared_head.2.weight": true,
+          "fusion.shared_head.2.bias": true,
+          "packet_pool.aggregation.gate_nn.0.weight": false,
+          "packet_pool.aggregation.gate_nn.0.bias": false,
+          "packet_pool.aggregation.gate_nn.2.weight": true
+        },
+        "max_abs_attention_from_uniform": 5.6803226470947266e-05
+      },
+      {
+        "step": 2,
+        "loss": 0.023998482152819633,
+        "gradient_l1": {
+          "fusion.flow_projection.weight": 5.031163215637207,
+          "fusion.flow_projection.bias": 0.1953016072511673,
+          "fusion.packet_projection.weight": 5.817559242248535,
+          "fusion.packet_projection.bias": 0.18611088395118713,
+          "fusion.gate.0.weight": 2.1105265617370605,
+          "fusion.gate.0.bias": 0.026884377002716064,
+          "fusion.gate.2.weight": 1.327536702156067,
+          "fusion.gate.2.bias": 0.03049633838236332,
+          "fusion.shared_head.0.weight": 3.1514217853546143,
+          "fusion.shared_head.0.bias": 0.07808714359998703,
+          "fusion.shared_head.2.weight": 2.041497230529785,
+          "fusion.shared_head.2.bias": 0.02459343709051609,
+          "packet_pool.aggregation.gate_nn.0.weight": 2.928039430116769e-05,
+          "packet_pool.aggregation.gate_nn.0.bias": 4.820406616090622e-07,
+          "packet_pool.aggregation.gate_nn.2.weight": 0.0013351578963920474
+        },
+        "changed": {
+          "fusion.flow_projection.weight": true,
+          "fusion.flow_projection.bias": true,
+          "fusion.packet_projection.weight": true,
+          "fusion.packet_projection.bias": true,
+          "fusion.gate.0.weight": true,
+          "fusion.gate.0.bias": true,
+          "fusion.gate.2.weight": true,
+          "fusion.gate.2.bias": true,
+          "fusion.shared_head.0.weight": true,
+          "fusion.shared_head.0.bias": true,
+          "fusion.shared_head.2.weight": true,
+          "fusion.shared_head.2.bias": true,
+          "packet_pool.aggregation.gate_nn.0.weight": true,
+          "packet_pool.aggregation.gate_nn.0.bias": true,
+          "packet_pool.aggregation.gate_nn.2.weight": true
+        },
+        "max_abs_attention_from_uniform": 0.0001137852668762207
+      },
+      {
+        "step": 3,
+        "loss": 0.023799141868948936,
+        "gradient_l1": {
+          "fusion.flow_projection.weight": 4.9823198318481445,
+          "fusion.flow_projection.bias": 0.19338124990463257,
+          "fusion.packet_projection.weight": 5.764850616455078,
+          "fusion.packet_projection.bias": 0.18440833687782288,
+          "fusion.gate.0.weight": 2.0880234241485596,
+          "fusion.gate.0.bias": 0.026615895330905914,
+          "fusion.gate.2.weight": 1.3141016960144043,
+          "fusion.gate.2.bias": 0.030282212421298027,
+          "fusion.shared_head.0.weight": 3.1254327297210693,
+          "fusion.shared_head.0.bias": 0.07750162482261658,
+          "fusion.shared_head.2.weight": 2.0245463848114014,
+          "fusion.shared_head.2.bias": 0.024418562650680542,
+          "packet_pool.aggregation.gate_nn.0.weight": 5.7529010518919677e-05,
+          "packet_pool.aggregation.gate_nn.0.bias": 9.452193125980557e-07,
+          "packet_pool.aggregation.gate_nn.2.weight": 0.0013297614641487598
+        },
+        "changed": {
+          "fusion.flow_projection.weight": true,
+          "fusion.flow_projection.bias": true,
+          "fusion.packet_projection.weight": true,
+          "fusion.packet_projection.bias": true,
+          "fusion.gate.0.weight": true,
+          "fusion.gate.0.bias": true,
+          "fusion.gate.2.weight": true,
+          "fusion.gate.2.bias": true,
+          "fusion.shared_head.0.weight": true,
+          "fusion.shared_head.0.bias": true,
+          "fusion.shared_head.2.weight": true,
+          "fusion.shared_head.2.bias": true,
+          "packet_pool.aggregation.gate_nn.0.weight": true,
+          "packet_pool.aggregation.gate_nn.0.bias": true,
+          "packet_pool.aggregation.gate_nn.2.weight": true
+        },
+        "max_abs_attention_from_uniform": 0.00017121434211730957
+      }
+    ],
+    "train_graphs": 512,
+    "informative_train_graphs": 72154,
+    "discarded": true,
+    "clean_model_and_rng_restored": true,
+    "optimizer_discarded": true
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "physical_index": 1,
+  "uuid": "GPU-a9142835-62e0-974e-aebe-80ab25f7ef02",
+  "name": "Tesla T4",
+  "total_mib": 15360,
+  "used_mib_at_query": 180,
+  "free_mib_at_query": 14732,
+  "allow_shared_gpu": true,
+  "other_processes_at_query": [
+    {
+      "pid": 226468,
+      "name": "/home/nzxn/miniconda3/envs/wx/bin/python"
+    }
+  ],
+  "timing_scope": "sharing permitted; no isolated speed claim"
+}

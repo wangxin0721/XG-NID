@@ -1,0 +1,16 @@
+/home/nzxn/miniconda3/envs/wx/lib/python3.9/site-packages/torch_geometric/typing.py:99: UserWarning: An issue occurred while importing 'torch-spline-conv'. Disabling its usage. Stacktrace: /home/nzxn/miniconda3/envs/wx/lib/python3.9/site-packages/torch_spline_conv/_version_cuda.so: undefined symbol: _ZN3c1017RegisterOperatorsD1Ev
+  warnings.warn(
+{"variant": "E3a", "validation_samples": 1024}
+{"variant": "E3a", "validation_samples": 2048}
+{"variant": "E3a", "validation_samples": 3072}
+{"variant": "E3a", "validation_samples": 4096}
+{"variant": "E3a", "validation_samples": 5120}
+{"variant": "E3a", "validation_samples": 6144}
+{"variant": "E3a", "validation_samples": 7168}
+{"variant": "E3a", "validation_samples": 8192}
+{"variant": "E3a", "validation_samples": 9216}
+{"variant": "E3a", "validation_samples": 10240}
+{"variant": "E3a", "validation_samples": 11264}
+{"variant": "E3a", "validation_samples": 12288}
+{"variant": "E3a", "validation_samples": 13312}
+{"status": "completed", "report": "/home/nzxn/\u4e0b\u8f7d/WX/load/XG-NID/outputs/e3_gate_candidate_E3a_b512_s42_v1/report.json", "test_evaluated": false}

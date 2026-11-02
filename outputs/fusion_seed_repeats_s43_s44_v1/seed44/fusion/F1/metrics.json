@@ -1,0 +1,401 @@
+{
+  "variant": "F1",
+  "best_epoch": 0,
+  "epochs": 12,
+  "optimizer_updates": 2532,
+  "training_samples_seen": 1291452,
+  "best_validation": {
+    "accuracy": 0.9804402796370668,
+    "macro_f1": 0.9726614471025387,
+    "weighted_f1": 0.9804966372928807,
+    "per_class": {
+      "Benign": {
+        "precision": 0.9727005459890802,
+        "recall": 0.9694432817078276,
+        "f1-score": 0.9710691823899371,
+        "support": 2389
+      },
+      "WebBased": {
+        "precision": 0.8908765652951699,
+        "recall": 0.9154411764705882,
+        "f1-score": 0.9029918404351768,
+        "support": 544
+      },
+      "Spoofing": {
+        "precision": 0.9594285714285714,
+        "recall": 0.9654974123059229,
+        "f1-score": 0.9624534250501576,
+        "support": 1739
+      },
+      "Recon": {
+        "precision": 0.9740545294635005,
+        "recall": 0.9723441615452151,
+        "f1-score": 0.9731985940246046,
+        "support": 2278
+      },
+      "Mirai": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 2400
+      },
+      "Dos": {
+        "precision": 0.9993183367416496,
+        "recall": 0.9938983050847457,
+        "f1-score": 0.9966009517335146,
+        "support": 1475
+      },
+      "DDos": {
+        "precision": 1.0,
+        "recall": 0.9970686767169179,
+        "f1-score": 0.9985321870413084,
+        "support": 2388
+      },
+      "BruteForce": {
+        "precision": 0.9743589743589743,
+        "recall": 0.9785407725321889,
+        "f1-score": 0.9764453961456103,
+        "support": 233
+      }
+    },
+    "confusion_matrix": [
+      [
+        2316,
+        11,
+        52,
+        9,
+        0,
+        0,
+        0,
+        1
+      ],
+      [
+        9,
+        498,
+        6,
+        29,
+        0,
+        0,
+        0,
+        2
+      ],
+      [
+        45,
+        6,
+        1679,
+        7,
+        0,
+        0,
+        0,
+        2
+      ],
+      [
+        11,
+        40,
+        10,
+        2215,
+        0,
+        1,
+        0,
+        1
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        2400,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        2,
+        0,
+        7,
+        0,
+        1466,
+        0,
+        0
+      ],
+      [
+        0,
+        1,
+        0,
+        6,
+        0,
+        0,
+        2381,
+        0
+      ],
+      [
+        0,
+        1,
+        3,
+        1,
+        0,
+        0,
+        0,
+        228
+      ]
+    ],
+    "samples": 13446,
+    "weights": {
+      "mean": [
+        0.4999999701976776,
+        0.4999999701976776
+      ],
+      "std": [
+        0.0,
+        0.0
+      ],
+      "min": [
+        0.5,
+        0.5
+      ],
+      "max": [
+        0.5,
+        0.5
+      ]
+    }
+  },
+  "last_validation": {
+    "accuracy": 0.9799196787148594,
+    "macro_f1": 0.9716072267978885,
+    "weighted_f1": 0.9799744319198015,
+    "per_class": {
+      "Benign": {
+        "precision": 0.9690764730463853,
+        "recall": 0.9706990372540812,
+        "f1-score": 0.9698870765370138,
+        "support": 2389
+      },
+      "WebBased": {
+        "precision": 0.8870967741935484,
+        "recall": 0.9099264705882353,
+        "f1-score": 0.8983666061705989,
+        "support": 544
+      },
+      "Spoofing": {
+        "precision": 0.9610091743119266,
+        "recall": 0.9637722829212191,
+        "f1-score": 0.9623887453344818,
+        "support": 1739
+      },
+      "Recon": {
+        "precision": 0.9748677248677249,
+        "recall": 0.9705882352941176,
+        "f1-score": 0.9727232732072152,
+        "support": 2278
+      },
+      "Mirai": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 2400
+      },
+      "Dos": {
+        "precision": 0.9993183367416496,
+        "recall": 0.9938983050847457,
+        "f1-score": 0.9966009517335146,
+        "support": 1475
+      },
+      "DDos": {
+        "precision": 1.0,
+        "recall": 0.9970686767169179,
+        "f1-score": 0.9985321870413084,
+        "support": 2388
+      },
+      "BruteForce": {
+        "precision": 0.9702127659574468,
+        "recall": 0.9785407725321889,
+        "f1-score": 0.9743589743589743,
+        "support": 233
+      }
+    },
+    "confusion_matrix": [
+      [
+        2319,
+        11,
+        50,
+        8,
+        0,
+        0,
+        0,
+        1
+      ],
+      [
+        11,
+        495,
+        6,
+        29,
+        0,
+        0,
+        0,
+        3
+      ],
+      [
+        48,
+        6,
+        1676,
+        7,
+        0,
+        0,
+        0,
+        2
+      ],
+      [
+        15,
+        41,
+        9,
+        2211,
+        0,
+        1,
+        0,
+        1
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        2400,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        2,
+        0,
+        7,
+        0,
+        1466,
+        0,
+        0
+      ],
+      [
+        0,
+        2,
+        0,
+        5,
+        0,
+        0,
+        2381,
+        0
+      ],
+      [
+        0,
+        1,
+        3,
+        1,
+        0,
+        0,
+        0,
+        228
+      ]
+    ],
+    "samples": 13446,
+    "weights": {
+      "mean": [
+        0.5141076445579529,
+        0.4858924150466919
+      ],
+      "std": [
+        0.0,
+        0.0
+      ],
+      "min": [
+        0.5141075253486633,
+        0.48589247465133667
+      ],
+      "max": [
+        0.5141075253486633,
+        0.48589247465133667
+      ]
+    }
+  },
+  "macro_f1_minus_F0_pp": 0.0,
+  "versus_F0": {
+    "counts": {
+      "repaired": 0,
+      "regressed": 0,
+      "both_correct": 13183,
+      "both_wrong": 263
+    },
+    "by_class": {
+      "0": {
+        "repaired": 0,
+        "regressed": 0,
+        "both_correct": 2316,
+        "both_wrong": 73
+      },
+      "1": {
+        "repaired": 0,
+        "regressed": 0,
+        "both_correct": 498,
+        "both_wrong": 46
+      },
+      "2": {
+        "repaired": 0,
+        "regressed": 0,
+        "both_correct": 1679,
+        "both_wrong": 60
+      },
+      "3": {
+        "repaired": 0,
+        "regressed": 0,
+        "both_correct": 2215,
+        "both_wrong": 63
+      },
+      "4": {
+        "repaired": 0,
+        "regressed": 0,
+        "both_correct": 2400,
+        "both_wrong": 0
+      },
+      "5": {
+        "repaired": 0,
+        "regressed": 0,
+        "both_correct": 1466,
+        "both_wrong": 9
+      },
+      "6": {
+        "repaired": 0,
+        "regressed": 0,
+        "both_correct": 2381,
+        "both_wrong": 7
+      },
+      "7": {
+        "repaired": 0,
+        "regressed": 0,
+        "both_correct": 228,
+        "both_wrong": 5
+      }
+    },
+    "net_correct": 0
+  },
+  "orders": [
+    "9c7750c65517771f57015f446ce6ad632dbf7de22bf98cc8f82250215d8efde7",
+    "0053fd9ddb691f4bc38603c9f91bb16ee4b56967b074fb3034710c3765cdb98a",
+    "6bfd9fce8c1067afeb44bb3599eefae38cfc9517ab7528c0eeeed3e8ed6c229f",
+    "3263c4ce655fc234c65ac9df2cb1e83790056a661b72d48e94976d26c9783a8b",
+    "936a86ab734316ce50f28b4a0f83984ffc1f0bf37dbad2e65928c710c1d19c1a",
+    "18862853a4e4b4123a58c286e8339101ee6d3f96e683a30e7a6ae468496b287c",
+    "c72f5d72390e85e5671e289ee4f1d599f23bed5bc239312747c447b24c8d2168",
+    "1b8404a6f5f132d80980b34855afcc6731a0b03d374cf6ab15d70047b878ff27",
+    "57f8cb96b8c690cf161b81ac687e715f4e1c057911f310eef346f8f745606881",
+    "9d61971eeb100c4896cf7b9a9cac9c17aa0714a87352bb0c2ae14b641a043dd4",
+    "66529c48635d58a90d3b70893c005fb61ed2886591c6763bd8e1238659c22a5d",
+    "ee01c5c8e0b6903a26dce77de6e11a05c5cd328fcf9e73c9425f8c5773d3b32d"
+  ],
+  "training_start_rng_sha256": "52fffedbf09c01bd3f49c2956d0a57eea515de4642875312d70c6a770a9ec23b",
+  "trainable_parameters": 1,
+  "test_evaluated": false,
+  "checkpoint_sha256": {
+    "best.pt": "428f0b98d1a390818899f5390a50d587f2513063b80ea4c18b8be65f5aa554a8",
+    "last.pt": "2fb5c6172d3960b0cbbe125b42f538d794e24b2fa33765508948ad8d5764618c"
+  },
+  "predictions_sha256": "9ce1a8d276a0bac7651d30fd516c65ea87e9f8077a1fbe10ec88f52dcec28197"
+}

@@ -1,0 +1,80 @@
+{
+  "Rel_Gate_minus_Rel_Mean_pp": 0.04334392960786415,
+  "Rel_Gate_minus_D32_pp": 0.08322280392895065,
+  "Rel_Gate_minus_J32_reported_pp": 0.03565323207362914,
+  "stronger_reference_macro_f1": 0.9736058430246577,
+  "delta_pp": 0.04334392960786415,
+  "budget_threshold_pp": 0.1,
+  "required_Gate_macro_f1": 0.9746058430246577,
+  "budget_screen_passed": false,
+  "J32_reference_macro_f1": 0.97368275,
+  "J32_reference_provenance": "user_reported_rounded_percent_97.368275_not_a_verified_checkpoint",
+  "trained_best_changes": {
+    "Rel-Mean": {
+      "minus_D32_pp": 0.0398788743210865,
+      "minus_J32_reported_pp": -0.007690697534235014
+    },
+    "Rel-Gate": {
+      "minus_D32_pp": 0.08322280392895065,
+      "minus_J32_reported_pp": 0.03565323207362914
+    }
+  },
+  "selected_epoch_zero": {
+    "Rel-Mean": false,
+    "Rel-Gate": false
+  },
+  "class_tradeoff_review_required": true,
+  "statistical_significance_claimed": false,
+  "automatic_followup": false,
+  "source_comparison_policy": "Matched relation mean/BN/readout on identical frozen messages uses 1e-6; independent legacy CUDA probabilities recorded separately; all source predictions/CM must match.",
+  "class_changes": {
+    "Benign": {
+      "Gate_minus_Mean_recall_pp": 0.20929259104227604,
+      "Gate_minus_D32_recall_pp": 0.4185851820845521,
+      "Gate_minus_Mean_F1_pp": 0.22906530318479446,
+      "support": 2389
+    },
+    "WebBased": {
+      "Gate_minus_Mean_recall_pp": 0.0,
+      "Gate_minus_D32_recall_pp": 0.5514705882353033,
+      "Gate_minus_Mean_F1_pp": -0.08244970896237325,
+      "support": 544
+    },
+    "Spoofing": {
+      "Gate_minus_Mean_recall_pp": 0.17251293847038163,
+      "Gate_minus_D32_recall_pp": -0.2875215641173101,
+      "Gate_minus_Mean_F1_pp": 0.25644106129608657,
+      "support": 1739
+    },
+    "Recon": {
+      "Gate_minus_Mean_recall_pp": -0.04389815627743321,
+      "Gate_minus_D32_recall_pp": 0.13169446883231073,
+      "Gate_minus_Mean_F1_pp": -0.06539778093965776,
+      "support": 2278
+    },
+    "Mirai": {
+      "Gate_minus_Mean_recall_pp": 0.0,
+      "Gate_minus_D32_recall_pp": 0.0,
+      "Gate_minus_Mean_F1_pp": 0.0,
+      "support": 2400
+    },
+    "Dos": {
+      "Gate_minus_Mean_recall_pp": 0.0,
+      "Gate_minus_D32_recall_pp": -0.06779661016949046,
+      "Gate_minus_Mean_F1_pp": 0.0,
+      "support": 1475
+    },
+    "DDos": {
+      "Gate_minus_Mean_recall_pp": 0.0,
+      "Gate_minus_D32_recall_pp": -0.041876046901168085,
+      "Gate_minus_Mean_F1_pp": 0.0,
+      "support": 2388
+    },
+    "BruteForce": {
+      "Gate_minus_Mean_recall_pp": 0.42918454935622075,
+      "Gate_minus_D32_recall_pp": 0.0,
+      "Gate_minus_Mean_F1_pp": 0.009092562284052086,
+      "support": 233
+    }
+  }
+}

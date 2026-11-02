@@ -1,0 +1,387 @@
+{"status": "running", "phase": "validate_two_mature_starts", "pid": 3515360}
+/home/nzxn/miniconda3/envs/wx/lib/python3.9/site-packages/torch_geometric/typing.py:99: UserWarning: An issue occurred while importing 'torch-spline-conv'. Disabling its usage. Stacktrace: /home/nzxn/miniconda3/envs/wx/lib/python3.9/site-packages/torch_spline_conv/_version_cuda.so: undefined symbol: _ZN3c1017RegisterOperatorsD1Ev
+  warnings.warn(
+{"status": "running", "phase": "load_own_best_and_reproduce_epoch_zero", "pid": 3515360, "variant": "J32-Equal"}
+{"status": "running", "phase": "J32-Equal_epoch_zero", "pid": 3515360, "samples": 16, "total": 13446, "elapsed_seconds": 0.24485976295545697}
+{"status": "running", "phase": "J32-Equal_epoch_zero", "pid": 3515360, "samples": 3200, "total": 13446, "elapsed_seconds": 6.523625599918887}
+{"status": "running", "phase": "J32-Equal_epoch_zero", "pid": 3515360, "samples": 6400, "total": 13446, "elapsed_seconds": 12.788329769973643}
+{"status": "running", "phase": "J32-Equal_epoch_zero", "pid": 3515360, "samples": 9600, "total": 13446, "elapsed_seconds": 20.246428812970407}
+{"status": "running", "phase": "J32-Equal_epoch_zero", "pid": 3515360, "samples": 12800, "total": 13446, "elapsed_seconds": 27.494065420003608}
+{"status": "running", "phase": "three_raw_graph_update_probe", "pid": 3515360, "variant": "J32-Equal"}
+{"status": "running", "phase": "load_own_best_and_reproduce_epoch_zero", "pid": 3515360, "variant": "J32-Gate"}
+{"status": "running", "phase": "J32-Gate_epoch_zero", "pid": 3515360, "samples": 16, "total": 13446, "elapsed_seconds": 0.242788712028414}
+{"status": "running", "phase": "J32-Gate_epoch_zero", "pid": 3515360, "samples": 3200, "total": 13446, "elapsed_seconds": 7.084072107099928}
+{"status": "running", "phase": "J32-Gate_epoch_zero", "pid": 3515360, "samples": 6400, "total": 13446, "elapsed_seconds": 13.937726321048103}
+{"status": "running", "phase": "J32-Gate_epoch_zero", "pid": 3515360, "samples": 9600, "total": 13446, "elapsed_seconds": 20.819549926090986}
+{"status": "running", "phase": "J32-Gate_epoch_zero", "pid": 3515360, "samples": 12800, "total": 13446, "elapsed_seconds": 27.69650104502216}
+{"status": "running", "phase": "three_raw_graph_update_probe", "pid": 3515360, "variant": "J32-Gate"}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Equal", "epoch": 1, "batch": 1, "batches": 211, "train_nll": 0.01869073510169983, "elapsed_seconds": 1.722619899082929}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Equal", "epoch": 1, "batch": 50, "batches": 211, "train_nll": 0.026156819257885218, "elapsed_seconds": 178.5238582000602}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Equal", "epoch": 1, "batch": 100, "batches": 211, "train_nll": 0.026106599885970354, "elapsed_seconds": 323.6473921460565}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Equal", "epoch": 1, "batch": 150, "batches": 211, "train_nll": 0.02686536287268003, "elapsed_seconds": 446.2988763001049}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Equal", "epoch": 1, "batch": 200, "batches": 211, "train_nll": 0.026348271192982792, "elapsed_seconds": 551.4127093150746}
+{"status": "running", "phase": "J32-Equal_validation", "pid": 3515360, "samples": 16, "total": 13446, "elapsed_seconds": 0.23077734489925206}
+{"status": "running", "phase": "J32-Equal_validation", "pid": 3515360, "samples": 3200, "total": 13446, "elapsed_seconds": 8.303605194902048}
+{"status": "running", "phase": "J32-Equal_validation", "pid": 3515360, "samples": 6400, "total": 13446, "elapsed_seconds": 16.246965489001013}
+{"status": "running", "phase": "J32-Equal_validation", "pid": 3515360, "samples": 9600, "total": 13446, "elapsed_seconds": 27.00487855996471}
+{"status": "running", "phase": "J32-Equal_validation", "pid": 3515360, "samples": 12800, "total": 13446, "elapsed_seconds": 39.59132779890206}
+{"status": "running", "phase": "epoch_completed", "pid": 3515360, "variant": "J32-Equal", "epoch": 1, "train_nll": 0.0263797578770032, "val_macro_f1": 0.9702306990568161, "optimizer_updates": 211, "train_order_sha256": "158f1b7e3dedc2c8b265252f9e23e6a6b37e9629dac203c4a27bf8f1f8408079", "best_epoch": 0, "stale_epochs": 1}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Equal", "epoch": 2, "batch": 1, "batches": 211, "train_nll": 0.02435375563800335, "elapsed_seconds": 615.1856695601018}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Equal", "epoch": 2, "batch": 50, "batches": 211, "train_nll": 0.02598492879420519, "elapsed_seconds": 654.2793893840862}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Equal", "epoch": 2, "batch": 100, "batches": 211, "train_nll": 0.026179143991321326, "elapsed_seconds": 695.0299985910533}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Equal", "epoch": 2, "batch": 150, "batches": 211, "train_nll": 0.02638014832511544, "elapsed_seconds": 739.2413461530814}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Equal", "epoch": 2, "batch": 200, "batches": 211, "train_nll": 0.02607592602260411, "elapsed_seconds": 782.4207029590616}
+{"status": "running", "phase": "J32-Equal_validation", "pid": 3515360, "samples": 16, "total": 13446, "elapsed_seconds": 0.15632314910180867}
+{"status": "running", "phase": "J32-Equal_validation", "pid": 3515360, "samples": 3200, "total": 13446, "elapsed_seconds": 7.049449214013293}
+{"status": "running", "phase": "J32-Equal_validation", "pid": 3515360, "samples": 6400, "total": 13446, "elapsed_seconds": 13.089450031053275}
+{"status": "running", "phase": "J32-Equal_validation", "pid": 3515360, "samples": 9600, "total": 13446, "elapsed_seconds": 20.224801828037016}
+{"status": "running", "phase": "J32-Equal_validation", "pid": 3515360, "samples": 12800, "total": 13446, "elapsed_seconds": 27.303143339115195}
+{"status": "running", "phase": "epoch_completed", "pid": 3515360, "variant": "J32-Equal", "epoch": 2, "train_nll": 0.026152755146173833, "val_macro_f1": 0.9699687749229384, "optimizer_updates": 211, "train_order_sha256": "16e4198ee3915b7807cb8fffd9c85d4e580e3b92aacab4bc01b4218e93fe28a6", "best_epoch": 0, "stale_epochs": 2}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Equal", "epoch": 3, "batch": 1, "batches": 211, "train_nll": 0.030366607010364532, "elapsed_seconds": 821.669981416082}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Equal", "epoch": 3, "batch": 50, "batches": 211, "train_nll": 0.024785304125398398, "elapsed_seconds": 861.9515023030108}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Equal", "epoch": 3, "batch": 100, "batches": 211, "train_nll": 0.026835083374753595, "elapsed_seconds": 899.7363618640229}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Equal", "epoch": 3, "batch": 150, "batches": 211, "train_nll": 0.026423448057224352, "elapsed_seconds": 937.4915273390943}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Equal", "epoch": 3, "batch": 200, "batches": 211, "train_nll": 0.026383485635742544, "elapsed_seconds": 976.7750366210239}
+{"status": "running", "phase": "J32-Equal_validation", "pid": 3515360, "samples": 16, "total": 13446, "elapsed_seconds": 0.10540647595189512}
+{"status": "running", "phase": "J32-Equal_validation", "pid": 3515360, "samples": 3200, "total": 13446, "elapsed_seconds": 6.683600913966075}
+{"status": "running", "phase": "J32-Equal_validation", "pid": 3515360, "samples": 6400, "total": 13446, "elapsed_seconds": 13.140524487011135}
+{"status": "running", "phase": "J32-Equal_validation", "pid": 3515360, "samples": 9600, "total": 13446, "elapsed_seconds": 20.70167170104105}
+{"status": "running", "phase": "J32-Equal_validation", "pid": 3515360, "samples": 12800, "total": 13446, "elapsed_seconds": 27.850189352990128}
+{"status": "running", "phase": "epoch_completed", "pid": 3515360, "variant": "J32-Equal", "epoch": 3, "train_nll": 0.026074193602852236, "val_macro_f1": 0.970529040285796, "optimizer_updates": 211, "train_order_sha256": "e0328504ac2f06e5b237aa2baf15eabf9f1c424e4ed31e92ba0d1a2209d6fda9", "best_epoch": 0, "stale_epochs": 3}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Equal", "epoch": 4, "batch": 1, "batches": 211, "train_nll": 0.012072921730577946, "elapsed_seconds": 1016.0814701500349}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Equal", "epoch": 4, "batch": 50, "batches": 211, "train_nll": 0.025083717582747342, "elapsed_seconds": 1052.6861839590129}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Equal", "epoch": 4, "batch": 100, "batches": 211, "train_nll": 0.026611831136979163, "elapsed_seconds": 1093.131217342103}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Equal", "epoch": 4, "batch": 150, "batches": 211, "train_nll": 0.025866124260549742, "elapsed_seconds": 1130.0968220760114}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Equal", "epoch": 4, "batch": 200, "batches": 211, "train_nll": 0.02600072882603854, "elapsed_seconds": 1167.6143233230105}
+{"status": "running", "phase": "J32-Equal_validation", "pid": 3515360, "samples": 16, "total": 13446, "elapsed_seconds": 0.10876652307342738}
+{"status": "running", "phase": "J32-Equal_validation", "pid": 3515360, "samples": 3200, "total": 13446, "elapsed_seconds": 6.760016665095463}
+{"status": "running", "phase": "J32-Equal_validation", "pid": 3515360, "samples": 6400, "total": 13446, "elapsed_seconds": 13.328895589103922}
+{"status": "running", "phase": "J32-Equal_validation", "pid": 3515360, "samples": 9600, "total": 13446, "elapsed_seconds": 21.573374005034566}
+{"status": "running", "phase": "J32-Equal_validation", "pid": 3515360, "samples": 12800, "total": 13446, "elapsed_seconds": 28.578795643057674}
+{"status": "running", "phase": "epoch_completed", "pid": 3515360, "variant": "J32-Equal", "epoch": 4, "train_nll": 0.026020715709148223, "val_macro_f1": 0.9704742774120779, "optimizer_updates": 211, "train_order_sha256": "ab527e0e38e51ec98a0d214088053ae16a909911dc7d49f83c4022dcd388260e", "best_epoch": 0, "stale_epochs": 4}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Equal", "epoch": 5, "batch": 1, "batches": 211, "train_nll": 0.03034253790974617, "elapsed_seconds": 1207.1095569650643}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Equal", "epoch": 5, "batch": 50, "batches": 211, "train_nll": 0.025422800555825232, "elapsed_seconds": 1246.7547548620496}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Equal", "epoch": 5, "batch": 100, "batches": 211, "train_nll": 0.025899810288101434, "elapsed_seconds": 1284.9026031380054}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Equal", "epoch": 5, "batch": 150, "batches": 211, "train_nll": 0.02557270350555579, "elapsed_seconds": 1322.969542352017}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Equal", "epoch": 5, "batch": 200, "batches": 211, "train_nll": 0.026046365033835173, "elapsed_seconds": 1362.1580543540185}
+{"status": "running", "phase": "J32-Equal_validation", "pid": 3515360, "samples": 16, "total": 13446, "elapsed_seconds": 0.15046205196995288}
+{"status": "running", "phase": "J32-Equal_validation", "pid": 3515360, "samples": 3200, "total": 13446, "elapsed_seconds": 8.101035175961442}
+{"status": "running", "phase": "J32-Equal_validation", "pid": 3515360, "samples": 6400, "total": 13446, "elapsed_seconds": 14.8514251539018}
+{"status": "running", "phase": "J32-Equal_validation", "pid": 3515360, "samples": 9600, "total": 13446, "elapsed_seconds": 22.869987532962114}
+{"status": "running", "phase": "J32-Equal_validation", "pid": 3515360, "samples": 12800, "total": 13446, "elapsed_seconds": 30.502220719936304}
+{"status": "running", "phase": "epoch_completed", "pid": 3515360, "variant": "J32-Equal", "epoch": 5, "train_nll": 0.025987970714476224, "val_macro_f1": 0.9706292921330048, "optimizer_updates": 211, "train_order_sha256": "4683bde992d3fd293488e09fe685a782c20055ab37c51f103f7befd9f8423eea", "best_epoch": 0, "stale_epochs": 5}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Equal", "epoch": 6, "batch": 1, "batches": 211, "train_nll": 0.026332257315516472, "elapsed_seconds": 1406.6533588860184}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Equal", "epoch": 6, "batch": 50, "batches": 211, "train_nll": 0.02535055692307651, "elapsed_seconds": 1446.3149547970388}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Equal", "epoch": 6, "batch": 100, "batches": 211, "train_nll": 0.025718022785149515, "elapsed_seconds": 1484.952386195073}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Equal", "epoch": 6, "batch": 150, "batches": 211, "train_nll": 0.025991646321490407, "elapsed_seconds": 1523.9057404811028}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Equal", "epoch": 6, "batch": 200, "batches": 211, "train_nll": 0.026066066503990442, "elapsed_seconds": 1563.5632379290182}
+{"status": "running", "phase": "J32-Equal_validation", "pid": 3515360, "samples": 16, "total": 13446, "elapsed_seconds": 0.10142874903976917}
+{"status": "running", "phase": "J32-Equal_validation", "pid": 3515360, "samples": 3200, "total": 13446, "elapsed_seconds": 6.767897850018926}
+{"status": "running", "phase": "J32-Equal_validation", "pid": 3515360, "samples": 6400, "total": 13446, "elapsed_seconds": 13.663677673088387}
+{"status": "running", "phase": "J32-Equal_validation", "pid": 3515360, "samples": 9600, "total": 13446, "elapsed_seconds": 21.068952062050812}
+{"status": "running", "phase": "J32-Equal_validation", "pid": 3515360, "samples": 12800, "total": 13446, "elapsed_seconds": 28.15955737500917}
+{"status": "running", "phase": "epoch_completed", "pid": 3515360, "variant": "J32-Equal", "epoch": 6, "train_nll": 0.025946412642820625, "val_macro_f1": 0.9704742774120779, "optimizer_updates": 211, "train_order_sha256": "af55a9897e786dda7df9c53c7d95239057afe227e720ce2fd924cd99537c453a", "best_epoch": 0, "stale_epochs": 6}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Equal", "epoch": 7, "batch": 1, "batches": 211, "train_nll": 0.028316620737314224, "elapsed_seconds": 1602.886816074024}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Equal", "epoch": 7, "batch": 50, "batches": 211, "train_nll": 0.027190041113644838, "elapsed_seconds": 1641.7687478750013}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Equal", "epoch": 7, "batch": 100, "batches": 211, "train_nll": 0.02669106362387538, "elapsed_seconds": 1680.8342259380734}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Equal", "epoch": 7, "batch": 150, "batches": 211, "train_nll": 0.02627550458535552, "elapsed_seconds": 1719.9742023240542}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Equal", "epoch": 7, "batch": 200, "batches": 211, "train_nll": 0.026057753348723053, "elapsed_seconds": 1761.5899039610522}
+{"status": "running", "phase": "J32-Equal_validation", "pid": 3515360, "samples": 16, "total": 13446, "elapsed_seconds": 0.15472217102069408}
+{"status": "running", "phase": "J32-Equal_validation", "pid": 3515360, "samples": 3200, "total": 13446, "elapsed_seconds": 7.120504495920613}
+{"status": "running", "phase": "J32-Equal_validation", "pid": 3515360, "samples": 6400, "total": 13446, "elapsed_seconds": 13.441910131950863}
+{"status": "running", "phase": "J32-Equal_validation", "pid": 3515360, "samples": 9600, "total": 13446, "elapsed_seconds": 20.704046975937672}
+{"status": "running", "phase": "J32-Equal_validation", "pid": 3515360, "samples": 12800, "total": 13446, "elapsed_seconds": 28.05439836299047}
+{"status": "running", "phase": "epoch_completed", "pid": 3515360, "variant": "J32-Equal", "epoch": 7, "train_nll": 0.02591255246980623, "val_macro_f1": 0.970703735982616, "optimizer_updates": 211, "train_order_sha256": "ecd018e838d3126088e935f4d6e19a2cccb306c50cd59516fbf1891323dddab3", "best_epoch": 0, "stale_epochs": 7}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Equal", "epoch": 8, "batch": 1, "batches": 211, "train_nll": 0.013508063741028309, "elapsed_seconds": 1801.9098177501}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Equal", "epoch": 8, "batch": 50, "batches": 211, "train_nll": 0.025859085377305746, "elapsed_seconds": 1839.5656814210815}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Equal", "epoch": 8, "batch": 100, "batches": 211, "train_nll": 0.026458609737455844, "elapsed_seconds": 1879.5766206400003}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Equal", "epoch": 8, "batch": 150, "batches": 211, "train_nll": 0.0264401758958896, "elapsed_seconds": 1921.7807167490246}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Equal", "epoch": 8, "batch": 200, "batches": 211, "train_nll": 0.025941350255161522, "elapsed_seconds": 1961.3116216930794}
+{"status": "running", "phase": "J32-Equal_validation", "pid": 3515360, "samples": 16, "total": 13446, "elapsed_seconds": 0.11153705406468362}
+{"status": "running", "phase": "J32-Equal_validation", "pid": 3515360, "samples": 3200, "total": 13446, "elapsed_seconds": 6.787353395018727}
+{"status": "running", "phase": "J32-Equal_validation", "pid": 3515360, "samples": 6400, "total": 13446, "elapsed_seconds": 13.721899111988023}
+{"status": "running", "phase": "J32-Equal_validation", "pid": 3515360, "samples": 9600, "total": 13446, "elapsed_seconds": 21.460023042047396}
+{"status": "running", "phase": "J32-Equal_validation", "pid": 3515360, "samples": 12800, "total": 13446, "elapsed_seconds": 28.87958464503754}
+{"status": "running", "phase": "epoch_completed", "pid": 3515360, "variant": "J32-Equal", "epoch": 8, "train_nll": 0.02588835902096141, "val_macro_f1": 0.9709201512601284, "optimizer_updates": 211, "train_order_sha256": "6849214586e3e22d882308aed02f4c3d1d3bd5df367774220d1875d7ae72ff20", "best_epoch": 0, "stale_epochs": 8}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Equal", "epoch": 9, "batch": 1, "batches": 211, "train_nll": 0.02690662071108818, "elapsed_seconds": 2002.4522818690166}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Equal", "epoch": 9, "batch": 50, "batches": 211, "train_nll": 0.025766245909035205, "elapsed_seconds": 2040.0890648870263}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Equal", "epoch": 9, "batch": 100, "batches": 211, "train_nll": 0.02622851882595569, "elapsed_seconds": 2076.9007012330694}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Equal", "epoch": 9, "batch": 150, "batches": 211, "train_nll": 0.02635408624696235, "elapsed_seconds": 2115.4060465641087}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Equal", "epoch": 9, "batch": 200, "batches": 211, "train_nll": 0.025926902026403697, "elapsed_seconds": 2155.0926367481006}
+{"status": "running", "phase": "J32-Equal_validation", "pid": 3515360, "samples": 16, "total": 13446, "elapsed_seconds": 0.16098309902008623}
+{"status": "running", "phase": "J32-Equal_validation", "pid": 3515360, "samples": 3200, "total": 13446, "elapsed_seconds": 6.96391784097068}
+{"status": "running", "phase": "J32-Equal_validation", "pid": 3515360, "samples": 6400, "total": 13446, "elapsed_seconds": 13.50659683404956}
+{"status": "running", "phase": "J32-Equal_validation", "pid": 3515360, "samples": 9600, "total": 13446, "elapsed_seconds": 21.50742787204217}
+{"status": "running", "phase": "J32-Equal_validation", "pid": 3515360, "samples": 12800, "total": 13446, "elapsed_seconds": 29.03359092201572}
+{"status": "running", "phase": "epoch_completed", "pid": 3515360, "variant": "J32-Equal", "epoch": 9, "train_nll": 0.02586513816706788, "val_macro_f1": 0.9705486983817746, "optimizer_updates": 211, "train_order_sha256": "33376df80867fbe8704ac6f571997f6fb1e4c5e4e631081d43f83e1704010c8f", "best_epoch": 0, "stale_epochs": 9}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Equal", "epoch": 10, "batch": 1, "batches": 211, "train_nll": 0.02323004975914955, "elapsed_seconds": 2195.6683578450466}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Equal", "epoch": 10, "batch": 50, "batches": 211, "train_nll": 0.026016917675733567, "elapsed_seconds": 2234.8999826580985}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Equal", "epoch": 10, "batch": 100, "batches": 211, "train_nll": 0.025432879822328686, "elapsed_seconds": 2277.4526262280997}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Equal", "epoch": 10, "batch": 150, "batches": 211, "train_nll": 0.026601472037533918, "elapsed_seconds": 2317.8949676800985}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Equal", "epoch": 10, "batch": 200, "batches": 211, "train_nll": 0.025921342140063645, "elapsed_seconds": 2359.6251991030294}
+{"status": "running", "phase": "J32-Equal_validation", "pid": 3515360, "samples": 16, "total": 13446, "elapsed_seconds": 0.106488196994178}
+{"status": "running", "phase": "J32-Equal_validation", "pid": 3515360, "samples": 3200, "total": 13446, "elapsed_seconds": 6.894851705990732}
+{"status": "running", "phase": "J32-Equal_validation", "pid": 3515360, "samples": 6400, "total": 13446, "elapsed_seconds": 13.924331735935993}
+{"status": "running", "phase": "J32-Equal_validation", "pid": 3515360, "samples": 9600, "total": 13446, "elapsed_seconds": 21.875652385991998}
+{"status": "running", "phase": "J32-Equal_validation", "pid": 3515360, "samples": 12800, "total": 13446, "elapsed_seconds": 29.442779107019305}
+{"status": "running", "phase": "epoch_completed", "pid": 3515360, "variant": "J32-Equal", "epoch": 10, "train_nll": 0.02584356343077924, "val_macro_f1": 0.9708251500768952, "optimizer_updates": 211, "train_order_sha256": "4aa26014bb17d860c6af257ff492b95caf9347d5df3d9924c32dc3240e166bb5", "best_epoch": 0, "stale_epochs": 10}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Equal", "epoch": 11, "batch": 1, "batches": 211, "train_nll": 0.032896582037210464, "elapsed_seconds": 2401.370143452077}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Equal", "epoch": 11, "batch": 50, "batches": 211, "train_nll": 0.025268214084208013, "elapsed_seconds": 2439.0159990630345}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Equal", "epoch": 11, "batch": 100, "batches": 211, "train_nll": 0.025947563615627587, "elapsed_seconds": 2478.624862044002}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Equal", "epoch": 11, "batch": 150, "batches": 211, "train_nll": 0.025736507267380755, "elapsed_seconds": 2519.4264651930425}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Equal", "epoch": 11, "batch": 200, "batches": 211, "train_nll": 0.025819475939497353, "elapsed_seconds": 2561.5750369740417}
+{"status": "running", "phase": "J32-Equal_validation", "pid": 3515360, "samples": 16, "total": 13446, "elapsed_seconds": 0.15976328402757645}
+{"status": "running", "phase": "J32-Equal_validation", "pid": 3515360, "samples": 3200, "total": 13446, "elapsed_seconds": 7.086385619011708}
+{"status": "running", "phase": "J32-Equal_validation", "pid": 3515360, "samples": 6400, "total": 13446, "elapsed_seconds": 14.099074117955752}
+{"status": "running", "phase": "J32-Equal_validation", "pid": 3515360, "samples": 9600, "total": 13446, "elapsed_seconds": 22.671291764941998}
+{"status": "running", "phase": "J32-Equal_validation", "pid": 3515360, "samples": 12800, "total": 13446, "elapsed_seconds": 30.08283800794743}
+{"status": "running", "phase": "epoch_completed", "pid": 3515360, "variant": "J32-Equal", "epoch": 11, "train_nll": 0.025833521738535984, "val_macro_f1": 0.9708487900905697, "optimizer_updates": 211, "train_order_sha256": "eef18c61e883db468fcbc62571c256334f386728e43781f64a6bddeac51e7436", "best_epoch": 0, "stale_epochs": 11}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Equal", "epoch": 12, "batch": 1, "batches": 211, "train_nll": 0.030082229524850845, "elapsed_seconds": 2602.9996569399955}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Equal", "epoch": 12, "batch": 50, "batches": 211, "train_nll": 0.024613436553627254, "elapsed_seconds": 2642.8532440710114}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Equal", "epoch": 12, "batch": 100, "batches": 211, "train_nll": 0.025722892871126533, "elapsed_seconds": 2683.3248361690203}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Equal", "epoch": 12, "batch": 150, "batches": 211, "train_nll": 0.026002850426981847, "elapsed_seconds": 2725.1308177700266}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Equal", "epoch": 12, "batch": 200, "batches": 211, "train_nll": 0.026099673525895924, "elapsed_seconds": 2766.2765850340948}
+{"status": "running", "phase": "J32-Equal_validation", "pid": 3515360, "samples": 16, "total": 13446, "elapsed_seconds": 0.1494821929372847}
+{"status": "running", "phase": "J32-Equal_validation", "pid": 3515360, "samples": 3200, "total": 13446, "elapsed_seconds": 6.971129943965934}
+{"status": "running", "phase": "J32-Equal_validation", "pid": 3515360, "samples": 6400, "total": 13446, "elapsed_seconds": 13.823355081956834}
+{"status": "running", "phase": "J32-Equal_validation", "pid": 3515360, "samples": 9600, "total": 13446, "elapsed_seconds": 21.471694770967588}
+{"status": "running", "phase": "J32-Equal_validation", "pid": 3515360, "samples": 12800, "total": 13446, "elapsed_seconds": 29.207758822944015}
+{"status": "running", "phase": "epoch_completed", "pid": 3515360, "variant": "J32-Equal", "epoch": 12, "train_nll": 0.025805627865725347, "val_macro_f1": 0.9710033649995367, "optimizer_updates": 211, "train_order_sha256": "a1ca9c55f26899fabf3947b02d8323dcf7cb904b1dedbdfed7834e7982c569ff", "best_epoch": 0, "stale_epochs": 12}
+{"status": "running", "phase": "J32-Equal_best_raw_graph_replay", "pid": 3515360, "samples": 16, "total": 13446, "elapsed_seconds": 0.5223265580134466}
+{"status": "running", "phase": "J32-Equal_best_raw_graph_replay", "pid": 3515360, "samples": 3200, "total": 13446, "elapsed_seconds": 7.742505219997838}
+{"status": "running", "phase": "J32-Equal_best_raw_graph_replay", "pid": 3515360, "samples": 6400, "total": 13446, "elapsed_seconds": 14.60546307801269}
+{"status": "running", "phase": "J32-Equal_best_raw_graph_replay", "pid": 3515360, "samples": 9600, "total": 13446, "elapsed_seconds": 21.90758606698364}
+{"status": "running", "phase": "J32-Equal_best_raw_graph_replay", "pid": 3515360, "samples": 12800, "total": 13446, "elapsed_seconds": 29.560660396004096}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Gate", "epoch": 1, "batch": 1, "batches": 211, "train_nll": 0.017248185351490974, "elapsed_seconds": 2.9549172080587596}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Gate", "epoch": 1, "batch": 50, "batches": 211, "train_nll": 0.02366245470009744, "elapsed_seconds": 42.330473126028664}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Gate", "epoch": 1, "batch": 100, "batches": 211, "train_nll": 0.023640629588626325, "elapsed_seconds": 83.9312299520243}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Gate", "epoch": 1, "batch": 150, "batches": 211, "train_nll": 0.024313897748167317, "elapsed_seconds": 124.04106339206919}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Gate", "epoch": 1, "batch": 200, "batches": 211, "train_nll": 0.023975596895907073, "elapsed_seconds": 169.49595941707958}
+{"status": "running", "phase": "J32-Gate_validation", "pid": 3515360, "samples": 16, "total": 13446, "elapsed_seconds": 0.29760175093542784}
+{"status": "running", "phase": "J32-Gate_validation", "pid": 3515360, "samples": 3200, "total": 13446, "elapsed_seconds": 8.5429269769229}
+{"status": "running", "phase": "J32-Gate_validation", "pid": 3515360, "samples": 6400, "total": 13446, "elapsed_seconds": 16.093472081935033}
+{"status": "running", "phase": "J32-Gate_validation", "pid": 3515360, "samples": 9600, "total": 13446, "elapsed_seconds": 23.506548475008458}
+{"status": "running", "phase": "J32-Gate_validation", "pid": 3515360, "samples": 12800, "total": 13446, "elapsed_seconds": 30.81651607900858}
+{"status": "running", "phase": "epoch_completed", "pid": 3515360, "variant": "J32-Gate", "epoch": 1, "train_nll": 0.024038766625970036, "val_macro_f1": 0.9715211812250603, "optimizer_updates": 211, "train_order_sha256": "158f1b7e3dedc2c8b265252f9e23e6a6b37e9629dac203c4a27bf8f1f8408079", "best_epoch": 0, "stale_epochs": 1}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Gate", "epoch": 2, "batch": 1, "batches": 211, "train_nll": 0.025332430377602577, "elapsed_seconds": 211.99348255910445}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Gate", "epoch": 2, "batch": 50, "batches": 211, "train_nll": 0.02387214151211083, "elapsed_seconds": 253.03678963403217}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Gate", "epoch": 2, "batch": 100, "batches": 211, "train_nll": 0.02377452763263136, "elapsed_seconds": 296.8193050180562}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Gate", "epoch": 2, "batch": 150, "batches": 211, "train_nll": 0.023949818663919965, "elapsed_seconds": 339.1070333790267}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Gate", "epoch": 2, "batch": 200, "batches": 211, "train_nll": 0.023614603611640632, "elapsed_seconds": 379.60816648602486}
+{"status": "running", "phase": "J32-Gate_validation", "pid": 3515360, "samples": 16, "total": 13446, "elapsed_seconds": 0.12865399301517755}
+{"status": "running", "phase": "J32-Gate_validation", "pid": 3515360, "samples": 3200, "total": 13446, "elapsed_seconds": 7.578412416973151}
+{"status": "running", "phase": "J32-Gate_validation", "pid": 3515360, "samples": 6400, "total": 13446, "elapsed_seconds": 14.798768237000331}
+{"status": "running", "phase": "J32-Gate_validation", "pid": 3515360, "samples": 9600, "total": 13446, "elapsed_seconds": 22.274659432005137}
+{"status": "running", "phase": "J32-Gate_validation", "pid": 3515360, "samples": 12800, "total": 13446, "elapsed_seconds": 30.02237083192449}
+{"status": "running", "phase": "epoch_completed", "pid": 3515360, "variant": "J32-Gate", "epoch": 2, "train_nll": 0.02369296668829084, "val_macro_f1": 0.9713546814412016, "optimizer_updates": 211, "train_order_sha256": "16e4198ee3915b7807cb8fffd9c85d4e580e3b92aacab4bc01b4218e93fe28a6", "best_epoch": 0, "stale_epochs": 2}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Gate", "epoch": 3, "batch": 1, "batches": 211, "train_nll": 0.024040522053837776, "elapsed_seconds": 421.9142687560525}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Gate", "epoch": 3, "batch": 50, "batches": 211, "train_nll": 0.022798258708789945, "elapsed_seconds": 460.8865150990896}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Gate", "epoch": 3, "batch": 100, "batches": 211, "train_nll": 0.02441383965779096, "elapsed_seconds": 503.85925128508825}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Gate", "epoch": 3, "batch": 150, "batches": 211, "train_nll": 0.02390215709495048, "elapsed_seconds": 545.7085632641101}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Gate", "epoch": 3, "batch": 200, "batches": 211, "train_nll": 0.02382488331058994, "elapsed_seconds": 586.2054560410324}
+{"status": "running", "phase": "J32-Gate_validation", "pid": 3515360, "samples": 16, "total": 13446, "elapsed_seconds": 0.1636731440667063}
+{"status": "running", "phase": "J32-Gate_validation", "pid": 3515360, "samples": 3200, "total": 13446, "elapsed_seconds": 7.187934615067206}
+{"status": "running", "phase": "J32-Gate_validation", "pid": 3515360, "samples": 6400, "total": 13446, "elapsed_seconds": 14.288467749021947}
+{"status": "running", "phase": "J32-Gate_validation", "pid": 3515360, "samples": 9600, "total": 13446, "elapsed_seconds": 22.317663715104572}
+{"status": "running", "phase": "J32-Gate_validation", "pid": 3515360, "samples": 12800, "total": 13446, "elapsed_seconds": 30.138403635006398}
+{"status": "running", "phase": "epoch_completed", "pid": 3515360, "variant": "J32-Gate", "epoch": 3, "train_nll": 0.02354541591857179, "val_macro_f1": 0.9722073493893912, "optimizer_updates": 211, "train_order_sha256": "e0328504ac2f06e5b237aa2baf15eabf9f1c424e4ed31e92ba0d1a2209d6fda9", "best_epoch": 0, "stale_epochs": 3}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Gate", "epoch": 4, "batch": 1, "batches": 211, "train_nll": 0.01171703077852726, "elapsed_seconds": 628.8791056510527}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Gate", "epoch": 4, "batch": 50, "batches": 211, "train_nll": 0.02280394358560443, "elapsed_seconds": 667.1984988910845}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Gate", "epoch": 4, "batch": 100, "batches": 211, "train_nll": 0.023926287498325108, "elapsed_seconds": 707.9355065060081}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Gate", "epoch": 4, "batch": 150, "batches": 211, "train_nll": 0.023210158503303924, "elapsed_seconds": 748.8573966000695}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Gate", "epoch": 4, "batch": 200, "batches": 211, "train_nll": 0.023386706972960383, "elapsed_seconds": 789.6671181390993}
+{"status": "running", "phase": "J32-Gate_validation", "pid": 3515360, "samples": 16, "total": 13446, "elapsed_seconds": 0.14363055396825075}
+{"status": "running", "phase": "J32-Gate_validation", "pid": 3515360, "samples": 3200, "total": 13446, "elapsed_seconds": 7.155487834941596}
+{"status": "running", "phase": "J32-Gate_validation", "pid": 3515360, "samples": 6400, "total": 13446, "elapsed_seconds": 13.5723864819156}
+{"status": "running", "phase": "J32-Gate_validation", "pid": 3515360, "samples": 9600, "total": 13446, "elapsed_seconds": 21.279113525990397}
+{"status": "running", "phase": "J32-Gate_validation", "pid": 3515360, "samples": 12800, "total": 13446, "elapsed_seconds": 28.926832548924722}
+{"status": "running", "phase": "epoch_completed", "pid": 3515360, "variant": "J32-Gate", "epoch": 4, "train_nll": 0.023465845904584382, "val_macro_f1": 0.9721735732225643, "optimizer_updates": 211, "train_order_sha256": "ab527e0e38e51ec98a0d214088053ae16a909911dc7d49f83c4022dcd388260e", "best_epoch": 0, "stale_epochs": 4}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Gate", "epoch": 5, "batch": 1, "batches": 211, "train_nll": 0.029910864308476448, "elapsed_seconds": 830.6589214840205}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Gate", "epoch": 5, "batch": 50, "batches": 211, "train_nll": 0.022884939229115844, "elapsed_seconds": 869.7393239421071}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Gate", "epoch": 5, "batch": 100, "batches": 211, "train_nll": 0.023209265931509435, "elapsed_seconds": 908.969425783027}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Gate", "epoch": 5, "batch": 150, "batches": 211, "train_nll": 0.023048275991653402, "elapsed_seconds": 950.6740483600879}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Gate", "epoch": 5, "batch": 200, "batches": 211, "train_nll": 0.023435025124344974, "elapsed_seconds": 990.39013423305}
+{"status": "running", "phase": "J32-Gate_validation", "pid": 3515360, "samples": 16, "total": 13446, "elapsed_seconds": 0.1415824480354786}
+{"status": "running", "phase": "J32-Gate_validation", "pid": 3515360, "samples": 3200, "total": 13446, "elapsed_seconds": 7.222841070964932}
+{"status": "running", "phase": "J32-Gate_validation", "pid": 3515360, "samples": 6400, "total": 13446, "elapsed_seconds": 14.81253920099698}
+{"status": "running", "phase": "J32-Gate_validation", "pid": 3515360, "samples": 9600, "total": 13446, "elapsed_seconds": 24.28183055797126}
+{"status": "running", "phase": "J32-Gate_validation", "pid": 3515360, "samples": 12800, "total": 13446, "elapsed_seconds": 32.08865547995083}
+{"status": "running", "phase": "epoch_completed", "pid": 3515360, "variant": "J32-Gate", "epoch": 5, "train_nll": 0.023411416544561983, "val_macro_f1": 0.9720840383551496, "optimizer_updates": 211, "train_order_sha256": "4683bde992d3fd293488e09fe685a782c20055ab37c51f103f7befd9f8423eea", "best_epoch": 0, "stale_epochs": 5}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Gate", "epoch": 6, "batch": 1, "batches": 211, "train_nll": 0.02477968856692314, "elapsed_seconds": 1034.5541916560614}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Gate", "epoch": 6, "batch": 50, "batches": 211, "train_nll": 0.022806247919797896, "elapsed_seconds": 1073.2691333610564}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Gate", "epoch": 6, "batch": 100, "batches": 211, "train_nll": 0.02301847788505256, "elapsed_seconds": 1113.505506294081}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Gate", "epoch": 6, "batch": 150, "batches": 211, "train_nll": 0.023476131316274403, "elapsed_seconds": 1154.190424059052}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Gate", "epoch": 6, "batch": 200, "batches": 211, "train_nll": 0.023460778950247913, "elapsed_seconds": 1195.1310373360757}
+{"status": "running", "phase": "J32-Gate_validation", "pid": 3515360, "samples": 16, "total": 13446, "elapsed_seconds": 0.14941493596415967}
+{"status": "running", "phase": "J32-Gate_validation", "pid": 3515360, "samples": 3200, "total": 13446, "elapsed_seconds": 7.572138678049669}
+{"status": "running", "phase": "J32-Gate_validation", "pid": 3515360, "samples": 6400, "total": 13446, "elapsed_seconds": 14.955228097038344}
+{"status": "running", "phase": "J32-Gate_validation", "pid": 3515360, "samples": 9600, "total": 13446, "elapsed_seconds": 23.55393657204695}
+{"status": "running", "phase": "J32-Gate_validation", "pid": 3515360, "samples": 12800, "total": 13446, "elapsed_seconds": 31.312725333031267}
+{"status": "running", "phase": "epoch_completed", "pid": 3515360, "variant": "J32-Gate", "epoch": 6, "train_nll": 0.02335679369864663, "val_macro_f1": 0.9720212743392881, "optimizer_updates": 211, "train_order_sha256": "af55a9897e786dda7df9c53c7d95239057afe227e720ce2fd924cd99537c453a", "best_epoch": 0, "stale_epochs": 6}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Gate", "epoch": 7, "batch": 1, "batches": 211, "train_nll": 0.026916202157735825, "elapsed_seconds": 1238.0219707770739}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Gate", "epoch": 7, "batch": 50, "batches": 211, "train_nll": 0.024258788879960774, "elapsed_seconds": 1277.6435312320245}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Gate", "epoch": 7, "batch": 100, "batches": 211, "train_nll": 0.02381931198760867, "elapsed_seconds": 1317.3548642530804}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Gate", "epoch": 7, "batch": 150, "batches": 211, "train_nll": 0.023507770504802464, "elapsed_seconds": 1356.8132453450235}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Gate", "epoch": 7, "batch": 200, "batches": 211, "train_nll": 0.02344030001666397, "elapsed_seconds": 1394.5309946930502}
+{"status": "running", "phase": "J32-Gate_validation", "pid": 3515360, "samples": 16, "total": 13446, "elapsed_seconds": 0.14034590602386743}
+{"status": "running", "phase": "J32-Gate_validation", "pid": 3515360, "samples": 3200, "total": 13446, "elapsed_seconds": 7.374334149993956}
+{"status": "running", "phase": "J32-Gate_validation", "pid": 3515360, "samples": 6400, "total": 13446, "elapsed_seconds": 13.782929515000433}
+{"status": "running", "phase": "J32-Gate_validation", "pid": 3515360, "samples": 9600, "total": 13446, "elapsed_seconds": 21.117196002043784}
+{"status": "running", "phase": "J32-Gate_validation", "pid": 3515360, "samples": 12800, "total": 13446, "elapsed_seconds": 27.87699203507509}
+{"status": "running", "phase": "epoch_completed", "pid": 3515360, "variant": "J32-Gate", "epoch": 7, "train_nll": 0.02331134220829608, "val_macro_f1": 0.9721656513309331, "optimizer_updates": 211, "train_order_sha256": "ecd018e838d3126088e935f4d6e19a2cccb306c50cd59516fbf1891323dddab3", "best_epoch": 0, "stale_epochs": 7}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Gate", "epoch": 8, "batch": 1, "batches": 211, "train_nll": 0.01373559981584549, "elapsed_seconds": 1433.1773300589994}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Gate", "epoch": 8, "batch": 50, "batches": 211, "train_nll": 0.023657825719565154, "elapsed_seconds": 1469.7758826060453}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Gate", "epoch": 8, "batch": 100, "batches": 211, "train_nll": 0.023956860667094588, "elapsed_seconds": 1508.9662305160891}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Gate", "epoch": 8, "batch": 150, "batches": 211, "train_nll": 0.023854551709567507, "elapsed_seconds": 1547.357177038095}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Gate", "epoch": 8, "batch": 200, "batches": 211, "train_nll": 0.023360431778710337, "elapsed_seconds": 1585.4128231460927}
+{"status": "running", "phase": "J32-Gate_validation", "pid": 3515360, "samples": 16, "total": 13446, "elapsed_seconds": 0.12587392202112824}
+{"status": "running", "phase": "J32-Gate_validation", "pid": 3515360, "samples": 3200, "total": 13446, "elapsed_seconds": 7.074466277030297}
+{"status": "running", "phase": "J32-Gate_validation", "pid": 3515360, "samples": 6400, "total": 13446, "elapsed_seconds": 14.144063908956014}
+{"status": "running", "phase": "J32-Gate_validation", "pid": 3515360, "samples": 9600, "total": 13446, "elapsed_seconds": 21.523484020028263}
+{"status": "running", "phase": "J32-Gate_validation", "pid": 3515360, "samples": 12800, "total": 13446, "elapsed_seconds": 29.38593096693512}
+{"status": "running", "phase": "epoch_completed", "pid": 3515360, "variant": "J32-Gate", "epoch": 8, "train_nll": 0.023275580394010058, "val_macro_f1": 0.9723805081299784, "optimizer_updates": 211, "train_order_sha256": "6849214586e3e22d882308aed02f4c3d1d3bd5df367774220d1875d7ae72ff20", "best_epoch": 0, "stale_epochs": 8}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Gate", "epoch": 9, "batch": 1, "batches": 211, "train_nll": 0.028486117720603943, "elapsed_seconds": 1626.1887787500164}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Gate", "epoch": 9, "batch": 50, "batches": 211, "train_nll": 0.022912265658378603, "elapsed_seconds": 1665.815897905035}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Gate", "epoch": 9, "batch": 100, "batches": 211, "train_nll": 0.023460068251006307, "elapsed_seconds": 1711.0655556010315}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Gate", "epoch": 9, "batch": 150, "batches": 211, "train_nll": 0.02368780579107503, "elapsed_seconds": 1753.1051514710998}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Gate", "epoch": 9, "batch": 200, "batches": 211, "train_nll": 0.023329473820049317, "elapsed_seconds": 1795.4857706850162}
+{"status": "running", "phase": "J32-Gate_validation", "pid": 3515360, "samples": 16, "total": 13446, "elapsed_seconds": 0.12735864403657615}
+{"status": "running", "phase": "J32-Gate_validation", "pid": 3515360, "samples": 3200, "total": 13446, "elapsed_seconds": 7.1146959230536595}
+{"status": "running", "phase": "J32-Gate_validation", "pid": 3515360, "samples": 6400, "total": 13446, "elapsed_seconds": 13.788709821063094}
+{"status": "running", "phase": "J32-Gate_validation", "pid": 3515360, "samples": 9600, "total": 13446, "elapsed_seconds": 21.22317275009118}
+{"status": "running", "phase": "J32-Gate_validation", "pid": 3515360, "samples": 12800, "total": 13446, "elapsed_seconds": 28.42684923100751}
+{"status": "running", "phase": "epoch_completed", "pid": 3515360, "variant": "J32-Gate", "epoch": 9, "train_nll": 0.023252829548494586, "val_macro_f1": 0.9716856895915025, "optimizer_updates": 211, "train_order_sha256": "33376df80867fbe8704ac6f571997f6fb1e4c5e4e631081d43f83e1704010c8f", "best_epoch": 0, "stale_epochs": 9}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Gate", "epoch": 10, "batch": 1, "batches": 211, "train_nll": 0.021010633558034897, "elapsed_seconds": 1835.846334159025}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Gate", "epoch": 10, "batch": 50, "batches": 211, "train_nll": 0.02343661236576736, "elapsed_seconds": 1876.009406231111}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Gate", "epoch": 10, "batch": 100, "batches": 211, "train_nll": 0.022944645290262997, "elapsed_seconds": 1918.872476629098}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Gate", "epoch": 10, "batch": 150, "batches": 211, "train_nll": 0.02397603701489667, "elapsed_seconds": 1963.3753930430394}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Gate", "epoch": 10, "batch": 200, "batches": 211, "train_nll": 0.023285771063528957, "elapsed_seconds": 2005.65478618606}
+{"status": "running", "phase": "J32-Gate_validation", "pid": 3515360, "samples": 16, "total": 13446, "elapsed_seconds": 0.15410600590985268}
+{"status": "running", "phase": "J32-Gate_validation", "pid": 3515360, "samples": 3200, "total": 13446, "elapsed_seconds": 6.991466314997524}
+{"status": "running", "phase": "J32-Gate_validation", "pid": 3515360, "samples": 6400, "total": 13446, "elapsed_seconds": 13.842595031950623}
+{"status": "running", "phase": "J32-Gate_validation", "pid": 3515360, "samples": 9600, "total": 13446, "elapsed_seconds": 22.511992326006293}
+{"status": "running", "phase": "J32-Gate_validation", "pid": 3515360, "samples": 12800, "total": 13446, "elapsed_seconds": 30.07750195497647}
+{"status": "running", "phase": "epoch_completed", "pid": 3515360, "variant": "J32-Gate", "epoch": 10, "train_nll": 0.023224968925014463, "val_macro_f1": 0.9717199806375998, "optimizer_updates": 211, "train_order_sha256": "4aa26014bb17d860c6af257ff492b95caf9347d5df3d9924c32dc3240e166bb5", "best_epoch": 0, "stale_epochs": 10}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Gate", "epoch": 11, "batch": 1, "batches": 211, "train_nll": 0.029852351173758507, "elapsed_seconds": 2048.303818893037}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Gate", "epoch": 11, "batch": 50, "batches": 211, "train_nll": 0.022829251997172832, "elapsed_seconds": 2084.657248440082}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Gate", "epoch": 11, "batch": 100, "batches": 211, "train_nll": 0.023479928886517884, "elapsed_seconds": 2126.316177924047}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Gate", "epoch": 11, "batch": 150, "batches": 211, "train_nll": 0.023136723370601735, "elapsed_seconds": 2167.405804696027}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Gate", "epoch": 11, "batch": 200, "batches": 211, "train_nll": 0.023259086585603654, "elapsed_seconds": 2210.226475729025}
+{"status": "running", "phase": "J32-Gate_validation", "pid": 3515360, "samples": 16, "total": 13446, "elapsed_seconds": 0.10998903505969793}
+{"status": "running", "phase": "J32-Gate_validation", "pid": 3515360, "samples": 3200, "total": 13446, "elapsed_seconds": 7.508008175063878}
+{"status": "running", "phase": "J32-Gate_validation", "pid": 3515360, "samples": 6400, "total": 13446, "elapsed_seconds": 14.773487707017921}
+{"status": "running", "phase": "J32-Gate_validation", "pid": 3515360, "samples": 9600, "total": 13446, "elapsed_seconds": 22.93506457307376}
+{"status": "running", "phase": "J32-Gate_validation", "pid": 3515360, "samples": 12800, "total": 13446, "elapsed_seconds": 31.00223993707914}
+{"status": "running", "phase": "epoch_completed", "pid": 3515360, "variant": "J32-Gate", "epoch": 11, "train_nll": 0.023212789821527254, "val_macro_f1": 0.9722258616200994, "optimizer_updates": 211, "train_order_sha256": "eef18c61e883db468fcbc62571c256334f386728e43781f64a6bddeac51e7436", "best_epoch": 0, "stale_epochs": 11}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Gate", "epoch": 12, "batch": 1, "batches": 211, "train_nll": 0.026130685582756996, "elapsed_seconds": 2254.1717941880925}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Gate", "epoch": 12, "batch": 50, "batches": 211, "train_nll": 0.02188674084842205, "elapsed_seconds": 2293.790614282014}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Gate", "epoch": 12, "batch": 100, "batches": 211, "train_nll": 0.02293043858371675, "elapsed_seconds": 2333.5117069870466}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Gate", "epoch": 12, "batch": 150, "batches": 211, "train_nll": 0.023431109823286535, "elapsed_seconds": 2373.378842441016}
+{"status": "running", "phase": "joint_training", "pid": 3515360, "variant": "J32-Gate", "epoch": 12, "batch": 200, "batches": 211, "train_nll": 0.02341369764180854, "elapsed_seconds": 2416.602443513111}
+{"status": "running", "phase": "J32-Gate_validation", "pid": 3515360, "samples": 16, "total": 13446, "elapsed_seconds": 0.11550652701407671}
+{"status": "running", "phase": "J32-Gate_validation", "pid": 3515360, "samples": 3200, "total": 13446, "elapsed_seconds": 7.0383668639697134}
+{"status": "running", "phase": "J32-Gate_validation", "pid": 3515360, "samples": 6400, "total": 13446, "elapsed_seconds": 14.641089731012471}
+{"status": "running", "phase": "J32-Gate_validation", "pid": 3515360, "samples": 9600, "total": 13446, "elapsed_seconds": 22.49984767497517}
+{"status": "running", "phase": "J32-Gate_validation", "pid": 3515360, "samples": 12800, "total": 13446, "elapsed_seconds": 30.283980579930358}
+{"status": "running", "phase": "epoch_completed", "pid": 3515360, "variant": "J32-Gate", "epoch": 12, "train_nll": 0.023179225658568687, "val_macro_f1": 0.9718582061125053, "optimizer_updates": 211, "train_order_sha256": "a1ca9c55f26899fabf3947b02d8323dcf7cb904b1dedbdfed7834e7982c569ff", "best_epoch": 0, "stale_epochs": 12}
+{"status": "running", "phase": "J32-Gate_best_raw_graph_replay", "pid": 3515360, "samples": 16, "total": 13446, "elapsed_seconds": 0.2744399030925706}
+{"status": "running", "phase": "J32-Gate_best_raw_graph_replay", "pid": 3515360, "samples": 3200, "total": 13446, "elapsed_seconds": 7.198297869996168}
+{"status": "running", "phase": "J32-Gate_best_raw_graph_replay", "pid": 3515360, "samples": 6400, "total": 13446, "elapsed_seconds": 13.997313807019964}
+{"status": "running", "phase": "J32-Gate_best_raw_graph_replay", "pid": 3515360, "samples": 9600, "total": 13446, "elapsed_seconds": 21.45248330803588}
+{"status": "running", "phase": "J32-Gate_best_raw_graph_replay", "pid": 3515360, "samples": 12800, "total": 13446, "elapsed_seconds": 28.90952455101069}
+| model | start Macro-F1 | best Macro-F1 | gain pp | last Macro-F1 | best epoch | stop epoch | updates | joint seconds |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| J32-Equal | 97.143955% | 97.143955% | +0.000000 | 97.100336% | 0 | 12 | 2532 | 2806.276 |
+| J32-Gate | 97.320705% | 97.320705% | +0.000000 | 97.185821% | 0 | 12 | 2532 | 2457.739 |
+
+Inherited Gate-Equal gap: +0.176751 pp.
+Final Gate-Equal gap: +0.176751 pp.
+Gap change from joint training: +0.000000 pp.
+Gate above stronger original-Gate/new-Equal reference: +0.000000 pp.
+Budget screen >= +0.10 pp: False; required score=97.420705%.
+Selected epoch0: Equal=True, Gate=True.
+Epoch0 is eligible. Matching the starting score alone is not evidence of benefit.
+No head reinitialization or warmup. Fresh Adam: encoders1e-6, projections/head1e-5, gate1e-5; WD0.
+Raw graphs, batch512/16, max30/patience12. Encoder modules remain eval but allow gradients; BN buffers fixed.
+
+| class | J32-Equal P/R/F1 (%) | J32-Gate P/R/F1 (%) | Gate F1 gain from own start pp |
+|---|---:|---:|---:|
+| Benign | 96.9507 / 97.1536 / 97.0521 | 97.2315 / 97.0280 / 97.1297 | +0.000000 |
+| WebBased | 87.1080 / 91.9118 / 89.4454 | 88.4752 / 91.7279 / 90.0722 | +0.000000 |
+| Spoofing | 96.1406 / 95.9747 / 96.0576 | 96.2025 / 96.1472 / 96.1749 | +0.000000 |
+| Recon | 97.8695 / 96.7954 / 97.3295 | 97.5771 / 97.2344 / 97.4055 | +0.000000 |
+| Mirai | 100.0000 / 100.0000 / 100.0000 | 99.9584 / 100.0000 / 99.9792 | +0.000000 |
+| Dos | 99.7958 / 99.3898 / 99.5924 | 99.8639 / 99.4576 / 99.6603 | +0.000000 |
+| DDos | 99.8742 / 99.7487 / 99.8114 | 99.9161 / 99.7906 / 99.8533 | +0.000000 |
+| BruteForce | 97.4468 / 98.2833 / 97.8632 | 97.8723 / 98.7124 / 98.2906 | +0.000000 |
+
+Review WebBased FN/FP separately, Spoofing changes and the small BruteForce sample count.
+J32-Equal versus own start: repaired=0, regressed=0, net_correct=0.
+J32-Equal best-trained evidence: {'best_trained_epoch': 12, 'best_trained_macro_f1': 0.9710033649995367, 'best_trained_minus_start_pp': -0.04361824570584538, 'last_trained_macro_f1': 0.9710033649995367, 'last_trained_minus_start_pp': -0.04361824570584538}.
+J32-Equal trainable parameters=850024; groups=[{'name': 'encoder', 'lr': 1e-06, 'parameters': 844544}, {'name': 'head', 'lr': 1e-05, 'parameters': 5480}].
+J32-Gate versus own start: repaired=0, regressed=0, net_correct=0.
+J32-Gate best-trained evidence: {'best_trained_epoch': 8, 'best_trained_macro_f1': 0.9723805081299784, 'best_trained_minus_start_pp': -0.0826546151468377, 'last_trained_macro_f1': 0.9718582061125053, 'last_trained_minus_start_pp': -0.1348848168941541}.
+J32-Gate trainable parameters=851688; groups=[{'name': 'encoder', 'lr': 1e-06, 'parameters': 844544}, {'name': 'head', 'lr': 1e-05, 'parameters': 5480}, {'name': 'gate', 'lr': 1e-05, 'parameters': 1664}].
+Final Gate versus Equal: repaired=46, regressed=34, net_correct=12.
+
+J32-Equal best_validation confusion matrix (rows=true):
+
+| true / predicted | Benign | WebBased | Spoofing | Recon | Mirai | Dos | DDos | BruteForce |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| Benign | 2321 | 13 | 48 | 5 | 0 | 1 | 0 | 1 |
+| WebBased | 10 | 500 | 7 | 25 | 0 | 0 | 0 | 2 |
+| Spoofing | 51 | 9 | 1669 | 7 | 0 | 0 | 1 | 2 |
+| Recon | 10 | 48 | 10 | 2205 | 0 | 2 | 2 | 1 |
+| Mirai | 0 | 0 | 0 | 0 | 2400 | 0 | 0 | 0 |
+| Dos | 1 | 2 | 0 | 6 | 0 | 1466 | 0 | 0 |
+| DDos | 0 | 1 | 0 | 5 | 0 | 0 | 2382 | 0 |
+| BruteForce | 1 | 1 | 2 | 0 | 0 | 0 | 0 | 229 |
+
+J32-Equal last_validation confusion matrix (rows=true):
+
+| true / predicted | Benign | WebBased | Spoofing | Recon | Mirai | Dos | DDos | BruteForce |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| Benign | 2323 | 12 | 43 | 9 | 0 | 1 | 0 | 1 |
+| WebBased | 9 | 483 | 5 | 45 | 0 | 0 | 0 | 2 |
+| Spoofing | 54 | 7 | 1669 | 6 | 0 | 0 | 1 | 2 |
+| Recon | 11 | 35 | 11 | 2217 | 0 | 2 | 1 | 1 |
+| Mirai | 0 | 0 | 0 | 0 | 2400 | 0 | 0 | 0 |
+| Dos | 1 | 1 | 0 | 7 | 0 | 1466 | 0 | 0 |
+| DDos | 0 | 0 | 1 | 5 | 0 | 0 | 2382 | 0 |
+| BruteForce | 1 | 1 | 2 | 0 | 0 | 0 | 0 | 229 |
+
+J32-Gate best_validation confusion matrix (rows=true):
+
+| true / predicted | Benign | WebBased | Spoofing | Recon | Mirai | Dos | DDos | BruteForce |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| Benign | 2318 | 11 | 49 | 8 | 1 | 1 | 0 | 1 |
+| WebBased | 7 | 499 | 6 | 29 | 0 | 1 | 0 | 2 |
+| Spoofing | 48 | 10 | 1672 | 8 | 0 | 0 | 0 | 1 |
+| Recon | 10 | 41 | 9 | 2215 | 0 | 0 | 2 | 1 |
+| Mirai | 0 | 0 | 0 | 0 | 2400 | 0 | 0 | 0 |
+| Dos | 0 | 3 | 0 | 5 | 0 | 1467 | 0 | 0 |
+| DDos | 0 | 0 | 0 | 5 | 0 | 0 | 2383 | 0 |
+| BruteForce | 1 | 0 | 2 | 0 | 0 | 0 | 0 | 230 |
+
+J32-Gate last_validation confusion matrix (rows=true):
+
+| true / predicted | Benign | WebBased | Spoofing | Recon | Mirai | Dos | DDos | BruteForce |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| Benign | 2324 | 11 | 43 | 8 | 1 | 1 | 0 | 1 |
+| WebBased | 8 | 491 | 7 | 35 | 0 | 1 | 0 | 2 |
+| Spoofing | 57 | 7 | 1666 | 7 | 0 | 0 | 0 | 2 |
+| Recon | 10 | 38 | 10 | 2217 | 0 | 1 | 1 | 1 |
+| Mirai | 0 | 0 | 0 | 0 | 2400 | 0 | 0 | 0 |
+| Dos | 1 | 2 | 0 | 6 | 0 | 1466 | 0 | 0 |
+| DDos | 0 | 0 | 1 | 5 | 0 | 0 | 2382 | 0 |
+| BruteForce | 1 | 1 | 2 | 0 | 0 | 0 | 0 | 229 |
+
+Per-class best/last/source metrics: per_class.csv. Prediction destinations: prediction_transitions.csv.
+Changed samples: each arm changes_from_own_start.jsonl.gz; root gate_vs_equal_changes.jsonl.gz.
+Prediction files retain all 32 gate weights for every validation sample.
+Common epoch order/RNG verified: 12; encoder BN buffers unchanged.
+Best checkpoints independently reconstructed, strictly loaded and replayed on all raw validation graphs.
+Preflight seconds=80.900; discarded probe updates=6.
+Joint seconds include training, epoch validation and checkpoint writes; final replay is separately recorded.
+The two arms start from their own different mature checkpoints. Own-start deltas measure additional gains from this joint fine-tuning protocol; the inherited gate advantage is not a new joint-training gain. Encoder eval mode fixes BN buffers while encoder affine/other parameters remain trainable. This pair does not isolate gate capacity from adaptation.
+No test evaluation, significance claim, extra seed or automatic next training.

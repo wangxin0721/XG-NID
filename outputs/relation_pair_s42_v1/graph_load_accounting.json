@@ -1,0 +1,52 @@
+{
+  "basis": "main_process_guard_plus_parent_verified_loader_samples",
+  "main_process_counts": {
+    "train": 1120,
+    "val": 0,
+    "test": 0
+  },
+  "loader_stages": [
+    {
+      "phase": "extract_train",
+      "partition": "train",
+      "verified_samples": 107621,
+      "workers": 2
+    },
+    {
+      "phase": "extract_val",
+      "partition": "val",
+      "verified_samples": 13446,
+      "workers": 2
+    },
+    {
+      "phase": "initial_Rel-Mean",
+      "partition": "val",
+      "verified_samples": 13446,
+      "workers": 2
+    },
+    {
+      "phase": "initial_Rel-Gate",
+      "partition": "val",
+      "verified_samples": 13446,
+      "workers": 2
+    },
+    {
+      "phase": "best_Rel-Mean",
+      "partition": "val",
+      "verified_samples": 13446,
+      "workers": 2
+    },
+    {
+      "phase": "best_Rel-Gate",
+      "partition": "val",
+      "verified_samples": 13446,
+      "workers": 2
+    }
+  ],
+  "totals": {
+    "train": 108741,
+    "val": 67230,
+    "test": 0
+  },
+  "unit": "verified_sample_loads_including_repeated_reads_not_disk_io_operations"
+}

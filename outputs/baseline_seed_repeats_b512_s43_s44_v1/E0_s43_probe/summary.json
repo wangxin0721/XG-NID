@@ -1,0 +1,263 @@
+{
+  "status": "completed",
+  "exit_code": 0,
+  "mode": "probe",
+  "binding": {
+    "config_sha256": "4780c3c221d4fa143c448c974cf60a692ff2891bf4d2268add128c1fdd8a0cc1",
+    "entry_sha256": "33dfd3d6ff0acdae2dcdb31e986d3044200b32f11ed7e1b1b251be2115fb2b61",
+    "sources": {
+      "scripts/train_grouped.py": "06a493b18faa97b4e1f2b99b6aae38c67ad3c5f39b130f112079c9393432f5d1",
+      "scripts/grouped_graphs.py": "c1b1273d62fc44d91f7c9b300b66a083c1f80ef2c9c4314a62c4bbd5d708bbb4",
+      "scripts/smoke_grouped_gpu.py": "7bce1218e1b55a812855d50c70973fe300da97ad7e9b4005a52deac77d8b1517",
+      "scripts/audit_graph_split.py": "c19164930e8ecb75636cf16d6fa9bb51d6f29e1384e8d8ebf040e683536ffcb6",
+      "scripts/build_grouped_split.py": "24e07766189aec9d03f6161dee15587612a5b2f13e23eab67d7ba4aaf89a3401",
+      "src/xgnid/__init__.py": "2515233a0cdac6c5447c9dbd6b0d54c89284f191d8cb41473d89b347ee296ae7",
+      "src/xgnid/model.py": "28e21e94118db0a4110d17923d2840e18959669d798f628018c98c91c0202631",
+      "src/xgnid/edge_experiments.py": "3e6305d83c06c7ce32e901a2aba9d9d26baa1f2b394af14997b0e359929b4da5",
+      "third_party/GNN4ID/Utility/Model.py": "e17c3905e3c9f437c269bdd0e4d115656cfba6054b6a4474bbd06b5453010688"
+    },
+    "reference_e0_sha256": "5add5c311a8ff8356a7840a52c54d6a33d47798344c72a08467f509ab071d857",
+    "reference_config_sha256": "2e19b8b08b8ef60c80c47965b1f0592b4c924c2f62228d72dbe03ab76fede8e2",
+    "smoke_sha256": "4bd73bde4de918987f222a0c223f12c0172b5e1fc2f4ba8e0c97ee2cbfe1bc8f",
+    "pilot_sha256": "6165d1cc7819cca1e95bbe3f43e45f90d4a4c634128e45b84ccc0bd12c17fb72",
+    "baseline_sha256": "5add5c311a8ff8356a7840a52c54d6a33d47798344c72a08467f509ab071d857",
+    "split_id": "a8ae9c934eec9fee970cc725e60051d0c709e0f16c7dda14749350ff2006975a",
+    "samples_sha256": "b8e9b0810471d0c2b52033488fab640625c3731315afd5d2add1571bd2518827",
+    "train_batch_size": 512,
+    "initial_state_sha256": "83bd23bfc1f5f26ec626c3643616e2c4da2def774f9c02b0e926e76886eeaf8d",
+    "runtime": {
+      "python": "3.9.23",
+      "torch": "2.3.1+cu118",
+      "pyg": "2.5.3",
+      "cuda": "11.8"
+    },
+    "gpu_uuid": "GPU-a9142835-62e0-974e-aebe-80ab25f7ef02",
+    "allow_shared_gpu": true,
+    "paired_reference_checks": {
+      "reference_e0_initial_state_sha256": "906e125925a8a2cc53a526602db0f047f76b1e41b8087c893f5cf1af41f64a6b",
+      "sources": {
+        "scripts/train_grouped.py": "06a493b18faa97b4e1f2b99b6aae38c67ad3c5f39b130f112079c9393432f5d1",
+        "scripts/grouped_graphs.py": "c1b1273d62fc44d91f7c9b300b66a083c1f80ef2c9c4314a62c4bbd5d708bbb4",
+        "scripts/smoke_grouped_gpu.py": "7bce1218e1b55a812855d50c70973fe300da97ad7e9b4005a52deac77d8b1517",
+        "scripts/audit_graph_split.py": "c19164930e8ecb75636cf16d6fa9bb51d6f29e1384e8d8ebf040e683536ffcb6",
+        "scripts/build_grouped_split.py": "24e07766189aec9d03f6161dee15587612a5b2f13e23eab67d7ba4aaf89a3401",
+        "src/xgnid/__init__.py": "2515233a0cdac6c5447c9dbd6b0d54c89284f191d8cb41473d89b347ee296ae7",
+        "src/xgnid/model.py": "28e21e94118db0a4110d17923d2840e18959669d798f628018c98c91c0202631",
+        "src/xgnid/edge_experiments.py": "3e6305d83c06c7ce32e901a2aba9d9d26baa1f2b394af14997b0e359929b4da5",
+        "third_party/GNN4ID/Utility/Model.py": "e17c3905e3c9f437c269bdd0e4d115656cfba6054b6a4474bbd06b5453010688"
+      },
+      "paired_e2_summary_sha256": "e29e1ecf4e4a5c3dc4e5d8859ea6b0c74622404a09fcffed2d32dac041d45ef5",
+      "paired_e2_config_sha256": "0a297a4a42c86785ce59ac4eec64b771ad4e5ce774b1379f6aafd6d45830b089",
+      "paired_e2_checkpoint_sha256": {
+        "best.pt": "1709ed1a19b8a2e20b9b1ef3dac6cc6a5906fd93937e8d18a51cc64f85c44b08",
+        "last.pt": "3b4a503e44d27a0dcb667bce232731c16765e46a13c2d40e8fefe28972a67ddc"
+      },
+      "sample_manifest_sha256": "b8e9b0810471d0c2b52033488fab640625c3731315afd5d2add1571bd2518827"
+    },
+    "seed42_initial_state_sha256": "906e125925a8a2cc53a526602db0f047f76b1e41b8087c893f5cf1af41f64a6b",
+    "repeat_seed": 43,
+    "repeat_model": "E0",
+    "repeat_study": {
+      "study_sha256": "ebbb7da8ed6b20e94023cba7983a418f1ebc9be1988add6fa2ff0be079e16a62",
+      "seed42": {
+        "E0": {
+          "metrics_sha256": "fb5cfce614228e75f0b39b1529212722455adfe7281100cc27f01c8edf6654f4",
+          "config_sha256": "f789bd2d510cad58e12dd794246920e992b458d1ac7d142913b7b850fec450be",
+          "entry_sha256": "33dfd3d6ff0acdae2dcdb31e986d3044200b32f11ed7e1b1b251be2115fb2b61",
+          "study_config_sha256": "4780c3c221d4fa143c448c974cf60a692ff2891bf4d2268add128c1fdd8a0cc1"
+        },
+        "E2": {
+          "metrics_sha256": "09eb335a7c62cb9fccff2db036911edf88ee13f0de4233ca430f6b8a19b91f91",
+          "config_sha256": "0a297a4a42c86785ce59ac4eec64b771ad4e5ce774b1379f6aafd6d45830b089",
+          "entry_sha256": "a290381515e74b2aeba3e40fcdc8e51ad798aa094d564c27f06ac0da3b78cabd",
+          "study_config_sha256": "b6746bc24d28bcdf911f51e9994ab6ef5b4395a2b7114f73107ba37f1fb6e4a0"
+        }
+      },
+      "split_id": "a8ae9c934eec9fee970cc725e60051d0c709e0f16c7dda14749350ff2006975a",
+      "manifest_sha256": "b8e9b0810471d0c2b52033488fab640625c3731315afd5d2add1571bd2518827",
+      "adapter_sources": {
+        "baseline_seed_repeats.py": "ae95df2f6493b40c5df3cf9222d34f778eea6f759f1ba59d6752a1afecf5bf25",
+        "run_baseline_seed_repeats_server.py": "90a317333174d3fc42c4eb4014d5d0815250584db00ac657d5e2c3ce97ecd894",
+        "analyze_baseline_seed_repeats.py": "666e1e099a33ba9491247099e9207a8b6e57db5ba8fc77a909f8903a7d33276c"
+      },
+      "jobs": [
+        {
+          "model": "E0",
+          "seed": 43
+        },
+        {
+          "model": "E2",
+          "seed": 43
+        },
+        {
+          "model": "E0",
+          "seed": 44
+        },
+        {
+          "model": "E2",
+          "seed": 44
+        }
+      ]
+    },
+    "seed42_initialization_reproduced": true,
+    "seeded_initial_rng_sha256": "b2f34f876ff019bfc636c5246a6298c687f3bd098dec8fb93cbc9c7bfed65e36",
+    "adapter": {
+      "initial_ast_sha256": "61557e87ee35a535e28277c57122ece40c5b70ef00f08c8876472b1bb60170ea",
+      "probe_ast_sha256": "0380b0934e89cece146c0b1db9d12aad6ecf653ea0401f7e5709f1387a09a39d",
+      "training_ast_sha256": "9c33dfcddf37f01c7fe0cd9665e89ce5144098e7f80708e00b88f0090a007d31"
+    }
+  },
+  "hardware": {
+    "physical_index": 1,
+    "uuid": "GPU-a9142835-62e0-974e-aebe-80ab25f7ef02",
+    "name": "Tesla T4",
+    "total_mib": 15360,
+    "used_mib_at_query": 8696,
+    "free_mib_at_query": 6216,
+    "allow_shared_gpu": true,
+    "other_processes_at_query": [
+      {
+        "pid": 693237,
+        "name": "python"
+      }
+    ],
+    "timing_scope": "sharing permitted; no isolated speed claim"
+  },
+  "warmup_updates": 1,
+  "measured_updates": 3,
+  "test": null,
+  "optimizer_update_verified": true,
+  "edge_attribute_paths_verified": true,
+  "actual_GAT_inputs": {
+    "reference.convs1.convs.<flow___contain___packet>": [
+      5912,
+      4
+    ],
+    "reference.convs1.convs.<packet___link___packet>": [
+      10800,
+      1
+    ],
+    "reference.convs1.convs.<packet___rev_contain___flow>": [
+      5912,
+      4
+    ],
+    "reference.convs2.convs.<flow___contain___packet>": [
+      5912,
+      4
+    ],
+    "reference.convs2.convs.<packet___link___packet>": [
+      10800,
+      1
+    ],
+    "reference.convs2.convs.<packet___rev_contain___flow>": [
+      5912,
+      4
+    ]
+  },
+  "batches": [
+    {
+      "batch": 1,
+      "graphs": 512,
+      "loss": 2.117196798324585,
+      "edge_projection_gradient_max": {
+        "reference.convs1.convs.<flow___contain___packet>": 0.0,
+        "reference.convs1.convs.<packet___link___packet>": 2.984117600135505e-06,
+        "reference.convs1.convs.<packet___rev_contain___flow>": 1.0681410458346363e-05,
+        "reference.convs2.convs.<flow___contain___packet>": 0.0,
+        "reference.convs2.convs.<packet___link___packet>": 5.509839866135735e-06,
+        "reference.convs2.convs.<packet___rev_contain___flow>": 5.711903213523328e-06
+      },
+      "resident_step_seconds_excluding_graph_io_and_transfer": 0.02199395000934601,
+      "nodes": {
+        "flow": 512,
+        "packet": 5912
+      },
+      "edges": {
+        "('flow', 'contain', 'packet')": 5912,
+        "('packet', 'link', 'packet')": 10800,
+        "('packet', 'rev_contain', 'flow')": 5912
+      },
+      "peak_cuda_allocated_bytes": 120996352,
+      "peak_cuda_reserved_bytes": 159383552,
+      "other_compute_processes_snapshot": {
+        "processes": [
+          {
+            "pid": 693237,
+            "name": "python"
+          }
+        ],
+        "scope": "point-in-time observation only"
+      }
+    },
+    {
+      "batch": 2,
+      "graphs": 512,
+      "loss": 2.0664501190185547,
+      "edge_projection_gradient_max": {
+        "reference.convs1.convs.<flow___contain___packet>": 0.0,
+        "reference.convs1.convs.<packet___link___packet>": 6.220648174348753e-07,
+        "reference.convs1.convs.<packet___rev_contain___flow>": 1.9245018847868778e-05,
+        "reference.convs2.convs.<flow___contain___packet>": 0.0,
+        "reference.convs2.convs.<packet___link___packet>": 2.5662184270913713e-06,
+        "reference.convs2.convs.<packet___rev_contain___flow>": 4.9202415539184585e-05
+      },
+      "resident_step_seconds_excluding_graph_io_and_transfer": 0.024343069992028177,
+      "nodes": {
+        "flow": 512,
+        "packet": 5731
+      },
+      "edges": {
+        "('flow', 'contain', 'packet')": 5731,
+        "('packet', 'link', 'packet')": 10438,
+        "('packet', 'rev_contain', 'flow')": 5731
+      },
+      "peak_cuda_allocated_bytes": 117633024,
+      "peak_cuda_reserved_bytes": 161480704,
+      "other_compute_processes_snapshot": {
+        "processes": [
+          {
+            "pid": 693237,
+            "name": "python"
+          }
+        ],
+        "scope": "point-in-time observation only"
+      }
+    },
+    {
+      "batch": 3,
+      "graphs": 512,
+      "loss": 2.0382845401763916,
+      "edge_projection_gradient_max": {
+        "reference.convs1.convs.<flow___contain___packet>": 0.0,
+        "reference.convs1.convs.<packet___link___packet>": 2.713272237997444e-07,
+        "reference.convs1.convs.<packet___rev_contain___flow>": 9.280107406084426e-06,
+        "reference.convs2.convs.<flow___contain___packet>": 0.0,
+        "reference.convs2.convs.<packet___link___packet>": 1.290636760131747e-06,
+        "reference.convs2.convs.<packet___rev_contain___flow>": 6.820473117841175e-06
+      },
+      "resident_step_seconds_excluding_graph_io_and_transfer": 0.025648240000009537,
+      "nodes": {
+        "flow": 512,
+        "packet": 5340
+      },
+      "edges": {
+        "('flow', 'contain', 'packet')": 5340,
+        "('packet', 'link', 'packet')": 9656,
+        "('packet', 'rev_contain', 'flow')": 5340
+      },
+      "peak_cuda_allocated_bytes": 111135232,
+      "peak_cuda_reserved_bytes": 161480704,
+      "other_compute_processes_snapshot": {
+        "processes": [
+          {
+            "pid": 693237,
+            "name": "python"
+          }
+        ],
+        "scope": "point-in-time observation only"
+      }
+    }
+  ],
+  "scope": "First three seeded training batches only; no worst-case capacity guarantee or epoch-throughput claim",
+  "test_evaluated": false
+}

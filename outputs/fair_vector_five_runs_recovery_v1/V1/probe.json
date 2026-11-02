@@ -1,0 +1,27 @@
+{
+  "initial_fusion_sha256": "c815d33f848ec82e45f1c0a32ac13628ae33319ef6f6b88c7d7b8c046d39b514",
+  "updates": [
+    {
+      "head_input_gradient_l1": 0.23243600130081177,
+      "fusion_gradients_l1": {
+        "logit": 0.03532306104898453
+      },
+      "parameters_changed": true
+    },
+    {
+      "head_input_gradient_l1": 0.22607830166816711,
+      "fusion_gradients_l1": {
+        "logit": 0.034438613802194595
+      },
+      "parameters_changed": true
+    },
+    {
+      "head_input_gradient_l1": 0.23472173511981964,
+      "fusion_gradients_l1": {
+        "logit": 0.03291037306189537
+      },
+      "parameters_changed": true
+    }
+  ],
+  "probe_discarded": true
+}

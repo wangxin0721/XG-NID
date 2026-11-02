@@ -1,0 +1,48 @@
+{
+  "train": {
+    "graph_samples": 107621,
+    "packet_nodes": 1170720,
+    "flow64_bytes": 27550976,
+    "packet64_bytes": 299704320,
+    "labels_bytes": 860968,
+    "ptr_bytes": 860976,
+    "retained_cache_tensor_bytes": 0,
+    "final_cache_tensor_bytes": 328977240,
+    "concat_additional_allocation_bytes": 329838216,
+    "estimated_cache_tensor_peak_bytes": 657954480,
+    "host_MemAvailable_bytes_before_concat": 25168109568,
+    "additional_allocation_fits_host_available": true,
+    "excludes": [
+      "Python objects and lists",
+      "source graphs and worker prefetch",
+      "model and batch tensors",
+      "allocator and serialization/hash buffers"
+    ],
+    "scope": "cache tensor storage at concatenation; not whole-process peak RSS",
+    "measurement_scope": "original_failed_preparation",
+    "source_directory": "/home/nzxn/下载/WX/load/XG-NID/outputs/packet_pool_pair_s42_v1"
+  },
+  "val": {
+    "graph_samples": 13446,
+    "packet_nodes": 147485,
+    "flow64_bytes": 3442176,
+    "packet64_bytes": 37756160,
+    "labels_bytes": 107568,
+    "ptr_bytes": 107576,
+    "retained_cache_tensor_bytes": 328977240,
+    "final_cache_tensor_bytes": 41413480,
+    "concat_additional_allocation_bytes": 41521056,
+    "estimated_cache_tensor_peak_bytes": 411804200,
+    "host_MemAvailable_bytes_before_concat": 24793825280,
+    "additional_allocation_fits_host_available": true,
+    "excludes": [
+      "Python objects and lists",
+      "source graphs and worker prefetch",
+      "model and batch tensors",
+      "allocator and serialization/hash buffers"
+    ],
+    "scope": "cache tensor storage at concatenation; not whole-process peak RSS",
+    "measurement_scope": "original_failed_preparation",
+    "source_directory": "/home/nzxn/下载/WX/load/XG-NID/outputs/packet_pool_pair_s42_v1"
+  }
+}
