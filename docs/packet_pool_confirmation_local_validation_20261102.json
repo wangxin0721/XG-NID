@@ -1,0 +1,89 @@
+{
+  "date": "2026-11-02",
+  "status": "local_checks_passed_server_tensor_cuda_and_training_pending",
+  "experiment_kind": "one_round_training_budget_confirmation_not_new_model",
+  "protocol": {
+    "variants": [
+      "P0",
+      "P1"
+    ],
+    "confirmation_rounds": 1,
+    "epochs_per_arm": 150,
+    "early_stop_enabled": false,
+    "min_epochs_registration": 50,
+    "updates_per_arm": 31650,
+    "restart": "mature_D32_epoch62_fresh_Adam_not_epoch20_resume",
+    "final_selection": "max(epoch_zero,best_trained); epoch_zero wins ties"
+  },
+  "standard_library_tests": {
+    "confirmation": 9,
+    "historical_packet": 13,
+    "relation": 9,
+    "total_passed": 31,
+    "failed": 0,
+    "commands": [
+      "python -B scripts/test_packet_pool_confirmation.py -v",
+      "python -B -m unittest discover -s scripts -p test_packet_pool_pair.py -v",
+      "python -B -m unittest discover -s scripts -p test_relation_pair.py -v"
+    ]
+  },
+  "isolated_archive_layout": {
+    "passed": true,
+    "confirmation_cases": 9,
+    "includes": [
+      "scripts",
+      "configs",
+      "src/xgnid",
+      "docs/packet_pool_results_20261102.json"
+    ]
+  },
+  "python39_syntax": {
+    "files": 4,
+    "passed": true
+  },
+  "runner_and_report_global_name_resolution": true,
+  "bash_syntax": {
+    "command": "bash -n scripts/launch_packet_pool_confirmation.sh",
+    "exit_code": 0
+  },
+  "prior_user_pasted_summary": {
+    "sha256": "74959681b72555638c229368005e682059013c952a3970cc9fc5d4ae2ee43044",
+    "passes_historical_analyzer": true,
+    "all_bound_source_files_match_current_code": 5,
+    "server_checkpoint_and_cache_files_rehashed_locally": false
+  },
+  "production_and_historical_files_byte_identical_to": "73ca2611c2a994150219102c8f0dfe21dfab3312",
+  "production_and_historical_unchanged_files": [
+    "src/xgnid/model.py",
+    "src/xgnid/fusion_dimension.py",
+    "src/xgnid/packet_pooling.py",
+    "src/xgnid/relation_selection.py",
+    "scripts/run_packet_pool_pair.py",
+    "scripts/run_relation_pair.py",
+    "scripts/summarize_packet_pool_pair.py",
+    "configs/packet_pool_pair_s42_v1.json",
+    "configs/relation_pair_s42_v1.json",
+    "scripts/test_packet_pooling_tensor.py"
+  ],
+  "dependencies_available": {
+    "torch": false,
+    "torch_geometric": false
+  },
+  "server_tensor_cases_prepared": {
+    "unchanged_packet_suite": 11,
+    "confirmation_integration": 2
+  },
+  "server_tensor_suites_executed_locally": false,
+  "cuda_preflight_executed": false,
+  "original_graph_replays_executed": false,
+  "formal_training_started": false,
+  "files_sha256": {
+    "configs/packet_pool_confirmation_s42_v1.json": "78598ee0453da46aecd0f382a6caeb007b4ba30a84793fef2ff83759b451b606",
+    "scripts/run_packet_pool_confirmation.py": "a281f938a0fda38794cc5a3a6ec44778fa7039e23b073c47a5f9b711de61e0cc",
+    "scripts/summarize_packet_pool_confirmation.py": "f1bf66a97645fd01a43ca1a0cb825bad0d2508f69aaf2a868d5e07855425155b",
+    "scripts/test_packet_pool_confirmation.py": "970ab31dfaebc72face0d169bdfa58214985cef43e52cb062ea9da307259e807",
+    "scripts/test_packet_pool_confirmation_tensor.py": "ccc90541dcacf78660af9e284f4325f024bc64a5c8c4db1f6399067b7960bcb5",
+    "scripts/launch_packet_pool_confirmation.sh": "437bdff57e843075d753229ebffff25663692608da4712357a3d9196a0a172f3",
+    "docs/packet_pool_confirmation_s42_v1.md": "c4e48bd2d46da673cea0942cc5358570f973bdce7d405bc125ffde09f8f4d84c"
+  }
+}
