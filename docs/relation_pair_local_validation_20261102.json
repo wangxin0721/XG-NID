@@ -1,0 +1,56 @@
+{
+  "date": "2026-11-02",
+  "status": "local_implementation_checks_passed_server_execution_pending",
+  "standard_library_tests": {
+    "passed": 9,
+    "failed": 0,
+    "command": "python -B -m unittest discover -s scripts -p test_relation_pair.py -v"
+  },
+  "python39_syntax": {
+    "files": 5,
+    "passed": true
+  },
+  "bash_syntax": {
+    "command": "bash -n scripts/launch_relation_pair.sh",
+    "exit_code": 0
+  },
+  "training_protocol": {
+    "variants": [
+      "Rel-Mean",
+      "Rel-Gate"
+    ],
+    "registered_min_epochs": 50,
+    "epochs_per_variant": 150,
+    "early_stop_enabled": false,
+    "patience20_role": "inactive_progress_counter_only",
+    "updates_per_variant": 31650,
+    "final_selection": "max(epoch_zero,best_trained); epoch_zero wins ties"
+  },
+  "historical_files_unmodified": [
+    "src/xgnid/model.py",
+    "src/xgnid/fusion_dimension.py",
+    "src/xgnid/packet_pooling.py",
+    "scripts/run_packet_pool_pair.py",
+    "configs/packet_pool_pair_s42_v1.json"
+  ],
+  "tensor_test_cases_prepared": 7,
+  "tensor_tests_executed": false,
+  "cuda_preflight_executed": false,
+  "source_artifact_metadata_checks_executed": false,
+  "formal_training_started": false,
+  "dependencies_available": {
+    "torch": false,
+    "torch_geometric": false
+  },
+  "J32_reference": "user-provided rounded 97.368275%; not a source checkpoint or verified artifact",
+  "files_sha256": {
+    "src/xgnid/relation_selection.py": "4208ca0174ed1acafca9b96d8fc889cee7ff7005555d537bc077004b8d02cfa0",
+    "scripts/run_relation_pair.py": "4c5113d7858e146e50a6c7a1534f934a2c394d1ec488b393882f8b25a98b22af",
+    "scripts/summarize_relation_pair.py": "6319a98b003a63c86020b126d823883d99b9d1f0cb98717786073520ff330cbf",
+    "scripts/test_relation_pair.py": "58ab27cefd42c27e6fa10618c828ea33ef917fcf38a8dd21a1079118ee50a118",
+    "scripts/test_relation_pair_tensor.py": "153ebc4866d45aee9d06001c345f545f70a626f864a3866b4cecd91b57bd6180",
+    "scripts/launch_relation_pair.sh": "8b167cf0b1e580eab0800a73f51e598877b89a89d05cf2939631289a84443b8d",
+    "configs/relation_pair_s42_v1.json": "4a5e4c5e51a1a7524233d9b5b485f489adaa7be9e56f282cf4b885c161cc0d5a",
+    "docs/relation_pair_s42_v1.md": "d8b653c12e41edd97a029e2f89cd382653620fdd950802a3a04fa0b067db97f2"
+  }
+}
