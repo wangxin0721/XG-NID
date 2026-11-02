@@ -1,6 +1,6 @@
 {
   "date": "2026-11-02",
-  "status": "local_implementation_checks_passed_server_execution_pending",
+  "status": "cpu_fixture_repairs_locally_checked_server_tensor_rerun_pending",
   "standard_library_tests": {
     "passed": 9,
     "failed": 0,
@@ -48,9 +48,27 @@
     "scripts/run_relation_pair.py": "4c5113d7858e146e50a6c7a1534f934a2c394d1ec488b393882f8b25a98b22af",
     "scripts/summarize_relation_pair.py": "6319a98b003a63c86020b126d823883d99b9d1f0cb98717786073520ff330cbf",
     "scripts/test_relation_pair.py": "58ab27cefd42c27e6fa10618c828ea33ef917fcf38a8dd21a1079118ee50a118",
-    "scripts/test_relation_pair_tensor.py": "153ebc4866d45aee9d06001c345f545f70a626f864a3866b4cecd91b57bd6180",
+    "scripts/test_relation_pair_tensor.py": "5ae3a73d9a1db4a2dc56a95f53a1596ce1c49e1029a0af64d0708672cb394674",
     "scripts/launch_relation_pair.sh": "8b167cf0b1e580eab0800a73f51e598877b89a89d05cf2939631289a84443b8d",
     "configs/relation_pair_s42_v1.json": "4a5e4c5e51a1a7524233d9b5b485f489adaa7be9e56f282cf4b885c161cc0d5a",
-    "docs/relation_pair_s42_v1.md": "d8b653c12e41edd97a029e2f89cd382653620fdd950802a3a04fa0b067db97f2"
+    "docs/relation_pair_s42_v1.md": "d8b653c12e41edd97a029e2f89cd382653620fdd950802a3a04fa0b067db97f2",
+    "docs/relation_pair_tensor_fixture_fix_20261102.md": "5462d1802b352deedc49087bae9bf80d57436718cec9443061966b147973a926"
+  },
+  "server_observation_before_repair": {
+    "commit": "bc1a8e3fa33c98a9244dcc902447cf8e953a97b6",
+    "tensor_cases_run": 7,
+    "tensor_errors": 2,
+    "formal_training_started": false,
+    "errors": [
+      "empty relation fixture: lazy edge parameter uninitialized before freezing",
+      "deepcopy round trip: frozen encoder eval guard rejected module state"
+    ]
+  },
+  "fixture_repair": {
+    "empty_test_uses_separate_nonempty_warmup": true,
+    "actual_empty_edges_and_attributes_asserted": true,
+    "strict_reload_uses_independent_construction_and_explicit_eval": true,
+    "production_files_byte_identical_to_previous_commit": 10,
+    "server_tensor_rerun_pending": true
   }
 }

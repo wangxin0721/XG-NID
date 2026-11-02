@@ -8,6 +8,7 @@ from types import SimpleNamespace
 from unittest.mock import patch
 import torch
 from torch.nn import functional as F
+from torch.nn.parameter import UninitializedParameter
 from torch_geometric.data import HeteroData,Batch
 from torch_geometric.nn import GATConv,global_mean_pool
 import run_relation_pair as run
@@ -40,9 +41,14 @@ class TensorChecks(unittest.TestCase):
 
     def models(self,graphs):
         batch=Batch.from_data_list(graphs)
+        # PyG skips lazy edge projections for an empty relation. Materialize
+        # every projection on a separate nonempty fixture before freezing;
+        # the batch returned to the empty-relation test remains untouched.
+        warm=Batch.from_data_list(self.graphs()) if batch[PACKET_TO_PACKET].edge_index.numel()==0 else batch
         def encoder():
             e=_PaperStyleHeteroEncoder(conv_cls=GATConv,edge_aware=True,flow_input_dim=3,packet_input_dim=5).eval()
-            with torch.no_grad():e(batch)
+            with torch.no_grad():e(warm)
+            self.assertFalse(any(isinstance(p,UninitializedParameter) for p in e.parameters()))
             return e
         mean=RelationClassifier(encoder(),encoder(),FusionHead(32,run.dim.initialization_streams(42)),'mean').eval()
         gate=RelationClassifier(copy.deepcopy(mean.flow_encoder),copy.deepcopy(mean.packet_encoder),copy.deepcopy(mean.fusion),'relation_gate').eval()
@@ -61,6 +67,8 @@ class TensorChecks(unittest.TestCase):
 
     def test_empty_packet_relation_keeps_original_bias_and_no_new_mask(self):
         mean,gate,batch=self.models(self.graphs(empty=True))
+        self.assertEqual(batch[PACKET_TO_PACKET].edge_index.numel(),0)
+        self.assertEqual(batch[PACKET_TO_PACKET].edge_attr.shape,(0,1))
         for m in (mean,gate):
             with torch.no_grad():m.packet_encoder.convs2.convs[PACKET_TO_PACKET].bias.fill_(.37)
         f,legacy=gate.encode(batch)
@@ -106,7 +114,11 @@ class TensorChecks(unittest.TestCase):
         features,y=run.minibatch(SimpleNamespace(torch=torch),cache,[2,0,1],torch.device('cpu'))
         torch.testing.assert_close(gate.forward_features(*features)[0],gate(Batch.from_data_list([graphs[i] for i in (2,0,1)])),atol=1e-5,rtol=1e-5)
         self.assertEqual(y.tolist(),[2,0,1])
-        fresh=copy.deepcopy(gate);fresh.load_state_dict(gate.state_dict(),strict=True)
+        # Reconstruct and explicitly enter eval, as the production replay
+        # does. Deep-copying PyG modules need not preserve all mode flags.
+        _,fresh,_=self.models(graphs)
+        fresh.load_state_dict(gate.state_dict(),strict=True);fresh.eval()
+        self.assertTrue(all(not m.training for m in fresh.modules()))
         torch.testing.assert_close(fresh(batch),gate(batch))
 
     def test_probe_restores_clean_weights_rng_and_gradients_even_after_failure(self):
