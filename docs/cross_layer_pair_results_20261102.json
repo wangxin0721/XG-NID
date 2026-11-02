@@ -1,0 +1,148 @@
+{
+  "date": "2026-11-02",
+  "experiment": "cross_layer_pair_s42_v1",
+  "status": "completed",
+  "evidence_scope": "User-pasted full summary, report, partial training log and inline status/analysis/diagnostics; summary analyzer and matrix/source consistency verified locally, without loading server checkpoints or sample prediction exports.",
+  "input_sha256": {
+    "log": "f1f1f3e0a3fd22c35189dc5209be09c8b937ae08bc07d58e7f38fe785b8a0d7c",
+    "report": "916a466bc40cf3e6d0f0a71f7aa2e9813c9e21ebb0050021b67e5f5c92efd2a7",
+    "summary": "2ccb16425eb738dd21f4f005860b651511a66e5680d43cda4900aec20f178eb5"
+  },
+  "checks": {
+    "summary_analyzer_passed": true,
+    "confusion_matrix_metric_sets_recomputed": 8,
+    "report_matrices_equal_summary": 6,
+    "bound_source_hashes_match": 9,
+    "protocol_and_config_hash_match": true,
+    "partial_training_rows_checked": 18,
+    "partial_rows_scope": "CL-Multi epochs133..150; complete ledgers not supplied",
+    "full_150_epoch_ledgers_independently_read": false,
+    "checkpoint_files_rehashed": false,
+    "per_sample_changes_independently_verified": false
+  },
+  "analysis": {
+    "CL_Multi_minus_CL_Last_pp": 0.042451366372819876,
+    "CL_Multi_minus_D32_pp": 0.18928070503618777,
+    "CL_Multi_minus_P1_reported_pp": 0.08279492764442509,
+    "stronger_reference_macro_f1": 0.9746753476680805,
+    "delta_pp": 0.042451366372819876,
+    "budget_threshold_pp": 0.1,
+    "required_Multi_macro_f1": 0.9756753476680805,
+    "budget_screen_passed": false,
+    "P1_reference_macro_f1": 0.9742719120553645,
+    "P1_reference_provenance": "user_reported_epoch146_matrix_verified_not_checkpoint_rehashed",
+    "trained_best_changes": {
+      "CL-Last": {
+        "minus_D32_pp": 0.1468293386633679,
+        "minus_P1_reported_pp": 0.04034356127160521
+      },
+      "CL-Multi": {
+        "minus_D32_pp": 0.18928070503618777,
+        "minus_P1_reported_pp": 0.08279492764442509
+      }
+    },
+    "selected_epoch_zero": {
+      "CL-Last": false,
+      "CL-Multi": false
+    },
+    "class_tradeoff_review_required": true,
+    "statistical_significance_claimed": false,
+    "automatic_followup": false,
+    "source_comparison_policy": "Matched cross-layer readout on identical frozen graph means uses 1e-6; independent legacy CUDA probabilities recorded separately; all source predictions/CM must match.",
+    "class_changes": {
+      "Benign": {
+        "Multi_minus_Last_recall_pp": -0.29300962745918424,
+        "Multi_minus_D32_recall_pp": 0.3348681456676439,
+        "Multi_minus_Last_F1_pp": -0.08947670013539355,
+        "support": 2389
+      },
+      "WebBased": {
+        "Multi_minus_Last_recall_pp": -0.7352941176470562,
+        "Multi_minus_D32_recall_pp": 2.0220588235294157,
+        "Multi_minus_Last_F1_pp": 0.1020428500249082,
+        "support": 544
+      },
+      "Spoofing": {
+        "Multi_minus_Last_recall_pp": 0.2875215641173101,
+        "Multi_minus_D32_recall_pp": -0.34502587694077436,
+        "Multi_minus_Last_F1_pp": -0.12776613686308336,
+        "support": 1739
+      },
+      "Recon": {
+        "Multi_minus_Last_recall_pp": 0.13169446883231073,
+        "Multi_minus_D32_recall_pp": -0.13169446883231073,
+        "Multi_minus_Last_F1_pp": 0.02470339107437658,
+        "support": 2278
+      },
+      "Mirai": {
+        "Multi_minus_Last_recall_pp": 0.0,
+        "Multi_minus_D32_recall_pp": 0.0,
+        "Multi_minus_Last_F1_pp": 0.0,
+        "support": 2400
+      },
+      "Dos": {
+        "Multi_minus_Last_recall_pp": 0.0,
+        "Multi_minus_D32_recall_pp": -0.06779661016949046,
+        "Multi_minus_Last_F1_pp": 0.0,
+        "support": 1475
+      },
+      "DDos": {
+        "Multi_minus_Last_recall_pp": 0.0,
+        "Multi_minus_D32_recall_pp": -0.041876046901168085,
+        "Multi_minus_Last_F1_pp": 0.0,
+        "support": 2388
+      },
+      "BruteForce": {
+        "Multi_minus_Last_recall_pp": 0.42918454935622075,
+        "Multi_minus_D32_recall_pp": -0.42918454935622075,
+        "Multi_minus_Last_F1_pp": 0.43010752688172893,
+        "support": 233
+      }
+    }
+  },
+  "class_correct_changes": {
+    "Benign": {
+      "Multi_minus_Last_correct": -7,
+      "Multi_minus_D32_correct": 8
+    },
+    "WebBased": {
+      "Multi_minus_Last_correct": -4,
+      "Multi_minus_D32_correct": 11
+    },
+    "Spoofing": {
+      "Multi_minus_Last_correct": 5,
+      "Multi_minus_D32_correct": -6
+    },
+    "Recon": {
+      "Multi_minus_Last_correct": 3,
+      "Multi_minus_D32_correct": -3
+    },
+    "Mirai": {
+      "Multi_minus_Last_correct": 0,
+      "Multi_minus_D32_correct": 0
+    },
+    "Dos": {
+      "Multi_minus_Last_correct": 0,
+      "Multi_minus_D32_correct": -1
+    },
+    "DDos": {
+      "Multi_minus_Last_correct": 0,
+      "Multi_minus_D32_correct": -1
+    },
+    "BruteForce": {
+      "Multi_minus_Last_correct": 1,
+      "Multi_minus_D32_correct": -1
+    }
+  },
+  "accuracy_Multi_minus_Last_pp": -0.014874312063073436,
+  "weighted_F1_Multi_minus_Last_pp": -0.016655098883211483,
+  "decision": {
+    "highest_observed_validation_candidate": "CL-Multi epoch126 97.50998613318087%",
+    "strong_last_only_candidate": "CL-Last epoch113 97.46753476680805%",
+    "expansion_budget_passed": false,
+    "automatic_followup": false,
+    "original_D32_remains_structural_comparison_start": true,
+    "interpretation": "Most of the observed baseline-relative score increase is already present without shallow inputs; incremental shallow contribution is positive but below registered expansion threshold.",
+    "control_algebra": "For Last=[h2,h2], Q=[A,B], packet projection W,c: W(Q[h2,h2]+b)+c = W(A+B)h2+Wb+c. Consecutive affine maps can be folded; Last adds parameterization/training dynamics, not new depth information or a larger unconstrained affine function family."
+  }
+}
