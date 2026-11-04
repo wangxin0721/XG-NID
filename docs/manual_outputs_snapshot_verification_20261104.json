@@ -1,0 +1,23 @@
+{
+  "date": "2026-11-04",
+  "source": "GitHub codex/server-outputs outputs-manifest.json",
+  "source_manifest_sha256": "5ecac8a5ca41765592b7ff06958ea49a941544d6e09ce6e246b2731dc0dbaf8f",
+  "snapshot_entries": 1574,
+  "regular_files_verified": 1464,
+  "symlink_entries_not_materialized_or_traversed": 100,
+  "missing_regular_files": [],
+  "different_regular_files": [
+    "e3_gate_screen_E3aZ_b512_s42_v1.log",
+    "e3_gate_screen_E3aZ_b512_s42_v1/E3a_equal_init/best.pt",
+    "e3_gate_screen_E3aZ_b512_s42_v1/E3a_equal_init/epochs.jsonl",
+    "e3_gate_screen_E3aZ_b512_s42_v1/E3a_equal_init/last.pt",
+    "e3_gate_screen_E3aZ_b512_s42_v1/E3a_equal_init/status.json",
+    "e3_gate_screen_E3aZ_b512_s42_v1/status.json",
+    "r0_full_s42_20261017T065259974842Z.log",
+    "r0_full_s42_20261017T065259974842Z/epochs.jsonl",
+    "r0_full_s42_20261017T065259974842Z/last.pt",
+    "r0_full_s42_20261017T065259974842Z/status.json"
+  ],
+  "additional_local_files_preserved": true,
+  "status": "differences_require_review"
+}

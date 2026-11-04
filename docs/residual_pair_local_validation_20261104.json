@@ -1,0 +1,104 @@
+{
+  "date": "2026-11-04",
+  "status": "local_checkpoint_fold_audit_and_tests_passed_server_GPU_and_training_pending",
+  "protocol": {
+    "variants": [
+      "Res-Base",
+      "Res-Skip"
+    ],
+    "source": "original_D32_Gate_epoch62",
+    "epochs_per_arm": 150,
+    "early_stop_enabled": false,
+    "updates_per_arm": 31650,
+    "common_last_projection_parameters": 8256,
+    "trainable_base": 15400,
+    "trainable_skip": 19496,
+    "residual_parameters": 4096,
+    "residual_bias": false,
+    "head_lr": 1e-05,
+    "common_projection_lr": 0.0001,
+    "residual_lr": 0.0001,
+    "residual_initialization": "zero",
+    "position": "after_second_layer_Packet_relation_mean_before_BN_activation"
+  },
+  "local_checks": {
+    "new_standard_tests": 6,
+    "new_actual_PyG_tensor_tests": 6,
+    "historical_relation_standard_tests": 9,
+    "historical_cross_layer_standard_tests": 6,
+    "total_passed": 27,
+    "failed": 0,
+    "python39_syntax_files": 7,
+    "python39_syntax_passed": true,
+    "bash_syntax_passed": true,
+    "isolated_archive_standard_tests_passed": 6,
+    "isolated_archive_tensor_tests_passed": 6,
+    "function_global_names_resolve": true,
+    "actual_prerequisite_receipt_validated": true
+  },
+  "isolated_environment": {
+    "path": ".residual-audit-env",
+    "python": "3.10.1",
+    "torch": "2.3.1+cpu",
+    "torch_geometric": "2.5.3",
+    "numpy": "1.26.4",
+    "existing_default_python_changed": false
+  },
+  "actual_local_candidate_verification": {
+    "Last_epoch": 113,
+    "Multi_epoch": 126,
+    "all_checkpoint_file_hashes_verified": true,
+    "full150_epoch_histories_checked": true,
+    "cached_prediction_replay_samples_per_candidate": 13446,
+    "all_predictions_and_metrics_reproduced": true
+  },
+  "actual_local_fold_verification": {
+    "status": "passed",
+    "samples": 13446,
+    "atol": 1e-05,
+    "rtol": 1e-05,
+    "max_abs_log_probability_error": 4.57763671875e-05,
+    "outputs_bitwise_identical": false,
+    "predictions_identical": true,
+    "metrics_identical": true,
+    "construction": "float64 affine composition then source-dtype parameters",
+    "newly_replayed_raw_graphs": false
+  },
+  "historical_files_byte_identical_to": "f5eecef787c81a96680340ce973c4de0b84eb6bd",
+  "historical_files_checked": [
+    "src/xgnid/model.py",
+    "src/xgnid/fusion_dimension.py",
+    "src/xgnid/packet_pooling.py",
+    "src/xgnid/relation_selection.py",
+    "src/xgnid/cross_layer.py",
+    "scripts/run_relation_pair.py",
+    "scripts/run_cross_layer_pair.py",
+    "configs/relation_pair_s42_v1.json",
+    "configs/cross_layer_pair_s42_v1.json"
+  ],
+  "server_runtime_target": {
+    "python": "3.9.23",
+    "torch": "2.3.1+cu118",
+    "torch_geometric": "2.5.3"
+  },
+  "residual_cuda_preflight_executed": false,
+  "real_dataset_residual_gradient_probe_executed": false,
+  "residual_raw_graph_replay_executed": false,
+  "formal_training_started": false,
+  "files_sha256": {
+    "src/xgnid/residual_readout.py": "cfc103659e427ec8f3c1d49e83ca5e093d580d3b46f591a9682e278aeb463248",
+    "src/xgnid/fold_readout.py": "662a722b4e7b8951dba529c4fa8ece01c41709d3b8c8cdbf7942da91656b1a9c",
+    "scripts/run_residual_pair.py": "0fef8ca1292094669ca2b816154442b2bbebb345f2e062a865114f081d6bc460",
+    "scripts/summarize_residual_pair.py": "c8598d6c94041293c17940fb6f1f32f2b5db49ce2bec9d75d49769d8ccb1994b",
+    "scripts/check_cross_layer_fold.py": "859e72fb750775670b0689cc0a8317338fb4f17bbd1f1107002ba46d8871fe3c",
+    "scripts/test_residual_pair.py": "a2e187301a7a515559f9ab1860897e42eb57150beaa16c63b05a5c4cbc93e095",
+    "scripts/test_residual_pair_tensor.py": "7b7920898d0947544673c6d115ba792f080a7f1ed2db48f7c3e2d305fd08d26e",
+    "scripts/launch_residual_pair.sh": "952101de892506cc598b7d84bb6d4864e92e02a5b993330dff4ba9acb3de01fb",
+    "configs/residual_pair_s42_v1.json": "adfabf4854ef5f9adc9bd69552be956fb2ba8b66a91e74861ff6abb6c98fbed5",
+    "docs/residual_pair_s42_v1.md": "5b3733d3e9a932cc7c62beb50194a9192bf5cf13b980c4d609d7f3e9955de4ce",
+    "docs/cross_layer_fold_verification_20261104.md": "d3128e954d013c4862b5c573b839b270f583cafbf074f10f6d878cac2b37f62e",
+    "docs/cross_layer_fold_verification_20261104.json": "3dfd82156386d38add4921a0fa67a6a3506f14be8aae4227c60351330721d293",
+    "docs/manual_outputs_snapshot_verification_20261104.json": "28127570d45a4d04eb5ef56732568ebf96c4ca6005d0741f21437ed08faf4b9e",
+    ".gitignore": "f2351b51844eba71920e374fb23577dc9b1612e7abd95d78bc762065f20a2cdb"
+  }
+}

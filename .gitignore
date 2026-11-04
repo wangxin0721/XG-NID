@@ -19,3 +19,4 @@ data/processed/
 server_outputs_sync/
 .outputs-publish-*/
 .output-sync-tools/
+.residual-audit-env/
