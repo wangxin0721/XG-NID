@@ -1,0 +1,18 @@
+{
+  "schema": "xgnid.attention-operator-training.v1",
+  "preparation_protocol": "attention_operator_pair_s42_v1.json",
+  "preparation_config_sha256": "22b216841ab8ada98b478d98a57f676fac7d8d0ded52df3df9bd337972574ebd",
+  "probe_directory": "outputs/attention_operator_probe_s42_v1",
+  "workers": 2,
+  "epochs": 150,
+  "early_stop_enabled": false,
+  "include_epoch_zero": true,
+  "batch_size": 512,
+  "eval_batch_size": 16,
+  "seed": 42,
+  "encoder_lr": 0.001,
+  "head_lr": 0.001,
+  "weight_decay": 0.0,
+  "test_evaluated": false,
+  "automatic_followup": false
+}

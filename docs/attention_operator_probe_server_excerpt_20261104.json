@@ -1,0 +1,39 @@
+{
+  "date": "2026-11-04",
+  "source": "user_provided_server_terminal_screenshot",
+  "complete_probe_receipt_independently_read": false,
+  "status": {"status": "completed", "exit_code": 0},
+  "device": "cuda:0",
+  "torch": "2.3.1+cu118",
+  "pyg": "2.5.3",
+  "train_batch_graphs": 512,
+  "val_batch_graphs": 16,
+  "common_tensors": 100,
+  "all_common_tensors_identical": true,
+  "models": {
+    "GAT": {
+      "total_parameters": 851688,
+      "trainable_parameters": 851688,
+      "cuda_peak_allocated_bytes": 137867264,
+      "peak_extra_allocated_bytes": 88115200,
+      "validation_seconds": 0.013793225996778347,
+      "clean_state_restored": true,
+      "optimizer_discarded": true,
+      "rng_restored": true,
+      "nll": [2.0814778804779053, 2.069554090499878, 2.0600802898406982]
+    },
+    "GATv2": {
+      "total_parameters": 850152,
+      "trainable_parameters": 850152,
+      "cuda_peak_allocated_bytes": 138456576,
+      "peak_extra_allocated_bytes": 80207360,
+      "validation_seconds": 0.012161519000073895,
+      "clean_state_restored": true,
+      "optimizer_discarded": true,
+      "rng_restored": true,
+      "nll": [2.0818240642547607, 2.069575548171997, 2.059697389602661]
+    }
+  },
+  "acceptance": "Formal launcher must still validate the full server probe.json, source/split bindings and fresh state hashes. Screenshot is not a substitute.",
+  "formal_training_started_locally": false
+}

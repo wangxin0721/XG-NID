@@ -1,0 +1,45 @@
+{
+  "date": "2026-11-04",
+  "torch": "2.3.1+cpu",
+  "pyg": "2.5.3",
+  "device": "cpu",
+  "operator_tensor_tests_passed": 7,
+  "training_tests_passed": 7,
+  "training_test_names": [
+    "test_comparison_counts_identity_and_both_wrong_changes",
+    "test_complete_report_recomputes_metrics_orders_and_comparison",
+    "test_cuda_probe_validator_rejects_dirty_and_changed_receipts",
+    "test_full_budget_ledger_ties_keep_epoch_zero_and_earliest_trained",
+    "test_graph_dataset_rejects_test_and_mixed_partitions",
+    "test_independent_sampler_reproducibility_and_singleton_merge",
+    "test_tiny_paired_training_full_checkpoint_export_and_replay_lifecycle"
+  ],
+  "archive_package_operator_tests_passed": 7,
+  "archive_package_training_tests_passed": 7,
+  "python39_syntax_passed": true,
+  "bash_syntax_passed": true,
+  "training_lifecycle_fixture": {
+    "graphs": 8,
+    "epochs_per_arm": 2,
+    "updates_per_arm": 4,
+    "test_graph_loads": 0,
+    "formal_training": false
+  },
+  "full150_ledger_and_report_test": "synthetic ledger/matrix fixture; no150-epoch optimization",
+  "probe_validator_test": "fabricated validator fixture; no claim of running CUDA",
+  "server_evidence": "user-provided screenshot excerpt, separately archived; launcher still validates actual probe.json",
+  "server_metadata_checked_locally": false,
+  "real_graph_training_executed_locally": false,
+  "CUDA_training_executed_locally": false,
+  "historical_artifacts_modified": false,
+  "sources": {
+    "configs/attention_operator_training_s42_v1.json": "8f08ee3ea9fc324931f8e9b7a23eee596f9ebb84faa4ae769288c1c33d81a07d",
+    "scripts/run_attention_operator_pair.py": "4b497bfd87b1257729b916ff79672246ad97d1275fbc6dddd77adb3a54b5e5c8",
+    "scripts/summarize_attention_operator_pair.py": "4c3ec615e4e554ff1e6023c689efd4b2aed073817e5e5f22fed0d4a219bf52ce",
+    "scripts/test_attention_operator_training.py": "1984347aefb03eb77a3c71db5791e4b262372f88a87ee12ff873fd6e681afe21",
+    "scripts/launch_attention_operator_pair.sh": "70471bbf5b6e8e60004944c4401c9d6c8d2879125c053634cb5a1a2f01de26b6",
+    "docs/attention_operator_training_s42_v1.md": "997fee349a9757a38092b75b2b48bc401defd7bcfd73dcd31b4fdd5fd556fae4",
+    "docs/attention_operator_probe_server_excerpt_20261104.json": "5196823c3a5f8b9fecf79dcbe68bc9cce1518d7a302ff858da8814ba213788ca",
+    "docs/attention_operator_pair_s42_v1.md": "91cdaa680cc05b5ece7a91d5876d5c3da79b810b18daa7f96dd363103fc9cdf9"
+  }
+}
