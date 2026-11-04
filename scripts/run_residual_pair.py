@@ -168,6 +168,13 @@ def metadata(args):
 def load_classes():
     Head, _ = dim.load_classes()
     packet.load_classes()  # Bound ordered-mean implementation, not an installed package copy.
+    # train_grouped can import xgnid from the server checkout before this
+    # archived entry runs. Resolve the new dependency by its bound file path;
+    # that existing package's __path__ need not contain the archive directory.
+    dependency = importlib.util.spec_from_file_location('xgnid.relation_selection', HERE.parent/'src/xgnid/relation_selection.py')
+    relation = importlib.util.module_from_spec(dependency)
+    sys.modules[dependency.name] = relation
+    dependency.loader.exec_module(relation)
     spec = importlib.util.spec_from_file_location('xgnid.residual_readout', MODULE)
     module = importlib.util.module_from_spec(spec)
     sys.modules[spec.name] = module

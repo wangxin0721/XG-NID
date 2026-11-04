@@ -1,6 +1,6 @@
 {
   "date": "2026-11-04",
-  "status": "local_checkpoint_fold_audit_and_tests_passed_server_GPU_and_training_pending",
+  "status": "archived_dependency_loader_repaired_and_tested_server_retry_pending",
   "protocol": {
     "variants": [
       "Res-Base",
@@ -23,16 +23,16 @@
   },
   "local_checks": {
     "new_standard_tests": 6,
-    "new_actual_PyG_tensor_tests": 6,
+    "new_actual_PyG_tensor_tests": 7,
     "historical_relation_standard_tests": 9,
     "historical_cross_layer_standard_tests": 6,
-    "total_passed": 27,
+    "total_passed": 28,
     "failed": 0,
     "python39_syntax_files": 7,
     "python39_syntax_passed": true,
     "bash_syntax_passed": true,
     "isolated_archive_standard_tests_passed": 6,
-    "isolated_archive_tensor_tests_passed": 6,
+    "isolated_archive_tensor_tests_passed": 7,
     "function_global_names_resolve": true,
     "actual_prerequisite_receipt_validated": true
   },
@@ -88,17 +88,31 @@
   "files_sha256": {
     "src/xgnid/residual_readout.py": "cfc103659e427ec8f3c1d49e83ca5e093d580d3b46f591a9682e278aeb463248",
     "src/xgnid/fold_readout.py": "662a722b4e7b8951dba529c4fa8ece01c41709d3b8c8cdbf7942da91656b1a9c",
-    "scripts/run_residual_pair.py": "0fef8ca1292094669ca2b816154442b2bbebb345f2e062a865114f081d6bc460",
+    "scripts/run_residual_pair.py": "be2031ba91b425f84dd382a49b356b5d96ad8ed1915a783a1d2bd5f2f9106065",
     "scripts/summarize_residual_pair.py": "c8598d6c94041293c17940fb6f1f32f2b5db49ce2bec9d75d49769d8ccb1994b",
     "scripts/check_cross_layer_fold.py": "859e72fb750775670b0689cc0a8317338fb4f17bbd1f1107002ba46d8871fe3c",
     "scripts/test_residual_pair.py": "a2e187301a7a515559f9ab1860897e42eb57150beaa16c63b05a5c4cbc93e095",
-    "scripts/test_residual_pair_tensor.py": "7b7920898d0947544673c6d115ba792f080a7f1ed2db48f7c3e2d305fd08d26e",
-    "scripts/launch_residual_pair.sh": "952101de892506cc598b7d84bb6d4864e92e02a5b993330dff4ba9acb3de01fb",
+    "scripts/test_residual_pair_tensor.py": "b9097ee7bf5531ffb21611efc1c5fcfbf41c223cca85109dc1e6be5d19345ce5",
+    "scripts/launch_residual_pair.sh": "1d720d2a3bb3f496660f08a01c6c518fe15362ed661d508270d119ff8221c902",
     "configs/residual_pair_s42_v1.json": "adfabf4854ef5f9adc9bd69552be956fb2ba8b66a91e74861ff6abb6c98fbed5",
-    "docs/residual_pair_s42_v1.md": "5b3733d3e9a932cc7c62beb50194a9192bf5cf13b980c4d609d7f3e9955de4ce",
+    "docs/residual_pair_s42_v1.md": "c72d0e5aef4cd858f2b0dd4a511700eee5dc00694f211692d68abf73b232122a",
     "docs/cross_layer_fold_verification_20261104.md": "d3128e954d013c4862b5c573b839b270f583cafbf074f10f6d878cac2b37f62e",
     "docs/cross_layer_fold_verification_20261104.json": "3dfd82156386d38add4921a0fa67a6a3506f14be8aae4227c60351330721d293",
     "docs/manual_outputs_snapshot_verification_20261104.json": "28127570d45a4d04eb5ef56732568ebf96c4ca6005d0741f21437ed08faf4b9e",
-    ".gitignore": "f2351b51844eba71920e374fb23577dc9b1612e7abd95d78bc762065f20a2cdb"
+    ".gitignore": "f2351b51844eba71920e374fb23577dc9b1612e7abd95d78bc762065f20a2cdb",
+    "docs/residual_loader_fix_20261104.md": "595d5db84606dbe49835bf626a062f3cf8b48fb5a5e0e16b798bd4e9a6dcc9c2"
+  },
+  "loader_regression": {
+    "old_implementation_reproduced_server_ModuleNotFoundError": true,
+    "new_implementation_independent_subprocess_old_package_path_passed": true,
+    "loads_relation_dependency_from_bound_archive_path": true
+  },
+  "server_attempt": {
+    "commit": "d8175695c2a1bb1a200421e04cdb33910417051e",
+    "fold_audit_reported_passed": true,
+    "failure": "ModuleNotFoundError: xgnid.relation_selection at load_classes before model construction",
+    "formal_optimizer_updates": 0,
+    "failed_run_preserved": "outputs/residual_pair_s42_v1",
+    "new_retry_output": "outputs/residual_pair_s42_retry_v1"
   }
 }

@@ -3,7 +3,7 @@ set -euo pipefail
 repo=$(pwd)
 bundle=$(cd -- "$(dirname -- "$0")/.." && pwd)
 python_bin=${XGNID_PYTHON:-/home/nzxn/miniconda3/envs/wx/bin/python}
-output="$repo/outputs/residual_pair_s42_v1"
+output="$repo/outputs/${XGNID_RESIDUAL_OUTPUT_NAME:-residual_pair_s42_v1}"
 audit="$repo/outputs/cross_layer_fold_check_v1.json"
 if [[ -e "$output" || -e "$output.log" || -e "$output.pid" ]]; then
   echo 'Residual output/log/PID exists; refusing overwrite or duplicate launch'; exit 1

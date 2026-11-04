@@ -3,6 +3,7 @@ import copy
 from pathlib import Path
 import sys
 import tempfile
+import subprocess
 from types import SimpleNamespace
 import unittest
 from unittest.mock import patch
@@ -98,6 +99,32 @@ class Tensors(unittest.TestCase):
         with tempfile.TemporaryDirectory() as folder:
             r=run.device_preflight(self.core(),dict(zip(run.VARIANTS,models)),torch.device('cpu'),SimpleNamespace(output=Path(folder)))
             self.assertEqual(r['status'],'passed');self.assertTrue(r['model_and_rng_unchanged'])
+
+    def test_archived_loader_with_already_imported_package_outside_bundle(self):
+        code=r'''
+import copy, pathlib, sys, tempfile
+sys.path.insert(0,sys.argv[1])
+import run_residual_pair as run
+import test_relation_pair_tensor as fixture
+import xgnid
+import xgnid.model
+from torch_geometric.data import Batch
+with tempfile.TemporaryDirectory() as folder:
+    # Reproduce train_grouped importing an older installed xgnid first.
+    # Its package path cannot discover the newly archived source files.
+    xgnid.__path__=[folder]
+    for name in ('xgnid.relation_selection','xgnid.residual_readout'):
+        sys.modules.pop(name,None)
+    Head,Graph=run.load_classes()
+    for name,file in (('xgnid.relation_selection','relation_selection.py'),('xgnid.residual_readout','residual_readout.py')):
+        assert pathlib.Path(sys.modules[name].__file__).resolve()==(run.HERE.parent/'src/xgnid'/file).resolve()
+    checks=fixture.TensorChecks();graphs=checks.graphs();original,_,batch=checks.models(graphs)
+    graph=Graph(copy.deepcopy(original.flow_encoder),copy.deepcopy(original.packet_encoder),copy.deepcopy(original.fusion),'skip').eval()
+    import torch
+    torch.testing.assert_close(graph(batch),original(batch),atol=1e-6,rtol=1e-6)
+'''
+        result=subprocess.run([sys.executable,'-B','-c',code,str(run.HERE)],capture_output=True,text=True)
+        self.assertEqual(result.returncode,0,result.stdout+result.stderr)
 
     def test_folding_trained_affines_preserves_outputs_and_source_parameters(self):
         _,_,batch,_,last=self.models()
