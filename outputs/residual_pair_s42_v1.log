@@ -1,0 +1,16 @@
+/home/nzxn/miniconda3/envs/wx/lib/python3.9/site-packages/torch_geometric/typing.py:99: UserWarning: An issue occurred while importing 'torch-spline-conv'. Disabling its usage. Stacktrace: /home/nzxn/miniconda3/envs/wx/lib/python3.9/site-packages/torch_spline_conv/_version_cuda.so: undefined symbol: _ZN3c1017RegisterOperatorsD1Ev
+  warnings.warn(
+Traceback (most recent call last):
+  File "/tmp/xgnid_residual.QrsctZ/scripts/run_residual_pair.py", line 558, in <module>
+    if __name__=='__main__':main()
+  File "/tmp/xgnid_residual.QrsctZ/scripts/run_residual_pair.py", line 552, in main
+    run(args,meta);write(args.output/'status.json',{'status':'completed','exit_code':0});write(args.output/'progress.json',{'status':'completed','training_jobs':2})
+  File "/tmp/xgnid_residual.QrsctZ/scripts/run_residual_pair.py", line 455, in run
+    classes=load_classes();models={n:build(core,classes,data,device,n0,saved['model_state'],mode) for n,mode in VARIANTS.items()}
+  File "/tmp/xgnid_residual.QrsctZ/scripts/run_residual_pair.py", line 174, in load_classes
+    spec.loader.exec_module(module)
+  File "<frozen importlib._bootstrap_external>", line 850, in exec_module
+  File "<frozen importlib._bootstrap>", line 228, in _call_with_frames_removed
+  File "/tmp/xgnid_residual.QrsctZ/src/xgnid/residual_readout.py", line 4, in <module>
+    from .relation_selection import RelationClassifier
+ModuleNotFoundError: No module named 'xgnid.relation_selection'

@@ -228,4 +228,16 @@
 "outputs/relation_pair_s42_v1/Rel-Mean_preflight.pt" filter=lfs diff=lfs merge=lfs -text
 "outputs/relation_pair_s42_v1/train_pre_relation.pt" filter=lfs diff=lfs merge=lfs -text
 "outputs/relation_pair_s42_v1/val_pre_relation.pt" filter=lfs diff=lfs merge=lfs -text
+"outputs/residual_pair_s42_retry_v1/Res-Base/best.pt" filter=lfs diff=lfs merge=lfs -text
+"outputs/residual_pair_s42_retry_v1/Res-Base/epoch_zero.pt" filter=lfs diff=lfs merge=lfs -text
+"outputs/residual_pair_s42_retry_v1/Res-Base/last.pt" filter=lfs diff=lfs merge=lfs -text
+"outputs/residual_pair_s42_retry_v1/Res-Base/trained_best.pt" filter=lfs diff=lfs merge=lfs -text
+"outputs/residual_pair_s42_retry_v1/Res-Base_preflight.pt" filter=lfs diff=lfs merge=lfs -text
+"outputs/residual_pair_s42_retry_v1/Res-Skip/best.pt" filter=lfs diff=lfs merge=lfs -text
+"outputs/residual_pair_s42_retry_v1/Res-Skip/epoch_zero.pt" filter=lfs diff=lfs merge=lfs -text
+"outputs/residual_pair_s42_retry_v1/Res-Skip/last.pt" filter=lfs diff=lfs merge=lfs -text
+"outputs/residual_pair_s42_retry_v1/Res-Skip/trained_best.pt" filter=lfs diff=lfs merge=lfs -text
+"outputs/residual_pair_s42_retry_v1/Res-Skip_preflight.pt" filter=lfs diff=lfs merge=lfs -text
+"outputs/residual_pair_s42_retry_v1/train_pre_residual.pt" filter=lfs diff=lfs merge=lfs -text
+"outputs/residual_pair_s42_retry_v1/val_pre_residual.pt" filter=lfs diff=lfs merge=lfs -text
 "outputs/server_graph_split_audit_v1/graph_manifest.sqlite" filter=lfs diff=lfs merge=lfs -text

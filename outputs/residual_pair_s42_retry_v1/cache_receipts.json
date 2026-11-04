@@ -1,0 +1,46 @@
+{
+  "train": {
+    "sha256": "e4356a7b8577784496b0030e1b92f2eb0fe33d86ea3d6a7842c568c71396fb58",
+    "tensor_sha256": "18ab9c931b8bc231b61dbdbbca08c66d05a0b08556f82f6f4701ebc052d12888",
+    "memory_estimate": {
+      "graphs": 107621,
+      "packet_nodes": 1170720,
+      "final_tensor_bytes": 958278296,
+      "additional_concat_bytes": 959139272,
+      "estimated_tensor_peak_bytes": 1916556592,
+      "retained_cache_bytes": 0,
+      "host_MemAvailable_bytes": 17753260032,
+      "scope": "cache tensors only; excludes Python objects, graphs, models and allocator/serialization buffers"
+    },
+    "original_node_reproduction_max_abs_error": 0.0,
+    "wall_seconds": 1671.5833604630025,
+    "graph_load_stage": {
+      "phase": "extract_train",
+      "partition": "train",
+      "verified_samples": 107621,
+      "workers": 2
+    }
+  },
+  "val": {
+    "sha256": "e0d36930d362afc673af10ebff6b0a2ad5e827174dd9348cb023bdb4252d623a",
+    "tensor_sha256": "d717e66e48bade20cbd1dc1991672d3546abb37d657cf3e17e5069ec432b6306",
+    "memory_estimate": {
+      "graphs": 13446,
+      "packet_nodes": 147485,
+      "final_tensor_bytes": 120662946,
+      "additional_concat_bytes": 120770522,
+      "estimated_tensor_peak_bytes": 1199604188,
+      "retained_cache_bytes": 958278296,
+      "host_MemAvailable_bytes": 16744624128,
+      "scope": "cache tensors only; excludes Python objects, graphs, models and allocator/serialization buffers"
+    },
+    "original_node_reproduction_max_abs_error": 0.0,
+    "wall_seconds": 211.71923245500147,
+    "graph_load_stage": {
+      "phase": "extract_val",
+      "partition": "val",
+      "verified_samples": 13446,
+      "workers": 2
+    }
+  }
+}
