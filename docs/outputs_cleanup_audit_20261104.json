@@ -1,0 +1,526 @@
+{
+  "mode": "read_only_no_deletions",
+  "repo": "D:\\XG-NID",
+  "outputs": "D:\\XG-NID\\outputs",
+  "duplicate_directory_candidates": [
+    {
+      "path": "outputs/",
+      "matching_files": 274,
+      "matching_bytes": 143200263,
+      "unmatched": [],
+      "eligible_as_complete_duplicate": true
+    }
+  ],
+  "duplicate_cache_candidates": [
+    {
+      "path": "packet_pool_pair_s42_v1/train_packet_nodes.pt",
+      "bytes": 339205136,
+      "sha256": "bbadf7499506f7d5968ffc9061bf4e58445c2c7a67ae85dfb3620a22491bf42c",
+      "retained_copy": "packet_pool_confirmation_s42_v1/train_packet_nodes.pt",
+      "identical": true,
+      "condition": "Old recovery/confirmation hash checks require the original paths; restore them or use hard-link deduplication if those checks must remain runnable",
+      "in_uploaded_snapshot": true,
+      "local_file_matches_uploaded_SHA256": true
+    },
+    {
+      "path": "packet_pool_pair_s42_v1/val_packet_nodes.pt",
+      "bytes": 42694352,
+      "sha256": "fc70d58c519ef31eb5cc524c4914814f7e959f1f79664e5e478a99c7db5a40ab",
+      "retained_copy": "packet_pool_confirmation_s42_v1/val_packet_nodes.pt",
+      "identical": true,
+      "condition": "Old recovery/confirmation hash checks require the original paths; restore them or use hard-link deduplication if those checks must remain runnable",
+      "in_uploaded_snapshot": true,
+      "local_file_matches_uploaded_SHA256": true
+    },
+    {
+      "path": "packet_pool_pair_s42_recovery_v1/train_packet_nodes.pt",
+      "bytes": 339205136,
+      "sha256": "bbadf7499506f7d5968ffc9061bf4e58445c2c7a67ae85dfb3620a22491bf42c",
+      "retained_copy": "packet_pool_confirmation_s42_v1/train_packet_nodes.pt",
+      "identical": true,
+      "condition": "Old recovery/confirmation hash checks require the original paths; restore them or use hard-link deduplication if those checks must remain runnable",
+      "in_uploaded_snapshot": true,
+      "local_file_matches_uploaded_SHA256": true
+    },
+    {
+      "path": "packet_pool_pair_s42_recovery_v1/val_packet_nodes.pt",
+      "bytes": 42694352,
+      "sha256": "fc70d58c519ef31eb5cc524c4914814f7e959f1f79664e5e478a99c7db5a40ab",
+      "retained_copy": "packet_pool_confirmation_s42_v1/val_packet_nodes.pt",
+      "identical": true,
+      "condition": "Old recovery/confirmation hash checks require the original paths; restore them or use hard-link deduplication if those checks must remain runnable",
+      "in_uploaded_snapshot": true,
+      "local_file_matches_uploaded_SHA256": true
+    },
+    {
+      "path": "packet_pool_pair_s42_recovery_v2/train_packet_nodes.pt",
+      "bytes": 339205136,
+      "sha256": "bbadf7499506f7d5968ffc9061bf4e58445c2c7a67ae85dfb3620a22491bf42c",
+      "retained_copy": "packet_pool_confirmation_s42_v1/train_packet_nodes.pt",
+      "identical": true,
+      "condition": "Old recovery/confirmation hash checks require the original paths; restore them or use hard-link deduplication if those checks must remain runnable",
+      "in_uploaded_snapshot": true,
+      "local_file_matches_uploaded_SHA256": true
+    },
+    {
+      "path": "packet_pool_pair_s42_recovery_v2/val_packet_nodes.pt",
+      "bytes": 42694352,
+      "sha256": "fc70d58c519ef31eb5cc524c4914814f7e959f1f79664e5e478a99c7db5a40ab",
+      "retained_copy": "packet_pool_confirmation_s42_v1/val_packet_nodes.pt",
+      "identical": true,
+      "condition": "Old recovery/confirmation hash checks require the original paths; restore them or use hard-link deduplication if those checks must remain runnable",
+      "in_uploaded_snapshot": true,
+      "local_file_matches_uploaded_SHA256": true
+    }
+  ],
+  "archive_only_training_cache_candidates": [
+    {
+      "path": "relation_pair_s42_v1/train_pre_relation.pt",
+      "bytes": 992506880,
+      "condition": "Completed experiment and verified backup; needed for replaying training, not current residual training. Keep validation cache and all metadata/checkpoints",
+      "in_uploaded_snapshot": true,
+      "local_file_matches_uploaded_SHA256": true
+    },
+    {
+      "path": "cross_layer_pair_s42_v1/train_cross_layer.pt",
+      "bytes": 120324108,
+      "condition": "Completed experiment and verified backup; needed for replaying training, not current residual training. Keep validation cache and all metadata/checkpoints",
+      "in_uploaded_snapshot": true,
+      "local_file_matches_uploaded_SHA256": true
+    }
+  ],
+  "keep_roots": [
+    {
+      "path": "e2_concat_pair_b512_s42_lr1e4_v1",
+      "exists_here": true
+    },
+    {
+      "path": "joint_gate_lrscale01_s42_v1",
+      "exists_here": true
+    },
+    {
+      "path": "fusion_dimension_pair_s42_recovery_v1",
+      "exists_here": true
+    },
+    {
+      "path": "fusion_gate_pair_s42_v1",
+      "exists_here": true
+    },
+    {
+      "path": "cross_layer_pair_s42_v1",
+      "exists_here": true
+    },
+    {
+      "path": "cross_layer_fold_check_v1.json",
+      "exists_here": true
+    },
+    {
+      "path": "packet_pool_confirmation_s42_v1",
+      "exists_here": true
+    },
+    {
+      "path": "relation_pair_s42_v1",
+      "exists_here": true
+    },
+    {
+      "path": "residual_pair_s42_v1",
+      "exists_here": false
+    },
+    {
+      "path": "residual_pair_s42_retry_v1",
+      "exists_here": false
+    },
+    {
+      "path": "r0_graph_rebuild_author_offline_v2",
+      "exists_here": true
+    },
+    {
+      "path": "r0_validation_split_s42_v1",
+      "exists_here": true
+    },
+    {
+      "path": "server_graph_split_audit_v1",
+      "exists_here": true
+    }
+  ],
+  "on_disk_states_not_proof_of_liveness": {
+    "baseline_seed_repeats_b512_s43_s44_v1": {
+      "status": "completed",
+      "exit_code": 0,
+      "mode": "queue",
+      "batch_size": 512,
+      "model": null,
+      "seed": null
+    },
+    "cross_layer_pair_s42_v1": {
+      "status": "completed",
+      "exit_code": 0
+    },
+    "e0_batch_full_b512_s42_shared_v1": {
+      "status": "completed",
+      "exit_code": 0,
+      "mode": "full",
+      "batch_size": 512
+    },
+    "e0_batch_probe_b512_s42_shared_v1": {
+      "status": "completed",
+      "exit_code": 0,
+      "mode": "probe",
+      "batch_size": 512
+    },
+    "e2_batch_full_b256_s42_shared_v1": {
+      "status": "completed",
+      "exit_code": 0,
+      "mode": "full",
+      "batch_size": 256
+    },
+    "e2_batch_full_b512_s42_shared_v1": {
+      "status": "completed",
+      "exit_code": 0,
+      "mode": "full",
+      "batch_size": 512
+    },
+    "e2_batch_probe_b1024_s42_v1": {
+      "status": "completed",
+      "exit_code": 0,
+      "mode": "probe",
+      "batch_size": 1024
+    },
+    "e2_batch_probe_b256_s42_shared_v1": {
+      "status": "completed",
+      "exit_code": 0,
+      "mode": "probe",
+      "batch_size": 256
+    },
+    "e2_batch_probe_b512_s42_shared_v1": {
+      "status": "completed",
+      "exit_code": 0,
+      "mode": "probe",
+      "batch_size": 512
+    },
+    "e2_concat_pair_b512_s42_lr1e4_v1": {
+      "status": "completed",
+      "exit_code": 0
+    },
+    "e3_batch_full_b512_s42_shared_v2": {
+      "status": "failed",
+      "exit_code": 1,
+      "mode": "full",
+      "batch_size": 512
+    },
+    "e3_batch_full_b512_s42_shared_v3": {
+      "status": "completed",
+      "exit_code": 0,
+      "mode": "full",
+      "batch_size": 512
+    },
+    "e3_batch_probe_b512_s42_shared_v2": {
+      "status": "failed",
+      "exit_code": 1,
+      "mode": "probe",
+      "batch_size": 512
+    },
+    "e3_batch_probe_b512_s42_shared_v3": {
+      "status": "completed",
+      "exit_code": 0,
+      "mode": "probe",
+      "batch_size": 512
+    },
+    "e3_gate_cache_analysis_b512_s42_v1": {
+      "status": "completed",
+      "exit_code": 0,
+      "mode": "cache_analysis"
+    },
+    "e3_gate_candidate_cache_E3a_b512_s42_v1": {
+      "status": "completed",
+      "exit_code": 0,
+      "mode": "offline_cache_analysis"
+    },
+    "e3_gate_candidate_cache_E3aZ_b512_s42_v1": {
+      "status": "completed",
+      "exit_code": 0,
+      "mode": "offline_cache_analysis"
+    },
+    "e3_gate_candidate_E3a_b512_s42_v1": {
+      "status": "completed",
+      "exit_code": 0,
+      "variant": "E3a",
+      "mode": "diagnose"
+    },
+    "e3_gate_candidate_E3aZ_b512_s42_v1": {
+      "status": "completed",
+      "exit_code": 0,
+      "variant": "E3a_equal_init",
+      "mode": "diagnose"
+    },
+    "e3_gate_diagnostic_b512_s42_v1": {
+      "status": "completed",
+      "exit_code": 0,
+      "mode": "diagnose"
+    },
+    "e3_gate_probe_E3a_b512_s42_v1": {
+      "status": "completed",
+      "exit_code": 0,
+      "mode": "probe",
+      "variant": "E3a"
+    },
+    "e3_gate_probe_E3a_b512_s42_v2": {
+      "status": "completed",
+      "exit_code": 0,
+      "mode": "probe",
+      "variant": "E3a"
+    },
+    "e3_gate_probe_E3aZ_b512_s42_v1": {
+      "status": "completed",
+      "exit_code": 0,
+      "mode": "probe",
+      "variant": "E3a_equal_init"
+    },
+    "e3_gate_screen_E3a_b512_s42_v1": {
+      "status": "failed",
+      "exit_code": 1,
+      "mode": "screen",
+      "variant": "E3a"
+    },
+    "e3_gate_screen_E3a_b512_s42_v2": {
+      "status": "completed",
+      "exit_code": 0,
+      "mode": "screen",
+      "variant": "E3a"
+    },
+    "e3_gate_screen_E3aZ_b512_s42_v1": {
+      "status": "running",
+      "mode": "screen",
+      "variant": "E3a_equal_init",
+      "pid": 714995
+    },
+    "edge_chain_pilot_20261016": {
+      "status": "completed",
+      "exit_code": 0
+    },
+    "edge_chain_pilot_20261016_v2": {
+      "status": "completed",
+      "exit_code": 0
+    },
+    "edge_checkpoint_eval_20261016": {
+      "status": "completed",
+      "exit_code": 0
+    },
+    "edge_relation_smoke_20261016": {
+      "status": "completed",
+      "exit_code": 0
+    },
+    "edge_smoke_20261016": {
+      "status": "completed",
+      "exit_code": 0
+    },
+    "fair_vector_five_runs_recovery_v1": {
+      "status": "completed",
+      "exit_code": 0
+    },
+    "fair_vector_five_runs_v1": {
+      "status": "running"
+    },
+    "flow_stats_layernorm_joint_s42_v1": {
+      "status": "completed",
+      "exit_code": 0
+    },
+    "flow_stats_residual_diagnostic_s42_v1": {
+      "status": "completed",
+      "exit_code": 0
+    },
+    "flow_stats_residual_joint_s42_v1": {
+      "status": "completed",
+      "exit_code": 0
+    },
+    "frozen_fusion_n0_b512_s42_v1": {
+      "status": "completed",
+      "exit_code": 0
+    },
+    "fusion_acb_b512_s42_v1": {
+      "status": "completed",
+      "exit_code": 0,
+      "mode": "queue",
+      "variant": null
+    },
+    "fusion_bh_b1024_s42_resume_v1": {
+      "status": "completed",
+      "exit_code": 0,
+      "mode": "queue",
+      "variant": "B_Hstats"
+    },
+    "fusion_bh_b1024_s42_v1": {
+      "status": "running",
+      "mode": "queue",
+      "pid": 2213296,
+      "variant": "B_Hstats"
+    },
+    "fusion_bh_b512_s42_v1": {
+      "status": "completed",
+      "exit_code": 0,
+      "mode": "queue",
+      "variant": "B_Hstats"
+    },
+    "fusion_dimension_pair_s42_recovery_v1": {
+      "status": "completed",
+      "exit_code": 0
+    },
+    "fusion_dimension_pair_s42_v1": {
+      "status": "failed",
+      "exit_code": 1
+    },
+    "fusion_gate_pair_s42_v1": {
+      "status": "completed",
+      "exit_code": 0
+    },
+    "fusion_seed_repeats_s43_s44_v1": {
+      "status": "completed",
+      "exit_code": 0
+    },
+    "grouped_full_E0_s42_v1": {
+      "status": "completed",
+      "exit_code": 0
+    },
+    "grouped_full_E1_s42_v1": {
+      "status": "completed",
+      "exit_code": 0
+    },
+    "grouped_full_E2_s42_v1": {
+      "status": "completed",
+      "exit_code": 0
+    },
+    "grouped_full_E3_s42_resume_v1": {
+      "status": "completed",
+      "exit_code": 0
+    },
+    "grouped_full_E3_s42_v1": {
+      "status": "running"
+    },
+    "grouped_full_E4_s42_v1": {
+      "status": "completed",
+      "exit_code": 0
+    },
+    "grouped_gpu_smoke_E4_s42_v1": {
+      "status": "completed",
+      "exit_code": 0
+    },
+    "grouped_gpu_smoke_v1": {
+      "status": "completed",
+      "exit_code": 0
+    },
+    "grouped_training_pilot_v1": {
+      "status": "completed",
+      "exit_code": 0
+    },
+    "joint_fusion32_s42_e100_p20_noepoch0_v1": {
+      "status": "completed",
+      "exit_code": 0
+    },
+    "joint_fusion32_s42_v1": {
+      "status": "completed",
+      "exit_code": 0
+    },
+    "joint_gate_lrscale01_s42_v1": {
+      "status": "completed",
+      "exit_code": 0
+    },
+    "joint_gate_recovery_v2_s42_v1": {
+      "status": "completed",
+      "exit_code": 0
+    },
+    "packet_pool_confirmation_s42_v1": {
+      "status": "completed",
+      "exit_code": 0
+    },
+    "packet_pool_pair_s42_recovery_v1": {
+      "status": "failed",
+      "exit_code": 1
+    },
+    "packet_pool_pair_s42_recovery_v2": {
+      "status": "completed",
+      "exit_code": 0
+    },
+    "packet_pool_pair_s42_v1": {
+      "status": "failed",
+      "exit_code": 1
+    },
+    "r0_aligned_full_s42_v1": {
+      "status": "running",
+      "mode": "full",
+      "pid": 369197
+    },
+    "r0_aligned_smoke_s42_v1": {
+      "status": "completed",
+      "exit_code": 0
+    },
+    "r0_cpu_smoke_server_v1": {
+      "status": "completed",
+      "exit_code": 0
+    },
+    "r0_cuda_smoke_20261017T064602357890Z": {
+      "status": "completed",
+      "exit_code": 0
+    },
+    "r0_full_s42_20261017T065259974842Z": {
+      "status": "running",
+      "mode": "full"
+    },
+    "r0_gap_audit_20261019T011605512759Z": {
+      "status": "checks_passed_with_unresolved_protocol_differences",
+      "exit_code": 0
+    },
+    "r0_graph_rebuild_author_offline_v2": {
+      "status": "completed",
+      "exit_code": 0,
+      "graphs_completed": 185557,
+      "all_old_inputs_and_labels_equal": true
+    },
+    "r0_graph_rebuild_author_v1": {
+      "status": "failed",
+      "phase": "source_checks",
+      "pid": 391610,
+      "gpu_used": false,
+      "training_started": false,
+      "graphs_completed": 0,
+      "exit_code": 1,
+      "error": "<urlopen error timed out>"
+    },
+    "r0_targeted_audit_20261019T015739852831Z": {
+      "status": "targeted_checks_complete_history_unresolved",
+      "exit_code": 0
+    },
+    "r0_validation_full_s42_v1": {
+      "status": "completed",
+      "exit_code": 0,
+      "test_passes": 1
+    },
+    "r0_validation_smoke_s42_v1": {
+      "status": "completed",
+      "exit_code": 0,
+      "test_passes": 0
+    },
+    "relation_pair_s42_v1": {
+      "status": "completed",
+      "exit_code": 0
+    }
+  },
+  "server_process_audit": {
+    "checked": false,
+    "reason": "Server process state cannot be inferred from copied Windows status/PID files",
+    "jobs": []
+  },
+  "rule": "Never delete active run files, source-lineage artifacts, best models, metadata or arbitrary *.pt. Candidate is a review suggestion, not authorization to delete.",
+  "date": "2026-11-04",
+  "scope": "Actual local filesystem; server counterpart based on uploaded snapshot, current server processes require the same read-only audit there",
+  "server_snapshot": {
+    "created_utc": "2026-11-02T07:44:22.583457+00:00",
+    "entries": 1574,
+    "bytes": 4615296136,
+    "local_only_duplicate_tree_not_in_server_snapshot": true
+  },
+  "sizes": {
+    "local_duplicate_nested_MiB": 136.56641292572021,
+    "old_pool_duplicate_MiB": 1092.6231994628906,
+    "archive_training_caches_MiB": 1061.2783317565918
+  }
+}
