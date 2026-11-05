@@ -1,0 +1,41 @@
+{
+  "source": "user_provided_server_preflight_stdout",
+  "implementation_commit": "19fdaf6264f4396a30066f76612618d3de55b03e",
+  "output_directory": "outputs/joint_cross_layer_packet2_preflight_s42_v1",
+  "status": "completed",
+  "exit_code": 0,
+  "training_started": false,
+  "initialization": {
+    "samples": 13446,
+    "errors": {
+      "paired_scores": {"max_abs_error": 0.0, "sample_id": null},
+      "paired_gate": {"max_abs_error": 0.0, "sample_id": null},
+      "source_scores": {
+        "max_abs_error": 2.288818359375e-05,
+        "sample_id": "edge_sha256:c3928f48d1c60fb39d4c15eefc8903712711a7b4dd50dcc9b69d80c3bc1454bb"
+      },
+      "source_gate": {
+        "max_abs_error": 6.556510925292969e-07,
+        "sample_id": "edge_sha256:94d32bf740b753a0546cc724506fc59064aed964e9349fb61f55642f927c6fc8"
+      }
+    },
+    "failures": [],
+    "passed": true,
+    "initial_state_sha256": {
+      "JCL-Last": "9f863fa198bb88c5b64f4c68e16935eca4762f047353e9cd341b3e771d31134a",
+      "JCL-Multi": "9f863fa198bb88c5b64f4c68e16935eca4762f047353e9cd341b3e771d31134a"
+    }
+  },
+  "probes": {
+    "JCL-Last": {
+      "groups_with_gradient_and_update": ["flow_to_packet", "fusion", "packet_to_packet", "projection"],
+      "batches": 3,
+      "frozen_state_sha256": "79f8401312a141d9ec344653ad02d70f0743173795c587761819ddc1250c33da"
+    },
+    "JCL-Multi": {
+      "groups_with_gradient_and_update": ["flow_to_packet", "fusion", "packet_to_packet", "projection"],
+      "batches": 3,
+      "frozen_state_sha256": "79f8401312a141d9ec344653ad02d70f0743173795c587761819ddc1250c33da"
+    }
+  }
+}
