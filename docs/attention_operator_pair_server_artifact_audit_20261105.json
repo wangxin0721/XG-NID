@@ -1,0 +1,54 @@
+{
+  "date": "2026-11-05",
+  "source": "user_provided_server_audit_stdout",
+  "status": "passed",
+  "summary_sha256": "9dc70e3a9a1b7caf7d122d7dd102f5e43e4469599eb690bdea02c48e80cd8b5b",
+  "archived_summary_sha256": "9dc70e3a9a1b7caf7d122d7dd102f5e43e4469599eb690bdea02c48e80cd8b5b",
+  "paired_order_and_initial_rng_digests_match": true,
+  "models": {
+    "GAT": {
+      "checkpoint_sha256": {
+        "epoch_zero.pt": "069af0d9b1d62cfc6540a9bfad196f691d6f2db81adb4783b5a883a24e21151a",
+        "trained_best.pt": "a14dd3b2808a5c90a9b1dcd2a11b519ee27d49009fe6307b297ad07b5b1cd713",
+        "best.pt": "a14dd3b2808a5c90a9b1dcd2a11b519ee27d49009fe6307b297ad07b5b1cd713",
+        "last.pt": "a398d33c8f299bb8fe3a13d0de30c4c1e016aa424fa405c62dfc9660086d8da5"
+      },
+      "strict_cpu_state_load": true,
+      "ledger_sha256": "16b7f3c123040c11d3f98268fc805b1eb11951bcd983c6249a9f0db80c180e01",
+      "ledger_epochs": 150,
+      "optimizer_updates_in_ledger": 31650,
+      "best_epoch": 80,
+      "best_macro_f1": 0.9726444066225612
+    },
+    "GATv2": {
+      "checkpoint_sha256": {
+        "epoch_zero.pt": "caf5c6e25be8d44c56d81f546582181168e9a883ef7614c51d08c53c22e6af26",
+        "trained_best.pt": "44b5f6b663afe76174d3f2c1a23e9b87a0142ce10d438731314565a680cf4caa",
+        "best.pt": "44b5f6b663afe76174d3f2c1a23e9b87a0142ce10d438731314565a680cf4caa",
+        "last.pt": "1791724c04d48bf08b98808c5afd4b82be3b96220a143a44f4277f5c7461fa13"
+      },
+      "strict_cpu_state_load": true,
+      "ledger_sha256": "4327bcb15e52b9c31ad265f05539038fbc1b1da95c8f6c571f6134f8ad3e59c9",
+      "ledger_epochs": 150,
+      "optimizer_updates_in_ledger": 31650,
+      "best_epoch": 147,
+      "best_macro_f1": 0.9715289150366979
+    }
+  },
+  "raw_graph_replay_executed": false,
+  "new_optimizer_updates": 0,
+  "reference_sha256_checks": {
+    "D32-Gate": {
+      "sha256": "7815875a111d3e94ceefd0e9ef6cb64dedaf6ff80723645f1ec035b376af31ff",
+      "passed": true
+    },
+    "CL-Last": {
+      "sha256": "b10af9e3e8021b05c697f62db23e8db3891a62a01f16f470a40b4912b040ead1",
+      "passed": true
+    },
+    "CL-Multi": {
+      "sha256": "03ec1050df7cf25b3a78cd116ddf976200df76225b6364a72f347ba59e07ce89",
+      "passed": true
+    }
+  }
+}
