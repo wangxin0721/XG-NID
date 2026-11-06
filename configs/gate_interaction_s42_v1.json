@@ -1,0 +1,32 @@
+{
+  "schema": "xgnid.gate-interaction.v1",
+  "variants": ["D32-Continue", "Gate-Add", "Gate-Interaction"],
+  "split_directory": "data/processed/ciciot2023_grouped_input_v1",
+  "split_id": "a8ae9c934eec9fee970cc725e60051d0c709e0f16c7dda14749350ff2006975a",
+  "source_directory": "outputs/fusion_gate_pair_s42_v1/D32-Gate",
+  "source_epoch": 62,
+  "source_macro_f1": 0.9732070542814468,
+  "source_sha256": "7815875a111d3e94ceefd0e9ef6cb64dedaf6ff80723645f1ec035b376af31ff",
+  "source_predictions_sha256": "5a7505a87292f8651b1c8b58e8d83ce9f6ebc573b58cc220deec1491b7ffd1d2",
+  "encoder_sha256": "923217d8026a56f1ffc7fb7bbda8e910aa6a97d51cd18a006412c8766df57033",
+  "cache_directory": "outputs/fusion_dimension_pair_s42_recovery_v1",
+  "cache_sha256": {
+    "train": "94832517e04230b7cca98cf0ff97a55084ff00b74ba97f42a6e301c4b100726b",
+    "val": "760e7d5aa34b5e3ebab3b5c54c74c46ad194e858b47d749dd2cd03d85b4d8276"
+  },
+  "seed": 42,
+  "epochs": 150,
+  "early_stop_enabled": false,
+  "include_epoch_zero": true,
+  "batch_size": 512,
+  "eval_batch_size": 16,
+  "workers": 2,
+  "head_lr": 0.00001,
+  "interaction_lr": 0.0001,
+  "weight_decay": 0.0,
+  "probe_batches": 3,
+  "budget_threshold_pp": 0.1,
+  "CL_Multi_reference_macro_f1": 0.9750998613318087,
+  "JCL_Multi_reference_macro_f1": 0.9752460910749855,
+  "test_evaluated": false
+}
