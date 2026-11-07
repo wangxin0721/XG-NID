@@ -1,0 +1,40 @@
+{
+  "schema": "xgnid.flow-query-joint-packet2.local-validation.v1",
+  "date": "2026-11-07",
+  "status": "passed",
+  "environment": {
+    "python": "3.10.1",
+    "torch": "2.3.1+cpu",
+    "pyg": "2.5.3"
+  },
+  "cpu_tests": 8,
+  "checks": [
+    "Exact next batch, RNG draws and next Adam/model update after restore",
+    "Full uninterrupted vs resumed fit, both query sources, inherited best and byte-preserved prefix",
+    "Raw/cache scores, fusion gate and Packet weights before and after isolated updates",
+    "Probe failure restores RNG",
+    "Equal paired initial weights and seed-dependent key initialization",
+    "Earliest tie selection",
+    "Actual GAT raw joint probe and frozen parameters/BN invariance, both query sources and empty relation",
+    "Raw joint training, paired sampler, complete ledger and strict best reload",
+    "Four-arm query/unfreezing comparisons",
+    "Three Python files parse under Python3.9 grammar",
+    "Bash launcher syntax",
+    "All new source files LF-only",
+    "Mature D32 SHA and strict state load; identical joint/frozen initialization; parameter groups7144/1024/8704/8512",
+    "Archived150 source hashes unchanged"
+  ],
+  "mature_D32_sha256": "7815875a111d3e94ceefd0e9ef6cb64dedaf6ff80723645f1ec035b376af31ff",
+  "server_cuda_executed": false,
+  "original_graph_data_acceptance_executed": false,
+  "original150_adam_resume_acceptance_executed": false,
+  "formal_training_started": false,
+  "files_sha256": {
+    "configs/flow_query_joint_packet2_s42_v1.json": "3f6a0ee68e5f6ca717df6efd6378b9280d7ed7bb1e4fc96b5417e86d05f5480c",
+    "docs/flow_query_joint_packet2_s42_v1.md": "449146531ff119fe45a94e5f3a233c2d4b7ee28afddf7ecb3a056296bf4f8912",
+    "scripts/run_flow_query_joint_packet2.py": "d763e55c495f4900828c7062d5f13107a96f43b7ef9b6b9d1951229a7b446240",
+    "scripts/test_flow_query_joint_packet2.py": "e65b3c6f63a49cb89fa7fcd8b833718acfad46944067baa8960d96b741d82976",
+    "scripts/launch_flow_query_joint_packet2.sh": "07742115876375e7c9d1d1e56cc2eb2ceb0153e0b1cdcc629bfeecbecb421464",
+    "src/xgnid/joint_flow_query.py": "090d50c82dabf4408980998543286edd755d5c0114195dd370fea77e3aa47e44"
+  }
+}

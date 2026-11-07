@@ -1,0 +1,22 @@
+{
+  "schema": "xgnid.flow-query-joint-packet2.v1",
+  "base_protocol": "flow_query_pooling_s42_v1.json",
+  "base_protocol_sha256": "103770eb32ec605bbd1aaaed53bd9b0359f5ccce6c0c60bbb691731e8c98e95c",
+  "seed": 42,
+  "epochs": 200,
+  "resume_seed42_from_epoch": 150,
+  "resume_directory": "outputs/flow_query_pooling_s42_v1",
+  "encoder_lr": 0.000001,
+  "head_lr": 0.00001,
+  "pool_lr": 0.0001,
+  "weight_decay": 0.0,
+  "batch_size": 512,
+  "eval_batch_size": 16,
+  "workers": 2,
+  "early_stop_enabled": false,
+  "include_epoch_zero": true,
+  "raw_probe_per_class": 2,
+  "raw_probe_updates": 3,
+  "test_evaluated": false,
+  "additional_seeds_deferred": [43, 44]
+}
