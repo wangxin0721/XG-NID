@@ -94,7 +94,7 @@ class ResumeChecks(unittest.TestCase):
                 root = Path(tmp)
                 for folder in ('full', 'first', 'resumed'):
                     (root/folder).mkdir()
-                initial, cache, _ = fixture(mode)
+                initial, cache, batch = fixture(mode)
                 caches, c = {'train': cache, 'val': cache}, config()
                 with contextlib.redirect_stdout(io.StringIO()):
                     full, _ = run.fit(name, copy.deepcopy(initial), caches, self.device, c, {}, root/'full')
@@ -106,6 +106,17 @@ class ResumeChecks(unittest.TestCase):
                     resume = {'saved': saved, 'history': history, 'result': first, 'folder': source}
                     candidate = copy.deepcopy(initial)
                     candidate.load_state_dict(saved['model_state'])
+                    saved_adam = copy.deepcopy(saved['optimizer_state'])
+                    saved_file_sha = run.raw.sha(source/'last.pt')
+                    # Match server execution: restore -> resumed-Adam probe ->
+                    # restore the SAME in-memory checkpoint for formal fit.
+                    probe_opt = run.parent.optimizer(candidate, c)
+                    probe_sampler = run.raw.TrainBatches(9, 4, 42)
+                    run.restore_training(candidate, probe_opt, probe_sampler, saved, c, 4)
+                    probe_receipt = run.raw_update_probe(candidate, saved, cache, list(range(9)), batch, c, self.device)
+                    self.assertTrue(probe_receipt['checkpoint_optimizer_unchanged'])
+                    run.assert_tree_equal(saved_adam, saved['optimizer_state'])
+                    self.assertEqual(run.raw.sha(source/'last.pt'), saved_file_sha)
                     # Advance every RNG before restoring, as a real restarted
                     # process and the preflight checks do.
                     random.random(); np.random.rand(3); torch.rand(11)
@@ -128,6 +139,7 @@ class ResumeChecks(unittest.TestCase):
                 self.assertEqual(resumed['optimizer_updates'], 8)
                 self.assertEqual(resumed['new_optimizer_updates'], 4)
                 self.assertEqual(resumed['best150_validation'], first['best_validation'])
+                run.assert_tree_equal(saved_adam, saved['optimizer_state'])
 
     def test_next_update_and_rng_draws_identical_after_restore(self):
         model, cache, _ = fixture()
@@ -156,6 +168,9 @@ class ResumeChecks(unittest.TestCase):
         self.assertEqual(run.parent.step(fresh, cache, next_batch, self.device, restored_opt), loss)
         run.assert_tree_equal(fresh.state_dict(), expected[0])
         run.assert_tree_equal(restored_opt.state_dict(), expected[1])
+        # Formal training owns its Adam tensors too; the reusable input remains
+        # at its original step, including CPU moments and the CPU step counter.
+        self.assertTrue(all(int(s['step']) == 2 for s in saved['optimizer_state']['state'].values()))
         with self.assertRaisesRegex(ValueError, 'counter'):
             run.restore_training(fresh, restored_opt, restored_sampler, saved, c, 99)
 
@@ -176,6 +191,57 @@ class ResumeChecks(unittest.TestCase):
         corrupted['packet64'] += 100
         with self.assertRaisesRegex(ValueError, 'Raw/cache'):
             run.compare_raw_cache(model, batch, corrupted, list(range(9)), self.device)
+
+    def test_restored_adam_probe_failure_preserves_checkpoint_and_rng(self):
+        model, cache, batch = fixture()
+        c = config()
+        opt = run.parent.optimizer(model, c)
+        run.parent.step(model, cache, list(range(9)), self.device, opt)
+        saved = {'optimizer_state': copy.deepcopy(opt.state_dict())}
+        snapshot, rng = copy.deepcopy(saved['optimizer_state']), run.raw.rng_hash(run.raw.rng_state())
+        normal_step = run.parent.step
+
+        def fail_after_update(*args, **kwargs):
+            normal_step(*args, **kwargs)
+            random.random(); np.random.rand(); torch.rand(3)
+            raise ValueError('failure after Adam update')
+
+        with patch.object(run.parent, 'step', side_effect=fail_after_update):
+            with self.assertRaisesRegex(ValueError, 'failure after Adam update'):
+                run.raw_update_probe(model, saved, cache, list(range(9)), batch, c, self.device)
+        run.assert_tree_equal(saved['optimizer_state'], snapshot)
+        self.assertEqual(run.raw.rng_hash(run.raw.rng_state()), rng)
+
+    def test_retry_preserves_only_known_failure_without_formal_updates(self):
+        with tempfile.TemporaryDirectory(dir=self.temporary) as tmp:
+            repo = Path(tmp).resolve()
+            outputs = repo/'outputs'
+            folder = outputs/'flow_query_joint_packet2_s42_v1'
+            arm = folder/'Frozen-Mean'
+            arm.mkdir(parents=True)
+            source = outputs/'flow_query_pooling_s42_v1'/'Mean-Query'
+            source.mkdir(parents=True)
+            prefix = b'{"epoch": 150}\n'
+            (source/'epochs.jsonl').write_bytes(prefix)
+            (arm/'epochs.jsonl').write_bytes(prefix)
+            run.raw.write(folder/'status.json', {'status': 'failed', 'error': 'Adam update counter differs'})
+            run.raw.write(folder/'preflight.json', {'formal_training_started': False})
+            # Any evidence that the continuation actually started blocks this
+            # narrow retry, without renaming or deleting the directory.
+            (arm/'resume_receipt.json').write_bytes(b'{}')
+            with self.assertRaisesRegex(ValueError, 'formal continuation'):
+                run.archive_failed_preflight(repo)
+            self.assertTrue(folder.exists())
+            (arm/'resume_receipt.json').unlink()
+            (arm/'epochs.jsonl').write_bytes(prefix+b'{"epoch": 151}\n')
+            with self.assertRaisesRegex(ValueError, 'new epoch records'):
+                run.archive_failed_preflight(repo)
+            (arm/'epochs.jsonl').write_bytes(prefix)
+            with contextlib.redirect_stdout(io.StringIO()):
+                backup = run.archive_failed_preflight(repo)
+            self.assertFalse(folder.exists())
+            self.assertEqual((backup/'Frozen-Mean'/'epochs.jsonl').read_bytes(), prefix)
+            self.assertEqual((source/'epochs.jsonl').read_bytes(), prefix)
 
     def test_seed_pair_initial_weights_match_but_new_seeds_change_keys(self):
         keys = []

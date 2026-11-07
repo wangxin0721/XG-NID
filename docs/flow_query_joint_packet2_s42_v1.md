@@ -81,10 +81,30 @@ JCL-Multi的97.524609%仅作历史成绩参考。当前只筛选这一轮四组�
 
 ## 服务器启动
 
-先上传本次交付的离线tar.gz到项目根目录，核对交付SHA256，解压到独立临时目录。
+在线启动可从GitHub获取修复后的提交，使用`git -c core.autocrlf=false archive`将代码解压到独立临时目录。
+也可上传本次交付的离线tar.gz到项目根目录，核对交付SHA256，再解压到独立临时目录。
 在项目根目录执行`bash "$bundle/scripts/launch_flow_query_joint_packet2.sh" 1`，
-启动器先在CPU运行8项回归，再后台启动GPU1的四组任务，并打印独立日志与PID。
+启动器先在CPU运行10项回归，再后台启动GPU1的四组任务，并打印独立日志与PID。
 也可手动执行`python -B scripts/test_flow_query_joint_packet2.py`，再执行
 `python -B -u scripts/run_flow_query_joint_packet2.py --repo "$PWD" --train`。
 runner完成全部四组预检后才开始正式训练；不加`--train`仅预检，写独立preflight目录。
 原150轮输出、D32检查点、Packet节点缓存和原图必须保留。输出目录存在时拒绝覆盖。
+
+## 2026-11-07：Adam探测状态隔离修复
+
+服务器第一次运行在正式续训的Adam步数核对处失败，尚未执行第151轮。
+原因是`optimizer.load_state_dict`可能复用同设备张量；探测优化器与内存中的
+原检查点共享CPU步数，3次探测使它由31650变成31653。
+在CPU上复现时，Adam动量也会共享并被改动。磁盘上的原检查点不受这些内存更新影响。
+
+修复对正式恢复和探测恢复都先deepcopy优化器状态，并在探测finally中检查原Adam状态未改变。
+步数核对仍然严格执行，失败时同时给出预期步数和实际分布。
+原8项CPU回归漏测了“恢复→带Adam探测→再次恢复”的完整顺序；
+此次将它加入两种查询的连续训练对比，并补上探测更新后异常的状态保护测试。
+
+针对这次已知错误，可在启动器GPU参数后加`--retry-preflight-failure`。
+它先运行CPU测试，后台启动时核查旧status/preflight、复制的150轮账本及正式训练产物。
+只有确认是原始Adam步数错误、无正式更新记录，才把整个失败目录改名保留为
+`flow_query_joint_packet2_s42_v1_preflight_failed_<唯一编号>`，然后从磁盘原150轮状态重新预检和续训。
+有新轮次、resume收据、已完成结果或联合训练目录时拒绝自动处理。
+不删除失败目录；训练范围、学习率、公式和200轮预算不变。

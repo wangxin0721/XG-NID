@@ -7,6 +7,7 @@ import json
 import random
 import shutil
 import time
+from collections import Counter
 from pathlib import Path
 
 import numpy as np
@@ -59,18 +60,23 @@ def restore_training(model, opt, sampler, saved, config, expected_updates):
     model.load_state_dict(saved['model_state'], strict=True)
     # saved was loaded onto CPU. Adam.load_state_dict casts moments to the parameter
     # device while retaining the ordinary (non-capturable) CPU step counter.
-    opt.load_state_dict(saved['optimizer_state'])
+    # load_state_dict may reuse same-device tensors (notably Adam's CPU step
+    # counter even when parameters are CUDA). Own the state before any update.
+    opt.load_state_dict(copy.deepcopy(saved['optimizer_state']))
     assert_tree_equal(saved['optimizer_state'], opt.state_dict(), 'Adam')
     groups = opt.param_groups
     require([g['lr'] for g in groups] == [config['head_lr'], config['pool_lr']]
             and all(g['weight_decay'] == config['weight_decay'] for g in groups), 'Restored Adam settings differ')
     parameters = [p for group in groups for p in group['params']]
     require(set(opt.state) == set(parameters), 'Missing Adam parameter state')
-    require(all(int(opt.state[p]['step']) == expected_updates for p in parameters), 'Adam update counter differs')
+    counters = dict(sorted(Counter(int(opt.state[p]['step']) for p in parameters).items()))
+    require(set(counters) == {expected_updates},
+            f'Adam update counter differs: expected={expected_updates}, observed={counters}')
     sampler.generator.set_state(saved['sampler_rng'].cpu())
     require(torch.equal(sampler.generator.get_state(), saved['sampler_rng'].cpu()), 'Sampler restoration differs')
     restore_rng(saved['rng'])
     return {'strict_model_load': True, 'adam_values_identical': True, 'adam_updates': expected_updates,
+            'adam_parameter_step_distribution': counters,
             'rng_sha256': raw.rng_hash(raw.rng_state()),
             'sampler_sha256': raw.state_digest({'sampler': sampler.generator.get_state()})}
 
@@ -158,11 +164,12 @@ def compare_raw_cache(model, batch, cache, numbers, device):
 def raw_update_probe(model, saved, cache, numbers, batch, config, device):
     rng = raw.rng_state()
     digest, frozen = raw.state_digest(model.state_dict()), parent.encoder_hash(model)
+    checkpoint_adam = copy.deepcopy(saved['optimizer_state']) if saved is not None else None
     try:
         candidate = copy.deepcopy(model)
         opt = parent.optimizer(candidate, config)
         if saved is not None:
-            opt.load_state_dict(saved['optimizer_state'])
+            opt.load_state_dict(copy.deepcopy(saved['optimizer_state']))
             assert_tree_equal(saved['optimizer_state'], opt.state_dict())
         before = compare_raw_cache(candidate, batch, cache, numbers, device)
         records, changed = [], set()
@@ -181,9 +188,12 @@ def raw_update_probe(model, saved, cache, numbers, batch, config, device):
         require(changed == {'query', 'key'} and parent.encoder_hash(candidate) == frozen, 'Probe update/frozen state differs')
         require(raw.state_digest(model.state_dict()) == digest, 'Probe changed formal training start')
         return {'before': before, 'updates': records, 'after': after, 'formal_state_unchanged': True,
-                'restored_adam_used': saved is not None, 'samples': len(numbers)}
+                'restored_adam_used': saved is not None,
+                'checkpoint_optimizer_unchanged': saved is not None, 'samples': len(numbers)}
     finally:
         restore_rng(rng)
+        if saved is not None:
+            assert_tree_equal(checkpoint_adam, saved['optimizer_state'], 'Probe source checkpoint Adam')
 
 
 def inherit_checkpoint(source, destination, cfg):
@@ -707,12 +717,49 @@ def run(repo, output, train):
               'test_evaluated': False, 'source_artifacts_unchanged': True, 'automatic_followup': False})
 
 
+def archive_failed_preflight(repo):
+    """Preserve only the known pre-training failure; reject runs with updates."""
+    root = (repo/'outputs').resolve()
+    folder = root/'flow_query_joint_packet2_s42_v1'
+    require(folder.is_dir() and not folder.is_symlink() and folder.resolve().parent == root,
+            'Retry requires the named original failed output directory')
+    status = raw.read(folder/'status.json')
+    require(status.get('status') == 'failed' and status.get('error') == 'Adam update counter differs',
+            'Retry only accepts the known original preflight Adam counter failure')
+    preflight = raw.read(folder/'preflight.json')
+    require(preflight.get('formal_training_started') is False, 'Original preflight receipt missing')
+    require(not any((folder/n).exists() for n in ('summary.json', 'analysis.json', 'report.md')),
+            'Refuse to archive a run with final results')
+    for name, old_name in FROZEN.items():
+        arm = folder/name
+        require(not any((arm/n).exists() for n in (
+            'last.pt', 'best.pt', 'metrics.json', 'resume_receipt.json', 'validation_predictions.jsonl.gz')),
+            'Refuse to archive a run that reached formal continuation: '+name)
+        ledger = arm/'epochs.jsonl'
+        if ledger.exists():
+            original = repo/'outputs/flow_query_pooling_s42_v1'/old_name/'epochs.jsonl'
+            require(ledger.read_bytes() == original.read_bytes(), 'Failed run contains new epoch records: '+name)
+    require(all(not (folder/name).exists() for name in JOINT), 'Joint training output already exists')
+    backup = root/(folder.name+'_preflight_failed_'+str(time.time_ns()))
+    # Both resolved endpoints stay in the explicitly named outputs directory.
+    require(backup.resolve().parent == root and not backup.exists(), 'Invalid retry backup path')
+    folder.rename(backup)
+    print(json.dumps({'preserved_failed_preflight': str(backup), 'new_formal_updates_in_failed_run': 0}), flush=True)
+    return backup
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--repo', type=Path, default=Path.cwd())
     parser.add_argument('--train', action='store_true')
+    parser.add_argument('--retry-preflight-failure', action='store_true',
+                        help='Preserve the known Adam preflight failure, then start from clean original last.pt files')
     args = parser.parse_args()
     repo = args.repo.resolve()
+    if args.retry_preflight_failure:
+        require(args.train, 'Retry flag requires --train')
+        if (repo/'outputs/flow_query_joint_packet2_s42_v1').exists():
+            archive_failed_preflight(repo)
     name = 'flow_query_joint_packet2_s42_v1' if args.train else 'flow_query_joint_packet2_preflight_s42_v1'
     output = repo/'outputs'/name
     output.mkdir()

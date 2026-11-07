@@ -7,7 +7,7 @@
     "torch": "2.3.1+cpu",
     "pyg": "2.5.3"
   },
-  "cpu_tests": 8,
+  "cpu_tests": 10,
   "checks": [
     "Exact next batch, RNG draws and next Adam/model update after restore",
     "Full uninterrupted vs resumed fit, both query sources, inherited best and byte-preserved prefix",
@@ -22,7 +22,11 @@
     "Bash launcher syntax",
     "All new source files LF-only",
     "Mature D32 SHA and strict state load; identical joint/frozen initialization; parameter groups7144/1024/8704/8512",
-    "Archived150 source hashes unchanged"
+    "Archived150 source hashes unchanged",
+    "Restored-Adam probe followed by second restore and exact resumed fit for both query sources",
+    "Original in-memory Adam steps and moments unchanged after probe and formal continuation",
+    "Exception after a restored-Adam update preserves input checkpoint and RNG",
+    "Retry archives only the known preflight failure and rejects evidence of formal updates"
   ],
   "mature_D32_sha256": "7815875a111d3e94ceefd0e9ef6cb64dedaf6ff80723645f1ec035b376af31ff",
   "server_cuda_executed": false,
@@ -31,10 +35,22 @@
   "formal_training_started": false,
   "files_sha256": {
     "configs/flow_query_joint_packet2_s42_v1.json": "3f6a0ee68e5f6ca717df6efd6378b9280d7ed7bb1e4fc96b5417e86d05f5480c",
-    "docs/flow_query_joint_packet2_s42_v1.md": "449146531ff119fe45a94e5f3a233c2d4b7ee28afddf7ecb3a056296bf4f8912",
-    "scripts/run_flow_query_joint_packet2.py": "d763e55c495f4900828c7062d5f13107a96f43b7ef9b6b9d1951229a7b446240",
-    "scripts/test_flow_query_joint_packet2.py": "e65b3c6f63a49cb89fa7fcd8b833718acfad46944067baa8960d96b741d82976",
-    "scripts/launch_flow_query_joint_packet2.sh": "07742115876375e7c9d1d1e56cc2eb2ceb0153e0b1cdcc629bfeecbecb421464",
+    "docs/flow_query_joint_packet2_s42_v1.md": "61dd62bc2c92a9fcd6bb16e130d68cc1877f3432dd17a4bf24b29945c819d0ca",
+    "scripts/run_flow_query_joint_packet2.py": "93bff3969bae6814ab4821f35270f28afe31ecc2b8e9e92bc98901bb07122abd",
+    "scripts/test_flow_query_joint_packet2.py": "7f3a336a7bbb1492e6acbc5e6f5030ffe6a8d8f43877473a5d05e4ad5ff3200d",
+    "scripts/launch_flow_query_joint_packet2.sh": "7a917ef8f51e7f4bbd7f7f6fdfbbe8ec5295812216974138fa33c4a572fe2070",
     "src/xgnid/joint_flow_query.py": "090d50c82dabf4408980998543286edd755d5c0114195dd370fea77e3aa47e44"
+  },
+  "adam_state_isolation_fix": {
+    "server_reported_error": "Adam update counter differs",
+    "pre_fix_CPU_reproducer": {
+      "saved_steps_before": 2,
+      "saved_steps_after_three_probe_updates": 5,
+      "saved_moments_changed": true
+    },
+    "fix": "Deep-copy loaded Adam state for probe and formal restore; assert source state unchanged in probe finally",
+    "step_validation_remains_strict": true,
+    "restart_policy": "Preserve verified failed preflight directory; reload original150 disk artifacts and repeat preflight",
+    "server_CUDA_retry_executed_locally": false
   }
 }
