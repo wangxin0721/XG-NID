@@ -112,8 +112,31 @@ JCL-Multi的97.524609%仅保留为历史成绩参考，不作本轮匹配训练�
 新目录：outputs/flow_query_joint_seeds43_44_v1。
 seed42_audit为只读来源核验与概率回放，seed43/44各包含Joint-Mean/Flow训练目录。
 顶层输出status、preflight、config、binding、input_receipts、summary、analysis、report和per_class.csv。
+另保存source_metrics_check.json，记录真实D32来源的分类指标核对及保留的诊断字段。
 旧结果不会被覆盖；新输出目录存在时拒绝覆盖。
 通过GitHub获取本次提交并归档到独立临时目录后，在项目根目录执行
-`bash "$bundle/scripts/launch_flow_query_joint_seeds.sh" 1`，启动器先执行CPU回归，
-再后台启动GPU1任务并打印PID与日志命令。
+`bash "$bundle/scripts/launch_flow_query_joint_seeds.sh" 1`，启动器先执行11项CPU回归，
+并以CPU读取真实D32检查点/预测做来源核对，通过后后台启动GPU1任务并打印PID与日志命令。
 不加--train直接运行runner可只做审计与预检，写独立preflight目录。
+
+## 2026-11-09：旧D32指标格式兼容修复
+
+原入口把重新计算的分类报告与D32检查点的整个validation字典直接比较。
+真实D32检查点还包含flow_weight_distribution门控统计，导致分类指标完全一致时仍报
+`Source predictions/metrics differ`。第一次失败发生在来源核对处，尚未开始seed42审计或新训练。
+
+现在通过classification_metrics核对accuracy、macro_f1、weighted_f1、per_class、
+confusion_matrix和samples六个分类字段；字段必须齐全，而且必须严格等于该混淆矩阵的计算结果。
+来源预测也须重建同一份完整分类报告，不放宽指标容差。
+额外门控统计保持在原检查点中，核验收据列出preserved_diagnostic_fields，模型及超参数不变。
+同一规范用于来源文件检查和后续四个模型的第0轮比较，避免下一阶段再次因格式误报。
+
+启动器在后台提交前调用runner的--check-source-only，读取真实文件并核对SHA、轮次、
+预测ID/标签有效性及分类指标；完整manifest顺序与原图仍由正式预检核对。
+该CPU来源检查不创建训练输出目录，不更新模型。
+
+针对此次已知失败，可执行启动器时加第二参数--retry-source-check-failure。
+只有原输出status为这次已知错误、目录仅含status.json时，才将其改名保留为
+flow_query_joint_seeds43_44_v1_source_check_failed_<唯一编号>。
+已经有配置、审计或训练产物的目录会被拒绝处理；不会删除原结果。
+原seed42检查点、账本、预测和+0.10个百分点门槛判定均保持不变。

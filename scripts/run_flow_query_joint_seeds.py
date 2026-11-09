@@ -4,6 +4,7 @@ import csv
 import json
 import math
 import statistics
+import time
 from collections import Counter
 from pathlib import Path
 
@@ -16,6 +17,7 @@ import run_flow_query_joint_packet2 as core
 raw, require, LABELS = core.raw, core.require, core.LABELS
 CONFIG = raw.ROOT/'configs/flow_query_joint_seeds43_44_v1.json'
 NAMES = ('Joint-Mean', 'Joint-Flow')
+CLASSIFICATION_FIELDS = ('accuracy', 'macro_f1', 'weighted_f1', 'per_class', 'confusion_matrix', 'samples')
 
 
 def stage_config(previous, study):
@@ -23,6 +25,35 @@ def stage_config(previous, study):
     # seed42 frozen-resume stage as part of these fresh43/44 joint trainings.
     stale = {'seed', 'resume_seed42_from_epoch', 'resume_directory', 'additional_seeds_deferred', 'variants'}
     return {**{key: value for key, value in previous.items() if key not in stale}, **study}
+
+
+def classification_metrics(report):
+    """Validate the complete classification result; preserve extra diagnostics."""
+    require(all(key in report for key in CLASSIFICATION_FIELDS), 'Missing classification metric fields')
+    classification = {key: report[key] for key in CLASSIFICATION_FIELDS}
+    require(classification == core.parent.matrix_report(report['confusion_matrix']),
+            'Classification metrics disagree with their confusion matrix')
+    return classification
+
+
+def load_source(repo, config, expected_rows=None):
+    root = repo/config['source_directory']
+    paths = {root/'best.pt': config['source_sha256'],
+             root/'validation_predictions.jsonl.gz': config['source_predictions_sha256']}
+    for path, digest in paths.items():
+        require(raw.sha(path) == digest, 'Mature source hash differs: '+str(path))
+    saved = torch.load(root/'best.pt', map_location='cpu', weights_only=False)
+    require(saved['epoch'] == config['source_epoch'] == 62
+            and saved['validation']['macro_f1'] == config['source_macro_f1'], 'Wrong mature D32 source')
+    measured = classification_metrics(saved['validation'])
+    gold = core.read_predictions(root/'validation_predictions.jsonl.gz')
+    require(validate_predictions(gold, expected_rows, False) == measured, 'Source predictions/metrics differ')
+    receipt = {'status': 'passed', 'source_sha256': config['source_sha256'],
+               'predictions_sha256': config['source_predictions_sha256'], 'samples': measured['samples'],
+               'classification_fields_checked': list(CLASSIFICATION_FIELDS),
+               'preserved_diagnostic_fields': sorted(set(saved['validation'])-set(CLASSIFICATION_FIELDS)),
+               'original_source_report_unchanged': True}
+    return saved, gold, receipt
 
 
 def validate_predictions(records, expected=None, probabilities=True):
@@ -339,12 +370,7 @@ def prepare(repo, output):
     require((len(rows['train']), len(rows['val'])) == (107621, 13446), 'Wrong fixed split sizes')
     root = repo/config['source_directory']
     inputs = {root/'best.pt': config['source_sha256'], root/'validation_predictions.jsonl.gz': config['source_predictions_sha256']}
-    for path, digest in inputs.items():
-        require(raw.sha(path) == digest, 'Mature source hash differs: '+str(path))
-    saved = torch.load(root/'best.pt', map_location='cpu', weights_only=False)
-    require(saved['epoch'] == 62 and saved['validation']['macro_f1'] == config['source_macro_f1'], 'Wrong mature D32 source')
-    gold = core.read_predictions(root/'validation_predictions.jsonl.gz')
-    require(validate_predictions(gold, rows['val'], False) == saved['validation'], 'Source predictions/metrics differ')
+    saved, gold, source_check = load_source(repo, config, rows['val'])
     sources = set(archive['binding']['sources']) | {
         'scripts/run_flow_query_joint_seeds.py', 'scripts/test_flow_query_joint_seeds.py',
         'scripts/launch_flow_query_joint_seeds.sh', 'configs/flow_query_joint_seeds43_44_v1.json',
@@ -353,9 +379,11 @@ def prepare(repo, output):
                'sources': {name: raw.sha(raw.ROOT/name) for name in sorted(sources)},
                'manifest_sha256': data.metadata['sample_manifest_sha256'], 'split_json_sha256': raw.sha(data.directory/'split.json'),
                'torch': torch.__version__,
-               'pyg': torch_geometric.__version__, 'cuda_device': torch.cuda.get_device_name(0)}
+               'pyg': torch_geometric.__version__, 'cuda_device': torch.cuda.get_device_name(0),
+               'source_classification_check': source_check}
     raw.write(output/'config.json', config)
     raw.write(output/'binding.json', binding)
+    raw.write(output/'source_metrics_check.json', source_check)
     return config, archive, data, rows, saved, gold, inputs, binding
 
 
@@ -366,6 +394,7 @@ def run(repo, output, train):
     torch.backends.cuda.matmul.allow_tf32 = torch.backends.cudnn.allow_tf32 = False
     device = torch.device('cuda:0')
     config, archive, data, rows, source, gold, inputs, binding = prepare(repo, output)
+    source_metrics = classification_metrics(source['validation'])
     pairs = {'42': audit_seed42(repo, output/'seed42_audit', data, rows, device, archive,
                               source['model_state'], config, inputs)}
     # Only16 real training graphs form this temporary probe snapshot. All formal
@@ -388,7 +417,7 @@ def run(repo, output, train):
             require(core.parent.encoder_hash(model) == config['encoder_sha256'], 'Initial encoder differs from mature source')
             measured, predictions = probability_replay(model, core.graph_loader(data, rows['val'], 'val', c),
                                                        rows['val'], device, output, f'seed{seed}_{name}_epoch0')
-            require(measured == source['validation'] and core.parent.identities(predictions) == core.parent.identities(gold),
+            require(measured == source_metrics and core.parent.identities(predictions) == core.parent.identities(gold),
                     'New paired epoch0 predictions differ from D32')
             preflights[str(seed)][name] = {'initial_state_sha256': raw.state_digest(model.state_dict()),
                 'epoch_zero': measured, 'probe': core.joint_probe(model, cache, list(range(size)), batch, c, device)}
@@ -438,12 +467,45 @@ def run(repo, output, train):
               'automatic_followup': False})
 
 
+def archive_failed_source_check(repo):
+    """Preserve the known setup-only failure; never move an audit/training run."""
+    root = (repo/'outputs').resolve()
+    folder = root/'flow_query_joint_seeds43_44_v1'
+    require(folder.is_dir() and not folder.is_symlink() and folder.resolve().parent == root,
+            'Retry requires the named failed output directory')
+    status = raw.read(folder/'status.json')
+    require(status.get('status') == 'failed' and status.get('error') == 'Source predictions/metrics differ',
+            'Retry accepts only the original source-report comparison failure')
+    require({path.name for path in folder.iterdir()} == {'status.json'},
+            'Refuse to move a run containing setup/audit/training artifacts')
+    backup = root/(folder.name+'_source_check_failed_'+str(time.time_ns()))
+    require(backup.resolve().parent == root and not backup.exists(), 'Invalid source-check backup path')
+    folder.rename(backup)
+    print(json.dumps({'preserved_failed_source_check': str(backup), 'new_formal_updates_in_failed_run': 0}), flush=True)
+    return backup
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--repo', type=Path, default=Path.cwd())
     parser.add_argument('--train', action='store_true')
+    parser.add_argument('--check-source-only', action='store_true', help='Read-only CPU source SHA/prediction/classification check')
+    parser.add_argument('--retry-source-check-failure', action='store_true', help='Preserve the known setup-only failed directory')
     args = parser.parse_args()
     repo = args.repo.resolve()
+    if args.check_source_only:
+        require(not args.train and not args.retry_source_check_failure, 'Source-only check cannot start/retry training')
+        study = raw.read(CONFIG)
+        archive_path = raw.ROOT/'docs'/study['seed42_archive']
+        require(raw.sha(archive_path) == study['seed42_archive_sha256'], 'Registered seed42 archive changed')
+        archive = raw.read(archive_path)
+        _, _, receipt = load_source(repo, stage_config(archive['protocol'], study))
+        print(json.dumps(receipt), flush=True)
+        return
+    if args.retry_source_check_failure:
+        require(args.train, 'Retry flag requires --train')
+        if (repo/'outputs/flow_query_joint_seeds43_44_v1').exists():
+            archive_failed_source_check(repo)
     name = 'flow_query_joint_seeds43_44_v1' if args.train else 'flow_query_joint_seeds43_44_preflight_v1'
     output = repo/'outputs'/name
     output.mkdir()

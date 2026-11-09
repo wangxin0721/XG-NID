@@ -67,6 +67,74 @@ class SeedChecks(unittest.TestCase):
                 with self.assertRaises(ValueError):
                     run.validate_predictions(rows, good)
 
+    def test_legacy_diagnostic_fields_do_not_change_classification_comparison(self):
+        expected = run.validate_predictions(predictions(list(range(8))))
+        legacy = {**copy.deepcopy(expected), 'flow_weight_distribution': {'mean': [.5]*32, 'std': [0.]*32}}
+        original = copy.deepcopy(legacy)
+        self.assertEqual(run.classification_metrics(legacy), expected)
+        self.assertEqual(legacy, original)
+        for field in ('samples', 'macro_f1', 'per_class', 'confusion_matrix'):
+            with self.subTest(field=field):
+                bad = copy.deepcopy(legacy)
+                if field == 'samples':
+                    bad[field] += 1
+                elif field == 'macro_f1':
+                    bad[field] -= .01
+                elif field == 'per_class':
+                    bad[field]['WebBased']['recall'] -= .01
+                else:
+                    bad[field][0][0] += 1
+                with self.assertRaisesRegex(ValueError, 'confusion matrix'):
+                    run.classification_metrics(bad)
+        missing = copy.deepcopy(legacy)
+        del missing['per_class']
+        with self.assertRaisesRegex(ValueError, 'Missing classification'):
+            run.classification_metrics(missing)
+
+    def test_source_precheck_uses_real_file_format_and_keeps_legacy_report(self):
+        rows = predictions(list(range(8)))
+        metrics = run.validate_predictions(rows)
+        legacy = {**copy.deepcopy(metrics), 'flow_weight_distribution': {'mean': [.5]*32}}
+        with tempfile.TemporaryDirectory(dir=self.temporary) as tmp:
+            repo = Path(tmp)
+            source = repo/'D32'
+            source.mkdir()
+            path = source/'best.pt'
+            run.torch.save({'epoch': 62, 'validation': legacy, 'model_state': {}}, path)
+            pred = source/'validation_predictions.jsonl.gz'
+            run.raw.save_predictions(pred, rows)
+            c = {'source_directory': 'D32', 'source_epoch': 62, 'source_macro_f1': 1.,
+                 'source_sha256': run.raw.sha(path), 'source_predictions_sha256': run.raw.sha(pred)}
+            saved, gold, receipt = run.load_source(repo, c, rows)
+            self.assertEqual(run.classification_metrics(saved['validation']), metrics)
+            self.assertEqual(saved['validation'], legacy)
+            self.assertEqual(gold, rows)
+            self.assertEqual(receipt['preserved_diagnostic_fields'], ['flow_weight_distribution'])
+            self.assertEqual(run.raw.sha(path), c['source_sha256'])
+            wrong = copy.deepcopy(rows)
+            wrong[0]['prediction'] = 1
+            run.raw.save_predictions(pred, wrong)
+            c['source_predictions_sha256'] = run.raw.sha(pred)
+            with self.assertRaisesRegex(ValueError, 'Source predictions/metrics'):
+                run.load_source(repo, c, rows)
+
+    def test_source_check_retry_preserves_only_status_only_failure(self):
+        with tempfile.TemporaryDirectory(dir=self.temporary) as tmp:
+            repo = Path(tmp).resolve()
+            folder = repo/'outputs'/'flow_query_joint_seeds43_44_v1'
+            folder.mkdir(parents=True)
+            status = {'status': 'failed', 'error': 'Source predictions/metrics differ'}
+            run.raw.write(folder/'status.json', status)
+            (folder/'seed42_audit').mkdir()
+            with self.assertRaisesRegex(ValueError, 'setup/audit/training'):
+                run.archive_failed_source_check(repo)
+            self.assertTrue(folder.exists())
+            (folder/'seed42_audit').rmdir()
+            with contextlib.redirect_stdout(io.StringIO()):
+                backup = run.archive_failed_source_check(repo)
+            self.assertFalse(folder.exists())
+            self.assertEqual(run.raw.read(backup/'status.json'), status)
+
     def test_sample_evidence_distinguishes_repairs_from_other_wrong_predictions(self):
         mean = predictions([2, 3, 2, 1, 4, 5, 6, 7])
         flow = predictions([1, 1, 0, 3, 4, 5, 6, 7])

@@ -7,7 +7,7 @@
     "torch": "2.3.1+cpu",
     "pyg": "2.5.3"
   },
-  "cpu_tests": 8,
+  "cpu_tests": 11,
   "checks": [
     "Probability normalization, exp(log-softmax), argmax, sample identity/order/label guards",
     "Paired repairs/regressions and both-wrong changes rebuilt from actual synthetic predictions",
@@ -20,7 +20,12 @@
     "Bash launcher syntax",
     "All17 archived seed42 source hashes unchanged",
     "Actual local mature D32 checkpoint SHA and strict new-seed model loads; encoder hashes and7144/1024/8704/8512 group sizes",
-    "Fresh43/44 stage excludes stale seed42 frozen-resume/deferred-seed fields"
+    "Fresh43/44 stage excludes stale seed42 frozen-resume/deferred-seed fields",
+    "Legacy D32 flow_weight_distribution preserved while all six classification fields compare exactly",
+    "Missing or incorrect class metrics and count/probability mismatches still rejected",
+    "Source precheck exercised through serialized checkpoints and gzip prediction files",
+    "Known source-only failure archived; existing audit/training evidence blocks retry",
+    "Actual pinned local D32 checkpoint and13446 original prediction records pass read-only CPU source precheck"
   ],
   "mature_D32_source_sha256": "7815875a111d3e94ceefd0e9ef6cb64dedaf6ff80723645f1ec035b376af31ff",
   "registered_exploratory_exception": true,
@@ -31,10 +36,25 @@
   "formal_training_started": false,
   "files_sha256": {
     "configs/flow_query_joint_seeds43_44_v1.json": "fcd8fbdb50767610b73d87d8442ce004cb0f738f663e80eb1fe34e668ad96338",
-    "docs/flow_query_joint_seeds43_44_v1.md": "e84f04c9f4655503aee30309945d4f4e77a6df996e990cb4c2d3724a2873c1a9",
+    "docs/flow_query_joint_seeds43_44_v1.md": "dd3fb3f68f5c739ad13ddf008071d87b672fe53e8252658a7cfa988c08280a84",
     "docs/flow_query_joint_packet2_server_summary_20261109.json": "4c1ab3160c39d0f067563e051ae89e898e22b06373b1331231122d5e14374c69",
-    "scripts/run_flow_query_joint_seeds.py": "7a2ba5d6afba9112f88a9991040a08faab26b825470aa6237fb97c1bebc85267",
-    "scripts/test_flow_query_joint_seeds.py": "44b2454f49e169a8a1a1f658303d75a38ab982a937d7234a254dbeda67376c8f",
-    "scripts/launch_flow_query_joint_seeds.sh": "eac52171c89b00e8b4016f7714ecd1a67f363dbc479bd8f0e5eabe6b655720da"
+    "scripts/run_flow_query_joint_seeds.py": "4bb280d3a81c11e2a89cd646d2391e32d8a6704a5d726ae115b13b7022704e53",
+    "scripts/test_flow_query_joint_seeds.py": "258e25fc0b9e07e3e6ed2841dd368ab43a30d151d4dda28687a187d9463a08c0",
+    "scripts/launch_flow_query_joint_seeds.sh": "9a6da1ecdf25a72454e79ad11d6d19002c10e36b2c0e9ba490c0a63efbd4f84f"
+  },
+  "source_report_format_fix": {
+    "original_failure": "Source predictions/metrics differ",
+    "root_cause": "Legacy D32 validation contains additional flow_weight_distribution; whole-dictionary equality was wrong",
+    "actual_source_sha256": "7815875a111d3e94ceefd0e9ef6cb64dedaf6ff80723645f1ec035b376af31ff",
+    "actual_source_predictions_sha256": "5a7505a87292f8651b1c8b58e8d83ce9f6ebc573b58cc220deec1491b7ffd1d2",
+    "actual_source_prediction_rows_recomputed": 13446,
+    "classification_fields_equal": true,
+    "preserved_diagnostic_fields": [
+      "flow_weight_distribution"
+    ],
+    "raw_graph_replay_executed_locally": false,
+    "metrics_tolerance_relaxed": false,
+    "original_checkpoint_unchanged": true,
+    "training_protocol_changed": false
   }
 }
