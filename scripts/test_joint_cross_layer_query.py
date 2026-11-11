@@ -65,6 +65,39 @@ class CombinedChecks(unittest.TestCase):
             torch.testing.assert_close(pooled, expected, rtol=0, atol=0)
             torch.testing.assert_close(weights, torch.tensor([1., 0.5, 0.5]), rtol=0, atol=0)
 
+    def test_epoch_ledger_uses_python39_compatible_exact_lf_bytes(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            ledger = Path(tmp) / 'epochs.jsonl'
+            with patch.object(Path, 'write_text', side_effect=TypeError('unsupported newline argument')):
+                run.commit_history(ledger, [{'epoch': 1}, {'epoch': 2}])
+            self.assertEqual(ledger.read_bytes(), b'{"epoch": 1}\n{"epoch": 2}\n')
+            self.assertFalse(ledger.with_suffix('.tmp').exists())
+
+    def test_resume_accepts_only_the_pinned_predecessor_binding(self):
+        states = {arm: run.raw.state_digest(model.state_dict()) for arm, model in self.models.items()}
+        binding = {'inputs': {'checkpoint': 'unchanged'}, 'source_code': {
+            run.RUNNER_PATH: 'current', 'model.py': 'unchanged'}}
+        recorded = copy.deepcopy(binding)
+        recorded['source_code'][run.RUNNER_PATH] = run.LEGACY_LEDGER_RUNNER_SHA256
+        with tempfile.TemporaryDirectory() as tmp:
+            output = Path(tmp)
+            files = {'config.json': self.config, 'binding.json': recorded,
+                     'initialization.json': {'passed': True, 'samples': 8, 'initial_state_sha256': states},
+                     'probes.json': {'arms': {arm: {'passed': True, 'initial_state_sha256': digest}
+                                              for arm, digest in states.items()}}}
+            for name, data in files.items():
+                run.raw.write(output / name, data)
+            run.raw.write(output / 'preflight.json', {'passed': True,
+                          'files': {name: run.raw.sha(output / name) for name in files}})
+            self.assertEqual(run.verify_preflight(output, self.config, binding, self.models, 'resume'), recorded)
+            self.assertEqual(run.raw.read(output / 'binding.json'), recorded)
+            self.assertEqual(run.raw.read(output / 'resume_binding.json')['execution_binding'], binding)
+            with self.assertRaisesRegex(ValueError, 'differ from preflight'):
+                run.verify_preflight(output, self.config, binding, self.models, 'train')
+            changed = {**binding, 'source_code': {**binding['source_code'], 'model.py': 'changed'}}
+            with self.assertRaisesRegex(ValueError, 'differ from preflight'):
+                run.verify_preflight(output, self.config, changed, self.models, 'resume')
+
     def test_recovery_repeats_only_uncommitted_epoch_and_matches_full_run(self):
         baseline, gold = self.gold()
         orders = run.study.epoch_orders(8, 4, 42, 3)

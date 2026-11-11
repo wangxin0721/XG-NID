@@ -20,6 +20,8 @@ from xgnid.joint_cross_layer_query import JointCrossLayerQueryClassifier
 raw, require, LABELS = legacy.raw, legacy.require, legacy.LABELS
 CONFIG = raw.ROOT / 'configs/joint_cross_layer_query_s42_v1.json'
 DEFAULT_OUTPUT = 'outputs/joint_cross_layer_query_s42_v1'
+RUNNER_PATH = 'scripts/run_joint_cross_layer_query.py'
+LEGACY_LEDGER_RUNNER_SHA256 = '999c7329c14dcec07550c13984b051b32f604b3e51446afcab2bbda694571f96'
 ARMS = {'A': None, 'B': 'packet_mean', 'C': 'flow'}
 NAMES = {'A': 'JCL-Multi', 'B': 'Mean 查询', 'C': 'Flow 查询'}
 
@@ -190,7 +192,7 @@ def snapshot_path(folder, epoch):
 
 def commit_history(path, history):
     temp = path.with_suffix('.tmp')
-    temp.write_text(''.join(json.dumps(row) + '\n' for row in history), encoding='utf-8', newline='\n')
+    temp.write_bytes(''.join(json.dumps(row) + '\n' for row in history).encode('utf-8'))
     temp.replace(path)
 
 
@@ -345,7 +347,7 @@ def prepare(repo):
     binding = {'config_sha256': raw.sha(CONFIG), 'manifest_sha256': data.metadata['sample_manifest_sha256'],
                'inputs': {str(path.relative_to(repo)): digest for path, digest in inputs.items()},
                'source_code': {path: raw.sha(raw.ROOT / path) for path in (
-                   'scripts/run_joint_cross_layer_query.py', 'scripts/run_joint_cross_layer_packet2.py',
+                   RUNNER_PATH, 'scripts/run_joint_cross_layer_packet2.py',
                    'scripts/run_flow_query_joint_packet2.py', 'scripts/run_flow_query_joint_seeds.py',
                    'scripts/run_attention_operator_pair.py', 'scripts/summarize_attention_operator_pair.py',
                    'scripts/grouped_graphs.py', 'scripts/audit_graph_split.py', 'scripts/build_grouped_split.py',
@@ -372,12 +374,18 @@ def preflight(output, config, binding, data, rows, gold, baseline, models, devic
         name: raw.sha(output / name) for name in ('config.json', 'binding.json', 'initialization.json', 'probes.json')}})
 
 
-def verify_preflight(output, config, binding, models):
+def verify_preflight(output, config, binding, models, mode):
     receipt = raw.read(output / 'preflight.json')
     names = ('config.json', 'binding.json', 'initialization.json', 'probes.json')
     require(receipt['passed'] and receipt['files'] == {name: raw.sha(output / name) for name in names},
             'Run a passing preflight before training')
-    require(raw.read(output / 'config.json') == config and raw.read(output / 'binding.json') == binding,
+    recorded = raw.read(output / 'binding.json')
+    # The Python 3.9 ledger fix changes only serialization of the same UTF-8
+    # bytes. Accept its exact predecessor on resume and retain the checkpoint
+    # binding used by the already committed epoch-zero snapshot.
+    compatible = {**binding, 'source_code': {**binding['source_code'], RUNNER_PATH: LEGACY_LEDGER_RUNNER_SHA256}}
+    require(raw.read(output / 'config.json') == config and
+            (recorded == binding or (mode == 'resume' and recorded == compatible)),
             'Training inputs or environment differ from preflight')
     init = raw.read(output / 'initialization.json')
     probes = raw.read(output / 'probes.json')['arms']
@@ -385,6 +393,10 @@ def verify_preflight(output, config, binding, models):
             all(probes[arm]['passed'] and init['initial_state_sha256'][arm] ==
                 probes[arm]['initial_state_sha256'] == raw.state_digest(model.state_dict())
                 for arm, model in models.items()), 'Formal models differ from verified preflight')
+    if recorded != binding:
+        raw.write(output / 'resume_binding.json', {'preflight_binding_sha256': raw.sha(output / 'binding.json'),
+                                                  'execution_binding': binding})
+    return recorded
 
 
 def comparison_evidence(before, after, before_metrics, after_metrics, output, name):
@@ -461,7 +473,7 @@ def run(repo, output, mode):
     if mode == 'preflight':
         preflight(output, config, binding, data, rows, gold, baseline, models, device)
         return
-    verify_preflight(output, config, binding, models)
+    binding = verify_preflight(output, config, binding, models, mode)
     sampler = raw.TrainBatches(len(rows['train']), config['batch_size'], config['seed'])
     require(len(sampler) == config['updates_per_epoch'], 'Unexpected configured update count')
     orders = study.epoch_orders(len(rows['train']), config['batch_size'], config['seed'], config['epochs'])
