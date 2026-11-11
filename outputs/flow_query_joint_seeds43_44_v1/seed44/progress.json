@@ -1,0 +1,8 @@
+{
+  "status": "running",
+  "pid": 1737884,
+  "phase": "Joint-Flow_train",
+  "epoch": 126,
+  "samples": 76800,
+  "total": 107621
+}

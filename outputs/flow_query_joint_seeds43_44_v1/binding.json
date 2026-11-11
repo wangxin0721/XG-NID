@@ -1,0 +1,52 @@
+{
+  "protocol_sha256": "fcd8fbdb50767610b73d87d8442ce004cb0f738f663e80eb1fe34e668ad96338",
+  "seed42_archive_sha256": "4c1ab3160c39d0f067563e051ae89e898e22b06373b1331231122d5e14374c69",
+  "sources": {
+    "configs/flow_query_joint_packet2_s42_v1.json": "3f6a0ee68e5f6ca717df6efd6378b9280d7ed7bb1e4fc96b5417e86d05f5480c",
+    "configs/flow_query_joint_seeds43_44_v1.json": "fcd8fbdb50767610b73d87d8442ce004cb0f738f663e80eb1fe34e668ad96338",
+    "docs/flow_query_joint_packet2_s42_v1.md": "61dd62bc2c92a9fcd6bb16e130d68cc1877f3432dd17a4bf24b29945c819d0ca",
+    "docs/flow_query_joint_packet2_server_summary_20261109.json": "4c1ab3160c39d0f067563e051ae89e898e22b06373b1331231122d5e14374c69",
+    "docs/flow_query_joint_seeds43_44_v1.md": "dd3fb3f68f5c739ad13ddf008071d87b672fe53e8252658a7cfa988c08280a84",
+    "scripts/grouped_graphs.py": "c1b1273d62fc44d91f7c9b300b66a083c1f80ef2c9c4314a62c4bbd5d708bbb4",
+    "scripts/launch_flow_query_joint_packet2.sh": "7a917ef8f51e7f4bbd7f7f6fdfbbe8ec5295812216974138fa33c4a572fe2070",
+    "scripts/launch_flow_query_joint_seeds.sh": "9a6da1ecdf25a72454e79ad11d6d19002c10e36b2c0e9ba490c0a63efbd4f84f",
+    "scripts/run_attention_operator_pair.py": "4b497bfd87b1257729b916ff79672246ad97d1275fbc6dddd77adb3a54b5e5c8",
+    "scripts/run_flow_query_joint_packet2.py": "93bff3969bae6814ab4821f35270f28afe31ecc2b8e9e92bc98901bb07122abd",
+    "scripts/run_flow_query_joint_seeds.py": "4bb280d3a81c11e2a89cd646d2391e32d8a6704a5d726ae115b13b7022704e53",
+    "scripts/run_flow_query_pooling.py": "07f15b9559887b88bbaabf55511afd3e81088ca9a6dabb178f98a458c11d888c",
+    "scripts/run_gate_interaction.py": "6032abfb804334877b40e564e71ba4d022472c8741a0f5e48a65681596cef8f0",
+    "scripts/run_packet_pool_pair.py": "bb4946a153c9a5c2c805ec8a55cf5f9697b16edc63c95c07c4d9d0f732f58537",
+    "scripts/summarize_attention_operator_pair.py": "4c3ec615e4e554ff1e6023c689efd4b2aed073817e5e5f22fed0d4a219bf52ce",
+    "scripts/test_flow_query_joint_packet2.py": "7f3a336a7bbb1492e6acbc5e6f5030ffe6a8d8f43877473a5d05e4ad5ff3200d",
+    "scripts/test_flow_query_joint_seeds.py": "258e25fc0b9e07e3e6ed2841dd368ab43a30d151d4dda28687a187d9463a08c0",
+    "src/xgnid/attention_operator_pair.py": "7f3f1929b8138ab010f394db30714a9da3ac15e92b02955d556df34cc4ecbfb6",
+    "src/xgnid/flow_query_pooling.py": "b46cf4f440ad8256f09cab71e221284d261753447d773f7a3de5c8c521bb2b66",
+    "src/xgnid/fusion_dimension.py": "eb8dd5c91a63b424bd421c29e333ff24492e5474cdabe77408abde5f81bb703d",
+    "src/xgnid/joint_flow_query.py": "090d50c82dabf4408980998543286edd755d5c0114195dd370fea77e3aa47e44",
+    "src/xgnid/model.py": "28e21e94118db0a4110d17923d2840e18959669d798f628018c98c91c0202631",
+    "src/xgnid/packet_pooling.py": "c423c573b624a98a40ee03b5b286f2dcd3297db43a0eedcf1a654590b163742d"
+  },
+  "manifest_sha256": "b8e9b0810471d0c2b52033488fab640625c3731315afd5d2add1571bd2518827",
+  "split_json_sha256": "2f6a7c307121454b881520379f0a298b7e2a179b1db4a7cb03741b7f648a774a",
+  "torch": "2.3.1+cu118",
+  "pyg": "2.5.3",
+  "cuda_device": "Tesla T4",
+  "source_classification_check": {
+    "status": "passed",
+    "source_sha256": "7815875a111d3e94ceefd0e9ef6cb64dedaf6ff80723645f1ec035b376af31ff",
+    "predictions_sha256": "5a7505a87292f8651b1c8b58e8d83ce9f6ebc573b58cc220deec1491b7ffd1d2",
+    "samples": 13446,
+    "classification_fields_checked": [
+      "accuracy",
+      "macro_f1",
+      "weighted_f1",
+      "per_class",
+      "confusion_matrix",
+      "samples"
+    ],
+    "preserved_diagnostic_fields": [
+      "flow_weight_distribution"
+    ],
+    "original_source_report_unchanged": true
+  }
+}

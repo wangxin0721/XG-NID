@@ -1,0 +1,18 @@
+{
+  "status": "passed",
+  "source_sha256": "7815875a111d3e94ceefd0e9ef6cb64dedaf6ff80723645f1ec035b376af31ff",
+  "predictions_sha256": "5a7505a87292f8651b1c8b58e8d83ce9f6ebc573b58cc220deec1491b7ffd1d2",
+  "samples": 13446,
+  "classification_fields_checked": [
+    "accuracy",
+    "macro_f1",
+    "weighted_f1",
+    "per_class",
+    "confusion_matrix",
+    "samples"
+  ],
+  "preserved_diagnostic_fields": [
+    "flow_weight_distribution"
+  ],
+  "original_source_report_unchanged": true
+}

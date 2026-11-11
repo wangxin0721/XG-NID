@@ -1,0 +1,140 @@
+{
+  "per_seed_paired_delta_pp": {
+    "42": 0.09863128176158531,
+    "43": 0.03423056689275672,
+    "44": 0.03225984347942079
+  },
+  "paired_delta_mean_pp": 0.055040564044587605,
+  "paired_delta_sample_std_pp": 0.037763526596508445,
+  "std_ddof": 1,
+  "n": 3,
+  "new_seeds43_44": {
+    "paired_delta_pp": {
+      "43": 0.03423056689275672,
+      "44": 0.03225984347942079
+    },
+    "mean_pp": 0.033245205186088755,
+    "sample_std_pp": 0.0013935118894129344
+  },
+  "per_model": {
+    "Joint-Mean": {
+      "mean_macro_f1_percent": 97.43577474265523,
+      "sample_std_pp": 0.03647858785421402
+    },
+    "Joint-Flow": {
+      "mean_macro_f1_percent": 97.49081530669982,
+      "sample_std_pp": 0.011112012022479344
+    }
+  },
+  "all_three_positive": true,
+  "seed42_delta_pp": 0.09863128176158531,
+  "seed42_budget_passed": false,
+  "original_threshold_pp": 0.1,
+  "exploratory_exception": true,
+  "conditional_on_fixed_pretrained_checkpoint": true,
+  "full_training_multiseed_claimed": false,
+  "error_type_recurrence": {
+    "Benign->Spoofing": {
+      "42": {
+        "repaired": 4,
+        "regressed": 0
+      },
+      "43": {
+        "repaired": 4,
+        "regressed": 0
+      },
+      "44": {
+        "repaired": 2,
+        "regressed": 0
+      }
+    },
+    "Benign->Recon": {
+      "42": {
+        "repaired": 2,
+        "regressed": 0
+      },
+      "43": {
+        "repaired": 0,
+        "regressed": 1
+      }
+    },
+    "WebBased->Benign": {
+      "42": {
+        "repaired": 2,
+        "regressed": 1
+      },
+      "43": {
+        "repaired": 1,
+        "regressed": 0
+      },
+      "44": {
+        "repaired": 1,
+        "regressed": 0
+      }
+    },
+    "WebBased->Recon": {
+      "42": {
+        "repaired": 5,
+        "regressed": 0
+      },
+      "43": {
+        "repaired": 3,
+        "regressed": 1
+      },
+      "44": {
+        "repaired": 4,
+        "regressed": 2
+      }
+    },
+    "Spoofing->Benign": {
+      "42": {
+        "repaired": 1,
+        "regressed": 0
+      },
+      "43": {
+        "repaired": 0,
+        "regressed": 3
+      },
+      "44": {
+        "repaired": 0,
+        "regressed": 1
+      }
+    },
+    "Spoofing->WebBased": {
+      "42": {
+        "repaired": 0,
+        "regressed": 1
+      }
+    },
+    "Recon->Benign": {
+      "42": {
+        "repaired": 0,
+        "regressed": 1
+      },
+      "43": {
+        "repaired": 0,
+        "regressed": 1
+      },
+      "44": {
+        "repaired": 0,
+        "regressed": 1
+      }
+    },
+    "Recon->WebBased": {
+      "42": {
+        "repaired": 3,
+        "regressed": 4
+      },
+      "43": {
+        "repaired": 2,
+        "regressed": 3
+      },
+      "44": {
+        "repaired": 2,
+        "regressed": 3
+      }
+    }
+  },
+  "statistical_significance_claimed": false,
+  "automatic_followup": false
+}

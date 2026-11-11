@@ -1,0 +1,70 @@
+{
+  "schema": "xgnid.flow-query-joint-seeds43-44.v1",
+  "split_directory": "data/processed/ciciot2023_grouped_input_v1",
+  "split_id": "a8ae9c934eec9fee970cc725e60051d0c709e0f16c7dda14749350ff2006975a",
+  "source_directory": "outputs/fusion_gate_pair_s42_v1/D32-Gate",
+  "source_epoch": 62,
+  "source_macro_f1": 0.9732070542814468,
+  "source_sha256": "7815875a111d3e94ceefd0e9ef6cb64dedaf6ff80723645f1ec035b376af31ff",
+  "source_predictions_sha256": "5a7505a87292f8651b1c8b58e8d83ce9f6ebc573b58cc220deec1491b7ffd1d2",
+  "encoder_sha256": "923217d8026a56f1ffc7fb7bbda8e910aa6a97d51cd18a006412c8766df57033",
+  "cache_directory": "outputs/packet_pool_confirmation_s42_v1",
+  "cache_sha256": {
+    "train": "bbadf7499506f7d5968ffc9061bf4e58445c2c7a67ae85dfb3620a22491bf42c",
+    "val": "fc70d58c519ef31eb5cc524c4914814f7e959f1f79664e5e478a99c7db5a40ab"
+  },
+  "epochs": 200,
+  "early_stop_enabled": false,
+  "include_epoch_zero": true,
+  "batch_size": 512,
+  "eval_batch_size": 16,
+  "workers": 2,
+  "head_lr": 1e-05,
+  "pool_lr": 0.0001,
+  "weight_decay": 0.0,
+  "probe_batches": 3,
+  "focus_classes": [
+    "WebBased",
+    "Spoofing",
+    "Recon"
+  ],
+  "JCL_Multi_reference_macro_f1": 0.9752460910749855,
+  "test_evaluated": false,
+  "base_protocol": "flow_query_joint_packet2_s42_v1.json",
+  "base_protocol_sha256": "3f6a0ee68e5f6ca717df6efd6378b9280d7ed7bb1e4fc96b5417e86d05f5480c",
+  "encoder_lr": 1e-06,
+  "raw_probe_per_class": 2,
+  "raw_probe_updates": 3,
+  "prefix_epochs": 150,
+  "registered_date": "2026-11-09",
+  "experiment_kind": "exploratory_recheck_after_seed42_failed_budget_screen",
+  "seed42_archive": "flow_query_joint_packet2_server_summary_20261109.json",
+  "seed42_archive_sha256": "4c1ab3160c39d0f067563e051ae89e898e22b06373b1331231122d5e14374c69",
+  "seed42_directory": "outputs/flow_query_joint_packet2_s42_v1",
+  "new_seeds": [
+    43,
+    44
+  ],
+  "aggregate_seeds": [
+    42,
+    43,
+    44
+  ],
+  "variants": {
+    "Joint-Mean": "packet_mean",
+    "Joint-Flow": "flow"
+  },
+  "scheduler": "none",
+  "tie_policy": "earliest_epoch",
+  "fixed_epoch95_selection": false,
+  "budget_threshold_pp": 0.1,
+  "seed42_budget_passed": false,
+  "exploratory_exception_authorized_before_new_training": true,
+  "exploratory_exception_reason": "User-authorized limited four-run recheck of positive conditional Flow-query effects and class tradeoffs; seed42 remains below the original0.10pp threshold.",
+  "fixed_pretrained_start": true,
+  "end_to_end_training_multiseed_claimed": false,
+  "sample_std_ddof": 1,
+  "statistical_significance_claimed": false,
+  "new_frozen_training_runs": 0,
+  "automatic_followup": false
+}

@@ -1,0 +1,7 @@
+{
+  "source_checkpoint": "/home/nzxn/下载/WX/load/XG-NID/outputs/flow_query_joint_seeds43_44_v1/seed44/Joint-Flow/trained_best.pt",
+  "source_checkpoint_sha256": "99062e6f3fcc1e40eb935885be5491c19fa03fe8dc120cb7f0c08d35cc32c3aa",
+  "last_complete_ledger_epoch": 125,
+  "resumed_from_epoch": 103,
+  "optimizer_updates_performed_after_recovery": 20467
+}
