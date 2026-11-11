@@ -309,8 +309,9 @@ def run(repo, previous, output):
             else:
                 require((seed, name) == (44, ARM), 'Expected a completed arm at '+str(arm_source))
                 model = study.build_models(source['model_state'], seed, device)[name]
-                require(raw.state_digest(model.state_dict()) == preflight[str(seed)][name]['initial_state_sha256'],
-                        'Previous preflight initial state differs')
+                arm_preflight = preflight.get('pairs', {}).get(str(seed), {}).get(name, {})
+                require(raw.state_digest(model.state_dict()) == arm_preflight.get('initial_state_sha256'),
+                        f'Previous preflight initial state missing or different for seed{seed}/{name}')
                 result, predictions = recover_arm(previous, folder/name, model, data, rows, device, c, binding, orders)
                 recovery['optimizer_updates_performed_after_recovery'] = result['recovery']['optimizer_updates_performed_after_recovery']
             results[name], exports[name] = result, predictions

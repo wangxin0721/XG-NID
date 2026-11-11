@@ -6,7 +6,7 @@ import json
 import tempfile
 import unittest
 from pathlib import Path
-from unittest.mock import patch
+from unittest.mock import Mock, patch
 
 import torch
 
@@ -84,6 +84,42 @@ class RecoveryChecks(unittest.TestCase):
             name, prefix, kept, logged = resume.choose_checkpoint(root, config, ['one', 'two', 'three', 'four'], snapshots)
             self.assertEqual((name, prefix, logged), ('resume.pt', history, 2))
             self.assertEqual(kept['trained_best.pt'], 'trained_best.pt')
+
+    def test_run_reads_nested_preflight_and_dispatches_unfinished_arm(self):
+        model, _, _, _ = fixtures.joint_fixture('flow')
+        initial = resume.raw.state_digest(model.state_dict())
+        config = {'new_seeds': [43, 44], 'batch_size': 4, 'epochs': 4}
+        binding = {key: 'test' for key in ('protocol_sha256', 'seed42_archive_sha256', 'manifest_sha256',
+                                          'split_json_sha256', 'torch', 'pyg')}
+        binding['sources'] = {}
+        orders = ['one', 'two', 'three', 'four']
+        result = {'orders': orders, 'initial_state_sha256': initial, 'training_start_rng_sha256': 'rng'}
+        recover = Mock(side_effect=RuntimeError('checkpoint recovery reached'))
+        with tempfile.TemporaryDirectory(dir=self.temporary) as tmp:
+            repo = Path(tmp)
+            previous, output = repo/'previous', repo/'output'
+            previous.mkdir()
+            output.mkdir()
+            resume.raw.write(previous/'config.json', config)
+            resume.raw.write(previous/'binding.json', binding)
+            resume.raw.write(previous/'input_receipts.json', {})
+            resume.raw.write(previous/'preflight.json', {'status': 'passed', 'seed42_independent_audit_passed': True,
+                'pairs': {'44': {'Joint-Flow': {'initial_state_sha256': initial}}}})
+            for seed, name in ((43, 'Joint-Mean'), (43, 'Joint-Flow'), (44, 'Joint-Mean')):
+                arm = previous/f'seed{seed}'/name
+                arm.mkdir(parents=True)
+                resume.raw.write(arm/'metrics.json', {'probability_replay_passed': True})
+            prepared = (config, {}, None, {'train': [], 'val': []}, {'model_state': {}}, None, {}, binding)
+            with patch.object(torch.cuda, 'is_available', return_value=True), patch.multiple(resume.study,
+                    prepare=Mock(return_value=prepared), epoch_orders=Mock(return_value=orders),
+                    build_models=Mock(return_value={'Joint-Flow': model}), paired_evidence=Mock(return_value={})), \
+                    patch.multiple(resume, copy_seed42=Mock(return_value={}),
+                                   copy_completed=Mock(return_value=(result, [])), recover_arm=recover):
+                with self.assertRaisesRegex(RuntimeError, 'checkpoint recovery reached'):
+                    resume.run(repo, previous, output)
+                self.assertEqual(resume.copy_completed.call_count, 3)
+            recover.assert_called_once()
+            self.assertEqual(recover.call_args.args[1], output/'seed44'/'Joint-Flow')
 
 
 if __name__ == '__main__':
