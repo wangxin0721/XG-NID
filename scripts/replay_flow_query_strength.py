@@ -110,7 +110,7 @@ def paired_rows(predictions, reference):
 def analyze_focus(records):
     counts = {
         strength: {
-            name: {'repaired': 0, 'regressed': 0, 'reversed_joint_mean_difference': 0}
+            name: {'repaired': 0, 'regressed': 0, 'joint_mean_losses_recovered': 0, 'joint_mean_gains_lost': 0}
             for name in ('WebBased', 'Recon')
         }
         for strength in REDUCED
@@ -131,13 +131,14 @@ def analyze_focus(records):
             changes[strength] = change
             counts[strength][name][change] += 1
             if joint_mean != original:
-                counts[strength][name]['reversed_joint_mean_difference'] += 1
+                key = 'joint_mean_losses_recovered' if current else 'joint_mean_gains_lost'
+                counts[strength][name][key] += 1
         if changes:
             focus_samples.append({**row, 'correctness_changes_vs_lambda1': changes})
     return counts, focus_samples
 
 
-def write_report(output, results, evidence):
+def write_report(path, results, evidence):
     lines = [
         '# Joint-Flow 固定强度验证集回放', '',
         '三个 seed 的 λ=1 均逐样本复现原预测。每个检查点回放同一份验证集的 13,446 张原图。',
@@ -168,8 +169,8 @@ def write_report(output, results, evidence):
         for strength, by_class in result['focus_counts'].items():
             web, recon = by_class['WebBased'], by_class['Recon']
             lines.append(f"| {seed} | {strength} | {web['repaired']} / {web['regressed']} | "
-                         f"{web['reversed_joint_mean_difference']} | {recon['repaired']} / {recon_missed} | {recon['regressed']} | "
-                         f"{recon['reversed_joint_mean_difference']} |")
+                         f"{web['joint_mean_gains_lost']} | {recon['repaired']} / {recon_missed} | {recon['regressed']} | "
+                         f"{recon['joint_mean_losses_recovered']} |")
     lines += [
         '',
         f"任一较弱设置使 {evidence['WebBased_requires_stronger_unique_ids']} 个不同 WebBased 样本从对变错，"
@@ -178,7 +179,7 @@ def write_report(output, results, evidence):
         '每个 seed 的 `focus_samples.jsonl.gz` 给出 WebBased 和 Recon 正误翻转的样本 ID 及三档预测，'
         '`paired_validation.jsonl.gz` 包含全部样本。', '',
     ]
-    (output / 'report.md').write_text('\n'.join(lines), encoding='utf-8')
+    path.write_text('\n'.join(lines), encoding='utf-8')
 
 
 def run(repo, output):
@@ -227,7 +228,7 @@ def run(repo, output):
                          'metrics': metrics, 'joint_mean_metrics': mean_metrics, 'focus_counts': counts}
     evidence = {'WebBased_requires_stronger_unique_ids': len(evidence_ids['WebBased']),
                 'Recon_recovered_unique_ids': len(evidence_ids['Recon'])}
-    write_report(output, results, evidence)
+    write_report(output / 'report.md', results, evidence)
     raw.write(output / 'summary.json', {'validation_samples': len(rows), 'optimizer_updates': 0,
               'torch': torch.__version__, 'pyg': torch_geometric.__version__, 'device': torch.cuda.get_device_name(0),
               'results': results, 'evidence': evidence})

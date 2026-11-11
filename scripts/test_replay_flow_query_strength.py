@@ -74,18 +74,33 @@ class StrengthReplayChecks(unittest.TestCase):
 
     def test_focus_distinguishes_original_tradeoff_from_other_changes(self):
         def rows(predictions):
+            ids = ('web_gain', 'recon_loss', 'wrong', 'web_loss', 'recon_gain')
+            labels = (1, 3, 3, 1, 3)
             return [{'sample_id': sid, 'label': label, 'prediction': pred}
-                    for sid, label, pred in zip(('web', 'recon', 'wrong'), (1, 3, 3), predictions)]
+                    for sid, label, pred in zip(ids, labels, predictions)]
 
-        paired = list(run.paired_rows({'1': rows((1, 1, 2)), '0.5': rows((3, 3, 1)), '0': rows((1, 3, 1))},
-                                      rows((3, 3, 2))))
+        predictions = {'1': rows((1, 1, 2, 3, 3)),
+                       '0.5': rows((3, 3, 1, 1, 1)),
+                       '0': rows((1, 3, 1, 3, 3))}
+        reference = rows((3, 3, 2, 1, 1))
+        paired = list(run.paired_rows(predictions, reference))
         counts, focus = run.analyze_focus(paired)
-        self.assertEqual(counts['0.5']['WebBased']['regressed'], 1)
-        self.assertEqual(counts['0.5']['WebBased']['reversed_joint_mean_difference'], 1)
+        self.assertEqual(counts['0.5']['WebBased'], {'repaired': 1, 'regressed': 1,
+                         'joint_mean_losses_recovered': 1, 'joint_mean_gains_lost': 1})
+        self.assertEqual(counts['0.5']['Recon'], counts['0.5']['WebBased'])
         self.assertEqual(counts['0']['WebBased']['regressed'], 0)
         self.assertEqual(counts['0']['Recon']['repaired'], 1)
-        self.assertEqual(counts['0']['Recon']['reversed_joint_mean_difference'], 1)
-        self.assertEqual([row['sample_id'] for row in focus], ['web', 'recon'])
+        self.assertEqual(counts['0']['Recon']['joint_mean_losses_recovered'], 1)
+        self.assertEqual([row['sample_id'] for row in focus], ['web_gain', 'recon_loss', 'web_loss', 'recon_gain'])
+        metrics = {s: run.study.validate_predictions(records, probabilities=False)
+                   for s, records in predictions.items()}
+        results = {'42': {'best_epoch': 95, 'metrics': metrics, 'focus_counts': counts,
+                          'joint_mean_metrics': run.study.validate_predictions(reference, probabilities=False)}}
+        evidence = {'WebBased_requires_stronger_unique_ids': 1, 'Recon_recovered_unique_ids': 1}
+        with tempfile.TemporaryDirectory() as tmp:
+            report = Path(tmp) / 'report.md'
+            run.write_report(report, results, evidence)
+            self.assertIn('| 42 | 0.5 | 1 / 1 | 1 | 1 / 2 | 1 | 1 |', report.read_text(encoding='utf-8'))
 
 
 if __name__ == '__main__':
