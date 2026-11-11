@@ -1,4 +1,4 @@
-"""Publish a complete outputs snapshot, or download and verify it separately."""
+"""Publish all or selected outputs, or download and verify the branch snapshot."""
 import argparse
 import datetime
 import hashlib
@@ -60,11 +60,15 @@ def inventory(root):
     return dict(sorted(files.items()))
 
 
+def uses_lfs(name, meta):
+    return meta.get('kind') != 'symlink' and (
+        meta['bytes'] >= 10*2**20 or Path(name).suffix.lower() in ('.pt','.pth','.ckpt','.sqlite','.db'))
+
+
 def attributes(files):
     lines=['# Reports remain ordinary Git text; binary/large artifacts use LFS.']
     for name,meta in files.items():
-        if meta.get('kind')=='symlink':continue
-        if meta['bytes']>=10*2**20 or Path(name).suffix.lower() in ('.pt','.pth','.ckpt','.sqlite','.db'):
+        if uses_lfs(name, meta):
             # .gitattributes uses C-quoted strings followed by wildmatch parsing.
             pattern='outputs/'+''.join('\\'+c if c in '\\*?[' else c for c in name)
             lines.append(json.dumps(pattern,ensure_ascii=False)+' filter=lfs diff=lfs merge=lfs -text')
@@ -104,9 +108,25 @@ def lfs_environment(repo):
 
 
 def publish(args):
-    repo=args.repo.resolve();source=repo/'outputs';env=lfs_environment(repo)
-    print('Hashing all source files (including archive/model/cache files)',flush=True)
-    files=inventory(source);require(bool(files),'Refuse empty snapshot')
+    repo=args.repo.resolve();source=repo/'outputs'
+    selected = sorted(set(getattr(args, 'only', None) or []))
+    def selected_inventory():
+        if not selected:
+            return inventory(source)
+        files = {}
+        for name in selected:
+            require(name not in ('', '.', '..') and '/' not in name and '\\' not in name,
+                    '--only takes a directory name directly under outputs')
+            folder = source/name
+            require(not folder.is_symlink(), 'Selected directory is a symlink: '+name)
+            entries = inventory(folder)
+            require(bool(entries), 'Selected directory is empty: '+name)
+            files.update({name+'/'+path: meta for path, meta in entries.items()})
+        return dict(sorted(files.items()))
+
+    files = selected_inventory()
+    require(bool(files),'Refuse empty snapshot')
+    env=lfs_environment(repo)
     total=sum(x['bytes'] for x in files.values())
     require(all(x['bytes']<2*2**30 for x in files.values()),'A file exceeds the conservative2GiB LFS limit')
     require(shutil.disk_usage(repo).free>int(total*2.2)+256*2**20,'Need disk space for snapshot and local LFS objects')
@@ -118,6 +138,7 @@ def publish(args):
     command(['git','remote','add','origin',args.remote],stage,env)
     exists=subprocess.run(['git','ls-remote','--exit-code','--heads',args.remote,'refs/heads/'+BRANCH],cwd=stage,env=env,stdout=subprocess.PIPE,text=True)
     require(exists.returncode in (0,2),'Cannot inspect remote output branch')
+    old = {}
     if exists.returncode==0:
         command(['git','fetch','--depth=1','origin',BRANCH],stage,env)
         old=json.loads(command(['git','show','FETCH_HEAD:outputs-manifest.json'],stage,env,True))
@@ -135,25 +156,50 @@ def publish(args):
         if meta.get('kind')=='symlink':dst.write_bytes(meta['target'].encode('utf-8'))
         else:shutil.copy2(source/name,dst)
         require(sha(dst)==meta['sha256'],'Source changed during copy: '+name)
-    require(inventory(source)==files,'Source inventory changed; finish training before retrying')
-    with (stage/'.gitattributes').open('w',encoding='utf-8',newline='\n') as out:out.write(attributes(files))
-    links=sum(x.get('kind')=='symlink' for x in files.values())
+    require(selected_inventory()==files,'Source inventory changed; finish training before retrying')
+    merged = dict(files)
+    if selected:
+        merged.update({name: meta for name, meta in old.get('files', {}).items()
+                       if name.split('/', 1)[0] not in selected})
+    merged = dict(sorted(merged.items()))
+    with (stage/'.gitattributes').open('w',encoding='utf-8',newline='\n') as out:out.write(attributes(merged))
+    links=sum(x.get('kind')=='symlink' for x in merged.values())
     manifest={'schema':'xgnid.outputs-snapshot.v2','created_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),
-        'source_directory':str(source),'files':files,'file_count':len(files),'symlink_count':links,
-        'regular_file_count':len(files)-links,'total_bytes':total}
+        'source_directory':str(source),'files':merged,'file_count':len(merged),'symlink_count':links,
+        'regular_file_count':len(merged)-links,'total_bytes':sum(meta['bytes'] for meta in merged.values())}
+    if selected:
+        manifest['updated_directories'] = selected
     with (stage/'outputs-manifest.json').open('w',encoding='utf-8',newline='\n') as out:out.write(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n')
-    command(['git','add','-A','--','.gitattributes','outputs-manifest.json','outputs'],stage,env)
+    paths = ['outputs/'+name for name in selected] if selected else ['outputs']
+    command(['git','--literal-pathspecs','add','-A','--','.gitattributes','outputs-manifest.json',*paths],stage,env)
     # Store links as Git mode120000 even where the OS cannot create symlinks.
     for name,meta in files.items():
         if meta.get('kind')=='symlink':
             path='outputs/'+name
             blob=command(['git','hash-object','-w','--',path],stage,env,True).strip()
             command(['git','update-index','--add','--cacheinfo','120000',blob,path],stage,env)
-    command(['git','commit','-m','Snapshot all server outputs with verified SHA256 inventory'],stage,env)
-    command(['git','lfs','fsck'],stage,env)
+    message = 'Update selected server outputs' if selected else 'Snapshot all server outputs with verified SHA256 inventory'
+    command(['git','commit','-m',message],stage,env)
+    if selected:
+        # Older LFS objects live on the remote. Check each selected pointer and
+        # its local payload without downloading unrelated model files.
+        lfs_env = command(['git','lfs','env'],stage,env,True).splitlines()
+        media = next((Path(line.split('=',1)[1]) for line in lfs_env if line.startswith('LocalMediaDir=')), None)
+        require(media is not None, 'Git LFS did not report its object directory')
+        for name, meta in files.items():
+            if uses_lfs(name, meta):
+                digest = meta['sha256']
+                pointer = command(['git','show','HEAD:outputs/'+name],stage,env,True).splitlines()
+                require(pointer == ['version https://git-lfs.github.com/spec/v1', 'oid sha256:'+digest,
+                                    'size '+str(meta['bytes'])], 'Selected LFS pointer differs: '+name)
+                location = stage/media/digest[:2]/digest[2:4]/digest
+                require(sha(location)==digest,'Selected LFS object differs: '+name)
+    else:
+        command(['git','lfs','fsck'],stage,env)
     command(['git','push','origin','HEAD:refs/heads/'+BRANCH],stage,env)
     head=command(['git','rev-parse','HEAD'],stage,env,True).strip()
-    print(json.dumps({'status':'uploaded','branch':BRANCH,'commit':head,'files':len(files),'symlinks':links,'bytes':total,
+    print(json.dumps({'status':'uploaded','branch':BRANCH,'commit':head,'files':len(files),
+        'symlinks':sum(x.get('kind')=='symlink' for x in files.values()),'bytes':total,
         'staging_directory_preserved':str(stage)},ensure_ascii=False),flush=True)
 
 
@@ -187,6 +233,7 @@ if __name__=='__main__':
     parser.add_argument('action',choices=('publish','download','verify'))
     parser.add_argument('--repo',type=Path,default=Path.cwd())
     parser.add_argument('--remote',default=REMOTE)
+    parser.add_argument('--only',action='append',metavar='DIRECTORY',help='Publish this directory under outputs (repeatable)')
     parser.add_argument('--destination',type=Path,default=Path('server_outputs_sync'))
     args=parser.parse_args()
     if args.action=='publish':publish(args)

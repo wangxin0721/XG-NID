@@ -72,6 +72,8 @@ class Snapshots(unittest.TestCase):
             index=sync.command(['git','ls-files','--stage'],repo,capture=True)
             outputs=repo/'outputs';outputs.mkdir();(outputs/'report.json').write_bytes(b'{"ok":true}')
             (outputs/'model [v1].pt').write_bytes(b'fake model bytes\x00\xff')
+            selected=outputs/'selected';selected.mkdir()
+            (selected/'obsolete.json').write_bytes(b'{}')
             args=argparse.Namespace(repo=repo,remote=str(remote),destination=root/'download')
             # Local bare remotes support LFS. No network or external repository.
             env=os.environ.copy();env['GIT_LFS_SKIP_SMUDGE']='1'
@@ -79,6 +81,11 @@ class Snapshots(unittest.TestCase):
                 sync.publish(args)
                 (outputs/'report.json').write_bytes(b'{"ok":false}')
                 (outputs/'new.txt').write_bytes(b'new result')
+                sync.publish(args)
+                (selected/'obsolete.json').unlink()
+                (selected/'best.pt').write_bytes(b'new selected model\x00\xff')
+                (outputs/'report.json').write_bytes(b'changed outside selected directory')
+                args.only=['selected']
                 sync.publish(args)
             sync.download(args)
             tree=sync.command(['git','ls-tree','-r','HEAD'],args.destination,capture=True)
@@ -96,6 +103,9 @@ class Snapshots(unittest.TestCase):
             self.assertIn('outputs/model [v1].pt',tracked)
             self.assertEqual((args.destination/'outputs/model [v1].pt').read_bytes(),(outputs/'model [v1].pt').read_bytes())
             self.assertEqual((args.destination/'outputs/report.json').read_bytes(),b'{"ok":false}')
+            self.assertFalse((args.destination/'outputs/selected/obsolete.json').exists())
+            self.assertEqual((args.destination/'outputs/selected/best.pt').read_bytes(),(selected/'best.pt').read_bytes())
+            self.assertEqual(manifest['updated_directories'],['selected'])
             self.assertEqual(sync.command(['git','rev-parse','HEAD'],repo,capture=True),head)
             self.assertEqual(sync.command(['git','ls-files','--stage'],repo,capture=True),index)
             with self.assertRaises(RuntimeError):sync.download(args)
