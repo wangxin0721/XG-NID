@@ -16,15 +16,18 @@ STRENGTHS = ('1', '0.5', '0')
 REDUCED = STRENGTHS[1:]
 
 
-def packet_readouts(pool, flow, nodes, index, size):
+def packet_components(pool, flow, nodes, index, size):
     full, beta = pool(flow, nodes, index, size)
     lengths = ordered_lengths(index, size)
     mean = ordered_mean_pool(nodes, index, size, lengths)
     uniform = uniform_packet_weights(nodes, index, size, lengths)
-    # Scale the centered residual before it is added to the mean. Use the
-    # historical pool output directly for the reproduction control.
     correction = (beta - uniform)[:, None] * (nodes - mean[index])
     delta = torch.segment_reduce(correction, 'sum', lengths=lengths, axis=0)
+    return mean, delta, full
+
+
+def packet_readouts(pool, flow, nodes, index, size):
+    mean, delta, full = packet_components(pool, flow, nodes, index, size)
     return {'1': full, '0.5': mean + 0.5 * delta, '0': mean}
 
 

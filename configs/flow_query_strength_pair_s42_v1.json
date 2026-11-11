@@ -1,0 +1,10 @@
+{
+  "seed": 42,
+  "epochs": 30,
+  "batch_size": 512,
+  "train_samples": 107621,
+  "feature_batch_size": 128,
+  "learning_rate": 0.001,
+  "expansion_threshold_pp": 0.10,
+  "replay_report": "https://github.com/wangxin0721/XG-NID/blob/830516ea4696546fb6bf8e710c3bcd06bc05a3be/outputs/flow_query_strength_replay_l9sss890/report_corrected.md"
+}
