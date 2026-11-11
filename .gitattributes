@@ -106,6 +106,7 @@
 "outputs/flow_query_joint_seeds43_44_v1/seed44/Joint-Mean/epoch_zero.pt" filter=lfs diff=lfs merge=lfs -text
 "outputs/flow_query_joint_seeds43_44_v1/seed44/Joint-Mean/last.pt" filter=lfs diff=lfs merge=lfs -text
 "outputs/flow_query_joint_seeds43_44_v1/seed44/Joint-Mean/trained_best.pt" filter=lfs diff=lfs merge=lfs -text
+"outputs/flow_query_strength_pair_s42_frw_3xxg/strength_best.pt" filter=lfs diff=lfs merge=lfs -text
 "outputs/flow_stats_layernorm_joint_s42_v1/J2_flow_stats_ln/best.pt" filter=lfs diff=lfs merge=lfs -text
 "outputs/flow_stats_layernorm_joint_s42_v1/J2_flow_stats_ln/last.pt" filter=lfs diff=lfs merge=lfs -text
 "outputs/flow_stats_layernorm_joint_s42_v1/preflight_start.pt" filter=lfs diff=lfs merge=lfs -text

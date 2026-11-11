@@ -1,6 +1,6 @@
 {
   "schema": "xgnid.outputs-snapshot.v2",
-  "created_utc": "2026-11-11T07:17:12.279106+00:00",
+  "created_utc": "2026-11-11T07:33:12.406460+00:00",
   "source_directory": "/home/nzxn/下载/WX/load/XG-NID/outputs",
   "files": {
     "GNN4ID/best.pt": {
@@ -2762,6 +2762,42 @@
     "flow_query_joint_seeds43_44_v1/status.json": {
       "bytes": 26,
       "sha256": "15eaed87424eec919ca23235c89221732e143a7008a32b51311c6214b4ccf942"
+    },
+    "flow_query_strength_pair_s42_frw_3xxg/config.json": {
+      "bytes": 1235,
+      "sha256": "ad0ba675e27cb60490f5281ed11796b812e5c43836d4185490af2628778c5b92"
+    },
+    "flow_query_strength_pair_s42_frw_3xxg/epochs.jsonl": {
+      "bytes": 92761,
+      "sha256": "9d074674735b32f8ca5e117789b00f79bbb703b089251e0d75a2353bb41d52d5"
+    },
+    "flow_query_strength_pair_s42_frw_3xxg/progress.json": {
+      "bytes": 195,
+      "sha256": "c3d429c9a626c40faa81558117a1233d361a6d244f666d5110340ccfa5efaab2"
+    },
+    "flow_query_strength_pair_s42_frw_3xxg/report.md": {
+      "bytes": 1184,
+      "sha256": "a5efced83609b7a1835257537b32227802f2a371c6973e321740b8d55980a9fa"
+    },
+    "flow_query_strength_pair_s42_frw_3xxg/seed42_lambda1_check.json": {
+      "bytes": 60,
+      "sha256": "f54690a25ac21bc082db6392ece265661124ebeb4e9de4f8bee66e509fc42dc1"
+    },
+    "flow_query_strength_pair_s42_frw_3xxg/status.json": {
+      "bytes": 28,
+      "sha256": "0cb87b61f0afab118ac222a0af92bc06c579959aeea208461294d16becf11b39"
+    },
+    "flow_query_strength_pair_s42_frw_3xxg/strength_best.pt": {
+      "bytes": 3732,
+      "sha256": "1cb86c84930b63049e7b7ce2a99951dccdeb916b0233112b1d01d89a4ef8e354"
+    },
+    "flow_query_strength_pair_s42_frw_3xxg/summary.json": {
+      "bytes": 9891,
+      "sha256": "bd945f4a138c6e880b08fcb2f379d9a0a50914d08d0fb3e9a35a934e10e6b1ee"
+    },
+    "flow_query_strength_pair_s42_frw_3xxg/validation_predictions.jsonl.gz": {
+      "bytes": 683968,
+      "sha256": "65aa17a3c36d4ccd3879125d00e5ea3c3f4a33cd85d95eeb26a7e98d42b9edee"
     },
     "flow_query_strength_replay_l9sss890/config.json": {
       "bytes": 1703,
@@ -7332,11 +7368,11 @@
       "sha256": "c2593fb7e95be3616c900c55e09a71bc0651f998359aa44c5024799152ef0b20"
     }
   },
-  "file_count": 1782,
+  "file_count": 1791,
   "symlink_count": 100,
-  "regular_file_count": 1682,
-  "total_bytes": 6106360777,
+  "regular_file_count": 1691,
+  "total_bytes": 6107153831,
   "updated_directories": [
-    "flow_query_strength_replay_l9sss890"
+    "flow_query_strength_pair_s42_frw_3xxg"
   ]
 }

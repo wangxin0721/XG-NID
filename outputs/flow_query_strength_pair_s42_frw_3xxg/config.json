@@ -1,0 +1,31 @@
+{
+  "source_report_commit": "e82eea0be0712b2cf293b57c66edfaf3e0c8513e",
+  "split_directory": "data/processed/ciciot2023_grouped_input_v1",
+  "split_id": "a8ae9c934eec9fee970cc725e60051d0c709e0f16c7dda14749350ff2006975a",
+  "split_json_sha256": "2f6a7c307121454b881520379f0a298b7e2a179b1db4a7cb03741b7f648a774a",
+  "validation_samples": 13446,
+  "eval_batch_size": 16,
+  "workers": 2,
+  "seed": 42,
+  "epochs": 30,
+  "batch_size": 512,
+  "train_samples": 107621,
+  "feature_batch_size": 128,
+  "learning_rate": 0.001,
+  "expansion_threshold_pp": 0.1,
+  "replay_report": "https://github.com/wangxin0721/XG-NID/blob/830516ea4696546fb6bf8e710c3bcd06bc05a3be/outputs/flow_query_strength_replay_l9sss890/report_corrected.md",
+  "source": {
+    "directory": "outputs/flow_query_joint_packet2_s42_v1",
+    "best_epoch": 95,
+    "checkpoint_sha256": "41d8a5021bb8b4c56ef9bb3919b4ed20887d29395a9e2137b5d9fa2be8c5eeb2",
+    "joint_flow_predictions_sha256": "527396679cf976c58e7d979d673fcc7525261a1cb2ab12d41c0fa77b26d33b39",
+    "joint_mean_predictions_sha256": "cc15a2678e8b0be43720a981c698218fb6e46495d0faf6562fde7db0afd8ccd0"
+  },
+  "optimizer": "Adam",
+  "loss": "NLL",
+  "selection_epochs": [
+    1,
+    30
+  ],
+  "tie_policy": "earliest"
+}

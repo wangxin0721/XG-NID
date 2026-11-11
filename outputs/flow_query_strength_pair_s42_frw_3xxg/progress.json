@@ -1,0 +1,11 @@
+{
+  "status": "running",
+  "pid": 2787473,
+  "phase": "paired_training",
+  "epoch": 30,
+  "epochs": 30,
+  "macro_f1": {
+    "global": 0.9744309988185158,
+    "adaptive": 0.9749027926066932
+  }
+}
