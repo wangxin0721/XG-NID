@@ -202,6 +202,30 @@
 "outputs/innov2/dual_gate_logit + trainpush + rw046 + logit bias-day2/baseline_graph_w18_v2_trainpush_r20k_ctrl_s42/best.pt" filter=lfs diff=lfs merge=lfs -text
 "outputs/innov2/dual_gate_logit + trainpush + rw046 + logit bias-day2/baseline_graph_w18_v2_trainpush_r20k_ctrl_s43/best.pt" filter=lfs diff=lfs merge=lfs -text
 "outputs/innov2/dual_gate_logit + trainpush + rw046 + logit bias-day2/baseline_graph_w18_v2_trainpush_r20k_ctrl_s44/best.pt" filter=lfs diff=lfs merge=lfs -text
+"outputs/joint_cross_layer_query_s42_v1/A/best.pt" filter=lfs diff=lfs merge=lfs -text
+"outputs/joint_cross_layer_query_s42_v1/A/best150.pt" filter=lfs diff=lfs merge=lfs -text
+"outputs/joint_cross_layer_query_s42_v1/A/checkpoints/epoch_000.pt" filter=lfs diff=lfs merge=lfs -text
+"outputs/joint_cross_layer_query_s42_v1/A/checkpoints/epoch_037.pt" filter=lfs diff=lfs merge=lfs -text
+"outputs/joint_cross_layer_query_s42_v1/A/checkpoints/epoch_200.pt" filter=lfs diff=lfs merge=lfs -text
+"outputs/joint_cross_layer_query_s42_v1/A/epoch_zero.pt" filter=lfs diff=lfs merge=lfs -text
+"outputs/joint_cross_layer_query_s42_v1/A/last.pt" filter=lfs diff=lfs merge=lfs -text
+"outputs/joint_cross_layer_query_s42_v1/A/trained_best.pt" filter=lfs diff=lfs merge=lfs -text
+"outputs/joint_cross_layer_query_s42_v1/B/best.pt" filter=lfs diff=lfs merge=lfs -text
+"outputs/joint_cross_layer_query_s42_v1/B/best150.pt" filter=lfs diff=lfs merge=lfs -text
+"outputs/joint_cross_layer_query_s42_v1/B/checkpoints/epoch_000.pt" filter=lfs diff=lfs merge=lfs -text
+"outputs/joint_cross_layer_query_s42_v1/B/checkpoints/epoch_037.pt" filter=lfs diff=lfs merge=lfs -text
+"outputs/joint_cross_layer_query_s42_v1/B/checkpoints/epoch_200.pt" filter=lfs diff=lfs merge=lfs -text
+"outputs/joint_cross_layer_query_s42_v1/B/epoch_zero.pt" filter=lfs diff=lfs merge=lfs -text
+"outputs/joint_cross_layer_query_s42_v1/B/last.pt" filter=lfs diff=lfs merge=lfs -text
+"outputs/joint_cross_layer_query_s42_v1/B/trained_best.pt" filter=lfs diff=lfs merge=lfs -text
+"outputs/joint_cross_layer_query_s42_v1/C/best.pt" filter=lfs diff=lfs merge=lfs -text
+"outputs/joint_cross_layer_query_s42_v1/C/best150.pt" filter=lfs diff=lfs merge=lfs -text
+"outputs/joint_cross_layer_query_s42_v1/C/checkpoints/epoch_000.pt" filter=lfs diff=lfs merge=lfs -text
+"outputs/joint_cross_layer_query_s42_v1/C/checkpoints/epoch_048.pt" filter=lfs diff=lfs merge=lfs -text
+"outputs/joint_cross_layer_query_s42_v1/C/checkpoints/epoch_200.pt" filter=lfs diff=lfs merge=lfs -text
+"outputs/joint_cross_layer_query_s42_v1/C/epoch_zero.pt" filter=lfs diff=lfs merge=lfs -text
+"outputs/joint_cross_layer_query_s42_v1/C/last.pt" filter=lfs diff=lfs merge=lfs -text
+"outputs/joint_cross_layer_query_s42_v1/C/trained_best.pt" filter=lfs diff=lfs merge=lfs -text
 "outputs/joint_fusion32_s42_e100_p20_noepoch0_v1/J32-Equal/best.pt" filter=lfs diff=lfs merge=lfs -text
 "outputs/joint_fusion32_s42_e100_p20_noepoch0_v1/J32-Equal/epoch_zero.pt" filter=lfs diff=lfs merge=lfs -text
 "outputs/joint_fusion32_s42_e100_p20_noepoch0_v1/J32-Equal/last.pt" filter=lfs diff=lfs merge=lfs -text

@@ -1,0 +1,33 @@
+{
+  "config_sha256": "83574a1033a1f9cd27879a6a41962aa73e1a9d0f848b3b069b49359d83196a29",
+  "manifest_sha256": "b8e9b0810471d0c2b52033488fab640625c3731315afd5d2add1571bd2518827",
+  "inputs": {
+    "outputs/joint_cross_layer_packet2_s42_v1/JCL-Multi/best.pt": "c629388d2669a8e86ae00d8ddf80d349efbbcffc7e27ad08023dfc237ef25822",
+    "outputs/joint_cross_layer_packet2_s42_v1/JCL-Multi/validation_predictions.jsonl.gz": "1f2bcaf12fd7be840f3168eb9b4838ec361a8ab8a72271f572ed48e95f5e1902",
+    "data/processed/ciciot2023_grouped_input_v1/split.json": "2f6a7c307121454b881520379f0a298b7e2a179b1db4a7cb03741b7f648a774a"
+  },
+  "source_code": {
+    "scripts/run_joint_cross_layer_query.py": "999c7329c14dcec07550c13984b051b32f604b3e51446afcab2bbda694571f96",
+    "scripts/run_joint_cross_layer_packet2.py": "6c269d9b02ce81a646b51954c71926029e35f5c578e62187e5ab89dc773e5692",
+    "scripts/run_flow_query_joint_packet2.py": "93bff3969bae6814ab4821f35270f28afe31ecc2b8e9e92bc98901bb07122abd",
+    "scripts/run_flow_query_joint_seeds.py": "4bb280d3a81c11e2a89cd646d2391e32d8a6704a5d726ae115b13b7022704e53",
+    "scripts/run_attention_operator_pair.py": "4b497bfd87b1257729b916ff79672246ad97d1275fbc6dddd77adb3a54b5e5c8",
+    "scripts/summarize_attention_operator_pair.py": "4c3ec615e4e554ff1e6023c689efd4b2aed073817e5e5f22fed0d4a219bf52ce",
+    "scripts/grouped_graphs.py": "c1b1273d62fc44d91f7c9b300b66a083c1f80ef2c9c4314a62c4bbd5d708bbb4",
+    "scripts/audit_graph_split.py": "c19164930e8ecb75636cf16d6fa9bb51d6f29e1384e8d8ebf040e683536ffcb6",
+    "scripts/build_grouped_split.py": "24e07766189aec9d03f6161dee15587612a5b2f13e23eab67d7ba4aaf89a3401",
+    "src/xgnid/joint_cross_layer_query.py": "e62ce7933540527b7615e36cd2106d2afec82ac8a1e80424622556d4e0a47715",
+    "src/xgnid/joint_cross_layer.py": "6f9e6bc9d68189c7772e1c013a8746befd9dc1e2676de61d195df943d62246ce",
+    "src/xgnid/cross_layer.py": "b95600a3f085f043e9ed7f2afd24aa6f351f85d9f98544639bae911dd5387dfd",
+    "src/xgnid/flow_query_pooling.py": "b46cf4f440ad8256f09cab71e221284d261753447d773f7a3de5c8c521bb2b66",
+    "src/xgnid/packet_pooling.py": "c423c573b624a98a40ee03b5b286f2dcd3297db43a0eedcf1a654590b163742d",
+    "src/xgnid/fusion_dimension.py": "eb8dd5c91a63b424bd421c29e333ff24492e5474cdabe77408abde5f81bb703d",
+    "src/xgnid/model.py": "28e21e94118db0a4110d17923d2840e18959669d798f628018c98c91c0202631",
+    "src/xgnid/attention_operator_pair.py": "7f3f1929b8138ab010f394db30714a9da3ac15e92b02955d556df34cc4ecbfb6"
+  },
+  "torch": "2.3.1+cu118",
+  "pyg": "2.5.3",
+  "cuda_devices": [
+    "Tesla T4"
+  ]
+}
