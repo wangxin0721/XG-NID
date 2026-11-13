@@ -1,6 +1,6 @@
 {
   "schema": "xgnid.outputs-snapshot.v2",
-  "created_utc": "2026-11-13T01:39:27.317604+00:00",
+  "created_utc": "2026-11-13T02:02:22.099935+00:00",
   "source_directory": "/home/nzxn/下载/WX/load/XG-NID/outputs",
   "files": {
     "GNN4ID/best.pt": {
@@ -2762,6 +2762,58 @@
     "flow_query_joint_seeds43_44_v1/status.json": {
       "bytes": 26,
       "sha256": "15eaed87424eec919ca23235c89221732e143a7008a32b51311c6214b4ccf942"
+    },
+    "flow_query_selective_replay_s42_v1/changed_samples.jsonl.gz": {
+      "bytes": 4053,
+      "sha256": "9313155580b4e5d6c3669287c0a69161cd3a6ae0c66f8e6d3d6ccc4334453f06"
+    },
+    "flow_query_selective_replay_s42_v1/config.json": {
+      "bytes": 1059,
+      "sha256": "23cf900662746e67b89d438043fe295436b38e4b835a6a5922a101273c97f0d3"
+    },
+    "flow_query_selective_replay_s42_v1/confusion_matrices.json": {
+      "bytes": 2284,
+      "sha256": "b6bd625f8d14d207e5947ad99474b31971c8aab81e9ee9ac8e6c4ec918aa1b55"
+    },
+    "flow_query_selective_replay_s42_v1/input_check.json": {
+      "bytes": 164,
+      "sha256": "b8cb97338141cd4126ad59fdf741d26c57d749873018749507994f70459e8008"
+    },
+    "flow_query_selective_replay_s42_v1/metrics.json": {
+      "bytes": 10379,
+      "sha256": "8936f3dd09457c317dfaf9ccf6dc40aaeac16020686960b03dcb01bb25a05653"
+    },
+    "flow_query_selective_replay_s42_v1/paired_predictions.jsonl.gz": {
+      "bytes": 1952096,
+      "sha256": "1946f0cf5083e73a1e9eeb186f38deed55db81f4a8bff4da1aa6943ad4da75bb"
+    },
+    "flow_query_selective_replay_s42_v1/per_class.csv": {
+      "bytes": 1777,
+      "sha256": "71d0c30e8adbec1736e428e3d9f160ed811fada711439c2adc420be2c73e92ea"
+    },
+    "flow_query_selective_replay_s42_v1/progress.json": {
+      "bytes": 114,
+      "sha256": "d4be289a70a4b0cd1e5d9b689702d3cfa83bae27c45ae33b9c13d3b0fe60d2c9"
+    },
+    "flow_query_selective_replay_s42_v1/provenance.json": {
+      "bytes": 1572,
+      "sha256": "4b3f4965c1caf98af1d474b625e196e2086755b317794f1d99710b6de15f1824"
+    },
+    "flow_query_selective_replay_s42_v1/report.md": {
+      "bytes": 1649,
+      "sha256": "033ae8d04bf045a38bea9b879b567eb4dcf1670d23cc48fbec8239e0056e0400"
+    },
+    "flow_query_selective_replay_s42_v1/small_sample_check.json": {
+      "bytes": 1571,
+      "sha256": "1e75ed5fd0e6539ac151b217439ebba6b3505ae98ac53822bf1b8f9ad5612cc3"
+    },
+    "flow_query_selective_replay_s42_v1/status.json": {
+      "bytes": 28,
+      "sha256": "0cb87b61f0afab118ac222a0af92bc06c579959aeea208461294d16becf11b39"
+    },
+    "flow_query_selective_replay_s42_v1/validation_replay.json": {
+      "bytes": 463,
+      "sha256": "5da0106341011a7f9f88ca07d8e13bf9872c787143e0214fd9a9cb65f8bda93d"
     },
     "flow_query_strength_pair_s42_frw_3xxg/config.json": {
       "bytes": 1235,
@@ -7680,11 +7732,11 @@
       "sha256": "c2593fb7e95be3616c900c55e09a71bc0651f998359aa44c5024799152ef0b20"
     }
   },
-  "file_count": 1869,
+  "file_count": 1882,
   "symlink_count": 100,
-  "regular_file_count": 1769,
-  "total_bytes": 6212424660,
+  "regular_file_count": 1782,
+  "total_bytes": 6214401869,
   "updated_directories": [
-    "joint_cross_layer_query_final_test_s42_v1"
+    "flow_query_selective_replay_s42_v1"
   ]
 }
