@@ -1,0 +1,14 @@
+{
+  "diagnosis_commit": "5a32ddde192c15a7486057c53dd6812ab90cbcf2",
+  "diagnosis_provenance": "outputs/fusion_decision_diagnosis_s42_v1/provenance.json",
+  "diagnosis_provenance_sha256": "e672233de890a4a1a10127f72f6554ad3dd1f5b14dde8c59565f36a46ca2ab21",
+  "prediction_ids_sha256": "396bd22c4004ecf6d283ac36f99ddada3845038ccd7d365a82e46208b1cc0974",
+  "training_counts": {"Recon": 1355, "WebBased": 2958},
+  "validation_eligible": 517,
+  "seed": 42,
+  "epochs": 30,
+  "batch_size": 512,
+  "learning_rate": 0.001,
+  "weight_decay": 0,
+  "budget_reference_pp": 0.10
+}
