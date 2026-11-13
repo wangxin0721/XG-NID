@@ -54,26 +54,29 @@ def archive_inputs(source, split, config):
     return metrics, {**paths, **predictions}
 
 
+def load_checkpoint_state(source, config, metrics, protocol, name):
+    spec = config['checkpoints'][name]
+    arm = spec['arm']
+    selected = metrics[arm]['selected'][spec['selection']]
+    saved = torch.load(source / spec['path'], map_location='cpu', weights_only=False)
+    metadata = saved['config']
+    validation = joint.study.classification_metrics(saved['validation'])
+    require(metadata['arm'] == arm and metadata['query_source'] == joint.ARMS[arm]
+            and metadata['labels'] == LABELS and metadata['protocol'] == protocol
+            and protocol['split_id'] == config['split_id'] and protocol['seed'] == config['seed'],
+            f'{name} checkpoint structure, protocol or labels differ')
+    require(saved['epoch'] == selected['epoch'] == spec['epoch']
+            and saved['prediction_ids_sha256'] == selected['prediction_ids_sha256']
+            and selected['checkpoint_sha256'] == spec['sha256']
+            and validation == selected['validation'] and validation['macro_f1'] == spec['macro_f1'],
+            f'{name} checkpoint validation selection differs')
+    return saved['model_state']
+
+
 def load_models(source, config, metrics, device):
     protocol = raw.read(joint.CONFIG)
-    payloads = {}
-    for name, spec in config['checkpoints'].items():
-        arm = spec['arm']
-        selected = metrics[arm]['selected'][spec['selection']]
-        path = source / spec['path']
-        saved = torch.load(path, map_location='cpu', weights_only=False)
-        metadata = saved['config']
-        validation = joint.study.classification_metrics(saved['validation'])
-        require(metadata['arm'] == arm and metadata['query_source'] == joint.ARMS[arm]
-                and metadata['labels'] == LABELS and metadata['protocol'] == protocol
-                and protocol['split_id'] == config['split_id'] and protocol['seed'] == config['seed'],
-                f'{name} checkpoint structure, protocol or labels differ')
-        require(saved['epoch'] == selected['epoch'] == spec['epoch']
-                and saved['prediction_ids_sha256'] == selected['prediction_ids_sha256']
-                and selected['checkpoint_sha256'] == spec['sha256']
-                and validation == selected['validation'] and validation['macro_f1'] == spec['macro_f1'],
-                f'{name} checkpoint validation selection differs')
-        payloads[name] = saved['model_state']
+    payloads = {name: load_checkpoint_state(source, config, metrics, protocol, name)
+                for name in config['checkpoints']}
     models = joint.make_models(payloads['A'], torch.device('cpu'), config['seed'])
     models['B37'] = copy.deepcopy(models['B'])
     for name, model in models.items():
