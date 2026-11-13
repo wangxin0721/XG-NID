@@ -106,6 +106,9 @@ class Snapshots(unittest.TestCase):
             self.assertFalse((args.destination/'outputs/selected/obsolete.json').exists())
             self.assertEqual((args.destination/'outputs/selected/best.pt').read_bytes(),(selected/'best.pt').read_bytes())
             self.assertEqual(manifest['updated_directories'],['selected'])
+            for stage in repo.glob('.outputs-publish-*'):
+                storage=sync.command(['git','config','--local','--get','lfs.storage'],stage,capture=True).strip()
+                self.assertEqual(Path(storage),stage/'.git'/'lfs')
             self.assertEqual(sync.command(['git','rev-parse','HEAD'],repo,capture=True),head)
             self.assertEqual(sync.command(['git','ls-files','--stage'],repo,capture=True),index)
             with self.assertRaises(RuntimeError):sync.download(args)

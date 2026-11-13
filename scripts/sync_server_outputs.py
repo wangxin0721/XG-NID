@@ -150,6 +150,9 @@ def publish(args):
         command(['git','config',key,value],stage,env)
     command(['git','config','core.autocrlf','false'],stage,env)
     command(['git','config','core.symlinks','false'],stage,env)
+    # Keep staging, verification and the pre-push hook on the same absolute
+    # object store, even when the user has configured shared LFS storage.
+    command(['git','config','--local','lfs.storage',str(stage/'.git'/'lfs')],stage,env)
     command(['git','lfs','install','--local'],stage,env)
     for name,meta in files.items():
         dst=stage/'outputs'/name;dst.parent.mkdir(parents=True,exist_ok=True)
@@ -186,14 +189,23 @@ def publish(args):
         lfs_env = command(['git','lfs','env'],stage,env,True).splitlines()
         media = next((Path(line.split('=',1)[1]) for line in lfs_env if line.startswith('LocalMediaDir=')), None)
         require(media is not None, 'Git LFS did not report its object directory')
+        upload_oids = set()
         for name, meta in files.items():
             if uses_lfs(name, meta):
                 digest = meta['sha256']
                 pointer = command(['git','show','HEAD:outputs/'+name],stage,env,True).splitlines()
                 require(pointer == ['version https://git-lfs.github.com/spec/v1', 'oid sha256:'+digest,
                                     'size '+str(meta['bytes'])], 'Selected LFS pointer differs: '+name)
-                location = stage/media/digest[:2]/digest[2:4]/digest
-                require(sha(location)==digest,'Selected LFS object differs: '+name)
+                if meta['bytes']:
+                    location = stage/media/digest[:2]/digest[2:4]/digest
+                    require(location.is_file() and sha(location)==digest,'Selected LFS object differs: '+name)
+                    upload_oids.add(digest)
+        if upload_oids:
+            # Upload only the checked payloads before updating the branch.
+            # Keep the standard pre-push hook enabled for the final ref push.
+            subprocess.run(['git','lfs','push','--object-id','--stdin','origin'],
+                           cwd=stage,env=env,check=True,text=True,
+                           input='\n'.join(sorted(upload_oids))+'\n')
     else:
         command(['git','lfs','fsck'],stage,env)
     command(['git','push','origin','HEAD:refs/heads/'+BRANCH],stage,env)
