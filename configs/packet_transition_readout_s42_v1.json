@@ -1,0 +1,10 @@
+{
+  "seed": 42,
+  "epochs": 30,
+  "batch_size": 512,
+  "eval_batch_size": 16,
+  "learning_rate": 0.001,
+  "training_samples": 107621,
+  "budget_reference_pp": 0.10,
+  "baseline_prediction_ids_sha256": "396bd22c4004ecf6d283ac36f99ddada3845038ccd7d365a82e46208b1cc0974"
+}

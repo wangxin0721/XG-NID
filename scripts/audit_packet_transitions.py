@@ -1,5 +1,6 @@
 """Audit the chronological Packet chain and summarize observed edge fields."""
 from collections import Counter
+from dataclasses import dataclass
 
 import numpy as np
 
@@ -11,8 +12,33 @@ STAT_NAMES = [f'{group}_{field}' for group in DIRECTION_GROUPS
               for field in ('count', 'log_dt_mean', 'log_dt_std', 'signed_log_payload_change_mean')]
 
 
-def audit_batch(batch):
-    """Return one audit record and one feature vector per graph, in batch order."""
+@dataclass(frozen=True)
+class TransitionFields:
+    owner: np.ndarray
+    sizes: np.ndarray
+    packets: np.ndarray
+    src: np.ndarray
+    dst: np.ndarray
+    dt: np.ndarray
+    same_owner: np.ndarray
+    contained: np.ndarray
+    direction: np.ndarray
+    payload: np.ndarray
+    directions_ok: np.ndarray
+    payloads_ok: np.ndarray
+    same_flow: np.ndarray
+    forward: np.ndarray
+    reverse: np.ndarray
+    forward_counts: np.ndarray
+    unique: np.ndarray
+    time_ok: np.ndarray
+    edge_direction_ok: np.ndarray
+    edge_payload_ok: np.ndarray
+    valid: np.ndarray
+
+
+def transition_fields(batch):
+    """Resolve chronological links and metadata by Packet node index on CPU."""
     packet = batch['packet']
     owner = packet.batch.numpy()
     sizes = np.diff(packet.ptr.numpy())
@@ -47,14 +73,25 @@ def audit_batch(batch):
     edge_direction_ok = directions_ok[src] & directions_ok[dst]
     edge_payload_ok = payloads_ok[src] & payloads_ok[dst]
     valid = unique & time_ok & edge_direction_ok & edge_payload_ok
+    return TransitionFields(owner, sizes, packets, src, dst, dt, same_owner, contained,
+                            direction, payload, directions_ok, payloads_ok, same_flow,
+                            forward, reverse, forward_counts, unique, time_ok,
+                            edge_direction_ok, edge_payload_ok, valid)
 
+
+def audit_batch(batch):
+    """Return one audit record and one feature vector per graph, in batch order."""
+    fields = transition_fields(batch)
+    owner, src, dst = fields.owner, fields.src, fields.dst
+    forward, reverse, same_flow = fields.forward, fields.reverse, fields.same_flow
+    edge_owner = owner[src]
     audits, features = [], []
-    for i, size in enumerate(sizes):
+    for i, size in enumerate(fields.sizes):
         belongs = edge_owner == i
-        keep = belongs & valid
-        times = dt[keep].astype(np.float64)
-        before, after = direction[src[keep]], direction[dst[keep]]
-        payload_from, payload_to = payload[src[keep]], payload[dst[keep]]
+        keep = belongs & fields.valid
+        times = fields.dt[keep].astype(np.float64)
+        before, after = fields.direction[src[keep]], fields.direction[dst[keep]]
+        payload_from, payload_to = fields.payload[src[keep]], fields.payload[dst[keep]]
         changes = np.log1p(payload_to) - np.log1p(payload_from)
         pair_type = 2 * before + after
         groups = [pair_type == group for group in range(4)]
@@ -72,15 +109,15 @@ def audit_batch(batch):
             'nonadjacent_links': int((belongs & same_flow & ~(forward | reverse)).sum()),
             'reverse_adjacent_links': int((belongs & reverse).sum()),
             'forward_adjacent_links': int((belongs & forward).sum()),
-            'missing_forward_pairs': max(int(size) - 1, 0) - int((nodes & (forward_counts > 0)).sum()),
-            'duplicate_forward_links': int((belongs & forward & ~unique).sum()),
-            'invalid_contain_ownership_edges': int((~same_owner & (owner[packets] == i)).sum()),
-            'missing_or_duplicate_contain_packets': int((nodes & (contained != 1)).sum()),
-            'invalid_direction_packets': int((nodes & ~directions_ok).sum()),
-            'invalid_payload_packets': int((nodes & ~payloads_ok).sum()),
-            'invalid_time_forward_links': int((belongs & forward & ~time_ok).sum()),
-            'invalid_direction_forward_links': int((belongs & forward & ~edge_direction_ok).sum()),
-            'invalid_payload_forward_links': int((belongs & forward & ~edge_payload_ok).sum()),
+            'missing_forward_pairs': max(int(size) - 1, 0) - int((nodes & (fields.forward_counts > 0)).sum()),
+            'duplicate_forward_links': int((belongs & forward & ~fields.unique).sum()),
+            'invalid_contain_ownership_edges': int((~fields.same_owner & (owner[fields.packets] == i)).sum()),
+            'missing_or_duplicate_contain_packets': int((nodes & (fields.contained != 1)).sum()),
+            'invalid_direction_packets': int((nodes & ~fields.directions_ok).sum()),
+            'invalid_payload_packets': int((nodes & ~fields.payloads_ok).sum()),
+            'invalid_time_forward_links': int((belongs & forward & ~fields.time_ok).sum()),
+            'invalid_direction_forward_links': int((belongs & forward & ~fields.edge_direction_ok).sum()),
+            'invalid_payload_forward_links': int((belongs & forward & ~fields.edge_payload_ok).sum()),
             'valid_pairs': int(keep.sum()), 'same_direction_pairs': counts[0] + counts[3],
             'direction_change_pairs': counts[1] + counts[2], 'direction_groups': counts,
             'zero_dt_pairs': int((times == 0).sum()),
