@@ -1,6 +1,6 @@
 {
   "schema": "xgnid.outputs-snapshot.v2",
-  "created_utc": "2026-11-13T02:50:50.072048+00:00",
+  "created_utc": "2026-11-13T07:23:37.608491+00:00",
   "source_directory": "/home/nzxn/下载/WX/load/XG-NID/outputs",
   "files": {
     "GNN4ID/best.pt": {
@@ -3630,6 +3630,58 @@
     "fusion_bh_b512_s42_v1/summary.json": {
       "bytes": 13190,
       "sha256": "15ec197f8a45e1dad4cf6dd975e6e55d8ac1d64eb8839337053be6f8c6888e28"
+    },
+    "fusion_decision_diagnosis_s42_v1/config.json": {
+      "bytes": 1315,
+      "sha256": "dbe3ae7427dd169ca6d4fac07eb7e450a651581d8ffb57d1c3443bfc719d016a"
+    },
+    "fusion_decision_diagnosis_s42_v1/epochs.jsonl": {
+      "bytes": 12131,
+      "sha256": "bf26915aa43372e228999d2e1efeaaa228093d01ccfc6dafd2c46155d0062204"
+    },
+    "fusion_decision_diagnosis_s42_v1/hard_cases.jsonl.gz": {
+      "bytes": 11139,
+      "sha256": "673b22cf8b30db10ef3bcb30aeefd8303c5c6df8af95bc496778a595675ec8a0"
+    },
+    "fusion_decision_diagnosis_s42_v1/matched_probes.pt": {
+      "bytes": 40496,
+      "sha256": "8d8a7c2bd58c389ad79aeb35ecc6b11d3c586f94710f701d56be8418a3bd64de"
+    },
+    "fusion_decision_diagnosis_s42_v1/metrics.json": {
+      "bytes": 38556,
+      "sha256": "55129e5b1d98a55172d5d436b9d5a39d3018833df883682d29126f850ae41b05"
+    },
+    "fusion_decision_diagnosis_s42_v1/per_class.csv": {
+      "bytes": 6226,
+      "sha256": "6a3de4c74e8dfb720358361ed450a3927635acec8ddebdec8ab6d13cad730a24"
+    },
+    "fusion_decision_diagnosis_s42_v1/progress.json": {
+      "bytes": 102,
+      "sha256": "05b0e9a67803ea7917e9fe747c17fbe2d7f6cd89066dc07ee3377c23d729c48b"
+    },
+    "fusion_decision_diagnosis_s42_v1/provenance.json": {
+      "bytes": 4056,
+      "sha256": "e672233de890a4a1a10127f72f6554ad3dd1f5b14dde8c59565f36a46ca2ab21"
+    },
+    "fusion_decision_diagnosis_s42_v1/report.md": {
+      "bytes": 3441,
+      "sha256": "3d45a60f14b44e0ae57469798b6aebed14158d1426feaf576b36de99eb51797d"
+    },
+    "fusion_decision_diagnosis_s42_v1/status.json": {
+      "bytes": 28,
+      "sha256": "0cb87b61f0afab118ac222a0af92bc06c579959aeea208461294d16becf11b39"
+    },
+    "fusion_decision_diagnosis_s42_v1/train_ranking.jsonl.gz": {
+      "bytes": 5476178,
+      "sha256": "4130b74b4326caf623b41fab3d6e448c963a07788399f9705b41dc7efb7c3b4f"
+    },
+    "fusion_decision_diagnosis_s42_v1/validation_predictions.jsonl.gz": {
+      "bytes": 699792,
+      "sha256": "3cd725f92aa0de141a43b70e9c4573b6d90dfddb4add40af54f22cb3015aa1c5"
+    },
+    "fusion_decision_diagnosis_s42_v1/validation_replay.json": {
+      "bytes": 463,
+      "sha256": "5da0106341011a7f9f88ca07d8e13bf9872c787143e0214fd9a9cb65f8bda93d"
     },
     "fusion_dimension_pair_s42_recovery_v1.log": {
       "bytes": 56990,
@@ -7784,11 +7836,11 @@
       "sha256": "c2593fb7e95be3616c900c55e09a71bc0651f998359aa44c5024799152ef0b20"
     }
   },
-  "file_count": 1895,
+  "file_count": 1908,
   "symlink_count": 100,
-  "regular_file_count": 1795,
-  "total_bytes": 6215264907,
+  "regular_file_count": 1808,
+  "total_bytes": 6221558830,
   "updated_directories": [
-    "packet_transition_diagnosis_s42_v1"
+    "fusion_decision_diagnosis_s42_v1"
   ]
 }

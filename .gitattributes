@@ -132,6 +132,7 @@
 "outputs/fusion_bh_b1024_s42_v1/B_Hstats/last.pt" filter=lfs diff=lfs merge=lfs -text
 "outputs/fusion_bh_b512_s42_v1/B_Hstats/best.pt" filter=lfs diff=lfs merge=lfs -text
 "outputs/fusion_bh_b512_s42_v1/B_Hstats/last.pt" filter=lfs diff=lfs merge=lfs -text
+"outputs/fusion_decision_diagnosis_s42_v1/matched_probes.pt" filter=lfs diff=lfs merge=lfs -text
 "outputs/fusion_dimension_pair_s42_recovery_v1/D32/best.pt" filter=lfs diff=lfs merge=lfs -text
 "outputs/fusion_dimension_pair_s42_recovery_v1/D32/epoch_zero.pt" filter=lfs diff=lfs merge=lfs -text
 "outputs/fusion_dimension_pair_s42_recovery_v1/D32/last.pt" filter=lfs diff=lfs merge=lfs -text
