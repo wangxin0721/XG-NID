@@ -1,0 +1,50 @@
+{
+  "archive_commit": "be62f807c57e7907f99f33dadfb33ffe400d9ee1",
+  "source_directory": "outputs/joint_cross_layer_query_s42_v1",
+  "split_directory": "data/processed/ciciot2023_grouped_input_v1",
+  "split_id": "a8ae9c934eec9fee970cc725e60051d0c709e0f16c7dda14749350ff2006975a",
+  "split_json_sha256": "2f6a7c307121454b881520379f0a298b7e2a179b1db4a7cb03741b7f648a774a",
+  "seed": 42,
+  "eval_batch_size": 16,
+  "workers": 2,
+  "partition_sizes": {"val": 13446, "test": 13448},
+  "metrics_sha256": {
+    "A": "823b0eaa7425cdee9cadbc38b274e048e29f0f5ccef12f44d6e6d0dc4920432e",
+    "B": "4688801af31038b96275b09288b8ddbef6e618ea395ec15dd7d5fc99b5077d36",
+    "C": "834f4b9cd970ab41be54599a7e73cbaa5fd1469ac5201912ee366d34565a0039"
+  },
+  "checkpoints": {
+    "A": {
+      "arm": "A",
+      "path": "A/best.pt",
+      "selection": "best",
+      "epoch": 0,
+      "macro_f1": 0.9752460910749855,
+      "sha256": "e5a28fdf056b841f2a3a05c25ba2f5c692b2a5ee57ef439a40346d410be2a6be"
+    },
+    "B": {
+      "arm": "B",
+      "path": "B/best.pt",
+      "selection": "best",
+      "epoch": 0,
+      "macro_f1": 0.9752460910749855,
+      "sha256": "8a0b3413f82cd0a56e7b52910e2c8acfcd22c1dc50b400df1212f82b231bf435"
+    },
+    "C": {
+      "arm": "C",
+      "path": "C/best.pt",
+      "selection": "best",
+      "epoch": 48,
+      "macro_f1": 0.9755380342743278,
+      "sha256": "3070acd40203ee3a3944dc5805452eb3a2d73218aa24b31379bdfd5cbb523568"
+    },
+    "B37": {
+      "arm": "B",
+      "path": "B/trained_best.pt",
+      "selection": "trained_best",
+      "epoch": 37,
+      "macro_f1": 0.9752159669181573,
+      "sha256": "4bffd4b19396c36ff388c9a6c15a1531931d30eb46f85f08a4a70d8c862e2c4f"
+    }
+  }
+}
