@@ -1,0 +1,11 @@
+{
+  "status": "running",
+  "pid": 4075452,
+  "phase": "rerank_heads",
+  "epoch": 30,
+  "total_epochs": 30,
+  "macro_f1": {
+    "Fused": 0.9752092088048008,
+    "Difference": 0.9751331095711844
+  }
+}

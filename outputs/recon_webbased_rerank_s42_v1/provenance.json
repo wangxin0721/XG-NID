@@ -1,0 +1,57 @@
+{
+  "code_commit": "681144523becdd18fe7e6718518c1ae3ddd35290",
+  "archive_commit": "be62f807c57e7907f99f33dadfb33ffe400d9ee1",
+  "diagnosis_commit": "5a32ddde192c15a7486057c53dd6812ab90cbcf2",
+  "model_state_sha256": "c29a6433880f6e5ad8a45d387abef07cf54f895277f9f89b313edecfa7feedc6",
+  "frozen_c_verified": true,
+  "input_sha256": {
+    "/home/nzxn/下载/WX/load/XG-NID/data/processed/ciciot2023_grouped_input_v1/split.json": "2f6a7c307121454b881520379f0a298b7e2a179b1db4a7cb03741b7f648a774a",
+    "/home/nzxn/下载/WX/load/XG-NID/outputs/joint_cross_layer_query_s42_v1/C/best.pt": "3070acd40203ee3a3944dc5805452eb3a2d73218aa24b31379bdfd5cbb523568",
+    "/home/nzxn/下载/WX/load/XG-NID/outputs/joint_cross_layer_query_s42_v1/C/metrics.json": "834f4b9cd970ab41be54599a7e73cbaa5fd1469ac5201912ee366d34565a0039",
+    "/home/nzxn/下载/WX/load/XG-NID/outputs/joint_cross_layer_query_s42_v1/C/validation_predictions.jsonl.gz": "91d7765e52a9eca289f3bf0591bcaa06090bb6b1e2ac2319958ffe8df6a7028f",
+    "/home/nzxn/下载/WX/load/XG-NID/outputs/joint_cross_layer_query_final_test_s42_v1/val/A_predictions.jsonl.gz": "a0469dff892ac58853e56cffc6f15e2f91f2c1dc7f77624a5fb5ac7e300988f4",
+    "/home/nzxn/下载/WX/load/XG-NID/outputs/joint_cross_layer_query_final_test_s42_v1/val/B37_predictions.jsonl.gz": "5d9e3da3a657cf4d9458ca0e07b7d38cb2d91db6c5338100588da721fa40ff96",
+    "/home/nzxn/下载/WX/load/XG-NID/outputs/fusion_decision_diagnosis_s42_v1/provenance.json": "e672233de890a4a1a10127f72f6554ad3dd1f5b14dde8c59565f36a46ca2ab21",
+    "/home/nzxn/下载/WX/load/XG-NID/data/processed/ciciot2023_grouped_input_v1/samples.jsonl": "b8e9b0810471d0c2b52033488fab640625c3731315afd5d2add1571bd2518827"
+  },
+  "feature_caches": {
+    "val": {
+      "path": "/home/nzxn/下载/WX/load/XG-NID/outputs/.fusion_decision_feature_cache/079bd8e0341341d2fa194acc452e3823bff49ca54af1e4f6b697d8dadb345c61/val.pt",
+      "sha256": "b413ba697eaaac52d07c7d8aba5dc4d04393b1d12d8485132fa268889dc05b61",
+      "reused_diagnosis_cache": true
+    },
+    "train": {
+      "path": "/home/nzxn/下载/WX/load/XG-NID/outputs/.fusion_decision_feature_cache/079bd8e0341341d2fa194acc452e3823bff49ca54af1e4f6b697d8dadb345c61/train.pt",
+      "sha256": "80b6c66f3eb038efa48a8d577f4d7d74177e5da140d8bb8634abfad9fbdcce4a",
+      "reused_diagnosis_cache": true
+    }
+  },
+  "execution_binding": {
+    "schema": "xgnid.fusion-decision-cache.v1",
+    "checkpoint_sha256": "3070acd40203ee3a3944dc5805452eb3a2d73218aa24b31379bdfd5cbb523568",
+    "split_id": "a8ae9c934eec9fee970cc725e60051d0c709e0f16c7dda14749350ff2006975a",
+    "manifest_sha256": "b8e9b0810471d0c2b52033488fab640625c3731315afd5d2add1571bd2518827",
+    "torch": "2.3.1+cu118",
+    "pyg": "2.5.3",
+    "cuda": "11.8",
+    "device": "Tesla T4",
+    "eval_batch_size": 16,
+    "tf32": false,
+    "source_sha256": {
+      "scripts/run_fusion_decision_diagnosis.py": "43b1ab1cb1e5cf518737f16e4cba926709cbb9c6d9ec349b1e7da6eb54c8692d",
+      "scripts/run_packet_transition_diagnosis.py": "00d7bbcf16a1dcf70442cdbc7f07bf3df74599e6f18f5aeca4f4b74acab3c51a",
+      "scripts/replay_flow_query_selective.py": "762f0d1df84e0ede16721fe800aaa2ea12c0e70d3fa45c249413fcdd8acc8426",
+      "scripts/grouped_graphs.py": "c1b1273d62fc44d91f7c9b300b66a083c1f80ef2c9c4314a62c4bbd5d708bbb4",
+      "scripts/audit_graph_split.py": "c19164930e8ecb75636cf16d6fa9bb51d6f29e1384e8d8ebf040e683536ffcb6",
+      "src/xgnid/joint_cross_layer_query.py": "e62ce7933540527b7615e36cd2106d2afec82ac8a1e80424622556d4e0a47715",
+      "src/xgnid/joint_cross_layer.py": "6f9e6bc9d68189c7772e1c013a8746befd9dc1e2676de61d195df943d62246ce",
+      "src/xgnid/cross_layer.py": "b95600a3f085f043e9ed7f2afd24aa6f351f85d9f98544639bae911dd5387dfd",
+      "src/xgnid/flow_query_pooling.py": "b46cf4f440ad8256f09cab71e221284d261753447d773f7a3de5c8c521bb2b66",
+      "src/xgnid/packet_pooling.py": "c423c573b624a98a40ee03b5b286f2dcd3297db43a0eedcf1a654590b163742d",
+      "src/xgnid/fusion_dimension.py": "eb8dd5c91a63b424bd421c29e333ff24492e5474cdabe77408abde5f81bb703d",
+      "src/xgnid/model.py": "28e21e94118db0a4110d17923d2840e18959669d798f628018c98c91c0202631"
+    }
+  },
+  "python": "3.9.23",
+  "graph_root": "/home/nzxn/下载/WX/load/XG-NID/data/processed/CICIoT2023_processed/processed"
+}

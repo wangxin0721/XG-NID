@@ -1,0 +1,46 @@
+{
+  "archive_commit": "be62f807c57e7907f99f33dadfb33ffe400d9ee1",
+  "source_directory": "outputs/joint_cross_layer_query_s42_v1",
+  "split_directory": "data/processed/ciciot2023_grouped_input_v1",
+  "split_id": "a8ae9c934eec9fee970cc725e60051d0c709e0f16c7dda14749350ff2006975a",
+  "split_json_sha256": "2f6a7c307121454b881520379f0a298b7e2a179b1db4a7cb03741b7f648a774a",
+  "seed": 42,
+  "eval_batch_size": 16,
+  "workers": 2,
+  "partition_sizes": {
+    "val": 13446,
+    "test": 13448
+  },
+  "metrics_sha256": {
+    "C": "834f4b9cd970ab41be54599a7e73cbaa5fd1469ac5201912ee366d34565a0039"
+  },
+  "checkpoints": {
+    "C": {
+      "arm": "C",
+      "path": "C/best.pt",
+      "selection": "best",
+      "epoch": 48,
+      "macro_f1": 0.9755380342743278,
+      "sha256": "3070acd40203ee3a3944dc5805452eb3a2d73218aa24b31379bdfd5cbb523568"
+    }
+  },
+  "diagnosis_commit": "5a32ddde192c15a7486057c53dd6812ab90cbcf2",
+  "diagnosis_provenance": "outputs/fusion_decision_diagnosis_s42_v1/provenance.json",
+  "diagnosis_provenance_sha256": "e672233de890a4a1a10127f72f6554ad3dd1f5b14dde8c59565f36a46ca2ab21",
+  "prediction_ids_sha256": "396bd22c4004ecf6d283ac36f99ddada3845038ccd7d365a82e46208b1cc0974",
+  "training_counts": {
+    "Recon": 1355,
+    "WebBased": 2958
+  },
+  "validation_eligible": 517,
+  "epochs": 30,
+  "batch_size": 512,
+  "learning_rate": 0.001,
+  "weight_decay": 0,
+  "budget_reference_pp": 0.1,
+  "partitions_evaluated": [
+    "train",
+    "val"
+  ],
+  "selection": "best_validation_macro_f1_including_zero_earliest_tie"
+}

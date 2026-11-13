@@ -1,6 +1,6 @@
 {
   "schema": "xgnid.outputs-snapshot.v2",
-  "created_utc": "2026-11-13T07:23:37.608491+00:00",
+  "created_utc": "2026-11-13T07:41:59.279894+00:00",
   "source_directory": "/home/nzxn/下载/WX/load/XG-NID/outputs",
   "files": {
     "GNN4ID/best.pt": {
@@ -7395,6 +7395,58 @@
       "bytes": 1545,
       "sha256": "8395d31ee9c3cd3d98b166a60d08ccadb6faf97b1e840eaacccacfb80f66e1ba"
     },
+    "recon_webbased_rerank_s42_v1/config.json": {
+      "bytes": 1533,
+      "sha256": "107b64f78d29f27b9c9b1f8e87a931f2800fe06d8fbb67bccac80434c0307864"
+    },
+    "recon_webbased_rerank_s42_v1/epochs.jsonl": {
+      "bytes": 92809,
+      "sha256": "1cca790bbe7c6f24bcc9f59cf2bac1ac5696646ffaf75dda46d4e0d8856ee7b6"
+    },
+    "recon_webbased_rerank_s42_v1/hard_cases.jsonl.gz": {
+      "bytes": 19717,
+      "sha256": "3948ab79dcead3dea2f824807862561e42aef498f0d3c5ce89156e486b6667f4"
+    },
+    "recon_webbased_rerank_s42_v1/metrics.json": {
+      "bytes": 30094,
+      "sha256": "d5a372d516a6707da6bab720db525ab2306fc0ce6448f5160c034ef3c4820f81"
+    },
+    "recon_webbased_rerank_s42_v1/per_class.csv": {
+      "bytes": 4814,
+      "sha256": "20feae1d6a939b01c87cf08899d026b1d4c845efd9f05c460ef4d41cc3532073"
+    },
+    "recon_webbased_rerank_s42_v1/preflight.json": {
+      "bytes": 286,
+      "sha256": "52231ca3b3e96ef7451442f71aeab338014bae66d727905fef77923fb690656d"
+    },
+    "recon_webbased_rerank_s42_v1/progress.json": {
+      "bytes": 199,
+      "sha256": "9b27d2050e7d1dae6296d4bba90d73fb2f985666b19ebe6caf8a2455387e6bca"
+    },
+    "recon_webbased_rerank_s42_v1/provenance.json": {
+      "bytes": 4275,
+      "sha256": "22d9d8d16b88a8b5cd7fd174e5d111065f57de0b6f814c9b3969929f48973b66"
+    },
+    "recon_webbased_rerank_s42_v1/report.md": {
+      "bytes": 2186,
+      "sha256": "7330e9f0672a5a250dbe58c4c56ef64b49c94998f7a5e81036223dfaa360970c"
+    },
+    "recon_webbased_rerank_s42_v1/rerank_heads.pt": {
+      "bytes": 18138,
+      "sha256": "355552d1ddce2dee6f5ffcfaa7b32eb90d5f45ead7f27ea56316ee9b96052a84"
+    },
+    "recon_webbased_rerank_s42_v1/status.json": {
+      "bytes": 28,
+      "sha256": "0cb87b61f0afab118ac222a0af92bc06c579959aeea208461294d16becf11b39"
+    },
+    "recon_webbased_rerank_s42_v1/validation_predictions.jsonl.gz": {
+      "bytes": 1028463,
+      "sha256": "b4a12a495b282c6befa9f2a36dfce0483f282f1717283d3c5099867fe6c7e0b6"
+    },
+    "recon_webbased_rerank_s42_v1/validation_replay.json": {
+      "bytes": 463,
+      "sha256": "5da0106341011a7f9f88ca07d8e13bf9872c787143e0214fd9a9cb65f8bda93d"
+    },
     "relation_pair_backup_20261102_104357/relation_pair_s42_v1.log": {
       "bytes": 4026,
       "sha256": "ad3a0ff3f3d8e88d367dbe9dad45c1de6aec6cbc6a696cc21f67f67b84667171"
@@ -7836,11 +7888,11 @@
       "sha256": "c2593fb7e95be3616c900c55e09a71bc0651f998359aa44c5024799152ef0b20"
     }
   },
-  "file_count": 1908,
+  "file_count": 1921,
   "symlink_count": 100,
-  "regular_file_count": 1808,
-  "total_bytes": 6221558830,
+  "regular_file_count": 1821,
+  "total_bytes": 6222761835,
   "updated_directories": [
-    "fusion_decision_diagnosis_s42_v1"
+    "recon_webbased_rerank_s42_v1"
   ]
 }

@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "epoch_zero_samples": 13446,
+  "parameter_count_per_head": 545,
+  "initial_state_sha256": {
+    "Fused": "058085ea17639c674d53296b77b6d1fd62b3f34f8248f650737c21c508d8b818",
+    "Difference": "058085ea17639c674d53296b77b6d1fd62b3f34f8248f650737c21c508d8b818"
+  }
+}

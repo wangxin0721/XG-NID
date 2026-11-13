@@ -288,6 +288,7 @@
 "outputs/r0_validation_smoke_s42_v1/best.pt" filter=lfs diff=lfs merge=lfs -text
 "outputs/r0_validation_smoke_s42_v1/last.pt" filter=lfs diff=lfs merge=lfs -text
 "outputs/r0_validation_split_s42_v1/samples.jsonl" filter=lfs diff=lfs merge=lfs -text
+"outputs/recon_webbased_rerank_s42_v1/rerank_heads.pt" filter=lfs diff=lfs merge=lfs -text
 "outputs/relation_pair_s42_v1/Rel-Gate/best.pt" filter=lfs diff=lfs merge=lfs -text
 "outputs/relation_pair_s42_v1/Rel-Gate/epoch_zero.pt" filter=lfs diff=lfs merge=lfs -text
 "outputs/relation_pair_s42_v1/Rel-Gate/last.pt" filter=lfs diff=lfs merge=lfs -text
