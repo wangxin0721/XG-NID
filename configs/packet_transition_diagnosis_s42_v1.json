@@ -1,0 +1,14 @@
+{
+  "comparison_archive_commit": "a9ca54a333a97390c9f37811e881820a73d4f816",
+  "comparison_validation_directory": "outputs/joint_cross_layer_query_final_test_s42_v1/val",
+  "comparison_sha256": {
+    "A": "a0469dff892ac58853e56cffc6f15e2f91f2c1dc7f77624a5fb5ac7e300988f4",
+    "B37": "5d9e3da3a657cf4d9458ca0e07b7d38cb2d91db6c5338100588da721fa40ff96"
+  },
+  "epochs": 30,
+  "batch_size": 512,
+  "learning_rate": 0.001,
+  "weight_decay": 0,
+  "training_samples": 107621,
+  "budget_reference_pp": 0.10
+}

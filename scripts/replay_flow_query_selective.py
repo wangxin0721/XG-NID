@@ -24,7 +24,7 @@ OUTCOME_BY_CORRECTNESS = dict(zip(((True, True), (True, False), (False, True), (
 FOCUS = ('WebBased', 'Recon', 'Spoofing')
 
 
-def paired_forward(model, batch):
+def shared_readouts(model, batch):
     means = []
 
     def capture_mean(module, args):
@@ -40,6 +40,11 @@ def paired_forward(model, batch):
     mean = means[0]
     require(all(t.shape == (batch.num_graphs, 64) and bool(torch.isfinite(t).all())
                 for t in (flow, first, mean, query)), 'Invalid shared encoding or second-layer readout')
+    return flow, first, mean, query
+
+
+def paired_forward(model, batch):
+    flow, first, mean, query = shared_readouts(model, batch)
     scores_on, gate_on = model.forward_features(flow, first, query)
     scores_off, gate_off = model.forward_features(flow, first, mean)
     require(all(t.shape == (batch.num_graphs, width) and bool(torch.isfinite(t).all())
