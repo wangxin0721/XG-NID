@@ -1,0 +1,9 @@
+{
+  "diagnosis_commit": "f7dfb24090e63092657d18a6e2d7e1866b416870",
+  "epochs": 30,
+  "batch_size": 512,
+  "learning_rate": 0.001,
+  "weight_decay": 0,
+  "pca_dimensions_per_branch": 16,
+  "budget_reference_pp": 0.10
+}

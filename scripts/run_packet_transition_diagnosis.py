@@ -26,9 +26,8 @@ FEATURES = {'Flow': 64, 'PacketMean': 64, 'PacketQuery': 64, 'FlowPacketMean': 1
 
 
 @torch.no_grad()
-def frozen_features(model, batch):
+def frozen_query_features(model, batch):
     flow, first, mean, query = replay.shared_readouts(model, batch)
-    packet_mean = model.cross_layer(torch.cat((first, mean), dim=-1))
     packet_query = model.cross_layer(torch.cat((first, query), dim=-1))
     fusion = model.fusion
     flow32, packet32, fused32 = [], [], []
@@ -38,67 +37,91 @@ def frozen_features(model, batch):
         fusion.shared_head.register_forward_pre_hook(lambda module, args: fused32.append(args[0])),
     ]
     try:
-        scores, _ = fusion(flow, packet_query)
+        scores, alpha = fusion(flow, packet_query)
     finally:
         for hook in hooks:
             hook.remove()
     require(len(flow32) == len(packet32) == len(fused32) == 1 and bool(torch.isfinite(scores).all()),
             'Invalid C fusion output')
-    features = {'Flow': flow, 'PacketMean': packet_mean, 'PacketQuery': packet_query,
-                'FlowPacketMean': torch.cat((flow, packet_mean), dim=-1),
-                'D32Flow': flow32[0], 'D32Packet': packet32[0], 'D32Fused': fused32[0]}
-    return features, scores.argmax(dim=-1).tolist()
+    return {'Flow': flow, 'PacketQuery': packet_query, 'D32Flow': flow32[0],
+            'D32Packet': packet32[0], 'D32Fused': fused32[0], 'Alpha': alpha,
+            'LogProbabilities': scores}, first, mean
 
 
 @torch.no_grad()
-def extract(model, data, rows, part, config, device, output):
-    values = {name: torch.empty((len(rows), size), dtype=torch.float32) for name, size in FEATURES.items()}
-    audits, predictions = [], []
+def frozen_features(model, batch):
+    features, first, mean = frozen_query_features(model, batch)
+    scores = features.pop('LogProbabilities')
+    del features['Alpha']
+    packet_mean = model.cross_layer(torch.cat((first, mean), dim=-1))
+    features['PacketMean'] = packet_mean
+    features['FlowPacketMean'] = torch.cat((features['Flow'], packet_mean), dim=-1)
+    return features, scores.argmax(dim=-1).tolist()
+
+
+def aligned_batches(data, rows, part, config):
     offset = 0
     for step, batch in enumerate(joint.legacy.loader(data, rows, part, config), 1):
         end = offset + batch.num_graphs
         expected = rows[offset:end]
         actual = list(zip(batch.sample_id, batch.y.view(-1).tolist()))
         require(actual == [(r['sample_id'], r['label']) for r in expected], f'{part} IDs, labels or order differ')
+        yield step, slice(offset, end), batch, expected
+        offset = end
+    require(offset == len(rows), f'Incomplete {part} extraction')
+
+
+@torch.no_grad()
+def extract(model, data, rows, part, config, device, output):
+    values = {name: torch.empty((len(rows), size), dtype=torch.float32) for name, size in FEATURES.items()}
+    audits, predictions = [], []
+    for step, indices, batch, expected in aligned_batches(data, rows, part, config):
         checks, stats = audit_batch(batch)
         features, preds = frozen_features(model, batch.to(device))
         features['PacketMeanTransition'] = torch.cat((features['PacketMean'], torch.from_numpy(stats).to(device)), -1)
         for name, tensor in features.items():
             require(tensor.shape == (len(expected), FEATURES[name]) and bool(torch.isfinite(tensor).all()),
                     f'Invalid frozen feature tensor {name}')
-            values[name][offset:end] = tensor.cpu()
-        audits.extend({'sample_id': sid, 'label': label, **check}
-                      for (sid, label), check in zip(actual, checks))
-        predictions.extend({'sample_id': sid, 'label': label, 'prediction': pred}
-                           for (sid, label), pred in zip(actual, preds))
-        offset = end
-        if step == 1 or step % 200 == 0 or offset == len(rows):
-            raw.progress(output, f'extract_{part}', samples=offset, total=len(rows))
-    require(offset == len(rows), f'Incomplete {part} extraction')
+            values[name][indices] = tensor.cpu()
+        audits.extend({'sample_id': row['sample_id'], 'label': row['label'], **check}
+                      for row, check in zip(expected, checks))
+        predictions.extend({'sample_id': row['sample_id'], 'label': row['label'], 'prediction': pred}
+                           for row, pred in zip(expected, preds))
+        if step == 1 or step % 200 == 0 or indices.stop == len(rows):
+            raw.progress(output, f'extract_{part}', samples=indices.stop, total=len(rows))
     return values, audits, predictions
 
 
 def train_probes(train, val, train_rows, val_rows, config, device, output):
+    heads = {}
+    for name, width in FEATURES.items():
+        raw.seed_all(config['seed'])
+        heads[name] = nn.Linear(width, len(LABELS))
+    exports, checkpoints, updates = fit_probes(heads, train, val, train_rows, val_rows, config, device, output)
+    torch.save({'epoch': config['epochs'], 'seed': config['seed'], 'probes': checkpoints}, output / 'linear_probes.pt')
+    return exports, updates
+
+
+def fit_probes(heads, train, val, train_rows, val_rows, config, device, output):
     labels = torch.tensor([r['label'] for r in train_rows], device=device)
     sampler = raw.TrainBatches(len(train_rows), config['batch_size'], config['seed'])
-    heads, optimizers, normalization = {}, {}, {}
-    for name, width in FEATURES.items():
+    train, val = dict(train), dict(val)
+    optimizers, normalization = {}, {}
+    for name, head in heads.items():
         train[name] = train[name].to(device)
         val[name] = val[name].to(device)
         mean = train[name].mean(dim=0)
         scale = train[name].std(dim=0, unbiased=False)
         scale = torch.where(scale > 0, scale, torch.ones_like(scale))
         normalization[name] = {'mean': mean.cpu(), 'scale': scale.cpu()}
-        for features in (train, val):
-            features[name].sub_(mean).div_(scale)
-        raw.seed_all(config['seed'])
-        head = nn.Linear(width, len(LABELS)).to(device)
-        heads[name] = head
+        train[name] = (train[name] - mean) / scale
+        val[name] = (val[name] - mean) / scale
+        head.to(device)
         optimizers[name] = torch.optim.Adam(head.parameters(), lr=config['learning_rate'],
                                              weight_decay=config['weight_decay'])
     with (output / 'epochs.jsonl').open('x', encoding='utf-8', newline='\n') as stream:
         for epoch in range(1, config['epochs'] + 1):
-            losses = {name: torch.zeros((), device=device) for name in FEATURES}
+            losses = {name: torch.zeros((), device=device) for name in heads}
             samples, updates = 0, 0
             for indices in sampler:
                 idx = torch.as_tensor(indices, device=device)
@@ -118,7 +141,7 @@ def train_probes(train, val, train_rows, val_rows, config, device, output):
                                      'order_sha256': sampler.order_sha256,
                                      'train_ce': {name: float(loss / samples) for name, loss in losses.items()}}) + '\n')
             stream.flush()
-            raw.progress(output, 'linear_probes', epoch=epoch, total_epochs=config['epochs'])
+            raw.progress(output, 'probes', epoch=epoch, total_epochs=config['epochs'])
     exports, checkpoints = {}, {}
     with torch.no_grad():
         for name, head in heads.items():
@@ -128,8 +151,7 @@ def train_probes(train, val, train_rows, val_rows, config, device, output):
             exports[name] = [{**{key: row[key] for key in ('sample_id', 'label')}, 'prediction': pred}
                              for row, pred in zip(val_rows, scores.argmax(-1).tolist())]
             checkpoints[name] = {**normalization[name], 'state': {k: v.cpu() for k, v in head.state_dict().items()}}
-    torch.save({'epoch': config['epochs'], 'seed': config['seed'], 'probes': checkpoints}, output / 'linear_probes.pt')
-    return exports, config['epochs'] * len(sampler)
+    return exports, checkpoints, config['epochs'] * len(sampler)
 
 
 def diagnostics(reference, exports, val_audits):
