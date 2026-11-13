@@ -1,0 +1,72 @@
+{
+  "archive_commit": "be62f807c57e7907f99f33dadfb33ffe400d9ee1",
+  "source_directory": "outputs/joint_cross_layer_query_s42_v1",
+  "split_directory": "data/processed/ciciot2023_grouped_input_v1",
+  "split_id": "a8ae9c934eec9fee970cc725e60051d0c709e0f16c7dda14749350ff2006975a",
+  "split_json_sha256": "2f6a7c307121454b881520379f0a298b7e2a179b1db4a7cb03741b7f648a774a",
+  "seed": 42,
+  "eval_batch_size": 16,
+  "workers": 2,
+  "partition_sizes": {
+    "val": 13446,
+    "test": 13448
+  },
+  "metrics_sha256": {
+    "C": "834f4b9cd970ab41be54599a7e73cbaa5fd1469ac5201912ee366d34565a0039"
+  },
+  "checkpoints": {
+    "C": {
+      "arm": "C",
+      "path": "C/best.pt",
+      "selection": "best",
+      "epoch": 48,
+      "macro_f1": 0.9755380342743278,
+      "sha256": "3070acd40203ee3a3944dc5805452eb3a2d73218aa24b31379bdfd5cbb523568"
+    }
+  },
+  "comparison_archive_commit": "a9ca54a333a97390c9f37811e881820a73d4f816",
+  "comparison_validation_directory": "outputs/joint_cross_layer_query_final_test_s42_v1/val",
+  "comparison_sha256": {
+    "A": "a0469dff892ac58853e56cffc6f15e2f91f2c1dc7f77624a5fb5ac7e300988f4",
+    "B37": "5d9e3da3a657cf4d9458ca0e07b7d38cb2d91db6c5338100588da721fa40ff96"
+  },
+  "epochs": 30,
+  "batch_size": 512,
+  "learning_rate": 0.001,
+  "weight_decay": 0,
+  "training_samples": 107621,
+  "budget_reference_pp": 0.1,
+  "features": {
+    "Flow": 64,
+    "PacketMean": 64,
+    "PacketQuery": 64,
+    "FlowPacketMean": 128,
+    "D32Flow": 32,
+    "D32Packet": 32,
+    "D32Fused": 32,
+    "PacketMeanTransition": 80
+  },
+  "transition_stat_columns": [
+    "0_to_0_count",
+    "0_to_0_log_dt_mean",
+    "0_to_0_log_dt_std",
+    "0_to_0_signed_log_payload_change_mean",
+    "0_to_1_count",
+    "0_to_1_log_dt_mean",
+    "0_to_1_log_dt_std",
+    "0_to_1_signed_log_payload_change_mean",
+    "1_to_0_count",
+    "1_to_0_log_dt_mean",
+    "1_to_0_log_dt_std",
+    "1_to_0_signed_log_payload_change_mean",
+    "1_to_1_count",
+    "1_to_1_log_dt_mean",
+    "1_to_1_log_dt_std",
+    "1_to_1_signed_log_payload_change_mean"
+  ],
+  "partitions_evaluated": [
+    "train",
+    "val"
+  ],
+  "probe_selection": "fixed_last_epoch"
+}

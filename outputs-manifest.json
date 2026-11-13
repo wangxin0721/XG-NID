@@ -1,6 +1,6 @@
 {
   "schema": "xgnid.outputs-snapshot.v2",
-  "created_utc": "2026-11-13T02:02:22.099935+00:00",
+  "created_utc": "2026-11-13T02:50:50.072048+00:00",
   "source_directory": "/home/nzxn/下载/WX/load/XG-NID/outputs",
   "files": {
     "GNN4ID/best.pt": {
@@ -6959,6 +6959,58 @@
       "bytes": 42694352,
       "sha256": "fc70d58c519ef31eb5cc524c4914814f7e959f1f79664e5e478a99c7db5a40ab"
     },
+    "packet_transition_diagnosis_s42_v1/config.json": {
+      "bytes": 2140,
+      "sha256": "8a5fa164516f9b06f78f80b2d37329ef4af08568fc58dca6b3a455945c8e22b6"
+    },
+    "packet_transition_diagnosis_s42_v1/epochs.jsonl": {
+      "bytes": 13414,
+      "sha256": "73e08c41618d8313d36cb6e55ebb0af90a10cbef61ce45a244ccd9b6a8d0e2d0"
+    },
+    "packet_transition_diagnosis_s42_v1/field_audit.json": {
+      "bytes": 32979,
+      "sha256": "04fac1b8905f9cf985b87675c8cfdd5506605e33af98e20b7b66df2782615286"
+    },
+    "packet_transition_diagnosis_s42_v1/hard_cases.jsonl.gz": {
+      "bytes": 13090,
+      "sha256": "12b47f3f4930fcd3f7c88071834ab9a27f1b2318981d389655397fcdd911a6b5"
+    },
+    "packet_transition_diagnosis_s42_v1/linear_probes.pt": {
+      "bytes": 28470,
+      "sha256": "98a8c4780f8bb160620e6459b1b2b4598147c1afd5e19f31bc065b4dd65c3472"
+    },
+    "packet_transition_diagnosis_s42_v1/metrics.json": {
+      "bytes": 38622,
+      "sha256": "7ce1d152b89b359b0826e9f4c314f8f4ae711024ca41ef3e8d0ff03dddb493e9"
+    },
+    "packet_transition_diagnosis_s42_v1/per_class.csv": {
+      "bytes": 6636,
+      "sha256": "ed4412c405baa7e31141bab1f5bca4fe65704be1ba2e6299744eb1bcf021f7ac"
+    },
+    "packet_transition_diagnosis_s42_v1/progress.json": {
+      "bytes": 109,
+      "sha256": "1d8b995c2753f99156d22245d1ddea794da51e1905e336ead7c202d4f3a82fe2"
+    },
+    "packet_transition_diagnosis_s42_v1/provenance.json": {
+      "bytes": 1724,
+      "sha256": "9ac63c05d5b4effc1dfafc009905521f9943d8fa0496ddd970d509930e553319"
+    },
+    "packet_transition_diagnosis_s42_v1/report.md": {
+      "bytes": 4221,
+      "sha256": "5f93b7e3ca593a7331d7462a4d83921dbfc1b1afbacb65c0bec341a3e345dc8c"
+    },
+    "packet_transition_diagnosis_s42_v1/status.json": {
+      "bytes": 28,
+      "sha256": "0cb87b61f0afab118ac222a0af92bc06c579959aeea208461294d16becf11b39"
+    },
+    "packet_transition_diagnosis_s42_v1/validation_predictions.jsonl.gz": {
+      "bytes": 721142,
+      "sha256": "efc4f0ea4d9b65d467c458444ba291711926e45bf86a17ed894c7f1495011e6d"
+    },
+    "packet_transition_diagnosis_s42_v1/validation_replay.json": {
+      "bytes": 463,
+      "sha256": "5da0106341011a7f9f88ca07d8e13bf9872c787143e0214fd9a9cb65f8bda93d"
+    },
     "r0_aligned_full_s42_v1.exitcode": {
       "bytes": 4,
       "sha256": "9d9b18720961e9b4689fd763b85e7b6f36160ccd3a8a1c9ddc5103bb0f66c396"
@@ -7732,11 +7784,11 @@
       "sha256": "c2593fb7e95be3616c900c55e09a71bc0651f998359aa44c5024799152ef0b20"
     }
   },
-  "file_count": 1882,
+  "file_count": 1895,
   "symlink_count": 100,
-  "regular_file_count": 1782,
-  "total_bytes": 6214401869,
+  "regular_file_count": 1795,
+  "total_bytes": 6215264907,
   "updated_directories": [
-    "flow_query_selective_replay_s42_v1"
+    "packet_transition_diagnosis_s42_v1"
   ]
 }
