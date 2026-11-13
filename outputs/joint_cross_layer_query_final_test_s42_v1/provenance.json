@@ -1,0 +1,30 @@
+{
+  "archive_commit": "be62f807c57e7907f99f33dadfb33ffe400d9ee1",
+  "code_commit": "383c126a1aa5b8e4bec048de99f1f6135d8035b8",
+  "config_sha256": "f75f5e4bd5300dada3676c9f8870c64151aeaccb1510b37105e6b51bff4eb4d7",
+  "split_id": "a8ae9c934eec9fee970cc725e60051d0c709e0f16c7dda14749350ff2006975a",
+  "graph_root": "/home/nzxn/下载/WX/load/XG-NID/data/processed/CICIoT2023_processed/processed",
+  "source_directory": "/home/nzxn/下载/WX/load/XG-NID/outputs/joint_cross_layer_query_s42_v1",
+  "input_sha256": {
+    "/home/nzxn/下载/WX/load/XG-NID/data/processed/ciciot2023_grouped_input_v1/split.json": "2f6a7c307121454b881520379f0a298b7e2a179b1db4a7cb03741b7f648a774a",
+    "/home/nzxn/下载/WX/load/XG-NID/outputs/joint_cross_layer_query_s42_v1/A/best.pt": "e5a28fdf056b841f2a3a05c25ba2f5c692b2a5ee57ef439a40346d410be2a6be",
+    "/home/nzxn/下载/WX/load/XG-NID/outputs/joint_cross_layer_query_s42_v1/B/best.pt": "8a0b3413f82cd0a56e7b52910e2c8acfcd22c1dc50b400df1212f82b231bf435",
+    "/home/nzxn/下载/WX/load/XG-NID/outputs/joint_cross_layer_query_s42_v1/C/best.pt": "3070acd40203ee3a3944dc5805452eb3a2d73218aa24b31379bdfd5cbb523568",
+    "/home/nzxn/下载/WX/load/XG-NID/outputs/joint_cross_layer_query_s42_v1/B/trained_best.pt": "4bffd4b19396c36ff388c9a6c15a1531931d30eb46f85f08a4a70d8c862e2c4f",
+    "/home/nzxn/下载/WX/load/XG-NID/outputs/joint_cross_layer_query_s42_v1/A/metrics.json": "823b0eaa7425cdee9cadbc38b274e048e29f0f5ccef12f44d6e6d0dc4920432e",
+    "/home/nzxn/下载/WX/load/XG-NID/outputs/joint_cross_layer_query_s42_v1/B/metrics.json": "4688801af31038b96275b09288b8ddbef6e618ea395ec15dd7d5fc99b5077d36",
+    "/home/nzxn/下载/WX/load/XG-NID/outputs/joint_cross_layer_query_s42_v1/C/metrics.json": "834f4b9cd970ab41be54599a7e73cbaa5fd1469ac5201912ee366d34565a0039",
+    "/home/nzxn/下载/WX/load/XG-NID/outputs/joint_cross_layer_query_s42_v1/A/validation_predictions.jsonl.gz": "09fc5e876d94b8fab74d53bcbd9620f88e1f65e57fd4050bb2ece59cff52fc16",
+    "/home/nzxn/下载/WX/load/XG-NID/outputs/joint_cross_layer_query_s42_v1/B/validation_predictions.jsonl.gz": "bf88724c8e9b5dec826ba7a482b5a3a56c4088fa885067f7ed046d818d479c23",
+    "/home/nzxn/下载/WX/load/XG-NID/outputs/joint_cross_layer_query_s42_v1/C/validation_predictions.jsonl.gz": "91d7765e52a9eca289f3bf0591bcaa06090bb6b1e2ac2319958ffe8df6a7028f",
+    "/home/nzxn/下载/WX/load/XG-NID/data/processed/ciciot2023_grouped_input_v1/samples.jsonl": "b8e9b0810471d0c2b52033488fab640625c3731315afd5d2add1571bd2518827"
+  },
+  "runner_sha256": "7e60a282f9d85201417a973686ba8eeae82de86ead41c8b8811c28ea6399aedd",
+  "python": "3.9.23",
+  "torch": "2.3.1+cu118",
+  "pyg": "2.5.3",
+  "cuda": "11.8",
+  "device": "cuda:0",
+  "device_name": "Tesla T4",
+  "tf32": false
+}

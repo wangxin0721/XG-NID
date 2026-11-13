@@ -1,0 +1,66 @@
+{
+  "passed": true,
+  "A_B_predictions_identical": true,
+  "checkpoints": {
+    "A": {
+      "passed": true,
+      "samples": 13446,
+      "metrics_match": true,
+      "prediction_ids_sha256": "580223576174d9c7c0997c2acecc2b27cba5951e10a96b56dd98ed11d3cecaf2",
+      "expected_prediction_ids_sha256": "580223576174d9c7c0997c2acecc2b27cba5951e10a96b56dd98ed11d3cecaf2",
+      "archive_comparison": {
+        "counts": {
+          "repaired": 0,
+          "regressed": 0,
+          "both_correct": 13195,
+          "both_wrong": 251
+        },
+        "net_correct": 0
+      },
+      "first_differences": []
+    },
+    "B": {
+      "passed": true,
+      "samples": 13446,
+      "metrics_match": true,
+      "prediction_ids_sha256": "580223576174d9c7c0997c2acecc2b27cba5951e10a96b56dd98ed11d3cecaf2",
+      "expected_prediction_ids_sha256": "580223576174d9c7c0997c2acecc2b27cba5951e10a96b56dd98ed11d3cecaf2",
+      "archive_comparison": {
+        "counts": {
+          "repaired": 0,
+          "regressed": 0,
+          "both_correct": 13195,
+          "both_wrong": 251
+        },
+        "net_correct": 0
+      },
+      "first_differences": []
+    },
+    "C": {
+      "passed": true,
+      "samples": 13446,
+      "metrics_match": true,
+      "prediction_ids_sha256": "396bd22c4004ecf6d283ac36f99ddada3845038ccd7d365a82e46208b1cc0974",
+      "expected_prediction_ids_sha256": "396bd22c4004ecf6d283ac36f99ddada3845038ccd7d365a82e46208b1cc0974",
+      "archive_comparison": {
+        "counts": {
+          "repaired": 0,
+          "regressed": 0,
+          "both_correct": 13201,
+          "both_wrong": 245
+        },
+        "net_correct": 0
+      },
+      "first_differences": []
+    },
+    "B37": {
+      "passed": true,
+      "samples": 13446,
+      "metrics_match": true,
+      "prediction_ids_sha256": "908dcfcd421531fd3647cc66cdb7a27bf917a3cdd10da0361c96820cb57910e0",
+      "expected_prediction_ids_sha256": "908dcfcd421531fd3647cc66cdb7a27bf917a3cdd10da0361c96820cb57910e0",
+      "archive_comparison": null,
+      "first_differences": []
+    }
+  }
+}

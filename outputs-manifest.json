@@ -1,6 +1,6 @@
 {
   "schema": "xgnid.outputs-snapshot.v2",
-  "created_utc": "2026-11-12T15:57:51.755738+00:00",
+  "created_utc": "2026-11-13T01:39:27.317604+00:00",
   "source_directory": "/home/nzxn/下载/WX/load/XG-NID/outputs",
   "files": {
     "GNN4ID/best.pt": {
@@ -5551,6 +5551,118 @@
       "bytes": 429517,
       "sha256": "660daf4ad01ad154098a1bfa5860b3c2cdb90d6fe4ab93815ef0d90b37722360"
     },
+    "joint_cross_layer_query_final_test_s42_v1/config.json": {
+      "bytes": 1706,
+      "sha256": "2821cb7af5376098a3afa7458123b41733736aa1945d5eeeef3a57154517dd6c"
+    },
+    "joint_cross_layer_query_final_test_s42_v1/paper_tables.md": {
+      "bytes": 1055,
+      "sha256": "72eec3f53ee3ef3cb4c34aa527c71a7260a9eb4eec5af340dd1162d490980ca2"
+    },
+    "joint_cross_layer_query_final_test_s42_v1/progress.json": {
+      "bytes": 145,
+      "sha256": "40f4047988ba65fd3e27e2ae8f2d81680faa67fee893892a04a74dd0eb150814"
+    },
+    "joint_cross_layer_query_final_test_s42_v1/provenance.json": {
+      "bytes": 2747,
+      "sha256": "04b9c1f97ba6b9d774c3d568b9cd673142f810a3235427f1888227cda5919080"
+    },
+    "joint_cross_layer_query_final_test_s42_v1/report.md": {
+      "bytes": 2410,
+      "sha256": "df13225540e6c6115e93ff2e6f73409dd4169167f7530bd5ca12e6089b63af12"
+    },
+    "joint_cross_layer_query_final_test_s42_v1/status.json": {
+      "bytes": 28,
+      "sha256": "0cb87b61f0afab118ac222a0af92bc06c579959aeea208461294d16becf11b39"
+    },
+    "joint_cross_layer_query_final_test_s42_v1/summary.json": {
+      "bytes": 39858,
+      "sha256": "754a84e23eb32459dbdb0c7bb832cbaf0dbd2daeaa402777a875fd136f6fd779"
+    },
+    "joint_cross_layer_query_final_test_s42_v1/test/A_predictions.jsonl.gz": {
+      "bytes": 535689,
+      "sha256": "a73660c7376fae05cb8b7b639377c26dad3a94c82f51ee520a7989a06bc0272f"
+    },
+    "joint_cross_layer_query_final_test_s42_v1/test/B-A_changed_samples.jsonl.gz": {
+      "bytes": 51,
+      "sha256": "9997dd1788d2b6a1c6dfd67b8cf62dd3e0e2186dc6ae9a631ecca514631f7713"
+    },
+    "joint_cross_layer_query_final_test_s42_v1/test/B37_predictions.jsonl.gz": {
+      "bytes": 535705,
+      "sha256": "451c6b14f4f84621ae569b7a02bf4f4fafc36d92c503e2d4e989ab4d1b36ae4a"
+    },
+    "joint_cross_layer_query_final_test_s42_v1/test/B_predictions.jsonl.gz": {
+      "bytes": 535689,
+      "sha256": "679b1c4cc85e85575b687160a65f5a13719e15fe8a0b268b6eeeeef9693d2158"
+    },
+    "joint_cross_layer_query_final_test_s42_v1/test/C-A_changed_samples.jsonl.gz": {
+      "bytes": 881,
+      "sha256": "82c9a1c2f4228be8d3cf354bb4be9b63cbcd341452234ccafe1784b824fd7480"
+    },
+    "joint_cross_layer_query_final_test_s42_v1/test/C-B37_changed_samples.jsonl.gz": {
+      "bytes": 1756,
+      "sha256": "ffa7fa1b8ab99d29e577e4e1795364457724f9418766e75890a0dd1dbd5480b4"
+    },
+    "joint_cross_layer_query_final_test_s42_v1/test/C-B_changed_samples.jsonl.gz": {
+      "bytes": 881,
+      "sha256": "e024d72b90fb47c1c9f7225ea8557f6264c65d5add145b3cfc3e8bc239a22331"
+    },
+    "joint_cross_layer_query_final_test_s42_v1/test/C_predictions.jsonl.gz": {
+      "bytes": 535681,
+      "sha256": "6404f57c901f833eacfd7e1584736e397db4674040226ac0a743711c20aaf2eb"
+    },
+    "joint_cross_layer_query_final_test_s42_v1/test/metrics.json": {
+      "bytes": 9432,
+      "sha256": "2f75b9cb4e8fc96fa3360dea5b39439f7828109beafbd7f910c2cff83c37f45e"
+    },
+    "joint_cross_layer_query_final_test_s42_v1/test/per_class.csv": {
+      "bytes": 2092,
+      "sha256": "b805488b1fdf218dcc99fe3da3dc90aea905dba5aeb6558aa42130f4db0ed1c4"
+    },
+    "joint_cross_layer_query_final_test_s42_v1/val/A_predictions.jsonl.gz": {
+      "bytes": 535749,
+      "sha256": "a0469dff892ac58853e56cffc6f15e2f91f2c1dc7f77624a5fb5ac7e300988f4"
+    },
+    "joint_cross_layer_query_final_test_s42_v1/val/B-A_changed_samples.jsonl.gz": {
+      "bytes": 51,
+      "sha256": "9997dd1788d2b6a1c6dfd67b8cf62dd3e0e2186dc6ae9a631ecca514631f7713"
+    },
+    "joint_cross_layer_query_final_test_s42_v1/val/B37_predictions.jsonl.gz": {
+      "bytes": 535745,
+      "sha256": "5d9e3da3a657cf4d9458ca0e07b7d38cb2d91db6c5338100588da721fa40ff96"
+    },
+    "joint_cross_layer_query_final_test_s42_v1/val/B_predictions.jsonl.gz": {
+      "bytes": 535749,
+      "sha256": "d4fc8c85df6a7193daa1ab081d9c871aa504b1e36f3328d22a9e841956ced28a"
+    },
+    "joint_cross_layer_query_final_test_s42_v1/val/C-A_changed_samples.jsonl.gz": {
+      "bytes": 1135,
+      "sha256": "065ac5e009ce6f8fed2abff715adf39425f42cb08f67e28c6544b6caa4a72e26"
+    },
+    "joint_cross_layer_query_final_test_s42_v1/val/C-B37_changed_samples.jsonl.gz": {
+      "bytes": 1605,
+      "sha256": "7e737c86f54bea8f89c3746b9e0d5249c856e939a18493c568a54edd2da9cb1d"
+    },
+    "joint_cross_layer_query_final_test_s42_v1/val/C-B_changed_samples.jsonl.gz": {
+      "bytes": 1135,
+      "sha256": "32ced65688b68a4f2e7875e87a19fa93279c1aadc2eb81632769c828713c4b1a"
+    },
+    "joint_cross_layer_query_final_test_s42_v1/val/C_predictions.jsonl.gz": {
+      "bytes": 535738,
+      "sha256": "d0da99d4a9b61d0b41c0f3fc255741540f40a18c40b7357464e833db6e1a50cf"
+    },
+    "joint_cross_layer_query_final_test_s42_v1/val/metrics.json": {
+      "bytes": 9629,
+      "sha256": "a68578df4e5d1bf8e7c524c2f5c3c2fb318f65c065dd8301a2b75cf046998b73"
+    },
+    "joint_cross_layer_query_final_test_s42_v1/val/per_class.csv": {
+      "bytes": 2295,
+      "sha256": "b8760aa9a12220d931299f8de675b7c77bbf9091dfe120918cc4af033b74c7c8"
+    },
+    "joint_cross_layer_query_final_test_s42_v1/validation_replay.json": {
+      "bytes": 2058,
+      "sha256": "d17f3365fe1bab595080f25c00ead1c6c5a352e9205e8aa91ad8ee7e010c5b9c"
+    },
     "joint_cross_layer_query_s42_v1/A/best.pt": {
       "bytes": 3524052,
       "sha256": "e5a28fdf056b841f2a3a05c25ba2f5c692b2a5ee57ef439a40346d410be2a6be"
@@ -7568,11 +7680,11 @@
       "sha256": "c2593fb7e95be3616c900c55e09a71bc0651f998359aa44c5024799152ef0b20"
     }
   },
-  "file_count": 1841,
+  "file_count": 1869,
   "symlink_count": 100,
-  "regular_file_count": 1741,
-  "total_bytes": 6208057965,
+  "regular_file_count": 1769,
+  "total_bytes": 6212424660,
   "updated_directories": [
-    "joint_cross_layer_query_s42_v1"
+    "joint_cross_layer_query_final_test_s42_v1"
   ]
 }
