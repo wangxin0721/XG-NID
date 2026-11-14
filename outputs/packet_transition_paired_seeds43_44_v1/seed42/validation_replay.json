@@ -1,0 +1,27 @@
+{
+  "best_archive_prediction_ids_sha256": {
+    "A": "396bd22c4004ecf6d283ac36f99ddada3845038ccd7d365a82e46208b1cc0974",
+    "B": "4c4a54e41535fdd616e24a8a941e59446096096ff7f9dcd9c3a3378a3b307a9d",
+    "C1": "e6eda0cd42a54950a2e25fed31bad2214fd578543a83cda932c74263a7a7111a"
+  },
+  "last_cached": {
+    "B": {
+      "passed": true,
+      "samples": 13446,
+      "metrics_match": true,
+      "prediction_ids_sha256": "771772b0832da2afd42c01e9616a40a70cf0e9518ccd014c27b1212f467d5257",
+      "expected_prediction_ids_sha256": "771772b0832da2afd42c01e9616a40a70cf0e9518ccd014c27b1212f467d5257",
+      "archive_comparison": null,
+      "first_differences": []
+    },
+    "C1": {
+      "passed": true,
+      "samples": 13446,
+      "metrics_match": true,
+      "prediction_ids_sha256": "aad9415f58db50ee954c0a64f285d44b3c4856d25b6b959c66fa4cca15c03d6a",
+      "expected_prediction_ids_sha256": "aad9415f58db50ee954c0a64f285d44b3c4856d25b6b959c66fa4cca15c03d6a",
+      "archive_comparison": null,
+      "first_differences": []
+    }
+  }
+}

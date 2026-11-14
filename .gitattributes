@@ -279,6 +279,8 @@
 "outputs/packet_pool_pair_s42_v1/val_packet_nodes.pt" filter=lfs diff=lfs merge=lfs -text
 "outputs/packet_transition_attention_diagnosis_s42_v1/uniform_readout.pt" filter=lfs diff=lfs merge=lfs -text
 "outputs/packet_transition_diagnosis_s42_v1/linear_probes.pt" filter=lfs diff=lfs merge=lfs -text
+"outputs/packet_transition_paired_seeds43_44_v1/seed43/transition_readouts.pt" filter=lfs diff=lfs merge=lfs -text
+"outputs/packet_transition_paired_seeds43_44_v1/seed44/transition_readouts.pt" filter=lfs diff=lfs merge=lfs -text
 "outputs/packet_transition_readout_s42_v1/transition_readouts.pt" filter=lfs diff=lfs merge=lfs -text
 "outputs/r0_aligned_smoke_s42_v1/last.pt" filter=lfs diff=lfs merge=lfs -text
 "outputs/r0_cpu_smoke_server_v1/last.pt" filter=lfs diff=lfs merge=lfs -text

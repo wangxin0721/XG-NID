@@ -1,0 +1,99 @@
+{
+  "passed": true,
+  "sample_ids": [
+    "edge_sha256:d29c1b820b89ce7e8a623bcba49573bba3eb4c7a3f1457f001c81a4fa2fd2a60",
+    "edge_sha256:f1eb6f634ee8efc9f32d942405781fe6c994d2b1d2a6a02c2128a1035d33a3c2",
+    "edge_sha256:0ab59781c4d1aa9bb6cc0ab78ff4ca8fb6f224544ebb347256c378316b48339d",
+    "edge_sha256:eba9299b509677bd7e419985a3a00d3486b1bcaf1e7242b42ad2628384dff914",
+    "edge_sha256:23953ad32c5ab357fb122bfcfb347313f98946b3ab8a9e78c374905a222b90b7",
+    "edge_sha256:e2c94dae57cfe5ab2512c200409313889761c0c84ae792815375ed304d194437",
+    "edge_sha256:b8777406d422dbc93afd9d86e2572988a9129aa0de7157f1327905606c80837a",
+    "edge_sha256:5e92a370f344f433ed6f4e20bae8f45257fc7018b4f1f9d9ca47867af2358cca",
+    "edge_sha256:01d62db97e73b0257d111e47fd3172f17ce8bcd4fe262e0989a2a69d677dd837",
+    "edge_sha256:e27b5ad09b3158ac6e9b2928212d46cbeddae6120073d334990cda9909a861ba",
+    "edge_sha256:0a6c4f9a4b4bd6753cbf3aeccf6c1e11cc39d28f693ffce3bbd9ef885350c053",
+    "edge_sha256:8d538c7f2bb1ddc755e214f67d1809d52a3efe21b7c97d80a8e5aea89ab8e6fa",
+    "edge_sha256:63faaf35c6a82d7cc1e28fbc1d800246ef1f6472ae25868fda664d582b6953f0",
+    "edge_sha256:9fe53c74ca1a8cbdaf46e09e13cb71aa97538956f848a5505a877fd53d617319",
+    "edge_sha256:2a544260e7a95cdf21d187446028f19f8bee421fb9a3f07ad76a28661029e316",
+    "edge_sha256:0ddad5e18c0865794d2dd51c643757d37142da5ab380203e0c2282de3fcdba13"
+  ],
+  "edge_counts": {
+    "expected_pairs": 195,
+    "forward_links": 195,
+    "reverse_links": 195,
+    "other_links": 0,
+    "cross_flow_links": 0,
+    "duplicate_forward_links": 0,
+    "invalid_time_forward_links": 0,
+    "invalid_direction_forward_links": 0,
+    "invalid_payload_forward_links": 0,
+    "invalid_forward_links": 0,
+    "valid_pairs": 195
+  },
+  "graphs_with_at_least_two_edges": 11,
+  "gradient_steps": {
+    "B": [
+      {
+        "step": 1,
+        "loss": 0.07198894768953323,
+        "gradient_norms": {
+          "edge.weight": 0.0,
+          "edge.bias": 0.0,
+          "query.weight": 0.0,
+          "query.bias": 0.0,
+          "output.weight": 0.08137751370668411
+        }
+      },
+      {
+        "step": 2,
+        "loss": 0.0703466534614563,
+        "gradient_norms": {
+          "edge.weight": 0.007298429496586323,
+          "edge.bias": 0.006601604633033276,
+          "query.weight": 2.7606633011600934e-05,
+          "query.bias": 6.1551868384412955e-06,
+          "output.weight": 0.08018758147954941
+        }
+      }
+    ],
+    "C1": [
+      {
+        "step": 1,
+        "loss": 0.07198894768953323,
+        "gradient_norms": {
+          "edge.weight": 0.0,
+          "edge.bias": 0.0,
+          "query.weight": 0.0,
+          "query.bias": 0.0,
+          "output.weight": 0.08138853311538696
+        }
+      },
+      {
+        "step": 2,
+        "loss": 0.07034644484519958,
+        "gradient_norms": {
+          "edge.weight": 0.007304125931113958,
+          "edge.bias": 0.006603148300200701,
+          "query.weight": 2.4568475055275485e-05,
+          "query.bias": 6.159827989904443e-06,
+          "output.weight": 0.08019828796386719
+        }
+      }
+    ]
+  },
+  "attention_checks": {
+    "B": {
+      "empty_graph_zero_residual": true,
+      "empty_batch_zero_residual": true,
+      "single_edge_attention": 1.0,
+      "per_graph_attention_isolated": true
+    },
+    "C1": {
+      "empty_graph_zero_residual": true,
+      "empty_batch_zero_residual": true,
+      "single_edge_attention": 1.0,
+      "per_graph_attention_isolated": true
+    }
+  }
+}

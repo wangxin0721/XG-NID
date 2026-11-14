@@ -1,0 +1,75 @@
+{
+  "backbone_seed": 42,
+  "readout_seeds": [
+    43,
+    44
+  ],
+  "backbone_state_sha256": "c29a6433880f6e5ad8a45d387abef07cf54f895277f9f89b313edecfa7feedc6",
+  "sample_manifest_sha256": "b8e9b0810471d0c2b52033488fab640625c3731315afd5d2add1571bd2518827",
+  "parameters_per_arm": 3200,
+  "backbone_protocol": {
+    "archive_commit": "be62f807c57e7907f99f33dadfb33ffe400d9ee1",
+    "source_directory": "outputs/joint_cross_layer_query_s42_v1",
+    "split_directory": "data/processed/ciciot2023_grouped_input_v1",
+    "split_id": "a8ae9c934eec9fee970cc725e60051d0c709e0f16c7dda14749350ff2006975a",
+    "split_json_sha256": "2f6a7c307121454b881520379f0a298b7e2a179b1db4a7cb03741b7f648a774a",
+    "seed": 42,
+    "eval_batch_size": 16,
+    "workers": 2,
+    "partition_sizes": {
+      "val": 13446,
+      "train": 107621
+    },
+    "metrics_sha256": {
+      "C": "834f4b9cd970ab41be54599a7e73cbaa5fd1469ac5201912ee366d34565a0039"
+    },
+    "checkpoints": {
+      "C": {
+        "arm": "C",
+        "path": "C/best.pt",
+        "selection": "best",
+        "epoch": 48,
+        "macro_f1": 0.9755380342743278,
+        "sha256": "3070acd40203ee3a3944dc5805452eb3a2d73218aa24b31379bdfd5cbb523568"
+      }
+    },
+    "epochs": 30,
+    "batch_size": 512,
+    "learning_rate": 0.001,
+    "training_samples": 107621,
+    "budget_reference_pp": 0.1,
+    "baseline_prediction_ids_sha256": "396bd22c4004ecf6d283ac36f99ddada3845038ccd7d365a82e46208b1cc0974"
+  },
+  "seed42_transition_archive": {
+    "archive_commit": "8471af1f9ec24dc65320f7f5f9d433c15f527ab2",
+    "archive_code_commit": "a2f4fbda2f9975b42ca92fd71ac60d30850083b9",
+    "directory": "outputs/packet_transition_readout_s42_v1",
+    "sha256": {
+      "transition_readouts.pt": "ec8eb9fccc8c12f124067c410bb72d8fdb52695d83ad25d1ffbca1b9be9cc58a",
+      "validation_predictions.jsonl.gz": "6fb079d8080919e8da247583bc99425c15b87e735b5e006b4ad1f1ed4564eb6b",
+      "metrics.json": "b9b39052d277c3ce1c972a84fc9dc06f71b559e43ccbb4c3b443739c1b4dbe0a",
+      "epochs.jsonl": "04112e40f741e2adfc1f286526007012aea7f62e94ba89f15f88371fae6b7152",
+      "provenance.json": "1dc1a24595ccf12650f362b92b494446c2025fd61486524591599626d2095025"
+    },
+    "selections": {
+      "B": {
+        "epoch": 25,
+        "prediction_ids_sha256": "4c4a54e41535fdd616e24a8a941e59446096096ff7f9dcd9c3a3378a3b307a9d"
+      },
+      "C1": {
+        "epoch": 28,
+        "prediction_ids_sha256": "e6eda0cd42a54950a2e25fed31bad2214fd578543a83cda932c74263a7a7111a"
+      }
+    },
+    "expected_updates_per_epoch": 211
+  },
+  "partitions": [
+    "train",
+    "val"
+  ],
+  "query_sources": {
+    "B": "packet_mean",
+    "C1": "flow"
+  },
+  "updates_per_epoch_per_arm": 211
+}

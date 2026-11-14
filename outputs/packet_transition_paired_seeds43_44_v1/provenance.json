@@ -1,0 +1,30 @@
+{
+  "code_commit": "fd92f890df7866472dea405091635b15e3ae21ac",
+  "seed42_transition_commit": "8471af1f9ec24dc65320f7f5f9d433c15f527ab2",
+  "backbone_commit": "be62f807c57e7907f99f33dadfb33ffe400d9ee1",
+  "frozen_c_sha256": "c29a6433880f6e5ad8a45d387abef07cf54f895277f9f89b313edecfa7feedc6",
+  "graph_root": "/home/nzxn/下载/WX/load/XG-NID/data/processed/CICIoT2023_processed/processed",
+  "python": "3.9.23",
+  "torch": "2.3.1+cu118",
+  "pyg": "2.5.3",
+  "cuda": "11.8",
+  "device": "Tesla T4",
+  "input_sha256": {
+    "/home/nzxn/下载/WX/load/XG-NID/data/processed/ciciot2023_grouped_input_v1/split.json": "2f6a7c307121454b881520379f0a298b7e2a179b1db4a7cb03741b7f648a774a",
+    "/home/nzxn/下载/WX/load/XG-NID/outputs/joint_cross_layer_query_s42_v1/C/best.pt": "3070acd40203ee3a3944dc5805452eb3a2d73218aa24b31379bdfd5cbb523568",
+    "/home/nzxn/下载/WX/load/XG-NID/outputs/joint_cross_layer_query_s42_v1/C/metrics.json": "834f4b9cd970ab41be54599a7e73cbaa5fd1469ac5201912ee366d34565a0039",
+    "/home/nzxn/下载/WX/load/XG-NID/outputs/joint_cross_layer_query_s42_v1/C/validation_predictions.jsonl.gz": "91d7765e52a9eca289f3bf0591bcaa06090bb6b1e2ac2319958ffe8df6a7028f",
+    "/home/nzxn/下载/WX/load/XG-NID/data/processed/ciciot2023_grouped_input_v1/samples.jsonl": "b8e9b0810471d0c2b52033488fab640625c3731315afd5d2add1571bd2518827",
+    "/home/nzxn/下载/WX/load/XG-NID/outputs/packet_transition_readout_s42_v1/transition_readouts.pt": "ec8eb9fccc8c12f124067c410bb72d8fdb52695d83ad25d1ffbca1b9be9cc58a",
+    "/home/nzxn/下载/WX/load/XG-NID/outputs/packet_transition_readout_s42_v1/validation_predictions.jsonl.gz": "6fb079d8080919e8da247583bc99425c15b87e735b5e006b4ad1f1ed4564eb6b",
+    "/home/nzxn/下载/WX/load/XG-NID/outputs/packet_transition_readout_s42_v1/metrics.json": "b9b39052d277c3ce1c972a84fc9dc06f71b559e43ccbb4c3b443739c1b4dbe0a",
+    "/home/nzxn/下载/WX/load/XG-NID/outputs/packet_transition_readout_s42_v1/epochs.jsonl": "04112e40f741e2adfc1f286526007012aea7f62e94ba89f15f88371fae6b7152",
+    "/home/nzxn/下载/WX/load/XG-NID/outputs/packet_transition_readout_s42_v1/provenance.json": "1dc1a24595ccf12650f362b92b494446c2025fd61486524591599626d2095025"
+  },
+  "frozen_c_verified": true,
+  "initial_readout_sha256": {
+    "42": "492fc56cb33a36c87f32de87214ae463d103532e1601d93e5d4ffe56c013a1ce",
+    "43": "2f96889a809c537e1db11862169b533308df0378b13b58c6de73c65aeaaf6076",
+    "44": "c6262f61a0b6688dba7ef8356d41e8fd610c991db810b246c0459d7e36bafbe3"
+  }
+}

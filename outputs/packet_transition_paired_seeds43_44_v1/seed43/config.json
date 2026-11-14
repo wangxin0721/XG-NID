@@ -1,0 +1,45 @@
+{
+  "archive_commit": "be62f807c57e7907f99f33dadfb33ffe400d9ee1",
+  "source_directory": "outputs/joint_cross_layer_query_s42_v1",
+  "split_directory": "data/processed/ciciot2023_grouped_input_v1",
+  "split_id": "a8ae9c934eec9fee970cc725e60051d0c709e0f16c7dda14749350ff2006975a",
+  "split_json_sha256": "2f6a7c307121454b881520379f0a298b7e2a179b1db4a7cb03741b7f648a774a",
+  "seed": 42,
+  "eval_batch_size": 16,
+  "workers": 2,
+  "partition_sizes": {
+    "val": 13446,
+    "train": 107621
+  },
+  "metrics_sha256": {
+    "C": "834f4b9cd970ab41be54599a7e73cbaa5fd1469ac5201912ee366d34565a0039"
+  },
+  "checkpoints": {
+    "C": {
+      "arm": "C",
+      "path": "C/best.pt",
+      "selection": "best",
+      "epoch": 48,
+      "macro_f1": 0.9755380342743278,
+      "sha256": "3070acd40203ee3a3944dc5805452eb3a2d73218aa24b31379bdfd5cbb523568"
+    }
+  },
+  "epochs": 30,
+  "batch_size": 512,
+  "learning_rate": 0.001,
+  "training_samples": 107621,
+  "budget_reference_pp": 0.1,
+  "baseline_prediction_ids_sha256": "396bd22c4004ecf6d283ac36f99ddada3845038ccd7d365a82e46208b1cc0974",
+  "readout_seed": 43,
+  "query_sources": {
+    "B": "packet_mean",
+    "C1": "flow"
+  },
+  "initial_state_sha256": {
+    "B": "2f96889a809c537e1db11862169b533308df0378b13b58c6de73c65aeaaf6076",
+    "C1": "2f96889a809c537e1db11862169b533308df0378b13b58c6de73c65aeaaf6076"
+  },
+  "frozen_c_sha256": "c29a6433880f6e5ad8a45d387abef07cf54f895277f9f89b313edecfa7feedc6",
+  "features_shared_between_arms": true,
+  "batch_order_shared_between_arms": true
+}
