@@ -1,0 +1,17 @@
+{
+  "passed": true,
+  "samples": 13448,
+  "metrics_match": true,
+  "prediction_ids_sha256": "7ac7667945e326ad0fdab885bb7cd5a0ae04b1c39a37676a16ffa1081e4e7b16",
+  "expected_prediction_ids_sha256": "7ac7667945e326ad0fdab885bb7cd5a0ae04b1c39a37676a16ffa1081e4e7b16",
+  "archive_comparison": {
+    "counts": {
+      "repaired": 0,
+      "regressed": 0,
+      "both_correct": 13214,
+      "both_wrong": 234
+    },
+    "net_correct": 0
+  },
+  "first_differences": []
+}

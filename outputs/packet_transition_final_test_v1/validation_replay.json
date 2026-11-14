@@ -1,0 +1,142 @@
+{
+  "passed": true,
+  "checkpoints": {
+    "A": {
+      "passed": true,
+      "samples": 13446,
+      "metrics_match": true,
+      "prediction_ids_sha256": "396bd22c4004ecf6d283ac36f99ddada3845038ccd7d365a82e46208b1cc0974",
+      "expected_prediction_ids_sha256": "396bd22c4004ecf6d283ac36f99ddada3845038ccd7d365a82e46208b1cc0974",
+      "archive_comparison": {
+        "counts": {
+          "repaired": 0,
+          "regressed": 0,
+          "both_correct": 13201,
+          "both_wrong": 245
+        },
+        "net_correct": 0
+      },
+      "first_differences": []
+    },
+    "B42": {
+      "passed": true,
+      "samples": 13446,
+      "metrics_match": true,
+      "prediction_ids_sha256": "4c4a54e41535fdd616e24a8a941e59446096096ff7f9dcd9c3a3378a3b307a9d",
+      "expected_prediction_ids_sha256": "4c4a54e41535fdd616e24a8a941e59446096096ff7f9dcd9c3a3378a3b307a9d",
+      "archive_comparison": {
+        "counts": {
+          "repaired": 0,
+          "regressed": 0,
+          "both_correct": 13214,
+          "both_wrong": 232
+        },
+        "net_correct": 0
+      },
+      "first_differences": []
+    },
+    "C1_42": {
+      "passed": true,
+      "samples": 13446,
+      "metrics_match": true,
+      "prediction_ids_sha256": "e6eda0cd42a54950a2e25fed31bad2214fd578543a83cda932c74263a7a7111a",
+      "expected_prediction_ids_sha256": "e6eda0cd42a54950a2e25fed31bad2214fd578543a83cda932c74263a7a7111a",
+      "archive_comparison": {
+        "counts": {
+          "repaired": 0,
+          "regressed": 0,
+          "both_correct": 13217,
+          "both_wrong": 229
+        },
+        "net_correct": 0
+      },
+      "first_differences": []
+    },
+    "B43": {
+      "passed": true,
+      "samples": 13446,
+      "metrics_match": true,
+      "prediction_ids_sha256": "fdcf95f9f35ca0e385e81c1ac5ea91c741034e98d1fefaf8aebdbdc600d0d9a0",
+      "expected_prediction_ids_sha256": "fdcf95f9f35ca0e385e81c1ac5ea91c741034e98d1fefaf8aebdbdc600d0d9a0",
+      "archive_comparison": {
+        "counts": {
+          "repaired": 0,
+          "regressed": 0,
+          "both_correct": 13209,
+          "both_wrong": 237
+        },
+        "net_correct": 0
+      },
+      "first_differences": []
+    },
+    "C1_43": {
+      "passed": true,
+      "samples": 13446,
+      "metrics_match": true,
+      "prediction_ids_sha256": "3b5c303fb7a4695a5ab7ddf59576c6c9a706d5e3c3cb89cb6f7a497e6916b18f",
+      "expected_prediction_ids_sha256": "3b5c303fb7a4695a5ab7ddf59576c6c9a706d5e3c3cb89cb6f7a497e6916b18f",
+      "archive_comparison": {
+        "counts": {
+          "repaired": 0,
+          "regressed": 0,
+          "both_correct": 13212,
+          "both_wrong": 234
+        },
+        "net_correct": 0
+      },
+      "first_differences": []
+    },
+    "B44": {
+      "passed": true,
+      "samples": 13446,
+      "metrics_match": true,
+      "prediction_ids_sha256": "ce2050dc4be587142b0217f036c6ceb667318e35561587cfec2f1d3948d83f1c",
+      "expected_prediction_ids_sha256": "ce2050dc4be587142b0217f036c6ceb667318e35561587cfec2f1d3948d83f1c",
+      "archive_comparison": {
+        "counts": {
+          "repaired": 0,
+          "regressed": 0,
+          "both_correct": 13217,
+          "both_wrong": 229
+        },
+        "net_correct": 0
+      },
+      "first_differences": []
+    },
+    "C1_44": {
+      "passed": true,
+      "samples": 13446,
+      "metrics_match": true,
+      "prediction_ids_sha256": "66d529354b6d8d3dc20ee26e4063ed0de168fae8094e114dcf8c8072512235a1",
+      "expected_prediction_ids_sha256": "66d529354b6d8d3dc20ee26e4063ed0de168fae8094e114dcf8c8072512235a1",
+      "archive_comparison": {
+        "counts": {
+          "repaired": 0,
+          "regressed": 0,
+          "both_correct": 13214,
+          "both_wrong": 232
+        },
+        "net_correct": 0
+      },
+      "first_differences": []
+    },
+    "U42": {
+      "passed": true,
+      "samples": 13446,
+      "metrics_match": true,
+      "prediction_ids_sha256": "1bdddacb4957c5b769c97ad9a85b9588590c5cd8dc3be53252ff9c2a4dfcf9d7",
+      "expected_prediction_ids_sha256": "1bdddacb4957c5b769c97ad9a85b9588590c5cd8dc3be53252ff9c2a4dfcf9d7",
+      "archive_comparison": {
+        "counts": {
+          "repaired": 0,
+          "regressed": 0,
+          "both_correct": 13210,
+          "both_wrong": 236
+        },
+        "net_correct": 0
+      },
+      "first_differences": []
+    }
+  },
+  "valid_pair_counts_match_archive": true
+}
