@@ -1,0 +1,149 @@
+{
+  "N042-E0FT42": {
+    "counts": {
+      "repaired": 89,
+      "regressed": 70,
+      "both_correct": 13093,
+      "both_wrong": 196
+    },
+    "net_correct": 19,
+    "changed_predictions": 174,
+    "delta_macro_f1_pp": 0.23838159903972755,
+    "directions": {
+      "Recon -> WebBased": {
+        "original_errors": 43,
+        "repaired": 10,
+        "changed_to_other_wrong_class": 2,
+        "still_same_error": 31,
+        "new_errors_from_original_correct": 3,
+        "new_errors_from_other_wrong_class": 0,
+        "total_errors": 34
+      },
+      "WebBased -> Recon": {
+        "original_errors": 45,
+        "repaired": 9,
+        "changed_to_other_wrong_class": 1,
+        "still_same_error": 35,
+        "new_errors_from_original_correct": 6,
+        "new_errors_from_other_wrong_class": 0,
+        "total_errors": 41
+      },
+      "Benign -> Spoofing": {
+        "original_errors": 43,
+        "repaired": 21,
+        "changed_to_other_wrong_class": 1,
+        "still_same_error": 21,
+        "new_errors_from_original_correct": 11,
+        "new_errors_from_other_wrong_class": 0,
+        "total_errors": 32
+      },
+      "Spoofing -> Benign": {
+        "original_errors": 59,
+        "repaired": 15,
+        "changed_to_other_wrong_class": 1,
+        "still_same_error": 43,
+        "new_errors_from_original_correct": 17,
+        "new_errors_from_other_wrong_class": 1,
+        "total_errors": 61
+      }
+    }
+  },
+  "N043-E0FT43": {
+    "counts": {
+      "repaired": 133,
+      "regressed": 90,
+      "both_correct": 13066,
+      "both_wrong": 159
+    },
+    "net_correct": 43,
+    "changed_predictions": 238,
+    "delta_macro_f1_pp": 0.7039158851339433,
+    "directions": {
+      "Recon -> WebBased": {
+        "original_errors": 32,
+        "repaired": 10,
+        "changed_to_other_wrong_class": 0,
+        "still_same_error": 22,
+        "new_errors_from_original_correct": 19,
+        "new_errors_from_other_wrong_class": 1,
+        "total_errors": 42
+      },
+      "WebBased -> Recon": {
+        "original_errors": 53,
+        "repaired": 40,
+        "changed_to_other_wrong_class": 0,
+        "still_same_error": 13,
+        "new_errors_from_original_correct": 2,
+        "new_errors_from_other_wrong_class": 3,
+        "total_errors": 18
+      },
+      "Benign -> Spoofing": {
+        "original_errors": 45,
+        "repaired": 21,
+        "changed_to_other_wrong_class": 1,
+        "still_same_error": 23,
+        "new_errors_from_original_correct": 23,
+        "new_errors_from_other_wrong_class": 2,
+        "total_errors": 48
+      },
+      "Spoofing -> Benign": {
+        "original_errors": 49,
+        "repaired": 20,
+        "changed_to_other_wrong_class": 0,
+        "still_same_error": 29,
+        "new_errors_from_original_correct": 13,
+        "new_errors_from_other_wrong_class": 3,
+        "total_errors": 45
+      }
+    }
+  },
+  "N044-E0FT44": {
+    "counts": {
+      "repaired": 197,
+      "regressed": 81,
+      "both_correct": 13013,
+      "both_wrong": 157
+    },
+    "net_correct": 116,
+    "changed_predictions": 305,
+    "delta_macro_f1_pp": 1.3328473980017352,
+    "directions": {
+      "Recon -> WebBased": {
+        "original_errors": 39,
+        "repaired": 18,
+        "changed_to_other_wrong_class": 2,
+        "still_same_error": 19,
+        "new_errors_from_original_correct": 23,
+        "new_errors_from_other_wrong_class": 1,
+        "total_errors": 43
+      },
+      "WebBased -> Recon": {
+        "original_errors": 63,
+        "repaired": 52,
+        "changed_to_other_wrong_class": 0,
+        "still_same_error": 11,
+        "new_errors_from_original_correct": 1,
+        "new_errors_from_other_wrong_class": 1,
+        "total_errors": 13
+      },
+      "Benign -> Spoofing": {
+        "original_errors": 57,
+        "repaired": 33,
+        "changed_to_other_wrong_class": 2,
+        "still_same_error": 22,
+        "new_errors_from_original_correct": 11,
+        "new_errors_from_other_wrong_class": 4,
+        "total_errors": 37
+      },
+      "Spoofing -> Benign": {
+        "original_errors": 72,
+        "repaired": 43,
+        "changed_to_other_wrong_class": 4,
+        "still_same_error": 25,
+        "new_errors_from_original_correct": 12,
+        "new_errors_from_other_wrong_class": 0,
+        "total_errors": 37
+      }
+    }
+  }
+}

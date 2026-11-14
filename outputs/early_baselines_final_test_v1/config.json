@@ -1,0 +1,83 @@
+{
+  "archive_commit": "acc9d8f82eea3af6ff4af06c4629717366f96b83",
+  "sample_manifest_sha256": "b8e9b0810471d0c2b52033488fab640625c3731315afd5d2add1571bd2518827",
+  "models": {
+    "E0FT42": {
+      "directory": "outputs/fair_vector_five_runs_recovery_v1/E0FT42/E0FT",
+      "epoch": 6,
+      "sha256": {
+        "best.pt": "5f0a8ab7f33c0fbee507d054153c2bc378d4e27b2794d066ce4571b1ba8b2381",
+        "metrics.json": "71f069beaec27295302b74be2db57df68b59a045533a679f95d7cf37089ac38b",
+        "config.json": "a945be60ec1725556df62bc43db8029b075b2afd5b7ada43ab1ca555213d5fd9",
+        "validation_predictions.jsonl.gz": "176d8e371f0c28374f0440972161cd287d3848eee09ebe5e7a74836698e3afa2"
+      },
+      "prediction_ids_sha256": "eba0ac576ea03067762c2dc118fd608a3e5100ae08f5b9021a7a0675ec42d5fe"
+    },
+    "N042": {
+      "directory": "outputs/e2_concat_pair_b512_s42_lr1e4_v1/N0",
+      "epoch": 5,
+      "sha256": {
+        "best.pt": "ae65d352ff927026bfcada8759b62f1b22c5d8f0166103d2a2d556618e7a3563",
+        "metrics.json": "7dd4b83b3f49b696c8c8ad2279586684f8190894864557df4152ffd2e9836be9",
+        "config.json": "f5418120e7e3ea6a4ad1440a4ae410bb212baa09873cd46984696970393d228d",
+        "validation_predictions.jsonl.gz": "da78bc444406f6811462a3bc3f789400e283d119fb3f2dd3e0f406315ab8b3ea"
+      },
+      "prediction_ids_sha256": "1c370f6e160fd21cb15c3285aba462ca51d574b577f0bb61c8c02ed711b6c074"
+    },
+    "E0FT43": {
+      "directory": "outputs/fair_vector_five_runs_recovery_v1/E0FT43/E0FT",
+      "epoch": 24,
+      "sha256": {
+        "best.pt": "8ace2b182f4b7b3bf16bf05d21e3b9bbc83fb096e266429a1715d961fde7d305",
+        "metrics.json": "f8a8a51aa8a43999f4b8c21156244e2fef54ad0f5767aa7ea78bde0874a08241",
+        "config.json": "305222be0985d052a9799a4b66d36d71252f1ea09bba8ccfb754ecacbffb2bf8",
+        "validation_predictions.jsonl.gz": "8ce9407eb4384a6b829e9615bbe940be37bc3fc8267609b6036ced042c63750e"
+      },
+      "prediction_ids_sha256": "94feb81ed8c2d8f7407c1ff12af991484231951ad75b6b247ce5f159932190d8"
+    },
+    "N043": {
+      "directory": "outputs/fusion_seed_repeats_s43_s44_v1/seed43/N0",
+      "epoch": 27,
+      "sha256": {
+        "best.pt": "e560fb61ad09fd38237c626ca0aa250ccf8bd003df8e7ac8be3ac4f03b2e0443",
+        "metrics.json": "33e2b140fd2c25b640e6eacbf8bcbbabfc03f50cf551feac1ca6fdbe24c66c9b",
+        "config.json": "cff4d987d25287afa0658675fafffc236dfa2ded2efa5f7c5b9cb466ede05da7",
+        "validation_predictions.jsonl.gz": "066c6ce5db71605a882e70577ab039acb5d4a1c58cc210ccab16aea93f6b5e8d"
+      },
+      "prediction_ids_sha256": "c21946950f02447b6459d2b24c4bae0c4ec6e1fb219f833c0cd310590adbc218"
+    },
+    "E0FT44": {
+      "directory": "outputs/fair_vector_five_runs_recovery_v1/E0FT44/E0FT",
+      "epoch": 30,
+      "sha256": {
+        "best.pt": "226fab3cedb8a94e4022d83817baa5c9684b38b9e0c77268b9c892e941b22060",
+        "metrics.json": "faf2c497c0998f860ff70e6373fcaae979a12606a99d6ea5230fec64595872f7",
+        "config.json": "c34a7aa94bb4d01a52fa5b6a284e6e988356b63e96a4796dc49c7baf6324f223",
+        "validation_predictions.jsonl.gz": "cdb42f13bf61a365550d537b11a03c5dacc043de35ccb750a7f06d3d1c45a47e"
+      },
+      "prediction_ids_sha256": "57a9b7a052c2ac1a8131855c621698c81090a1d0e383cc0ee1c1d1b0fae227da"
+    },
+    "N044": {
+      "directory": "outputs/fusion_seed_repeats_s43_s44_v1/seed44/N0",
+      "epoch": 19,
+      "sha256": {
+        "best.pt": "76535b1b3f1f400887ea6e5a5cf7a1481013ff31c3609fb357e88326553a1c91",
+        "metrics.json": "6576632521943461b41ee0f7356dcf3b0b012e45c93f6fefac538fc1493cb8ad",
+        "config.json": "831125858b6a37d6dcabbacaf5da7b808bd803be789e470d8d0939574e04dcea",
+        "validation_predictions.jsonl.gz": "3ab85641bf273abcef4b8fc07ba9e899fae3fe6594b58b216d3c04ac80df9cf8"
+      },
+      "prediction_ids_sha256": "c0433008330eeaf8a21f0a0a9cd759c0e95d91745a3abf1a0594253e73a50f70"
+    }
+  },
+  "paper_inputs": {
+    "outputs/packet_transition_final_test_v1/summary.json": "1666cc97f5b66a307df24aa6f0402845ecc8f16e9e9652e477a39534bc9565e8",
+    "outputs/fusion_decision_diagnosis_s42_v1/metrics.json": "55129e5b1d98a55172d5d436b9d5a39d3018833df883682d29126f850ae41b05"
+  },
+  "split_id": "a8ae9c934eec9fee970cc725e60051d0c709e0f16c7dda14749350ff2006975a",
+  "mode": "full",
+  "partition_sizes": {
+    "val": 13446,
+    "test": 13448
+  },
+  "eval_batch_size": 16
+}
