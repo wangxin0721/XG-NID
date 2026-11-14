@@ -1,0 +1,13 @@
+{
+  "status": "running",
+  "phase": "training",
+  "pid": 130050,
+  "variant": "D32-Gate",
+  "epoch": 100,
+  "train_nll": 0.015161138125540992,
+  "val_macro_f1": 0.9760132287071963,
+  "optimizer_updates": 211,
+  "train_order_sha256": "eb8f260ad6252ad6cbf12cf072f64dcebc3f8b02411aefd140759ae740b585fc",
+  "best_epoch": 97,
+  "stale_epochs": 3
+}

@@ -1,0 +1,179 @@
+{
+  "val": {
+    "metadata": {
+      "schema": "xgnid.encoder64-cache.v1",
+      "partition": "val",
+      "embedding_dim": 64,
+      "source": {
+        "encoder_sha256": "5a0a77f31d0fd67c4ebe1edf55a98ac635e8e65067d5fd5c71caaa4762a46bd2",
+        "N0_best_sha256": "e560fb61ad09fd38237c626ca0aa250ccf8bd003df8e7ac8be3ac4f03b2e0443",
+        "split_id": "a8ae9c934eec9fee970cc725e60051d0c709e0f16c7dda14749350ff2006975a",
+        "manifest_sha256": "b8e9b0810471d0c2b52033488fab640625c3731315afd5d2add1571bd2518827"
+      },
+      "samples": 13446,
+      "sample_order_sha256": "efb5f9d81137f974a1bb244783831533bbab4b78f6d62bea511ebbd61e9b8c01"
+    },
+    "sha256": "3d41978103966558fa49f7782ea0d74fe083f6e40e871524041728c947ec88e5",
+    "wall_seconds": 28.875133921043016,
+    "N0_first_batch_max_error": 7.62939453125e-06,
+    "N0_replayed_validation": {
+      "accuracy": 0.9801427933958055,
+      "macro_f1": 0.9731872849782647,
+      "weighted_f1": 0.9802010254472878,
+      "per_class": {
+        "Benign": {
+          "precision": 0.9662359316381826,
+          "recall": 0.9702804520719966,
+          "f1-score": 0.9682539682539683,
+          "support": 2389
+        },
+        "WebBased": {
+          "precision": 0.8875,
+          "recall": 0.9136029411764706,
+          "f1-score": 0.9003623188405797,
+          "support": 544
+        },
+        "Spoofing": {
+          "precision": 0.9631760644418872,
+          "recall": 0.9626221966647499,
+          "f1-score": 0.9628990509059534,
+          "support": 1739
+        },
+        "Recon": {
+          "precision": 0.976621085134539,
+          "recall": 0.9719051799824407,
+          "f1-score": 0.9742574257425742,
+          "support": 2278
+        },
+        "Mirai": {
+          "precision": 0.9995835068721366,
+          "recall": 1.0,
+          "f1-score": 0.9997917100604041,
+          "support": 2400
+        },
+        "Dos": {
+          "precision": 0.9993183367416496,
+          "recall": 0.9938983050847457,
+          "f1-score": 0.9966009517335146,
+          "support": 1475
+        },
+        "DDos": {
+          "precision": 1.0,
+          "recall": 0.9966499162479062,
+          "f1-score": 0.9983221476510067,
+          "support": 2388
+        },
+        "BruteForce": {
+          "precision": 0.9829059829059829,
+          "recall": 0.9871244635193133,
+          "f1-score": 0.9850107066381156,
+          "support": 233
+        }
+      },
+      "confusion_matrix": [
+        [
+          2318,
+          16,
+          46,
+          9,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          9,
+          497,
+          7,
+          27,
+          0,
+          1,
+          0,
+          3
+        ],
+        [
+          53,
+          4,
+          1674,
+          6,
+          1,
+          0,
+          0,
+          1
+        ],
+        [
+          18,
+          39,
+          7,
+          2214,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          2400,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          3,
+          0,
+          6,
+          0,
+          1466,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          2,
+          5,
+          0,
+          0,
+          2380,
+          0
+        ],
+        [
+          1,
+          0,
+          2,
+          0,
+          0,
+          0,
+          0,
+          230
+        ]
+      ],
+      "samples": 13446
+    },
+    "storage": "in_memory"
+  },
+  "train": {
+    "metadata": {
+      "schema": "xgnid.encoder64-cache.v1",
+      "partition": "train",
+      "embedding_dim": 64,
+      "source": {
+        "encoder_sha256": "5a0a77f31d0fd67c4ebe1edf55a98ac635e8e65067d5fd5c71caaa4762a46bd2",
+        "N0_best_sha256": "e560fb61ad09fd38237c626ca0aa250ccf8bd003df8e7ac8be3ac4f03b2e0443",
+        "split_id": "a8ae9c934eec9fee970cc725e60051d0c709e0f16c7dda14749350ff2006975a",
+        "manifest_sha256": "b8e9b0810471d0c2b52033488fab640625c3731315afd5d2add1571bd2518827"
+      },
+      "samples": 107621,
+      "sample_order_sha256": "e55904a2bf640d68a278dfb571a296f0c9d0b7b4b8ae0e0ef179a9e3c8ea629a"
+    },
+    "sha256": "08aa57c14d8996cfbc54135300f9e65e31d5e32dcdabf2678f7eb1cccce60726",
+    "wall_seconds": 251.17465293500572,
+    "N0_first_batch_max_error": null,
+    "N0_replayed_validation": null,
+    "storage": "in_memory"
+  }
+}

@@ -1,6 +1,6 @@
 {
   "schema": "xgnid.outputs-snapshot.v2",
-  "created_utc": "2026-11-14T03:21:54.053824+00:00",
+  "created_utc": "2026-11-14T07:27:15.484353+00:00",
   "source_directory": "/home/nzxn/下载/WX/load/XG-NID/outputs",
   "files": {
     "GNN4ID/best.pt": {
@@ -7483,6 +7483,86 @@
       "bytes": 4403,
       "sha256": "7c2ee5f69e069593ff050622191272e1f07b810ea2dc79af179ae3158201e952"
     },
+    "packet_transition_independent_d32_s43_v1/D32-Gate/best.pt": {
+      "bytes": 3552084,
+      "sha256": "0de13ac98a8941a7c1fa4a42ed6af55ddab329252ac5a938417650883d5b0b77"
+    },
+    "packet_transition_independent_d32_s43_v1/D32-Gate/config.json": {
+      "bytes": 3797,
+      "sha256": "89b884374a4f460fc5a74000a3139566610cb48378f51835a47507677abba618"
+    },
+    "packet_transition_independent_d32_s43_v1/D32-Gate/epoch_zero.json": {
+      "bytes": 4011,
+      "sha256": "6dbda48e0d0ceeafcda331e43734677193f9c83fe3a040c409103a0fa70aa585"
+    },
+    "packet_transition_independent_d32_s43_v1/D32-Gate/epoch_zero.pt": {
+      "bytes": 3469922,
+      "sha256": "3b1a2e9be869625efd330a54429e6660ba4cb4c99fafe4dd3086fed3e391b217"
+    },
+    "packet_transition_independent_d32_s43_v1/D32-Gate/epochs.jsonl": {
+      "bytes": 23719,
+      "sha256": "6457ed42e0685bad4c519d953f13c28122007cc0cb49799763a8433a63af9557"
+    },
+    "packet_transition_independent_d32_s43_v1/D32-Gate/equal_weight_start.json": {
+      "bytes": 1525,
+      "sha256": "84af8d2a5f8bf66c3808ab4cea37b1d061f6c85fae3c3a804d3d4db565176895"
+    },
+    "packet_transition_independent_d32_s43_v1/D32-Gate/graph_replay.json": {
+      "bytes": 399,
+      "sha256": "d1b08f3841b70e417c5d505bb52bdd85f8fc6ba628959eecd8646d6d809b4d62"
+    },
+    "packet_transition_independent_d32_s43_v1/D32-Gate/last.pt": {
+      "bytes": 3552084,
+      "sha256": "ef21bcc39b89a06a3b6ab80b7dc438fe4451e7c3a138fede7b6326f26cc9621c"
+    },
+    "packet_transition_independent_d32_s43_v1/D32-Gate/metrics.json": {
+      "bytes": 24722,
+      "sha256": "6dbc0ad912c75e34e41d777c5a612ba8db0f60cd8abfdfc5e39f2349da30e829"
+    },
+    "packet_transition_independent_d32_s43_v1/D32-Gate/probe.json": {
+      "bytes": 3875,
+      "sha256": "0cb1342f19cf99d93e29338a47a0c4fdb27bbaa15345b880406f74c8c8720e03"
+    },
+    "packet_transition_independent_d32_s43_v1/D32-Gate/validation_predictions.jsonl.gz": {
+      "bytes": 6452423,
+      "sha256": "43f38b5fd8eb5929a188afa6d180f194e7ac7487216d6f915618c38460b0bf53"
+    },
+    "packet_transition_independent_d32_s43_v1/binding.json": {
+      "bytes": 1675,
+      "sha256": "b986073e07f9b5f96f8bf1dafb83077bc4afeb702f5571ae57fdb5bd6703c43a"
+    },
+    "packet_transition_independent_d32_s43_v1/cache_receipts.json": {
+      "bytes": 4417,
+      "sha256": "03d7d4334708bc5cf313038bf10453bf280bd2c9a60d25a7310ba1c08dd195ba"
+    },
+    "packet_transition_independent_d32_s43_v1/config.json": {
+      "bytes": 1322,
+      "sha256": "2a48aebc18554289bbe536463b06ed9c422fc849351c83a6079b1562591f1ac8"
+    },
+    "packet_transition_independent_d32_s43_v1/inventory.json": {
+      "bytes": 419,
+      "sha256": "f3f855bd9e3993dea75e2ca773e1ab71da5e11a2f34c9bc4bfbce881c4ba429a"
+    },
+    "packet_transition_independent_d32_s43_v1/n0_validation_predictions.jsonl.gz": {
+      "bytes": 535744,
+      "sha256": "cafd5522e524dfb4e01dec627c49c7ecc107a6ee177c127708910425e782b719"
+    },
+    "packet_transition_independent_d32_s43_v1/n0_validation_replay.json": {
+      "bytes": 2971,
+      "sha256": "0521356bbf115750b8cc65bbd5712dd4ee643d6fd32bde0b98486bf3f8f3bef7"
+    },
+    "packet_transition_independent_d32_s43_v1/progress.json": {
+      "bytes": 343,
+      "sha256": "aa1b0ede4d0fbc9f4a03931d7b267e2d8c04fbb94c8357951b70e4f73b3ba428"
+    },
+    "packet_transition_independent_d32_s43_v1/status.json": {
+      "bytes": 96,
+      "sha256": "00cabff35222ed9796746ab506246f1ae529dd10d98dcf591b2a9cfcc9d02c7e"
+    },
+    "packet_transition_independent_d32_s43_v1/summary.json": {
+      "bytes": 29864,
+      "sha256": "c6a1cd4900be5e84c32fd32c6800400c02a5d114a24adae5327f851476e53b34"
+    },
     "packet_transition_paired_seeds43_44_v1/config.json": {
       "bytes": 2691,
       "sha256": "720a52edcaa61ef7b8a13b62db32949c6ed3636223c5a42b6f6875e93605df94"
@@ -8580,11 +8660,11 @@
       "sha256": "c2593fb7e95be3616c900c55e09a71bc0651f998359aa44c5024799152ef0b20"
     }
   },
-  "file_count": 2094,
+  "file_count": 2114,
   "symlink_count": 100,
-  "regular_file_count": 1994,
-  "total_bytes": 6243703052,
+  "regular_file_count": 2014,
+  "total_bytes": 6261368464,
   "updated_directories": [
-    "early_baselines_final_test_v1"
+    "packet_transition_independent_d32_s43_v1"
   ]
 }

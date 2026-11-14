@@ -1,0 +1,21 @@
+{
+  "seeds": {
+    "43": {
+      "n0": {
+        "directory": "outputs/fusion_seed_repeats_s43_s44_v1/seed43/N0",
+        "epoch": 27,
+        "present": true
+      },
+      "candidates": []
+    },
+    "44": {
+      "n0": {
+        "directory": "outputs/fusion_seed_repeats_s43_s44_v1/seed44/N0",
+        "epoch": 19,
+        "present": true
+      },
+      "candidates": []
+    }
+  },
+  "unknown_seed_candidates": []
+}

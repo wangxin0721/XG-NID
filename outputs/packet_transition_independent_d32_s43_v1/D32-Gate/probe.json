@@ -1,0 +1,108 @@
+{
+  "updates": [
+    {
+      "step": 1,
+      "loss": 2.0756452083587646,
+      "gradients_l1": {
+        "flow_projection.weight": 5.827203750610352,
+        "flow_projection.bias": 0.11727061867713928,
+        "packet_projection.weight": 4.7965545654296875,
+        "packet_projection.bias": 0.11727061867713928,
+        "gate.0.weight": 0.0,
+        "gate.0.bias": 0.0,
+        "gate.2.weight": 0.06775034964084625,
+        "gate.2.bias": 0.029208214953541756,
+        "shared_head.0.weight": 3.4301044940948486,
+        "shared_head.0.bias": 0.31141752004623413,
+        "shared_head.2.weight": 1.551569938659668,
+        "shared_head.2.bias": 0.3987416625022888
+      },
+      "parameters_changed": {
+        "flow_projection.weight": true,
+        "flow_projection.bias": true,
+        "packet_projection.weight": true,
+        "packet_projection.bias": true,
+        "gate.0.weight": false,
+        "gate.0.bias": false,
+        "gate.2.weight": true,
+        "gate.2.bias": true,
+        "shared_head.0.weight": true,
+        "shared_head.0.bias": true,
+        "shared_head.2.weight": true,
+        "shared_head.2.bias": true
+      },
+      "raw_cache_max_error": 2.384185791015625e-07
+    },
+    {
+      "step": 2,
+      "loss": 2.0562784671783447,
+      "gradients_l1": {
+        "flow_projection.weight": 6.308239936828613,
+        "flow_projection.bias": 0.12408603727817535,
+        "packet_projection.weight": 4.910684585571289,
+        "packet_projection.bias": 0.12411269545555115,
+        "gate.0.weight": 0.00499876169487834,
+        "gate.0.bias": 0.00025549728889018297,
+        "gate.2.weight": 0.07384425401687622,
+        "gate.2.bias": 0.03563021868467331,
+        "shared_head.0.weight": 3.544667959213257,
+        "shared_head.0.bias": 0.32511210441589355,
+        "shared_head.2.weight": 1.549757957458496,
+        "shared_head.2.bias": 0.4345935881137848
+      },
+      "parameters_changed": {
+        "flow_projection.weight": true,
+        "flow_projection.bias": true,
+        "packet_projection.weight": true,
+        "packet_projection.bias": true,
+        "gate.0.weight": true,
+        "gate.0.bias": true,
+        "gate.2.weight": true,
+        "gate.2.bias": true,
+        "shared_head.0.weight": true,
+        "shared_head.0.bias": true,
+        "shared_head.2.weight": true,
+        "shared_head.2.bias": true
+      },
+      "raw_cache_max_error": 7.152557373046875e-07
+    },
+    {
+      "step": 3,
+      "loss": 2.054697275161743,
+      "gradients_l1": {
+        "flow_projection.weight": 5.803153991699219,
+        "flow_projection.bias": 0.12370412051677704,
+        "packet_projection.weight": 5.010709762573242,
+        "packet_projection.bias": 0.12365513294935226,
+        "gate.0.weight": 0.008813353255391121,
+        "gate.0.bias": 0.00043940864270552993,
+        "gate.2.weight": 0.07240554690361023,
+        "gate.2.bias": 0.03386338800191879,
+        "shared_head.0.weight": 3.358412265777588,
+        "shared_head.0.bias": 0.33185479044914246,
+        "shared_head.2.weight": 1.5719084739685059,
+        "shared_head.2.bias": 0.3760058283805847
+      },
+      "parameters_changed": {
+        "flow_projection.weight": true,
+        "flow_projection.bias": true,
+        "packet_projection.weight": true,
+        "packet_projection.bias": true,
+        "gate.0.weight": true,
+        "gate.0.bias": true,
+        "gate.2.weight": true,
+        "gate.2.bias": true,
+        "shared_head.0.weight": true,
+        "shared_head.0.bias": true,
+        "shared_head.2.weight": true,
+        "shared_head.2.bias": true
+      },
+      "raw_cache_max_error": 4.76837158203125e-07
+    }
+  ],
+  "discarded": true,
+  "clean_state_and_rng_restored": true,
+  "encoder_parameters_and_BN_unchanged": true,
+  "wall_seconds": 4.932347389054485,
+  "initial_head_sha256": "b3bb8b8430b397b08b02aa09fbf719b1ad93e5a01e774ea5dfedbbc723f91113"
+}
