@@ -17,14 +17,17 @@ class PacketTransitionReadout(nn.Module):
         nn.init.zeros_(self.output.weight)
 
     def forward(self, query, transitions, lengths):
-        """Return the residual and attention in the original grouped edge order."""
+        """Return grouped attention and residual. A missing query gives equal weights."""
         if not len(transitions):
-            pooled = query.new_zeros((len(query), self.output.in_features))
+            pooled = transitions.new_zeros((len(lengths), self.output.in_features))
             return self.output(pooled), transitions.new_empty((0,))
-        index = torch.repeat_interleave(torch.arange(len(query), device=query.device),
+        index = torch.repeat_interleave(torch.arange(len(lengths), device=lengths.device),
                                         lengths, output_size=len(transitions))
         values = F.gelu(self.edge(transitions))
-        scores = (values * self.query(query)[index]).sum(dim=-1, keepdim=True) / 4
+        if query is None:
+            scores = values.new_zeros((len(values), 1))
+        else:
+            scores = (values * self.query(query)[index]).sum(dim=-1, keepdim=True) / 4
         attention = ordered_softmax(scores, index, lengths)
         pooled = torch.segment_reduce(values * attention, 'sum', lengths=lengths, axis=0)
         return self.output(pooled), attention.flatten()

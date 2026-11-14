@@ -102,7 +102,7 @@ class FrozenCache:
 
 
 def transition_forward(model, head, arm, features):
-    query = getattr(features, SOURCES[arm])
+    query = None if arm == 'U' else getattr(features, SOURCES[arm])
     residual, attention = head(query, features.transitions, features.lengths)
     scores, _ = model.fusion(features.flow, features.packet + residual)
     return scores, residual, attention
@@ -112,18 +112,20 @@ def baseline(model, features):
     return model.fusion(features.flow, features.packet)[0]
 
 
-def make_heads(config, device):
-    heads = {arm: PacketTransitionReadout(config['seed']).to(device) for arm in SOURCES}
+def make_heads(config, device, arms=SOURCES):
+    heads = {arm: PacketTransitionReadout(config['seed']).to(device) for arm in arms}
     require(len({raw.state_digest(head.state_dict()) for head in heads.values()}) == 1,
             'Transition readouts must start with identical weights')
+    if 'U' in heads:
+        heads['U'].query.requires_grad_(False)
     return heads
 
 
 def optimizer(head, config):
-    return torch.optim.Adam(head.parameters(), lr=config['learning_rate'])
+    return torch.optim.Adam((p for p in head.parameters() if p.requires_grad), lr=config['learning_rate'])
 
 
-def probe(model, data, config, device):
+def probe(model, data, config, device, arms=SOURCES):
     rows = raw.choose_rows(data, 'train', per_class=2)
     probe_config = {**config, 'eval_batch_size': len(rows), 'workers': 0}
     _, _, batch, _ = next(diagnosis.aligned_batches(data, rows, 'train', probe_config))
@@ -131,7 +133,7 @@ def probe(model, data, config, device):
     labels = batch.y.view(-1)
     require(bool((features.lengths >= 2).any()), 'Gradient preflight needs multi-transition graphs')
     checks = {}
-    for arm, head in make_heads(config, device).items():
+    for arm, head in make_heads(config, device, arms).items():
         opt = optimizer(head, config)
         steps = []
         for step in range(2):
@@ -142,7 +144,10 @@ def probe(model, data, config, device):
                         f'{arm} preflight zero residual changed original scores')
             loss = F.nll_loss(scores, labels)
             loss.backward()
-            gradients = {name: float(param.grad.norm()) for name, param in head.named_parameters()}
+            gradients = {name: float(param.grad.norm()) for name, param in head.named_parameters()
+                         if param.grad is not None}
+            require(set(gradients) == {name for name, param in head.named_parameters() if param.requires_grad},
+                    f'{arm} preflight gradients differ from trainable parameters')
             require(all(np.isfinite(value) for value in gradients.values()) and bool(torch.isfinite(loss)),
                     f'{arm} preflight has nonfinite loss or gradient')
             require(gradients['output.weight'] > 0, f'{arm} W gradient is zero')
@@ -150,7 +155,7 @@ def probe(model, data, config, device):
                 require(all(value == 0 for name, value in gradients.items() if name != 'output.weight'),
                         f'{arm} E or Q received a gradient before W updated')
             else:
-                require(gradients['edge.weight'] > 0 and gradients['query.weight'] > 0,
+                require(gradients['edge.weight'] > 0 and (arm == 'U' or gradients['query.weight'] > 0),
                         f'{arm} E or Q has no gradient after W updated')
             opt.step()
             steps.append({'step': step + 1, 'loss': float(loss.detach()), 'gradient_norms': gradients})
@@ -160,25 +165,27 @@ def probe(model, data, config, device):
 
 
 @torch.no_grad()
-def check_attention(head, device):
+def check_attention(head, device, uniform=False):
     generator = torch.Generator().manual_seed(42)
     query = torch.randn(4, 64, generator=generator).to(device)
     edges = torch.randn(3, 70, generator=generator).to(device)
     lengths = torch.tensor([0, 2, 1, 0], device=device)
     # Use nonzero W so empty segments and cross-graph isolation are observable.
     head.output.weight.fill_(0.125)
-    residual, attention = head(query, edges, lengths)
+    residual, attention = head(None if uniform else query, edges, lengths)
     changed = edges.clone()
     changed[2] *= -5
-    other, other_attention = head(query, changed, lengths)
-    isolated, isolated_attention = head(query[1:2], edges[:2], lengths[1:2])
-    empty, empty_attention = head(query, edges[:0], torch.zeros_like(lengths))
+    other, other_attention = head(None if uniform else query, changed, lengths)
+    isolated, isolated_attention = head(None if uniform else query[1:2], edges[:2], lengths[1:2])
+    empty, empty_attention = head(None if uniform else query, edges[:0], torch.zeros_like(lengths))
     require(not bool(residual[[0, 3]].any()) and not bool(empty.any()) and empty_attention.numel() == 0
             and float(attention[2]) == 1 and torch.allclose(attention[:2].sum(), attention.new_tensor(1.0))
             and torch.equal(residual[1], other[1]) and torch.equal(attention[:2], other_attention[:2])
             and torch.allclose(residual[1:2], isolated, atol=1e-6, rtol=1e-5)
             and torch.allclose(attention[:2], isolated_attention, atol=1e-6, rtol=1e-5),
             'Empty, single-edge or isolated attention preflight failed')
+    if uniform:
+        require(torch.equal(attention[:2], attention.new_full((2,), 0.5)), 'Expected equal attention weights')
     return {'empty_graph_zero_residual': True, 'empty_batch_zero_residual': True,
             'single_edge_attention': float(attention[2]), 'per_graph_attention_isolated': True}
 
@@ -190,11 +197,13 @@ def prediction_records(rows, predictions):
 
 
 @torch.no_grad()
-def cache_split(model, data, rows, part, config, device, output, heads=None):
+def cache_split(model, data, rows, part, config, device, output, heads=None, observe=None):
     chunks, predictions = [], []
     field_counts = {}
     for step, indices, batch, _ in diagnosis.aligned_batches(data, rows, part, config):
         features, counts = encode(model, batch, device)
+        if observe is not None:
+            observe(features)
         if heads is not None:
             scores = baseline(model, features)
             require(bool(torch.isfinite(scores).all()), 'Nonfinite original C scores')
@@ -232,7 +241,7 @@ def measure(model, heads, val, rows, config, device):
                      for arm, items in records.items()}
 
 
-def fit(model, heads, train, val, rows, reference, config, device, output):
+def fit(model, heads, train, val, rows, reference, config, device, output, order_reference=None):
     sampler = raw.TrainBatches(len(train.labels), config['batch_size'], config['seed'])
     optimizers = {arm: optimizer(head, config) for arm, head in heads.items()}
     best, last = {}, {}
@@ -242,6 +251,9 @@ def fit(model, heads, train, val, rows, reference, config, device, output):
             updates, samples = 0, 0
             if epoch:
                 for indices in sampler:
+                    if updates == 0 and order_reference is not None:
+                        require(sampler.order_sha256 == order_reference[epoch],
+                                f'Epoch {epoch} training order differs from archived B/C1')
                     features, labels = train.batch(indices, device)
                     for arm, head in heads.items():
                         opt = optimizers[arm]
@@ -273,14 +285,15 @@ def fit(model, heads, train, val, rows, reference, config, device, output):
                                      'train_cross_entropy': {arm: float(loss / samples) for arm, loss in losses.items()}
                                      if samples else None}) + '\n')
             stream.flush()
-            raw.progress(output, 'paired_training', epoch=epoch, total_epochs=config['epochs'],
+            raw.progress(output, 'uniform_training' if tuple(heads) == ('U',) else 'paired_training',
+                         epoch=epoch, total_epochs=config['epochs'],
                          macro_f1={arm: value['macro_f1'] for arm, value in metrics.items()})
     return best, last, len(sampler) * config['epochs']
 
 
 @torch.no_grad()
 def replay_selected(model, checkpoint, data, rows, config, device, output):
-    heads = make_heads(config, device)
+    heads = make_heads(config, device, checkpoint['best'])
     for arm, head in heads.items():
         head.load_state_dict(checkpoint['best'][arm]['state'], strict=True)
         head.eval()
@@ -376,12 +389,15 @@ def summarize(output, rows, predictions, lengths, selections, config, updates, c
     (output / 'report.md').write_text('\n'.join(lines) + '\n', encoding='utf-8')
 
 
-def run(repo, output, graph_root, code_commit):
-    started = time.perf_counter()
+def base_config():
     config = {**raw.read(evaluation.CONFIG), **raw.read(CONFIG)}
     config['checkpoints'] = {'C': config['checkpoints']['C']}
     config['metrics_sha256'] = {'C': config['metrics_sha256']['C']}
     config['partition_sizes'] = {'val': config['partition_sizes']['val'], 'train': config['training_samples']}
+    return config
+
+
+def load_source(repo, config, graph_root):
     source, split = (repo / config[key] for key in ('source_directory', 'split_directory'))
     archive, inputs = evaluation.archive_inputs(source, split, config)
     require(torch.cuda.is_available() and torch.__version__.split('+')[0] == '2.3.1'
@@ -406,6 +422,14 @@ def run(repo, output, graph_root, code_commit):
     require(joint.legacy.frozen_hash(model) == archive['C']['frozen_state_sha256']
             == protocol['source_frozen_state_sha256'], 'Archived C frozen state differs')
     model.requires_grad_(False).to(device).eval()
+    return model, data, rows, device, archive['C']['selected']['best'], inputs
+
+
+def run(repo, output, graph_root, code_commit):
+    started = time.perf_counter()
+    config = base_config()
+    model, data, rows, device, selected, inputs = load_source(repo, config, graph_root)
+    source = repo / config['source_directory']
     before = raw.state_digest(model.state_dict())
     heads = make_heads(config, device)
     initial = raw.state_digest(heads['B'].state_dict())
@@ -427,7 +451,6 @@ def run(repo, output, graph_root, code_commit):
     raw.write(output / 'preflight.json', {**checks, 'attention_checks': attention})
 
     val, val_coverage, reference = cache_split(model, data, rows['val'], 'val', config, device, output, heads)
-    selected = archive['C']['selected']['best']
     gold = joint.legacy.predictions(source / 'C' / 'validation_predictions.jsonl.gz')
     baseline_metrics = joint.study.validate_predictions(reference, rows['val'], probabilities=False)
     receipt = evaluation.replay_receipt(baseline_metrics, reference, selected, gold)
