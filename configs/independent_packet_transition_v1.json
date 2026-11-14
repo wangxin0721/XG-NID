@@ -1,0 +1,14 @@
+{
+  "seeds": [43, 44],
+  "readout_seed": 42,
+  "readout_initial_state_sha256": "492fc56cb33a36c87f32de87214ae463d103532e1601d93e5d4ffe56c013a1ce",
+  "d32_seed43_archive": "a3451c26f54bccbb2948ed5fd8bbd0ca9c19a0ec",
+  "d32_seed43": {
+    "checkpoint_sha256": "0de13ac98a8941a7c1fa4a42ed6af55ddab329252ac5a938417650883d5b0b77",
+    "predictions_sha256": "43f38b5fd8eb5929a188afa6d180f194e7ac7487216d6f915618c38460b0bf53",
+    "prediction_ids_sha256": "c7b9c744d85b25b0867e0a19c4ed15bd32db9e9e123fe8e8d3e04155823197ea",
+    "epoch": 97
+  },
+  "seed42_fixed_test_archive": "acc9d8f82eea3af6ff4af06c4629717366f96b83",
+  "seed42_fixed_test_summary_sha256": "1666cc97f5b66a307df24aa6f0402845ecc8f16e9e9652e477a39534bc9565e8"
+}

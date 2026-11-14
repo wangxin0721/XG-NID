@@ -43,8 +43,12 @@ STAGE_KEYS = {
 class D32Core(SeedCore):
     """Bind the historical trainer's literal seed to this independent run."""
     def seed_all(self, seed):
-        require(seed == 42, 'Unexpected seed usage in the historical D32 trainer')
+        require(seed in (42, self.seed), 'Unexpected seed usage in the historical trainer')
         return self.core.seed_all(self.seed)
+
+    def TrainBatches(self, size, batch_size, seed):
+        require(seed in (42, self.seed) and batch_size == 512, 'Unexpected historical sampler settings')
+        return self.core.TrainBatches(size, batch_size, self.seed)
 
 
 def streams_for_seed(seed):
