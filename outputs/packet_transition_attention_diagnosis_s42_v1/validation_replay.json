@@ -1,0 +1,52 @@
+{
+  "A": {
+    "passed": true,
+    "samples": 13446,
+    "metrics_match": true,
+    "prediction_ids_sha256": "396bd22c4004ecf6d283ac36f99ddada3845038ccd7d365a82e46208b1cc0974",
+    "expected_prediction_ids_sha256": "396bd22c4004ecf6d283ac36f99ddada3845038ccd7d365a82e46208b1cc0974",
+    "archive_comparison": {
+      "counts": {
+        "repaired": 0,
+        "regressed": 0,
+        "both_correct": 13201,
+        "both_wrong": 245
+      },
+      "net_correct": 0
+    },
+    "first_differences": []
+  },
+  "C1": {
+    "passed": true,
+    "samples": 13446,
+    "metrics_match": true,
+    "prediction_ids_sha256": "e6eda0cd42a54950a2e25fed31bad2214fd578543a83cda932c74263a7a7111a",
+    "expected_prediction_ids_sha256": "e6eda0cd42a54950a2e25fed31bad2214fd578543a83cda932c74263a7a7111a",
+    "archive_comparison": {
+      "counts": {
+        "repaired": 0,
+        "regressed": 0,
+        "both_correct": 13217,
+        "both_wrong": 229
+      },
+      "net_correct": 0
+    },
+    "first_differences": []
+  },
+  "attention": {
+    "max_graph_mass_error": 4.76837158203125e-07,
+    "minimum_difference_for_nonuniform": 1e-06,
+    "graphs_with_nonuniform_weights": 7043,
+    "graphs_with_fewer_than_two_edges_changed": 0
+  },
+  "U_epoch_zero_exact_logits": true,
+  "U_selected_raw": {
+    "passed": true,
+    "samples": 13446,
+    "metrics_match": true,
+    "prediction_ids_sha256": "1bdddacb4957c5b769c97ad9a85b9588590c5cd8dc3be53252ff9c2a4dfcf9d7",
+    "expected_prediction_ids_sha256": "1bdddacb4957c5b769c97ad9a85b9588590c5cd8dc3be53252ff9c2a4dfcf9d7",
+    "archive_comparison": null,
+    "first_differences": []
+  }
+}

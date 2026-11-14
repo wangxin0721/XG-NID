@@ -1,0 +1,38 @@
+{
+  "train": {
+    "expected_pairs": 1063099,
+    "forward_links": 1063099,
+    "reverse_links": 1063099,
+    "other_links": 0,
+    "cross_flow_links": 0,
+    "duplicate_forward_links": 0,
+    "invalid_time_forward_links": 0,
+    "invalid_direction_forward_links": 0,
+    "invalid_payload_forward_links": 0,
+    "invalid_forward_links": 0,
+    "valid_pairs": 1063099,
+    "samples": 107621,
+    "graphs_without_valid_edges": 15191,
+    "graphs_with_at_least_two_edges": 66402,
+    "coverage_ge2": 0.6169985411769079,
+    "cache_bytes": 382903560
+  },
+  "val": {
+    "expected_pairs": 134039,
+    "forward_links": 134039,
+    "reverse_links": 134039,
+    "other_links": 0,
+    "cross_flow_links": 0,
+    "duplicate_forward_links": 0,
+    "invalid_time_forward_links": 0,
+    "invalid_direction_forward_links": 0,
+    "invalid_payload_forward_links": 0,
+    "invalid_forward_links": 0,
+    "valid_pairs": 134039,
+    "samples": 13446,
+    "graphs_without_valid_edges": 1898,
+    "graphs_with_at_least_two_edges": 8337,
+    "coverage_ge2": 0.6200356983489513,
+    "cache_bytes": 48180160
+  }
+}
