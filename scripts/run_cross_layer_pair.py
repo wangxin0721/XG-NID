@@ -260,18 +260,34 @@ def probe(core,model,data,cache,device,c,encoder_hash):
     clean={k:v.detach().clone() for k,v in model.state_dict().items()}; digest=core.state_hash(clean.items()); rng=pair.rng_state(core)
     records=[]
     try:
-        numbers=list(range(min(512,len(cache['ids']))))
-        require(bool(numbers),'No training samples for probe')
-        rows=core.select_rows(data,'train'); batch=core.Batch.from_data_list([data.load(rows[i]) for i in numbers]).to(device)
-        require(list(batch.sample_id)==[cache['ids'][i] for i in numbers], 'Probe ID order differs')
-        require(batch.y.view(-1).tolist()==cache['labels'][numbers].tolist(),'Probe labels differ')
+        count = min(c['batch_size'], len(cache['ids']))
+        require(count > 0, 'No training samples for probe')
+        rows = core.select_rows(data, 'train')
+        encode_batch_size = c['eval_batch_size']
+        feature_parts = []
+        # Rebuild the same graph batches used to extract the cache. The head still
+        # receives a full training minibatch, so its optimizer probe is unchanged.
+        with core.torch.no_grad():
+            for start in range(0, count, encode_batch_size):
+                stop = min(start + encode_batch_size, count)
+                batch = core.Batch.from_data_list([data.load(row) for row in rows[start:stop]]).to(device)
+                require(list(batch.sample_id) == cache['ids'][start:stop], 'Probe ID order differs')
+                require(batch.y.view(-1).tolist() == cache['labels'][start:stop].tolist(), 'Probe labels differ')
+                features, _ = model.encode(batch)
+                feature_parts.append(features)
+        raw_features = tuple(core.torch.cat(parts) for parts in zip(*feature_parts))
+        cached_features, labels = minibatch(core, cache, list(range(count)), device)
         opt=optimizer(core,model,c)
         for step in range(1,4):
             model.train(); opt.zero_grad(set_to_none=True)
             before={k:v.detach().clone() for k,v in model.named_parameters() if v.requires_grad}
-            raw=model(batch); f,y=minibatch(core,cache,numbers,device); cached,_=model.forward_features(*f)
-            require(core.torch.allclose(raw,cached,atol=1e-5,rtol=1e-5),'Raw/cache gradient probe differs')
-            loss=core.F.nll_loss(raw,y); require(bool(core.torch.isfinite(loss)) and raw.requires_grad,'Disconnected/nonfinite loss')
+            raw, _ = model.forward_features(*raw_features)
+            with core.torch.no_grad():
+                cached, _ = model.forward_features(*cached_features)
+                error = float((raw - cached).abs().max())
+            require(core.torch.allclose(raw, cached, atol=1e-5, rtol=1e-5),
+                    f'Raw/cache gradient probe differs at step {step} (max abs log-score error {error:.6g})')
+            loss=core.F.nll_loss(raw,labels); require(bool(core.torch.isfinite(loss)) and raw.requires_grad,'Disconnected/nonfinite loss')
             loss.backward()
             norms={k:float(v.grad.abs().sum()) if v.grad is not None else 0. for k,v in model.named_parameters() if v.requires_grad}
             block_grads=[float(model.cross_layer.weight.grad[:,start:start+64].abs().sum()) for start in (0,64)]
@@ -279,8 +295,8 @@ def probe(core,model,data,cache,device,c,encoder_hash):
             opt.step()
             changed={k:not core.torch.equal(before[k],v) for k,v in model.named_parameters() if v.requires_grad}
             block_changes=[not core.torch.equal(before['cross_layer.weight'][:,start:start+64],model.cross_layer.weight[:,start:start+64]) for start in (0,64)]
-            with core.torch.no_grad(): model.forward_features(*f)
             records.append({'step':step,'loss':float(loss.detach()),'gradient_l1':norms,'changed':changed,
+                            'max_abs_raw_cached_log_score_error':error,
                             'projection_gradient_l1':norms['cross_layer.weight'],
                             'projection_block_gradients_l1':block_grads,'projection_blocks_changed':block_changes})
             dim.assert_frozen(core,model,encoder_hash)
@@ -295,7 +311,8 @@ def probe(core,model,data,cache,device,c,encoder_hash):
         model.load_state_dict(clean,strict=True); model.zero_grad(set_to_none=True); model.eval(); pair.restore_rng(core,rng)
         require(core.state_hash(model.state_dict().items())==digest and pair.rng_hash(core,rng)==pair.rng_hash(core,pair.rng_state(core)), 'Probe restore failed')
         dim.assert_frozen(core,model,encoder_hash)
-    return {'updates':records,'clean_model_and_rng_restored':True,'optimizer_discarded':True,'discarded':True,'train_graphs':len(numbers)}
+    return {'updates':records,'clean_model_and_rng_restored':True,'optimizer_discarded':True,'discarded':True,
+            'train_graphs':count,'encoding_batch_size':encode_batch_size}
 
 
 def device_preflight(core,models,device,args):
