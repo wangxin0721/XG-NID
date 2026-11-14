@@ -113,7 +113,8 @@ def baseline(model, features):
 
 
 def make_heads(config, device, arms=SOURCES):
-    heads = {arm: PacketTransitionReadout(config['seed']).to(device) for arm in arms}
+    seed = config.get('readout_seed', config['seed'])
+    heads = {arm: PacketTransitionReadout(seed).to(device) for arm in arms}
     require(len({raw.state_digest(head.state_dict()) for head in heads.values()}) == 1,
             'Transition readouts must start with identical weights')
     if 'U' in heads:
@@ -242,7 +243,8 @@ def measure(model, heads, val, rows, config, device):
 
 
 def fit(model, heads, train, val, rows, reference, config, device, output, order_reference=None):
-    sampler = raw.TrainBatches(len(train.labels), config['batch_size'], config['seed'])
+    readout_seed = config.get('readout_seed', config['seed'])
+    sampler = raw.TrainBatches(len(train.labels), config['batch_size'], readout_seed)
     optimizers = {arm: optimizer(head, config) for arm, head in heads.items()}
     best, last = {}, {}
     with (output / 'epochs.jsonl').open('x', encoding='utf-8', newline='\n') as stream:
@@ -286,7 +288,7 @@ def fit(model, heads, train, val, rows, reference, config, device, output, order
                                      if samples else None}) + '\n')
             stream.flush()
             raw.progress(output, 'uniform_training' if tuple(heads) == ('U',) else 'paired_training',
-                         epoch=epoch, total_epochs=config['epochs'],
+                         readout_seed=readout_seed, epoch=epoch, total_epochs=config['epochs'],
                          macro_f1={arm: value['macro_f1'] for arm, value in metrics.items()})
     return best, last, len(sampler) * config['epochs']
 

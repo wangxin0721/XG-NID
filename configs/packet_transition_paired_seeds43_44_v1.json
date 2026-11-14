@@ -1,0 +1,7 @@
+{
+  "backbone_seed": 42,
+  "readout_seeds": [43, 44],
+  "backbone_state_sha256": "c29a6433880f6e5ad8a45d387abef07cf54f895277f9f89b313edecfa7feedc6",
+  "sample_manifest_sha256": "b8e9b0810471d0c2b52033488fab640625c3731315afd5d2add1571bd2518827",
+  "parameters_per_arm": 3200
+}
