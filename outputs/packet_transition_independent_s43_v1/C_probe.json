@@ -1,0 +1,141 @@
+{
+  "passed": true,
+  "parameter_groups": {
+    "flow_to_packet": 8704,
+    "packet_to_packet": 8512,
+    "projection": 8256,
+    "fusion": 7144,
+    "query_key": 1024
+  },
+  "trainable_parameters": 33640,
+  "frozen_state_sha256": "829dd6fb6ff763cba8c9940abbd9ab8859d3cf318da3e5d910169dc2c30d2f59",
+  "initial_state_sha256": "56141f33254c83c5e857b50e102a706cde2b89c1f93a93f8f73d473e590545ba",
+  "steps": [
+    {
+      "step": 1,
+      "nll": 0.004785978235304356,
+      "updated_groups": [
+        "flow_to_packet",
+        "fusion",
+        "packet_to_packet",
+        "projection",
+        "query_key"
+      ],
+      "query_key_gradient_norms": {
+        "query": 5.842729819960368e-07,
+        "key": 0.0
+      },
+      "updated_query_key": [
+        "query"
+      ],
+      "updated_parameter_tensors": [
+        "packet_encoder.convs2.convs.<flow___contain___packet>.bias",
+        "packet_encoder.convs2.convs.<flow___contain___packet>.lin_src.weight",
+        "packet_encoder.convs2.convs.<packet___link___packet>.bias",
+        "packet_encoder.convs2.convs.<packet___link___packet>.lin_src.weight",
+        "packet_encoder.convs2.convs.<packet___link___packet>.lin_dst.weight",
+        "fusion.flow_projection.weight",
+        "fusion.flow_projection.bias",
+        "fusion.packet_projection.weight",
+        "fusion.packet_projection.bias",
+        "fusion.gate.0.weight",
+        "fusion.gate.0.bias",
+        "fusion.gate.2.weight",
+        "fusion.gate.2.bias",
+        "fusion.shared_head.0.weight",
+        "fusion.shared_head.0.bias",
+        "fusion.shared_head.2.weight",
+        "fusion.shared_head.2.bias",
+        "cross_layer.weight",
+        "cross_layer.bias",
+        "packet_pool.query.weight"
+      ]
+    },
+    {
+      "step": 2,
+      "nll": 0.002674821997061372,
+      "updated_groups": [
+        "flow_to_packet",
+        "fusion",
+        "packet_to_packet",
+        "projection",
+        "query_key"
+      ],
+      "query_key_gradient_norms": {
+        "query": 4.4012969624418474e-07,
+        "key": 1.6211540998511964e-09
+      },
+      "updated_query_key": [
+        "key",
+        "query"
+      ],
+      "updated_parameter_tensors": [
+        "packet_encoder.convs2.convs.<flow___contain___packet>.bias",
+        "packet_encoder.convs2.convs.<flow___contain___packet>.lin_src.weight",
+        "packet_encoder.convs2.convs.<packet___link___packet>.bias",
+        "packet_encoder.convs2.convs.<packet___link___packet>.lin_src.weight",
+        "packet_encoder.convs2.convs.<packet___link___packet>.lin_dst.weight",
+        "fusion.flow_projection.weight",
+        "fusion.flow_projection.bias",
+        "fusion.packet_projection.weight",
+        "fusion.packet_projection.bias",
+        "fusion.gate.0.weight",
+        "fusion.gate.0.bias",
+        "fusion.gate.2.weight",
+        "fusion.gate.2.bias",
+        "fusion.shared_head.0.weight",
+        "fusion.shared_head.0.bias",
+        "fusion.shared_head.2.weight",
+        "fusion.shared_head.2.bias",
+        "cross_layer.weight",
+        "cross_layer.bias",
+        "packet_pool.query.weight",
+        "packet_pool.key.weight"
+      ]
+    },
+    {
+      "step": 3,
+      "nll": 0.0014775332529097795,
+      "updated_groups": [
+        "flow_to_packet",
+        "fusion",
+        "packet_to_packet",
+        "projection",
+        "query_key"
+      ],
+      "query_key_gradient_norms": {
+        "query": 3.346329435771622e-07,
+        "key": 2.412443578236889e-09
+      },
+      "updated_query_key": [
+        "key",
+        "query"
+      ],
+      "updated_parameter_tensors": [
+        "packet_encoder.convs2.convs.<flow___contain___packet>.bias",
+        "packet_encoder.convs2.convs.<flow___contain___packet>.lin_src.weight",
+        "packet_encoder.convs2.convs.<packet___link___packet>.att_src",
+        "packet_encoder.convs2.convs.<packet___link___packet>.att_dst",
+        "packet_encoder.convs2.convs.<packet___link___packet>.bias",
+        "packet_encoder.convs2.convs.<packet___link___packet>.lin_src.weight",
+        "packet_encoder.convs2.convs.<packet___link___packet>.lin_dst.weight",
+        "fusion.flow_projection.weight",
+        "fusion.flow_projection.bias",
+        "fusion.packet_projection.weight",
+        "fusion.packet_projection.bias",
+        "fusion.gate.0.weight",
+        "fusion.gate.0.bias",
+        "fusion.gate.2.weight",
+        "fusion.gate.2.bias",
+        "fusion.shared_head.0.weight",
+        "fusion.shared_head.0.bias",
+        "fusion.shared_head.2.weight",
+        "fusion.shared_head.2.bias",
+        "cross_layer.weight",
+        "cross_layer.bias",
+        "packet_pool.query.weight",
+        "packet_pool.key.weight"
+      ]
+    }
+  ]
+}

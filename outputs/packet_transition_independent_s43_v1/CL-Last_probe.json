@@ -1,0 +1,147 @@
+{
+  "updates": [
+    {
+      "step": 1,
+      "loss": 0.029602164402604103,
+      "gradient_l1": {
+        "fusion.flow_projection.weight": 5.558099269866943,
+        "fusion.flow_projection.bias": 0.2682284116744995,
+        "fusion.packet_projection.weight": 6.076046943664551,
+        "fusion.packet_projection.bias": 0.24048921465873718,
+        "fusion.gate.0.weight": 1.8659605979919434,
+        "fusion.gate.0.bias": 0.02416520193219185,
+        "fusion.gate.2.weight": 1.518418312072754,
+        "fusion.gate.2.bias": 0.02379889413714409,
+        "fusion.shared_head.0.weight": 3.5949172973632812,
+        "fusion.shared_head.0.bias": 0.1187751442193985,
+        "fusion.shared_head.2.weight": 2.240025043487549,
+        "fusion.shared_head.2.bias": 0.027069592848420143,
+        "cross_layer.weight": 75.02482604980469,
+        "cross_layer.bias": 1.5678191184997559
+      },
+      "changed": {
+        "fusion.flow_projection.weight": true,
+        "fusion.flow_projection.bias": true,
+        "fusion.packet_projection.weight": true,
+        "fusion.packet_projection.bias": true,
+        "fusion.gate.0.weight": true,
+        "fusion.gate.0.bias": true,
+        "fusion.gate.2.weight": true,
+        "fusion.gate.2.bias": true,
+        "fusion.shared_head.0.weight": true,
+        "fusion.shared_head.0.bias": true,
+        "fusion.shared_head.2.weight": true,
+        "fusion.shared_head.2.bias": true,
+        "cross_layer.weight": true,
+        "cross_layer.bias": true
+      },
+      "max_abs_raw_cached_log_score_error": 1.52587890625e-05,
+      "projection_gradient_l1": 75.02482604980469,
+      "projection_block_gradients_l1": [
+        37.51241683959961,
+        37.51241683959961
+      ],
+      "projection_blocks_changed": [
+        true,
+        true
+      ]
+    },
+    {
+      "step": 2,
+      "loss": 0.022573785856366158,
+      "gradient_l1": {
+        "fusion.flow_projection.weight": 4.387806415557861,
+        "fusion.flow_projection.bias": 0.21747174859046936,
+        "fusion.packet_projection.weight": 4.894255638122559,
+        "fusion.packet_projection.bias": 0.19684316217899323,
+        "fusion.gate.0.weight": 1.6328452825546265,
+        "fusion.gate.0.bias": 0.020438168197870255,
+        "fusion.gate.2.weight": 1.318961501121521,
+        "fusion.gate.2.bias": 0.020832698792219162,
+        "fusion.shared_head.0.weight": 2.849266529083252,
+        "fusion.shared_head.0.bias": 0.0956217497587204,
+        "fusion.shared_head.2.weight": 1.7374043464660645,
+        "fusion.shared_head.2.bias": 0.02166028507053852,
+        "cross_layer.weight": 59.50354766845703,
+        "cross_layer.bias": 1.2822401523590088
+      },
+      "changed": {
+        "fusion.flow_projection.weight": true,
+        "fusion.flow_projection.bias": true,
+        "fusion.packet_projection.weight": true,
+        "fusion.packet_projection.bias": true,
+        "fusion.gate.0.weight": true,
+        "fusion.gate.0.bias": true,
+        "fusion.gate.2.weight": true,
+        "fusion.gate.2.bias": true,
+        "fusion.shared_head.0.weight": true,
+        "fusion.shared_head.0.bias": true,
+        "fusion.shared_head.2.weight": true,
+        "fusion.shared_head.2.bias": true,
+        "cross_layer.weight": true,
+        "cross_layer.bias": true
+      },
+      "max_abs_raw_cached_log_score_error": 7.62939453125e-06,
+      "projection_gradient_l1": 59.50354766845703,
+      "projection_block_gradients_l1": [
+        29.75177764892578,
+        29.75177764892578
+      ],
+      "projection_blocks_changed": [
+        true,
+        true
+      ]
+    },
+    {
+      "step": 3,
+      "loss": 0.017120450735092163,
+      "gradient_l1": {
+        "fusion.flow_projection.weight": 3.4205307960510254,
+        "fusion.flow_projection.bias": 0.17568844556808472,
+        "fusion.packet_projection.weight": 3.8973608016967773,
+        "fusion.packet_projection.bias": 0.15673084557056427,
+        "fusion.gate.0.weight": 1.4031165838241577,
+        "fusion.gate.0.bias": 0.017330963164567947,
+        "fusion.gate.2.weight": 1.0997672080993652,
+        "fusion.gate.2.bias": 0.01764671504497528,
+        "fusion.shared_head.0.weight": 2.1953587532043457,
+        "fusion.shared_head.0.bias": 0.0759223997592926,
+        "fusion.shared_head.2.weight": 1.3236236572265625,
+        "fusion.shared_head.2.bias": 0.017202060669660568,
+        "cross_layer.weight": 46.301795959472656,
+        "cross_layer.bias": 1.015641450881958
+      },
+      "changed": {
+        "fusion.flow_projection.weight": true,
+        "fusion.flow_projection.bias": true,
+        "fusion.packet_projection.weight": true,
+        "fusion.packet_projection.bias": true,
+        "fusion.gate.0.weight": true,
+        "fusion.gate.0.bias": true,
+        "fusion.gate.2.weight": true,
+        "fusion.gate.2.bias": true,
+        "fusion.shared_head.0.weight": true,
+        "fusion.shared_head.0.bias": true,
+        "fusion.shared_head.2.weight": true,
+        "fusion.shared_head.2.bias": true,
+        "cross_layer.weight": true,
+        "cross_layer.bias": true
+      },
+      "max_abs_raw_cached_log_score_error": 1.52587890625e-05,
+      "projection_gradient_l1": 46.301795959472656,
+      "projection_block_gradients_l1": [
+        23.150897979736328,
+        23.150897979736328
+      ],
+      "projection_blocks_changed": [
+        true,
+        true
+      ]
+    }
+  ],
+  "clean_model_and_rng_restored": true,
+  "optimizer_discarded": true,
+  "discarded": true,
+  "train_graphs": 512,
+  "encoding_batch_size": 16
+}

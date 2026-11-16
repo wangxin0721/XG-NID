@@ -1,0 +1,104 @@
+{
+  "variant": "CL-Last",
+  "architecture": {
+    "width": 32,
+    "projection": [
+      64,
+      32
+    ],
+    "gate": [
+      69,
+      16,
+      32
+    ],
+    "shared_head": [
+      32,
+      32,
+      8
+    ],
+    "trainable_parameters": 15400,
+    "cross_layer_mode": "last",
+    "projection_input": [
+      "h2",
+      "h2"
+    ],
+    "cross_layer_projection": [
+      128,
+      64
+    ],
+    "cross_layer_parameters": 8256,
+    "packet_pool": "ordered_mean",
+    "initialization": "left_zero_right_identity_bias_zero"
+  },
+  "protocol": {
+    "schema": "xgnid.cross-layer-pair.v1",
+    "source_protocol": "fusion_gate_pair_s42_v1.json",
+    "source_directory": "outputs/packet_transition_independent_d32_s43_v1/D32-Gate",
+    "source_variant": "D32-Gate",
+    "source_epoch": 97,
+    "source_macro_f1": 0.9773441538037068,
+    "source_best_sha256": "0de13ac98a8941a7c1fa4a42ed6af55ddab329252ac5a938417650883d5b0b77",
+    "variants": {
+      "CL-Last": "last",
+      "CL-Multi": "multi"
+    },
+    "seed": 43,
+    "width": 32,
+    "encoder_mode": "frozen_eval",
+    "inputs": "frozen_graph_mean_flow64_packet_layer1_64_packet_layer2_64_train_val_only",
+    "optimizer": "fresh_Adam",
+    "head_lr": 1e-05,
+    "weight_decay": 0.0,
+    "batch_size": 512,
+    "eval_batch_size": 16,
+    "workers": 2,
+    "epochs": 150,
+    "patience": 20,
+    "include_epoch_zero": true,
+    "probe_batches": 3,
+    "loss": "plain_final_NLL",
+    "budget_above_stronger_reference_pp": 0.1,
+    "training_jobs": 2,
+    "test_evaluated": false,
+    "automatic_followup": false,
+    "changed_location": "packet_branch_cross_layer_readout_only",
+    "min_epochs": 50,
+    "early_stop_reference": "trained_epochs_only",
+    "final_selection": "epoch_zero_or_best_trained",
+    "early_stop_enabled": false,
+    "cross_layer_projection": [
+      128,
+      64
+    ],
+    "cross_layer_initialization": "left_zero_right_identity_bias_zero",
+    "cross_layer_lr": 0.0001,
+    "P1_reference_macro_f1": 0.9742719120553645,
+    "P1_reference_provenance": "user_reported_pool_confirmation_epoch146_matrix_verified_not_checkpoint_rehashed",
+    "split_id": "a8ae9c934eec9fee970cc725e60051d0c709e0f16c7dda14749350ff2006975a"
+  },
+  "binding": {
+    "seed": 43,
+    "n0_best_sha256": "e560fb61ad09fd38237c626ca0aa250ccf8bd003df8e7ac8be3ac4f03b2e0443",
+    "split_id": "a8ae9c934eec9fee970cc725e60051d0c709e0f16c7dda14749350ff2006975a",
+    "manifest_sha256": "b8e9b0810471d0c2b52033488fab640625c3731315afd5d2add1571bd2518827",
+    "code_commit": "cccd053e3fe4445f4b15932f38295d65e77d70c2",
+    "graph_root": "/home/nzxn/下载/WX/load/XG-NID/data/processed/CICIoT2023_processed/processed",
+    "torch": "2.3.1+cu118",
+    "pyg": "2.5.3",
+    "device": "Tesla T4",
+    "parent_stage": "D32-Gate",
+    "parent_sha256": "0de13ac98a8941a7c1fa4a42ed6af55ddab329252ac5a938417650883d5b0b77",
+    "parent_prediction_ids_sha256": "c7b9c744d85b25b0867e0a19c4ed15bd32db9e9e123fe8e8d3e04155823197ea"
+  },
+  "labels": [
+    "Benign",
+    "WebBased",
+    "Spoofing",
+    "Recon",
+    "Mirai",
+    "Dos",
+    "DDos",
+    "BruteForce"
+  ],
+  "frozen_encoder_sha256": "5a0a77f31d0fd67c4ebe1edf55a98ac635e8e65067d5fd5c71caaa4762a46bd2"
+}

@@ -1,0 +1,28 @@
+{
+  "C": {
+    "passed": true,
+    "samples": 13446,
+    "metrics_match": true,
+    "prediction_ids_sha256": "79d840d76d3dc8804ccda64dc65ae8f6f368ec91d57b4d062918361de05d3d6e",
+    "expected_prediction_ids_sha256": "79d840d76d3dc8804ccda64dc65ae8f6f368ec91d57b4d062918361de05d3d6e",
+    "archive_comparison": {
+      "counts": {
+        "repaired": 0,
+        "regressed": 0,
+        "both_correct": 13231,
+        "both_wrong": 215
+      },
+      "net_correct": 0
+    },
+    "first_differences": []
+  },
+  "B": {
+    "passed": true,
+    "samples": 13446,
+    "metrics_match": true,
+    "prediction_ids_sha256": "b33db708c61585dab0c3bd8663a777da96d3ae70a4d3eaaf27d7a723e36c0896",
+    "expected_prediction_ids_sha256": "b33db708c61585dab0c3bd8663a777da96d3ae70a4d3eaaf27d7a723e36c0896",
+    "archive_comparison": null,
+    "first_differences": []
+  }
+}

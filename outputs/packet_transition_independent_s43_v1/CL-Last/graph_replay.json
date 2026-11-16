@@ -1,0 +1,14 @@
+{
+  "strict_state_load": true,
+  "predictions_identical": true,
+  "confusion_matrix_reproduced": true,
+  "samples": 13446,
+  "max_abs_raw_cached_error": 2.288818359375e-05,
+  "legacy_source_max_abs_error": null,
+  "graph_load_stage": {
+    "phase": "CL-Last_selected_raw_replay",
+    "partition": "val",
+    "verified_samples": 13446,
+    "workers": 2
+  }
+}
