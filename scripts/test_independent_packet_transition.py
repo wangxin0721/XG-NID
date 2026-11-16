@@ -1,4 +1,5 @@
 """Check checkpoint inheritance, isolated readout seeds, and the fixed-test gate."""
+import json
 from pathlib import Path
 from tempfile import TemporaryDirectory
 import unittest
@@ -11,6 +12,49 @@ from test_packet_transition_readout import fixture
 
 
 class IndependentTransitionChecks(unittest.TestCase):
+    def test_recovery_matches_training_digest_even_if_confusion_matrix_is_unchanged(self):
+        original = [{'sample_id': 'x', 'label': 2, 'prediction': 0},
+                    {'sample_id': 'y', 'label': 2, 'prediction': 1}]
+        replay = [{**row, 'prediction': 1 - row['prediction']} for row in original]
+        metrics = run.joint.study.validate_predictions(replay, probabilities=False)
+        selected = {'validation': metrics, 'prediction_ids_sha256': run.joint.prediction_digest(original)}
+        candidates = {0: {0: 5e-6}, 1: {1: 6e-6}}
+        for archive in (None, original):
+            receipt, result = run.near_tie_receipt(replay, metrics, selected, archive, candidates)
+            self.assertTrue(receipt['passed'])
+            self.assertFalse(receipt['exact_raw_match'])
+            self.assertEqual(result, original)
+            self.assertEqual(len(receipt['first_differences']), 2)
+            receipt, result = run.near_tie_receipt(replay, metrics, selected, archive, {0: candidates[0]})
+            self.assertFalse(receipt['passed'])
+            self.assertIsNone(result)
+
+    def test_completed_b_requires_full_budget_order_and_earliest_best(self):
+        config = {'epochs': 30, 'batch_size': 512, 'readout_seed': 42}
+        orders = [str(i) for i in range(30)]
+        binding = {'seed': 43, 'split_id': 'split', 'manifest_sha256': 'manifest', 'n0_best_sha256': 'n0'}
+        selected = {'checkpoint_sha256': 'parent', 'validation': {'macro_f1': 0.5}}
+        ledger = [
+            {'epoch': epoch, 'order_sha256': order, 'updates_per_arm': 211 if epoch else 0,
+             'samples_per_arm': 107621 if epoch else 0, 'validation': {'B': {'macro_f1': 0.5 if not epoch else 0.6}}}
+            for epoch, order in enumerate((None, *orders))
+        ]
+        saved = {'config': config, 'query_sources': {'B': 'packet_mean'},
+                 'binding': {**binding, 'parent_sha256': 'parent'}, 'frozen_c_sha256': 'frozen',
+                 'initial_transition_sha256': 'initial', 'best': {'B': {'epoch': 1, 'validation': {'macro_f1': 0.6}}},
+                 'last': {'B': {'epoch': 30, 'validation': {'macro_f1': 0.6}}}}
+        with TemporaryDirectory() as directory:
+            folder = Path(directory)
+            run.raw.write(folder / 'epoch_zero_replay.json', {'passed': True})
+            (folder / 'epochs.jsonl').write_text(''.join(json.dumps(row) + '\n' for row in ledger), encoding='utf-8')
+            run.verify_b_training(folder, saved, binding, selected, config, 'frozen', 'initial', orders, 107621)
+            saved['best']['B']['epoch'] = 2
+            with self.assertRaisesRegex(ValueError, 'best selection differs'):
+                run.verify_b_training(folder, saved, binding, selected, config, 'frozen', 'initial', orders, 107621)
+            orders[0] = 'changed'
+            with self.assertRaisesRegex(ValueError, 'sampling or training budget differs'):
+                run.verify_b_training(folder, saved, binding, selected, config, 'frozen', 'initial', orders, 107621)
+
     def test_child_stages_preserve_epoch_zero_and_optimizer_groups(self):
         torch.set_num_threads(2)
         _, graphs = fixture()

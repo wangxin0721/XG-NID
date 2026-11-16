@@ -97,7 +97,7 @@ def load_readouts(repo, settings, config, rows, base, device):
 
 
 @torch.no_grad()
-def evaluate_partition(model, heads, batches, rows, device, output, phase):
+def evaluate_partition(model, heads, batches, rows, device, output, phase, observe_scores=None):
     predictions = {name: [] for name in ('A', *heads)}
     lengths = []
     for step, batch in enumerate(batches, 1):
@@ -112,12 +112,16 @@ def evaluate_partition(model, heads, batches, rows, device, output, phase):
         require(bool(torch.isfinite(baseline).all()), f'{phase} nonfinite baseline scores')
         pred_base = baseline.argmax(-1)
         predictions['A'].extend(pred_base.tolist())
+        if observe_scores is not None:
+            observe_scores('A', start, baseline, pred_base)
         for name, (arm, head) in heads.items():
             scores, residual, _ = transition.transition_forward(model, head, arm, features)
             pred = scores.argmax(-1)
             require(bool(torch.isfinite(scores).all()) and not bool(residual[empty].any())
                     and torch.equal(pred[empty], pred_base[empty]), f'{phase} invalid scores or empty-edge output for {name}')
             predictions[name].extend(pred.tolist())
+            if observe_scores is not None:
+                observe_scores(name, start, scores, pred)
         if step == 1 or step % 200 == 0 or end == len(rows):
             raw.progress(output, phase, samples=end, total=len(rows))
     return {name: transition.prediction_records(rows, values) for name, values in predictions.items()}, lengths

@@ -1,7 +1,10 @@
 """Continue each independent N0-derived backbone, then evaluate the locked pairs."""
 import argparse
+from collections import Counter
 from contextlib import contextmanager
+from itertools import product
 import json
+from math import prod
 from pathlib import Path
 import re
 from statistics import mean
@@ -27,6 +30,8 @@ CONFIG = raw.ROOT / 'configs/independent_packet_transition_v1.json'
 OUTPUT = 'packet_transition_independent_s{seed}_v1'
 TEST_OUTPUT = 'packet_transition_independent_final_test_v1'
 STAGES = ('D32-Gate', 'CL-Last', 'JCL-Multi', 'C', 'B')
+REPLAY_ATOL = 1e-5
+REPLAY_RTOL = 1e-5
 
 
 def model_state(model):
@@ -153,22 +158,13 @@ def train_c(model, data, rows, config, device, output, binding, parent, gold):
     joint.fit('C', model, data, rows, gold, parent['validation'], orders, config, binding, device, output)
 
 
-def train_b(model, data, rows, device, output, binding, selected, gold, settings):
-    base = raw.read(evaluation.CONFIG)
-    readout_seed = settings['readout_seed']
-    config = {**raw.read(transition.CONFIG), 'seed': binding['seed'], 'readout_seed': readout_seed,
-              'split_id': binding['split_id'], 'workers': base['workers'],
-              'source_checkpoint_sha256': selected['checkpoint_sha256'],
-              'baseline_prediction_ids_sha256': selected['prediction_ids_sha256']}
+def fit_b(model, data, rows, device, output, binding, selected, gold, config, frozen, initial_hash, orders):
     folder = output / 'B'
+    preserve_incomplete(folder)
     folder.mkdir()
-    model.requires_grad_(False).eval()
-    frozen = model_state(model)
     heads = transition.make_heads(config, device, ('B',))
     require(sum(p.numel() for p in heads['B'].parameters() if p.requires_grad) == 3200,
             'Unexpected B parameter count')
-    initial_hash = model_state(heads['B'])
-    require(initial_hash == settings['readout_initial_state_sha256'], 'B initial state differs from seed42 archive')
     attention_probe = transition.check_attention(transition.make_heads(config, device, ('B',))['B'], device)
     raw.write(folder / 'probe.json', {'attention': attention_probe,
               'gradients': transition.probe(model, data, config, device, ('B',))})
@@ -179,32 +175,184 @@ def train_b(model, data, rows, device, output, binding, selected, gold, settings
     require(zero_replay['passed'], 'B raw epoch zero differs from C')
     train, train_coverage, _ = transition.cache_split(model, data, rows['train'], 'train', config, device, output)
     raw.write(folder / 'edge_coverage.json', {'val': val_coverage, 'train': train_coverage})
-    expected_orders = joint.study.epoch_orders(len(rows['train']), config['batch_size'], readout_seed, config['epochs'])
     best, last, updates = transition.fit(model, heads, train, val, rows['val'], baseline, config, device, folder,
-                                        order_reference=dict(enumerate(expected_orders, 1)))
-    del train, val
+                                        order_reference=dict(enumerate(orders, 1)))
+    del train
     require(updates == 6330, 'B training budget differs')
     path = folder / 'transition_readout.pt'
+    temporary = path.with_suffix('.tmp')
     torch.save({'best': best, 'last': last, 'config': config, 'query_sources': {'B': 'packet_mean'},
                 'binding': {**binding, 'parent_sha256': selected['checkpoint_sha256']},
-                'frozen_c_sha256': frozen, 'initial_transition_sha256': initial_hash}, path)
-    loaded = torch.load(path, map_location='cpu', weights_only=True)
-    exports = transition.replay_selected(model, loaded, data, rows['val'], config, device, output)
+                'frozen_c_sha256': frozen, 'initial_transition_sha256': initial_hash}, temporary)
+    temporary.replace(path)
+    heads['B'].load_state_dict(best['B']['state'], strict=True)
+    heads['B'].eval()
+    records, metrics = transition.measure(model, heads, val, rows['val'], config, device)
+    require(evaluation.replay_receipt(metrics['B'], records['B'], best['B'], None)['passed'],
+            'Selected B differs on the original validation cache')
+    prediction_path = folder / 'validation_predictions.jsonl.gz'
+    temporary = prediction_path.with_suffix('.tmp')
+    raw.save_predictions(temporary, records['B'])
+    temporary.replace(prediction_path)
+
+
+def verify_b_training(folder, saved, binding, selected, config, frozen, initial_hash, orders, train_size):
+    lineage = ('seed', 'n0_best_sha256', 'split_id', 'manifest_sha256')
+    require(saved['config'] == config and saved['query_sources'] == {'B': 'packet_mean'}
+            and saved['binding']['parent_sha256'] == selected['checkpoint_sha256']
+            and all(saved['binding'][key] == binding[key] for key in lineage)
+            and saved['frozen_c_sha256'] == frozen and saved['initial_transition_sha256'] == initial_hash,
+            'Saved B checkpoint has different training settings or C lineage')
+    require(raw.read(folder / 'epoch_zero_replay.json')['passed'], 'Original B epoch-zero replay is missing or failed')
+    with (folder / 'epochs.jsonl').open(encoding='utf-8') as stream:
+        ledger = [json.loads(line) for line in stream]
+    require([row['epoch'] for row in ledger] == list(range(config['epochs'] + 1)),
+            'Saved B needs a complete epoch ledger')
+    updates = len(raw.TrainBatches(train_size, config['batch_size'], config['readout_seed']))
+    for row, order in zip(ledger, (None, *orders)):
+        epoch = row['epoch']
+        require(row['order_sha256'] == order and row['samples_per_arm'] == (train_size if epoch else 0)
+                and row['updates_per_arm'] == (updates if epoch else 0),
+                f'Saved B sampling or training budget differs at epoch {epoch}')
+    require(ledger[0]['validation']['B'] == selected['validation'], 'Saved B epoch zero differs from C')
+    best = max(ledger, key=lambda row: row['validation']['B']['macro_f1'])
+    for name, row in (('best', best), ('last', ledger[-1])):
+        item = saved[name]['B']
+        require(item['epoch'] == row['epoch'] and item['validation'] == row['validation']['B'],
+                f'Saved B {name} selection differs from the epoch ledger')
+    require(updates * config['epochs'] == 6330, 'Saved B training budget differs')
+
+
+def near_tie_receipt(records, metrics, selected, archived, candidates):
+    """Verify original predictions, or prove identity from close alternatives and the saved digest."""
+    receipt = evaluation.replay_receipt(metrics, records, selected, archived)
+    receipt['exact_raw_match'] = receipt['passed']
+    if receipt['passed']:
+        return receipt, records
+    receipt['near_tie_samples'] = [
+        {'sample_id': records[i]['sample_id'], 'prediction': records[i]['prediction'], 'alternative_gaps': options}
+        for i, options in candidates.items()
+    ]
+    if archived is not None:
+        if not evaluation.replay_receipt(joint.study.validate_predictions(archived, records, probabilities=False),
+                                         archived, selected, None)['passed']:
+            return receipt, None
+        if any(old['prediction'] != row['prediction'] and old['prediction'] not in candidates.get(i, {})
+               for i, (old, row) in enumerate(zip(archived, records))):
+            return receipt, None
+    else:
+        choices = {i: (records[i]['prediction'], *options) for i, options in candidates.items()}
+        # Match the entire selection digest, even if swaps leave the confusion matrix unchanged.
+        if not choices or prod(map(len, choices.values())) > 256:
+            return receipt, None
+        observed = metrics['confusion_matrix']
+        expected = selected['validation']['confusion_matrix']
+        delta = {(y, p): expected[y][p] - count for y, row in enumerate(observed) for p, count in enumerate(row)
+                 if expected[y][p] != count}
+        for predictions in product(*choices.values()):
+            changes = {i: p for i, p in zip(choices, predictions) if p != records[i]['prediction']}
+            counts = Counter()
+            for i, p in changes.items():
+                y = records[i]['label']
+                counts[y, records[i]['prediction']] -= 1
+                counts[y, p] += 1
+            if {key: value for key, value in counts.items() if value} != delta:
+                continue
+            reconstructed = records.copy()
+            for i, p in changes.items():
+                reconstructed[i] = {**records[i], 'prediction': p}
+            if joint.prediction_digest(reconstructed) == selected['prediction_ids_sha256']:
+                archived = reconstructed
+                break
+        if archived is None:
+            return receipt, None
+    expected_metrics = joint.study.validate_predictions(archived, records, probabilities=False)
+    if not evaluation.replay_receipt(expected_metrics, archived, selected, None)['passed']:
+        return receipt, None
+    counts, differences = raw.compare(archived, records)
+    receipt.update(passed=True, archive_comparison=counts, first_differences=differences[:10],
+                   raw_macro_f1=metrics['macro_f1'], selected_macro_f1=expected_metrics['macro_f1'])
+    return receipt, archived
+
+
+def replay_b_pair(model, head, data, rows, config, device, output, receipt_path, c_selected, b_selected,
+                  c_gold, b_gold, phase, frozen):
+    candidates = {'A': {}, 'B': {}}
+
+    def observe(arm, start, scores, predictions):
+        top = scores.gather(1, predictions[:, None])
+        gaps = top - scores
+        # Two close scores can each move within the existing float32 replay tolerance.
+        close = gaps <= 2 * (REPLAY_ATOL + REPLAY_RTOL * top.abs())
+        close.scatter_(1, predictions[:, None], False)
+        for i, label in close.nonzero().tolist():
+            candidates[arm].setdefault(start + i, {})[label] = float(gaps[i, label])
+
+    before = model_state(head)
+    batches = legacy.loader(data, rows, 'val', config)
+    exports, _ = fixed.evaluate_partition(model, {'B': ('B', head)}, batches, rows, device, output, phase,
+                                           observe_scores=observe)
+    metrics = {arm: joint.study.validate_predictions(records, rows, probabilities=False)
+               for arm, records in exports.items()}
+    c_receipt, _ = near_tie_receipt(exports['A'], metrics['A'], c_selected, c_gold, candidates['A'])
+    b_receipt, archive = near_tie_receipt(exports['B'], metrics['B'], b_selected, b_gold, candidates['B'])
     receipts = {
-        'C': evaluation.replay_receipt(joint.study.validate_predictions(exports['A'], rows['val'], probabilities=False),
-                                       exports['A'], selected, gold),
-        'B': evaluation.replay_receipt(joint.study.validate_predictions(exports['B'], rows['val'], probabilities=False),
-                                       exports['B'], best['B'], None),
+        'C': c_receipt, 'B': b_receipt, 'atol': REPLAY_ATOL, 'rtol': REPLAY_RTOL,
+        'frozen_c_unchanged': model_state(model) == frozen
+        and all(not p.requires_grad and p.grad is None for p in model.parameters()),
+        'b_unchanged': model_state(head) == before,
     }
-    raw.write(folder / 'validation_replay.json', receipts)
-    require(all(receipt['passed'] for receipt in receipts.values()) and model_state(model) == frozen
-            and all(not p.requires_grad and p.grad is None for p in model.parameters()),
-            'Selected B replay or frozen C changed')
+    raw.write(receipt_path, receipts)
+    for name, passed in (('C raw replay', c_receipt['passed']), ('B raw replay', b_receipt['passed']),
+                         ('frozen C state', receipts['frozen_c_unchanged']), ('B state', receipts['b_unchanged'])):
+        require(passed, f'{name} failed. See {receipt_path}')
+    return exports, archive, metrics
+
+
+def train_b(model, data, rows, device, output, binding, selected, gold, settings):
+    base = raw.read(evaluation.CONFIG)
+    readout_seed = settings['readout_seed']
+    config = {**raw.read(transition.CONFIG), 'seed': binding['seed'], 'readout_seed': readout_seed,
+              'split_id': binding['split_id'], 'workers': base['workers'],
+              'source_checkpoint_sha256': selected['checkpoint_sha256'],
+              'baseline_prediction_ids_sha256': selected['prediction_ids_sha256']}
+    folder = output / 'B'
+    path = folder / 'transition_readout.pt'
+    model.requires_grad_(False).eval()
+    frozen = model_state(model)
+    head = transition.make_heads(config, device, ('B',))['B']
+    initial_hash = model_state(head)
+    require(initial_hash == settings['readout_initial_state_sha256'], 'B initial state differs from seed42 archive')
+    orders = joint.study.epoch_orders(len(rows['train']), config['batch_size'], readout_seed, config['epochs'])
+    if path.is_file():
+        raw.progress(output, 'resume_b_validation', seed=binding['seed'], checkpoint_sha256=raw.sha(path))
+    else:
+        fit_b(model, data, rows, device, output, binding, selected, gold, config, frozen, initial_hash, orders)
+    saved = torch.load(path, map_location='cpu', weights_only=True)
+    verify_b_training(folder, saved, binding, selected, config, frozen, initial_hash, orders, len(rows['train']))
+    best, last = saved['best']['B'], saved['last']['B']
+    head.load_state_dict(best['state'], strict=True)
+    head.requires_grad_(False).eval()
     pred_path = folder / 'validation_predictions.jsonl.gz'
-    raw.save_predictions(pred_path, exports['B'])
-    result = {key: best['B'][key] for key in ('epoch', 'validation', 'prediction_ids_sha256')}
-    result.update(updates=updates, checkpoint_sha256=raw.sha(path), predictions_sha256=raw.sha(pred_path),
-                  last_validation=last['B']['validation'], initial_transition_sha256=initial_hash)
+    b_gold = legacy.predictions(pred_path) if pred_path.is_file() else None
+    receipt_path = folder / 'validation_replay.json'
+    previous = folder / 'previous_validation_replay.json'
+    if receipt_path.is_file() and not previous.exists():
+        raw.write(previous, raw.read(receipt_path))
+    exports, archive, raw_metrics = replay_b_pair(
+        model, head, data, rows['val'], config, device, output, receipt_path, selected, best, gold, b_gold,
+        'selected_raw_replay', frozen)
+    if b_gold is None:
+        temporary = pred_path.with_suffix('.tmp')
+        raw.save_predictions(temporary, archive)
+        temporary.replace(pred_path)
+    if exports['B'] != archive:
+        raw.save_predictions(folder / 'raw_validation_predictions.jsonl.gz', exports['B'])
+    result = {key: best[key] for key in ('epoch', 'validation', 'prediction_ids_sha256')}
+    result.update(updates=6330, checkpoint_sha256=raw.sha(path), predictions_sha256=raw.sha(pred_path),
+                  last_validation=last['validation'], initial_transition_sha256=initial_hash,
+                  raw_validation=raw_metrics['B'], raw_prediction_ids_sha256=joint.prediction_digest(exports['B']),
+                  training_code_commit=saved['binding']['code_commit'])
     raw.write(folder / 'metrics.json', result)
     return result
 
@@ -308,7 +456,8 @@ def train_chain(repo, output, seed, graph_root, commit, settings):
     model = d32.model_from_stage(prior, n0, device, seed)
     model.load_state_dict(saved['model_state'], strict=True)
     parent_binding(saved, model, prior, n0, binding)
-    raw_replay(model, data, rows['val'], config, device, output, parent, gold, 'source_validation_replay')
+    if prior != 'C' or not (output / 'B' / 'transition_readout.pt').is_file():
+        raw_replay(model, data, rows['val'], config, device, output, parent, gold, 'source_validation_replay')
 
     for stage in STAGES[STAGES.index(prior) + 1:-1]:
         raw.progress(output, 'stage_started', seed=seed, stage=stage)
@@ -337,7 +486,6 @@ def train_chain(repo, output, seed, graph_root, commit, settings):
                      macro_f1=parent['validation']['macro_f1'])
         prior = stage
     require(prior == 'C', 'An independently selected original C is required')
-    preserve_incomplete(output / 'B')
     pair = train_b(model, data, rows, device, output, binding, parent, gold, settings)
     evaluation.verify_inputs(inputs)
     raw.write(output / 'selection.json', {**binding, 'C': {**parent, 'directory': parent['directory'].as_posix()},
@@ -382,17 +530,10 @@ def load_locked_pair(repo, seed, data, rows, config, device, output, readout_see
     head.load_state_dict(chosen['state'], strict=True)
     head.requires_grad_(False).eval()
     b_gold = legacy.predictions(b_gold_path)
-    expected = {'A': c_selected, 'B': chosen}
-    batches = legacy.loader(data, rows['val'], 'val', config)
-    val, _ = fixed.evaluate_partition(model, {'B': ('B', head)}, batches, rows['val'], device,
-                                      output, f'seed{seed}_locked_validation')
-    metrics = {arm: joint.study.validate_predictions(records, rows['val'], probabilities=False)
-               for arm, records in val.items()}
-    receipts = {key: evaluation.replay_receipt(metrics[key], val[key], expected[key], gold)
-                for key, gold in (('A', c_gold), ('B', b_gold))}
-    raw.write(output / f'seed{seed}_validation_replay.json', receipts)
-    require(all(result['passed'] for result in receipts.values()), f'Seed{seed} locked pair validation differs')
-    return model, head, metrics, inputs
+    replay_b_pair(model, head, data, rows['val'], config, device, output,
+                  output / f'seed{seed}_validation_replay.json', c_selected, chosen, c_gold, b_gold,
+                  f'seed{seed}_locked_validation', c_state)
+    return model, head, {'A': c_selected['validation'], 'B': chosen['validation']}, inputs
 
 
 def result_row(seed, c, b, comparison):
