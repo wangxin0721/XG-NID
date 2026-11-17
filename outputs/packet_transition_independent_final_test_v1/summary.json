@@ -1,0 +1,90 @@
+{
+  "pairs": [
+    {
+      "seed": 42,
+      "c_macro_f1": 0.9741243887109338,
+      "b_macro_f1": 0.9749559887668345,
+      "macro_f1_delta_pp": 0.08316000559007719,
+      "webbased_f1_delta_pp": 0.794585939152237,
+      "directions": {
+        "Recon -> WebBased": [
+          44,
+          36
+        ],
+        "WebBased -> Recon": [
+          11,
+          8
+        ]
+      }
+    },
+    {
+      "seed": 43,
+      "c_macro_f1": 0.9749153270023679,
+      "b_macro_f1": 0.9749948776110557,
+      "macro_f1_delta_pp": 0.007955060868780617,
+      "webbased_f1_delta_pp": 0.04084702788058614,
+      "directions": {
+        "Recon -> WebBased": [
+          22,
+          20
+        ],
+        "WebBased -> Recon": [
+          11,
+          12
+        ]
+      }
+    },
+    {
+      "seed": 44,
+      "c_macro_f1": 0.9736883581931874,
+      "b_macro_f1": 0.9736883581931874,
+      "macro_f1_delta_pp": 0.0,
+      "webbased_f1_delta_pp": 0.0,
+      "directions": {
+        "Recon -> WebBased": [
+          29,
+          29
+        ],
+        "WebBased -> Recon": [
+          15,
+          15
+        ]
+      }
+    }
+  ],
+  "mean_delta_pp": 0.03037168881961927,
+  "code_commit": "3adaefe728098a67075bac14832b325573c1ed84",
+  "seed42_archive": "acc9d8f82eea3af6ff4af06c4629717366f96b83",
+  "split_id": "a8ae9c934eec9fee970cc725e60051d0c709e0f16c7dda14749350ff2006975a",
+  "state_sha256": {
+    "43": {
+      "C": "746ee8c5b2e4f3e461bbd61edc59204d55ab565c58a24803f65fbafa9c0ab45d",
+      "B": "ac113407a872767c64c13c54408e220d98d8621c1389ae5dcd4a072202fb9b3b"
+    },
+    "44": {
+      "C": "813afa5e7d19ff35a050dd81a56a114b03e90421b71fb364cea60691ac9576d2",
+      "B": "492fc56cb33a36c87f32de87214ae463d103532e1601d93e5d4ffe56c013a1ce"
+    }
+  },
+  "input_sha256": {
+    "data/processed/ciciot2023_grouped_input_v1/split.json": "2f6a7c307121454b881520379f0a298b7e2a179b1db4a7cb03741b7f648a774a",
+    "data/processed/ciciot2023_grouped_input_v1/samples.jsonl": "b8e9b0810471d0c2b52033488fab640625c3731315afd5d2add1571bd2518827",
+    "outputs/fusion_seed_repeats_s43_s44_v1/seed43/N0/best.pt": "e560fb61ad09fd38237c626ca0aa250ccf8bd003df8e7ac8be3ac4f03b2e0443",
+    "outputs/fusion_seed_repeats_s43_s44_v1/seed43/N0/metrics.json": "33e2b140fd2c25b640e6eacbf8bcbbabfc03f50cf551feac1ca6fdbe24c66c9b",
+    "outputs/fusion_seed_repeats_s43_s44_v1/seed43/N0/config.json": "cff4d987d25287afa0658675fafffc236dfa2ded2efa5f7c5b9cb466ede05da7",
+    "outputs/fusion_seed_repeats_s43_s44_v1/seed43/N0/validation_predictions.jsonl.gz": "066c6ce5db71605a882e70577ab039acb5d4a1c58cc210ccab16aea93f6b5e8d",
+    "outputs/packet_transition_independent_s43_v1/C/best.pt": "6f4d228917e2352b3684b4b1d79dcd0ec8fde02ebe95b7ca6ac6fe732b88bbba",
+    "outputs/packet_transition_independent_s43_v1/C/validation_predictions.jsonl.gz": "664129906bedf6dc550a22cc9d93edda68c473714cb2a4ee81bf2825d5db3a2c",
+    "outputs/packet_transition_independent_s43_v1/B/transition_readout.pt": "ac978c14779c0e4427935b85173ccb4d8a7dee6642c532765611ead65ffe0a8f",
+    "outputs/packet_transition_independent_s43_v1/B/validation_predictions.jsonl.gz": "176a510764be7e675c1463a46837d836662c89d9069dcacc2ed7a19d721849dc",
+    "outputs/fusion_seed_repeats_s43_s44_v1/seed44/N0/best.pt": "76535b1b3f1f400887ea6e5a5cf7a1481013ff31c3609fb357e88326553a1c91",
+    "outputs/fusion_seed_repeats_s43_s44_v1/seed44/N0/metrics.json": "6576632521943461b41ee0f7356dcf3b0b012e45c93f6fefac538fc1493cb8ad",
+    "outputs/fusion_seed_repeats_s43_s44_v1/seed44/N0/config.json": "831125858b6a37d6dcabbacaf5da7b808bd803be789e470d8d0939574e04dcea",
+    "outputs/fusion_seed_repeats_s43_s44_v1/seed44/N0/validation_predictions.jsonl.gz": "3ab85641bf273abcef4b8fc07ba9e899fae3fe6594b58b216d3c04ac80df9cf8",
+    "outputs/packet_transition_independent_s44_v1/C/best.pt": "418f26d5ef3db580cf347c3237049e2911731d8e9ca2b6431240bcd4a348d7ca",
+    "outputs/packet_transition_independent_s44_v1/C/validation_predictions.jsonl.gz": "99810ac94b25bcb6a7d40fef8520cacc073ac7c4b96ec2cbf556cfc2a2128aa3",
+    "outputs/packet_transition_independent_s44_v1/B/transition_readout.pt": "7035dfe8f05e8eceade014a357d8759f21f7d2259fbd8be6304fe74c06720020",
+    "outputs/packet_transition_independent_s44_v1/B/validation_predictions.jsonl.gz": "d2543d9ef18aa1bc3dbaabd0c742976d5840a80b16ebfaa1747deb8db0b39784",
+    "outputs/packet_transition_final_test_v1/summary.json": "1666cc97f5b66a307df24aa6f0402845ecc8f16e9e9652e477a39534bc9565e8"
+  }
+}
