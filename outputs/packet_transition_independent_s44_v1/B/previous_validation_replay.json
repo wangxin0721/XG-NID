@@ -1,0 +1,42 @@
+{
+  "C": {
+    "passed": true,
+    "samples": 13446,
+    "metrics_match": true,
+    "prediction_ids_sha256": "4ed6ed2b94fca23727c34737661e3b49209a18d6d8ce74f5e90a3f8822438851",
+    "expected_prediction_ids_sha256": "4ed6ed2b94fca23727c34737661e3b49209a18d6d8ce74f5e90a3f8822438851",
+    "archive_comparison": {
+      "counts": {
+        "repaired": 0,
+        "regressed": 0,
+        "both_correct": 13203,
+        "both_wrong": 243
+      },
+      "net_correct": 0
+    },
+    "first_differences": [],
+    "exact_raw_match": true
+  },
+  "B": {
+    "passed": true,
+    "samples": 13446,
+    "metrics_match": true,
+    "prediction_ids_sha256": "4ed6ed2b94fca23727c34737661e3b49209a18d6d8ce74f5e90a3f8822438851",
+    "expected_prediction_ids_sha256": "4ed6ed2b94fca23727c34737661e3b49209a18d6d8ce74f5e90a3f8822438851",
+    "archive_comparison": {
+      "counts": {
+        "repaired": 0,
+        "regressed": 0,
+        "both_correct": 13203,
+        "both_wrong": 243
+      },
+      "net_correct": 0
+    },
+    "first_differences": [],
+    "exact_raw_match": true
+  },
+  "atol": 1e-05,
+  "rtol": 1e-05,
+  "frozen_c_unchanged": false,
+  "b_unchanged": true
+}

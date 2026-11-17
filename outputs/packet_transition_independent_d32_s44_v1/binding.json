@@ -1,0 +1,24 @@
+{
+  "seed": 44,
+  "n0_best_sha256": "76535b1b3f1f400887ea6e5a5cf7a1481013ff31c3609fb357e88326553a1c91",
+  "split_id": "a8ae9c934eec9fee970cc725e60051d0c709e0f16c7dda14749350ff2006975a",
+  "manifest_sha256": "b8e9b0810471d0c2b52033488fab640625c3731315afd5d2add1571bd2518827",
+  "n0_validation_prediction_ids_sha256": "c0433008330eeaf8a21f0a0a9cd759c0e95d91745a3abf1a0594253e73a50f70",
+  "code_commit": "91e11b3e347339ead4f872df9f7d97dd4800e69f",
+  "graph_root": "/home/nzxn/下载/WX/load/XG-NID/data/processed/CICIoT2023_processed/processed",
+  "python": "3.9.23",
+  "torch": "2.3.1+cu118",
+  "cuda": "11.8",
+  "pyg": "2.5.3",
+  "device": "Tesla T4",
+  "inputs": {
+    "outputs/fusion_seed_repeats_s43_s44_v1/seed44/N0/best.pt": "76535b1b3f1f400887ea6e5a5cf7a1481013ff31c3609fb357e88326553a1c91",
+    "outputs/fusion_seed_repeats_s43_s44_v1/seed44/N0/metrics.json": "6576632521943461b41ee0f7356dcf3b0b012e45c93f6fefac538fc1493cb8ad",
+    "outputs/fusion_seed_repeats_s43_s44_v1/seed44/N0/config.json": "831125858b6a37d6dcabbacaf5da7b808bd803be789e470d8d0939574e04dcea",
+    "outputs/fusion_seed_repeats_s43_s44_v1/seed44/N0/validation_predictions.jsonl.gz": "3ab85641bf273abcef4b8fc07ba9e899fae3fe6594b58b216d3c04ac80df9cf8",
+    "data/processed/ciciot2023_grouped_input_v1/split.json": "2f6a7c307121454b881520379f0a298b7e2a179b1db4a7cb03741b7f648a774a",
+    "data/processed/ciciot2023_grouped_input_v1/samples.jsonl": "b8e9b0810471d0c2b52033488fab640625c3731315afd5d2add1571bd2518827"
+  },
+  "encoder_sha256": "e7bbb8d701d2d194050f4f81d9650f3bf8ad19a1042222aec33b3ad1903bda5a",
+  "initial_fusion_sha256": "fa823b6df1c2de50f563ec1e14e20e54913f60ae814974ca9076b379b22e1a27"
+}

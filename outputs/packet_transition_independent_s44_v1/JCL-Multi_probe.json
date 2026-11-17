@@ -1,0 +1,10 @@
+{
+  "groups_with_gradient_and_update": [
+    "flow_to_packet",
+    "fusion",
+    "packet_to_packet",
+    "projection"
+  ],
+  "batches": 3,
+  "frozen_state_sha256": "33ff6cfbf515cdfbc1ef22ba5b75a77fc9ba81159cdd3f349f9457f03388b3b7"
+}

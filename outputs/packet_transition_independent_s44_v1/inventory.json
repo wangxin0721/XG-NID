@@ -1,0 +1,48 @@
+{
+  "seeds": {
+    "43": {
+      "n0": {
+        "directory": "outputs/fusion_seed_repeats_s43_s44_v1/seed43/N0",
+        "epoch": 27,
+        "present": true
+      },
+      "candidates": [
+        {
+          "stage": "D32-Gate",
+          "path": "outputs/packet_transition_independent_d32_s43_v1/D32-Gate/best.pt",
+          "status": "ready_for_replay"
+        },
+        {
+          "stage": "C",
+          "path": "outputs/packet_transition_independent_s43_v1/C/best.pt",
+          "status": "ready_for_replay"
+        },
+        {
+          "stage": "CL-Last",
+          "path": "outputs/packet_transition_independent_s43_v1/CL-Last/best.pt",
+          "status": "ready_for_replay"
+        },
+        {
+          "stage": "JCL-Multi",
+          "path": "outputs/packet_transition_independent_s43_v1/JCL-Multi/best.pt",
+          "status": "ready_for_replay"
+        }
+      ]
+    },
+    "44": {
+      "n0": {
+        "directory": "outputs/fusion_seed_repeats_s43_s44_v1/seed44/N0",
+        "epoch": 19,
+        "present": true
+      },
+      "candidates": [
+        {
+          "stage": "D32-Gate",
+          "path": "outputs/packet_transition_independent_d32_s44_v1/D32-Gate/best.pt",
+          "status": "ready_for_replay"
+        }
+      ]
+    }
+  },
+  "unknown_seed_candidates": []
+}

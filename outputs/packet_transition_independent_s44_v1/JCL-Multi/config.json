@@ -1,0 +1,55 @@
+{
+  "variant": "JCL-Multi",
+  "protocol": {
+    "schema": "xgnid.joint-cross-layer-packet2.v1",
+    "split_directory": "data/processed/ciciot2023_grouped_input_v1",
+    "split_id": "a8ae9c934eec9fee970cc725e60051d0c709e0f16c7dda14749350ff2006975a",
+    "seed": 44,
+    "epochs": 150,
+    "early_stop_enabled": false,
+    "include_epoch_zero": true,
+    "batch_size": 512,
+    "eval_batch_size": 16,
+    "workers": 2,
+    "encoder_lr": 1e-06,
+    "projection_lr": 0.0001,
+    "head_lr": 1e-05,
+    "weight_decay": 0.0,
+    "probe_batches": 3,
+    "budget_threshold_pp": 0.1,
+    "test_evaluated": false,
+    "references": {
+      "CL-Last": {
+        "directory": "outputs/packet_transition_independent_s44_v1/CL-Last",
+        "epoch": 130,
+        "sha256": "f95ad6eec9de4bbb21b887c02cfed6c7491415f152974f174b23796c6ab69068",
+        "macro_f1": 0.9744404546186446
+      }
+    }
+  },
+  "binding": {
+    "seed": 44,
+    "n0_best_sha256": "76535b1b3f1f400887ea6e5a5cf7a1481013ff31c3609fb357e88326553a1c91",
+    "split_id": "a8ae9c934eec9fee970cc725e60051d0c709e0f16c7dda14749350ff2006975a",
+    "manifest_sha256": "b8e9b0810471d0c2b52033488fab640625c3731315afd5d2add1571bd2518827",
+    "code_commit": "91e11b3e347339ead4f872df9f7d97dd4800e69f",
+    "graph_root": "/home/nzxn/下载/WX/load/XG-NID/data/processed/CICIoT2023_processed/processed",
+    "torch": "2.3.1+cu118",
+    "pyg": "2.5.3",
+    "device": "Tesla T4",
+    "parent_stage": "CL-Last",
+    "parent_sha256": "f95ad6eec9de4bbb21b887c02cfed6c7491415f152974f174b23796c6ab69068",
+    "parent_prediction_ids_sha256": "335b614b6f6cda9a806429d07de3c7a3174b208c26f057d9eb230283d9f19485"
+  },
+  "labels": [
+    "Benign",
+    "WebBased",
+    "Spoofing",
+    "Recon",
+    "Mirai",
+    "Dos",
+    "DDos",
+    "BruteForce"
+  ],
+  "initial_state_sha256": "3ba017465b8df0520c3ddd415b474fd98852b916c02c7dabe0e387cfcc0b3149"
+}

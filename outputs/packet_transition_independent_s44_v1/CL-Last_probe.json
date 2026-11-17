@@ -1,0 +1,147 @@
+{
+  "updates": [
+    {
+      "step": 1,
+      "loss": 0.015616850927472115,
+      "gradient_l1": {
+        "fusion.flow_projection.weight": 2.7562079429626465,
+        "fusion.flow_projection.bias": 0.12557680904865265,
+        "fusion.packet_projection.weight": 2.879826068878174,
+        "fusion.packet_projection.bias": 0.10000091791152954,
+        "fusion.gate.0.weight": 1.1530157327651978,
+        "fusion.gate.0.bias": 0.016164161264896393,
+        "fusion.gate.2.weight": 0.9940921068191528,
+        "fusion.gate.2.bias": 0.018877677619457245,
+        "fusion.shared_head.0.weight": 1.863346815109253,
+        "fusion.shared_head.0.bias": 0.058713071048259735,
+        "fusion.shared_head.2.weight": 1.1574468612670898,
+        "fusion.shared_head.2.bias": 0.017154162749648094,
+        "cross_layer.weight": 31.676870346069336,
+        "cross_layer.bias": 0.5653122663497925
+      },
+      "changed": {
+        "fusion.flow_projection.weight": true,
+        "fusion.flow_projection.bias": true,
+        "fusion.packet_projection.weight": true,
+        "fusion.packet_projection.bias": true,
+        "fusion.gate.0.weight": true,
+        "fusion.gate.0.bias": true,
+        "fusion.gate.2.weight": true,
+        "fusion.gate.2.bias": true,
+        "fusion.shared_head.0.weight": true,
+        "fusion.shared_head.0.bias": true,
+        "fusion.shared_head.2.weight": true,
+        "fusion.shared_head.2.bias": true,
+        "cross_layer.weight": true,
+        "cross_layer.bias": true
+      },
+      "max_abs_raw_cached_log_score_error": 1.1444091796875e-05,
+      "projection_gradient_l1": 31.676870346069336,
+      "projection_block_gradients_l1": [
+        15.838436126708984,
+        15.838436126708984
+      ],
+      "projection_blocks_changed": [
+        true,
+        true
+      ]
+    },
+    {
+      "step": 2,
+      "loss": 0.012744715437293053,
+      "gradient_l1": {
+        "fusion.flow_projection.weight": 2.079996347427368,
+        "fusion.flow_projection.bias": 0.0979747548699379,
+        "fusion.packet_projection.weight": 2.2314460277557373,
+        "fusion.packet_projection.bias": 0.07855817675590515,
+        "fusion.gate.0.weight": 0.8883786201477051,
+        "fusion.gate.0.bias": 0.012501535005867481,
+        "fusion.gate.2.weight": 0.7829707264900208,
+        "fusion.gate.2.bias": 0.01552729494869709,
+        "fusion.shared_head.0.weight": 1.434798240661621,
+        "fusion.shared_head.0.bias": 0.04853144660592079,
+        "fusion.shared_head.2.weight": 0.9082527160644531,
+        "fusion.shared_head.2.bias": 0.014444977976381779,
+        "cross_layer.weight": 23.725112915039062,
+        "cross_layer.bias": 0.4313044250011444
+      },
+      "changed": {
+        "fusion.flow_projection.weight": true,
+        "fusion.flow_projection.bias": true,
+        "fusion.packet_projection.weight": true,
+        "fusion.packet_projection.bias": true,
+        "fusion.gate.0.weight": true,
+        "fusion.gate.0.bias": true,
+        "fusion.gate.2.weight": true,
+        "fusion.gate.2.bias": true,
+        "fusion.shared_head.0.weight": true,
+        "fusion.shared_head.0.bias": true,
+        "fusion.shared_head.2.weight": true,
+        "fusion.shared_head.2.bias": true,
+        "cross_layer.weight": true,
+        "cross_layer.bias": true
+      },
+      "max_abs_raw_cached_log_score_error": 7.62939453125e-06,
+      "projection_gradient_l1": 23.725112915039062,
+      "projection_block_gradients_l1": [
+        11.862555503845215,
+        11.862555503845215
+      ],
+      "projection_blocks_changed": [
+        true,
+        true
+      ]
+    },
+    {
+      "step": 3,
+      "loss": 0.01055286917835474,
+      "gradient_l1": {
+        "fusion.flow_projection.weight": 1.654390811920166,
+        "fusion.flow_projection.bias": 0.08068584650754929,
+        "fusion.packet_projection.weight": 1.8494665622711182,
+        "fusion.packet_projection.bias": 0.06607776135206223,
+        "fusion.gate.0.weight": 0.7214871644973755,
+        "fusion.gate.0.bias": 0.010306759737432003,
+        "fusion.gate.2.weight": 0.6352155208587646,
+        "fusion.gate.2.bias": 0.013061982579529285,
+        "fusion.shared_head.0.weight": 1.1690866947174072,
+        "fusion.shared_head.0.bias": 0.041393209248781204,
+        "fusion.shared_head.2.weight": 0.7413573861122131,
+        "fusion.shared_head.2.bias": 0.012462499551475048,
+        "cross_layer.weight": 18.945287704467773,
+        "cross_layer.bias": 0.34902796149253845
+      },
+      "changed": {
+        "fusion.flow_projection.weight": true,
+        "fusion.flow_projection.bias": true,
+        "fusion.packet_projection.weight": true,
+        "fusion.packet_projection.bias": true,
+        "fusion.gate.0.weight": true,
+        "fusion.gate.0.bias": true,
+        "fusion.gate.2.weight": true,
+        "fusion.gate.2.bias": true,
+        "fusion.shared_head.0.weight": true,
+        "fusion.shared_head.0.bias": true,
+        "fusion.shared_head.2.weight": true,
+        "fusion.shared_head.2.bias": true,
+        "cross_layer.weight": true,
+        "cross_layer.bias": true
+      },
+      "max_abs_raw_cached_log_score_error": 1.1444091796875e-05,
+      "projection_gradient_l1": 18.945287704467773,
+      "projection_block_gradients_l1": [
+        9.47264289855957,
+        9.47264289855957
+      ],
+      "projection_blocks_changed": [
+        true,
+        true
+      ]
+    }
+  ],
+  "clean_model_and_rng_restored": true,
+  "optimizer_discarded": true,
+  "discarded": true,
+  "train_graphs": 512,
+  "encoding_batch_size": 16
+}
