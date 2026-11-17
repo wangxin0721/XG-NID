@@ -61,6 +61,9 @@
 "outputs/fair_vector_five_runs_v1/E0FT42/E0FT/last.pt" filter=lfs diff=lfs merge=lfs -text
 "outputs/fair_vector_five_runs_v1/E0FT43/E0FT/best.pt" filter=lfs diff=lfs merge=lfs -text
 "outputs/fair_vector_five_runs_v1/E0FT43/E0FT/last.pt" filter=lfs diff=lfs merge=lfs -text
+"outputs/final_d32_gate_ablation_v1/seed42/fusion_arms.pt" filter=lfs diff=lfs merge=lfs -text
+"outputs/final_d32_gate_ablation_v1/seed43/fusion_arms.pt" filter=lfs diff=lfs merge=lfs -text
+"outputs/final_d32_gate_ablation_v1/seed44/fusion_arms.pt" filter=lfs diff=lfs merge=lfs -text
 "outputs/flow_query_joint_seeds43_44_resume_1794361380479152585/seed43/Joint-Flow/best.pt" filter=lfs diff=lfs merge=lfs -text
 "outputs/flow_query_joint_seeds43_44_resume_1794361380479152585/seed43/Joint-Flow/best150.pt" filter=lfs diff=lfs merge=lfs -text
 "outputs/flow_query_joint_seeds43_44_resume_1794361380479152585/seed43/Joint-Flow/epoch150.pt" filter=lfs diff=lfs merge=lfs -text

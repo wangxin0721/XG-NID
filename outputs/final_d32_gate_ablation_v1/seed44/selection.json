@@ -1,0 +1,530 @@
+{
+  "binding": {
+    "seed": 44,
+    "split_id": "a8ae9c934eec9fee970cc725e60051d0c709e0f16c7dda14749350ff2006975a",
+    "manifest_sha256": "b8e9b0810471d0c2b52033488fab640625c3731315afd5d2add1571bd2518827",
+    "frozen_c_sha256": "813afa5e7d19ff35a050dd81a56a114b03e90421b71fb364cea60691ac9576d2",
+    "frozen_readout_sha256": "492fc56cb33a36c87f32de87214ae463d103532e1601d93e5d4ffe56c013a1ce"
+  },
+  "schedule": {
+    "epochs": 30,
+    "batch_size": 512,
+    "learning_rate": 0.001,
+    "training_seed": 42
+  },
+  "checkpoint_sha256": "989af2b76b0b33e283f49c9ff6862de31933f43778c0086567ed610970729461",
+  "epochs": {
+    "static": 27,
+    "dynamic": 22
+  },
+  "updates_per_arm": 6330,
+  "validation": {
+    "original_B": {
+      "accuracy": 0.9819277108433735,
+      "macro_f1": 0.9750554254542276,
+      "weighted_f1": 0.9819703117627894,
+      "per_class": {
+        "Benign": {
+          "precision": 0.9695325542570952,
+          "recall": 0.9723733779824194,
+          "f1-score": 0.9709508881922675,
+          "support": 2389
+        },
+        "WebBased": {
+          "precision": 0.9050179211469535,
+          "recall": 0.9283088235294118,
+          "f1-score": 0.9165154264972777,
+          "support": 544
+        },
+        "Spoofing": {
+          "precision": 0.9620253164556962,
+          "recall": 0.9614721104082806,
+          "f1-score": 0.9617486338797814,
+          "support": 1739
+        },
+        "Recon": {
+          "precision": 0.9810322011468902,
+          "recall": 0.9762949956101844,
+          "f1-score": 0.9786578657865787,
+          "support": 2278
+        },
+        "Mirai": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 2400
+        },
+        "Dos": {
+          "precision": 0.9993192648059904,
+          "recall": 0.9952542372881356,
+          "f1-score": 0.9972826086956522,
+          "support": 1475
+        },
+        "DDos": {
+          "precision": 1.0,
+          "recall": 0.9974874371859297,
+          "f1-score": 0.9987421383647799,
+          "support": 2388
+        },
+        "BruteForce": {
+          "precision": 0.9703389830508474,
+          "recall": 0.9828326180257511,
+          "f1-score": 0.976545842217484,
+          "support": 233
+        }
+      },
+      "confusion_matrix": [
+        [
+          2323,
+          13,
+          46,
+          6,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          8,
+          505,
+          8,
+          19,
+          0,
+          0,
+          0,
+          4
+        ],
+        [
+          53,
+          5,
+          1672,
+          7,
+          0,
+          0,
+          0,
+          2
+        ],
+        [
+          12,
+          32,
+          9,
+          2224,
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          2400,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          2,
+          0,
+          5,
+          0,
+          1468,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          5,
+          0,
+          0,
+          2382,
+          0
+        ],
+        [
+          0,
+          0,
+          3,
+          1,
+          0,
+          0,
+          0,
+          229
+        ]
+      ],
+      "samples": 13446
+    },
+    "static": {
+      "accuracy": 0.9808865089989588,
+      "macro_f1": 0.9746423706905046,
+      "weighted_f1": 0.9809942007593829,
+      "per_class": {
+        "Benign": {
+          "precision": 0.9635006221484861,
+          "recall": 0.9723733779824194,
+          "f1-score": 0.9679166666666666,
+          "support": 2389
+        },
+        "WebBased": {
+          "precision": 0.8850771869639794,
+          "recall": 0.9485294117647058,
+          "f1-score": 0.9157054125998225,
+          "support": 544
+        },
+        "Spoofing": {
+          "precision": 0.9602763385146805,
+          "recall": 0.9591719378953422,
+          "f1-score": 0.9597238204833142,
+          "support": 1739
+        },
+        "Recon": {
+          "precision": 0.9883512544802867,
+          "recall": 0.9683933274802459,
+          "f1-score": 0.978270509977827,
+          "support": 2278
+        },
+        "Mirai": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 2400
+        },
+        "Dos": {
+          "precision": 0.9986376021798365,
+          "recall": 0.9938983050847457,
+          "f1-score": 0.9962623173632348,
+          "support": 1475
+        },
+        "DDos": {
+          "precision": 1.0,
+          "recall": 0.9970686767169179,
+          "f1-score": 0.9985321870413084,
+          "support": 2388
+        },
+        "BruteForce": {
+          "precision": 0.9786324786324786,
+          "recall": 0.9828326180257511,
+          "f1-score": 0.9807280513918629,
+          "support": 233
+        }
+      },
+      "confusion_matrix": [
+        [
+          2323,
+          13,
+          46,
+          6,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          11,
+          516,
+          8,
+          6,
+          0,
+          0,
+          0,
+          3
+        ],
+        [
+          62,
+          6,
+          1668,
+          2,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          14,
+          44,
+          12,
+          2206,
+          0,
+          2,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          2400,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          3,
+          0,
+          6,
+          0,
+          1466,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0,
+          5,
+          0,
+          0,
+          2381,
+          0
+        ],
+        [
+          0,
+          0,
+          3,
+          1,
+          0,
+          0,
+          0,
+          229
+        ]
+      ],
+      "samples": 13446
+    },
+    "dynamic": {
+      "accuracy": 0.9811096236799048,
+      "macro_f1": 0.97414704969935,
+      "weighted_f1": 0.9812042040125625,
+      "per_class": {
+        "Benign": {
+          "precision": 0.9702430846605197,
+          "recall": 0.969024696525743,
+          "f1-score": 0.9696335078534032,
+          "support": 2389
+        },
+        "WebBased": {
+          "precision": 0.8873483535528596,
+          "recall": 0.9411764705882353,
+          "f1-score": 0.9134701159678859,
+          "support": 544
+        },
+        "Spoofing": {
+          "precision": 0.9576659038901602,
+          "recall": 0.9626221966647499,
+          "f1-score": 0.9601376541439632,
+          "support": 1739
+        },
+        "Recon": {
+          "precision": 0.984,
+          "recall": 0.9719051799824407,
+          "f1-score": 0.9779151943462897,
+          "support": 2278
+        },
+        "Mirai": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 2400
+        },
+        "Dos": {
+          "precision": 0.9993188010899182,
+          "recall": 0.9945762711864407,
+          "f1-score": 0.9969418960244648,
+          "support": 1475
+        },
+        "DDos": {
+          "precision": 1.0,
+          "recall": 0.9970686767169179,
+          "f1-score": 0.9985321870413084,
+          "support": 2388
+        },
+        "BruteForce": {
+          "precision": 0.9703389830508474,
+          "recall": 0.9828326180257511,
+          "f1-score": 0.976545842217484,
+          "support": 233
+        }
+      },
+      "confusion_matrix": [
+        [
+          2315,
+          15,
+          52,
+          6,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          9,
+          512,
+          8,
+          11,
+          0,
+          0,
+          0,
+          4
+        ],
+        [
+          51,
+          5,
+          1674,
+          7,
+          0,
+          0,
+          0,
+          2
+        ],
+        [
+          11,
+          42,
+          10,
+          2214,
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          2400,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          2,
+          0,
+          6,
+          0,
+          1467,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1,
+          5,
+          0,
+          0,
+          2381,
+          0
+        ],
+        [
+          0,
+          0,
+          3,
+          1,
+          0,
+          0,
+          0,
+          229
+        ]
+      ],
+      "samples": 13446
+    },
+    "comparison": {
+      "counts": {
+        "repaired": 29,
+        "regressed": 26,
+        "both_correct": 13163,
+        "both_wrong": 228
+      },
+      "net_correct": 3,
+      "changed_predictions": 62,
+      "by_valid_edges": {
+        "0": {
+          "samples": 1898,
+          "changed_predictions": 10,
+          "counts": {
+            "repaired": 6,
+            "regressed": 3,
+            "both_correct": 1876,
+            "both_wrong": 13
+          },
+          "net_correct": 3
+        },
+        "1": {
+          "samples": 3211,
+          "changed_predictions": 20,
+          "counts": {
+            "repaired": 10,
+            "regressed": 8,
+            "both_correct": 3133,
+            "both_wrong": 60
+          },
+          "net_correct": 2
+        },
+        "2+": {
+          "samples": 8337,
+          "changed_predictions": 32,
+          "counts": {
+            "repaired": 13,
+            "regressed": 15,
+            "both_correct": 8154,
+            "both_wrong": 155
+          },
+          "net_correct": -2
+        }
+      },
+      "directions": {
+        "Recon -> WebBased": {
+          "original_errors": 44,
+          "repaired": 3,
+          "changed_to_other_wrong_class": 0,
+          "still_same_error": 41,
+          "new_errors_from_original_correct": 0,
+          "new_errors_from_other_wrong_class": 1,
+          "total_errors": 42,
+          "net_change": -2
+        },
+        "WebBased -> Recon": {
+          "original_errors": 6,
+          "repaired": 0,
+          "changed_to_other_wrong_class": 0,
+          "still_same_error": 6,
+          "new_errors_from_original_correct": 5,
+          "new_errors_from_other_wrong_class": 0,
+          "total_errors": 11,
+          "net_change": 5
+        },
+        "Benign -> Spoofing": {
+          "original_errors": 46,
+          "repaired": 2,
+          "changed_to_other_wrong_class": 0,
+          "still_same_error": 44,
+          "new_errors_from_original_correct": 8,
+          "new_errors_from_other_wrong_class": 0,
+          "total_errors": 52,
+          "net_change": 6
+        },
+        "Spoofing -> Benign": {
+          "original_errors": 62,
+          "repaired": 9,
+          "changed_to_other_wrong_class": 2,
+          "still_same_error": 51,
+          "new_errors_from_original_correct": 0,
+          "new_errors_from_other_wrong_class": 0,
+          "total_errors": 51,
+          "net_change": -11
+        }
+      },
+      "delta_macro_f1_pp": -0.049532099115467965
+    }
+  },
+  "weight_variation": {
+    "static": 0.0,
+    "dynamic": 0.29594701528549194
+  },
+  "test_evaluated": false
+}

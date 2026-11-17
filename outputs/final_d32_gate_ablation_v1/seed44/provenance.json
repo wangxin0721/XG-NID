@@ -1,0 +1,33 @@
+{
+  "code_commit": "8a8b8a1f33eee8684569402b20ee51d8f8954b6d",
+  "runner_sha256": "1b61828f1cafcabe9775746657dba43240fd898fcb426fb6e69d329d844a4327",
+  "binding": {
+    "seed": 44,
+    "split_id": "a8ae9c934eec9fee970cc725e60051d0c709e0f16c7dda14749350ff2006975a",
+    "manifest_sha256": "b8e9b0810471d0c2b52033488fab640625c3731315afd5d2add1571bd2518827",
+    "frozen_c_sha256": "813afa5e7d19ff35a050dd81a56a114b03e90421b71fb364cea60691ac9576d2",
+    "frozen_readout_sha256": "492fc56cb33a36c87f32de87214ae463d103532e1601d93e5d4ffe56c013a1ce"
+  },
+  "schedule": {
+    "epochs": 30,
+    "batch_size": 512,
+    "learning_rate": 0.001,
+    "training_seed": 42
+  },
+  "selection": "max_validation_macro_f1_including_epoch_zero_earliest_tie",
+  "graph_root": "/home/nzxn/下载/WX/load/XG-NID/data/processed/CICIoT2023_processed/processed",
+  "torch": "2.3.1+cu118",
+  "device": "Tesla T4",
+  "input_sha256": {
+    "outputs/fusion_seed_repeats_s43_s44_v1/seed44/N0/best.pt": "76535b1b3f1f400887ea6e5a5cf7a1481013ff31c3609fb357e88326553a1c91",
+    "outputs/fusion_seed_repeats_s43_s44_v1/seed44/N0/metrics.json": "6576632521943461b41ee0f7356dcf3b0b012e45c93f6fefac538fc1493cb8ad",
+    "outputs/fusion_seed_repeats_s43_s44_v1/seed44/N0/config.json": "831125858b6a37d6dcabbacaf5da7b808bd803be789e470d8d0939574e04dcea",
+    "outputs/fusion_seed_repeats_s43_s44_v1/seed44/N0/validation_predictions.jsonl.gz": "3ab85641bf273abcef4b8fc07ba9e899fae3fe6594b58b216d3c04ac80df9cf8",
+    "outputs/packet_transition_independent_s44_v1/C/best.pt": "418f26d5ef3db580cf347c3237049e2911731d8e9ca2b6431240bcd4a348d7ca",
+    "outputs/packet_transition_independent_s44_v1/C/validation_predictions.jsonl.gz": "99810ac94b25bcb6a7d40fef8520cacc073ac7c4b96ec2cbf556cfc2a2128aa3",
+    "outputs/packet_transition_independent_s44_v1/B/transition_readout.pt": "7035dfe8f05e8eceade014a357d8759f21f7d2259fbd8be6304fe74c06720020",
+    "outputs/packet_transition_independent_s44_v1/B/validation_predictions.jsonl.gz": "d2543d9ef18aa1bc3dbaabd0c742976d5840a80b16ebfaa1747deb8db0b39784",
+    "data/processed/ciciot2023_grouped_input_v1/split.json": "2f6a7c307121454b881520379f0a298b7e2a179b1db4a7cb03741b7f648a774a",
+    "data/processed/ciciot2023_grouped_input_v1/samples.jsonl": "b8e9b0810471d0c2b52033488fab640625c3731315afd5d2add1571bd2518827"
+  }
+}

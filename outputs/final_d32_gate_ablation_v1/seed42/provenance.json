@@ -1,0 +1,33 @@
+{
+  "code_commit": "8a8b8a1f33eee8684569402b20ee51d8f8954b6d",
+  "runner_sha256": "1b61828f1cafcabe9775746657dba43240fd898fcb426fb6e69d329d844a4327",
+  "binding": {
+    "seed": 42,
+    "split_id": "a8ae9c934eec9fee970cc725e60051d0c709e0f16c7dda14749350ff2006975a",
+    "manifest_sha256": "b8e9b0810471d0c2b52033488fab640625c3731315afd5d2add1571bd2518827",
+    "frozen_c_sha256": "c29a6433880f6e5ad8a45d387abef07cf54f895277f9f89b313edecfa7feedc6",
+    "frozen_readout_sha256": "dc9357958cf2549377244e0c71be0940fd4a331088e6b54db9c55a54d227e659"
+  },
+  "schedule": {
+    "epochs": 30,
+    "batch_size": 512,
+    "learning_rate": 0.001,
+    "training_seed": 42
+  },
+  "selection": "max_validation_macro_f1_including_epoch_zero_earliest_tie",
+  "graph_root": "/home/nzxn/下载/WX/load/XG-NID/data/processed/CICIoT2023_processed/processed",
+  "torch": "2.3.1+cu118",
+  "device": "Tesla T4",
+  "input_sha256": {
+    "data/processed/ciciot2023_grouped_input_v1/split.json": "2f6a7c307121454b881520379f0a298b7e2a179b1db4a7cb03741b7f648a774a",
+    "outputs/joint_cross_layer_query_s42_v1/C/best.pt": "3070acd40203ee3a3944dc5805452eb3a2d73218aa24b31379bdfd5cbb523568",
+    "outputs/joint_cross_layer_query_s42_v1/C/metrics.json": "834f4b9cd970ab41be54599a7e73cbaa5fd1469ac5201912ee366d34565a0039",
+    "outputs/joint_cross_layer_query_s42_v1/C/validation_predictions.jsonl.gz": "91d7765e52a9eca289f3bf0591bcaa06090bb6b1e2ac2319958ffe8df6a7028f",
+    "data/processed/ciciot2023_grouped_input_v1/samples.jsonl": "b8e9b0810471d0c2b52033488fab640625c3731315afd5d2add1571bd2518827",
+    "outputs/packet_transition_readout_s42_v1/transition_readouts.pt": "ec8eb9fccc8c12f124067c410bb72d8fdb52695d83ad25d1ffbca1b9be9cc58a",
+    "outputs/packet_transition_readout_s42_v1/validation_predictions.jsonl.gz": "6fb079d8080919e8da247583bc99425c15b87e735b5e006b4ad1f1ed4564eb6b",
+    "outputs/packet_transition_readout_s42_v1/metrics.json": "b9b39052d277c3ce1c972a84fc9dc06f71b559e43ccbb4c3b443739c1b4dbe0a",
+    "outputs/packet_transition_readout_s42_v1/epochs.jsonl": "04112e40f741e2adfc1f286526007012aea7f62e94ba89f15f88371fae6b7152",
+    "outputs/packet_transition_readout_s42_v1/provenance.json": "1dc1a24595ccf12650f362b92b494446c2025fd61486524591599626d2095025"
+  }
+}

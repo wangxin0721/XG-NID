@@ -1,0 +1,306 @@
+/home/nzxn/miniconda3/envs/wx/lib/python3.9/site-packages/torch_geometric/typing.py:99: UserWarning: An issue occurred while importing 'torch-spline-conv'. Disabling its usage. Stacktrace: /home/nzxn/miniconda3/envs/wx/lib/python3.9/site-packages/torch_spline_conv/_version_cuda.so: undefined symbol: _ZN3c1017RegisterOperatorsD1Ev
+  warnings.warn(
+{"status": "running", "pid": 1271997, "phase": "extract_val", "samples": 16, "total": 13446}
+{"status": "running", "pid": 1271997, "phase": "extract_val", "samples": 3200, "total": 13446}
+{"status": "running", "pid": 1271997, "phase": "extract_val", "samples": 6400, "total": 13446}
+{"status": "running", "pid": 1271997, "phase": "extract_val", "samples": 9600, "total": 13446}
+{"status": "running", "pid": 1271997, "phase": "extract_val", "samples": 12800, "total": 13446}
+{"status": "running", "pid": 1271997, "phase": "extract_val", "samples": 13446, "total": 13446}
+{"status": "running", "pid": 1271997, "phase": "extract_train", "samples": 16, "total": 107621}
+{"status": "running", "pid": 1271997, "phase": "extract_train", "samples": 3200, "total": 107621}
+{"status": "running", "pid": 1271997, "phase": "extract_train", "samples": 6400, "total": 107621}
+{"status": "running", "pid": 1271997, "phase": "extract_train", "samples": 9600, "total": 107621}
+{"status": "running", "pid": 1271997, "phase": "extract_train", "samples": 12800, "total": 107621}
+{"status": "running", "pid": 1271997, "phase": "extract_train", "samples": 16000, "total": 107621}
+{"status": "running", "pid": 1271997, "phase": "extract_train", "samples": 19200, "total": 107621}
+{"status": "running", "pid": 1271997, "phase": "extract_train", "samples": 22400, "total": 107621}
+{"status": "running", "pid": 1271997, "phase": "extract_train", "samples": 25600, "total": 107621}
+{"status": "running", "pid": 1271997, "phase": "extract_train", "samples": 28800, "total": 107621}
+{"status": "running", "pid": 1271997, "phase": "extract_train", "samples": 32000, "total": 107621}
+{"status": "running", "pid": 1271997, "phase": "extract_train", "samples": 35200, "total": 107621}
+{"status": "running", "pid": 1271997, "phase": "extract_train", "samples": 38400, "total": 107621}
+{"status": "running", "pid": 1271997, "phase": "extract_train", "samples": 41600, "total": 107621}
+{"status": "running", "pid": 1271997, "phase": "extract_train", "samples": 44800, "total": 107621}
+{"status": "running", "pid": 1271997, "phase": "extract_train", "samples": 48000, "total": 107621}
+{"status": "running", "pid": 1271997, "phase": "extract_train", "samples": 51200, "total": 107621}
+{"status": "running", "pid": 1271997, "phase": "extract_train", "samples": 54400, "total": 107621}
+{"status": "running", "pid": 1271997, "phase": "extract_train", "samples": 57600, "total": 107621}
+{"status": "running", "pid": 1271997, "phase": "extract_train", "samples": 60800, "total": 107621}
+{"status": "running", "pid": 1271997, "phase": "extract_train", "samples": 64000, "total": 107621}
+{"status": "running", "pid": 1271997, "phase": "extract_train", "samples": 67200, "total": 107621}
+{"status": "running", "pid": 1271997, "phase": "extract_train", "samples": 70400, "total": 107621}
+{"status": "running", "pid": 1271997, "phase": "extract_train", "samples": 73600, "total": 107621}
+{"status": "running", "pid": 1271997, "phase": "extract_train", "samples": 76800, "total": 107621}
+{"status": "running", "pid": 1271997, "phase": "extract_train", "samples": 80000, "total": 107621}
+{"status": "running", "pid": 1271997, "phase": "extract_train", "samples": 83200, "total": 107621}
+{"status": "running", "pid": 1271997, "phase": "extract_train", "samples": 86400, "total": 107621}
+{"status": "running", "pid": 1271997, "phase": "extract_train", "samples": 89600, "total": 107621}
+{"status": "running", "pid": 1271997, "phase": "extract_train", "samples": 92800, "total": 107621}
+{"status": "running", "pid": 1271997, "phase": "extract_train", "samples": 96000, "total": 107621}
+{"status": "running", "pid": 1271997, "phase": "extract_train", "samples": 99200, "total": 107621}
+{"status": "running", "pid": 1271997, "phase": "extract_train", "samples": 102400, "total": 107621}
+{"status": "running", "pid": 1271997, "phase": "extract_train", "samples": 105600, "total": 107621}
+{"status": "running", "pid": 1271997, "phase": "extract_train", "samples": 107621, "total": 107621}
+{"status": "running", "pid": 1271997, "phase": "fit_fusion", "epoch": 0, "total_epochs": 30, "macro_f1": {"static": 0.8739482645990393, "dynamic": 0.8739482645990393}}
+{"status": "running", "pid": 1271997, "phase": "fit_fusion", "epoch": 1, "total_epochs": 30, "macro_f1": {"static": 0.9705122527750201, "dynamic": 0.9706748061022428}}
+{"status": "running", "pid": 1271997, "phase": "fit_fusion", "epoch": 2, "total_epochs": 30, "macro_f1": {"static": 0.9712293326239041, "dynamic": 0.9715369797062077}}
+{"status": "running", "pid": 1271997, "phase": "fit_fusion", "epoch": 3, "total_epochs": 30, "macro_f1": {"static": 0.9714837537950017, "dynamic": 0.9712901395045848}}
+{"status": "running", "pid": 1271997, "phase": "fit_fusion", "epoch": 4, "total_epochs": 30, "macro_f1": {"static": 0.9725563050278913, "dynamic": 0.9723523419804935}}
+{"status": "running", "pid": 1271997, "phase": "fit_fusion", "epoch": 5, "total_epochs": 30, "macro_f1": {"static": 0.9708765731159883, "dynamic": 0.9737830853158249}}
+{"status": "running", "pid": 1271997, "phase": "fit_fusion", "epoch": 6, "total_epochs": 30, "macro_f1": {"static": 0.9706943351239176, "dynamic": 0.9720498163182982}}
+{"status": "running", "pid": 1271997, "phase": "fit_fusion", "epoch": 7, "total_epochs": 30, "macro_f1": {"static": 0.9699560121032648, "dynamic": 0.9720895984821856}}
+{"status": "running", "pid": 1271997, "phase": "fit_fusion", "epoch": 8, "total_epochs": 30, "macro_f1": {"static": 0.9711605960944146, "dynamic": 0.9735767793325201}}
+{"status": "running", "pid": 1271997, "phase": "fit_fusion", "epoch": 9, "total_epochs": 30, "macro_f1": {"static": 0.9718886968297236, "dynamic": 0.9740936157447397}}
+{"status": "running", "pid": 1271997, "phase": "fit_fusion", "epoch": 10, "total_epochs": 30, "macro_f1": {"static": 0.9722158367420437, "dynamic": 0.9757798431474}}
+{"status": "running", "pid": 1271997, "phase": "fit_fusion", "epoch": 11, "total_epochs": 30, "macro_f1": {"static": 0.9731663055919639, "dynamic": 0.9759121588752953}}
+{"status": "running", "pid": 1271997, "phase": "fit_fusion", "epoch": 12, "total_epochs": 30, "macro_f1": {"static": 0.9718692922454235, "dynamic": 0.9737033967049215}}
+{"status": "running", "pid": 1271997, "phase": "fit_fusion", "epoch": 13, "total_epochs": 30, "macro_f1": {"static": 0.9694441568043899, "dynamic": 0.9711518297635346}}
+{"status": "running", "pid": 1271997, "phase": "fit_fusion", "epoch": 14, "total_epochs": 30, "macro_f1": {"static": 0.9736224054260585, "dynamic": 0.9749349804598387}}
+{"status": "running", "pid": 1271997, "phase": "fit_fusion", "epoch": 15, "total_epochs": 30, "macro_f1": {"static": 0.9719031323051799, "dynamic": 0.9738187839811802}}
+{"status": "running", "pid": 1271997, "phase": "fit_fusion", "epoch": 16, "total_epochs": 30, "macro_f1": {"static": 0.9723078040247511, "dynamic": 0.9749206646570411}}
+{"status": "running", "pid": 1271997, "phase": "fit_fusion", "epoch": 17, "total_epochs": 30, "macro_f1": {"static": 0.9723957266934434, "dynamic": 0.9747602073176354}}
+{"status": "running", "pid": 1271997, "phase": "fit_fusion", "epoch": 18, "total_epochs": 30, "macro_f1": {"static": 0.9725968282410025, "dynamic": 0.9740643256292922}}
+{"status": "running", "pid": 1271997, "phase": "fit_fusion", "epoch": 19, "total_epochs": 30, "macro_f1": {"static": 0.9728095347699504, "dynamic": 0.9754867398870473}}
+{"status": "running", "pid": 1271997, "phase": "fit_fusion", "epoch": 20, "total_epochs": 30, "macro_f1": {"static": 0.9727372454783973, "dynamic": 0.9764785141698427}}
+{"status": "running", "pid": 1271997, "phase": "fit_fusion", "epoch": 21, "total_epochs": 30, "macro_f1": {"static": 0.9736989206408505, "dynamic": 0.9760172787556977}}
+{"status": "running", "pid": 1271997, "phase": "fit_fusion", "epoch": 22, "total_epochs": 30, "macro_f1": {"static": 0.9731716009276205, "dynamic": 0.9748514980279425}}
+{"status": "running", "pid": 1271997, "phase": "fit_fusion", "epoch": 23, "total_epochs": 30, "macro_f1": {"static": 0.9713784829607339, "dynamic": 0.9728379035301855}}
+{"status": "running", "pid": 1271997, "phase": "fit_fusion", "epoch": 24, "total_epochs": 30, "macro_f1": {"static": 0.9735206968015166, "dynamic": 0.9752107931331284}}
+{"status": "running", "pid": 1271997, "phase": "fit_fusion", "epoch": 25, "total_epochs": 30, "macro_f1": {"static": 0.9729699344474296, "dynamic": 0.976336972629093}}
+{"status": "running", "pid": 1271997, "phase": "fit_fusion", "epoch": 26, "total_epochs": 30, "macro_f1": {"static": 0.9704476208769037, "dynamic": 0.973741979959014}}
+{"status": "running", "pid": 1271997, "phase": "fit_fusion", "epoch": 27, "total_epochs": 30, "macro_f1": {"static": 0.9726429947429254, "dynamic": 0.9754645878903628}}
+{"status": "running", "pid": 1271997, "phase": "fit_fusion", "epoch": 28, "total_epochs": 30, "macro_f1": {"static": 0.9732612374539139, "dynamic": 0.9768784614879651}}
+{"status": "running", "pid": 1271997, "phase": "fit_fusion", "epoch": 29, "total_epochs": 30, "macro_f1": {"static": 0.973796505285663, "dynamic": 0.976597444164247}}
+{"status": "running", "pid": 1271997, "phase": "fit_fusion", "epoch": 30, "total_epochs": 30, "macro_f1": {"static": 0.9728511329998651, "dynamic": 0.9748259675799683}}
+{"status": "running", "pid": 1271997, "phase": "extract_val", "samples": 16, "total": 13446}
+{"status": "running", "pid": 1271997, "phase": "extract_val", "samples": 3200, "total": 13446}
+{"status": "running", "pid": 1271997, "phase": "extract_val", "samples": 6400, "total": 13446}
+{"status": "running", "pid": 1271997, "phase": "extract_val", "samples": 9600, "total": 13446}
+{"status": "running", "pid": 1271997, "phase": "extract_val", "samples": 12800, "total": 13446}
+{"status": "running", "pid": 1271997, "phase": "extract_val", "samples": 13446, "total": 13446}
+{"status": "completed", "output": "/home/nzxn/\u4e0b\u8f7d/WX/load/XG-NID/outputs/final_d32_gate_ablation_v1"}
+/home/nzxn/miniconda3/envs/wx/lib/python3.9/site-packages/torch_geometric/typing.py:99: UserWarning: An issue occurred while importing 'torch-spline-conv'. Disabling its usage. Stacktrace: /home/nzxn/miniconda3/envs/wx/lib/python3.9/site-packages/torch_spline_conv/_version_cuda.so: undefined symbol: _ZN3c1017RegisterOperatorsD1Ev
+  warnings.warn(
+{"status": "running", "pid": 1275268, "phase": "seed43_locked_validation", "samples": 16, "total": 13446}
+{"status": "running", "pid": 1275268, "phase": "seed43_locked_validation", "samples": 3200, "total": 13446}
+{"status": "running", "pid": 1275268, "phase": "seed43_locked_validation", "samples": 6400, "total": 13446}
+{"status": "running", "pid": 1275268, "phase": "seed43_locked_validation", "samples": 9600, "total": 13446}
+{"status": "running", "pid": 1275268, "phase": "seed43_locked_validation", "samples": 12800, "total": 13446}
+{"status": "running", "pid": 1275268, "phase": "seed43_locked_validation", "samples": 13446, "total": 13446}
+{"status": "running", "pid": 1275268, "phase": "extract_val", "samples": 16, "total": 13446}
+{"status": "running", "pid": 1275268, "phase": "extract_val", "samples": 3200, "total": 13446}
+{"status": "running", "pid": 1275268, "phase": "extract_val", "samples": 6400, "total": 13446}
+{"status": "running", "pid": 1275268, "phase": "extract_val", "samples": 9600, "total": 13446}
+{"status": "running", "pid": 1275268, "phase": "extract_val", "samples": 12800, "total": 13446}
+{"status": "running", "pid": 1275268, "phase": "extract_val", "samples": 13446, "total": 13446}
+{"status": "running", "pid": 1275268, "phase": "extract_train", "samples": 16, "total": 107621}
+{"status": "running", "pid": 1275268, "phase": "extract_train", "samples": 3200, "total": 107621}
+{"status": "running", "pid": 1275268, "phase": "extract_train", "samples": 6400, "total": 107621}
+{"status": "running", "pid": 1275268, "phase": "extract_train", "samples": 9600, "total": 107621}
+{"status": "running", "pid": 1275268, "phase": "extract_train", "samples": 12800, "total": 107621}
+{"status": "running", "pid": 1275268, "phase": "extract_train", "samples": 16000, "total": 107621}
+{"status": "running", "pid": 1275268, "phase": "extract_train", "samples": 19200, "total": 107621}
+{"status": "running", "pid": 1275268, "phase": "extract_train", "samples": 22400, "total": 107621}
+{"status": "running", "pid": 1275268, "phase": "extract_train", "samples": 25600, "total": 107621}
+{"status": "running", "pid": 1275268, "phase": "extract_train", "samples": 28800, "total": 107621}
+{"status": "running", "pid": 1275268, "phase": "extract_train", "samples": 32000, "total": 107621}
+{"status": "running", "pid": 1275268, "phase": "extract_train", "samples": 35200, "total": 107621}
+{"status": "running", "pid": 1275268, "phase": "extract_train", "samples": 38400, "total": 107621}
+{"status": "running", "pid": 1275268, "phase": "extract_train", "samples": 41600, "total": 107621}
+{"status": "running", "pid": 1275268, "phase": "extract_train", "samples": 44800, "total": 107621}
+{"status": "running", "pid": 1275268, "phase": "extract_train", "samples": 48000, "total": 107621}
+{"status": "running", "pid": 1275268, "phase": "extract_train", "samples": 51200, "total": 107621}
+{"status": "running", "pid": 1275268, "phase": "extract_train", "samples": 54400, "total": 107621}
+{"status": "running", "pid": 1275268, "phase": "extract_train", "samples": 57600, "total": 107621}
+{"status": "running", "pid": 1275268, "phase": "extract_train", "samples": 60800, "total": 107621}
+{"status": "running", "pid": 1275268, "phase": "extract_train", "samples": 64000, "total": 107621}
+{"status": "running", "pid": 1275268, "phase": "extract_train", "samples": 67200, "total": 107621}
+{"status": "running", "pid": 1275268, "phase": "extract_train", "samples": 70400, "total": 107621}
+{"status": "running", "pid": 1275268, "phase": "extract_train", "samples": 73600, "total": 107621}
+{"status": "running", "pid": 1275268, "phase": "extract_train", "samples": 76800, "total": 107621}
+{"status": "running", "pid": 1275268, "phase": "extract_train", "samples": 80000, "total": 107621}
+{"status": "running", "pid": 1275268, "phase": "extract_train", "samples": 83200, "total": 107621}
+{"status": "running", "pid": 1275268, "phase": "extract_train", "samples": 86400, "total": 107621}
+{"status": "running", "pid": 1275268, "phase": "extract_train", "samples": 89600, "total": 107621}
+{"status": "running", "pid": 1275268, "phase": "extract_train", "samples": 92800, "total": 107621}
+{"status": "running", "pid": 1275268, "phase": "extract_train", "samples": 96000, "total": 107621}
+{"status": "running", "pid": 1275268, "phase": "extract_train", "samples": 99200, "total": 107621}
+{"status": "running", "pid": 1275268, "phase": "extract_train", "samples": 102400, "total": 107621}
+{"status": "running", "pid": 1275268, "phase": "extract_train", "samples": 105600, "total": 107621}
+{"status": "running", "pid": 1275268, "phase": "extract_train", "samples": 107621, "total": 107621}
+{"status": "running", "pid": 1275268, "phase": "fit_fusion", "epoch": 0, "total_epochs": 30, "macro_f1": {"static": 0.8266382169935125, "dynamic": 0.8266382169935125}}
+{"status": "running", "pid": 1275268, "phase": "fit_fusion", "epoch": 1, "total_epochs": 30, "macro_f1": {"static": 0.9688191858297929, "dynamic": 0.972558891313187}}
+{"status": "running", "pid": 1275268, "phase": "fit_fusion", "epoch": 2, "total_epochs": 30, "macro_f1": {"static": 0.9700813719626152, "dynamic": 0.973615940737305}}
+{"status": "running", "pid": 1275268, "phase": "fit_fusion", "epoch": 3, "total_epochs": 30, "macro_f1": {"static": 0.9726721772750379, "dynamic": 0.9752353678944886}}
+{"status": "running", "pid": 1275268, "phase": "fit_fusion", "epoch": 4, "total_epochs": 30, "macro_f1": {"static": 0.972667971609801, "dynamic": 0.9742977687535349}}
+{"status": "running", "pid": 1275268, "phase": "fit_fusion", "epoch": 5, "total_epochs": 30, "macro_f1": {"static": 0.973099659288317, "dynamic": 0.9755852387555833}}
+{"status": "running", "pid": 1275268, "phase": "fit_fusion", "epoch": 6, "total_epochs": 30, "macro_f1": {"static": 0.9738508122537695, "dynamic": 0.9752031227908412}}
+{"status": "running", "pid": 1275268, "phase": "fit_fusion", "epoch": 7, "total_epochs": 30, "macro_f1": {"static": 0.9746975234812234, "dynamic": 0.9746557261324582}}
+{"status": "running", "pid": 1275268, "phase": "fit_fusion", "epoch": 8, "total_epochs": 30, "macro_f1": {"static": 0.9722231647405994, "dynamic": 0.9752110689256285}}
+{"status": "running", "pid": 1275268, "phase": "fit_fusion", "epoch": 9, "total_epochs": 30, "macro_f1": {"static": 0.9741341070009462, "dynamic": 0.9753653121198149}}
+{"status": "running", "pid": 1275268, "phase": "fit_fusion", "epoch": 10, "total_epochs": 30, "macro_f1": {"static": 0.9760314596787388, "dynamic": 0.9763710790173855}}
+{"status": "running", "pid": 1275268, "phase": "fit_fusion", "epoch": 11, "total_epochs": 30, "macro_f1": {"static": 0.9759808777983029, "dynamic": 0.97681005393176}}
+{"status": "running", "pid": 1275268, "phase": "fit_fusion", "epoch": 12, "total_epochs": 30, "macro_f1": {"static": 0.9724703580532803, "dynamic": 0.9759089151761917}}
+{"status": "running", "pid": 1275268, "phase": "fit_fusion", "epoch": 13, "total_epochs": 30, "macro_f1": {"static": 0.9728147428634982, "dynamic": 0.9733961286841968}}
+{"status": "running", "pid": 1275268, "phase": "fit_fusion", "epoch": 14, "total_epochs": 30, "macro_f1": {"static": 0.973929693765617, "dynamic": 0.9763045078185327}}
+{"status": "running", "pid": 1275268, "phase": "fit_fusion", "epoch": 15, "total_epochs": 30, "macro_f1": {"static": 0.9748410358871905, "dynamic": 0.9754486829080716}}
+{"status": "running", "pid": 1275268, "phase": "fit_fusion", "epoch": 16, "total_epochs": 30, "macro_f1": {"static": 0.9758997149038522, "dynamic": 0.9756971628783719}}
+{"status": "running", "pid": 1275268, "phase": "fit_fusion", "epoch": 17, "total_epochs": 30, "macro_f1": {"static": 0.9750853780650278, "dynamic": 0.9763246168295144}}
+{"status": "running", "pid": 1275268, "phase": "fit_fusion", "epoch": 18, "total_epochs": 30, "macro_f1": {"static": 0.9757375466162304, "dynamic": 0.9762790834190885}}
+{"status": "running", "pid": 1275268, "phase": "fit_fusion", "epoch": 19, "total_epochs": 30, "macro_f1": {"static": 0.9747325869100555, "dynamic": 0.9763051455905885}}
+{"status": "running", "pid": 1275268, "phase": "fit_fusion", "epoch": 20, "total_epochs": 30, "macro_f1": {"static": 0.9749498364327834, "dynamic": 0.9755119977024459}}
+{"status": "running", "pid": 1275268, "phase": "fit_fusion", "epoch": 21, "total_epochs": 30, "macro_f1": {"static": 0.9744918157761362, "dynamic": 0.9759441964395054}}
+{"status": "running", "pid": 1275268, "phase": "fit_fusion", "epoch": 22, "total_epochs": 30, "macro_f1": {"static": 0.9756056941095492, "dynamic": 0.9762746713983915}}
+{"status": "running", "pid": 1275268, "phase": "fit_fusion", "epoch": 23, "total_epochs": 30, "macro_f1": {"static": 0.9763227275877189, "dynamic": 0.9769623540259887}}
+{"status": "running", "pid": 1275268, "phase": "fit_fusion", "epoch": 24, "total_epochs": 30, "macro_f1": {"static": 0.9765309881124324, "dynamic": 0.9770495520156096}}
+{"status": "running", "pid": 1275268, "phase": "fit_fusion", "epoch": 25, "total_epochs": 30, "macro_f1": {"static": 0.9761094091836421, "dynamic": 0.9759136604452012}}
+{"status": "running", "pid": 1275268, "phase": "fit_fusion", "epoch": 26, "total_epochs": 30, "macro_f1": {"static": 0.9751002123884845, "dynamic": 0.9748524089002002}}
+{"status": "running", "pid": 1275268, "phase": "fit_fusion", "epoch": 27, "total_epochs": 30, "macro_f1": {"static": 0.9753454526119427, "dynamic": 0.977560170640882}}
+{"status": "running", "pid": 1275268, "phase": "fit_fusion", "epoch": 28, "total_epochs": 30, "macro_f1": {"static": 0.9756550897568094, "dynamic": 0.9754174607558074}}
+{"status": "running", "pid": 1275268, "phase": "fit_fusion", "epoch": 29, "total_epochs": 30, "macro_f1": {"static": 0.9761524722417269, "dynamic": 0.9757255109447628}}
+{"status": "running", "pid": 1275268, "phase": "fit_fusion", "epoch": 30, "total_epochs": 30, "macro_f1": {"static": 0.9749086591335785, "dynamic": 0.9769864789753101}}
+{"status": "running", "pid": 1275268, "phase": "extract_val", "samples": 16, "total": 13446}
+{"status": "running", "pid": 1275268, "phase": "extract_val", "samples": 3200, "total": 13446}
+{"status": "running", "pid": 1275268, "phase": "extract_val", "samples": 6400, "total": 13446}
+{"status": "running", "pid": 1275268, "phase": "extract_val", "samples": 9600, "total": 13446}
+{"status": "running", "pid": 1275268, "phase": "extract_val", "samples": 12800, "total": 13446}
+{"status": "running", "pid": 1275268, "phase": "extract_val", "samples": 13446, "total": 13446}
+{"status": "completed", "output": "/home/nzxn/\u4e0b\u8f7d/WX/load/XG-NID/outputs/final_d32_gate_ablation_v1"}
+/home/nzxn/miniconda3/envs/wx/lib/python3.9/site-packages/torch_geometric/typing.py:99: UserWarning: An issue occurred while importing 'torch-spline-conv'. Disabling its usage. Stacktrace: /home/nzxn/miniconda3/envs/wx/lib/python3.9/site-packages/torch_spline_conv/_version_cuda.so: undefined symbol: _ZN3c1017RegisterOperatorsD1Ev
+  warnings.warn(
+{"status": "running", "pid": 1277958, "phase": "seed44_locked_validation", "samples": 16, "total": 13446}
+{"status": "running", "pid": 1277958, "phase": "seed44_locked_validation", "samples": 3200, "total": 13446}
+{"status": "running", "pid": 1277958, "phase": "seed44_locked_validation", "samples": 6400, "total": 13446}
+{"status": "running", "pid": 1277958, "phase": "seed44_locked_validation", "samples": 9600, "total": 13446}
+{"status": "running", "pid": 1277958, "phase": "seed44_locked_validation", "samples": 12800, "total": 13446}
+{"status": "running", "pid": 1277958, "phase": "seed44_locked_validation", "samples": 13446, "total": 13446}
+{"status": "running", "pid": 1277958, "phase": "extract_val", "samples": 16, "total": 13446}
+{"status": "running", "pid": 1277958, "phase": "extract_val", "samples": 3200, "total": 13446}
+{"status": "running", "pid": 1277958, "phase": "extract_val", "samples": 6400, "total": 13446}
+{"status": "running", "pid": 1277958, "phase": "extract_val", "samples": 9600, "total": 13446}
+{"status": "running", "pid": 1277958, "phase": "extract_val", "samples": 12800, "total": 13446}
+{"status": "running", "pid": 1277958, "phase": "extract_val", "samples": 13446, "total": 13446}
+{"status": "running", "pid": 1277958, "phase": "extract_train", "samples": 16, "total": 107621}
+{"status": "running", "pid": 1277958, "phase": "extract_train", "samples": 3200, "total": 107621}
+{"status": "running", "pid": 1277958, "phase": "extract_train", "samples": 6400, "total": 107621}
+{"status": "running", "pid": 1277958, "phase": "extract_train", "samples": 9600, "total": 107621}
+{"status": "running", "pid": 1277958, "phase": "extract_train", "samples": 12800, "total": 107621}
+{"status": "running", "pid": 1277958, "phase": "extract_train", "samples": 16000, "total": 107621}
+{"status": "running", "pid": 1277958, "phase": "extract_train", "samples": 19200, "total": 107621}
+{"status": "running", "pid": 1277958, "phase": "extract_train", "samples": 22400, "total": 107621}
+{"status": "running", "pid": 1277958, "phase": "extract_train", "samples": 25600, "total": 107621}
+{"status": "running", "pid": 1277958, "phase": "extract_train", "samples": 28800, "total": 107621}
+{"status": "running", "pid": 1277958, "phase": "extract_train", "samples": 32000, "total": 107621}
+{"status": "running", "pid": 1277958, "phase": "extract_train", "samples": 35200, "total": 107621}
+{"status": "running", "pid": 1277958, "phase": "extract_train", "samples": 38400, "total": 107621}
+{"status": "running", "pid": 1277958, "phase": "extract_train", "samples": 41600, "total": 107621}
+{"status": "running", "pid": 1277958, "phase": "extract_train", "samples": 44800, "total": 107621}
+{"status": "running", "pid": 1277958, "phase": "extract_train", "samples": 48000, "total": 107621}
+{"status": "running", "pid": 1277958, "phase": "extract_train", "samples": 51200, "total": 107621}
+{"status": "running", "pid": 1277958, "phase": "extract_train", "samples": 54400, "total": 107621}
+{"status": "running", "pid": 1277958, "phase": "extract_train", "samples": 57600, "total": 107621}
+{"status": "running", "pid": 1277958, "phase": "extract_train", "samples": 60800, "total": 107621}
+{"status": "running", "pid": 1277958, "phase": "extract_train", "samples": 64000, "total": 107621}
+{"status": "running", "pid": 1277958, "phase": "extract_train", "samples": 67200, "total": 107621}
+{"status": "running", "pid": 1277958, "phase": "extract_train", "samples": 70400, "total": 107621}
+{"status": "running", "pid": 1277958, "phase": "extract_train", "samples": 73600, "total": 107621}
+{"status": "running", "pid": 1277958, "phase": "extract_train", "samples": 76800, "total": 107621}
+{"status": "running", "pid": 1277958, "phase": "extract_train", "samples": 80000, "total": 107621}
+{"status": "running", "pid": 1277958, "phase": "extract_train", "samples": 83200, "total": 107621}
+{"status": "running", "pid": 1277958, "phase": "extract_train", "samples": 86400, "total": 107621}
+{"status": "running", "pid": 1277958, "phase": "extract_train", "samples": 89600, "total": 107621}
+{"status": "running", "pid": 1277958, "phase": "extract_train", "samples": 92800, "total": 107621}
+{"status": "running", "pid": 1277958, "phase": "extract_train", "samples": 96000, "total": 107621}
+{"status": "running", "pid": 1277958, "phase": "extract_train", "samples": 99200, "total": 107621}
+{"status": "running", "pid": 1277958, "phase": "extract_train", "samples": 102400, "total": 107621}
+{"status": "running", "pid": 1277958, "phase": "extract_train", "samples": 105600, "total": 107621}
+{"status": "running", "pid": 1277958, "phase": "extract_train", "samples": 107621, "total": 107621}
+{"status": "running", "pid": 1277958, "phase": "fit_fusion", "epoch": 0, "total_epochs": 30, "macro_f1": {"static": 0.830668500014943, "dynamic": 0.830668500014943}}
+{"status": "running", "pid": 1277958, "phase": "fit_fusion", "epoch": 1, "total_epochs": 30, "macro_f1": {"static": 0.9662442298295406, "dynamic": 0.969919092878434}}
+{"status": "running", "pid": 1277958, "phase": "fit_fusion", "epoch": 2, "total_epochs": 30, "macro_f1": {"static": 0.9707730570716508, "dynamic": 0.9713767519550043}}
+{"status": "running", "pid": 1277958, "phase": "fit_fusion", "epoch": 3, "total_epochs": 30, "macro_f1": {"static": 0.9714274676069414, "dynamic": 0.9713244614381827}}
+{"status": "running", "pid": 1277958, "phase": "fit_fusion", "epoch": 4, "total_epochs": 30, "macro_f1": {"static": 0.9704481084743294, "dynamic": 0.9703424618408205}}
+{"status": "running", "pid": 1277958, "phase": "fit_fusion", "epoch": 5, "total_epochs": 30, "macro_f1": {"static": 0.9712694176331829, "dynamic": 0.9709826595158915}}
+{"status": "running", "pid": 1277958, "phase": "fit_fusion", "epoch": 6, "total_epochs": 30, "macro_f1": {"static": 0.969200923468039, "dynamic": 0.9707703827637979}}
+{"status": "running", "pid": 1277958, "phase": "fit_fusion", "epoch": 7, "total_epochs": 30, "macro_f1": {"static": 0.9713471827037155, "dynamic": 0.9702748263591148}}
+{"status": "running", "pid": 1277958, "phase": "fit_fusion", "epoch": 8, "total_epochs": 30, "macro_f1": {"static": 0.971394425980856, "dynamic": 0.9697356419047137}}
+{"status": "running", "pid": 1277958, "phase": "fit_fusion", "epoch": 9, "total_epochs": 30, "macro_f1": {"static": 0.9710648824917746, "dynamic": 0.9707115016289373}}
+{"status": "running", "pid": 1277958, "phase": "fit_fusion", "epoch": 10, "total_epochs": 30, "macro_f1": {"static": 0.9730274676086201, "dynamic": 0.9739148670723672}}
+{"status": "running", "pid": 1277958, "phase": "fit_fusion", "epoch": 11, "total_epochs": 30, "macro_f1": {"static": 0.9734352857756389, "dynamic": 0.9734386081836033}}
+{"status": "running", "pid": 1277958, "phase": "fit_fusion", "epoch": 12, "total_epochs": 30, "macro_f1": {"static": 0.9716425146651005, "dynamic": 0.9723017892683475}}
+{"status": "running", "pid": 1277958, "phase": "fit_fusion", "epoch": 13, "total_epochs": 30, "macro_f1": {"static": 0.9708598877585148, "dynamic": 0.9699299313729765}}
+{"status": "running", "pid": 1277958, "phase": "fit_fusion", "epoch": 14, "total_epochs": 30, "macro_f1": {"static": 0.9699629041874201, "dynamic": 0.9705918183090886}}
+{"status": "running", "pid": 1277958, "phase": "fit_fusion", "epoch": 15, "total_epochs": 30, "macro_f1": {"static": 0.9720378610888044, "dynamic": 0.9734151190484399}}
+{"status": "running", "pid": 1277958, "phase": "fit_fusion", "epoch": 16, "total_epochs": 30, "macro_f1": {"static": 0.9710250825212902, "dynamic": 0.9722354950516956}}
+{"status": "running", "pid": 1277958, "phase": "fit_fusion", "epoch": 17, "total_epochs": 30, "macro_f1": {"static": 0.9732654716425926, "dynamic": 0.9734648800992498}}
+{"status": "running", "pid": 1277958, "phase": "fit_fusion", "epoch": 18, "total_epochs": 30, "macro_f1": {"static": 0.9719674886122537, "dynamic": 0.9729576417305349}}
+{"status": "running", "pid": 1277958, "phase": "fit_fusion", "epoch": 19, "total_epochs": 30, "macro_f1": {"static": 0.9739135593427779, "dynamic": 0.9732771038990465}}
+{"status": "running", "pid": 1277958, "phase": "fit_fusion", "epoch": 20, "total_epochs": 30, "macro_f1": {"static": 0.9730808581078114, "dynamic": 0.9736347074842089}}
+{"status": "running", "pid": 1277958, "phase": "fit_fusion", "epoch": 21, "total_epochs": 30, "macro_f1": {"static": 0.9743937006517773, "dynamic": 0.9739003842488291}}
+{"status": "running", "pid": 1277958, "phase": "fit_fusion", "epoch": 22, "total_epochs": 30, "macro_f1": {"static": 0.9728932571662227, "dynamic": 0.97414704969935}}
+{"status": "running", "pid": 1277958, "phase": "fit_fusion", "epoch": 23, "total_epochs": 30, "macro_f1": {"static": 0.9708782569536957, "dynamic": 0.9696136841709615}}
+{"status": "running", "pid": 1277958, "phase": "fit_fusion", "epoch": 24, "total_epochs": 30, "macro_f1": {"static": 0.9729702861691033, "dynamic": 0.9723918600368664}}
+{"status": "running", "pid": 1277958, "phase": "fit_fusion", "epoch": 25, "total_epochs": 30, "macro_f1": {"static": 0.9741491315941448, "dynamic": 0.9727352016906792}}
+{"status": "running", "pid": 1277958, "phase": "fit_fusion", "epoch": 26, "total_epochs": 30, "macro_f1": {"static": 0.971352722267659, "dynamic": 0.9729839169169198}}
+{"status": "running", "pid": 1277958, "phase": "fit_fusion", "epoch": 27, "total_epochs": 30, "macro_f1": {"static": 0.9746423706905046, "dynamic": 0.9735054661847772}}
+{"status": "running", "pid": 1277958, "phase": "fit_fusion", "epoch": 28, "total_epochs": 30, "macro_f1": {"static": 0.9732640208575083, "dynamic": 0.9737888042340663}}
+{"status": "running", "pid": 1277958, "phase": "fit_fusion", "epoch": 29, "total_epochs": 30, "macro_f1": {"static": 0.9721931480106188, "dynamic": 0.9735595667723234}}
+{"status": "running", "pid": 1277958, "phase": "fit_fusion", "epoch": 30, "total_epochs": 30, "macro_f1": {"static": 0.9713003718052181, "dynamic": 0.9724595662797139}}
+{"status": "running", "pid": 1277958, "phase": "extract_val", "samples": 16, "total": 13446}
+{"status": "running", "pid": 1277958, "phase": "extract_val", "samples": 3200, "total": 13446}
+{"status": "running", "pid": 1277958, "phase": "extract_val", "samples": 6400, "total": 13446}
+{"status": "running", "pid": 1277958, "phase": "extract_val", "samples": 9600, "total": 13446}
+{"status": "running", "pid": 1277958, "phase": "extract_val", "samples": 12800, "total": 13446}
+{"status": "running", "pid": 1277958, "phase": "extract_val", "samples": 13446, "total": 13446}
+{"status": "completed", "output": "/home/nzxn/\u4e0b\u8f7d/WX/load/XG-NID/outputs/final_d32_gate_ablation_v1"}
+/home/nzxn/miniconda3/envs/wx/lib/python3.9/site-packages/torch_geometric/typing.py:99: UserWarning: An issue occurred while importing 'torch-spline-conv'. Disabling its usage. Stacktrace: /home/nzxn/miniconda3/envs/wx/lib/python3.9/site-packages/torch_spline_conv/_version_cuda.so: undefined symbol: _ZN3c1017RegisterOperatorsD1Ev
+  warnings.warn(
+{"status": "running", "pid": 1280606, "phase": "extract_val", "samples": 16, "total": 13446}
+{"status": "running", "pid": 1280606, "phase": "extract_val", "samples": 3200, "total": 13446}
+{"status": "running", "pid": 1280606, "phase": "extract_val", "samples": 6400, "total": 13446}
+{"status": "running", "pid": 1280606, "phase": "extract_val", "samples": 9600, "total": 13446}
+{"status": "running", "pid": 1280606, "phase": "extract_val", "samples": 12800, "total": 13446}
+{"status": "running", "pid": 1280606, "phase": "extract_val", "samples": 13446, "total": 13446}
+{"status": "running", "pid": 1280606, "phase": "extract_test", "samples": 16, "total": 13448}
+{"status": "running", "pid": 1280606, "phase": "extract_test", "samples": 3200, "total": 13448}
+{"status": "running", "pid": 1280606, "phase": "extract_test", "samples": 6400, "total": 13448}
+{"status": "running", "pid": 1280606, "phase": "extract_test", "samples": 9600, "total": 13448}
+{"status": "running", "pid": 1280606, "phase": "extract_test", "samples": 12800, "total": 13448}
+{"status": "running", "pid": 1280606, "phase": "extract_test", "samples": 13448, "total": 13448}
+{"status": "running", "pid": 1280606, "phase": "seed43_locked_validation", "samples": 16, "total": 13446}
+{"status": "running", "pid": 1280606, "phase": "seed43_locked_validation", "samples": 3200, "total": 13446}
+{"status": "running", "pid": 1280606, "phase": "seed43_locked_validation", "samples": 6400, "total": 13446}
+{"status": "running", "pid": 1280606, "phase": "seed43_locked_validation", "samples": 9600, "total": 13446}
+{"status": "running", "pid": 1280606, "phase": "seed43_locked_validation", "samples": 12800, "total": 13446}
+{"status": "running", "pid": 1280606, "phase": "seed43_locked_validation", "samples": 13446, "total": 13446}
+{"status": "running", "pid": 1280606, "phase": "extract_val", "samples": 16, "total": 13446}
+{"status": "running", "pid": 1280606, "phase": "extract_val", "samples": 3200, "total": 13446}
+{"status": "running", "pid": 1280606, "phase": "extract_val", "samples": 6400, "total": 13446}
+{"status": "running", "pid": 1280606, "phase": "extract_val", "samples": 9600, "total": 13446}
+{"status": "running", "pid": 1280606, "phase": "extract_val", "samples": 12800, "total": 13446}
+{"status": "running", "pid": 1280606, "phase": "extract_val", "samples": 13446, "total": 13446}
+{"status": "running", "pid": 1280606, "phase": "extract_test", "samples": 16, "total": 13448}
+{"status": "running", "pid": 1280606, "phase": "extract_test", "samples": 3200, "total": 13448}
+{"status": "running", "pid": 1280606, "phase": "extract_test", "samples": 6400, "total": 13448}
+{"status": "running", "pid": 1280606, "phase": "extract_test", "samples": 9600, "total": 13448}
+{"status": "running", "pid": 1280606, "phase": "extract_test", "samples": 12800, "total": 13448}
+{"status": "running", "pid": 1280606, "phase": "extract_test", "samples": 13448, "total": 13448}
+{"status": "running", "pid": 1280606, "phase": "seed44_locked_validation", "samples": 16, "total": 13446}
+{"status": "running", "pid": 1280606, "phase": "seed44_locked_validation", "samples": 3200, "total": 13446}
+{"status": "running", "pid": 1280606, "phase": "seed44_locked_validation", "samples": 6400, "total": 13446}
+{"status": "running", "pid": 1280606, "phase": "seed44_locked_validation", "samples": 9600, "total": 13446}
+{"status": "running", "pid": 1280606, "phase": "seed44_locked_validation", "samples": 12800, "total": 13446}
+{"status": "running", "pid": 1280606, "phase": "seed44_locked_validation", "samples": 13446, "total": 13446}
+{"status": "running", "pid": 1280606, "phase": "extract_val", "samples": 16, "total": 13446}
+{"status": "running", "pid": 1280606, "phase": "extract_val", "samples": 3200, "total": 13446}
+{"status": "running", "pid": 1280606, "phase": "extract_val", "samples": 6400, "total": 13446}
+{"status": "running", "pid": 1280606, "phase": "extract_val", "samples": 9600, "total": 13446}
+{"status": "running", "pid": 1280606, "phase": "extract_val", "samples": 12800, "total": 13446}
+{"status": "running", "pid": 1280606, "phase": "extract_val", "samples": 13446, "total": 13446}
+{"status": "running", "pid": 1280606, "phase": "extract_test", "samples": 16, "total": 13448}
+{"status": "running", "pid": 1280606, "phase": "extract_test", "samples": 3200, "total": 13448}
+{"status": "running", "pid": 1280606, "phase": "extract_test", "samples": 6400, "total": 13448}
+{"status": "running", "pid": 1280606, "phase": "extract_test", "samples": 9600, "total": 13448}
+{"status": "running", "pid": 1280606, "phase": "extract_test", "samples": 12800, "total": 13448}
+{"status": "running", "pid": 1280606, "phase": "extract_test", "samples": 13448, "total": 13448}
+{"status": "completed", "output": "/home/nzxn/\u4e0b\u8f7d/WX/load/XG-NID/outputs/final_d32_gate_ablation_v1"}
