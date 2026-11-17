@@ -12,6 +12,30 @@ from test_packet_transition_readout import fixture
 
 
 class IndependentTransitionChecks(unittest.TestCase):
+    def test_freezing_reloaded_c_clears_last_step_gradients_without_changing_weights(self):
+        torch.set_num_threads(2)
+        _, graphs = fixture()
+        batch = run.core.Batch.from_data_list(graphs)
+        n0 = run.d32.baseline.build_experiment('E2', batch)
+        run.core.initialize(n0, 'E2', batch)
+        model = run.d32.model_from_stage('C', n0, torch.device('cpu'), 44)
+        config = run.d32.stage_protocols(run.raw.read(run.d32.CONFIG))['C']
+        optimizer = run.joint.optimizer(model, config)
+        model.train()
+        selected = {name: value.clone() for name, value in model.state_dict().items()}
+        run.legacy.step(model, batch, optimizer)
+        model.load_state_dict(selected, strict=True)
+        model.requires_grad_(False).eval()
+        self.assertTrue(any(param.grad is not None for param in model.parameters()))
+        with torch.no_grad():
+            expected = model(batch)
+
+        self.assertEqual(run.freeze_c(model), run.raw.state_digest(selected))
+        self.assertTrue(all(not param.requires_grad and param.grad is None for param in model.parameters()))
+        self.assertTrue(all(not module.training for module in model.modules()))
+        with torch.no_grad():
+            torch.testing.assert_close(model(batch), expected, rtol=0, atol=0)
+
     def test_recovery_matches_training_digest_even_if_confusion_matrix_is_unchanged(self):
         original = [{'sample_id': 'x', 'label': 2, 'prediction': 0},
                     {'sample_id': 'y', 'label': 2, 'prediction': 1}]

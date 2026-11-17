@@ -38,6 +38,13 @@ def model_state(model):
     return raw.state_digest(model.state_dict())
 
 
+def freeze_c(model):
+    # Reloading C's selected weights leaves gradients from its last optimizer step.
+    model.zero_grad(set_to_none=True)
+    model.requires_grad_(False).eval()
+    return model_state(model)
+
+
 def protocol(stage, seed, parent, split):
     config = {**d32.stage_protocols(raw.read(d32.CONFIG))[stage], 'seed': seed}
     if stage == 'CL-Last':
@@ -296,10 +303,14 @@ def replay_b_pair(model, head, data, rows, config, device, output, receipt_path,
                for arm, records in exports.items()}
     c_receipt, _ = near_tie_receipt(exports['A'], metrics['A'], c_selected, c_gold, candidates['A'])
     b_receipt, archive = near_tie_receipt(exports['B'], metrics['B'], b_selected, b_gold, candidates['B'])
+    c_state = model_state(model)
+    trainable = [name for name, param in model.named_parameters() if param.requires_grad]
+    with_grad = [name for name, param in model.named_parameters() if param.grad is not None]
     receipts = {
         'C': c_receipt, 'B': b_receipt, 'atol': REPLAY_ATOL, 'rtol': REPLAY_RTOL,
-        'frozen_c_unchanged': model_state(model) == frozen
-        and all(not p.requires_grad and p.grad is None for p in model.parameters()),
+        'frozen_c_expected_sha256': frozen, 'frozen_c_observed_sha256': c_state,
+        'c_trainable_parameters': trainable, 'c_parameters_with_grad': with_grad,
+        'frozen_c_unchanged': c_state == frozen and not trainable and not with_grad,
         'b_unchanged': model_state(head) == before,
     }
     raw.write(receipt_path, receipts)
@@ -318,8 +329,7 @@ def train_b(model, data, rows, device, output, binding, selected, gold, settings
               'baseline_prediction_ids_sha256': selected['prediction_ids_sha256']}
     folder = output / 'B'
     path = folder / 'transition_readout.pt'
-    model.requires_grad_(False).eval()
-    frozen = model_state(model)
+    frozen = freeze_c(model)
     head = transition.make_heads(config, device, ('B',))['B']
     initial_hash = model_state(head)
     require(initial_hash == settings['readout_initial_state_sha256'], 'B initial state differs from seed42 archive')
@@ -507,8 +517,7 @@ def load_locked_pair(repo, seed, data, rows, config, device, output, readout_see
     model = d32.model_from_stage('C', n0, device, seed)
     model.load_state_dict(c_saved['model_state'], strict=True)
     parent_binding(c_saved, model, 'C', n0, locked)
-    model.requires_grad_(False).eval()
-    c_state = model_state(model)
+    c_state = freeze_c(model)
     b_path = folder / 'B' / 'transition_readout.pt'
     b_gold_path = folder / 'B' / 'validation_predictions.jsonl.gz'
     b_metrics = locked['B']
