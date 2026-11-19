@@ -1,0 +1,93 @@
+{
+  "partition": "validation",
+  "budgets": [
+    {
+      "epoch_budget": 30,
+      "selected": {
+        "single": {
+          "epoch": 25,
+          "macro_f1": 0.976774969876255
+        },
+        "pointwise": {
+          "epoch": 26,
+          "macro_f1": 0.9767857414544743
+        },
+        "ordered": {
+          "epoch": 29,
+          "macro_f1": 0.9770444824578248
+        }
+      },
+      "delta_macro_f1_pp": {
+        "ordered-single": 0.02695125815698196,
+        "ordered-pointwise": 0.025874100335054884,
+        "pointwise-single": 0.0010771578219270772
+      }
+    },
+    {
+      "epoch_budget": 100,
+      "selected": {
+        "single": {
+          "epoch": 94,
+          "macro_f1": 0.9782536493369995
+        },
+        "pointwise": {
+          "epoch": 62,
+          "macro_f1": 0.977878675508174
+        },
+        "ordered": {
+          "epoch": 59,
+          "macro_f1": 0.9784583880846444
+        }
+      },
+      "delta_macro_f1_pp": {
+        "ordered-single": 0.020473874764481703,
+        "ordered-pointwise": 0.057971257647038144,
+        "pointwise-single": -0.03749738288255644
+      }
+    },
+    {
+      "epoch_budget": 150,
+      "selected": {
+        "single": {
+          "epoch": 94,
+          "macro_f1": 0.9782536493369995
+        },
+        "pointwise": {
+          "epoch": 129,
+          "macro_f1": 0.9779008285014896
+        },
+        "ordered": {
+          "epoch": 59,
+          "macro_f1": 0.9784583880846444
+        }
+      },
+      "delta_macro_f1_pp": {
+        "ordered-single": 0.020473874764481703,
+        "ordered-pointwise": 0.0557559583154732,
+        "pointwise-single": -0.035282083550991494
+      }
+    },
+    {
+      "epoch_budget": 200,
+      "selected": {
+        "single": {
+          "epoch": 94,
+          "macro_f1": 0.9782536493369995
+        },
+        "pointwise": {
+          "epoch": 129,
+          "macro_f1": 0.9779008285014896
+        },
+        "ordered": {
+          "epoch": 59,
+          "macro_f1": 0.9784583880846444
+        }
+      },
+      "delta_macro_f1_pp": {
+        "ordered-single": 0.020473874764481703,
+        "ordered-pointwise": 0.0557559583154732,
+        "pointwise-single": -0.035282083550991494
+      }
+    }
+  ]
+}

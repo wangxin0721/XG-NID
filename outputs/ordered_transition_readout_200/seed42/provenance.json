@@ -1,0 +1,21 @@
+{
+  "code_commit": "d03ced606154f1d7b4afd6f29ed0f6f4d2f7011d",
+  "source": {
+    "backbone_seed": 42,
+    "frozen_c_sha256": "c29a6433880f6e5ad8a45d387abef07cf54f895277f9f89b313edecfa7feedc6",
+    "split_id": "a8ae9c934eec9fee970cc725e60051d0c709e0f16c7dda14749350ff2006975a",
+    "manifest_sha256": "b8e9b0810471d0c2b52033488fab640625c3731315afd5d2add1571bd2518827",
+    "validation_digest": "396bd22c4004ecf6d283ac36f99ddada3845038ccd7d365a82e46208b1cc0974"
+  },
+  "settings_sha256": "a39b6f140e164a74f8cb1c739224d1131143e29c5008c1a060d4a5b26fbb5216",
+  "runner_sha256": "e20461a0d88ad178cf989698a764453e558956324f8a658876ad09766b3495aa",
+  "torch": "2.3.1+cu118",
+  "device": "Tesla T4",
+  "input_sha256": {
+    "data/processed/ciciot2023_grouped_input_v1/split.json": "2f6a7c307121454b881520379f0a298b7e2a179b1db4a7cb03741b7f648a774a",
+    "outputs/joint_cross_layer_query_s42_v1/C/best.pt": "3070acd40203ee3a3944dc5805452eb3a2d73218aa24b31379bdfd5cbb523568",
+    "outputs/joint_cross_layer_query_s42_v1/C/metrics.json": "834f4b9cd970ab41be54599a7e73cbaa5fd1469ac5201912ee366d34565a0039",
+    "outputs/joint_cross_layer_query_s42_v1/C/validation_predictions.jsonl.gz": "91d7765e52a9eca289f3bf0591bcaa06090bb6b1e2ac2319958ffe8df6a7028f",
+    "data/processed/ciciot2023_grouped_input_v1/samples.jsonl": "b8e9b0810471d0c2b52033488fab640625c3731315afd5d2add1571bd2518827"
+  }
+}

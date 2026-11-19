@@ -1,0 +1,11 @@
+{
+  "status": "running",
+  "pid": 1851968,
+  "phase": "paired_training",
+  "readout_seed": 42,
+  "epoch": 200,
+  "total_epochs": 200,
+  "macro_f1": {
+    "B": 0.977273746658396
+  }
+}
