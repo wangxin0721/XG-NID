@@ -16,8 +16,8 @@ from xgnid.ordered_transition_readout import OrderedTransitionReadout, attach_co
 
 
 raw, joint, evaluation, require = original.raw, original.joint, original.evaluation, original.require
-CONFIG = raw.ROOT / 'configs/ordered_transition_readout_v1.json'
-OUTPUT = 'outputs/ordered_transition_readout_v1'
+CONFIG = raw.ROOT / 'configs/ordered_transition_readout_200.json'
+OUTPUT = 'outputs/ordered_transition_readout_200'
 ARMS = ('single', 'pointwise', 'ordered')
 COMPARISONS = (('ordered', 'single'), ('ordered', 'pointwise'), ('pointwise', 'single'))
 
@@ -233,6 +233,39 @@ def train_seed(repo, seed, graph_root, output, settings, code_commit):
     raw.write(output / 'selection.json', {'binding': binding, 'settings_sha256': settings_sha,
               'selected': selection, 'results': results, 'test_evaluated': False})
     write_report(output, {seed: results}, 'validation')
+    write_budget_report(output, settings)
+
+
+def write_budget_report(output, settings):
+    """Compare equal training budgets using validation-only epoch ledgers."""
+    ledgers = {
+        name: [json.loads(line) for line in (output / name / 'epochs.jsonl').read_text(encoding='utf-8').splitlines()]
+        for name in ARMS
+    }
+    budgets = [value for value in (30, 100, 150, 200) if value <= settings['epochs']]
+    if settings['epochs'] not in budgets:
+        budgets.append(settings['epochs'])
+    rows = []
+    lines = ['# 等预算训练轮数比较（验证集）', '',
+             '每个预算独立从第 0 轮至该轮选择最佳 Macro-F1；同分取最早轮次。', '',
+             '| 轮数上限 | Single Macro-F1（最佳轮） | Pointwise Macro-F1（最佳轮） | Ordered Macro-F1（最佳轮） | Ordered−Single（百分点） | Ordered−Pointwise（百分点） |',
+             '| ---: | ---: | ---: | ---: | ---: | ---: |']
+    for budget in budgets:
+        selected = {}
+        for name in ARMS:
+            top = max((row for row in ledgers[name] if row['epoch'] <= budget),
+                      key=lambda row: row['validation']['B']['macro_f1'])
+            selected[name] = {'epoch': top['epoch'], 'macro_f1': top['validation']['B']['macro_f1']}
+        differences = {
+            after + '-' + before: 100 * (selected[after]['macro_f1'] - selected[before]['macro_f1'])
+            for after, before in COMPARISONS
+        }
+        rows.append({'epoch_budget': budget, 'selected': selected, 'delta_macro_f1_pp': differences})
+        scores = [f"{selected[name]['macro_f1']:.6%}（{selected[name]['epoch']}）" for name in ARMS]
+        deltas = [f"{differences[key]:+.6f}" for key in ('ordered-single', 'ordered-pointwise')]
+        lines.append('| ' + str(budget) + ' | ' + ' | '.join(scores + deltas) + ' |')
+    raw.write(output / 'budget_comparison.json', {'partition': 'validation', 'budgets': rows})
+    (output / 'budget_comparison.md').write_text('\n'.join(lines) + '\n', encoding='utf-8')
 
 
 def load_locks(root, settings):

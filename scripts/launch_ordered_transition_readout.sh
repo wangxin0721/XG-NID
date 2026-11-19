@@ -3,7 +3,7 @@
 set -eu
 repo=$(CDPATH= cd -- "${1:-.}" && pwd)
 action=${2:-42}
-run_name=${3:-ordered_transition_readout_v1}
+run_name=${3:-ordered_transition_readout_200}
 code=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
 case "$action" in
   42|43|44|test) ;;
