@@ -1,6 +1,6 @@
 {
   "schema": "xgnid.outputs-snapshot.v2",
-  "created_utc": "2026-11-17T08:15:50.445285+00:00",
+  "created_utc": "2026-11-19T07:06:41.340368+00:00",
   "source_directory": "/home/nzxn/下载/WX/load/XG-NID/outputs",
   "files": {
     "GNN4ID/best.pt": {
@@ -6835,6 +6835,126 @@
       "bytes": 64878,
       "sha256": "016aae8c3696a8e0025376b8c875162817f9800591f00b7be8f7dfe6ecda90bc"
     },
+    "ordered_transition_readout_v1/exitcode-42.txt": {
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    "ordered_transition_readout_v1/launcher-42.log": {
+      "bytes": 19624,
+      "sha256": "2a5bfb50976e21555bb35751ebe9187c9d6ddcc182709b4f1900d0880aac3c40"
+    },
+    "ordered_transition_readout_v1/seed42/.run.lock": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "ordered_transition_readout_v1/seed42/baseline_validation_replay.json": {
+      "bytes": 463,
+      "sha256": "5da0106341011a7f9f88ca07d8e13bf9872c787143e0214fd9a9cb65f8bda93d"
+    },
+    "ordered_transition_readout_v1/seed42/config.json": {
+      "bytes": 1120,
+      "sha256": "e4bffa588286c26483b9dafb612efe543453eb478d031be515dceaa190694d3c"
+    },
+    "ordered_transition_readout_v1/seed42/coverage.json": {
+      "bytes": 1755,
+      "sha256": "bba98940ba112686a42f4f8a0552b8081b8be513130bf7c2a81fe87f435eda8c"
+    },
+    "ordered_transition_readout_v1/seed42/ordered/epochs.jsonl": {
+      "bytes": 49088,
+      "sha256": "3d422a3a2a8b14f4c585943147c974087dc76d6ee15c141c11d507e699aa1fd6"
+    },
+    "ordered_transition_readout_v1/seed42/ordered/progress.json": {
+      "bytes": 182,
+      "sha256": "45d7c0e0627d8f4c513784e11a8a0609fae0f742608751ec970b9f6b90ea6b3b"
+    },
+    "ordered_transition_readout_v1/seed42/ordered/readout.pt": {
+      "bytes": 36972,
+      "sha256": "f7aee04d443f6508c1be9b88101e72f97ff5c9e8614bdeb01e13b43ca0829a9b"
+    },
+    "ordered_transition_readout_v1/seed42/pointwise/epochs.jsonl": {
+      "bytes": 49140,
+      "sha256": "979584aa20bf23e438ecefe327bb6c1930c35030a7906eb5fc910bc6f58bebd4"
+    },
+    "ordered_transition_readout_v1/seed42/pointwise/progress.json": {
+      "bytes": 182,
+      "sha256": "31ed1b6f06b32eb2047fa692da4813cce29468bc4b33253f91facd0d0bb932c1"
+    },
+    "ordered_transition_readout_v1/seed42/pointwise/readout.pt": {
+      "bytes": 36972,
+      "sha256": "7097879743bbd81611ffae8bf7c2e0b2fc5d8a95f5c61b4faaecc288efd8cbe3"
+    },
+    "ordered_transition_readout_v1/seed42/progress.json": {
+      "bytes": 107,
+      "sha256": "5b0b318f8332239e4d4131d0c6b3f0bf39f47fca83f1c79c5a3fcec531fb0a61"
+    },
+    "ordered_transition_readout_v1/seed42/provenance.json": {
+      "bytes": 1378,
+      "sha256": "5f1d09564b39196c56798c54889a1b4148640351344390b6873f92e38785f038"
+    },
+    "ordered_transition_readout_v1/seed42/report.md": {
+      "bytes": 520,
+      "sha256": "089a2f3143bc74c39e65d4341daf45c4b92f903ceda6cba748389a23f936544b"
+    },
+    "ordered_transition_readout_v1/seed42/selected_validation_replay.json": {
+      "bytes": 1060,
+      "sha256": "29d94feba0e4a45fb32fb12cf213f73085b4faee7e8a8c40eaf7e5e03caf7d98"
+    },
+    "ordered_transition_readout_v1/seed42/selection.json": {
+      "bytes": 38047,
+      "sha256": "4cc319c297c2fcc5e2b145aea5637744d62081d896a5dbf795caab5a55a234ee"
+    },
+    "ordered_transition_readout_v1/seed42/single/epochs.jsonl": {
+      "bytes": 49170,
+      "sha256": "a368a22c87c554ff91ef8b430c423cbf2d441881073c2fe1557c193c0334cdba"
+    },
+    "ordered_transition_readout_v1/seed42/single/progress.json": {
+      "bytes": 181,
+      "sha256": "4cf75bdba591da7c7513f928ed84fd170b7828685748b8d26748e63428f00b11"
+    },
+    "ordered_transition_readout_v1/seed42/single/readout.pt": {
+      "bytes": 31736,
+      "sha256": "ebac0c952a3c05580d55354ac1dbf2e0cdae3381a78ae2e2724deddb9655d593"
+    },
+    "ordered_transition_readout_v1/seed42/status.json": {
+      "bytes": 42,
+      "sha256": "44437fa80653fe3efc3266791b7baa3b0a8f97b6c4516d54ca3f36a78077b4a8"
+    },
+    "ordered_transition_readout_v1/seed42/summary.json": {
+      "bytes": 30310,
+      "sha256": "36a1b6898091c822affc00d1fb8debe3e7413082203688cd8ba06fd9fcd4a459"
+    },
+    "ordered_transition_readout_v1/seed42/validation/metrics.json": {
+      "bytes": 25706,
+      "sha256": "652fef80e96dd74846e14ac7bbabda9431cb5d4f0658b934ab85d4fbd7e2db00"
+    },
+    "ordered_transition_readout_v1/seed42/validation/ordered-A_changed_samples.jsonl.gz": {
+      "bytes": 2659,
+      "sha256": "ab0691abd693502d94084477e3ade2d82a96c2e3ac31dcfe93990300cca6d2ca"
+    },
+    "ordered_transition_readout_v1/seed42/validation/ordered-pointwise_changed_samples.jsonl.gz": {
+      "bytes": 1387,
+      "sha256": "ce2067be6834a3eeb398f1d637da226cadb60e3c1371ab7262d21d5d90ed7ba5"
+    },
+    "ordered_transition_readout_v1/seed42/validation/ordered-single_changed_samples.jsonl.gz": {
+      "bytes": 1451,
+      "sha256": "57dbf17541d8f5284de403fa7144365b1531d4232e187c800aac5369fb67d850"
+    },
+    "ordered_transition_readout_v1/seed42/validation/pointwise-A_changed_samples.jsonl.gz": {
+      "bytes": 2796,
+      "sha256": "7cb74cf0cc67ed14ef62b908eb66e7d1c3fdf35fff4c792a7f1e836f6de57bf0"
+    },
+    "ordered_transition_readout_v1/seed42/validation/pointwise-single_changed_samples.jsonl.gz": {
+      "bytes": 1182,
+      "sha256": "0794bd0bd900d67f49f6dac2619d513f7f785f05d20610acb5c8ad2b4a8616bc"
+    },
+    "ordered_transition_readout_v1/seed42/validation/single-A_changed_samples.jsonl.gz": {
+      "bytes": 2297,
+      "sha256": "b366035d2450c7c482c2cc4e97f34319514c2979cd64bc5e3d1ae63e9c65b404"
+    },
+    "ordered_transition_readout_v1/seed42/validation/validation_predictions.jsonl.gz": {
+      "bytes": 551279,
+      "sha256": "aa826c32073d207e5342b93ce8c865a397a93742a1f2b8e9f62b8ce1093bd1c9"
+    },
     "packet_pool_confirmation_s42_v1.log": {
       "bytes": 126275,
       "sha256": "18b7ba92fa5fc53c2c465bd64e59ea77f018499cf3e21b8e15ad4d5dacc6d66e"
@@ -9456,11 +9576,11 @@
       "sha256": "c2593fb7e95be3616c900c55e09a71bc0651f998359aa44c5024799152ef0b20"
     }
   },
-  "file_count": 2313,
+  "file_count": 2343,
   "symlink_count": 100,
-  "regular_file_count": 2213,
-  "total_bytes": 6439502356,
+  "regular_file_count": 2243,
+  "total_bytes": 6440439164,
   "updated_directories": [
-    "final_d32_gate_ablation_v1"
+    "ordered_transition_readout_v1"
   ]
 }

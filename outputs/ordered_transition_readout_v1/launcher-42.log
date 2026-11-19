@@ -1,0 +1,143 @@
+/home/nzxn/miniconda3/envs/wx/lib/python3.9/site-packages/torch_geometric/typing.py:99: UserWarning: An issue occurred while importing 'torch-spline-conv'. Disabling its usage. Stacktrace: /home/nzxn/miniconda3/envs/wx/lib/python3.9/site-packages/torch_spline_conv/_version_cuda.so: undefined symbol: _ZN3c1017RegisterOperatorsD1Ev
+  warnings.warn(
+{"status": "running", "pid": 1845617, "phase": "cache_val", "samples": 16, "total": 13446}
+{"status": "running", "pid": 1845617, "phase": "cache_val", "samples": 3200, "total": 13446}
+{"status": "running", "pid": 1845617, "phase": "cache_val", "samples": 6400, "total": 13446}
+{"status": "running", "pid": 1845617, "phase": "cache_val", "samples": 9600, "total": 13446}
+{"status": "running", "pid": 1845617, "phase": "cache_val", "samples": 12800, "total": 13446}
+{"status": "running", "pid": 1845617, "phase": "cache_val", "samples": 13446, "total": 13446}
+{"status": "running", "pid": 1845617, "phase": "cache_train", "samples": 16, "total": 107621}
+{"status": "running", "pid": 1845617, "phase": "cache_train", "samples": 3200, "total": 107621}
+{"status": "running", "pid": 1845617, "phase": "cache_train", "samples": 6400, "total": 107621}
+{"status": "running", "pid": 1845617, "phase": "cache_train", "samples": 9600, "total": 107621}
+{"status": "running", "pid": 1845617, "phase": "cache_train", "samples": 12800, "total": 107621}
+{"status": "running", "pid": 1845617, "phase": "cache_train", "samples": 16000, "total": 107621}
+{"status": "running", "pid": 1845617, "phase": "cache_train", "samples": 19200, "total": 107621}
+{"status": "running", "pid": 1845617, "phase": "cache_train", "samples": 22400, "total": 107621}
+{"status": "running", "pid": 1845617, "phase": "cache_train", "samples": 25600, "total": 107621}
+{"status": "running", "pid": 1845617, "phase": "cache_train", "samples": 28800, "total": 107621}
+{"status": "running", "pid": 1845617, "phase": "cache_train", "samples": 32000, "total": 107621}
+{"status": "running", "pid": 1845617, "phase": "cache_train", "samples": 35200, "total": 107621}
+{"status": "running", "pid": 1845617, "phase": "cache_train", "samples": 38400, "total": 107621}
+{"status": "running", "pid": 1845617, "phase": "cache_train", "samples": 41600, "total": 107621}
+{"status": "running", "pid": 1845617, "phase": "cache_train", "samples": 44800, "total": 107621}
+{"status": "running", "pid": 1845617, "phase": "cache_train", "samples": 48000, "total": 107621}
+{"status": "running", "pid": 1845617, "phase": "cache_train", "samples": 51200, "total": 107621}
+{"status": "running", "pid": 1845617, "phase": "cache_train", "samples": 54400, "total": 107621}
+{"status": "running", "pid": 1845617, "phase": "cache_train", "samples": 57600, "total": 107621}
+{"status": "running", "pid": 1845617, "phase": "cache_train", "samples": 60800, "total": 107621}
+{"status": "running", "pid": 1845617, "phase": "cache_train", "samples": 64000, "total": 107621}
+{"status": "running", "pid": 1845617, "phase": "cache_train", "samples": 67200, "total": 107621}
+{"status": "running", "pid": 1845617, "phase": "cache_train", "samples": 70400, "total": 107621}
+{"status": "running", "pid": 1845617, "phase": "cache_train", "samples": 73600, "total": 107621}
+{"status": "running", "pid": 1845617, "phase": "cache_train", "samples": 76800, "total": 107621}
+{"status": "running", "pid": 1845617, "phase": "cache_train", "samples": 80000, "total": 107621}
+{"status": "running", "pid": 1845617, "phase": "cache_train", "samples": 83200, "total": 107621}
+{"status": "running", "pid": 1845617, "phase": "cache_train", "samples": 86400, "total": 107621}
+{"status": "running", "pid": 1845617, "phase": "cache_train", "samples": 89600, "total": 107621}
+{"status": "running", "pid": 1845617, "phase": "cache_train", "samples": 92800, "total": 107621}
+{"status": "running", "pid": 1845617, "phase": "cache_train", "samples": 96000, "total": 107621}
+{"status": "running", "pid": 1845617, "phase": "cache_train", "samples": 99200, "total": 107621}
+{"status": "running", "pid": 1845617, "phase": "cache_train", "samples": 102400, "total": 107621}
+{"status": "running", "pid": 1845617, "phase": "cache_train", "samples": 105600, "total": 107621}
+{"status": "running", "pid": 1845617, "phase": "cache_train", "samples": 107621, "total": 107621}
+{"status": "running", "pid": 1845617, "phase": "paired_training", "readout_seed": 42, "epoch": 0, "total_epochs": 30, "macro_f1": {"B": 0.9755380342743278}}
+{"status": "running", "pid": 1845617, "phase": "paired_training", "readout_seed": 42, "epoch": 1, "total_epochs": 30, "macro_f1": {"B": 0.97549451326083}}
+{"status": "running", "pid": 1845617, "phase": "paired_training", "readout_seed": 42, "epoch": 2, "total_epochs": 30, "macro_f1": {"B": 0.9756833064808678}}
+{"status": "running", "pid": 1845617, "phase": "paired_training", "readout_seed": 42, "epoch": 3, "total_epochs": 30, "macro_f1": {"B": 0.9751585709328029}}
+{"status": "running", "pid": 1845617, "phase": "paired_training", "readout_seed": 42, "epoch": 4, "total_epochs": 30, "macro_f1": {"B": 0.9750210459642991}}
+{"status": "running", "pid": 1845617, "phase": "paired_training", "readout_seed": 42, "epoch": 5, "total_epochs": 30, "macro_f1": {"B": 0.9753654143116379}}
+{"status": "running", "pid": 1845617, "phase": "paired_training", "readout_seed": 42, "epoch": 6, "total_epochs": 30, "macro_f1": {"B": 0.9752523075204844}}
+{"status": "running", "pid": 1845617, "phase": "paired_training", "readout_seed": 42, "epoch": 7, "total_epochs": 30, "macro_f1": {"B": 0.9749012595503185}}
+{"status": "running", "pid": 1845617, "phase": "paired_training", "readout_seed": 42, "epoch": 8, "total_epochs": 30, "macro_f1": {"B": 0.9753568187833894}}
+{"status": "running", "pid": 1845617, "phase": "paired_training", "readout_seed": 42, "epoch": 9, "total_epochs": 30, "macro_f1": {"B": 0.9751418921445936}}
+{"status": "running", "pid": 1845617, "phase": "paired_training", "readout_seed": 42, "epoch": 10, "total_epochs": 30, "macro_f1": {"B": 0.975052273219222}}
+{"status": "running", "pid": 1845617, "phase": "paired_training", "readout_seed": 42, "epoch": 11, "total_epochs": 30, "macro_f1": {"B": 0.9748367426130357}}
+{"status": "running", "pid": 1845617, "phase": "paired_training", "readout_seed": 42, "epoch": 12, "total_epochs": 30, "macro_f1": {"B": 0.9749730337528041}}
+{"status": "running", "pid": 1845617, "phase": "paired_training", "readout_seed": 42, "epoch": 13, "total_epochs": 30, "macro_f1": {"B": 0.9761509353161221}}
+{"status": "running", "pid": 1845617, "phase": "paired_training", "readout_seed": 42, "epoch": 14, "total_epochs": 30, "macro_f1": {"B": 0.9755915204133677}}
+{"status": "running", "pid": 1845617, "phase": "paired_training", "readout_seed": 42, "epoch": 15, "total_epochs": 30, "macro_f1": {"B": 0.9757673165410407}}
+{"status": "running", "pid": 1845617, "phase": "paired_training", "readout_seed": 42, "epoch": 16, "total_epochs": 30, "macro_f1": {"B": 0.9761971364664241}}
+{"status": "running", "pid": 1845617, "phase": "paired_training", "readout_seed": 42, "epoch": 17, "total_epochs": 30, "macro_f1": {"B": 0.9749219381919666}}
+{"status": "running", "pid": 1845617, "phase": "paired_training", "readout_seed": 42, "epoch": 18, "total_epochs": 30, "macro_f1": {"B": 0.9765631315526887}}
+{"status": "running", "pid": 1845617, "phase": "paired_training", "readout_seed": 42, "epoch": 19, "total_epochs": 30, "macro_f1": {"B": 0.9762136692823782}}
+{"status": "running", "pid": 1845617, "phase": "paired_training", "readout_seed": 42, "epoch": 20, "total_epochs": 30, "macro_f1": {"B": 0.9756435312360991}}
+{"status": "running", "pid": 1845617, "phase": "paired_training", "readout_seed": 42, "epoch": 21, "total_epochs": 30, "macro_f1": {"B": 0.9765764639032374}}
+{"status": "running", "pid": 1845617, "phase": "paired_training", "readout_seed": 42, "epoch": 22, "total_epochs": 30, "macro_f1": {"B": 0.9746653457467567}}
+{"status": "running", "pid": 1845617, "phase": "paired_training", "readout_seed": 42, "epoch": 23, "total_epochs": 30, "macro_f1": {"B": 0.9761475462580727}}
+{"status": "running", "pid": 1845617, "phase": "paired_training", "readout_seed": 42, "epoch": 24, "total_epochs": 30, "macro_f1": {"B": 0.975087423616781}}
+{"status": "running", "pid": 1845617, "phase": "paired_training", "readout_seed": 42, "epoch": 25, "total_epochs": 30, "macro_f1": {"B": 0.9766433466456315}}
+{"status": "running", "pid": 1845617, "phase": "paired_training", "readout_seed": 42, "epoch": 26, "total_epochs": 30, "macro_f1": {"B": 0.9766421601482305}}
+{"status": "running", "pid": 1845617, "phase": "paired_training", "readout_seed": 42, "epoch": 27, "total_epochs": 30, "macro_f1": {"B": 0.974714838994772}}
+{"status": "running", "pid": 1845617, "phase": "paired_training", "readout_seed": 42, "epoch": 28, "total_epochs": 30, "macro_f1": {"B": 0.9766265593060532}}
+{"status": "running", "pid": 1845617, "phase": "paired_training", "readout_seed": 42, "epoch": 29, "total_epochs": 30, "macro_f1": {"B": 0.9755213434575638}}
+{"status": "running", "pid": 1845617, "phase": "paired_training", "readout_seed": 42, "epoch": 30, "total_epochs": 30, "macro_f1": {"B": 0.976049093136541}}
+{"status": "running", "pid": 1845617, "phase": "paired_training", "readout_seed": 42, "epoch": 0, "total_epochs": 30, "macro_f1": {"B": 0.9755380342743278}}
+{"status": "running", "pid": 1845617, "phase": "paired_training", "readout_seed": 42, "epoch": 1, "total_epochs": 30, "macro_f1": {"B": 0.974845659989613}}
+{"status": "running", "pid": 1845617, "phase": "paired_training", "readout_seed": 42, "epoch": 2, "total_epochs": 30, "macro_f1": {"B": 0.9752950461797594}}
+{"status": "running", "pid": 1845617, "phase": "paired_training", "readout_seed": 42, "epoch": 3, "total_epochs": 30, "macro_f1": {"B": 0.975430989862832}}
+{"status": "running", "pid": 1845617, "phase": "paired_training", "readout_seed": 42, "epoch": 4, "total_epochs": 30, "macro_f1": {"B": 0.9751199509302383}}
+{"status": "running", "pid": 1845617, "phase": "paired_training", "readout_seed": 42, "epoch": 5, "total_epochs": 30, "macro_f1": {"B": 0.9754222396450591}}
+{"status": "running", "pid": 1845617, "phase": "paired_training", "readout_seed": 42, "epoch": 6, "total_epochs": 30, "macro_f1": {"B": 0.9751883697619649}}
+{"status": "running", "pid": 1845617, "phase": "paired_training", "readout_seed": 42, "epoch": 7, "total_epochs": 30, "macro_f1": {"B": 0.975212465494582}}
+{"status": "running", "pid": 1845617, "phase": "paired_training", "readout_seed": 42, "epoch": 8, "total_epochs": 30, "macro_f1": {"B": 0.9755708448897816}}
+{"status": "running", "pid": 1845617, "phase": "paired_training", "readout_seed": 42, "epoch": 9, "total_epochs": 30, "macro_f1": {"B": 0.9752328152014957}}
+{"status": "running", "pid": 1845617, "phase": "paired_training", "readout_seed": 42, "epoch": 10, "total_epochs": 30, "macro_f1": {"B": 0.9749794606159438}}
+{"status": "running", "pid": 1845617, "phase": "paired_training", "readout_seed": 42, "epoch": 11, "total_epochs": 30, "macro_f1": {"B": 0.975815392260584}}
+{"status": "running", "pid": 1845617, "phase": "paired_training", "readout_seed": 42, "epoch": 12, "total_epochs": 30, "macro_f1": {"B": 0.9757080696378767}}
+{"status": "running", "pid": 1845617, "phase": "paired_training", "readout_seed": 42, "epoch": 13, "total_epochs": 30, "macro_f1": {"B": 0.9761987118773037}}
+{"status": "running", "pid": 1845617, "phase": "paired_training", "readout_seed": 42, "epoch": 14, "total_epochs": 30, "macro_f1": {"B": 0.9759306312973001}}
+{"status": "running", "pid": 1845617, "phase": "paired_training", "readout_seed": 42, "epoch": 15, "total_epochs": 30, "macro_f1": {"B": 0.975505897693512}}
+{"status": "running", "pid": 1845617, "phase": "paired_training", "readout_seed": 42, "epoch": 16, "total_epochs": 30, "macro_f1": {"B": 0.9758415009117066}}
+{"status": "running", "pid": 1845617, "phase": "paired_training", "readout_seed": 42, "epoch": 17, "total_epochs": 30, "macro_f1": {"B": 0.9750291262589332}}
+{"status": "running", "pid": 1845617, "phase": "paired_training", "readout_seed": 42, "epoch": 18, "total_epochs": 30, "macro_f1": {"B": 0.976313219338962}}
+{"status": "running", "pid": 1845617, "phase": "paired_training", "readout_seed": 42, "epoch": 19, "total_epochs": 30, "macro_f1": {"B": 0.9753956250259938}}
+{"status": "running", "pid": 1845617, "phase": "paired_training", "readout_seed": 42, "epoch": 20, "total_epochs": 30, "macro_f1": {"B": 0.9748858452849258}}
+{"status": "running", "pid": 1845617, "phase": "paired_training", "readout_seed": 42, "epoch": 21, "total_epochs": 30, "macro_f1": {"B": 0.9757753964956017}}
+{"status": "running", "pid": 1845617, "phase": "paired_training", "readout_seed": 42, "epoch": 22, "total_epochs": 30, "macro_f1": {"B": 0.9747995446486082}}
+{"status": "running", "pid": 1845617, "phase": "paired_training", "readout_seed": 42, "epoch": 23, "total_epochs": 30, "macro_f1": {"B": 0.9754971880337923}}
+{"status": "running", "pid": 1845617, "phase": "paired_training", "readout_seed": 42, "epoch": 24, "total_epochs": 30, "macro_f1": {"B": 0.9756925235979869}}
+{"status": "running", "pid": 1845617, "phase": "paired_training", "readout_seed": 42, "epoch": 25, "total_epochs": 30, "macro_f1": {"B": 0.9767704043675729}}
+{"status": "running", "pid": 1845617, "phase": "paired_training", "readout_seed": 42, "epoch": 26, "total_epochs": 30, "macro_f1": {"B": 0.9767857414544743}}
+{"status": "running", "pid": 1845617, "phase": "paired_training", "readout_seed": 42, "epoch": 27, "total_epochs": 30, "macro_f1": {"B": 0.9750848345653029}}
+{"status": "running", "pid": 1845617, "phase": "paired_training", "readout_seed": 42, "epoch": 28, "total_epochs": 30, "macro_f1": {"B": 0.9759867527732956}}
+{"status": "running", "pid": 1845617, "phase": "paired_training", "readout_seed": 42, "epoch": 29, "total_epochs": 30, "macro_f1": {"B": 0.97590025209911}}
+{"status": "running", "pid": 1845617, "phase": "paired_training", "readout_seed": 42, "epoch": 30, "total_epochs": 30, "macro_f1": {"B": 0.9755161524507434}}
+{"status": "running", "pid": 1845617, "phase": "paired_training", "readout_seed": 42, "epoch": 0, "total_epochs": 30, "macro_f1": {"B": 0.9755380342743278}}
+{"status": "running", "pid": 1845617, "phase": "paired_training", "readout_seed": 42, "epoch": 1, "total_epochs": 30, "macro_f1": {"B": 0.974845659989613}}
+{"status": "running", "pid": 1845617, "phase": "paired_training", "readout_seed": 42, "epoch": 2, "total_epochs": 30, "macro_f1": {"B": 0.9751639528274992}}
+{"status": "running", "pid": 1845617, "phase": "paired_training", "readout_seed": 42, "epoch": 3, "total_epochs": 30, "macro_f1": {"B": 0.975430989862832}}
+{"status": "running", "pid": 1845617, "phase": "paired_training", "readout_seed": 42, "epoch": 4, "total_epochs": 30, "macro_f1": {"B": 0.9749077270663433}}
+{"status": "running", "pid": 1845617, "phase": "paired_training", "readout_seed": 42, "epoch": 5, "total_epochs": 30, "macro_f1": {"B": 0.9754849554421448}}
+{"status": "running", "pid": 1845617, "phase": "paired_training", "readout_seed": 42, "epoch": 6, "total_epochs": 30, "macro_f1": {"B": 0.9752309114213034}}
+{"status": "running", "pid": 1845617, "phase": "paired_training", "readout_seed": 42, "epoch": 7, "total_epochs": 30, "macro_f1": {"B": 0.9752121856640614}}
+{"status": "running", "pid": 1845617, "phase": "paired_training", "readout_seed": 42, "epoch": 8, "total_epochs": 30, "macro_f1": {"B": 0.9757050916675792}}
+{"status": "running", "pid": 1845617, "phase": "paired_training", "readout_seed": 42, "epoch": 9, "total_epochs": 30, "macro_f1": {"B": 0.9753631446242266}}
+{"status": "running", "pid": 1845617, "phase": "paired_training", "readout_seed": 42, "epoch": 10, "total_epochs": 30, "macro_f1": {"B": 0.9753221155295422}}
+{"status": "running", "pid": 1845617, "phase": "paired_training", "readout_seed": 42, "epoch": 11, "total_epochs": 30, "macro_f1": {"B": 0.9759026956107957}}
+{"status": "running", "pid": 1845617, "phase": "paired_training", "readout_seed": 42, "epoch": 12, "total_epochs": 30, "macro_f1": {"B": 0.9760673142890064}}
+{"status": "running", "pid": 1845617, "phase": "paired_training", "readout_seed": 42, "epoch": 13, "total_epochs": 30, "macro_f1": {"B": 0.9760902566813031}}
+{"status": "running", "pid": 1845617, "phase": "paired_training", "readout_seed": 42, "epoch": 14, "total_epochs": 30, "macro_f1": {"B": 0.9757444473097467}}
+{"status": "running", "pid": 1845617, "phase": "paired_training", "readout_seed": 42, "epoch": 15, "total_epochs": 30, "macro_f1": {"B": 0.9757119800688763}}
+{"status": "running", "pid": 1845617, "phase": "paired_training", "readout_seed": 42, "epoch": 16, "total_epochs": 30, "macro_f1": {"B": 0.9766911104678532}}
+{"status": "running", "pid": 1845617, "phase": "paired_training", "readout_seed": 42, "epoch": 17, "total_epochs": 30, "macro_f1": {"B": 0.9755244653930278}}
+{"status": "running", "pid": 1845617, "phase": "paired_training", "readout_seed": 42, "epoch": 18, "total_epochs": 30, "macro_f1": {"B": 0.9759596610823463}}
+{"status": "running", "pid": 1845617, "phase": "paired_training", "readout_seed": 42, "epoch": 19, "total_epochs": 30, "macro_f1": {"B": 0.976089988570237}}
+{"status": "running", "pid": 1845617, "phase": "paired_training", "readout_seed": 42, "epoch": 20, "total_epochs": 30, "macro_f1": {"B": 0.9757890876795733}}
+{"status": "running", "pid": 1845617, "phase": "paired_training", "readout_seed": 42, "epoch": 21, "total_epochs": 30, "macro_f1": {"B": 0.9760240633870066}}
+{"status": "running", "pid": 1845617, "phase": "paired_training", "readout_seed": 42, "epoch": 22, "total_epochs": 30, "macro_f1": {"B": 0.9745640182087927}}
+{"status": "running", "pid": 1845617, "phase": "paired_training", "readout_seed": 42, "epoch": 23, "total_epochs": 30, "macro_f1": {"B": 0.9754477239454924}}
+{"status": "running", "pid": 1845617, "phase": "paired_training", "readout_seed": 42, "epoch": 24, "total_epochs": 30, "macro_f1": {"B": 0.9766261390101167}}
+{"status": "running", "pid": 1845617, "phase": "paired_training", "readout_seed": 42, "epoch": 25, "total_epochs": 30, "macro_f1": {"B": 0.9768563954539552}}
+{"status": "running", "pid": 1845617, "phase": "paired_training", "readout_seed": 42, "epoch": 26, "total_epochs": 30, "macro_f1": {"B": 0.9766710417731722}}
+{"status": "running", "pid": 1845617, "phase": "paired_training", "readout_seed": 42, "epoch": 27, "total_epochs": 30, "macro_f1": {"B": 0.9758625437361317}}
+{"status": "running", "pid": 1845617, "phase": "paired_training", "readout_seed": 42, "epoch": 28, "total_epochs": 30, "macro_f1": {"B": 0.9763925516407556}}
+{"status": "running", "pid": 1845617, "phase": "paired_training", "readout_seed": 42, "epoch": 29, "total_epochs": 30, "macro_f1": {"B": 0.9770444824578248}}
+{"status": "running", "pid": 1845617, "phase": "paired_training", "readout_seed": 42, "epoch": 30, "total_epochs": 30, "macro_f1": {"B": 0.9755188893502691}}
+{"status": "running", "pid": 1845617, "phase": "replay_val", "samples": 16, "total": 13446}
+{"status": "running", "pid": 1845617, "phase": "replay_val", "samples": 3200, "total": 13446}
+{"status": "running", "pid": 1845617, "phase": "replay_val", "samples": 6400, "total": 13446}
+{"status": "running", "pid": 1845617, "phase": "replay_val", "samples": 9600, "total": 13446}
+{"status": "running", "pid": 1845617, "phase": "replay_val", "samples": 12800, "total": 13446}
+{"status": "running", "pid": 1845617, "phase": "replay_val", "samples": 13446, "total": 13446}
+{"status": "completed", "output": "/home/nzxn/\u4e0b\u8f7d/WX/load/XG-NID/outputs/ordered_transition_readout_v1"}
