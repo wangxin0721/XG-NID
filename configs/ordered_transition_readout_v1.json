@@ -1,0 +1,40 @@
+{
+  "schema": "xgnid.ordered-transition-readout.v1",
+  "backbone_seeds": [
+    42,
+    43,
+    44
+  ],
+  "readout_seed": 42,
+  "epochs": 30,
+  "batch_size": 512,
+  "eval_batch_size": 16,
+  "learning_rate": 0.001,
+  "training_samples": 107621,
+  "validation_samples": 13446,
+  "test_samples": 13448,
+  "arms": [
+    "single",
+    "pointwise",
+    "ordered"
+  ],
+  "parameters_per_arm": {
+    "single": 3200,
+    "pointwise": 3728,
+    "ordered": 3728
+  },
+  "selection": "best_validation_macro_f1_including_zero_earliest_tie",
+  "validation_investment_reference_pp": {
+    "ordered_minus_single": 0.1,
+    "ordered_minus_pointwise": 0.05
+  },
+  "phase_one": "seed42_train_validation",
+  "fixed_test_evaluations": "after_all_three_seeds_are_validation_locked",
+  "frozen_source": "independent_C",
+  "source_archive": "dacaa08f2119e06f29f224abf579002210ce5c3f",
+  "loss": "plain_final_NLL",
+  "two_step_rule": "two_valid_forward_links_sharing_the_middle_packet",
+  "scale_fusion": "mean_of_available_scales",
+  "publication_remote": "git@github.com:wangxin0721/XG-NID.git",
+  "publication_branch": "codex/server-outputs"
+}
