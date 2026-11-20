@@ -8,9 +8,9 @@
       "validation_digest": "396bd22c4004ecf6d283ac36f99ddada3845038ccd7d365a82e46208b1cc0974"
     },
     "settings_sha256": "a7d1273cf5845f0687d6a74018f934488d4851530a2fbb22b2f4f734c0f97359",
-    "code_commit": "1e47dd4eca96ba9d4bf8e640f9053bc4591fd656",
+    "code_commit": "4f2dd776fd3040a94dd4199d47866f1ed9968a03",
     "source_files_sha256": {
-      "scripts/run_joint_transition_fusion.py": "c8aa881dd724805bc42d734973797df8e7c6ae08b445fb56bf96bf422908d676",
+      "scripts/run_joint_transition_fusion.py": "add67d0fc200d6970c3f56328d60b3662894a24934fc0a51feda8cc80be5484b",
       "scripts/joint_transition_training.py": "db4c924570f29fdc0197e7b164d98e5cd6fe7183e2b6737db763ffbac5ed9a8d",
       "scripts/joint_transition_diagnostics.py": "12db0c8a95e2cdcb78e9456245d6ada8c0f8b263e89a2244f6849665002db765",
       "scripts/diagnose_joint_transition_fusion.py": "96f5aeb3f35273955a43568a4da09e13cca7dc509e92b0be502a1921ee588ec3",
@@ -58,7 +58,7 @@
     "workers": 2
   },
   "test_graph_loads": 0,
-  "code_root": "/home/nzxn/下载/WX/load/XG-NID-joint-transition-fusion",
+  "code_root": "/home/nzxn/下载/WX/load/XG-NID-joint-transition-fusion-replayfix",
   "data_repo": "/home/nzxn/下载/WX/load/XG-NID",
   "environment": {
     "python": "3.9.23",

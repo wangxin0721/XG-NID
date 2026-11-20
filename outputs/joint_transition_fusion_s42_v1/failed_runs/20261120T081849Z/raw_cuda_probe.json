@@ -1,0 +1,308 @@
+{
+  "passed": true,
+  "source_unchanged": true,
+  "independent_parameter_storage": true,
+  "steps": {
+    "joint_base": [
+      {
+        "step": 1,
+        "nll": 0.07198894768953323,
+        "gradient_l1": {
+          "fusion.flow_projection.weight": 11.01906967163086,
+          "fusion.flow_projection.bias": 0.6619052290916443,
+          "fusion.packet_projection.weight": 18.4824161529541,
+          "fusion.packet_projection.bias": 0.6595714688301086,
+          "fusion.gate.0.weight": 1.7120065689086914,
+          "fusion.gate.0.bias": 0.029256686568260193,
+          "fusion.gate.2.weight": 3.1007633209228516,
+          "fusion.gate.2.bias": 0.23382413387298584,
+          "fusion.shared_head.0.weight": 8.303018569946289,
+          "fusion.shared_head.0.bias": 0.33279508352279663,
+          "fusion.shared_head.2.weight": 4.167427062988281,
+          "fusion.shared_head.2.bias": 0.0862341821193695
+        }
+      },
+      {
+        "step": 2,
+        "nll": 0.0672062411904335,
+        "gradient_l1": {
+          "fusion.flow_projection.weight": 10.587535858154297,
+          "fusion.flow_projection.bias": 0.6361860036849976,
+          "fusion.packet_projection.weight": 17.740758895874023,
+          "fusion.packet_projection.bias": 0.6334269046783447,
+          "fusion.gate.0.weight": 1.659981608390808,
+          "fusion.gate.0.bias": 0.028395412489771843,
+          "fusion.gate.2.weight": 2.974795341491699,
+          "fusion.gate.2.bias": 0.22521784901618958,
+          "fusion.shared_head.0.weight": 7.964664459228516,
+          "fusion.shared_head.0.bias": 0.3196718692779541,
+          "fusion.shared_head.2.weight": 4.004363536834717,
+          "fusion.shared_head.2.bias": 0.08298802375793457
+        }
+      },
+      {
+        "step": 3,
+        "nll": 0.06262477487325668,
+        "gradient_l1": {
+          "fusion.flow_projection.weight": 10.14482593536377,
+          "fusion.flow_projection.bias": 0.6097573041915894,
+          "fusion.packet_projection.weight": 16.982236862182617,
+          "fusion.packet_projection.bias": 0.6066120862960815,
+          "fusion.gate.0.weight": 1.6055560111999512,
+          "fusion.gate.0.bias": 0.027485305443406105,
+          "fusion.gate.2.weight": 2.8460538387298584,
+          "fusion.gate.2.bias": 0.21630768477916718,
+          "fusion.shared_head.0.weight": 7.619822978973389,
+          "fusion.shared_head.0.bias": 0.3062254786491394,
+          "fusion.shared_head.2.weight": 3.837881088256836,
+          "fusion.shared_head.2.bias": 0.07965321093797684
+        }
+      }
+    ],
+    "joint_single": [
+      {
+        "step": 1,
+        "nll": 0.07198894768953323,
+        "gradient_l1": {
+          "fusion.flow_projection.weight": 11.01906967163086,
+          "fusion.flow_projection.bias": 0.6619052290916443,
+          "fusion.packet_projection.weight": 18.4824161529541,
+          "fusion.packet_projection.bias": 0.6595714688301086,
+          "fusion.gate.0.weight": 1.7120065689086914,
+          "fusion.gate.0.bias": 0.029256686568260193,
+          "fusion.gate.2.weight": 3.1007633209228516,
+          "fusion.gate.2.bias": 0.23382413387298584,
+          "fusion.shared_head.0.weight": 8.303018569946289,
+          "fusion.shared_head.0.bias": 0.33279508352279663,
+          "fusion.shared_head.2.weight": 4.167427062988281,
+          "fusion.shared_head.2.bias": 0.0862341821193695,
+          "readout.edge.weight": 0.0,
+          "readout.edge.bias": 0.0,
+          "readout.query.weight": 0.0,
+          "readout.query.bias": 0.0,
+          "readout.output.weight": 1.7449698448181152
+        }
+      },
+      {
+        "step": 2,
+        "nll": 0.06554797291755676,
+        "gradient_l1": {
+          "fusion.flow_projection.weight": 10.428696632385254,
+          "fusion.flow_projection.bias": 0.6267719268798828,
+          "fusion.packet_projection.weight": 17.454570770263672,
+          "fusion.packet_projection.bias": 0.6235460638999939,
+          "fusion.gate.0.weight": 1.6326719522476196,
+          "fusion.gate.0.bias": 0.027932267636060715,
+          "fusion.gate.2.weight": 2.929675579071045,
+          "fusion.gate.2.bias": 0.22207358479499817,
+          "fusion.shared_head.0.weight": 7.836706638336182,
+          "fusion.shared_head.0.bias": 0.31481289863586426,
+          "fusion.shared_head.2.weight": 3.9423515796661377,
+          "fusion.shared_head.2.bias": 0.08178768306970596,
+          "readout.edge.weight": 0.036942556500434875,
+          "readout.edge.bias": 0.024478651583194733,
+          "readout.query.weight": 0.0006204416858963668,
+          "readout.query.bias": 2.871156539185904e-05,
+          "readout.output.weight": 1.6444218158721924
+        }
+      },
+      {
+        "step": 3,
+        "nll": 0.05940374732017517,
+        "gradient_l1": {
+          "fusion.flow_projection.weight": 9.811399459838867,
+          "fusion.flow_projection.bias": 0.5899339914321899,
+          "fusion.packet_projection.weight": 16.386478424072266,
+          "fusion.packet_projection.bias": 0.5859085321426392,
+          "fusion.gate.0.weight": 1.5483818054199219,
+          "fusion.gate.0.bias": 0.026511648669838905,
+          "fusion.gate.2.weight": 2.7516703605651855,
+          "fusion.gate.2.bias": 0.20961704850196838,
+          "fusion.shared_head.0.weight": 7.354411602020264,
+          "fusion.shared_head.0.bias": 0.2960512340068817,
+          "fusion.shared_head.2.weight": 3.709207057952881,
+          "fusion.shared_head.2.bias": 0.07713450491428375,
+          "readout.edge.weight": 0.06902894377708435,
+          "readout.edge.bias": 0.04592520743608475,
+          "readout.query.weight": 0.001202126033604145,
+          "readout.query.bias": 5.562958540394902e-05,
+          "readout.output.weight": 1.5859653949737549
+        }
+      }
+    ],
+    "joint_pointwise": [
+      {
+        "step": 1,
+        "nll": 0.07198894768953323,
+        "gradient_l1": {
+          "fusion.flow_projection.weight": 11.01906967163086,
+          "fusion.flow_projection.bias": 0.6619052290916443,
+          "fusion.packet_projection.weight": 18.4824161529541,
+          "fusion.packet_projection.bias": 0.6595714688301086,
+          "fusion.gate.0.weight": 1.7120065689086914,
+          "fusion.gate.0.bias": 0.029256686568260193,
+          "fusion.gate.2.weight": 3.1007633209228516,
+          "fusion.gate.2.bias": 0.23382413387298584,
+          "fusion.shared_head.0.weight": 8.303018569946289,
+          "fusion.shared_head.0.bias": 0.33279508352279663,
+          "fusion.shared_head.2.weight": 4.167427062988281,
+          "fusion.shared_head.2.bias": 0.0862341821193695,
+          "readout.edge.weight": 0.0,
+          "readout.edge.bias": 0.0,
+          "readout.query.weight": 0.0,
+          "readout.query.bias": 0.0,
+          "readout.output.weight": 1.2158410549163818,
+          "readout.context.weight": 0.0,
+          "readout.context.bias": 0.0
+        }
+      },
+      {
+        "step": 2,
+        "nll": 0.06604906171560287,
+        "gradient_l1": {
+          "fusion.flow_projection.weight": 10.476635932922363,
+          "fusion.flow_projection.bias": 0.6296747922897339,
+          "fusion.packet_projection.weight": 17.539430618286133,
+          "fusion.packet_projection.bias": 0.62655109167099,
+          "fusion.gate.0.weight": 1.6406981945037842,
+          "fusion.gate.0.bias": 0.0280749648809433,
+          "fusion.gate.2.weight": 2.942737102508545,
+          "fusion.gate.2.bias": 0.22305865585803986,
+          "fusion.shared_head.0.weight": 7.873427867889404,
+          "fusion.shared_head.0.bias": 0.3162640929222107,
+          "fusion.shared_head.2.weight": 3.9598588943481445,
+          "fusion.shared_head.2.bias": 0.0821433737874031,
+          "readout.edge.weight": 0.01628653146326542,
+          "readout.edge.bias": 0.010624180547893047,
+          "readout.query.weight": 7.133349572541192e-05,
+          "readout.query.bias": 3.3010296647262294e-06,
+          "readout.output.weight": 1.1500699520111084,
+          "readout.context.weight": 0.01107068732380867,
+          "readout.context.bias": 0.011232146061956882
+        }
+      },
+      {
+        "step": 3,
+        "nll": 0.06036379933357239,
+        "gradient_l1": {
+          "fusion.flow_projection.weight": 9.91171646118164,
+          "fusion.flow_projection.bias": 0.5960004329681396,
+          "fusion.packet_projection.weight": 16.562938690185547,
+          "fusion.packet_projection.bias": 0.5921608805656433,
+          "fusion.gate.0.weight": 1.5652070045471191,
+          "fusion.gate.0.bias": 0.026808401569724083,
+          "fusion.gate.2.weight": 2.7791848182678223,
+          "fusion.gate.2.bias": 0.21169033646583557,
+          "fusion.shared_head.0.weight": 7.431107044219971,
+          "fusion.shared_head.0.bias": 0.299085795879364,
+          "fusion.shared_head.2.weight": 3.7459757328033447,
+          "fusion.shared_head.2.bias": 0.0778825581073761,
+          "readout.edge.weight": 0.0305910836905241,
+          "readout.edge.bias": 0.020080294460058212,
+          "readout.query.weight": 0.00011745290248654783,
+          "readout.query.bias": 5.435251750895986e-06,
+          "readout.output.weight": 1.1186730861663818,
+          "readout.context.weight": 0.0210591871291399,
+          "readout.context.bias": 0.021255649626255035
+        }
+      }
+    ],
+    "joint_ordered": [
+      {
+        "step": 1,
+        "nll": 0.07198894768953323,
+        "gradient_l1": {
+          "fusion.flow_projection.weight": 11.01906967163086,
+          "fusion.flow_projection.bias": 0.6619052290916443,
+          "fusion.packet_projection.weight": 18.4824161529541,
+          "fusion.packet_projection.bias": 0.6595714688301086,
+          "fusion.gate.0.weight": 1.7120065689086914,
+          "fusion.gate.0.bias": 0.029256686568260193,
+          "fusion.gate.2.weight": 3.1007633209228516,
+          "fusion.gate.2.bias": 0.23382413387298584,
+          "fusion.shared_head.0.weight": 8.303018569946289,
+          "fusion.shared_head.0.bias": 0.33279508352279663,
+          "fusion.shared_head.2.weight": 4.167427062988281,
+          "fusion.shared_head.2.bias": 0.0862341821193695,
+          "readout.edge.weight": 0.0,
+          "readout.edge.bias": 0.0,
+          "readout.query.weight": 0.0,
+          "readout.query.bias": 0.0,
+          "readout.output.weight": 1.215259075164795,
+          "readout.context.weight": 0.0,
+          "readout.context.bias": 0.0
+        }
+      },
+      {
+        "step": 2,
+        "nll": 0.06604965776205063,
+        "gradient_l1": {
+          "fusion.flow_projection.weight": 10.476693153381348,
+          "fusion.flow_projection.bias": 0.6296780109405518,
+          "fusion.packet_projection.weight": 17.539539337158203,
+          "fusion.packet_projection.bias": 0.6265546083450317,
+          "fusion.gate.0.weight": 1.6407086849212646,
+          "fusion.gate.0.bias": 0.028075121343135834,
+          "fusion.gate.2.weight": 2.9427554607391357,
+          "fusion.gate.2.bias": 0.22305968403816223,
+          "fusion.shared_head.0.weight": 7.873477458953857,
+          "fusion.shared_head.0.bias": 0.31626588106155396,
+          "fusion.shared_head.2.weight": 3.959883689880371,
+          "fusion.shared_head.2.bias": 0.08214383572340012,
+          "readout.edge.weight": 0.016303813084959984,
+          "readout.edge.bias": 0.010632066056132317,
+          "readout.query.weight": 7.282152364496142e-05,
+          "readout.query.bias": 3.3698897823342122e-06,
+          "readout.output.weight": 1.1495283842086792,
+          "readout.context.weight": 0.01111882459372282,
+          "readout.context.bias": 0.011273909360170364
+        }
+      },
+      {
+        "step": 3,
+        "nll": 0.060364652425050735,
+        "gradient_l1": {
+          "fusion.flow_projection.weight": 9.911810874938965,
+          "fusion.flow_projection.bias": 0.5960055589675903,
+          "fusion.packet_projection.weight": 16.5631046295166,
+          "fusion.packet_projection.bias": 0.5921666026115417,
+          "fusion.gate.0.weight": 1.5652236938476562,
+          "fusion.gate.0.bias": 0.026808669790625572,
+          "fusion.gate.2.weight": 2.7792129516601562,
+          "fusion.gate.2.bias": 0.21169212460517883,
+          "fusion.shared_head.0.weight": 7.431180953979492,
+          "fusion.shared_head.0.bias": 0.29908859729766846,
+          "fusion.shared_head.2.weight": 3.74601149559021,
+          "fusion.shared_head.2.bias": 0.07788323611021042,
+          "readout.edge.weight": 0.03061789460480213,
+          "readout.edge.bias": 0.020089594647288322,
+          "readout.query.weight": 0.00012190425331937149,
+          "readout.query.bias": 5.641242751153186e-06,
+          "readout.output.weight": 1.1181952953338623,
+          "readout.context.weight": 0.02112274058163166,
+          "readout.context.bias": 0.021306591108441353
+        }
+      }
+    ]
+  },
+  "mode": "server_raw_graph_cuda",
+  "formal_training_started": false,
+  "sample_ids": [
+    "edge_sha256:d29c1b820b89ce7e8a623bcba49573bba3eb4c7a3f1457f001c81a4fa2fd2a60",
+    "edge_sha256:f1eb6f634ee8efc9f32d942405781fe6c994d2b1d2a6a02c2128a1035d33a3c2",
+    "edge_sha256:0ab59781c4d1aa9bb6cc0ab78ff4ca8fb6f224544ebb347256c378316b48339d",
+    "edge_sha256:eba9299b509677bd7e419985a3a00d3486b1bcaf1e7242b42ad2628384dff914",
+    "edge_sha256:23953ad32c5ab357fb122bfcfb347313f98946b3ab8a9e78c374905a222b90b7",
+    "edge_sha256:e2c94dae57cfe5ab2512c200409313889761c0c84ae792815375ed304d194437",
+    "edge_sha256:b8777406d422dbc93afd9d86e2572988a9129aa0de7157f1327905606c80837a",
+    "edge_sha256:5e92a370f344f433ed6f4e20bae8f45257fc7018b4f1f9d9ca47867af2358cca",
+    "edge_sha256:01d62db97e73b0257d111e47fd3172f17ce8bcd4fe262e0989a2a69d677dd837",
+    "edge_sha256:e27b5ad09b3158ac6e9b2928212d46cbeddae6120073d334990cda9909a861ba",
+    "edge_sha256:0a6c4f9a4b4bd6753cbf3aeccf6c1e11cc39d28f693ffce3bbd9ef885350c053",
+    "edge_sha256:8d538c7f2bb1ddc755e214f67d1809d52a3efe21b7c97d80a8e5aea89ab8e6fa",
+    "edge_sha256:63faaf35c6a82d7cc1e28fbc1d800246ef1f6472ae25868fda664d582b6953f0",
+    "edge_sha256:9fe53c74ca1a8cbdaf46e09e13cb71aa97538956f848a5505a877fd53d617319",
+    "edge_sha256:2a544260e7a95cdf21d187446028f19f8bee421fb9a3f07ad76a28661029e316",
+    "edge_sha256:0ddad5e18c0865794d2dd51c643757d37142da5ab380203e0c2282de3fcdba13"
+  ]
+}

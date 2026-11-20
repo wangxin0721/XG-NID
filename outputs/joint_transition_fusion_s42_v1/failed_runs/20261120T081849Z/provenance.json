@@ -1,0 +1,71 @@
+{
+  "binding": {
+    "source": {
+      "backbone_seed": 42,
+      "frozen_c_sha256": "c29a6433880f6e5ad8a45d387abef07cf54f895277f9f89b313edecfa7feedc6",
+      "split_id": "a8ae9c934eec9fee970cc725e60051d0c709e0f16c7dda14749350ff2006975a",
+      "manifest_sha256": "b8e9b0810471d0c2b52033488fab640625c3731315afd5d2add1571bd2518827",
+      "validation_digest": "396bd22c4004ecf6d283ac36f99ddada3845038ccd7d365a82e46208b1cc0974"
+    },
+    "settings_sha256": "a7d1273cf5845f0687d6a74018f934488d4851530a2fbb22b2f4f734c0f97359",
+    "code_commit": "1e47dd4eca96ba9d4bf8e640f9053bc4591fd656",
+    "source_files_sha256": {
+      "scripts/run_joint_transition_fusion.py": "c8aa881dd724805bc42d734973797df8e7c6ae08b445fb56bf96bf422908d676",
+      "scripts/joint_transition_training.py": "db4c924570f29fdc0197e7b164d98e5cd6fe7183e2b6737db763ffbac5ed9a8d",
+      "scripts/joint_transition_diagnostics.py": "12db0c8a95e2cdcb78e9456245d6ada8c0f8b263e89a2244f6849665002db765",
+      "scripts/diagnose_joint_transition_fusion.py": "96f5aeb3f35273955a43568a4da09e13cca7dc509e92b0be502a1921ee588ec3",
+      "scripts/run_ordered_transition_readout.py": "e20461a0d88ad178cf989698a764453e558956324f8a658876ad09766b3495aa",
+      "scripts/run_packet_transition_readout.py": "6c1828bf4a0c230621b5a4197ffae47b310966f11529b671b3f5293326bc4f8b",
+      "scripts/run_packet_transition_diagnosis.py": "00d7bbcf16a1dcf70442cdbc7f07bf3df74599e6f18f5aeca4f4b74acab3c51a",
+      "scripts/replay_flow_query_selective.py": "762f0d1df84e0ede16721fe800aaa2ea12c0e70d3fa45c249413fcdd8acc8426",
+      "scripts/run_independent_packet_transition.py": "4ea65e63616a8ba0c97506b5fa971b4f3ad4c2e0624ccf94053d063e72770edc",
+      "scripts/run_joint_cross_layer_query.py": "bdee40be6bf93f1038b6eb24eadf740260a7cfc8b05a11e3f4956d218774c5a9",
+      "scripts/evaluate_joint_cross_layer_query.py": "98aba98bbafd64fb2271879f40180c467867867bf811836eeac8c335faa54a7d",
+      "scripts/run_attention_operator_pair.py": "4b497bfd87b1257729b916ff79672246ad97d1275fbc6dddd77adb3a54b5e5c8",
+      "scripts/audit_packet_transitions.py": "11916302072028261d6314f06152705b5d44c07b27f0cf7477f62edf28dad068",
+      "scripts/grouped_graphs.py": "c1b1273d62fc44d91f7c9b300b66a083c1f80ef2c9c4314a62c4bbd5d708bbb4",
+      "src/xgnid/joint_transition_fusion.py": "522b505dc753ae61376d45d3a6bd92c60c7f754a00902a3f9084fb91a1c2fd66",
+      "src/xgnid/ordered_transition_readout.py": "812f0c8583d2b0df9ef433414be0554af42026425f3bd8b1e84cfe463ee5ca07",
+      "src/xgnid/packet_transition_readout.py": "58fb2df6e007da0746e1da0bcedc870e091fb200269f94f6d8dedf78f4cd5160",
+      "src/xgnid/packet_pooling.py": "c423c573b624a98a40ee03b5b286f2dcd3297db43a0eedcf1a654590b163742d",
+      "src/xgnid/joint_cross_layer_query.py": "e62ce7933540527b7615e36cd2106d2afec82ac8a1e80424622556d4e0a47715",
+      "src/xgnid/fusion_dimension.py": "eb8dd5c91a63b424bd421c29e333ff24492e5474cdabe77408abde5f81bb703d",
+      "src/xgnid/model.py": "28e21e94118db0a4110d17923d2840e18959669d798f628018c98c91c0202631"
+    },
+    "environment": {
+      "python": "3.9.23",
+      "torch": "2.3.1+cu118",
+      "pyg": "2.5.3",
+      "cuda": "11.8",
+      "device": "Tesla T4",
+      "platform": "Linux-6.8.0-138-generic-x86_64-with-glibc2.35"
+    },
+    "input_sha256": {
+      "outputs/ordered_transition_readout_200/seed42/provenance.json": "8a76f7ed792c1d43275df008d0b64387292eddf92b3aa884fbb2e8a1ef413e0c",
+      "outputs/ordered_transition_readout_200/seed42/selection.json": "f6f6a2e025c88de5b8cfa292f92e2ffc3f4de5aa833b2af51dd5f222fac9323d",
+      "outputs/ordered_transition_readout_200/seed42/coverage.json": "bba98940ba112686a42f4f8a0552b8081b8be513130bf7c2a81fe87f435eda8c",
+      "outputs/ordered_transition_readout_200/seed42/validation/validation_predictions.jsonl.gz": "db1e5a9656df731bc32d70af4dc8ee22023f5a17afaf616ca5954651ff8c4662",
+      "outputs/ordered_transition_readout_200/seed42/single/readout.pt": "345bd80c62faa08353a01173703f91905582b0023b45738ef707c08e48c891b5",
+      "outputs/ordered_transition_readout_200/seed42/pointwise/readout.pt": "65711b15783f252c66de1d156126eb8ad4532bbb012f8e94f084ed869a822c68",
+      "outputs/ordered_transition_readout_200/seed42/ordered/readout.pt": "af18b2fdcb65226b4f3b6a19e8efaabbe34a6704df19a88fadbd0596ec483220",
+      "data/processed/ciciot2023_grouped_input_v1/split.json": "2f6a7c307121454b881520379f0a298b7e2a179b1db4a7cb03741b7f648a774a",
+      "outputs/joint_cross_layer_query_s42_v1/C/best.pt": "3070acd40203ee3a3944dc5805452eb3a2d73218aa24b31379bdfd5cbb523568",
+      "outputs/joint_cross_layer_query_s42_v1/C/metrics.json": "834f4b9cd970ab41be54599a7e73cbaa5fd1469ac5201912ee366d34565a0039",
+      "outputs/joint_cross_layer_query_s42_v1/C/validation_predictions.jsonl.gz": "91d7765e52a9eca289f3bf0591bcaa06090bb6b1e2ac2319958ffe8df6a7028f",
+      "data/processed/ciciot2023_grouped_input_v1/samples.jsonl": "b8e9b0810471d0c2b52033488fab640625c3731315afd5d2add1571bd2518827"
+    },
+    "graph_root": "/home/nzxn/下载/WX/load/XG-NID/data/processed/CICIoT2023_processed/processed",
+    "workers": 2
+  },
+  "test_graph_loads": 0,
+  "code_root": "/home/nzxn/下载/WX/load/XG-NID-joint-transition-fusion",
+  "data_repo": "/home/nzxn/下载/WX/load/XG-NID",
+  "environment": {
+    "python": "3.9.23",
+    "torch": "2.3.1+cu118",
+    "pyg": "2.5.3",
+    "cuda": "11.8",
+    "device": "Tesla T4",
+    "platform": "Linux-6.8.0-138-generic-x86_64-with-glibc2.35"
+  }
+}

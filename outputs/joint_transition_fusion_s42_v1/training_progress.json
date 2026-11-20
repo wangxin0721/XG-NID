@@ -1,0 +1,12 @@
+{
+  "completed_epoch": 200,
+  "current_epoch": 200,
+  "cursor": 107621,
+  "updates_per_arm": 42200,
+  "selected_epochs": {
+    "joint_base": 39,
+    "joint_single": 59,
+    "joint_pointwise": 84,
+    "joint_ordered": 84
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "joint_base": {
+    "passed": true,
+    "samples": 13446,
+    "selected_epoch": 39,
+    "prediction_ids_sha256": "6fc9794ce0f7d84a019234d85ac08cc486be5d9d335c9dc20c67170c58a0ea3a"
+  },
+  "joint_single": {
+    "passed": true,
+    "samples": 13446,
+    "selected_epoch": 59,
+    "prediction_ids_sha256": "786fb2c89c030e033d606ac9c28495d0c3a128c6b9eefd56c43fc745c8b9b361"
+  },
+  "joint_pointwise": {
+    "passed": true,
+    "samples": 13446,
+    "selected_epoch": 84,
+    "prediction_ids_sha256": "8b7e56bf730272846ae714df397676b8897210782487a123e8f6064d876c7895"
+  },
+  "joint_ordered": {
+    "passed": true,
+    "samples": 13446,
+    "selected_epoch": 84,
+    "prediction_ids_sha256": "e2f80e8653ba826101da57db6c6463d2b5a10fd52d805ab9090c1c74f97f2c70"
+  }
+}

@@ -1,7 +1,5 @@
 {
-  "status": "failed",
-  "exception": "ValueError('Original-C raw validation reference differs')",
-  "test_evaluated": false,
-  "formal_training_started": false,
-  "traceback": "Traceback (most recent call last):\n  File \"/home/nzxn/下载/WX/load/XG-NID-joint-transition-fusion/scripts/run_joint_transition_fusion.py\", line 265, in main\n    result = run(repo, args.data_root, output, raw.read(CONFIG), args.resume, args.probe_only)\n  File \"/home/nzxn/下载/WX/load/XG-NID-joint-transition-fusion/scripts/run_joint_transition_fusion.py\", line 210, in run\n    require(reference == gold, 'Original-C raw validation reference differs')\n  File \"/home/nzxn/下载/WX/load/XG-NID-joint-transition-fusion/scripts/summarize_attention_operator_pair.py\", line 12, in require\n    raise ValueError(message)\nValueError: Original-C raw validation reference differs\n"
+  "status": "completed",
+  "formal_training_started": true,
+  "test_evaluated": false
 }

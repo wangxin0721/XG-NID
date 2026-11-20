@@ -1,0 +1,59 @@
+{
+  "schema": "xgnid.joint-transition-fusion.s42.v1",
+  "backbone_seed": 42,
+  "readout_seed": 42,
+  "epochs": 200,
+  "batch_size": 512,
+  "eval_batch_size": 16,
+  "readout_learning_rate": 0.001,
+  "fusion_learning_rate": 0.0001,
+  "optimizer": "Adam",
+  "adam_betas": [
+    0.9,
+    0.999
+  ],
+  "adam_eps": 1e-08,
+  "weight_decay": 0.0,
+  "training_samples": 107621,
+  "validation_samples": 13446,
+  "test_samples": 13448,
+  "updates_per_epoch": 211,
+  "updates_per_arm": 42200,
+  "selection": "best_validation_macro_f1_including_zero_earliest_tie",
+  "loss": "plain_final_eight_class_NLL",
+  "arms": [
+    "joint_base",
+    "joint_single",
+    "joint_pointwise",
+    "joint_ordered"
+  ],
+  "readout_parameters": {
+    "joint_base": 0,
+    "joint_single": 3200,
+    "joint_pointwise": 3728,
+    "joint_ordered": 3728
+  },
+  "fusion_parameters": 7144,
+  "checkpoint_every_paired_update": true,
+  "historical_directory": "outputs/ordered_transition_readout_200/seed42",
+  "historical_commit": "944ba61faca474d02c409c2038e02f33e5da3d50",
+  "historical_code_commit": "d03ced606154f1d7b4afd6f29ed0f6f4d2f7011d",
+  "historical_sha256": {
+    "provenance.json": "8a76f7ed792c1d43275df008d0b64387292eddf92b3aa884fbb2e8a1ef413e0c",
+    "selection.json": "f6f6a2e025c88de5b8cfa292f92e2ffc3f4de5aa833b2af51dd5f222fac9323d",
+    "coverage.json": "bba98940ba112686a42f4f8a0552b8081b8be513130bf7c2a81fe87f435eda8c",
+    "validation/validation_predictions.jsonl.gz": "db1e5a9656df731bc32d70af4dc8ee22023f5a17afaf616ca5954651ff8c4662",
+    "single/readout.pt": "345bd80c62faa08353a01173703f91905582b0023b45738ef707c08e48c891b5",
+    "pointwise/readout.pt": "65711b15783f252c66de1d156126eb8ad4532bbb012f8e94f084ed869a822c68",
+    "ordered/readout.pt": "af18b2fdcb65226b4f3b6a19e8efaabbe34a6704df19a88fadbd0596ec483220"
+  },
+  "investment_reference_pp": {
+    "joint_ordered-joint_single": 0.1,
+    "joint_ordered-joint_pointwise": 0.05
+  },
+  "partitions": [
+    "train",
+    "val"
+  ],
+  "test_evaluated": false
+}

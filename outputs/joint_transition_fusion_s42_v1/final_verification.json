@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "source_C_parameters_buffers_modes_unchanged": true,
+  "source_inputs_unchanged": true,
+  "test_graph_loads": 0,
+  "updates_per_arm": 42200,
+  "epochs_per_arm": 200,
+  "same_sample_order_all_arms": true,
+  "best_raw_graph_replays_passed": true,
+  "seconds": 42685.60980436695
+}
