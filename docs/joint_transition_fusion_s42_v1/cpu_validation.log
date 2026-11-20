@@ -1,0 +1,21 @@
+test_complete_runner_probe_cache_training_and_completed_resume_with_synthetic_graphs (test_joint_transition_fusion.JointFusionChecks) ... ok
+test_continuity_diagnosis_does_not_infer_context_from_two_edges (test_joint_transition_fusion.JointFusionChecks) ... ok
+test_failure_inside_four_arm_transaction_recovers_previous_committed_update (test_joint_transition_fusion.JointFusionChecks) ... ok
+test_interrupted_mid_epoch_and_epoch_boundary_equal_uninterrupted (test_joint_transition_fusion.JointFusionChecks) ... ok
+test_joint_initialization_gradients_and_frozen_raw_graph_buffers (test_joint_transition_fusion.JointFusionChecks) ... ok
+test_publisher_uploads_failure_evidence_and_preserves_training_exit (test_joint_transition_fusion.JointFusionChecks) ... ok
+test_resume_rejects_changed_configuration_and_source_binding (test_joint_transition_fusion.JointFusionChecks) ... ok
+test_sampler_matches_historical_order_including_singleton_tail (test_joint_transition_fusion.JointFusionChecks) ... ok
+test_selected_checkpoint_replays_on_raw_graphs_and_reports_all_comparisons (test_joint_transition_fusion.JointFusionChecks) ... ok
+test_context_observes_order_and_cannot_read_another_graph (test_ordered_transition_readout.OrderedReadoutChecks) ... ok
+test_continuity_respects_missing_links_and_graph_boundaries (test_ordered_transition_readout.OrderedReadoutChecks) ... ok
+test_old_training_entry_replays_new_heads_on_graphs (test_ordered_transition_readout.OrderedReadoutChecks) ... ok
+test_original_mode_is_exact_and_all_modes_preserve_empty_or_single_edge (test_ordered_transition_readout.OrderedReadoutChecks) ... ok
+test_zero_initialization_and_context_gradient_after_first_update (test_ordered_transition_readout.OrderedReadoutChecks) ... ok
+test_chronological_edges_and_packed_reordering (test_packet_transition_readout.TransitionReadoutChecks) ... ok
+test_paired_training_selects_and_replays_best (test_packet_transition_readout.TransitionReadoutChecks) ... ok
+
+----------------------------------------------------------------------
+Ran 16 tests in 12.975s
+
+OK

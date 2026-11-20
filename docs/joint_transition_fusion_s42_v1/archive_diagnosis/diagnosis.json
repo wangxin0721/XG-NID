@@ -1,0 +1,175 @@
+{
+  "samples": 13446,
+  "changed": 50,
+  "groups": {
+    "repaired": {
+      "count": 22,
+      "true_class": {
+        "Benign": 8,
+        "WebBased": 4,
+        "Spoofing": 4,
+        "Recon": 4,
+        "Dos": 2
+      },
+      "directions": {
+        "Benign: WebBased -> Benign": 2,
+        "Benign: Spoofing -> Benign": 4,
+        "Benign: Recon -> Benign": 2,
+        "WebBased: Recon -> WebBased": 3,
+        "WebBased: Benign -> WebBased": 1,
+        "Spoofing: Benign -> Spoofing": 4,
+        "Recon: Benign -> Recon": 1,
+        "Recon: WebBased -> Recon": 3,
+        "Dos: Recon -> Dos": 2
+      },
+      "valid_one_step_counts": {
+        "8": 2,
+        "10": 1,
+        "2": 4,
+        "5": 1,
+        "3": 3,
+        "19": 2,
+        "9": 2,
+        "1": 7
+      },
+      "valid_two_step_counts": {
+        "unknown": 15,
+        "0": 7
+      },
+      "by_class_and_context": {
+        "Benign|unknown": 8,
+        "WebBased|unknown": 2,
+        "WebBased|absent": 2,
+        "Spoofing|absent": 3,
+        "Spoofing|unknown": 1,
+        "Recon|unknown": 3,
+        "Recon|absent": 1,
+        "Dos|unknown": 1,
+        "Dos|absent": 1
+      }
+    },
+    "regressed": {
+      "count": 22,
+      "true_class": {
+        "Benign": 9,
+        "WebBased": 4,
+        "Spoofing": 1,
+        "Recon": 8
+      },
+      "directions": {
+        "Benign: Benign -> Spoofing": 6,
+        "Benign: Benign -> Recon": 2,
+        "Benign: Benign -> WebBased": 1,
+        "WebBased: WebBased -> Benign": 2,
+        "WebBased: WebBased -> Dos": 2,
+        "Spoofing: Spoofing -> Recon": 1,
+        "Recon: Recon -> WebBased": 4,
+        "Recon: Recon -> Dos": 1,
+        "Recon: Recon -> Benign": 2,
+        "Recon: Recon -> Spoofing": 1
+      },
+      "valid_one_step_counts": {
+        "19": 3,
+        "3": 4,
+        "1": 5,
+        "5": 1,
+        "8": 2,
+        "2": 3,
+        "4": 1,
+        "9": 2,
+        "7": 1
+      },
+      "valid_two_step_counts": {
+        "unknown": 17,
+        "0": 5
+      },
+      "by_class_and_context": {
+        "Benign|unknown": 5,
+        "Benign|absent": 4,
+        "WebBased|unknown": 4,
+        "Spoofing|unknown": 1,
+        "Recon|absent": 1,
+        "Recon|unknown": 7
+      }
+    },
+    "wrong_changed": {
+      "count": 6,
+      "true_class": {
+        "Benign": 1,
+        "Spoofing": 2,
+        "Recon": 2,
+        "BruteForce": 1
+      },
+      "directions": {
+        "Benign: WebBased -> Spoofing": 1,
+        "Spoofing: Recon -> Benign": 1,
+        "Spoofing: DDos -> Recon": 1,
+        "Recon: BruteForce -> Spoofing": 1,
+        "Recon: Benign -> Spoofing": 1,
+        "BruteForce: Spoofing -> WebBased": 1
+      },
+      "valid_one_step_counts": {
+        "19": 1,
+        "15": 1,
+        "6": 2,
+        "3": 1,
+        "1": 1
+      },
+      "valid_two_step_counts": {
+        "unknown": 5,
+        "0": 1
+      },
+      "by_class_and_context": {
+        "Benign|unknown": 1,
+        "Spoofing|unknown": 2,
+        "Recon|unknown": 2,
+        "BruteForce|absent": 1
+      }
+    }
+  },
+  "evidence": {
+    "archive_commit": "944ba61faca474d02c409c2038e02f33e5da3d50",
+    "prediction_file_sha256": "db1e5a9656df731bc32d70af4dc8ee22023f5a17afaf616ca5954651ff8c4662",
+    "raw_graph_replay_completed": false,
+    "pending": [
+      "per_sample_continuity_for_ge2",
+      "attention",
+      "residual",
+      "gate_weights"
+    ]
+  },
+  "context_coverage": {
+    "Benign": {
+      "samples": 2389,
+      "with_context": 1300
+    },
+    "WebBased": {
+      "samples": 544,
+      "with_context": 404
+    },
+    "Spoofing": {
+      "samples": 1739,
+      "with_context": 798
+    },
+    "Recon": {
+      "samples": 2278,
+      "with_context": 332
+    },
+    "Mirai": {
+      "samples": 2400,
+      "with_context": 2399
+    },
+    "Dos": {
+      "samples": 1475,
+      "with_context": 493
+    },
+    "DDos": {
+      "samples": 2388,
+      "with_context": 2384
+    },
+    "BruteForce": {
+      "samples": 233,
+      "with_context": 227
+    }
+  }
+}

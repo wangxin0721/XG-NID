@@ -44,7 +44,9 @@ class OrderedReadoutChecks(unittest.TestCase):
         with torch.no_grad():
             baseline.output.weight.fill_(0.1)
             single.output.weight.fill_(0.1)
-        expected, weights = baseline(query, values, lengths)
+        # Match strides as well as values for the bitwise check. The 71-column
+        # packed slice can select a different CPU GEMM path than contiguous values.
+        expected, weights = baseline(query, packed[:, :70], lengths)
         actual, new_weights = single(query, packed, lengths)
         torch.testing.assert_close(expected, actual, rtol=0, atol=0)
         torch.testing.assert_close(weights, new_weights, rtol=0, atol=0)
