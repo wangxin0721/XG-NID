@@ -1,6 +1,6 @@
 {
   "schema": "xgnid.outputs-snapshot.v2",
-  "created_utc": "2026-11-20T08:11:38.501332+00:00",
+  "created_utc": "2026-11-20T08:13:31.101693+00:00",
   "source_directory": "/home/nzxn/下载/WX/load/XG-NID/outputs",
   "files": {
     "GNN4ID/best.pt": {
@@ -6847,6 +6847,10 @@
       "bytes": 2000,
       "sha256": "a7d1273cf5845f0687d6a74018f934488d4851530a2fbb22b2f4f734c0f97359"
     },
+    "joint_transition_fusion_s42_v1/exit_codes.json": {
+      "bytes": 346,
+      "sha256": "e932c050d8a4f8d0924314593eaa4282daf2a4c0129b26816874a873d1981f6e"
+    },
     "joint_transition_fusion_s42_v1/frozen_val_features.pt": {
       "bytes": 50121740,
       "sha256": "a5492779b6ac3666f62797dee056d3757a23046b8dba2bcdc6bae6dd65351844"
@@ -6878,6 +6882,10 @@
     "joint_transition_fusion_s42_v1/training_exit.json": {
       "bytes": 116,
       "sha256": "428a41887a624fa1a7f2b382b5ce371676682ef4f5c4522482cf5bb8ab69ada1"
+    },
+    "joint_transition_fusion_s42_v1/upload.log": {
+      "bytes": 2291,
+      "sha256": "1bbc6c245b51933196863d135f342a2febe37b75a5e44e14757195bbb5247ae5"
     },
     "ordered_transition_readout_200/exitcode-42.txt": {
       "bytes": 2,
@@ -9748,10 +9756,10 @@
       "sha256": "c2593fb7e95be3616c900c55e09a71bc0651f998359aa44c5024799152ef0b20"
     }
   },
-  "file_count": 2386,
+  "file_count": 2388,
   "symlink_count": 100,
-  "regular_file_count": 2286,
-  "total_bytes": 6492422452,
+  "regular_file_count": 2288,
+  "total_bytes": 6492425089,
   "updated_directories": [
     "joint_transition_fusion_s42_v1"
   ]
