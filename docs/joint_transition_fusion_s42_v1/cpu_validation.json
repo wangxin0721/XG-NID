@@ -1,7 +1,7 @@
 {
   "scope": "local_synthetic_CPU_only",
   "passed": true,
-  "tests_run": 16,
+  "tests_run": 18,
   "failures": 0,
   "errors": 0,
   "python": "3.10.1",
@@ -17,7 +17,7 @@
     "test_packet_transition_readout"
   ],
   "source_sha256": {
-    "scripts/run_joint_transition_fusion.py": "c8aa881dd724805bc42d734973797df8e7c6ae08b445fb56bf96bf422908d676",
+    "scripts/run_joint_transition_fusion.py": "add67d0fc200d6970c3f56328d60b3662894a24934fc0a51feda8cc80be5484b",
     "scripts/joint_transition_training.py": "db4c924570f29fdc0197e7b164d98e5cd6fe7183e2b6737db763ffbac5ed9a8d",
     "scripts/joint_transition_diagnostics.py": "12db0c8a95e2cdcb78e9456245d6ada8c0f8b263e89a2244f6849665002db765",
     "scripts/diagnose_joint_transition_fusion.py": "96f5aeb3f35273955a43568a4da09e13cca7dc509e92b0be502a1921ee588ec3",

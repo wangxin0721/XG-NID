@@ -67,6 +67,43 @@ class JointFusionChecks(unittest.TestCase):
             raw_scores = self.source(Batch.from_data_list(self.graphs))
         self.assertEqual(raw_scores.argmax(-1).tolist(), [r['prediction'] for r in self.reference])
 
+    def test_source_replay_accepts_archived_gate_metadata(self):
+        gold = [{**r, 'flow_weights': [0.5] * 32} for r in self.reference]
+        selected = {'validation': run.frozen.joint.study.validate_predictions(self.reference, self.rows, False),
+                    'prediction_ids_sha256': run.frozen.joint.prediction_digest(self.reference)}
+        self.assertNotEqual(self.reference, gold)  # Exact shape of the server failure.
+        with tempfile.TemporaryDirectory() as temp:
+            receipt = run.verify_source_replay(self.reference, gold, selected, self.rows, Path(temp))
+            self.assertTrue(receipt['passed'])
+            self.assertEqual(receipt['archive_extra_fields'], ['flow_weights'])
+            self.assertTrue(receipt['metrics_match'] and receipt['archive_metrics_match'])
+
+    def test_source_replay_rejects_real_prediction_identity_metric_and_digest_changes(self):
+        gold = [{**r, 'flow_weights': [0.5] * 32} for r in self.reference]
+        selected = {'validation': run.frozen.joint.study.validate_predictions(self.reference, self.rows, False),
+                    'prediction_ids_sha256': run.frozen.joint.prediction_digest(self.reference)}
+        for field, value in (('prediction', (gold[0]['prediction'] + 1) % 8),
+                             ('sample_id', 'wrong-sample'), ('label', (gold[0]['label'] + 1) % 8)):
+            changed = deepcopy(gold)
+            changed[0][field] = value
+            with self.subTest(field=field), tempfile.TemporaryDirectory() as temp:
+                output = Path(temp)
+                with self.assertRaisesRegex(ValueError, 'baseline_validation_replay.json'):
+                    run.verify_source_replay(self.reference, changed, selected, self.rows, output)
+                receipt = run.raw.read(output / 'baseline_validation_replay.json')
+                self.assertFalse(receipt['passed'])
+                if field == 'prediction':
+                    self.assertEqual(len(receipt['first_differences']), 1)
+        for field in ('validation', 'prediction_ids_sha256'):
+            changed = deepcopy(selected)
+            if field == 'validation':
+                changed[field]['macro_f1'] += 1e-4
+            else:
+                changed[field] = '0' * 64
+            with self.subTest(field=field), tempfile.TemporaryDirectory() as temp:
+                with self.assertRaisesRegex(ValueError, 'baseline_validation_replay.json'):
+                    run.verify_source_replay(self.reference, gold, changed, self.rows, Path(temp))
+
     def test_sampler_matches_historical_order_including_singleton_tail(self):
         for size, batch in ((8, 3), (7, 3), (107621, 512)):
             sampler = run.training.PairedSampler(size, batch, 42)
@@ -237,7 +274,9 @@ class JointFusionChecks(unittest.TestCase):
                     'binding': self.binding, 'mode': mode, 'best': {'B': {'state': head.state_dict()}}})
             archived = [{**r, 'predictions': {name: r['prediction'] for name in ('A', 'single', 'pointwise', 'ordered')}}
                         for r in self.reference]
-            source_result = (self.source, data, rows, self.device, config, selected, self.reference, {}, self.binding)
+            # Real original-C archives carry dimensional gate vectors beside the core prediction fields.
+            gold = [{**r, 'flow_weights': [0.5] * 32} for r in self.reference]
+            source_result = (self.source, data, rows, self.device, config, selected, gold, {}, self.binding)
             history_result = (history, {}, {'source': self.binding}, {'binding': self.binding}, archived)
             with patch.object(run, 'validate_settings'), patch.object(run, 'history_inputs', return_value=history_result), \
                  patch.object(run.frozen, 'load_source', return_value=source_result), \

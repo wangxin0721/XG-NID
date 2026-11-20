@@ -1,6 +1,8 @@
 # Seed42：报文转移读出与双分支融合层联合优化
 
-本轮准备四组同起点、同样本顺序、同预算的 train/val 配对实验。代码基于 `d03ced606154f1d7b4afd6f29ed0f6f4d2f7011d`，分支为 `codex/joint-transition-fusion`。本地仅完成归档诊断及合成 CPU 验证；服务器 CUDA 探测和正式训练均待执行，测试集未评估。
+本轮准备四组同起点、同样本顺序、同预算的 train/val 配对实验。代码基于 `d03ced606154f1d7b4afd6f29ed0f6f4d2f7011d`，分支为 `codex/joint-transition-fusion`。本地完成归档诊断及合成 CPU 验证；服务器首次运行已进入验证缓存，但完整回放检查尚未通过，正式训练尚未开始，测试集未评估。
+
+首次服务器运行在全量验证缓存后因预测记录字段比较错误停止，尚未正式训练。修复与保留失败现场的重启命令见 [回放字段修复](joint_transition_fusion_s42_v1/replay_metadata_fix.md)。当前 CPU 检查为 18 项全部通过；此状态仍不代表修复后的服务器验证通过。
 
 ## 已有证据与诊断
 

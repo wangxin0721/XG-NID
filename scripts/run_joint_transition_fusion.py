@@ -86,6 +86,25 @@ def cached_split(source, data, rows, part, config, device, output, binding):
     return cache, reference, coverage
 
 
+def verify_source_replay(reference, gold, selected, rows, output):
+    """Compare prediction identity and metrics; archived gate vectors are diagnostic metadata."""
+    fields = ('sample_id', 'label', 'prediction')
+    receipt = {'passed': False, 'samples': len(reference), 'comparison_fields': list(fields),
+               'archive_extra_fields': sorted({key for row in gold for key in row if key not in fields})}
+    try:
+        measured = frozen.joint.study.validate_predictions(reference, rows, probabilities=False)
+        archived = frozen.joint.study.validate_predictions(gold, rows, probabilities=False)
+        receipt.update(frozen.evaluation.replay_receipt(measured, reference, selected, gold))
+        receipt['archive_metrics_match'] = archived == selected['validation']
+        receipt['passed'] = receipt['passed'] and receipt['archive_metrics_match']
+    except (ValueError, KeyError, TypeError) as exc:
+        receipt.update(passed=False, error=str(exc))
+    # Persist failed comparisons as well, so genuine prediction differences remain inspectable.
+    raw.write(output / 'baseline_validation_replay.json', receipt)
+    require(receipt['passed'], 'Original-C raw validation reference differs; see baseline_validation_replay.json')
+    return receipt
+
+
 @torch.no_grad()
 def initial_replay(source, arms, val, rows, gold, selected, device, settings, output):
     initial_fusion = raw.state_digest(source.fusion.state_dict())
@@ -207,7 +226,7 @@ def run(repo, graph_root, output, settings, resume=False, probe_only=False):
     raw.write(output / 'raw_cuda_probe.json', probe)
     training.verify_source(source, source_digest)
     val, reference, coverage_val = cached_split(source, data, rows['val'], 'val', config, device, output, run_binding)
-    require(reference == gold, 'Original-C raw validation reference differs')
+    verify_source_replay(reference, gold, selected, rows['val'], output)
     require(coverage_val == raw.read(history / 'coverage.json')['val'], 'Historical true continuity coverage differs')
     arms = training.make_arms(source, settings, device)
     for name, arm in arms.items():

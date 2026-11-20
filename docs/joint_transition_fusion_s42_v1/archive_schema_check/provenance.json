@@ -1,0 +1,21 @@
+{
+  "scope": "archived_prediction_schema_only_not_server_model_replay",
+  "archive_commit": "944ba61faca474d02c409c2038e02f33e5da3d50",
+  "records": 13446,
+  "archive_record_fields": [
+    "flow_weights",
+    "label",
+    "prediction",
+    "sample_id"
+  ],
+  "cached_prediction_fields": [
+    "label",
+    "prediction",
+    "sample_id"
+  ],
+  "whole_record_equality": false,
+  "strict_replay_receipt_passed": true,
+  "prediction_file_sha256": "91d7765e52a9eca289f3bf0591bcaa06090bb6b1e2ac2319958ffe8df6a7028f",
+  "metrics_file_sha256": "834f4b9cd970ab41be54599a7e73cbaa5fd1469ac5201912ee366d34565a0039",
+  "server_live_prediction_match_verified": false
+}
