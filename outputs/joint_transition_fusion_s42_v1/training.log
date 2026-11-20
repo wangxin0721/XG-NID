@@ -1,0 +1,20 @@
+
+2026-11-20T08:07:18.920584+00:00 /home/nzxn/miniconda3/envs/wx/bin/python -u -B '/home/nzxn/下载/WX/load/XG-NID-joint-transition-fusion/scripts/run_joint_transition_fusion.py' --repo '/home/nzxn/下载/WX/load/XG-NID' --resume
+/home/nzxn/miniconda3/envs/wx/lib/python3.9/site-packages/torch_geometric/typing.py:99: UserWarning: An issue occurred while importing 'torch-spline-conv'. Disabling its usage. Stacktrace: /home/nzxn/miniconda3/envs/wx/lib/python3.9/site-packages/torch_spline_conv/_version_cuda.so: undefined symbol: _ZN3c1017RegisterOperatorsD1Ev
+  warnings.warn(
+{"status": "running", "pid": 2124455, "phase": "cache_val", "samples": 16, "total": 13446}
+{"status": "running", "pid": 2124455, "phase": "cache_val", "samples": 3200, "total": 13446}
+{"status": "running", "pid": 2124455, "phase": "cache_val", "samples": 6400, "total": 13446}
+{"status": "running", "pid": 2124455, "phase": "cache_val", "samples": 9600, "total": 13446}
+{"status": "running", "pid": 2124455, "phase": "cache_val", "samples": 12800, "total": 13446}
+{"status": "running", "pid": 2124455, "phase": "cache_val", "samples": 13446, "total": 13446}
+Traceback (most recent call last):
+  File "/home/nzxn/下载/WX/load/XG-NID-joint-transition-fusion/scripts/run_joint_transition_fusion.py", line 277, in <module>
+    main()
+  File "/home/nzxn/下载/WX/load/XG-NID-joint-transition-fusion/scripts/run_joint_transition_fusion.py", line 265, in main
+    result = run(repo, args.data_root, output, raw.read(CONFIG), args.resume, args.probe_only)
+  File "/home/nzxn/下载/WX/load/XG-NID-joint-transition-fusion/scripts/run_joint_transition_fusion.py", line 210, in run
+    require(reference == gold, 'Original-C raw validation reference differs')
+  File "/home/nzxn/下载/WX/load/XG-NID-joint-transition-fusion/scripts/summarize_attention_operator_pair.py", line 12, in require
+    raise ValueError(message)
+ValueError: Original-C raw validation reference differs

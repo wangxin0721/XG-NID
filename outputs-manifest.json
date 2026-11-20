@@ -1,6 +1,6 @@
 {
   "schema": "xgnid.outputs-snapshot.v2",
-  "created_utc": "2026-11-19T14:12:48.480926+00:00",
+  "created_utc": "2026-11-20T08:11:38.501332+00:00",
   "source_directory": "/home/nzxn/下载/WX/load/XG-NID/outputs",
   "files": {
     "GNN4ID/best.pt": {
@@ -6835,6 +6835,50 @@
       "bytes": 64878,
       "sha256": "016aae8c3696a8e0025376b8c875162817f9800591f00b7be8f7dfe6ecda90bc"
     },
+    "joint_transition_fusion_s42_v1/.launcher.lock": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "joint_transition_fusion_s42_v1/.run.lock": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "joint_transition_fusion_s42_v1/config.json": {
+      "bytes": 2000,
+      "sha256": "a7d1273cf5845f0687d6a74018f934488d4851530a2fbb22b2f4f734c0f97359"
+    },
+    "joint_transition_fusion_s42_v1/frozen_val_features.pt": {
+      "bytes": 50121740,
+      "sha256": "a5492779b6ac3666f62797dee056d3757a23046b8dba2bcdc6bae6dd65351844"
+    },
+    "joint_transition_fusion_s42_v1/launcher.pid": {
+      "bytes": 8,
+      "sha256": "20fd3705845cdb9af7ac43706f7bf4fd37f208cb6c7302e714255be86122b66d"
+    },
+    "joint_transition_fusion_s42_v1/progress.json": {
+      "bytes": 106,
+      "sha256": "800b5bd4f0c60e05595c0d3ccd7dbd7e5a83f4d622da4c70c2164a292daadce7"
+    },
+    "joint_transition_fusion_s42_v1/provenance.json": {
+      "bytes": 5432,
+      "sha256": "4dc15f751f3ced6474489bc2c0fee1b9015273e39929bd43dc11093ddb288504"
+    },
+    "joint_transition_fusion_s42_v1/raw_cuda_probe.json": {
+      "bytes": 14249,
+      "sha256": "a927a80f57ebb1b3b461ad68f3c735fe303224d383b05c3ae7f3cf75edc02914"
+    },
+    "joint_transition_fusion_s42_v1/status.json": {
+      "bytes": 870,
+      "sha256": "b7a3f9a3f61cd8a2c7ceafe60b3ccf90be203ea933d12b6a7d7431efe1aa497c"
+    },
+    "joint_transition_fusion_s42_v1/training.log": {
+      "bytes": 1949,
+      "sha256": "5950005d68f6e89e06e71882c7beb1bec620ebcfb0c1a43418a3f93b20df003f"
+    },
+    "joint_transition_fusion_s42_v1/training_exit.json": {
+      "bytes": 116,
+      "sha256": "428a41887a624fa1a7f2b382b5ce371676682ef4f5c4522482cf5bb8ab69ada1"
+    },
     "ordered_transition_readout_200/exitcode-42.txt": {
       "bytes": 2,
       "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
@@ -9704,11 +9748,11 @@
       "sha256": "c2593fb7e95be3616c900c55e09a71bc0651f998359aa44c5024799152ef0b20"
     }
   },
-  "file_count": 2375,
+  "file_count": 2386,
   "symlink_count": 100,
-  "regular_file_count": 2275,
-  "total_bytes": 6442275982,
+  "regular_file_count": 2286,
+  "total_bytes": 6492422452,
   "updated_directories": [
-    "ordered_transition_readout_200"
+    "joint_transition_fusion_s42_v1"
   ]
 }
