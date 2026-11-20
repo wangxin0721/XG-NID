@@ -1,0 +1,95 @@
+git-lfs/3.8.1 (GitHub; linux amd64; go 1.27.3; git a662a6db)
+{"files": 80, "GiB": 0.5389787517488003, "staging_directory": "/home/nzxn/下载/WX/load/XG-NID/.outputs-publish-yjwc5ht0"}
+提示：使用 'master' 作为初始分支的名称。这个默认分支名称可能会更改。要在新仓库中
+提示：配置使用初始分支名，并消除这条警告，请执行：
+提示：
+提示：	git config --global init.defaultBranch <名称>
+提示：
+提示：除了 'master' 之外，通常选定的名字有 'main'、'trunk' 和 'development'。
+提示：可以通过以下命令重命名刚创建的分支：
+提示：
+提示：	git branch -m <name>
+已初始化空的 Git 仓库于 /home/nzxn/下载/WX/load/XG-NID/.outputs-publish-yjwc5ht0/.git/
+来自 github.com:wangxin0721/XG-NID
+ * branch            codex/server-outputs -> FETCH_HEAD
+ * [新分支]          codex/server-outputs -> origin/codex/server-outputs
+Updated Git hooks.
+Git LFS initialized.
+[codex/server-outputs c771165] Update selected server outputs
+ 78 files changed, 83962 insertions(+), 50 deletions(-)
+ create mode 100644 outputs/joint_transition_fusion_s42_v1/baseline_validation_replay.json
+ create mode 100644 outputs/joint_transition_fusion_s42_v1/budget_comparison.json
+ create mode 100644 outputs/joint_transition_fusion_s42_v1/coverage.json
+ create mode 100644 outputs/joint_transition_fusion_s42_v1/epoch_zero_replay.json
+ create mode 100644 outputs/joint_transition_fusion_s42_v1/failed_runs/20261120T081849Z/.launcher.lock
+ create mode 100644 outputs/joint_transition_fusion_s42_v1/failed_runs/20261120T081849Z/.run.lock
+ create mode 100644 outputs/joint_transition_fusion_s42_v1/failed_runs/20261120T081849Z/config.json
+ rename outputs/joint_transition_fusion_s42_v1/{ => failed_runs/20261120T081849Z}/exit_codes.json (100%)
+ create mode 100644 outputs/joint_transition_fusion_s42_v1/failed_runs/20261120T081849Z/frozen_val_features.pt
+ create mode 100644 outputs/joint_transition_fusion_s42_v1/failed_runs/20261120T081849Z/launcher.pid
+ create mode 100644 outputs/joint_transition_fusion_s42_v1/failed_runs/20261120T081849Z/progress.json
+ create mode 100644 outputs/joint_transition_fusion_s42_v1/failed_runs/20261120T081849Z/provenance.json
+ create mode 100644 outputs/joint_transition_fusion_s42_v1/failed_runs/20261120T081849Z/raw_cuda_probe.json
+ copy outputs/joint_transition_fusion_s42_v1/{ => failed_runs/20261120T081849Z}/status.json (100%)
+ copy outputs/joint_transition_fusion_s42_v1/{ => failed_runs/20261120T081849Z}/training.log (100%)
+ create mode 100644 outputs/joint_transition_fusion_s42_v1/failed_runs/20261120T081849Z/training_exit.json
+ rename outputs/joint_transition_fusion_s42_v1/{ => failed_runs/20261120T081849Z}/upload.log (100%)
+ create mode 100644 outputs/joint_transition_fusion_s42_v1/final_verification.json
+ create mode 100644 outputs/joint_transition_fusion_s42_v1/frozen_train_features.pt
+ create mode 100644 outputs/joint_transition_fusion_s42_v1/historical_diagnosis/changed_samples.jsonl.gz
+ create mode 100644 outputs/joint_transition_fusion_s42_v1/historical_diagnosis/diagnosis.json
+ create mode 100644 outputs/joint_transition_fusion_s42_v1/historical_diagnosis/diagnostic_groups.json
+ create mode 100644 outputs/joint_transition_fusion_s42_v1/historical_diagnosis/replay_receipt.json
+ create mode 100644 outputs/joint_transition_fusion_s42_v1/historical_diagnosis/report.md
+ create mode 100644 outputs/joint_transition_fusion_s42_v1/historical_diagnosis/validation_replay_diagnostics.jsonl.gz
+ create mode 100644 outputs/joint_transition_fusion_s42_v1/joint_base/best.pt
+ create mode 100644 outputs/joint_transition_fusion_s42_v1/joint_base/best_validation_predictions.jsonl.gz
+ create mode 100644 outputs/joint_transition_fusion_s42_v1/joint_base/epochs.jsonl
+ create mode 100644 outputs/joint_transition_fusion_s42_v1/joint_base/last.pt
+ create mode 100644 outputs/joint_transition_fusion_s42_v1/joint_ordered/best.pt
+ create mode 100644 outputs/joint_transition_fusion_s42_v1/joint_ordered/best_validation_predictions.jsonl.gz
+ create mode 100644 outputs/joint_transition_fusion_s42_v1/joint_ordered/epochs.jsonl
+ create mode 100644 outputs/joint_transition_fusion_s42_v1/joint_ordered/last.pt
+ create mode 100644 outputs/joint_transition_fusion_s42_v1/joint_pointwise/best.pt
+ create mode 100644 outputs/joint_transition_fusion_s42_v1/joint_pointwise/best_validation_predictions.jsonl.gz
+ create mode 100644 outputs/joint_transition_fusion_s42_v1/joint_pointwise/epochs.jsonl
+ create mode 100644 outputs/joint_transition_fusion_s42_v1/joint_pointwise/last.pt
+ create mode 100644 outputs/joint_transition_fusion_s42_v1/joint_single/best.pt
+ create mode 100644 outputs/joint_transition_fusion_s42_v1/joint_single/best_validation_predictions.jsonl.gz
+ create mode 100644 outputs/joint_transition_fusion_s42_v1/joint_single/epochs.jsonl
+ create mode 100644 outputs/joint_transition_fusion_s42_v1/joint_single/last.pt
+ create mode 100644 outputs/joint_transition_fusion_s42_v1/recovery.pt
+ create mode 100644 outputs/joint_transition_fusion_s42_v1/report.md
+ create mode 100644 outputs/joint_transition_fusion_s42_v1/selected_validation_replay.json
+ rewrite outputs/joint_transition_fusion_s42_v1/status.json (99%)
+ create mode 100644 outputs/joint_transition_fusion_s42_v1/summary.json
+ rewrite outputs/joint_transition_fusion_s42_v1/training.log (69%)
+ create mode 100644 outputs/joint_transition_fusion_s42_v1/training_progress.json
+ create mode 100644 outputs/joint_transition_fusion_s42_v1/validation/diagnostic_groups.json
+ create mode 100644 outputs/joint_transition_fusion_s42_v1/validation/frozen_ordered-frozen_single_changed_samples.jsonl.gz
+ create mode 100644 outputs/joint_transition_fusion_s42_v1/validation/frozen_ordered_confusion_matrix.csv
+ create mode 100644 outputs/joint_transition_fusion_s42_v1/validation/frozen_pointwise_confusion_matrix.csv
+ create mode 100644 outputs/joint_transition_fusion_s42_v1/validation/frozen_single_confusion_matrix.csv
+ create mode 100644 outputs/joint_transition_fusion_s42_v1/validation/joint_base-original_C_changed_samples.jsonl.gz
+ create mode 100644 outputs/joint_transition_fusion_s42_v1/validation/joint_base_confusion_matrix.csv
+ create mode 100644 outputs/joint_transition_fusion_s42_v1/validation/joint_ordered-frozen_ordered_changed_samples.jsonl.gz
+ create mode 100644 outputs/joint_transition_fusion_s42_v1/validation/joint_ordered-joint_base_changed_samples.jsonl.gz
+ create mode 100644 outputs/joint_transition_fusion_s42_v1/validation/joint_ordered-joint_pointwise_changed_samples.jsonl.gz
+ create mode 100644 outputs/joint_transition_fusion_s42_v1/validation/joint_ordered-joint_single_changed_samples.jsonl.gz
+ create mode 100644 outputs/joint_transition_fusion_s42_v1/validation/joint_ordered-original_C_changed_samples.jsonl.gz
+ create mode 100644 outputs/joint_transition_fusion_s42_v1/validation/joint_ordered_confusion_matrix.csv
+ create mode 100644 outputs/joint_transition_fusion_s42_v1/validation/joint_pointwise-frozen_pointwise_changed_samples.jsonl.gz
+ create mode 100644 outputs/joint_transition_fusion_s42_v1/validation/joint_pointwise-original_C_changed_samples.jsonl.gz
+ create mode 100644 outputs/joint_transition_fusion_s42_v1/validation/joint_pointwise_confusion_matrix.csv
+ create mode 100644 outputs/joint_transition_fusion_s42_v1/validation/joint_single-frozen_single_changed_samples.jsonl.gz
+ create mode 100644 outputs/joint_transition_fusion_s42_v1/validation/joint_single-original_C_changed_samples.jsonl.gz
+ create mode 100644 outputs/joint_transition_fusion_s42_v1/validation/joint_single_confusion_matrix.csv
+ create mode 100644 outputs/joint_transition_fusion_s42_v1/validation/metrics.json
+ create mode 100644 outputs/joint_transition_fusion_s42_v1/validation/original_C_confusion_matrix.csv
+ create mode 100644 outputs/joint_transition_fusion_s42_v1/validation/per_class.csv
+ create mode 100644 outputs/joint_transition_fusion_s42_v1/validation/validation_predictions.jsonl.gz
+Uploading LFS objects: 100% (14/14), 570 MB | 11 MB/s, done.
+Uploading LFS objects: 100% (13/13), 520 MB | 0 B/s, done.
+To github.com:wangxin0721/XG-NID.git
+   383cb40..c771165  HEAD -> codex/server-outputs
+{"status": "uploaded", "branch": "codex/server-outputs", "commit": "c771165c88103f94882f205cb3b2520bdf8c774e", "files": 80, "symlinks": 0, "bytes": 578724028, "staging_directory_preserved": "/home/nzxn/下载/WX/load/XG-NID/.outputs-publish-yjwc5ht0"}
