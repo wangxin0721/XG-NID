@@ -1,0 +1,324 @@
+{
+  "train": {
+    "samples": 107621,
+    "shuffleable_flows": 59957,
+    "shuffleable_flow_fraction": 0.5571124594642309,
+    "zero_context_flows": 41219,
+    "single_context_flows": 6445,
+    "contexts": 970669,
+    "changed_pair_indices": 964224,
+    "changed_right_features": 661361,
+    "feature_change_fraction_of_changed_indices": 0.6858997494358158,
+    "flows_with_changed_features": 49639,
+    "effective_flow_fraction_of_shuffleable": 0.8279100021682205,
+    "by_class": {
+      "Benign": {
+        "samples": 19112,
+        "shuffleable_flows": 8553,
+        "shuffleable_flow_fraction": 0.447519882796149,
+        "zero_context_flows": 8781,
+        "single_context_flows": 1778,
+        "contexts": 123061,
+        "changed_pair_indices": 121283,
+        "changed_right_features": 119242,
+        "feature_change_fraction_of_changed_indices": 0.9831715904125062,
+        "flows_with_changed_features": 8541,
+        "effective_flow_fraction_of_shuffleable": 0.9985969835145563
+      },
+      "WebBased": {
+        "samples": 4359,
+        "shuffleable_flows": 2800,
+        "shuffleable_flow_fraction": 0.6423491626519844,
+        "zero_context_flows": 1196,
+        "single_context_flows": 363,
+        "contexts": 28670,
+        "changed_pair_indices": 28307,
+        "changed_right_features": 27958,
+        "feature_change_fraction_of_changed_indices": 0.9876708941251281,
+        "flows_with_changed_features": 2795,
+        "effective_flow_fraction_of_shuffleable": 0.9982142857142857
+      },
+      "Spoofing": {
+        "samples": 13914,
+        "shuffleable_flows": 5605,
+        "shuffleable_flow_fraction": 0.40283168032197786,
+        "zero_context_flows": 7753,
+        "single_context_flows": 556,
+        "contexts": 82853,
+        "changed_pair_indices": 82297,
+        "changed_right_features": 78320,
+        "feature_change_fraction_of_changed_indices": 0.9516750306815558,
+        "flows_with_changed_features": 5522,
+        "effective_flow_fraction_of_shuffleable": 0.9851917930419268
+      },
+      "Recon": {
+        "samples": 18224,
+        "shuffleable_flows": 2531,
+        "shuffleable_flow_fraction": 0.13888279192273925,
+        "zero_context_flows": 15509,
+        "single_context_flows": 184,
+        "contexts": 21786,
+        "changed_pair_indices": 21602,
+        "changed_right_features": 21598,
+        "feature_change_fraction_of_changed_indices": 0.9998148319600038,
+        "flows_with_changed_features": 2531,
+        "effective_flow_fraction_of_shuffleable": 1.0
+      },
+      "Mirai": {
+        "samples": 19200,
+        "shuffleable_flows": 19192,
+        "shuffleable_flow_fraction": 0.9995833333333334,
+        "zero_context_flows": 7,
+        "single_context_flows": 1,
+        "contexts": 345190,
+        "changed_pair_indices": 345189,
+        "changed_right_features": 345155,
+        "feature_change_fraction_of_changed_indices": 0.9999015032344599,
+        "flows_with_changed_features": 19192,
+        "effective_flow_fraction_of_shuffleable": 1.0
+      },
+      "Dos": {
+        "samples": 11802,
+        "shuffleable_flows": 374,
+        "shuffleable_flow_fraction": 0.03168954414506016,
+        "zero_context_flows": 7907,
+        "single_context_flows": 3521,
+        "contexts": 4570,
+        "changed_pair_indices": 1049,
+        "changed_right_features": 1048,
+        "feature_change_fraction_of_changed_indices": 0.9990467111534795,
+        "flows_with_changed_features": 374,
+        "effective_flow_fraction_of_shuffleable": 1.0
+      },
+      "DDos": {
+        "samples": 19140,
+        "shuffleable_flows": 19124,
+        "shuffleable_flow_fraction": 0.9991640543364682,
+        "zero_context_flows": 15,
+        "single_context_flows": 1,
+        "contexts": 344019,
+        "changed_pair_indices": 344018,
+        "changed_right_features": 47566,
+        "feature_change_fraction_of_changed_indices": 0.13826602096401933,
+        "flows_with_changed_features": 8906,
+        "effective_flow_fraction_of_shuffleable": 0.465697552813219
+      },
+      "BruteForce": {
+        "samples": 1870,
+        "shuffleable_flows": 1778,
+        "shuffleable_flow_fraction": 0.9508021390374332,
+        "zero_context_flows": 51,
+        "single_context_flows": 41,
+        "contexts": 20520,
+        "changed_pair_indices": 20479,
+        "changed_right_features": 20474,
+        "feature_change_fraction_of_changed_indices": 0.9997558474534889,
+        "flows_with_changed_features": 1778,
+        "effective_flow_fraction_of_shuffleable": 1.0
+      }
+    }
+  },
+  "val": {
+    "samples": 13446,
+    "shuffleable_flows": 7551,
+    "shuffleable_flow_fraction": 0.5615796519410977,
+    "zero_context_flows": 5109,
+    "single_context_flows": 786,
+    "contexts": 122491,
+    "changed_pair_indices": 121705,
+    "changed_right_features": 83862,
+    "feature_change_fraction_of_changed_indices": 0.6890596113553265,
+    "flows_with_changed_features": 6253,
+    "effective_flow_fraction_of_shuffleable": 0.8281022381141571,
+    "by_class": {
+      "Benign": {
+        "samples": 2389,
+        "shuffleable_flows": 1074,
+        "shuffleable_flow_fraction": 0.44956048555881123,
+        "zero_context_flows": 1089,
+        "single_context_flows": 226,
+        "contexts": 15672,
+        "changed_pair_indices": 15446,
+        "changed_right_features": 15213,
+        "feature_change_fraction_of_changed_indices": 0.9849151883982908,
+        "flows_with_changed_features": 1073,
+        "effective_flow_fraction_of_shuffleable": 0.9990689013035382
+      },
+      "WebBased": {
+        "samples": 544,
+        "shuffleable_flows": 368,
+        "shuffleable_flow_fraction": 0.6764705882352942,
+        "zero_context_flows": 140,
+        "single_context_flows": 36,
+        "contexts": 3860,
+        "changed_pair_indices": 3824,
+        "changed_right_features": 3801,
+        "feature_change_fraction_of_changed_indices": 0.9939853556485355,
+        "flows_with_changed_features": 368,
+        "effective_flow_fraction_of_shuffleable": 1.0
+      },
+      "Spoofing": {
+        "samples": 1739,
+        "shuffleable_flows": 726,
+        "shuffleable_flow_fraction": 0.41748131109833236,
+        "zero_context_flows": 941,
+        "single_context_flows": 72,
+        "contexts": 11059,
+        "changed_pair_indices": 10987,
+        "changed_right_features": 10431,
+        "feature_change_fraction_of_changed_indices": 0.9493947392372805,
+        "flows_with_changed_features": 716,
+        "effective_flow_fraction_of_shuffleable": 0.9862258953168044
+      },
+      "Recon": {
+        "samples": 2278,
+        "shuffleable_flows": 314,
+        "shuffleable_flow_fraction": 0.13784021071115013,
+        "zero_context_flows": 1946,
+        "single_context_flows": 18,
+        "contexts": 2585,
+        "changed_pair_indices": 2567,
+        "changed_right_features": 2563,
+        "feature_change_fraction_of_changed_indices": 0.9984417608102844,
+        "flows_with_changed_features": 312,
+        "effective_flow_fraction_of_shuffleable": 0.9936305732484076
+      },
+      "Mirai": {
+        "samples": 2400,
+        "shuffleable_flows": 2399,
+        "shuffleable_flow_fraction": 0.9995833333333334,
+        "zero_context_flows": 1,
+        "single_context_flows": 0,
+        "contexts": 43152,
+        "changed_pair_indices": 43152,
+        "changed_right_features": 43148,
+        "feature_change_fraction_of_changed_indices": 0.99990730441231,
+        "flows_with_changed_features": 2399,
+        "effective_flow_fraction_of_shuffleable": 1.0
+      },
+      "Dos": {
+        "samples": 1475,
+        "shuffleable_flows": 64,
+        "shuffleable_flow_fraction": 0.04338983050847458,
+        "zero_context_flows": 982,
+        "single_context_flows": 429,
+        "contexts": 596,
+        "changed_pair_indices": 167,
+        "changed_right_features": 167,
+        "feature_change_fraction_of_changed_indices": 1.0,
+        "flows_with_changed_features": 64,
+        "effective_flow_fraction_of_shuffleable": 1.0
+      },
+      "DDos": {
+        "samples": 2388,
+        "shuffleable_flows": 2384,
+        "shuffleable_flow_fraction": 0.998324958123953,
+        "zero_context_flows": 4,
+        "single_context_flows": 0,
+        "contexts": 42892,
+        "changed_pair_indices": 42892,
+        "changed_right_features": 5871,
+        "feature_change_fraction_of_changed_indices": 0.13687867201342907,
+        "flows_with_changed_features": 1099,
+        "effective_flow_fraction_of_shuffleable": 0.46098993288590606
+      },
+      "BruteForce": {
+        "samples": 233,
+        "shuffleable_flows": 222,
+        "shuffleable_flow_fraction": 0.9527896995708155,
+        "zero_context_flows": 6,
+        "single_context_flows": 5,
+        "contexts": 2675,
+        "changed_pair_indices": 2670,
+        "changed_right_features": 2668,
+        "feature_change_fraction_of_changed_indices": 0.9992509363295881,
+        "flows_with_changed_features": 222,
+        "effective_flow_fraction_of_shuffleable": 1.0
+      }
+    }
+  },
+  "original_structure_coverage": {
+    "train": {
+      "samples": 107621,
+      "valid_transitions": 1063099,
+      "ordered_contexts": 970669,
+      "flows_with_ordered_contexts": 66402,
+      "flows_without_transitions": 15191,
+      "context_coverage_by_class": {
+        "Benign": {
+          "samples": 19112,
+          "with_context": 10331
+        },
+        "WebBased": {
+          "samples": 4359,
+          "with_context": 3163
+        },
+        "Spoofing": {
+          "samples": 13914,
+          "with_context": 6161
+        },
+        "Recon": {
+          "samples": 18224,
+          "with_context": 2715
+        },
+        "Mirai": {
+          "samples": 19200,
+          "with_context": 19193
+        },
+        "Dos": {
+          "samples": 11802,
+          "with_context": 3895
+        },
+        "DDos": {
+          "samples": 19140,
+          "with_context": 19125
+        },
+        "BruteForce": {
+          "samples": 1870,
+          "with_context": 1819
+        }
+      }
+    },
+    "val": {
+      "samples": 13446,
+      "valid_transitions": 134039,
+      "ordered_contexts": 122491,
+      "flows_with_ordered_contexts": 8337,
+      "flows_without_transitions": 1898,
+      "context_coverage_by_class": {
+        "Benign": {
+          "samples": 2389,
+          "with_context": 1300
+        },
+        "WebBased": {
+          "samples": 544,
+          "with_context": 404
+        },
+        "Spoofing": {
+          "samples": 1739,
+          "with_context": 798
+        },
+        "Recon": {
+          "samples": 2278,
+          "with_context": 332
+        },
+        "Mirai": {
+          "samples": 2400,
+          "with_context": 2399
+        },
+        "Dos": {
+          "samples": 1475,
+          "with_context": 493
+        },
+        "DDos": {
+          "samples": 2388,
+          "with_context": 2384
+        },
+        "BruteForce": {
+          "samples": 233,
+          "with_context": 227
+        }
+      }
+    }
+  }
+}

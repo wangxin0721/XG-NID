@@ -1,0 +1,59 @@
+{
+  "schema": "xgnid.transition-pair-shuffle.s42.v1",
+  "backbone_seed": 42,
+  "readout_seed": 42,
+  "epochs": 200,
+  "batch_size": 512,
+  "eval_batch_size": 16,
+  "readout_learning_rate": 0.001,
+  "fusion_learning_rate": 0.0001,
+  "optimizer": "Adam",
+  "adam_betas": [
+    0.9,
+    0.999
+  ],
+  "adam_eps": 1e-08,
+  "weight_decay": 0.0,
+  "training_samples": 107621,
+  "validation_samples": 13446,
+  "test_samples": 13448,
+  "updates_per_epoch": 211,
+  "updates_per_arm": 42200,
+  "selection": "best_validation_macro_f1_including_zero_earliest_tie",
+  "loss": "plain_final_eight_class_NLL",
+  "arms": [
+    "pair_true",
+    "pair_shuffle"
+  ],
+  "fusion_parameters": 7144,
+  "checkpoint_every_paired_update": true,
+  "partitions": [
+    "train",
+    "val"
+  ],
+  "test_evaluated": false,
+  "pairing_seed": 20261121,
+  "pairing_version": "sha256-local-random-rejection-derangement-v1",
+  "readout_parameters_per_arm": 3728,
+  "total_parameters_per_arm": 10872,
+  "investment_reference_pp": 0.05,
+  "historical_commit": "ac00f1f319aec1b1079e15ca5609c2ec08c85ba9",
+  "historical_code_commit": "4f2dd776fd3040a94dd4199d47866f1ed9968a03",
+  "historical_directory": "outputs/joint_transition_fusion_s42_v1",
+  "historical_sha256": {
+    "summary.json": "333b2741e45127ba4225cd7561d45947343f1f5b2427dad059fdfa08cbbcc83d",
+    "provenance.json": "3cb4978001a66084d4c26f3e16fb875f09938f5559c8ded9d4084a2088eb1df7",
+    "config.json": "a7d1273cf5845f0687d6a74018f934488d4851530a2fbb22b2f4f734c0f97359",
+    "status.json": "5d5875082aaf45fcb519016b401b92117adeaf51a35ac7d9c70ad5760589df9c",
+    "final_verification.json": "3e8d71d9743152e7239d4c1ac33b8ec8467e51a273493b5e2fc42bbf0e1dcfb7",
+    "joint_ordered/best_validation_predictions.jsonl.gz": "157e79e0ef34e7167668b9c2b9469b0baa4110f5c25b6a154479135a73b96a67",
+    "joint_ordered/epochs.jsonl": "a0710634595f0362abf65617ea26a801651ba45642317fc94303011646ffff59"
+  },
+  "progress_phase": "transition_pair_training",
+  "mapping_scope": [
+    "partition",
+    "sample_id",
+    "context_count"
+  ],
+  "unchanged_encoder_temporal_information": true
+}

@@ -1,0 +1,16 @@
+{
+  "pair_true": {
+    "passed": true,
+    "samples": 13446,
+    "epoch": 191,
+    "prediction_ids_sha256": "43689f092b4d2b3a67dffb5703176e473565fdc588e794206640af74fa235495",
+    "fixed_mapping_replayed": true
+  },
+  "pair_shuffle": {
+    "passed": true,
+    "samples": 13446,
+    "epoch": 183,
+    "prediction_ids_sha256": "1e13bfae0ae1cad6aff4bb04023a96511ecc7352f637783532006bb517295938",
+    "fixed_mapping_replayed": true
+  }
+}

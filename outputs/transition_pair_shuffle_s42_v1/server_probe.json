@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "formal_training_started": false,
+  "real_graph_gradients": true,
+  "full_epoch_zero_replay": true,
+  "mapping_rng_isolated": true,
+  "val_mapping_sha256": "9c56e4fd0ea6181514f8d87125b9d8a82a471e94d04c1a1a550e1c4dd2334727"
+}

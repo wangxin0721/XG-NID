@@ -1,0 +1,254 @@
+
+2026-11-21T07:43:19.665190+00:00 /home/nzxn/miniconda3/envs/wx/bin/python -u -B '/home/nzxn/下载/WX/load/XG-NID-transition-pair-shuffle/scripts/run_transition_pair_shuffle.py' --repo '/home/nzxn/下载/WX/load/XG-NID' --resume
+/home/nzxn/miniconda3/envs/wx/lib/python3.9/site-packages/torch_geometric/typing.py:99: UserWarning: An issue occurred while importing 'torch-spline-conv'. Disabling its usage. Stacktrace: /home/nzxn/miniconda3/envs/wx/lib/python3.9/site-packages/torch_spline_conv/_version_cuda.so: undefined symbol: _ZN3c1017RegisterOperatorsD1Ev
+  warnings.warn(
+{"status": "running", "pid": 2325251, "phase": "cache_val", "samples": 16, "total": 13446}
+{"status": "running", "pid": 2325251, "phase": "cache_val", "samples": 3200, "total": 13446}
+{"status": "running", "pid": 2325251, "phase": "cache_val", "samples": 6400, "total": 13446}
+{"status": "running", "pid": 2325251, "phase": "cache_val", "samples": 9600, "total": 13446}
+{"status": "running", "pid": 2325251, "phase": "cache_val", "samples": 12800, "total": 13446}
+{"status": "running", "pid": 2325251, "phase": "cache_val", "samples": 13446, "total": 13446}
+{"status": "running", "pid": 2325251, "phase": "prepare_pair_mapping", "partition": "val", "samples": 13446}
+{"status": "running", "pid": 2325251, "phase": "cache_train", "samples": 16, "total": 107621}
+{"status": "running", "pid": 2325251, "phase": "cache_train", "samples": 3200, "total": 107621}
+{"status": "running", "pid": 2325251, "phase": "cache_train", "samples": 6400, "total": 107621}
+{"status": "running", "pid": 2325251, "phase": "cache_train", "samples": 9600, "total": 107621}
+{"status": "running", "pid": 2325251, "phase": "cache_train", "samples": 12800, "total": 107621}
+{"status": "running", "pid": 2325251, "phase": "cache_train", "samples": 16000, "total": 107621}
+{"status": "running", "pid": 2325251, "phase": "cache_train", "samples": 19200, "total": 107621}
+{"status": "running", "pid": 2325251, "phase": "cache_train", "samples": 22400, "total": 107621}
+{"status": "running", "pid": 2325251, "phase": "cache_train", "samples": 25600, "total": 107621}
+{"status": "running", "pid": 2325251, "phase": "cache_train", "samples": 28800, "total": 107621}
+{"status": "running", "pid": 2325251, "phase": "cache_train", "samples": 32000, "total": 107621}
+{"status": "running", "pid": 2325251, "phase": "cache_train", "samples": 35200, "total": 107621}
+{"status": "running", "pid": 2325251, "phase": "cache_train", "samples": 38400, "total": 107621}
+{"status": "running", "pid": 2325251, "phase": "cache_train", "samples": 41600, "total": 107621}
+{"status": "running", "pid": 2325251, "phase": "cache_train", "samples": 44800, "total": 107621}
+{"status": "running", "pid": 2325251, "phase": "cache_train", "samples": 48000, "total": 107621}
+{"status": "running", "pid": 2325251, "phase": "cache_train", "samples": 51200, "total": 107621}
+{"status": "running", "pid": 2325251, "phase": "cache_train", "samples": 54400, "total": 107621}
+{"status": "running", "pid": 2325251, "phase": "cache_train", "samples": 57600, "total": 107621}
+{"status": "running", "pid": 2325251, "phase": "cache_train", "samples": 60800, "total": 107621}
+{"status": "running", "pid": 2325251, "phase": "cache_train", "samples": 64000, "total": 107621}
+{"status": "running", "pid": 2325251, "phase": "cache_train", "samples": 67200, "total": 107621}
+{"status": "running", "pid": 2325251, "phase": "cache_train", "samples": 70400, "total": 107621}
+{"status": "running", "pid": 2325251, "phase": "cache_train", "samples": 73600, "total": 107621}
+{"status": "running", "pid": 2325251, "phase": "cache_train", "samples": 76800, "total": 107621}
+{"status": "running", "pid": 2325251, "phase": "cache_train", "samples": 80000, "total": 107621}
+{"status": "running", "pid": 2325251, "phase": "cache_train", "samples": 83200, "total": 107621}
+{"status": "running", "pid": 2325251, "phase": "cache_train", "samples": 86400, "total": 107621}
+{"status": "running", "pid": 2325251, "phase": "cache_train", "samples": 89600, "total": 107621}
+{"status": "running", "pid": 2325251, "phase": "cache_train", "samples": 92800, "total": 107621}
+{"status": "running", "pid": 2325251, "phase": "cache_train", "samples": 96000, "total": 107621}
+{"status": "running", "pid": 2325251, "phase": "cache_train", "samples": 99200, "total": 107621}
+{"status": "running", "pid": 2325251, "phase": "cache_train", "samples": 102400, "total": 107621}
+{"status": "running", "pid": 2325251, "phase": "cache_train", "samples": 105600, "total": 107621}
+{"status": "running", "pid": 2325251, "phase": "cache_train", "samples": 107621, "total": 107621}
+{"status": "running", "pid": 2325251, "phase": "prepare_pair_mapping", "partition": "train", "samples": 107621}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 1, "total_epochs": 200, "updates_per_arm": 211, "macro_f1": {"pair_true": 0.9751386609839122, "pair_shuffle": 0.9751386609839122}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 2, "total_epochs": 200, "updates_per_arm": 422, "macro_f1": {"pair_true": 0.974261956046625, "pair_shuffle": 0.974261956046625}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 3, "total_epochs": 200, "updates_per_arm": 633, "macro_f1": {"pair_true": 0.9751395570378895, "pair_shuffle": 0.9749356277488843}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 4, "total_epochs": 200, "updates_per_arm": 844, "macro_f1": {"pair_true": 0.9746374125808067, "pair_shuffle": 0.9746374125808067}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 5, "total_epochs": 200, "updates_per_arm": 1055, "macro_f1": {"pair_true": 0.9755484359247089, "pair_shuffle": 0.9755484359247089}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 6, "total_epochs": 200, "updates_per_arm": 1266, "macro_f1": {"pair_true": 0.9746944039618297, "pair_shuffle": 0.9745631943379617}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 7, "total_epochs": 200, "updates_per_arm": 1477, "macro_f1": {"pair_true": 0.9734477738596735, "pair_shuffle": 0.9742644093334004}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 8, "total_epochs": 200, "updates_per_arm": 1688, "macro_f1": {"pair_true": 0.9749888765073433, "pair_shuffle": 0.9749888765073433}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 9, "total_epochs": 200, "updates_per_arm": 1899, "macro_f1": {"pair_true": 0.974692694551945, "pair_shuffle": 0.9749557379441162}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 10, "total_epochs": 200, "updates_per_arm": 2110, "macro_f1": {"pair_true": 0.975051719770149, "pair_shuffle": 0.9750336567568395}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 11, "total_epochs": 200, "updates_per_arm": 2321, "macro_f1": {"pair_true": 0.9748857662891273, "pair_shuffle": 0.9751912505496115}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 12, "total_epochs": 200, "updates_per_arm": 2532, "macro_f1": {"pair_true": 0.9748884070876409, "pair_shuffle": 0.9749682517828837}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 13, "total_epochs": 200, "updates_per_arm": 2743, "macro_f1": {"pair_true": 0.9734318259258231, "pair_shuffle": 0.9733427399161619}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 14, "total_epochs": 200, "updates_per_arm": 2954, "macro_f1": {"pair_true": 0.9744310855303471, "pair_shuffle": 0.9744310855303471}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 15, "total_epochs": 200, "updates_per_arm": 3165, "macro_f1": {"pair_true": 0.9742451231723455, "pair_shuffle": 0.9743750421157167}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 16, "total_epochs": 200, "updates_per_arm": 3376, "macro_f1": {"pair_true": 0.9756074564028444, "pair_shuffle": 0.9755289993338464}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 17, "total_epochs": 200, "updates_per_arm": 3587, "macro_f1": {"pair_true": 0.9732624527722012, "pair_shuffle": 0.9736750235249143}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 18, "total_epochs": 200, "updates_per_arm": 3798, "macro_f1": {"pair_true": 0.9753112523823129, "pair_shuffle": 0.975061886938762}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 19, "total_epochs": 200, "updates_per_arm": 4009, "macro_f1": {"pair_true": 0.9746899577525766, "pair_shuffle": 0.9746767740126114}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 20, "total_epochs": 200, "updates_per_arm": 4220, "macro_f1": {"pair_true": 0.974136622405562, "pair_shuffle": 0.9739538136741587}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 21, "total_epochs": 200, "updates_per_arm": 4431, "macro_f1": {"pair_true": 0.9746787641982998, "pair_shuffle": 0.9741372485642712}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 22, "total_epochs": 200, "updates_per_arm": 4642, "macro_f1": {"pair_true": 0.9729590058302906, "pair_shuffle": 0.9733096766675297}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 23, "total_epochs": 200, "updates_per_arm": 4853, "macro_f1": {"pair_true": 0.9742660485629623, "pair_shuffle": 0.9739997481965875}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 24, "total_epochs": 200, "updates_per_arm": 5064, "macro_f1": {"pair_true": 0.9737169335067674, "pair_shuffle": 0.9744483819324833}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 25, "total_epochs": 200, "updates_per_arm": 5275, "macro_f1": {"pair_true": 0.9736600155266284, "pair_shuffle": 0.9730217582677676}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 26, "total_epochs": 200, "updates_per_arm": 5486, "macro_f1": {"pair_true": 0.9735320729716244, "pair_shuffle": 0.973461885675343}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 27, "total_epochs": 200, "updates_per_arm": 5697, "macro_f1": {"pair_true": 0.9721418056837009, "pair_shuffle": 0.9722832781657075}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 28, "total_epochs": 200, "updates_per_arm": 5908, "macro_f1": {"pair_true": 0.9748443831524382, "pair_shuffle": 0.9741550742129892}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 29, "total_epochs": 200, "updates_per_arm": 6119, "macro_f1": {"pair_true": 0.9757930252262602, "pair_shuffle": 0.9749525980838603}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 30, "total_epochs": 200, "updates_per_arm": 6330, "macro_f1": {"pair_true": 0.9748022408477849, "pair_shuffle": 0.9731639439955363}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 31, "total_epochs": 200, "updates_per_arm": 6541, "macro_f1": {"pair_true": 0.9727001201625425, "pair_shuffle": 0.9712427129011071}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 32, "total_epochs": 200, "updates_per_arm": 6752, "macro_f1": {"pair_true": 0.9749098060996987, "pair_shuffle": 0.973032119435709}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 33, "total_epochs": 200, "updates_per_arm": 6963, "macro_f1": {"pair_true": 0.9725717697547906, "pair_shuffle": 0.9714187591441479}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 34, "total_epochs": 200, "updates_per_arm": 7174, "macro_f1": {"pair_true": 0.9761393309879884, "pair_shuffle": 0.9743810661452291}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 35, "total_epochs": 200, "updates_per_arm": 7385, "macro_f1": {"pair_true": 0.9760087233123701, "pair_shuffle": 0.9743845125235416}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 36, "total_epochs": 200, "updates_per_arm": 7596, "macro_f1": {"pair_true": 0.976312317239805, "pair_shuffle": 0.9750175408141589}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 37, "total_epochs": 200, "updates_per_arm": 7807, "macro_f1": {"pair_true": 0.9747055262167954, "pair_shuffle": 0.9735625921466772}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 38, "total_epochs": 200, "updates_per_arm": 8018, "macro_f1": {"pair_true": 0.9760740238673512, "pair_shuffle": 0.9745265650550761}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 39, "total_epochs": 200, "updates_per_arm": 8229, "macro_f1": {"pair_true": 0.9765571511652764, "pair_shuffle": 0.9738043891038974}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 40, "total_epochs": 200, "updates_per_arm": 8440, "macro_f1": {"pair_true": 0.9748464566890785, "pair_shuffle": 0.9731836923694329}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 41, "total_epochs": 200, "updates_per_arm": 8651, "macro_f1": {"pair_true": 0.9748879889142377, "pair_shuffle": 0.973263061057841}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 42, "total_epochs": 200, "updates_per_arm": 8862, "macro_f1": {"pair_true": 0.9756062021442089, "pair_shuffle": 0.9736078464342476}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 43, "total_epochs": 200, "updates_per_arm": 9073, "macro_f1": {"pair_true": 0.9761661300277347, "pair_shuffle": 0.9742075021560095}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 44, "total_epochs": 200, "updates_per_arm": 9284, "macro_f1": {"pair_true": 0.9752379905547095, "pair_shuffle": 0.9740928468967721}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 45, "total_epochs": 200, "updates_per_arm": 9495, "macro_f1": {"pair_true": 0.9763099529886877, "pair_shuffle": 0.9750051287135935}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 46, "total_epochs": 200, "updates_per_arm": 9706, "macro_f1": {"pair_true": 0.9763271530707556, "pair_shuffle": 0.9755101315244298}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 47, "total_epochs": 200, "updates_per_arm": 9917, "macro_f1": {"pair_true": 0.9757682959390348, "pair_shuffle": 0.973631373874642}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 48, "total_epochs": 200, "updates_per_arm": 10128, "macro_f1": {"pair_true": 0.9769828831748818, "pair_shuffle": 0.9749075995513578}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 49, "total_epochs": 200, "updates_per_arm": 10339, "macro_f1": {"pair_true": 0.9762613201516368, "pair_shuffle": 0.9738074964567934}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 50, "total_epochs": 200, "updates_per_arm": 10550, "macro_f1": {"pair_true": 0.9772555569715419, "pair_shuffle": 0.9753114492705824}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 51, "total_epochs": 200, "updates_per_arm": 10761, "macro_f1": {"pair_true": 0.977045516085526, "pair_shuffle": 0.9745710177044961}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 52, "total_epochs": 200, "updates_per_arm": 10972, "macro_f1": {"pair_true": 0.9752222559947634, "pair_shuffle": 0.9742230397501158}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 53, "total_epochs": 200, "updates_per_arm": 11183, "macro_f1": {"pair_true": 0.9778192803888158, "pair_shuffle": 0.9759049091122771}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 54, "total_epochs": 200, "updates_per_arm": 11394, "macro_f1": {"pair_true": 0.9767021961824355, "pair_shuffle": 0.9747431031516884}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 55, "total_epochs": 200, "updates_per_arm": 11605, "macro_f1": {"pair_true": 0.9772283370136783, "pair_shuffle": 0.9754081470440628}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 56, "total_epochs": 200, "updates_per_arm": 11816, "macro_f1": {"pair_true": 0.9774847420550632, "pair_shuffle": 0.97621045913247}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 57, "total_epochs": 200, "updates_per_arm": 12027, "macro_f1": {"pair_true": 0.9777012269179209, "pair_shuffle": 0.975215190439919}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 58, "total_epochs": 200, "updates_per_arm": 12238, "macro_f1": {"pair_true": 0.9759535767118476, "pair_shuffle": 0.9728104887430141}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 59, "total_epochs": 200, "updates_per_arm": 12449, "macro_f1": {"pair_true": 0.9772251900856177, "pair_shuffle": 0.9755280409188896}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 60, "total_epochs": 200, "updates_per_arm": 12660, "macro_f1": {"pair_true": 0.9773284284494541, "pair_shuffle": 0.9756370083663053}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 61, "total_epochs": 200, "updates_per_arm": 12871, "macro_f1": {"pair_true": 0.9776205659756582, "pair_shuffle": 0.9754352734020931}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 62, "total_epochs": 200, "updates_per_arm": 13082, "macro_f1": {"pair_true": 0.9776261795136348, "pair_shuffle": 0.9760319389422318}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 63, "total_epochs": 200, "updates_per_arm": 13293, "macro_f1": {"pair_true": 0.9770857227629407, "pair_shuffle": 0.9739687914949507}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 64, "total_epochs": 200, "updates_per_arm": 13504, "macro_f1": {"pair_true": 0.9778899312437134, "pair_shuffle": 0.9747432837244064}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 65, "total_epochs": 200, "updates_per_arm": 13715, "macro_f1": {"pair_true": 0.9777154694930367, "pair_shuffle": 0.9750187856880446}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 66, "total_epochs": 200, "updates_per_arm": 13926, "macro_f1": {"pair_true": 0.9783602762891527, "pair_shuffle": 0.9756223098048266}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 67, "total_epochs": 200, "updates_per_arm": 14137, "macro_f1": {"pair_true": 0.9772914860473193, "pair_shuffle": 0.9745575703724187}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 68, "total_epochs": 200, "updates_per_arm": 14348, "macro_f1": {"pair_true": 0.9777542221216936, "pair_shuffle": 0.9759522776780724}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 69, "total_epochs": 200, "updates_per_arm": 14559, "macro_f1": {"pair_true": 0.9775847632449072, "pair_shuffle": 0.9755313915522646}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 70, "total_epochs": 200, "updates_per_arm": 14770, "macro_f1": {"pair_true": 0.9776034956294867, "pair_shuffle": 0.9755484677102049}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 71, "total_epochs": 200, "updates_per_arm": 14981, "macro_f1": {"pair_true": 0.9776391091348221, "pair_shuffle": 0.9753328211296917}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 72, "total_epochs": 200, "updates_per_arm": 15192, "macro_f1": {"pair_true": 0.9779940822100933, "pair_shuffle": 0.9757228129538813}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 73, "total_epochs": 200, "updates_per_arm": 15403, "macro_f1": {"pair_true": 0.9756268512735126, "pair_shuffle": 0.9747511077683844}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 74, "total_epochs": 200, "updates_per_arm": 15614, "macro_f1": {"pair_true": 0.9772302854571221, "pair_shuffle": 0.9761758973882576}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 75, "total_epochs": 200, "updates_per_arm": 15825, "macro_f1": {"pair_true": 0.9765819627539253, "pair_shuffle": 0.9757519826472968}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 76, "total_epochs": 200, "updates_per_arm": 16036, "macro_f1": {"pair_true": 0.9757756999338331, "pair_shuffle": 0.9729754635431749}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 77, "total_epochs": 200, "updates_per_arm": 16247, "macro_f1": {"pair_true": 0.9768368359351589, "pair_shuffle": 0.9746769049477074}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 78, "total_epochs": 200, "updates_per_arm": 16458, "macro_f1": {"pair_true": 0.9774453405184332, "pair_shuffle": 0.9764276221483835}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 79, "total_epochs": 200, "updates_per_arm": 16669, "macro_f1": {"pair_true": 0.9765181283432749, "pair_shuffle": 0.974497033737804}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 80, "total_epochs": 200, "updates_per_arm": 16880, "macro_f1": {"pair_true": 0.9777353519570492, "pair_shuffle": 0.9750246215393629}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 81, "total_epochs": 200, "updates_per_arm": 17091, "macro_f1": {"pair_true": 0.9771725580631873, "pair_shuffle": 0.9757695769803645}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 82, "total_epochs": 200, "updates_per_arm": 17302, "macro_f1": {"pair_true": 0.9776701780185811, "pair_shuffle": 0.9749285825124173}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 83, "total_epochs": 200, "updates_per_arm": 17513, "macro_f1": {"pair_true": 0.9766141732383823, "pair_shuffle": 0.9750504820220629}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 84, "total_epochs": 200, "updates_per_arm": 17724, "macro_f1": {"pair_true": 0.9787695734142482, "pair_shuffle": 0.9764655882929046}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 85, "total_epochs": 200, "updates_per_arm": 17935, "macro_f1": {"pair_true": 0.9764472082585735, "pair_shuffle": 0.9754380026009238}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 86, "total_epochs": 200, "updates_per_arm": 18146, "macro_f1": {"pair_true": 0.9770260842556037, "pair_shuffle": 0.9758346551046923}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 87, "total_epochs": 200, "updates_per_arm": 18357, "macro_f1": {"pair_true": 0.9761585289813767, "pair_shuffle": 0.9754837933140302}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 88, "total_epochs": 200, "updates_per_arm": 18568, "macro_f1": {"pair_true": 0.9778767348769495, "pair_shuffle": 0.9757557099877207}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 89, "total_epochs": 200, "updates_per_arm": 18779, "macro_f1": {"pair_true": 0.9751422154428228, "pair_shuffle": 0.9746818242385695}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 90, "total_epochs": 200, "updates_per_arm": 18990, "macro_f1": {"pair_true": 0.9754370533026663, "pair_shuffle": 0.9748279817831411}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 91, "total_epochs": 200, "updates_per_arm": 19201, "macro_f1": {"pair_true": 0.9763048116995297, "pair_shuffle": 0.9764961256762791}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 92, "total_epochs": 200, "updates_per_arm": 19412, "macro_f1": {"pair_true": 0.9762999081316219, "pair_shuffle": 0.9754353326823627}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 93, "total_epochs": 200, "updates_per_arm": 19623, "macro_f1": {"pair_true": 0.9757630768348039, "pair_shuffle": 0.9744213255963433}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 94, "total_epochs": 200, "updates_per_arm": 19834, "macro_f1": {"pair_true": 0.9772657620359494, "pair_shuffle": 0.9756755688791148}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 95, "total_epochs": 200, "updates_per_arm": 20045, "macro_f1": {"pair_true": 0.9753209177685777, "pair_shuffle": 0.9744183751997278}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 96, "total_epochs": 200, "updates_per_arm": 20256, "macro_f1": {"pair_true": 0.977308269695007, "pair_shuffle": 0.9767519115801981}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 97, "total_epochs": 200, "updates_per_arm": 20467, "macro_f1": {"pair_true": 0.9767173519846833, "pair_shuffle": 0.9762818590385386}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 98, "total_epochs": 200, "updates_per_arm": 20678, "macro_f1": {"pair_true": 0.9749598619750602, "pair_shuffle": 0.9738306069769272}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 99, "total_epochs": 200, "updates_per_arm": 20889, "macro_f1": {"pair_true": 0.9768490305949438, "pair_shuffle": 0.9771672191798131}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 100, "total_epochs": 200, "updates_per_arm": 21100, "macro_f1": {"pair_true": 0.9771537103772756, "pair_shuffle": 0.9762683104476887}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 101, "total_epochs": 200, "updates_per_arm": 21311, "macro_f1": {"pair_true": 0.9758308503522531, "pair_shuffle": 0.9755293066086573}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 102, "total_epochs": 200, "updates_per_arm": 21522, "macro_f1": {"pair_true": 0.975520199131599, "pair_shuffle": 0.976205069977667}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 103, "total_epochs": 200, "updates_per_arm": 21733, "macro_f1": {"pair_true": 0.9767800170431223, "pair_shuffle": 0.9775256479977948}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 104, "total_epochs": 200, "updates_per_arm": 21944, "macro_f1": {"pair_true": 0.9761916526466717, "pair_shuffle": 0.9750590838482133}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 105, "total_epochs": 200, "updates_per_arm": 22155, "macro_f1": {"pair_true": 0.9767435312848787, "pair_shuffle": 0.9761662001498767}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 106, "total_epochs": 200, "updates_per_arm": 22366, "macro_f1": {"pair_true": 0.9754457743748547, "pair_shuffle": 0.9750085536994496}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 107, "total_epochs": 200, "updates_per_arm": 22577, "macro_f1": {"pair_true": 0.9758593885999541, "pair_shuffle": 0.9765666108857225}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 108, "total_epochs": 200, "updates_per_arm": 22788, "macro_f1": {"pair_true": 0.9765560918395776, "pair_shuffle": 0.9761803264958232}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 109, "total_epochs": 200, "updates_per_arm": 22999, "macro_f1": {"pair_true": 0.9776815492474097, "pair_shuffle": 0.9749377113445253}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 110, "total_epochs": 200, "updates_per_arm": 23210, "macro_f1": {"pair_true": 0.9765779335848512, "pair_shuffle": 0.9764902353213957}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 111, "total_epochs": 200, "updates_per_arm": 23421, "macro_f1": {"pair_true": 0.9762470822832945, "pair_shuffle": 0.9763646905275388}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 112, "total_epochs": 200, "updates_per_arm": 23632, "macro_f1": {"pair_true": 0.9770118861829653, "pair_shuffle": 0.9771090894019006}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 113, "total_epochs": 200, "updates_per_arm": 23843, "macro_f1": {"pair_true": 0.9761741096016008, "pair_shuffle": 0.9764324238987254}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 114, "total_epochs": 200, "updates_per_arm": 24054, "macro_f1": {"pair_true": 0.9770351902404167, "pair_shuffle": 0.9765677927911653}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 115, "total_epochs": 200, "updates_per_arm": 24265, "macro_f1": {"pair_true": 0.9768435202952409, "pair_shuffle": 0.9761844858484847}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 116, "total_epochs": 200, "updates_per_arm": 24476, "macro_f1": {"pair_true": 0.9769915918581452, "pair_shuffle": 0.9765399434438817}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 117, "total_epochs": 200, "updates_per_arm": 24687, "macro_f1": {"pair_true": 0.9758055122188701, "pair_shuffle": 0.9768671483950773}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 118, "total_epochs": 200, "updates_per_arm": 24898, "macro_f1": {"pair_true": 0.9742298563107907, "pair_shuffle": 0.9735863455113889}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 119, "total_epochs": 200, "updates_per_arm": 25109, "macro_f1": {"pair_true": 0.9751354790416262, "pair_shuffle": 0.974133326599418}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 120, "total_epochs": 200, "updates_per_arm": 25320, "macro_f1": {"pair_true": 0.977468954337405, "pair_shuffle": 0.9773932632341656}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 121, "total_epochs": 200, "updates_per_arm": 25531, "macro_f1": {"pair_true": 0.975961598902815, "pair_shuffle": 0.976482893390322}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 122, "total_epochs": 200, "updates_per_arm": 25742, "macro_f1": {"pair_true": 0.9769173567265276, "pair_shuffle": 0.9770728893910549}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 123, "total_epochs": 200, "updates_per_arm": 25953, "macro_f1": {"pair_true": 0.9757183725478173, "pair_shuffle": 0.9758018509180431}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 124, "total_epochs": 200, "updates_per_arm": 26164, "macro_f1": {"pair_true": 0.9766160081375741, "pair_shuffle": 0.9759570062027882}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 125, "total_epochs": 200, "updates_per_arm": 26375, "macro_f1": {"pair_true": 0.976052836175165, "pair_shuffle": 0.976755310311221}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 126, "total_epochs": 200, "updates_per_arm": 26586, "macro_f1": {"pair_true": 0.9767837466457229, "pair_shuffle": 0.9763178723062845}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 127, "total_epochs": 200, "updates_per_arm": 26797, "macro_f1": {"pair_true": 0.9750598219739463, "pair_shuffle": 0.97505979787672}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 128, "total_epochs": 200, "updates_per_arm": 27008, "macro_f1": {"pair_true": 0.9759537546086178, "pair_shuffle": 0.9775090277310458}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 129, "total_epochs": 200, "updates_per_arm": 27219, "macro_f1": {"pair_true": 0.9766174838078507, "pair_shuffle": 0.9760021109113095}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 130, "total_epochs": 200, "updates_per_arm": 27430, "macro_f1": {"pair_true": 0.9764224184644011, "pair_shuffle": 0.9770120124705927}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 131, "total_epochs": 200, "updates_per_arm": 27641, "macro_f1": {"pair_true": 0.9763453348601622, "pair_shuffle": 0.9764990053028152}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 132, "total_epochs": 200, "updates_per_arm": 27852, "macro_f1": {"pair_true": 0.9757703254548427, "pair_shuffle": 0.9747766823633511}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 133, "total_epochs": 200, "updates_per_arm": 28063, "macro_f1": {"pair_true": 0.9768008600659793, "pair_shuffle": 0.9764460293756277}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 134, "total_epochs": 200, "updates_per_arm": 28274, "macro_f1": {"pair_true": 0.977253769923556, "pair_shuffle": 0.9768371422726279}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 135, "total_epochs": 200, "updates_per_arm": 28485, "macro_f1": {"pair_true": 0.9753401165613301, "pair_shuffle": 0.9761239814000425}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 136, "total_epochs": 200, "updates_per_arm": 28696, "macro_f1": {"pair_true": 0.9764397958175837, "pair_shuffle": 0.9762992691777261}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 137, "total_epochs": 200, "updates_per_arm": 28907, "macro_f1": {"pair_true": 0.9761877288541141, "pair_shuffle": 0.9767262419529414}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 138, "total_epochs": 200, "updates_per_arm": 29118, "macro_f1": {"pair_true": 0.9781371832294888, "pair_shuffle": 0.9761182206156707}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 139, "total_epochs": 200, "updates_per_arm": 29329, "macro_f1": {"pair_true": 0.9764822673969344, "pair_shuffle": 0.9764758061623113}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 140, "total_epochs": 200, "updates_per_arm": 29540, "macro_f1": {"pair_true": 0.9757825523509357, "pair_shuffle": 0.9752560678329106}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 141, "total_epochs": 200, "updates_per_arm": 29751, "macro_f1": {"pair_true": 0.9780562853889447, "pair_shuffle": 0.9771875409330337}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 142, "total_epochs": 200, "updates_per_arm": 29962, "macro_f1": {"pair_true": 0.9759335255564981, "pair_shuffle": 0.9760704856619711}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 143, "total_epochs": 200, "updates_per_arm": 30173, "macro_f1": {"pair_true": 0.9776432683004072, "pair_shuffle": 0.9772250194062337}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 144, "total_epochs": 200, "updates_per_arm": 30384, "macro_f1": {"pair_true": 0.9756474428968723, "pair_shuffle": 0.9764518343360611}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 145, "total_epochs": 200, "updates_per_arm": 30595, "macro_f1": {"pair_true": 0.9769991941833428, "pair_shuffle": 0.9770536933132747}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 146, "total_epochs": 200, "updates_per_arm": 30806, "macro_f1": {"pair_true": 0.9777810157412757, "pair_shuffle": 0.9765811081244669}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 147, "total_epochs": 200, "updates_per_arm": 31017, "macro_f1": {"pair_true": 0.9771046994168817, "pair_shuffle": 0.9772299693510221}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 148, "total_epochs": 200, "updates_per_arm": 31228, "macro_f1": {"pair_true": 0.9779192086138604, "pair_shuffle": 0.9772173180492085}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 149, "total_epochs": 200, "updates_per_arm": 31439, "macro_f1": {"pair_true": 0.9752582955386129, "pair_shuffle": 0.9747889567189174}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 150, "total_epochs": 200, "updates_per_arm": 31650, "macro_f1": {"pair_true": 0.9770207473236696, "pair_shuffle": 0.9773349241009863}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 151, "total_epochs": 200, "updates_per_arm": 31861, "macro_f1": {"pair_true": 0.9761660922359371, "pair_shuffle": 0.9765931551664507}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 152, "total_epochs": 200, "updates_per_arm": 32072, "macro_f1": {"pair_true": 0.9774690176122406, "pair_shuffle": 0.97620223184975}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 153, "total_epochs": 200, "updates_per_arm": 32283, "macro_f1": {"pair_true": 0.9762010018999965, "pair_shuffle": 0.9763534540091658}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 154, "total_epochs": 200, "updates_per_arm": 32494, "macro_f1": {"pair_true": 0.9772625497164247, "pair_shuffle": 0.9775457171649038}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 155, "total_epochs": 200, "updates_per_arm": 32705, "macro_f1": {"pair_true": 0.9773870397409561, "pair_shuffle": 0.9764059870724792}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 156, "total_epochs": 200, "updates_per_arm": 32916, "macro_f1": {"pair_true": 0.9765288748213956, "pair_shuffle": 0.9766590872738856}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 157, "total_epochs": 200, "updates_per_arm": 33127, "macro_f1": {"pair_true": 0.977402942269877, "pair_shuffle": 0.9769466097641899}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 158, "total_epochs": 200, "updates_per_arm": 33338, "macro_f1": {"pair_true": 0.9778539079202003, "pair_shuffle": 0.9770919265625433}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 159, "total_epochs": 200, "updates_per_arm": 33549, "macro_f1": {"pair_true": 0.9770317447433872, "pair_shuffle": 0.97622964207104}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 160, "total_epochs": 200, "updates_per_arm": 33760, "macro_f1": {"pair_true": 0.9777314151476136, "pair_shuffle": 0.977338670112136}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 161, "total_epochs": 200, "updates_per_arm": 33971, "macro_f1": {"pair_true": 0.9774645819142261, "pair_shuffle": 0.9760606410651966}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 162, "total_epochs": 200, "updates_per_arm": 34182, "macro_f1": {"pair_true": 0.9769788393496418, "pair_shuffle": 0.9768793521617195}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 163, "total_epochs": 200, "updates_per_arm": 34393, "macro_f1": {"pair_true": 0.9757754265642061, "pair_shuffle": 0.977576939045962}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 164, "total_epochs": 200, "updates_per_arm": 34604, "macro_f1": {"pair_true": 0.9772700681537694, "pair_shuffle": 0.9770594993792244}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 165, "total_epochs": 200, "updates_per_arm": 34815, "macro_f1": {"pair_true": 0.9768878852722109, "pair_shuffle": 0.9782575799435649}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 166, "total_epochs": 200, "updates_per_arm": 35026, "macro_f1": {"pair_true": 0.9768962186737671, "pair_shuffle": 0.9776041855331636}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 167, "total_epochs": 200, "updates_per_arm": 35237, "macro_f1": {"pair_true": 0.9773960627334216, "pair_shuffle": 0.9775571908569392}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 168, "total_epochs": 200, "updates_per_arm": 35448, "macro_f1": {"pair_true": 0.9773256781393191, "pair_shuffle": 0.9776143004316513}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 169, "total_epochs": 200, "updates_per_arm": 35659, "macro_f1": {"pair_true": 0.9769816819949848, "pair_shuffle": 0.977647686210519}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 170, "total_epochs": 200, "updates_per_arm": 35870, "macro_f1": {"pair_true": 0.9772236548474869, "pair_shuffle": 0.9767798214634907}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 171, "total_epochs": 200, "updates_per_arm": 36081, "macro_f1": {"pair_true": 0.977332199304279, "pair_shuffle": 0.9779979241836262}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 172, "total_epochs": 200, "updates_per_arm": 36292, "macro_f1": {"pair_true": 0.9757662012078208, "pair_shuffle": 0.9781198839224381}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 173, "total_epochs": 200, "updates_per_arm": 36503, "macro_f1": {"pair_true": 0.9771217448452796, "pair_shuffle": 0.9767800588120517}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 174, "total_epochs": 200, "updates_per_arm": 36714, "macro_f1": {"pair_true": 0.9783731951626664, "pair_shuffle": 0.978261444719194}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 175, "total_epochs": 200, "updates_per_arm": 36925, "macro_f1": {"pair_true": 0.97639333512602, "pair_shuffle": 0.9763520268657562}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 176, "total_epochs": 200, "updates_per_arm": 37136, "macro_f1": {"pair_true": 0.9756109785085437, "pair_shuffle": 0.9768381226254201}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 177, "total_epochs": 200, "updates_per_arm": 37347, "macro_f1": {"pair_true": 0.9769174727972989, "pair_shuffle": 0.976398441959612}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 178, "total_epochs": 200, "updates_per_arm": 37558, "macro_f1": {"pair_true": 0.9750050802395496, "pair_shuffle": 0.9736691607850116}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 179, "total_epochs": 200, "updates_per_arm": 37769, "macro_f1": {"pair_true": 0.977488349986334, "pair_shuffle": 0.977816815534914}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 180, "total_epochs": 200, "updates_per_arm": 37980, "macro_f1": {"pair_true": 0.9771735595796969, "pair_shuffle": 0.9771961397390129}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 181, "total_epochs": 200, "updates_per_arm": 38191, "macro_f1": {"pair_true": 0.9775773337483878, "pair_shuffle": 0.9766532944305416}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 182, "total_epochs": 200, "updates_per_arm": 38402, "macro_f1": {"pair_true": 0.9771505549488677, "pair_shuffle": 0.9777592840387345}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 183, "total_epochs": 200, "updates_per_arm": 38613, "macro_f1": {"pair_true": 0.9770151862313022, "pair_shuffle": 0.9786958201282644}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 184, "total_epochs": 200, "updates_per_arm": 38824, "macro_f1": {"pair_true": 0.978843684227255, "pair_shuffle": 0.9773006422740173}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 185, "total_epochs": 200, "updates_per_arm": 39035, "macro_f1": {"pair_true": 0.9775184882750846, "pair_shuffle": 0.9768723392492813}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 186, "total_epochs": 200, "updates_per_arm": 39246, "macro_f1": {"pair_true": 0.9781448912037796, "pair_shuffle": 0.9786087860401617}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 187, "total_epochs": 200, "updates_per_arm": 39457, "macro_f1": {"pair_true": 0.9777790076740608, "pair_shuffle": 0.9768570644543}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 188, "total_epochs": 200, "updates_per_arm": 39668, "macro_f1": {"pair_true": 0.9775851920065449, "pair_shuffle": 0.9783525642778788}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 189, "total_epochs": 200, "updates_per_arm": 39879, "macro_f1": {"pair_true": 0.9774809933033398, "pair_shuffle": 0.9773997289448769}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 190, "total_epochs": 200, "updates_per_arm": 40090, "macro_f1": {"pair_true": 0.9771328445806561, "pair_shuffle": 0.9778814780448719}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 191, "total_epochs": 200, "updates_per_arm": 40301, "macro_f1": {"pair_true": 0.9791403291717622, "pair_shuffle": 0.9775036062938651}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 192, "total_epochs": 200, "updates_per_arm": 40512, "macro_f1": {"pair_true": 0.976078114822741, "pair_shuffle": 0.9773266399718575}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 193, "total_epochs": 200, "updates_per_arm": 40723, "macro_f1": {"pair_true": 0.9781946523945804, "pair_shuffle": 0.9772263513493309}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 194, "total_epochs": 200, "updates_per_arm": 40934, "macro_f1": {"pair_true": 0.9773723254460779, "pair_shuffle": 0.974714343339434}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 195, "total_epochs": 200, "updates_per_arm": 41145, "macro_f1": {"pair_true": 0.9767851352740776, "pair_shuffle": 0.975447575649428}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 196, "total_epochs": 200, "updates_per_arm": 41356, "macro_f1": {"pair_true": 0.9763015974208824, "pair_shuffle": 0.9779555734623298}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 197, "total_epochs": 200, "updates_per_arm": 41567, "macro_f1": {"pair_true": 0.9777475790530513, "pair_shuffle": 0.9773677210419272}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 198, "total_epochs": 200, "updates_per_arm": 41778, "macro_f1": {"pair_true": 0.9772721993197822, "pair_shuffle": 0.9771481666055379}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 199, "total_epochs": 200, "updates_per_arm": 41989, "macro_f1": {"pair_true": 0.9774005190804563, "pair_shuffle": 0.9767986068845037}}
+{"status": "running", "pid": 2325251, "phase": "transition_pair_training", "epoch": 200, "total_epochs": 200, "updates_per_arm": 42200, "macro_f1": {"pair_true": 0.9765962796614376, "pair_shuffle": 0.9755818940538792}}
+{"status": "running", "pid": 2325251, "phase": "selected_pair_raw_replay", "samples": 16, "total": 13446}
+{"status": "running", "pid": 2325251, "phase": "selected_pair_raw_replay", "samples": 3200, "total": 13446}
+{"status": "running", "pid": 2325251, "phase": "selected_pair_raw_replay", "samples": 6400, "total": 13446}
+{"status": "running", "pid": 2325251, "phase": "selected_pair_raw_replay", "samples": 9600, "total": 13446}
+{"status": "running", "pid": 2325251, "phase": "selected_pair_raw_replay", "samples": 12800, "total": 13446}
+{"status": "running", "pid": 2325251, "phase": "selected_pair_raw_replay", "samples": 13446, "total": 13446}
+{"status": "completed", "formal_training_started": true, "test_evaluated": false, "output": "/home/nzxn/\u4e0b\u8f7d/WX/load/XG-NID/outputs/transition_pair_shuffle_s42_v1"}

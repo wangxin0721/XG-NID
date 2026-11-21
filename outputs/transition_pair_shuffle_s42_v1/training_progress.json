@@ -1,0 +1,10 @@
+{
+  "completed_epoch": 200,
+  "current_epoch": 200,
+  "cursor": 107621,
+  "updates_per_arm": 42200,
+  "selected_epochs": {
+    "pair_true": 191,
+    "pair_shuffle": 183
+  }
+}

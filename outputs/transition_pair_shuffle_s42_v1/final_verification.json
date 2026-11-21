@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "source_C_unchanged": true,
+  "source_inputs_unchanged": true,
+  "same_sample_order_both_arms": true,
+  "updates_per_arm": 42200,
+  "epochs_per_arm": 200,
+  "fixed_mapping_raw_replay_passed": true,
+  "test_graph_loads": 0,
+  "seconds": 35195.122329679085
+}
