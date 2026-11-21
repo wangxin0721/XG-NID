@@ -20,7 +20,7 @@ def context_counts(features):
 
 
 @torch.no_grad()
-def context_attention(head, features):
+def context_attention(head, features, context_right=None):
     counts = context_counts(features)
     if head is None or head.mode == 'single':
         return [], [0] * len(counts)
@@ -29,7 +29,7 @@ def context_attention(head, features):
         return [], counts.tolist()
     owner = torch.repeat_interleave(torch.arange(len(features.lengths), device=features.lengths.device), features.lengths)
     values = F.gelu(head.edge(features.transitions[:, :70]))
-    right = left + 1 if head.mode == 'ordered' else left
+    right = context_right if context_right is not None else (left + 1 if head.mode == 'ordered' else left)
     contexts = F.gelu(head.context(torch.cat((values[left], values[right]), -1)))
     queries = head.query(features.packet_mean)
     scores = (contexts * queries[owner[left]]).sum(-1, keepdim=True) / 4
@@ -57,7 +57,8 @@ def observe(arms, features, rows):
         # Linear bias cancels, so this measures the exact projected residual difference.
         projected = F.linear(residual, arm.fusion.packet_projection.weight).norm(dim=-1).cpu().tolist()
         weights = [] if edge_weights is None else edge_weights.cpu().tolist()
-        context_weights, context_lengths = context_attention(arm.readout, features)
+        context_weights, context_lengths = context_attention(
+            arm.readout, features, arm.context_right(features) if hasattr(arm, 'context_right') else None)
         offset, context_offset = 0, 0
         for i, row in enumerate(records):
             edges = weights[offset:offset + lengths[i]] if arm.readout is not None else []

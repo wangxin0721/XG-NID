@@ -1,0 +1,318 @@
+{
+  "passed": true,
+  "nonzero_output_weights": true,
+  "same_weights_both_pairings": true,
+  "true_exactly_matches_J3": true,
+  "single_scale_attention_unchanged": true,
+  "max_abs_residual_difference": 0.0001501636579632759,
+  "scope": "synthetic_CPU_graphs_only_not_server_coverage",
+  "pairing_seed": 20261121,
+  "mapping_sha256": "a22c8dc584cb727444a14562afa6d0a26c04de86ea7d6d2293be8008ac8bd4d9",
+  "coverage": {
+    "samples": 8,
+    "shuffleable_flows": 4,
+    "shuffleable_flow_fraction": 0.5,
+    "zero_context_flows": 3,
+    "single_context_flows": 1,
+    "contexts": 15,
+    "changed_pair_indices": 14,
+    "changed_right_features": 14,
+    "feature_change_fraction_of_changed_indices": 1.0,
+    "flows_with_changed_features": 4,
+    "effective_flow_fraction_of_shuffleable": 1.0,
+    "by_class": {
+      "Benign": {
+        "samples": 1,
+        "shuffleable_flows": 0,
+        "shuffleable_flow_fraction": 0.0,
+        "zero_context_flows": 1,
+        "single_context_flows": 0,
+        "contexts": 0,
+        "changed_pair_indices": 0,
+        "changed_right_features": 0,
+        "feature_change_fraction_of_changed_indices": null,
+        "flows_with_changed_features": 0,
+        "effective_flow_fraction_of_shuffleable": null
+      },
+      "WebBased": {
+        "samples": 1,
+        "shuffleable_flows": 0,
+        "shuffleable_flow_fraction": 0.0,
+        "zero_context_flows": 1,
+        "single_context_flows": 0,
+        "contexts": 0,
+        "changed_pair_indices": 0,
+        "changed_right_features": 0,
+        "feature_change_fraction_of_changed_indices": null,
+        "flows_with_changed_features": 0,
+        "effective_flow_fraction_of_shuffleable": null
+      },
+      "Spoofing": {
+        "samples": 1,
+        "shuffleable_flows": 0,
+        "shuffleable_flow_fraction": 0.0,
+        "zero_context_flows": 0,
+        "single_context_flows": 1,
+        "contexts": 1,
+        "changed_pair_indices": 0,
+        "changed_right_features": 0,
+        "feature_change_fraction_of_changed_indices": null,
+        "flows_with_changed_features": 0,
+        "effective_flow_fraction_of_shuffleable": null
+      },
+      "Recon": {
+        "samples": 1,
+        "shuffleable_flows": 1,
+        "shuffleable_flow_fraction": 1.0,
+        "zero_context_flows": 0,
+        "single_context_flows": 0,
+        "contexts": 2,
+        "changed_pair_indices": 2,
+        "changed_right_features": 2,
+        "feature_change_fraction_of_changed_indices": 1.0,
+        "flows_with_changed_features": 1,
+        "effective_flow_fraction_of_shuffleable": 1.0
+      },
+      "Mirai": {
+        "samples": 1,
+        "shuffleable_flows": 1,
+        "shuffleable_flow_fraction": 1.0,
+        "zero_context_flows": 0,
+        "single_context_flows": 0,
+        "contexts": 4,
+        "changed_pair_indices": 4,
+        "changed_right_features": 4,
+        "feature_change_fraction_of_changed_indices": 1.0,
+        "flows_with_changed_features": 1,
+        "effective_flow_fraction_of_shuffleable": 1.0
+      },
+      "Dos": {
+        "samples": 1,
+        "shuffleable_flows": 1,
+        "shuffleable_flow_fraction": 1.0,
+        "zero_context_flows": 0,
+        "single_context_flows": 0,
+        "contexts": 3,
+        "changed_pair_indices": 3,
+        "changed_right_features": 3,
+        "feature_change_fraction_of_changed_indices": 1.0,
+        "flows_with_changed_features": 1,
+        "effective_flow_fraction_of_shuffleable": 1.0
+      },
+      "DDos": {
+        "samples": 1,
+        "shuffleable_flows": 1,
+        "shuffleable_flow_fraction": 1.0,
+        "zero_context_flows": 0,
+        "single_context_flows": 0,
+        "contexts": 5,
+        "changed_pair_indices": 5,
+        "changed_right_features": 5,
+        "feature_change_fraction_of_changed_indices": 1.0,
+        "flows_with_changed_features": 1,
+        "effective_flow_fraction_of_shuffleable": 1.0
+      },
+      "BruteForce": {
+        "samples": 1,
+        "shuffleable_flows": 0,
+        "shuffleable_flow_fraction": 0.0,
+        "zero_context_flows": 1,
+        "single_context_flows": 0,
+        "contexts": 0,
+        "changed_pair_indices": 0,
+        "changed_right_features": 0,
+        "feature_change_fraction_of_changed_indices": null,
+        "flows_with_changed_features": 0,
+        "effective_flow_fraction_of_shuffleable": null
+      }
+    }
+  },
+  "mappings": [
+    {
+      "sample_id": "pair-example-0",
+      "partition": "val",
+      "valid_pairs": 0,
+      "ordered_contexts": 0,
+      "left_local": [],
+      "true_right_local": [],
+      "permutation": [],
+      "shuffled_right_local": [],
+      "shuffleable": false,
+      "indices_changed": 0,
+      "features_changed": 0
+    },
+    {
+      "sample_id": "pair-example-1",
+      "partition": "val",
+      "valid_pairs": 1,
+      "ordered_contexts": 0,
+      "left_local": [],
+      "true_right_local": [],
+      "permutation": [],
+      "shuffled_right_local": [],
+      "shuffleable": false,
+      "indices_changed": 0,
+      "features_changed": 0
+    },
+    {
+      "sample_id": "pair-example-2",
+      "partition": "val",
+      "valid_pairs": 2,
+      "ordered_contexts": 1,
+      "left_local": [
+        0
+      ],
+      "true_right_local": [
+        1
+      ],
+      "permutation": [
+        0
+      ],
+      "shuffled_right_local": [
+        1
+      ],
+      "shuffleable": false,
+      "indices_changed": 0,
+      "features_changed": 0
+    },
+    {
+      "sample_id": "pair-example-3",
+      "partition": "val",
+      "valid_pairs": 3,
+      "ordered_contexts": 2,
+      "left_local": [
+        0,
+        1
+      ],
+      "true_right_local": [
+        1,
+        2
+      ],
+      "permutation": [
+        1,
+        0
+      ],
+      "shuffled_right_local": [
+        2,
+        1
+      ],
+      "shuffleable": true,
+      "indices_changed": 2,
+      "features_changed": 2
+    },
+    {
+      "sample_id": "pair-example-4",
+      "partition": "val",
+      "valid_pairs": 5,
+      "ordered_contexts": 4,
+      "left_local": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "true_right_local": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "permutation": [
+        3,
+        2,
+        1,
+        0
+      ],
+      "shuffled_right_local": [
+        4,
+        3,
+        2,
+        1
+      ],
+      "shuffleable": true,
+      "indices_changed": 4,
+      "features_changed": 4
+    },
+    {
+      "sample_id": "pair-example-5",
+      "partition": "val",
+      "valid_pairs": 4,
+      "ordered_contexts": 3,
+      "left_local": [
+        0,
+        1,
+        2
+      ],
+      "true_right_local": [
+        1,
+        2,
+        3
+      ],
+      "permutation": [
+        2,
+        0,
+        1
+      ],
+      "shuffled_right_local": [
+        3,
+        1,
+        2
+      ],
+      "shuffleable": true,
+      "indices_changed": 3,
+      "features_changed": 3
+    },
+    {
+      "sample_id": "pair-example-6",
+      "partition": "val",
+      "valid_pairs": 6,
+      "ordered_contexts": 5,
+      "left_local": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "true_right_local": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "permutation": [
+        2,
+        4,
+        0,
+        1,
+        3
+      ],
+      "shuffled_right_local": [
+        3,
+        5,
+        1,
+        2,
+        4
+      ],
+      "shuffleable": true,
+      "indices_changed": 5,
+      "features_changed": 5
+    },
+    {
+      "sample_id": "pair-example-7",
+      "partition": "val",
+      "valid_pairs": 2,
+      "ordered_contexts": 0,
+      "left_local": [],
+      "true_right_local": [],
+      "permutation": [],
+      "shuffled_right_local": [],
+      "shuffleable": false,
+      "indices_changed": 0,
+      "features_changed": 0
+    }
+  ],
+  "formal_training_started": false,
+  "server_probe_completed": false
+}

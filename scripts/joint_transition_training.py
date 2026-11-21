@@ -125,9 +125,9 @@ def verify_source(source, digest):
             'Reference C parameters, buffers, gradients, or eval modes changed')
 
 
-def gradient_probe(source, features, labels, settings, device):
+def gradient_probe(source, features, labels, settings, device, arms=None):
     digest = raw.state_digest(source.state_dict())
-    arms, receipt = make_arms(source, settings, device), {}
+    arms, receipt = make_arms(source, settings, device) if arms is None else arms, {}
     baseline = original.baseline(source, features)
     require(bool(features.transitions[:, 70].any()), 'Gradient probe requires a real continuous context')
     for name, arm in arms.items():
@@ -181,7 +181,7 @@ def measure(arms, cache, rows, settings, device):
 
 def save_views(output, state):
     """Recovery is authoritative; derived ledgers and best/last files can always be regenerated."""
-    for name in ARMS:
+    for name in state['models']:
         folder = output / name
         folder.mkdir(exist_ok=True)
         ledger = [{**{k: v for k, v in row.items() if k not in ('validation', 'train_nll')},
@@ -200,6 +200,8 @@ def save_views(output, state):
 
 
 def fit(arms, train, val, rows, reference, settings, binding, device, output, resume=False, stop_after_updates=None):
+    arm_names = tuple(arms)
+    require(list(arm_names) == settings['arms'], 'Training arms differ from registered configuration')
     output.mkdir(parents=True, exist_ok=True)
     path = output / 'recovery.pt'
     optimizers = {name: optimizer(arm, settings) for name, arm in arms.items()}
@@ -222,12 +224,12 @@ def fit(arms, train, val, rows, reference, settings, binding, device, output, re
                   'updates_per_arm': state['updates'], 'adam_restored': True, 'rng_restored': True})
         save_views(output, state)
     else:
-        require(not (output / ARMS[0] / 'epochs.jsonl').exists(), 'Ledger exists without recovery; preserve and investigate')
+        require(not (output / arm_names[0] / 'epochs.jsonl').exists(), 'Ledger exists without recovery; preserve and investigate')
         records, metrics = measure(arms, val, rows, settings, device)
         require(all(items == reference for items in records.values()), 'Full validation epoch zero differs from original C')
         state = {'schema': 'xgnid.joint-transition-recovery.v1', 'binding': binding, 'settings': settings,
                  'completed_epoch': 0, 'updates': 0, 'epoch_updates': 0, 'epoch_samples': 0,
-                 'epoch_loss': {name: 0.0 for name in ARMS}, 'best': {}, 'history': []}
+                 'epoch_loss': {name: 0.0 for name in arm_names}, 'best': {}, 'history': []}
         for name, arm in arms.items():
             state['best'][name] = {'epoch': 0, 'validation': metrics[name], 'state': cpu_state(arm),
                                   'prediction_ids_sha256': frozen.joint.prediction_digest(records[name])}
@@ -247,7 +249,7 @@ def fit(arms, train, val, rows, reference, settings, binding, device, output, re
         epoch = state['completed_epoch'] + 1
         if sampler.epoch != epoch:
             sampler.start(epoch)
-            state.update(epoch_updates=0, epoch_samples=0, epoch_loss={name: 0.0 for name in ARMS})
+            state.update(epoch_updates=0, epoch_samples=0, epoch_loss={name: 0.0 for name in arm_names})
         for arm in arms.values():
             arm.train()
         while sampler.cursor < sampler.size:
@@ -268,7 +270,7 @@ def fit(arms, train, val, rows, reference, settings, binding, device, output, re
             state['epoch_samples'] += len(indices)
             state['epoch_updates'] += 1
             state['updates'] += 1
-            # One transaction includes all four Adam steps on exactly the same batch.
+            # One transaction includes every arm's Adam step on exactly the same batch.
             persist()
             if stop_after_updates is not None and state['updates'] == stop_after_updates:
                 return state
@@ -288,7 +290,7 @@ def fit(arms, train, val, rows, reference, settings, binding, device, output, re
         state['epoch_updates'] = 0
         persist()
         save_views(output, state)
-        raw.progress(output, 'joint_paired_training', epoch=epoch, total_epochs=settings['epochs'],
+        raw.progress(output, settings.get('progress_phase', 'joint_paired_training'), epoch=epoch, total_epochs=settings['epochs'],
                      updates_per_arm=state['updates'], macro_f1={k: v['macro_f1'] for k, v in metrics.items()})
     require(state['updates'] == len(sampler) * settings['epochs'], 'Final update budget differs')
     return state

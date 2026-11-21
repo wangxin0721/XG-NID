@@ -34,7 +34,7 @@ class OrderedTransitionReadout(PacketTransitionReadout):
                 torch.set_rng_state(torch.Generator().manual_seed(seed + 1000).get_state())
                 self.context = nn.Linear(32, 16)
 
-    def forward(self, query, transitions, lengths):
+    def forward(self, query, transitions, lengths, *, context_right=None):
         if transitions.ndim != 2 or transitions.size(1) != 71:
             raise ValueError('Expected 70 transition fields and a continuity flag')
         if self.mode == 'single' or not len(transitions):
@@ -46,13 +46,20 @@ class OrderedTransitionReadout(PacketTransitionReadout):
         left = torch.where(flags.bool())[0]
         if len(left) and (int(left[-1]) >= len(owner) - 1 or bool((owner[left] != owner[left + 1]).any())):
             raise ValueError('A context cannot cross graph boundaries')
+        if context_right is not None:
+            if self.mode != 'ordered' or context_right.dtype != torch.long or context_right.shape != left.shape:
+                raise ValueError('Expected one explicit right index per ordered context')
+            if not torch.equal(context_right.sort().values, (left + 1).sort().values):
+                raise ValueError('Explicit pairing must preserve the right candidate multiset')
+            if bool((owner[left] != owner[context_right]).any()):
+                raise ValueError('Explicit pairing cannot cross flow boundaries')
         values = F.gelu(self.edge(transitions[:, :70]))
         queries = self.query(query)
         scores = (values * queries[owner]).sum(dim=-1, keepdim=True) / 4
         attention = ordered_softmax(scores, owner, lengths)
         pooled = torch.segment_reduce(values * attention, 'sum', lengths=lengths, axis=0)
         if len(left):
-            right = left + 1 if self.mode == 'ordered' else left
+            right = context_right if context_right is not None else (left + 1 if self.mode == 'ordered' else left)
             context = F.gelu(self.context(torch.cat((values[left], values[right]), dim=-1)))
             groups = owner[left]
             counts = torch.bincount(groups, minlength=len(lengths))

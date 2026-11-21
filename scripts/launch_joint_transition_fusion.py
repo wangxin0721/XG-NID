@@ -22,9 +22,9 @@ def write(path, value):
     os.replace(temporary, path)
 
 
-def publish_results(code, repo, output, training_exit, env):
+def publish_results(code, repo, output, training_exit, env, output_name=OUTPUT):
     command = [sys.executable, '-B', str(code / 'scripts/sync_server_outputs.py'),
-               'publish', '--repo', str(repo), '--only', OUTPUT]
+               'publish', '--repo', str(repo), '--only', output_name]
     # Publish cannot inventory a log that its own subprocess is actively appending to.
     # Capture externally, then publish the closed primary log and exit-code receipt.
     temporary_root = repo / 'tmp'
@@ -57,10 +57,10 @@ def publish_results(code, repo, output, training_exit, env):
     return attempts
 
 
-def launch(args):
+def launch(args, output_name=OUTPUT, runner='run_joint_transition_fusion.py'):
     code = Path(__file__).resolve().parents[1]
     repo = args.repo.resolve()
-    output = repo / 'outputs' / OUTPUT
+    output = repo / 'outputs' / output_name
     output.mkdir(parents=True, exist_ok=True)
     env = os.environ.copy()
     env['PYTHONUNBUFFERED'] = '1'
@@ -81,7 +81,7 @@ def launch(args):
         old_handlers = {s: signal.signal(s, stop) for s in (signal.SIGINT, signal.SIGTERM)}
         status = 1
         try:
-            command = [sys.executable, '-u', '-B', str(code / 'scripts/run_joint_transition_fusion.py'),
+            command = [sys.executable, '-u', '-B', str(code / 'scripts' / runner),
                        '--repo', str(repo), '--resume']
             if args.data_root is not None:
                 command += ['--data-root', str(args.data_root.resolve())]
@@ -104,7 +104,7 @@ def launch(args):
             for sig in old_handlers:
                 signal.signal(sig, signal.SIG_IGN)
             try:
-                publish_results(code, repo, output, status, env)
+                publish_results(code, repo, output, status, env, output_name=output_name)
             finally:
                 for sig, handler in old_handlers.items():
                     signal.signal(sig, handler)
