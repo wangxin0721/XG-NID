@@ -1,0 +1,96 @@
+git-lfs/3.8.1 (GitHub; linux amd64; go 1.27.3; git a662a6db)
+{"files": 73, "GiB": 0.4480023290961981, "staging_directory": "/home/nzxn/下载/WX/load/XG-NID/.outputs-publish-690yxdr0"}
+提示：使用 'master' 作为初始分支的名称。这个默认分支名称可能会更改。要在新仓库中
+提示：配置使用初始分支名，并消除这条警告，请执行：
+提示：
+提示：	git config --global init.defaultBranch <名称>
+提示：
+提示：除了 'master' 之外，通常选定的名字有 'main'、'trunk' 和 'development'。
+提示：可以通过以下命令重命名刚创建的分支：
+提示：
+提示：	git branch -m <name>
+已初始化空的 Git 仓库于 /home/nzxn/下载/WX/load/XG-NID/.outputs-publish-690yxdr0/.git/
+来自 github.com:wangxin0721/XG-NID
+ * branch            codex/server-outputs -> FETCH_HEAD
+ * [新分支]          codex/server-outputs -> origin/codex/server-outputs
+Updated Git hooks.
+Git LFS initialized.
+[codex/server-outputs 32b4466] Update selected server outputs
+ 75 files changed, 28136 insertions(+), 5 deletions(-)
+ create mode 100644 outputs/transition_pair_shuffle_s42_v1/.launcher.lock
+ create mode 100644 outputs/transition_pair_shuffle_s42_v1/.run.lock
+ create mode 100644 outputs/transition_pair_shuffle_s42_v1/baseline_validation_replay.json
+ create mode 100644 outputs/transition_pair_shuffle_s42_v1/budget_comparison.json
+ create mode 100644 outputs/transition_pair_shuffle_s42_v1/config.json
+ create mode 100644 outputs/transition_pair_shuffle_s42_v1/coverage.json
+ create mode 100644 outputs/transition_pair_shuffle_s42_v1/epoch_zero_replay.json
+ create mode 100644 outputs/transition_pair_shuffle_s42_v1/final_verification.json
+ create mode 100644 outputs/transition_pair_shuffle_s42_v1/frozen_train_features.pt
+ create mode 100644 outputs/transition_pair_shuffle_s42_v1/frozen_val_features.pt
+ create mode 100644 outputs/transition_pair_shuffle_s42_v1/launcher.pid
+ create mode 100644 outputs/transition_pair_shuffle_s42_v1/pair_shuffle/best.pt
+ create mode 100644 outputs/transition_pair_shuffle_s42_v1/pair_shuffle/best_validation_predictions.jsonl.gz
+ create mode 100644 outputs/transition_pair_shuffle_s42_v1/pair_shuffle/epochs.jsonl
+ create mode 100644 outputs/transition_pair_shuffle_s42_v1/pair_shuffle/last.pt
+ create mode 100644 outputs/transition_pair_shuffle_s42_v1/pair_true/best.pt
+ create mode 100644 outputs/transition_pair_shuffle_s42_v1/pair_true/best_validation_predictions.jsonl.gz
+ create mode 100644 outputs/transition_pair_shuffle_s42_v1/pair_true/epochs.jsonl
+ create mode 100644 outputs/transition_pair_shuffle_s42_v1/pair_true/last.pt
+ create mode 100644 outputs/transition_pair_shuffle_s42_v1/pairing_train.jsonl.gz
+ create mode 100644 outputs/transition_pair_shuffle_s42_v1/pairing_train_receipt.json
+ create mode 100644 outputs/transition_pair_shuffle_s42_v1/pairing_val.jsonl.gz
+ create mode 100644 outputs/transition_pair_shuffle_s42_v1/pairing_val_receipt.json
+ create mode 100644 outputs/transition_pair_shuffle_s42_v1/progress.json
+ create mode 100644 outputs/transition_pair_shuffle_s42_v1/provenance.json
+ create mode 100644 outputs/transition_pair_shuffle_s42_v1/raw_cuda_probe.json
+ create mode 100644 outputs/transition_pair_shuffle_s42_v1/recovery.pt
+ create mode 100644 outputs/transition_pair_shuffle_s42_v1/report.md
+ create mode 100644 outputs/transition_pair_shuffle_s42_v1/selected_validation_replay.json
+ create mode 100644 outputs/transition_pair_shuffle_s42_v1/selection.json
+ create mode 100644 outputs/transition_pair_shuffle_s42_v1/server_probe.json
+ create mode 100644 outputs/transition_pair_shuffle_s42_v1/status.json
+ create mode 100644 outputs/transition_pair_shuffle_s42_v1/summary.json
+ create mode 100644 outputs/transition_pair_shuffle_s42_v1/training.log
+ create mode 100644 outputs/transition_pair_shuffle_s42_v1/training_exit.json
+ create mode 100644 outputs/transition_pair_shuffle_s42_v1/training_progress.json
+ create mode 100644 outputs/transition_pair_shuffle_s42_v1/validation/all/diagnostic_groups.json
+ create mode 100644 outputs/transition_pair_shuffle_s42_v1/validation/all/historical_J3_confusion_matrix.csv
+ create mode 100644 outputs/transition_pair_shuffle_s42_v1/validation/all/metrics.json
+ create mode 100644 outputs/transition_pair_shuffle_s42_v1/validation/all/original_C_confusion_matrix.csv
+ create mode 100644 outputs/transition_pair_shuffle_s42_v1/validation/all/pair_shuffle-historical_J3_changed_samples.jsonl.gz
+ create mode 100644 outputs/transition_pair_shuffle_s42_v1/validation/all/pair_shuffle-original_C_changed_samples.jsonl.gz
+ create mode 100644 outputs/transition_pair_shuffle_s42_v1/validation/all/pair_shuffle_confusion_matrix.csv
+ create mode 100644 outputs/transition_pair_shuffle_s42_v1/validation/all/pair_true-historical_J3_changed_samples.jsonl.gz
+ create mode 100644 outputs/transition_pair_shuffle_s42_v1/validation/all/pair_true-original_C_changed_samples.jsonl.gz
+ create mode 100644 outputs/transition_pair_shuffle_s42_v1/validation/all/pair_true-pair_shuffle_changed_samples.jsonl.gz
+ create mode 100644 outputs/transition_pair_shuffle_s42_v1/validation/all/pair_true_confusion_matrix.csv
+ create mode 100644 outputs/transition_pair_shuffle_s42_v1/validation/all/per_class.csv
+ create mode 100644 outputs/transition_pair_shuffle_s42_v1/validation/shuffleable/diagnostic_groups.json
+ create mode 100644 outputs/transition_pair_shuffle_s42_v1/validation/shuffleable/historical_J3_confusion_matrix.csv
+ create mode 100644 outputs/transition_pair_shuffle_s42_v1/validation/shuffleable/metrics.json
+ create mode 100644 outputs/transition_pair_shuffle_s42_v1/validation/shuffleable/original_C_confusion_matrix.csv
+ create mode 100644 outputs/transition_pair_shuffle_s42_v1/validation/shuffleable/pair_shuffle-historical_J3_changed_samples.jsonl.gz
+ create mode 100644 outputs/transition_pair_shuffle_s42_v1/validation/shuffleable/pair_shuffle-original_C_changed_samples.jsonl.gz
+ create mode 100644 outputs/transition_pair_shuffle_s42_v1/validation/shuffleable/pair_shuffle_confusion_matrix.csv
+ create mode 100644 outputs/transition_pair_shuffle_s42_v1/validation/shuffleable/pair_true-historical_J3_changed_samples.jsonl.gz
+ create mode 100644 outputs/transition_pair_shuffle_s42_v1/validation/shuffleable/pair_true-original_C_changed_samples.jsonl.gz
+ create mode 100644 outputs/transition_pair_shuffle_s42_v1/validation/shuffleable/pair_true-pair_shuffle_changed_samples.jsonl.gz
+ create mode 100644 outputs/transition_pair_shuffle_s42_v1/validation/shuffleable/pair_true_confusion_matrix.csv
+ create mode 100644 outputs/transition_pair_shuffle_s42_v1/validation/shuffleable/per_class.csv
+ create mode 100644 outputs/transition_pair_shuffle_s42_v1/validation/unshuffleable/diagnostic_groups.json
+ create mode 100644 outputs/transition_pair_shuffle_s42_v1/validation/unshuffleable/historical_J3_confusion_matrix.csv
+ create mode 100644 outputs/transition_pair_shuffle_s42_v1/validation/unshuffleable/metrics.json
+ create mode 100644 outputs/transition_pair_shuffle_s42_v1/validation/unshuffleable/original_C_confusion_matrix.csv
+ create mode 100644 outputs/transition_pair_shuffle_s42_v1/validation/unshuffleable/pair_shuffle-historical_J3_changed_samples.jsonl.gz
+ create mode 100644 outputs/transition_pair_shuffle_s42_v1/validation/unshuffleable/pair_shuffle-original_C_changed_samples.jsonl.gz
+ create mode 100644 outputs/transition_pair_shuffle_s42_v1/validation/unshuffleable/pair_shuffle_confusion_matrix.csv
+ create mode 100644 outputs/transition_pair_shuffle_s42_v1/validation/unshuffleable/pair_true-historical_J3_changed_samples.jsonl.gz
+ create mode 100644 outputs/transition_pair_shuffle_s42_v1/validation/unshuffleable/pair_true-original_C_changed_samples.jsonl.gz
+ create mode 100644 outputs/transition_pair_shuffle_s42_v1/validation/unshuffleable/pair_true-pair_shuffle_changed_samples.jsonl.gz
+ create mode 100644 outputs/transition_pair_shuffle_s42_v1/validation/unshuffleable/pair_true_confusion_matrix.csv
+ create mode 100644 outputs/transition_pair_shuffle_s42_v1/validation/unshuffleable/per_class.csv
+ create mode 100644 outputs/transition_pair_shuffle_s42_v1/validation/validation_predictions.jsonl.gz
+Uploading LFS objects: 100% (8/8), 470 MB | 6.8 MB/s, done.
+To github.com:wangxin0721/XG-NID.git
+   ac00f1f..32b4466  HEAD -> codex/server-outputs
+{"status": "uploaded", "branch": "codex/server-outputs", "commit": "32b4466ed8ff4386eb8263122a163dc858b65028", "files": 73, "symlinks": 0, "bytes": 481038838, "staging_directory_preserved": "/home/nzxn/下载/WX/load/XG-NID/.outputs-publish-690yxdr0"}
