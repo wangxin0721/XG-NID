@@ -1,0 +1,12 @@
+{
+  "status": "import_completed",
+  "formal_training_started": false,
+  "new_training_runs_completed": 0,
+  "new_backbones_pending": [
+    43,
+    44
+  ],
+  "test_evaluated": false,
+  "phase": "import",
+  "queue_completed": false
+}

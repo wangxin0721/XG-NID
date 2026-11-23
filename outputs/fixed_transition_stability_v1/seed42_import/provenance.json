@@ -1,0 +1,45 @@
+{
+  "protocol_lock_sha256": "ffc67b59cacad1e8ad6fd3ee3b8657e9fd1e8488d361ef4626ebdda343dd1170",
+  "source_binding": {
+    "backbone_seed": 42,
+    "frozen_c_sha256": "c29a6433880f6e5ad8a45d387abef07cf54f895277f9f89b313edecfa7feedc6",
+    "split_id": "a8ae9c934eec9fee970cc725e60051d0c709e0f16c7dda14749350ff2006975a",
+    "manifest_sha256": "b8e9b0810471d0c2b52033488fab640625c3731315afd5d2add1571bd2518827",
+    "validation_digest": "396bd22c4004ecf6d283ac36f99ddada3845038ccd7d365a82e46208b1cc0974"
+  },
+  "historical_protocols": {
+    "frozen_single": {
+      "code_commit": "d03ced606154f1d7b4afd6f29ed0f6f4d2f7011d",
+      "same_registered_training_budget": true,
+      "archived_loss_label": "plain_final_NLL",
+      "loss_equivalence": "plain final eight-class NLL; legacy label omits class count",
+      "readout_seed": 42,
+      "sampling_seed": 42,
+      "source_result_commit": "944ba61faca474d02c409c2038e02f33e5da3d50"
+    },
+    "joint_single": {
+      "code_commit": "4f2dd776fd3040a94dd4199d47866f1ed9968a03",
+      "same_registered_training_budget": true,
+      "archived_loss_label": "plain_final_eight_class_NLL",
+      "loss_equivalence": "plain final eight-class NLL; legacy label omits class count",
+      "readout_seed": 42,
+      "sampling_seed": 42,
+      "source_result_commit": "ac00f1f319aec1b1079e15ca5609c2ec08c85ba9"
+    },
+    "joint_ordered": {
+      "code_commit": "f3baba6ce8b80ed22283e6a501f2dfb992d0edf8",
+      "same_registered_training_budget": true,
+      "archived_loss_label": "plain_final_eight_class_NLL",
+      "loss_equivalence": "plain final eight-class NLL; legacy label omits class count",
+      "readout_seed": 42,
+      "sampling_seed": 42,
+      "source_result_commit": "7c40c4b6772679d51b20a6a268fc8b4ae2f3d518"
+    }
+  },
+  "new_training_epochs": 0,
+  "new_optimizer_updates": 0,
+  "functional_equivalence": "same fixed-injection modules and shapes; all four selected validation predictions reproduced",
+  "historical_log_probabilities_comparison": "not archived for all models; prediction identities verified",
+  "source_versions_differ": true,
+  "shared_readout_and_fusion_definitions_retained": true
+}

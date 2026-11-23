@@ -64,6 +64,14 @@
 "outputs/final_d32_gate_ablation_v1/seed42/fusion_arms.pt" filter=lfs diff=lfs merge=lfs -text
 "outputs/final_d32_gate_ablation_v1/seed43/fusion_arms.pt" filter=lfs diff=lfs merge=lfs -text
 "outputs/final_d32_gate_ablation_v1/seed44/fusion_arms.pt" filter=lfs diff=lfs merge=lfs -text
+"outputs/fixed_transition_stability_v1/seed42_import/base_C/best.pt" filter=lfs diff=lfs merge=lfs -text
+"outputs/fixed_transition_stability_v1/seed42_import/frozen_single/best.pt" filter=lfs diff=lfs merge=lfs -text
+"outputs/fixed_transition_stability_v1/seed42_import/frozen_single/last.pt" filter=lfs diff=lfs merge=lfs -text
+"outputs/fixed_transition_stability_v1/seed42_import/joint_ordered/best.pt" filter=lfs diff=lfs merge=lfs -text
+"outputs/fixed_transition_stability_v1/seed42_import/joint_ordered/last.pt" filter=lfs diff=lfs merge=lfs -text
+"outputs/fixed_transition_stability_v1/seed42_import/joint_single/best.pt" filter=lfs diff=lfs merge=lfs -text
+"outputs/fixed_transition_stability_v1/seed42_import/joint_single/last.pt" filter=lfs diff=lfs merge=lfs -text
+"outputs/fixed_transition_stability_v1/seed42_import/validation/validation_predictions.jsonl.gz" filter=lfs diff=lfs merge=lfs -text
 "outputs/flow_query_joint_seeds43_44_resume_1794361380479152585/seed43/Joint-Flow/best.pt" filter=lfs diff=lfs merge=lfs -text
 "outputs/flow_query_joint_seeds43_44_resume_1794361380479152585/seed43/Joint-Flow/best150.pt" filter=lfs diff=lfs merge=lfs -text
 "outputs/flow_query_joint_seeds43_44_resume_1794361380479152585/seed43/Joint-Flow/epoch150.pt" filter=lfs diff=lfs merge=lfs -text
