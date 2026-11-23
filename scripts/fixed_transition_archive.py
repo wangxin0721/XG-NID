@@ -11,6 +11,7 @@ import run_joint_transition_fusion as parent
 import fixed_transition_training as training
 import fixed_transition_results as results
 from run_transition_pair_cross_replay import Archive
+from sync_server_outputs import lfs_environment
 from xgnid.fixed_transition_stability import ARMS, MODELS
 
 raw, frozen, original, require = parent.raw, parent.frozen, parent.original, parent.require
@@ -21,19 +22,20 @@ def canonical_sha(value):
 
 
 def open_archive(repo, spec, download=False):
+    env=lfs_environment(repo)
     ref, directory = spec['source_result_commit'], spec['source_directory']
     first = next(iter(spec['inputs']))
     check = subprocess.run(['git','cat-file','-e',ref+':'+directory+'/'+first],cwd=repo,
-                           stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
+                           stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL,env=env)
     if check.returncode:
         require(download,'Missing Git source snapshot: '+ref+'; fetch codex/server-outputs')
-        subprocess.run(['git','fetch','--no-tags','origin',ref],cwd=repo,check=True)
-    archive=Archive(repo,spec,snapshot=True)
+        subprocess.run(['git','fetch','--no-tags','origin',ref],cwd=repo,check=True,env=env)
+    archive=Archive(repo,spec,snapshot=True,env=env)
     missing=[directory+'/'+name for name in spec['inputs'] if isinstance(archive.locate(name),Path)
              and not archive.locate(name).is_file()]
     if missing:
         require(download,'Missing registered LFS inputs; run launcher with --download-inputs: '+','.join(missing))
-        subprocess.run(['git','lfs','fetch','--include='+','.join(missing),'--exclude=','origin',ref],cwd=repo,check=True)
+        subprocess.run(['git','lfs','fetch','--include='+','.join(missing),'--exclude=','origin',ref],cwd=repo,check=True,env=env)
     archive.verify_all()
     return archive
 

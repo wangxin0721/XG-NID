@@ -77,6 +77,8 @@ Adam betas=(0.9,0.999)、eps=1e-8、weight_decay=0、amsgrad=False；读出 lr=0
 
 使用已完成独立 N0/C 的服务器及既有 wx 环境。主工作区保留，代码放在独立工作树。先取结果快照供固定归档读取，再取代码。缺少的锁定 LFS 对象会由导入阶段按精确来源按需获取。
 
+新入口会在归档读取前初始化仓库内的 Git LFS，并把环境传给全部阶段。若已使用 `7c9249e` 遇到 `git lfs env` 失败，按 [LFS恢复说明](fixed_transition_stability_lfs_recovery.md) 在原工作树补齐 PATH 后继续，可保留旧代码协议锁。
+
 ```bash
 conda activate wx
 cd '/home/nzxn/下载/WX/load/XG-NID' || exit 1

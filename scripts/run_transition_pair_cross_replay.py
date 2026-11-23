@@ -34,8 +34,9 @@ COMPUTE_FILES = ('src/xgnid/fusion_dimension.py', 'src/xgnid/ordered_transition_
 
 class Archive:
     """Read hash-bound filesystem inputs or immutable Git blobs and existing LFS objects."""
-    def __init__(self, repo, settings, archive_root=None, snapshot=False):
+    def __init__(self, repo, settings, archive_root=None, snapshot=False, env=None):
         self.repo, self.settings, self.snapshot = repo, settings, snapshot
+        self.env = env
         self.root = archive_root or repo / settings['source_directory']
         self.values, self.verified = {}, {}
 
@@ -44,12 +45,12 @@ class Archive:
             require(name in self.settings['inputs'], 'Unregistered archive input: ' + name)
             if self.snapshot:
                 ref = self.settings['source_result_commit'] + ':' + self.settings['source_directory'] + '/' + name
-                value = subprocess.check_output(['git', 'show', ref], cwd=self.repo)
+                value = subprocess.check_output(['git', 'show', ref], cwd=self.repo, env=self.env)
                 if value.startswith(b'version https://git-lfs.github.com/spec/v1\n'):
                     lines = value.decode().splitlines()
                     digest = lines[1].removeprefix('oid sha256:')
                     require(digest == self.settings['inputs'][name]['sha256'], 'LFS pointer differs: ' + name)
-                    environment = subprocess.check_output(['git', 'lfs', 'env'], cwd=self.repo, text=True)
+                    environment = subprocess.check_output(['git', 'lfs', 'env'], cwd=self.repo, text=True, env=self.env)
                     folder = next(Path(line.split('=', 1)[1]) for line in environment.splitlines()
                                   if line.startswith('LocalMediaDir='))
                     value = folder / digest[:2] / digest[2:4] / digest

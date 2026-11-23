@@ -11,6 +11,7 @@ import sys
 
 from filelock import FileLock
 import launch_joint_transition_fusion as publisher
+from sync_server_outputs import lfs_environment
 
 OUTPUT_NAME='fixed_transition_stability_v1'
 
@@ -56,6 +57,11 @@ def launch(args):
                 print('UPLOAD FAILED: '+repr(exc)+'\nRetry: '+shlex.join(command),file=sys.stderr,flush=True)
                 return [1]
         try:
+            # Publishing already supported repository-local LFS; initialize it
+            # before the first archive read and pass its PATH to every child.
+            env['PATH']=lfs_environment(repo)['PATH']
+            publisher.write(output/'lfs_preflight.json',{'passed':True,
+                'bootstrap':'sync_server_outputs.lfs_environment','before_phase':'import'})
             for current in phases(args.import_only,args.probe_only):
                 command=[sys.executable,'-u','-B',str(code/'scripts/run_fixed_transition_stability.py'),
                     '--repo',str(repo),'--phase',current,'--resume','--download-inputs']

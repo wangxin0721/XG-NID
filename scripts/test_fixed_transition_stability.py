@@ -4,6 +4,7 @@ from copy import deepcopy
 import io
 import json
 import math
+import os
 from pathlib import Path
 import random
 import tempfile
@@ -26,6 +27,8 @@ class StabilityChecks(unittest.TestCase):
     assert_tree_equal=JointFusionChecks.assert_tree_equal
 
     def setUp(self):
+        bootstrap=patch.object(launcher,'lfs_environment',side_effect=lambda repo:dict(os.environ))
+        bootstrap.start();self.addCleanup(bootstrap.stop)
         torch.set_num_threads(2);self.device=torch.device('cpu')
         self.settings={**run.raw.read(run.CONFIG),'epochs':3,'batch_size':3,'eval_batch_size':4,
             'training_samples':8,'validation_samples':8,'test_samples':8,'updates_per_epoch':3,'updates_per_arm':9}
