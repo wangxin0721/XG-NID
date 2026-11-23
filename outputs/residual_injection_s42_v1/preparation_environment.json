@@ -1,0 +1,7 @@
+{
+  "python": "3.9.23",
+  "torch": "2.3.1+cu118",
+  "pyg": "2.5.3",
+  "cuda_available": true,
+  "formal_training_started": false
+}

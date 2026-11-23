@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "formal_training_started": false,
+  "real_graph_gradients": true,
+  "five_staged_probe_updates_discarded": true,
+  "full_epoch_zero_replay": true,
+  "initial_beta": 1.0,
+  "independent_rng_stream": true
+}

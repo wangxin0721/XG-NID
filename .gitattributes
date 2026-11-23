@@ -369,6 +369,16 @@
 "outputs/relation_pair_s42_v1/Rel-Mean_preflight.pt" filter=lfs diff=lfs merge=lfs -text
 "outputs/relation_pair_s42_v1/train_pre_relation.pt" filter=lfs diff=lfs merge=lfs -text
 "outputs/relation_pair_s42_v1/val_pre_relation.pt" filter=lfs diff=lfs merge=lfs -text
+"outputs/residual_injection_s42_v1/frozen_train_features.pt" filter=lfs diff=lfs merge=lfs -text
+"outputs/residual_injection_s42_v1/frozen_val_features.pt" filter=lfs diff=lfs merge=lfs -text
+"outputs/residual_injection_s42_v1/inj_dynamic/best.pt" filter=lfs diff=lfs merge=lfs -text
+"outputs/residual_injection_s42_v1/inj_dynamic/last.pt" filter=lfs diff=lfs merge=lfs -text
+"outputs/residual_injection_s42_v1/inj_fixed/best.pt" filter=lfs diff=lfs merge=lfs -text
+"outputs/residual_injection_s42_v1/inj_fixed/last.pt" filter=lfs diff=lfs merge=lfs -text
+"outputs/residual_injection_s42_v1/inj_global/best.pt" filter=lfs diff=lfs merge=lfs -text
+"outputs/residual_injection_s42_v1/inj_global/last.pt" filter=lfs diff=lfs merge=lfs -text
+"outputs/residual_injection_s42_v1/recovery.pt" filter=lfs diff=lfs merge=lfs -text
+"outputs/residual_injection_s42_v1/validation/validation_predictions.jsonl.gz" filter=lfs diff=lfs merge=lfs -text
 "outputs/residual_pair_s42_retry_v1/Res-Base/best.pt" filter=lfs diff=lfs merge=lfs -text
 "outputs/residual_pair_s42_retry_v1/Res-Base/epoch_zero.pt" filter=lfs diff=lfs merge=lfs -text
 "outputs/residual_pair_s42_retry_v1/Res-Base/last.pt" filter=lfs diff=lfs merge=lfs -text

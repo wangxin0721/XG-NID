@@ -1,0 +1,96 @@
+{
+  "binding": {
+    "source": {
+      "backbone_seed": 42,
+      "frozen_c_sha256": "c29a6433880f6e5ad8a45d387abef07cf54f895277f9f89b313edecfa7feedc6",
+      "split_id": "a8ae9c934eec9fee970cc725e60051d0c709e0f16c7dda14749350ff2006975a",
+      "manifest_sha256": "b8e9b0810471d0c2b52033488fab640625c3731315afd5d2add1571bd2518827",
+      "validation_digest": "396bd22c4004ecf6d283ac36f99ddada3845038ccd7d365a82e46208b1cc0974"
+    },
+    "code_commit": "ee456f02f36192716733836bfd579aa2e3903882",
+    "settings_sha256": "fc016eba24a4691c68d78dd00d034bece017e7e03c8eea23ea31168966fd1dc8",
+    "source_files_sha256": {
+      "scripts/run_joint_transition_fusion.py": "add67d0fc200d6970c3f56328d60b3662894a24934fc0a51feda8cc80be5484b",
+      "scripts/joint_transition_training.py": "d8df1c995a5a32d05fc1463a8a27245af14c1d67bf2e34b01c8fac93348fa55a",
+      "scripts/joint_transition_diagnostics.py": "866edbf6f219c37f4fda6a38a17674d306cd587b1174101f1c9bed2385ded1da",
+      "scripts/diagnose_joint_transition_fusion.py": "96f5aeb3f35273955a43568a4da09e13cca7dc509e92b0be502a1921ee588ec3",
+      "scripts/run_ordered_transition_readout.py": "e20461a0d88ad178cf989698a764453e558956324f8a658876ad09766b3495aa",
+      "scripts/run_packet_transition_readout.py": "6c1828bf4a0c230621b5a4197ffae47b310966f11529b671b3f5293326bc4f8b",
+      "scripts/run_packet_transition_diagnosis.py": "00d7bbcf16a1dcf70442cdbc7f07bf3df74599e6f18f5aeca4f4b74acab3c51a",
+      "scripts/replay_flow_query_selective.py": "762f0d1df84e0ede16721fe800aaa2ea12c0e70d3fa45c249413fcdd8acc8426",
+      "scripts/run_independent_packet_transition.py": "4ea65e63616a8ba0c97506b5fa971b4f3ad4c2e0624ccf94053d063e72770edc",
+      "scripts/run_joint_cross_layer_query.py": "bdee40be6bf93f1038b6eb24eadf740260a7cfc8b05a11e3f4956d218774c5a9",
+      "scripts/evaluate_joint_cross_layer_query.py": "98aba98bbafd64fb2271879f40180c467867867bf811836eeac8c335faa54a7d",
+      "scripts/run_attention_operator_pair.py": "4b497bfd87b1257729b916ff79672246ad97d1275fbc6dddd77adb3a54b5e5c8",
+      "scripts/audit_packet_transitions.py": "11916302072028261d6314f06152705b5d44c07b27f0cf7477f62edf28dad068",
+      "scripts/grouped_graphs.py": "c1b1273d62fc44d91f7c9b300b66a083c1f80ef2c9c4314a62c4bbd5d708bbb4",
+      "src/xgnid/joint_transition_fusion.py": "522b505dc753ae61376d45d3a6bd92c60c7f754a00902a3f9084fb91a1c2fd66",
+      "src/xgnid/ordered_transition_readout.py": "9fea55155056837377a4b20373836ecfcda7dd0d5c28ba211ac95545d54c368d",
+      "src/xgnid/packet_transition_readout.py": "58fb2df6e007da0746e1da0bcedc870e091fb200269f94f6d8dedf78f4cd5160",
+      "src/xgnid/packet_pooling.py": "c423c573b624a98a40ee03b5b286f2dcd3297db43a0eedcf1a654590b163742d",
+      "src/xgnid/joint_cross_layer_query.py": "e62ce7933540527b7615e36cd2106d2afec82ac8a1e80424622556d4e0a47715",
+      "src/xgnid/fusion_dimension.py": "eb8dd5c91a63b424bd421c29e333ff24492e5474cdabe77408abde5f81bb703d",
+      "src/xgnid/model.py": "28e21e94118db0a4110d17923d2840e18959669d798f628018c98c91c0202631",
+      "src/xgnid/residual_injection.py": "6c55483540b07fbf995e31387c061eec0d75768c22c4d46b91a72abf613efda4",
+      "scripts/run_residual_injection.py": "974292ae0523eb0bdea2dfa10d75bb3a38f40a3b701a7bd020ed78cda0506d59",
+      "scripts/residual_injection_training.py": "c94b4a58e9a5054b50f0d7c453631065b8c3b267ebc4e022a977675715f1d0b3",
+      "scripts/residual_injection_results.py": "ec43753669a1f9f1ccbef9b6f528eaf1f1267e0e00d4516642ebe629d624d67f",
+      "scripts/launch_residual_injection.py": "3c56d6d2d629f0bb63d298c5f3bfeebedb5e7c6b565368f7a8ee6cfe3cd6ff24",
+      "scripts/launch_joint_transition_fusion.py": "448f060396a73c93bdb5b4c4067d9643bc00379e9800caf8fc6d085de0fae137",
+      "scripts/run_transition_pair_cross_replay.py": "14ca023f2bbf5311ed8c26471695a65b5345750d5401af5e19e8f46f60cc9775"
+    },
+    "environment": {
+      "python": "3.9.23",
+      "torch": "2.3.1+cu118",
+      "pyg": "2.5.3",
+      "cuda": "11.8",
+      "device": "Tesla T4",
+      "platform": "Linux-6.8.0-138-generic-x86_64-with-glibc2.35"
+    },
+    "graph_root": "/home/nzxn/下载/WX/load/XG-NID/data/processed/CICIoT2023_processed/processed",
+    "workers": 2,
+    "input_sha256": {
+      "data/processed/ciciot2023_grouped_input_v1/split.json": "2f6a7c307121454b881520379f0a298b7e2a179b1db4a7cb03741b7f648a774a",
+      "outputs/joint_cross_layer_query_s42_v1/C/best.pt": "3070acd40203ee3a3944dc5805452eb3a2d73218aa24b31379bdfd5cbb523568",
+      "outputs/joint_cross_layer_query_s42_v1/C/metrics.json": "834f4b9cd970ab41be54599a7e73cbaa5fd1469ac5201912ee366d34565a0039",
+      "outputs/joint_cross_layer_query_s42_v1/C/validation_predictions.jsonl.gz": "91d7765e52a9eca289f3bf0591bcaa06090bb6b1e2ac2319958ffe8df6a7028f",
+      "data/processed/ciciot2023_grouped_input_v1/samples.jsonl": "b8e9b0810471d0c2b52033488fab640625c3731315afd5d2add1571bd2518827"
+    },
+    "historical_inputs": {
+      "status.json": {
+        "bytes": 90,
+        "sha256": "5d5875082aaf45fcb519016b401b92117adeaf51a35ac7d9c70ad5760589df9c"
+      },
+      "config.json": {
+        "bytes": 2092,
+        "sha256": "c4e13ff7cc783e51d41c29ac5f0c5e08e870a8fc7a0caf9bf76f3b29eb1aedff"
+      },
+      "provenance.json": {
+        "bytes": 6008,
+        "sha256": "9f872f355e56961bb6b20b9f5a1d18187f38015b712a9923e542d8ad404ec34b"
+      },
+      "summary.json": {
+        "bytes": 152823,
+        "sha256": "4dca823d7671c28022fdb16ff25bb1c6bad803487f2c1e53b3c1ce337283832c"
+      },
+      "final_verification.json": {
+        "bytes": 279,
+        "sha256": "f7027cc2f1d39e5d38df4ebfc2ce1fc4e6270ba6f6bc6e8698a5968f7e173b0a"
+      },
+      "pair_true/best_validation_predictions.jsonl.gz": {
+        "bytes": 535686,
+        "sha256": "e82a2a9c527f97f89f27c8d4854be0b14a3026feea60cce08eccc3359831f792"
+      }
+    }
+  },
+  "environment": {
+    "python": "3.9.23",
+    "torch": "2.3.1+cu118",
+    "pyg": "2.5.3",
+    "cuda": "11.8",
+    "device": "Tesla T4",
+    "platform": "Linux-6.8.0-138-generic-x86_64-with-glibc2.35"
+  },
+  "test_graph_loads": 0,
+  "historical_True_is_external_reference_only": true
+}

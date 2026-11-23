@@ -1,7 +1,7 @@
 {
   "schema": "xgnid.outputs-snapshot.v2",
-  "created_utc": "2026-11-23T01:50:11.935420+00:00",
-  "source_directory": "D:\\XG-NID\\outputs",
+  "created_utc": "2026-11-23T05:19:10.706657+00:00",
+  "source_directory": "/home/nzxn/下载/WX/load/XG-NID/outputs",
   "files": {
     "GNN4ID/best.pt": {
       "bytes": 1735954,
@@ -9807,6 +9807,226 @@
       "bytes": 124943424,
       "sha256": "91842d8677de0e62f6cca985544e1d640d88dfdad614e471a9b5b87e24ff4798"
     },
+    "residual_injection_s42_v1/baseline_validation_replay.json": {
+      "bytes": 625,
+      "sha256": "fc4755a9ed35d847a51ad77fa43536a7f88dc93cea4029630f00d6acf9f5e50b"
+    },
+    "residual_injection_s42_v1/beta_distributions.json": {
+      "bytes": 76320,
+      "sha256": "2895a3c7801e51c908012e9b101f5d6309f8033410695537362de7111564d166"
+    },
+    "residual_injection_s42_v1/budget_comparison.json": {
+      "bytes": 4129,
+      "sha256": "ab6d2550ba78de699794dc2e41c9d302a75cac0fa4b5704a31a7edde919ef350"
+    },
+    "residual_injection_s42_v1/config.json": {
+      "bytes": 2971,
+      "sha256": "fc016eba24a4691c68d78dd00d034bece017e7e03c8eea23ea31168966fd1dc8"
+    },
+    "residual_injection_s42_v1/coverage.json": {
+      "bytes": 1755,
+      "sha256": "bba98940ba112686a42f4f8a0552b8081b8be513130bf7c2a81fe87f435eda8c"
+    },
+    "residual_injection_s42_v1/epoch_zero_replay.json": {
+      "bytes": 2056,
+      "sha256": "f96d774a6e8592389eb566a8a2cf76d4d7fbb39bb9ac7392f810f793ae97d629"
+    },
+    "residual_injection_s42_v1/final_verification.json": {
+      "bytes": 282,
+      "sha256": "e29d624a24c94036537548d68c291a8e9f0de4c865289e23b3b38481a2d34de1"
+    },
+    "residual_injection_s42_v1/frozen_train_features.pt": {
+      "bytes": 398356748,
+      "sha256": "94690b757e0cbc3b8a5e3342904a346b16e3025f4894da62fb604044b7494bf8"
+    },
+    "residual_injection_s42_v1/frozen_val_features.pt": {
+      "bytes": 50122380,
+      "sha256": "61a23bd0491a3f094a097b475982d1b971ea7866ff58ecb5afae51a9f02ff908"
+    },
+    "residual_injection_s42_v1/inj_dynamic/best.pt": {
+      "bytes": 63441,
+      "sha256": "b99779485928356c3c5a3eac314c98afe4eb8ee4f79d3b5873fd9118b0563964"
+    },
+    "residual_injection_s42_v1/inj_dynamic/best_validation_predictions.jsonl.gz": {
+      "bytes": 535714,
+      "sha256": "9dacb7dedf93deac96948160abe850e22bb5cd2f299fd10d314d2fdf32f78047"
+    },
+    "residual_injection_s42_v1/inj_dynamic/epochs.jsonl": {
+      "bytes": 322518,
+      "sha256": "f3cbddf100cd2ba74457bef98080f635ec08f1b33423381afbcc990b968898e8"
+    },
+    "residual_injection_s42_v1/inj_dynamic/last.pt": {
+      "bytes": 62417,
+      "sha256": "d5e5df310a4c6cbd2b7457f421846a46013adea136f90ee21b320c1732529e23"
+    },
+    "residual_injection_s42_v1/inj_fixed/best.pt": {
+      "bytes": 55837,
+      "sha256": "4f056245add914ec004583eb6d95472d3d53bb6250b538b7238f9eab57159d07"
+    },
+    "residual_injection_s42_v1/inj_fixed/best_validation_predictions.jsonl.gz": {
+      "bytes": 535700,
+      "sha256": "6ae00d9ea57c9e1971cb43cb25bc02af41cb61df3bf316b4572e7622a31377e7"
+    },
+    "residual_injection_s42_v1/inj_fixed/epochs.jsonl": {
+      "bytes": 321540,
+      "sha256": "2e33b2c9b19a38d8a25d2dd8cfbc094b068749fc59115fff55143557104ebc89"
+    },
+    "residual_injection_s42_v1/inj_fixed/last.pt": {
+      "bytes": 54813,
+      "sha256": "04b848328f1c0375d3f6ccb78eedee931c66a56fa4cf15b9180b25e7b5540d83"
+    },
+    "residual_injection_s42_v1/inj_global/best.pt": {
+      "bytes": 63441,
+      "sha256": "f86b4851a9d084c2c2c20358224ecf28fbb5e2f2582581a222ef871ba84916d1"
+    },
+    "residual_injection_s42_v1/inj_global/best_validation_predictions.jsonl.gz": {
+      "bytes": 535703,
+      "sha256": "d12378db1eead316cf464ef2f64eb0b37f02e13ecded4fb023d37fcc17286e7c"
+    },
+    "residual_injection_s42_v1/inj_global/epochs.jsonl": {
+      "bytes": 320147,
+      "sha256": "d8ef2033c422ddd2a8c9c683e37944a1d67473d0b557b007f835fd3bbcf604c9"
+    },
+    "residual_injection_s42_v1/inj_global/last.pt": {
+      "bytes": 62417,
+      "sha256": "fbdb3c09479c6cfcec56a2186276cc431b64d3791076d50f66b4cd4d37e293e0"
+    },
+    "residual_injection_s42_v1/last_beta_distributions.json": {
+      "bytes": 24790,
+      "sha256": "8734013606e84e61b64bea3ab59ae78a945d22de0db033aebdaea0ffe6b0f281"
+    },
+    "residual_injection_s42_v1/launcher.pid": {
+      "bytes": 8,
+      "sha256": "146c88427d45798ad08dea5222ae40d36a8fc736e3fe6b5d1456fb52f8d60574"
+    },
+    "residual_injection_s42_v1/preparation_environment.json": {
+      "bytes": 131,
+      "sha256": "6952b4dabb3c84b6649bf1403d9d2c571961353af888cbd9aaa8e6b83e13b783"
+    },
+    "residual_injection_s42_v1/progress.json": {
+      "bytes": 133,
+      "sha256": "58f742ccffecf4eba1bb888ae1e415a8c45402951d17df26ea30be16623ebc09"
+    },
+    "residual_injection_s42_v1/provenance.json": {
+      "bytes": 6084,
+      "sha256": "8688a1cc772bc7284f71fa87a4706c310a3ebb1520a275d148d05b5b6ac5187d"
+    },
+    "residual_injection_s42_v1/raw_gradient_probe.json": {
+      "bytes": 23338,
+      "sha256": "a93837c3fbfeecdb709ecbdb93f4783373c86953cefeec631cace5c52c25198b"
+    },
+    "residual_injection_s42_v1/recovery.pt": {
+      "bytes": 1545632,
+      "sha256": "66df965c3f848eb644a58623f73509c00907a0829c909e0b045549a6477fa92f"
+    },
+    "residual_injection_s42_v1/report.md": {
+      "bytes": 3078,
+      "sha256": "2451f2f01d012dde0313f4babf6c091d008b276f261fcafce3c2a8993550c348"
+    },
+    "residual_injection_s42_v1/selected_validation_replay.json": {
+      "bytes": 640,
+      "sha256": "bb74978882977928968b0ef7e097359979dd6f37e9b317530235fde6252e5d31"
+    },
+    "residual_injection_s42_v1/server_probe.json": {
+      "bytes": 227,
+      "sha256": "0f34f2d67dcf39ef522dedd2c7b3dc34ada63a27c818dd75228aeb538c7f55af"
+    },
+    "residual_injection_s42_v1/status.json": {
+      "bytes": 90,
+      "sha256": "5d5875082aaf45fcb519016b401b92117adeaf51a35ac7d9c70ad5760589df9c"
+    },
+    "residual_injection_s42_v1/summary.json": {
+      "bytes": 56977,
+      "sha256": "8cc83bd2aa1d72279c13bdb5f5c3a4b0c31adcfb108ebf6f7ec07a3e737dd7ee"
+    },
+    "residual_injection_s42_v1/training.log": {
+      "bytes": 57582,
+      "sha256": "85b98fa36116ef61967cc0b24225fbe0d52310448e64c4be7929d993ebea8f4d"
+    },
+    "residual_injection_s42_v1/training_exit.json": {
+      "bytes": 116,
+      "sha256": "cff01eecfd47c12184f04f998d1904f949ecc5539bd1b5782b70b058335ad2f2"
+    },
+    "residual_injection_s42_v1/training_progress.json": {
+      "bytes": 195,
+      "sha256": "4ca0c9ffde0d1cd1bd9f208f034b8717ea8e599513f34570bf01663028ea3bea"
+    },
+    "residual_injection_s42_v1/validation/historical_True_confusion_matrix.csv": {
+      "bytes": 295,
+      "sha256": "5c3fbe1f18b2706b2db28facdc06844573627f7b5ca51c34d923a9e457d77438"
+    },
+    "residual_injection_s42_v1/validation/inj_dynamic-historical_True_changed_samples.jsonl.gz": {
+      "bytes": 220301,
+      "sha256": "a84f0215c1689367f33e2f6ec608e3a6d78fbf843be38bccccd2f6adce479292"
+    },
+    "residual_injection_s42_v1/validation/inj_dynamic-inj_fixed_changed_samples.jsonl.gz": {
+      "bytes": 169407,
+      "sha256": "6eebd34b64eb89477dc08436e2ce4d2e4b11605c49c2b39231e5beaacc92d751"
+    },
+    "residual_injection_s42_v1/validation/inj_dynamic-inj_global_changed_samples.jsonl.gz": {
+      "bytes": 192451,
+      "sha256": "e76fae1edd3fc713f35e9dda6256417e953761048e9535cdad59f7c68973093b"
+    },
+    "residual_injection_s42_v1/validation/inj_dynamic-original_C_changed_samples.jsonl.gz": {
+      "bytes": 233728,
+      "sha256": "0a03ff849fb0377a032aa2214ea97b19491cd46308ad3f168979e693faf4b4e1"
+    },
+    "residual_injection_s42_v1/validation/inj_dynamic_confusion_matrix.csv": {
+      "bytes": 296,
+      "sha256": "a15c3e73f811e03e6579a1be8d23c269ed5341c4b9c1c6b99d67f62578d9fa3e"
+    },
+    "residual_injection_s42_v1/validation/inj_fixed-historical_True_changed_samples.jsonl.gz": {
+      "bytes": 173227,
+      "sha256": "96ca410cd68a3bc17b7516fe9a8621c1391ea3d306f1499ef59da1297270291c"
+    },
+    "residual_injection_s42_v1/validation/inj_fixed-original_C_changed_samples.jsonl.gz": {
+      "bytes": 183166,
+      "sha256": "2d90f2b3ed24121249352d38e8ceec7c17f9f3fbda1337d0a63b507eb48a5e85"
+    },
+    "residual_injection_s42_v1/validation/inj_fixed_confusion_matrix.csv": {
+      "bytes": 295,
+      "sha256": "4651b13f129cf124d2efef84da306e6740d14550b6ba8638a248c5e1125091be"
+    },
+    "residual_injection_s42_v1/validation/inj_global-historical_True_changed_samples.jsonl.gz": {
+      "bytes": 152011,
+      "sha256": "f3c06f86675ab55b3cf398536f0fd2035dc20cb66dd12d011ee482d45fb422e2"
+    },
+    "residual_injection_s42_v1/validation/inj_global-inj_fixed_changed_samples.jsonl.gz": {
+      "bytes": 146937,
+      "sha256": "ee734c5db18928b407cd7a7fb987d0184079fba37bf78489004ae73118d319fb"
+    },
+    "residual_injection_s42_v1/validation/inj_global-original_C_changed_samples.jsonl.gz": {
+      "bytes": 215486,
+      "sha256": "00702ce0fd923bf7fcea4fd7b7ab06160cf9cda3327a0c1042dcd87e66ede18f"
+    },
+    "residual_injection_s42_v1/validation/inj_global_confusion_matrix.csv": {
+      "bytes": 296,
+      "sha256": "03129483c0b02afe0626441ee42ffda9529b478db1a355e8c112a2fa505e3e94"
+    },
+    "residual_injection_s42_v1/validation/metrics.json": {
+      "bytes": 56127,
+      "sha256": "fbb9a27825ecee68e6dea48db7245950b7c0f54692e1a2dd3df88ae627f75a36"
+    },
+    "residual_injection_s42_v1/validation/original_C_confusion_matrix.csv": {
+      "bytes": 295,
+      "sha256": "6b42ee4f4ee4df6dbcd73c3f079f3a4f66602fb1793a371df20acbaca9f26932"
+    },
+    "residual_injection_s42_v1/validation/per_class.csv": {
+      "bytes": 3199,
+      "sha256": "33a88a3d5a76dfed9858974a0034594055c2ea3bf0fe3579980cd8224a4d2347"
+    },
+    "residual_injection_s42_v1/validation/per_class_changes.json": {
+      "bytes": 9869,
+      "sha256": "3c841b2232056439fbe0601e9974d8694a5906e607fe6bb42aac44db6d38285d"
+    },
+    "residual_injection_s42_v1/validation/validation_predictions.jsonl.gz": {
+      "bytes": 30387012,
+      "sha256": "babfccb9ab042e501dc71d7d1b2733243d0391b82c052fbcd342c69633ce8a9a"
+    },
+    "residual_injection_s42_v1/validation/webbased_false_positives.json": {
+      "bytes": 1163,
+      "sha256": "06b87f027ea50d34ea7fd075709c5a992c16a036694ac24f2079bb9c00ba8ae4"
+    },
     "residual_pair_s42_retry_v1.log": {
       "bytes": 133461,
       "sha256": "1e81691c5b0947d6186f46908110bd2eb5bb0bc649dd7950ccbddf5ae485e2fc"
@@ -10592,11 +10812,11 @@
       "sha256": "ebd2091803aab3a050f3a791f303ea786bca06de0d6ab6d56a633cdc16f67b1e"
     }
   },
-  "file_count": 2597,
+  "file_count": 2652,
   "symlink_count": 100,
-  "regular_file_count": 2497,
-  "total_bytes": 7543059521,
+  "regular_file_count": 2552,
+  "total_bytes": 8028425057,
   "updated_directories": [
-    "transition_pair_cross_replay_s42_v1"
+    "residual_injection_s42_v1"
   ]
 }

@@ -1,0 +1,145 @@
+{
+  "partition": "validation",
+  "budgets": [
+    {
+      "epoch_budget": 30,
+      "selected": {
+        "inj_fixed": {
+          "epoch": 29,
+          "macro_f1": 0.9759275915135026
+        },
+        "inj_global": {
+          "epoch": 28,
+          "macro_f1": 0.9758413013196963
+        },
+        "inj_dynamic": {
+          "epoch": 25,
+          "macro_f1": 0.9756720178553551
+        }
+      },
+      "decisions": {
+        "paired_thresholds": {
+          "inj_dynamic-inj_fixed": {
+            "delta_pp": -0.02555736581475454,
+            "reference_pp": 0.1,
+            "passed": false
+          },
+          "inj_dynamic-inj_global": {
+            "delta_pp": -0.016928346434119668,
+            "reference_pp": 0.05,
+            "passed": false
+          }
+        },
+        "dynamic_exceeds_historical_True": false,
+        "historical_True_macro_f1": 0.9791403291717622,
+        "all_passed": false,
+        "interpretation": "未同时通过继续投入条件；如实保留类别收益与损失，不能宣称逐流门控有效。"
+      }
+    },
+    {
+      "epoch_budget": 100,
+      "selected": {
+        "inj_fixed": {
+          "epoch": 66,
+          "macro_f1": 0.9787917233595608
+        },
+        "inj_global": {
+          "epoch": 84,
+          "macro_f1": 0.977950204154396
+        },
+        "inj_dynamic": {
+          "epoch": 50,
+          "macro_f1": 0.9774900717427415
+        }
+      },
+      "decisions": {
+        "paired_thresholds": {
+          "inj_dynamic-inj_fixed": {
+            "delta_pp": -0.1301651616819277,
+            "reference_pp": 0.1,
+            "passed": false
+          },
+          "inj_dynamic-inj_global": {
+            "delta_pp": -0.04601324116545458,
+            "reference_pp": 0.05,
+            "passed": false
+          }
+        },
+        "dynamic_exceeds_historical_True": false,
+        "historical_True_macro_f1": 0.9791403291717622,
+        "all_passed": false,
+        "interpretation": "未同时通过继续投入条件；如实保留类别收益与损失，不能宣称逐流门控有效。"
+      }
+    },
+    {
+      "epoch_budget": 150,
+      "selected": {
+        "inj_fixed": {
+          "epoch": 66,
+          "macro_f1": 0.9787917233595608
+        },
+        "inj_global": {
+          "epoch": 84,
+          "macro_f1": 0.977950204154396
+        },
+        "inj_dynamic": {
+          "epoch": 145,
+          "macro_f1": 0.9780894502958616
+        }
+      },
+      "decisions": {
+        "paired_thresholds": {
+          "inj_dynamic-inj_fixed": {
+            "delta_pp": -0.07022730636991881,
+            "reference_pp": 0.1,
+            "passed": false
+          },
+          "inj_dynamic-inj_global": {
+            "delta_pp": 0.013924614146554326,
+            "reference_pp": 0.05,
+            "passed": false
+          }
+        },
+        "dynamic_exceeds_historical_True": false,
+        "historical_True_macro_f1": 0.9791403291717622,
+        "all_passed": false,
+        "interpretation": "未同时通过继续投入条件；如实保留类别收益与损失，不能宣称逐流门控有效。"
+      }
+    },
+    {
+      "epoch_budget": 200,
+      "selected": {
+        "inj_fixed": {
+          "epoch": 66,
+          "macro_f1": 0.9787917233595608
+        },
+        "inj_global": {
+          "epoch": 84,
+          "macro_f1": 0.977950204154396
+        },
+        "inj_dynamic": {
+          "epoch": 145,
+          "macro_f1": 0.9780894502958616
+        }
+      },
+      "decisions": {
+        "paired_thresholds": {
+          "inj_dynamic-inj_fixed": {
+            "delta_pp": -0.07022730636991881,
+            "reference_pp": 0.1,
+            "passed": false
+          },
+          "inj_dynamic-inj_global": {
+            "delta_pp": 0.013924614146554326,
+            "reference_pp": 0.05,
+            "passed": false
+          }
+        },
+        "dynamic_exceeds_historical_True": false,
+        "historical_True_macro_f1": 0.9791403291717622,
+        "all_passed": false,
+        "interpretation": "未同时通过继续投入条件；如实保留类别收益与损失，不能宣称逐流门控有效。"
+      }
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "original_C": {
+    "TP": 514,
+    "FP": 65,
+    "FN": 30,
+    "FP_by_true_class": {
+      "Benign": 12,
+      "Spoofing": 6,
+      "Recon": 43,
+      "Mirai": 0,
+      "Dos": 3,
+      "DDos": 0,
+      "BruteForce": 1
+    }
+  },
+  "inj_fixed": {
+    "TP": 518,
+    "FP": 50,
+    "FN": 26,
+    "FP_by_true_class": {
+      "Benign": 12,
+      "Spoofing": 6,
+      "Recon": 30,
+      "Mirai": 0,
+      "Dos": 2,
+      "DDos": 0,
+      "BruteForce": 0
+    }
+  },
+  "inj_global": {
+    "TP": 519,
+    "FP": 55,
+    "FN": 25,
+    "FP_by_true_class": {
+      "Benign": 13,
+      "Spoofing": 7,
+      "Recon": 33,
+      "Mirai": 0,
+      "Dos": 2,
+      "DDos": 0,
+      "BruteForce": 0
+    }
+  },
+  "inj_dynamic": {
+    "TP": 514,
+    "FP": 47,
+    "FN": 30,
+    "FP_by_true_class": {
+      "Benign": 11,
+      "Spoofing": 6,
+      "Recon": 28,
+      "Mirai": 0,
+      "Dos": 0,
+      "DDos": 0,
+      "BruteForce": 2
+    }
+  },
+  "historical_True": {
+    "TP": 518,
+    "FP": 47,
+    "FN": 26,
+    "FP_by_true_class": {
+      "Benign": 14,
+      "Spoofing": 7,
+      "Recon": 25,
+      "Mirai": 0,
+      "Dos": 1,
+      "DDos": 0,
+      "BruteForce": 0
+    }
+  }
+}

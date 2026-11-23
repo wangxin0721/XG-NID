@@ -1,0 +1,11 @@
+{
+  "completed_epoch": 200,
+  "current_epoch": 200,
+  "cursor": 107621,
+  "updates_per_arm": 42200,
+  "selected_epochs": {
+    "inj_fixed": 66,
+    "inj_global": 84,
+    "inj_dynamic": 145
+  }
+}

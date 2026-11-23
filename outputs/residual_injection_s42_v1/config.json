@@ -1,0 +1,91 @@
+{
+  "backbone_seed": 42,
+  "readout_seed": 42,
+  "epochs": 200,
+  "batch_size": 512,
+  "eval_batch_size": 16,
+  "readout_learning_rate": 0.001,
+  "fusion_learning_rate": 0.0001,
+  "optimizer": "Adam",
+  "adam_betas": [
+    0.9,
+    0.999
+  ],
+  "adam_eps": 1e-08,
+  "weight_decay": 0.0,
+  "training_samples": 107621,
+  "validation_samples": 13446,
+  "test_samples": 13448,
+  "updates_per_epoch": 211,
+  "updates_per_arm": 42200,
+  "selection": "best_validation_macro_f1_including_zero_earliest_tie",
+  "loss": "plain_final_eight_class_NLL",
+  "checkpoint_every_paired_update": true,
+  "partitions": [
+    "train",
+    "val"
+  ],
+  "test_evaluated": false,
+  "schema": "xgnid.residual-injection.s42.v1",
+  "arms": [
+    "inj_fixed",
+    "inj_global",
+    "inj_dynamic"
+  ],
+  "injection_gate_seed": 20261123,
+  "injection_epsilon": 1e-08,
+  "injection_input_width": 97,
+  "injection_hidden_width": 16,
+  "injection_activation": "GELU",
+  "layer_norm_epsilon": 1e-05,
+  "layer_norm_affine": false,
+  "initial_beta": 1.0,
+  "pairing": "true_continuous",
+  "injection_formula": "packet + (2 * sigmoid(g)) * residual",
+  "injection_input": "LN(zf_pre);LN(zp_pre);abs(LN(zf_pre)-LN(zp_pre));log1p(norm(r)/(norm(p)+epsilon))",
+  "global_input": "fixed_zero_vector_97",
+  "injection_learning_rate": 0.001,
+  "total_parameters": {
+    "inj_fixed": 10872,
+    "inj_global": 12457,
+    "inj_dynamic": 12457
+  },
+  "historical_true_macro_f1": 0.9791403291717622,
+  "investment_reference_pp": {
+    "inj_dynamic-inj_fixed": 0.1,
+    "inj_dynamic-inj_global": 0.05
+  },
+  "historical_archive": {
+    "source_result_commit": "7c40c4b6772679d51b20a6a268fc8b4ae2f3d518",
+    "source_directory": "outputs/transition_pair_shuffle_s42_v1",
+    "inputs": {
+      "status.json": {
+        "bytes": 90,
+        "sha256": "5d5875082aaf45fcb519016b401b92117adeaf51a35ac7d9c70ad5760589df9c"
+      },
+      "config.json": {
+        "bytes": 2092,
+        "sha256": "c4e13ff7cc783e51d41c29ac5f0c5e08e870a8fc7a0caf9bf76f3b29eb1aedff"
+      },
+      "provenance.json": {
+        "bytes": 6008,
+        "sha256": "9f872f355e56961bb6b20b9f5a1d18187f38015b712a9923e542d8ad404ec34b"
+      },
+      "summary.json": {
+        "bytes": 152823,
+        "sha256": "4dca823d7671c28022fdb16ff25bb1c6bad803487f2c1e53b3c1ce337283832c"
+      },
+      "final_verification.json": {
+        "bytes": 279,
+        "sha256": "f7027cc2f1d39e5d38df4ebfc2ce1fc4e6270ba6f6bc6e8698a5968f7e173b0a"
+      },
+      "pair_true/best_validation_predictions.jsonl.gz": {
+        "bytes": 535686,
+        "sha256": "e82a2a9c527f97f89f27c8d4854be0b14a3026feea60cce08eccc3359831f792"
+      }
+    }
+  },
+  "progress_phase": "residual_injection_paired_training",
+  "source_C": "run_ordered_transition_readout.load_source(seed=42); archived source binding must match",
+  "interpretation": "Residual is beneficial overall; selective modulation is a hypothesis, not calibrated confidence. Previous True-Shuffle threshold was not passed."
+}

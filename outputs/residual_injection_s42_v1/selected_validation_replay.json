@@ -1,0 +1,23 @@
+{
+  "inj_fixed": {
+    "passed": true,
+    "samples": 13446,
+    "epoch": 66,
+    "prediction_ids_sha256": "c5a246141a99fa50a7c808046ac7d68ed965f6f145ea2749af44b7287fce2d8e",
+    "pairing": "true_continuous"
+  },
+  "inj_global": {
+    "passed": true,
+    "samples": 13446,
+    "epoch": 84,
+    "prediction_ids_sha256": "06c54e4b7bf5282d230840d1173fcef181b645e0040b2715794c5bf5cf9f057c",
+    "pairing": "true_continuous"
+  },
+  "inj_dynamic": {
+    "passed": true,
+    "samples": 13446,
+    "epoch": 145,
+    "prediction_ids_sha256": "e0deb0f90d33d9bb580666b7757c68705346c5b9dd55d8a44071eb37d2c11bf2",
+    "pairing": "true_continuous"
+  }
+}
