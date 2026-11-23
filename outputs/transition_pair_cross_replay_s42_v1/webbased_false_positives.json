@@ -1,0 +1,228 @@
+{
+  "groups": {
+    "T1": {
+      "TP": 518,
+      "FP": 47,
+      "FN": 26,
+      "precision": 0.9168141592920354,
+      "recall": 0.9522058823529411,
+      "fp_by_true_class": {
+        "Benign": 14,
+        "Spoofing": 7,
+        "Recon": 25,
+        "Mirai": 0,
+        "Dos": 1,
+        "DDos": 0,
+        "BruteForce": 0
+      }
+    },
+    "T2": {
+      "TP": 478,
+      "FP": 51,
+      "FN": 66,
+      "precision": 0.9035916824196597,
+      "recall": 0.8786764705882353,
+      "fp_by_true_class": {
+        "Benign": 17,
+        "Spoofing": 4,
+        "Recon": 29,
+        "Mirai": 0,
+        "Dos": 1,
+        "DDos": 0,
+        "BruteForce": 0
+      }
+    },
+    "T0": {
+      "TP": 481,
+      "FP": 49,
+      "FN": 63,
+      "precision": 0.9075471698113208,
+      "recall": 0.8841911764705882,
+      "fp_by_true_class": {
+        "Benign": 13,
+        "Spoofing": 5,
+        "Recon": 30,
+        "Mirai": 0,
+        "Dos": 0,
+        "DDos": 0,
+        "BruteForce": 1
+      }
+    },
+    "S1": {
+      "TP": 494,
+      "FP": 51,
+      "FN": 50,
+      "precision": 0.9064220183486239,
+      "recall": 0.9080882352941176,
+      "fp_by_true_class": {
+        "Benign": 16,
+        "Spoofing": 7,
+        "Recon": 26,
+        "Mirai": 0,
+        "Dos": 2,
+        "DDos": 0,
+        "BruteForce": 0
+      }
+    },
+    "S2": {
+      "TP": 511,
+      "FP": 38,
+      "FN": 33,
+      "precision": 0.930783242258652,
+      "recall": 0.9393382352941176,
+      "fp_by_true_class": {
+        "Benign": 12,
+        "Spoofing": 6,
+        "Recon": 19,
+        "Mirai": 0,
+        "Dos": 1,
+        "DDos": 0,
+        "BruteForce": 0
+      }
+    },
+    "S0": {
+      "TP": 480,
+      "FP": 49,
+      "FN": 64,
+      "precision": 0.9073724007561437,
+      "recall": 0.8823529411764706,
+      "fp_by_true_class": {
+        "Benign": 14,
+        "Spoofing": 8,
+        "Recon": 24,
+        "Mirai": 0,
+        "Dos": 2,
+        "DDos": 0,
+        "BruteForce": 1
+      }
+    }
+  },
+  "inventories": {
+    "T1-S2": {
+      "added": 16,
+      "removed": 7,
+      "retained": 31,
+      "net_increase": 9,
+      "added_by_true_class": {
+        "Benign": 4,
+        "Spoofing": 2,
+        "Recon": 9,
+        "Dos": 1
+      },
+      "removed_by_true_class": {
+        "Benign": 2,
+        "Spoofing": 1,
+        "Recon": 3,
+        "Dos": 1
+      }
+    },
+    "T1-T0": {
+      "added": 11,
+      "removed": 13,
+      "retained": 36,
+      "net_increase": -2,
+      "added_by_true_class": {
+        "Benign": 3,
+        "Spoofing": 2,
+        "Recon": 5,
+        "Dos": 1
+      },
+      "removed_by_true_class": {
+        "Benign": 2,
+        "Recon": 10,
+        "BruteForce": 1
+      }
+    },
+    "S2-S0": {
+      "added": 8,
+      "removed": 19,
+      "retained": 30,
+      "net_increase": -11,
+      "added_by_true_class": {
+        "Benign": 1,
+        "Recon": 7
+      },
+      "removed_by_true_class": {
+        "Benign": 3,
+        "Spoofing": 2,
+        "Recon": 12,
+        "Dos": 1,
+        "BruteForce": 1
+      }
+    },
+    "T1-T2": {
+      "added": 8,
+      "removed": 12,
+      "retained": 39,
+      "net_increase": -4,
+      "added_by_true_class": {
+        "Spoofing": 3,
+        "Recon": 5
+      },
+      "removed_by_true_class": {
+        "Benign": 3,
+        "Recon": 9
+      }
+    },
+    "S1-S2": {
+      "added": 14,
+      "removed": 1,
+      "retained": 37,
+      "net_increase": 13,
+      "added_by_true_class": {
+        "Benign": 4,
+        "Spoofing": 1,
+        "Recon": 8,
+        "Dos": 1
+      },
+      "removed_by_true_class": {
+        "Recon": 1
+      }
+    }
+  },
+  "net_gap_decomposition_by_source_class": {
+    "Benign": {
+      "native_T1_minus_S2": 2,
+      "fusion_only_T0_minus_S0": -1,
+      "True_residual_net_T1_minus_T0": 1,
+      "Shuffle_residual_net_S2_minus_S0": -2
+    },
+    "Spoofing": {
+      "native_T1_minus_S2": 1,
+      "fusion_only_T0_minus_S0": -3,
+      "True_residual_net_T1_minus_T0": 2,
+      "Shuffle_residual_net_S2_minus_S0": -2
+    },
+    "Recon": {
+      "native_T1_minus_S2": 6,
+      "fusion_only_T0_minus_S0": 6,
+      "True_residual_net_T1_minus_T0": -5,
+      "Shuffle_residual_net_S2_minus_S0": -5
+    },
+    "Mirai": {
+      "native_T1_minus_S2": 0,
+      "fusion_only_T0_minus_S0": 0,
+      "True_residual_net_T1_minus_T0": 0,
+      "Shuffle_residual_net_S2_minus_S0": 0
+    },
+    "Dos": {
+      "native_T1_minus_S2": 0,
+      "fusion_only_T0_minus_S0": -2,
+      "True_residual_net_T1_minus_T0": 1,
+      "Shuffle_residual_net_S2_minus_S0": -1
+    },
+    "DDos": {
+      "native_T1_minus_S2": 0,
+      "fusion_only_T0_minus_S0": 0,
+      "True_residual_net_T1_minus_T0": 0,
+      "Shuffle_residual_net_S2_minus_S0": 0
+    },
+    "BruteForce": {
+      "native_T1_minus_S2": 0,
+      "fusion_only_T0_minus_S0": 0,
+      "True_residual_net_T1_minus_T0": -1,
+      "Shuffle_residual_net_S2_minus_S0": -1
+    }
+  },
+  "interpretation": "Net FP differences are not counts of newly added samples; decomposition is algebraic across fixed checkpoints."
+}

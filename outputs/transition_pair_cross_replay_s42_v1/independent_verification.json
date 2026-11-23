@@ -1,0 +1,25 @@
+{
+  "scope": "independent_recomputation_from_exported_predictions_and_diagnostics_not_additional_model_replay",
+  "inference_code_commit": "a7491005803a27325987063bf6aca9c5bcb7fccc",
+  "all_6x13446_predictions_checked": true,
+  "all_six_confusion_matrices_and_eight_class_metrics_recomputed": true,
+  "all_six_pairwise_comparisons_recomputed": true,
+  "all_13446_sample_diagnostic_records_checked": true,
+  "unchanged_feature_rows_with_identical_scores_and_gates": 7193,
+  "T0_S0_injected_residual_exactly_zero": true,
+  "T0_S0_preserve_each_checkpoint_fusion": true,
+  "native_WebBased_FP_counts": {
+    "T1": 47,
+    "S2": 38
+  },
+  "previous_net9_added_removed_retained": {
+    "added": 16,
+    "removed": 7,
+    "retained": 31
+  },
+  "zero_training_epochs": true,
+  "zero_optimizer_updates": true,
+  "test_evaluated": false,
+  "summary_sha256": "a1ecc01430396f8c72631f2d17e404c390047cfa9c835957e2a9d3845f71d676",
+  "sample_diagnostics_sha256": "3c7f447bbdd8bff2e93dac0371e00fa61c6d55d676151a329dfa8adae0071864"
+}

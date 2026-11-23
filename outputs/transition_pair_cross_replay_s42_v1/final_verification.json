@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "native_archive_predictions_identical": true,
+  "unchanged_feature_outputs_identical": true,
+  "all_checkpoints_frozen_eval_unchanged": true,
+  "inputs_unchanged": true,
+  "validation_samples_per_group": 13446,
+  "groups": 6,
+  "training_epochs": 0,
+  "optimizer_updates": 0,
+  "test_evaluated": false,
+  "seconds": 33.671999999904074
+}

@@ -1,0 +1,8 @@
+{
+  "inference_code_commit": "a7491005803a27325987063bf6aca9c5bcb7fccc",
+  "publisher_code_commit": "1a581b78195d898b19e0ddb133126ef8f526a319",
+  "inference_repeated_for_retry": false,
+  "reason": "Windows live coordination lock moved outside published output",
+  "training_epochs": 0,
+  "optimizer_updates": 0
+}

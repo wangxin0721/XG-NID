@@ -1,0 +1,6 @@
+{
+  "replay_exit_code": 0,
+  "primary_upload_exit_code": 1,
+  "receipt_publication_follows": true,
+  "retry_command": "'D:\\XG-NID\\.residual-audit-env\\Scripts\\python.exe' -B 'D:\\XG-NID\\tmp\\transition-pair-shuffle-worktree\\scripts\\sync_server_outputs.py' publish --repo 'D:\\XG-NID' --only transition_pair_cross_replay_s42_v1 --remote https://github.com/wangxin0721/XG-NID.git"
+}

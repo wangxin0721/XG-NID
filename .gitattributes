@@ -382,6 +382,9 @@
 "outputs/residual_pair_s42_retry_v1/train_pre_residual.pt" filter=lfs diff=lfs merge=lfs -text
 "outputs/residual_pair_s42_retry_v1/val_pre_residual.pt" filter=lfs diff=lfs merge=lfs -text
 "outputs/server_graph_split_audit_v1/graph_manifest.sqlite" filter=lfs diff=lfs merge=lfs -text
+"outputs/transition_pair_cross_replay_s42_v1/checkpoints/pair_shuffle.pt" filter=lfs diff=lfs merge=lfs -text
+"outputs/transition_pair_cross_replay_s42_v1/checkpoints/pair_true.pt" filter=lfs diff=lfs merge=lfs -text
+"outputs/transition_pair_cross_replay_s42_v1/sample_diagnostics.jsonl.gz" filter=lfs diff=lfs merge=lfs -text
 "outputs/transition_pair_shuffle_s42_v1/frozen_train_features.pt" filter=lfs diff=lfs merge=lfs -text
 "outputs/transition_pair_shuffle_s42_v1/frozen_val_features.pt" filter=lfs diff=lfs merge=lfs -text
 "outputs/transition_pair_shuffle_s42_v1/pair_shuffle/best.pt" filter=lfs diff=lfs merge=lfs -text

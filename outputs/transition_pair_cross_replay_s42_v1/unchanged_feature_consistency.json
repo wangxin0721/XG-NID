@@ -1,0 +1,18 @@
+{
+  "T": {
+    "samples": 7193,
+    "prediction_mismatches": 0,
+    "max_abs_log_probability_difference": 0.0,
+    "max_abs_residual_difference": 0.0,
+    "max_abs_gate_difference": 0.0,
+    "passed": true
+  },
+  "S": {
+    "samples": 7193,
+    "prediction_mismatches": 0,
+    "max_abs_log_probability_difference": 0.0,
+    "max_abs_residual_difference": 0.0,
+    "max_abs_gate_difference": 0.0,
+    "passed": true
+  }
+}

@@ -1,0 +1,18 @@
+Traceback (most recent call last):
+  File "D:\XG-NID\tmp\transition-pair-shuffle-worktree\scripts\sync_server_outputs.py", line 251, in <module>
+    if args.action=='publish':publish(args)
+  File "D:\XG-NID\tmp\transition-pair-shuffle-worktree\scripts\sync_server_outputs.py", line 127, in publish
+    files = selected_inventory()
+  File "D:\XG-NID\tmp\transition-pair-shuffle-worktree\scripts\sync_server_outputs.py", line 122, in selected_inventory
+    entries = inventory(folder)
+  File "D:\XG-NID\tmp\transition-pair-shuffle-worktree\scripts\sync_server_outputs.py", line 56, in inventory
+    before=p.stat();digest=sha(p);after=p.stat()
+  File "D:\XG-NID\tmp\transition-pair-shuffle-worktree\scripts\sync_server_outputs.py", line 26, in sha
+    for block in iter(lambda:stream.read(4*1024*1024),b''):digest.update(block)
+  File "D:\XG-NID\tmp\transition-pair-shuffle-worktree\scripts\sync_server_outputs.py", line 26, in <lambda>
+    for block in iter(lambda:stream.read(4*1024*1024),b''):digest.update(block)
+PermissionError: [Errno 13] Permission denied
+
+{"replay_exit_code": 0, "upload_attempt_exit_codes": [1, 1], "output": "D:\\XG-NID\\outputs\\transition_pair_cross_replay_s42_v1"}
+UPLOAD FAILED: results remain local; retry after training has stopped:
+'D:\XG-NID\.residual-audit-env\Scripts\python.exe' -B 'D:\XG-NID\tmp\transition-pair-shuffle-worktree\scripts\sync_server_outputs.py' publish --repo 'D:\XG-NID' --only transition_pair_cross_replay_s42_v1 --remote https://github.com/wangxin0721/XG-NID.git

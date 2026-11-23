@@ -1,0 +1,8 @@
+{
+  "status": "completed",
+  "training_epochs": 0,
+  "optimizer_updates": 0,
+  "validation_groups": 6,
+  "validation_samples_per_group": 13446,
+  "test_evaluated": false
+}

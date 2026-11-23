@@ -1,0 +1,9 @@
+
+2026-11-23T01:36:27.646409+00:00 'D:\XG-NID\.residual-audit-env\Scripts\python.exe' -u -B 'D:\XG-NID\tmp\transition-pair-shuffle-worktree\scripts\run_transition_pair_cross_replay.py' --repo 'D:\XG-NID' --device cpu --resume --snapshot
+{"status": "running", "pid": 46560, "phase": "six_group_validation_replay", "samples": 16, "total": 13446, "validation_groups": 6, "training_epochs": 0, "optimizer_updates": 0}
+{"status": "running", "pid": 46560, "phase": "six_group_validation_replay", "samples": 3200, "total": 13446, "validation_groups": 6, "training_epochs": 0, "optimizer_updates": 0}
+{"status": "running", "pid": 46560, "phase": "six_group_validation_replay", "samples": 6400, "total": 13446, "validation_groups": 6, "training_epochs": 0, "optimizer_updates": 0}
+{"status": "running", "pid": 46560, "phase": "six_group_validation_replay", "samples": 9600, "total": 13446, "validation_groups": 6, "training_epochs": 0, "optimizer_updates": 0}
+{"status": "running", "pid": 46560, "phase": "six_group_validation_replay", "samples": 12800, "total": 13446, "validation_groups": 6, "training_epochs": 0, "optimizer_updates": 0}
+{"status": "running", "pid": 46560, "phase": "six_group_validation_replay", "samples": 13446, "total": 13446, "validation_groups": 6, "training_epochs": 0, "optimizer_updates": 0}
+{"status": "completed", "training_epochs": 0, "optimizer_updates": 0, "validation_groups": 6, "validation_samples_per_group": 13446, "test_evaluated": false, "output": "D:\\XG-NID\\outputs\\transition_pair_cross_replay_s42_v1"}

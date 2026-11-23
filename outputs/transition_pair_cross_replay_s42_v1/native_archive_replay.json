@@ -1,0 +1,40 @@
+{
+  "T1": {
+    "passed": true,
+    "samples": 13446,
+    "metrics_match": true,
+    "prediction_ids_sha256": "43689f092b4d2b3a67dffb5703176e473565fdc588e794206640af74fa235495",
+    "expected_prediction_ids_sha256": "43689f092b4d2b3a67dffb5703176e473565fdc588e794206640af74fa235495",
+    "archive_comparison": {
+      "counts": {
+        "repaired": 0,
+        "regressed": 0,
+        "both_correct": 13236,
+        "both_wrong": 210
+      },
+      "net_correct": 0
+    },
+    "first_differences": [],
+    "checkpoint_epoch": 191,
+    "checkpoint": "pair_true"
+  },
+  "S2": {
+    "passed": true,
+    "samples": 13446,
+    "metrics_match": true,
+    "prediction_ids_sha256": "1e13bfae0ae1cad6aff4bb04023a96511ecc7352f637783532006bb517295938",
+    "expected_prediction_ids_sha256": "1e13bfae0ae1cad6aff4bb04023a96511ecc7352f637783532006bb517295938",
+    "archive_comparison": {
+      "counts": {
+        "repaired": 0,
+        "regressed": 0,
+        "both_correct": 13231,
+        "both_wrong": 215
+      },
+      "net_correct": 0
+    },
+    "first_differences": [],
+    "checkpoint_epoch": 183,
+    "checkpoint": "pair_shuffle"
+  }
+}
