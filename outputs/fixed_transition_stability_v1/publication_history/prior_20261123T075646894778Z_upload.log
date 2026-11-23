@@ -1,0 +1,66 @@
+git-lfs/3.8.1 (GitHub; linux amd64; go 1.27.3; git a662a6db)
+{"files": 6, "GiB": 6.444752216339111e-06, "staging_directory": "/home/nzxn/下载/WX/load/XG-NID/.outputs-publish-md2bk6sf"}
+提示：使用 'master' 作为初始分支的名称。这个默认分支名称可能会更改。要在新仓库中
+提示：配置使用初始分支名，并消除这条警告，请执行：
+提示：
+提示：	git config --global init.defaultBranch <名称>
+提示：
+提示：除了 'master' 之外，通常选定的名字有 'main'、'trunk' 和 'development'。
+提示：可以通过以下命令重命名刚创建的分支：
+提示：
+提示：	git branch -m <name>
+已初始化空的 Git 仓库于 /home/nzxn/下载/WX/load/XG-NID/.outputs-publish-md2bk6sf/.git/
+来自 github.com:wangxin0721/XG-NID
+ * branch            codex/server-outputs -> FETCH_HEAD
+ * [新分支]          codex/server-outputs -> origin/codex/server-outputs
+Updated Git hooks.
+Git LFS initialized.
+[codex/server-outputs 1d8b4b8] Update selected server outputs
+ 48 files changed, 83 insertions(+), 31895 deletions(-)
+ delete mode 100644 outputs/fixed_transition_stability_v1/exit_codes.json
+ create mode 100644 outputs/fixed_transition_stability_v1/failures/import_20261123T073443623251Z.json
+ create mode 100644 outputs/fixed_transition_stability_v1/launcher.pid
+ delete mode 100644 outputs/fixed_transition_stability_v1/protocol_lock.json
+ delete mode 100644 outputs/fixed_transition_stability_v1/seed42_import/artifact_manifest.json
+ delete mode 100644 outputs/fixed_transition_stability_v1/seed42_import/base_C/best.pt
+ delete mode 100644 outputs/fixed_transition_stability_v1/seed42_import/base_C/best_validation_predictions.jsonl.gz
+ delete mode 100644 outputs/fixed_transition_stability_v1/seed42_import/budget_comparison.json
+ delete mode 100644 outputs/fixed_transition_stability_v1/seed42_import/code_version_differences.json
+ delete mode 100644 outputs/fixed_transition_stability_v1/seed42_import/final_verification.json
+ delete mode 100644 outputs/fixed_transition_stability_v1/seed42_import/frozen_single/best.pt
+ delete mode 100644 outputs/fixed_transition_stability_v1/seed42_import/frozen_single/best_validation_predictions.jsonl.gz
+ delete mode 100644 outputs/fixed_transition_stability_v1/seed42_import/frozen_single/epochs.jsonl
+ delete mode 100644 outputs/fixed_transition_stability_v1/seed42_import/frozen_single/last.pt
+ delete mode 100644 outputs/fixed_transition_stability_v1/seed42_import/independent_verification.json
+ delete mode 100644 outputs/fixed_transition_stability_v1/seed42_import/joint_ordered/best.pt
+ delete mode 100644 outputs/fixed_transition_stability_v1/seed42_import/joint_ordered/best_validation_predictions.jsonl.gz
+ delete mode 100644 outputs/fixed_transition_stability_v1/seed42_import/joint_ordered/epochs.jsonl
+ delete mode 100644 outputs/fixed_transition_stability_v1/seed42_import/joint_ordered/last.pt
+ delete mode 100644 outputs/fixed_transition_stability_v1/seed42_import/joint_single/best.pt
+ delete mode 100644 outputs/fixed_transition_stability_v1/seed42_import/joint_single/best_validation_predictions.jsonl.gz
+ delete mode 100644 outputs/fixed_transition_stability_v1/seed42_import/joint_single/epochs.jsonl
+ delete mode 100644 outputs/fixed_transition_stability_v1/seed42_import/joint_single/last.pt
+ delete mode 100644 outputs/fixed_transition_stability_v1/seed42_import/provenance.json
+ delete mode 100644 outputs/fixed_transition_stability_v1/seed42_import/report.md
+ delete mode 100644 outputs/fixed_transition_stability_v1/seed42_import/rerun_context.json
+ delete mode 100644 outputs/fixed_transition_stability_v1/seed42_import/selected_validation_replay.json
+ delete mode 100644 outputs/fixed_transition_stability_v1/seed42_import/status.json
+ delete mode 100644 outputs/fixed_transition_stability_v1/seed42_import/summary.json
+ delete mode 100644 outputs/fixed_transition_stability_v1/seed42_import/validation/base_C_confusion_matrix.csv
+ delete mode 100644 outputs/fixed_transition_stability_v1/seed42_import/validation/frozen_single_confusion_matrix.csv
+ delete mode 100644 outputs/fixed_transition_stability_v1/seed42_import/validation/joint_ordered-base_C_changed_samples.jsonl.gz
+ delete mode 100644 outputs/fixed_transition_stability_v1/seed42_import/validation/joint_ordered-frozen_single_changed_samples.jsonl.gz
+ delete mode 100644 outputs/fixed_transition_stability_v1/seed42_import/validation/joint_ordered-joint_single_changed_samples.jsonl.gz
+ delete mode 100644 outputs/fixed_transition_stability_v1/seed42_import/validation/joint_ordered_confusion_matrix.csv
+ delete mode 100644 outputs/fixed_transition_stability_v1/seed42_import/validation/joint_single-frozen_single_changed_samples.jsonl.gz
+ delete mode 100644 outputs/fixed_transition_stability_v1/seed42_import/validation/joint_single_confusion_matrix.csv
+ delete mode 100644 outputs/fixed_transition_stability_v1/seed42_import/validation/paired_diagnostic_groups.json
+ delete mode 100644 outputs/fixed_transition_stability_v1/seed42_import/validation/per_class.csv
+ delete mode 100644 outputs/fixed_transition_stability_v1/seed42_import/validation/per_class_changes.json
+ delete mode 100644 outputs/fixed_transition_stability_v1/seed42_import/validation/validation_predictions.jsonl.gz
+ rewrite outputs/fixed_transition_stability_v1/status.json (89%)
+ rewrite outputs/fixed_transition_stability_v1/training.log (99%)
+ delete mode 100644 outputs/fixed_transition_stability_v1/upload.log
+To github.com:wangxin0721/XG-NID.git
+   7d6416b..1d8b4b8  HEAD -> codex/server-outputs
+{"status": "uploaded", "branch": "codex/server-outputs", "commit": "1d8b4b8c6a853274922cd662a2eaa6f665e2b3e6", "files": 6, "symlinks": 0, "bytes": 6920, "staging_directory_preserved": "/home/nzxn/下载/WX/load/XG-NID/.outputs-publish-md2bk6sf"}

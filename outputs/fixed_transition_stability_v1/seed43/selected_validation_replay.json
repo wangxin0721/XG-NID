@@ -1,0 +1,20 @@
+{
+  "frozen_single": {
+    "passed": true,
+    "epoch": 50,
+    "samples": 13446,
+    "prediction_ids_sha256": "04acad644d8ccc0b697fd9f10eb16f3d7b81521a9c65cdd8c5e35536a9a6f465"
+  },
+  "joint_single": {
+    "passed": true,
+    "epoch": 25,
+    "samples": 13446,
+    "prediction_ids_sha256": "a3938e71129e3eed62987e8548f33c896145e3dc1b16bd6e2cada9e8dbedd2c4"
+  },
+  "joint_ordered": {
+    "passed": true,
+    "epoch": 97,
+    "samples": 13446,
+    "prediction_ids_sha256": "fc18a0a4e42da1ba4cc9db365a510b11226c241bc3500eaff1d2f23dd4a4fbe2"
+  }
+}

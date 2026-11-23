@@ -1,0 +1,40 @@
+{
+  "binding": {
+    "protocol_lock_sha256": "ffc67b59cacad1e8ad6fd3ee3b8657e9fd1e8488d361ef4626ebdda343dd1170",
+    "source": {
+      "backbone_seed": 43,
+      "frozen_c_sha256": "746ee8c5b2e4f3e461bbd61edc59204d55ab565c58a24803f65fbafa9c0ab45d",
+      "split_id": "a8ae9c934eec9fee970cc725e60051d0c709e0f16c7dda14749350ff2006975a",
+      "manifest_sha256": "b8e9b0810471d0c2b52033488fab640625c3731315afd5d2add1571bd2518827",
+      "validation_digest": "79d840d76d3dc8804ccda64dc65ae8f6f368ec91d57b4d062918361de05d3d6e"
+    },
+    "code_commit": "7c9249eafcea21ff40fe1811afcc01414e00acfb",
+    "environment": {
+      "python": "3.9.23",
+      "torch": "2.3.1+cu118",
+      "pyg": "2.5.3",
+      "cuda": "11.8",
+      "device": "Tesla T4",
+      "platform": "Linux-6.8.0-138-generic-x86_64-with-glibc2.35"
+    },
+    "graph_root": "/home/nzxn/下载/WX/load/XG-NID/data/processed/CICIoT2023_processed/processed",
+    "workers": 2,
+    "input_sha256": {
+      "outputs/fusion_seed_repeats_s43_s44_v1/seed43/N0/best.pt": "e560fb61ad09fd38237c626ca0aa250ccf8bd003df8e7ac8be3ac4f03b2e0443",
+      "outputs/fusion_seed_repeats_s43_s44_v1/seed43/N0/metrics.json": "33e2b140fd2c25b640e6eacbf8bcbbabfc03f50cf551feac1ca6fdbe24c66c9b",
+      "outputs/fusion_seed_repeats_s43_s44_v1/seed43/N0/config.json": "cff4d987d25287afa0658675fafffc236dfa2ded2efa5f7c5b9cb466ede05da7",
+      "outputs/fusion_seed_repeats_s43_s44_v1/seed43/N0/validation_predictions.jsonl.gz": "066c6ce5db71605a882e70577ab039acb5d4a1c58cc210ccab16aea93f6b5e8d",
+      "outputs/packet_transition_independent_s43_v1/selection.json": "ce8b7ad2ad1488b69592a9728d2b571982ef9650fba4b6edb3c410695d39c6d0",
+      "outputs/packet_transition_independent_s43_v1/C/best.pt": "6f4d228917e2352b3684b4b1d79dcd0ec8fde02ebe95b7ca6ac6fe732b88bbba",
+      "outputs/packet_transition_independent_s43_v1/C/metrics.json": "b99c6f27bbdd2c8aa7862c98ccb3e51b7dc1c13629739cbdac73009eb21d1999",
+      "outputs/packet_transition_independent_s43_v1/C/validation_predictions.jsonl.gz": "664129906bedf6dc550a22cc9d93edda68c473714cb2a4ee81bf2825d5db3a2c",
+      "data/processed/ciciot2023_grouped_input_v1/split.json": "2f6a7c307121454b881520379f0a298b7e2a179b1db4a7cb03741b7f648a774a",
+      "data/processed/ciciot2023_grouped_input_v1/samples.jsonl": "b8e9b0810471d0c2b52033488fab640625c3731315afd5d2add1571bd2518827",
+      "outputs/packet_transition_independent_s43_v1/status.json": "97b43a19ba134e51261465f3e578d5153e10c92143d3095fa5a1c715c4e00129"
+    },
+    "backbone_seed": 43
+  },
+  "test_graph_loads": 0,
+  "readout_seed": 42,
+  "sampling_seed": 42
+}

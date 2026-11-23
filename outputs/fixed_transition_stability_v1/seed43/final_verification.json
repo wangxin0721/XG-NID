@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "same_sample_order_all_three_arms": true,
+  "epochs_per_arm": 200,
+  "updates_per_arm": 42200,
+  "all_sampling_orders_verified": true,
+  "frozen_single_fusion_unchanged": true,
+  "source_C_parameters_buffers_modes_unchanged": true,
+  "source_inputs_unchanged": true,
+  "best_raw_graph_replays_passed": true,
+  "test_graph_loads": 0,
+  "wall_seconds_this_invocation": 33745.38965880498
+}

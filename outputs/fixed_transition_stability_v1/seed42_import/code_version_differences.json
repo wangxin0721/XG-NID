@@ -1,0 +1,95 @@
+{
+  "frozen_single": {
+    "code_commit": "d03ced606154f1d7b4afd6f29ed0f6f4d2f7011d",
+    "files": {
+      "src/xgnid/fusion_dimension.py": {
+        "archived_canonical_sha256": "eb8dd5c91a63b424bd421c29e333ff24492e5474cdabe77408abde5f81bb703d",
+        "current_canonical_sha256": "eb8dd5c91a63b424bd421c29e333ff24492e5474cdabe77408abde5f81bb703d",
+        "same_file": true
+      },
+      "src/xgnid/packet_transition_readout.py": {
+        "archived_canonical_sha256": "58fb2df6e007da0746e1da0bcedc870e091fb200269f94f6d8dedf78f4cd5160",
+        "current_canonical_sha256": "58fb2df6e007da0746e1da0bcedc870e091fb200269f94f6d8dedf78f4cd5160",
+        "same_file": true
+      },
+      "src/xgnid/ordered_transition_readout.py": {
+        "archived_canonical_sha256": "812f0c8583d2b0df9ef433414be0554af42026425f3bd8b1e84cfe463ee5ca07",
+        "current_canonical_sha256": "9fea55155056837377a4b20373836ecfcda7dd0d5c28ba211ac95545d54c368d",
+        "same_file": false
+      },
+      "src/xgnid/packet_pooling.py": {
+        "archived_canonical_sha256": "c423c573b624a98a40ee03b5b286f2dcd3297db43a0eedcf1a654590b163742d",
+        "current_canonical_sha256": "c423c573b624a98a40ee03b5b286f2dcd3297db43a0eedcf1a654590b163742d",
+        "same_file": true
+      },
+      "src/xgnid/joint_transition_fusion.py": {
+        "archived_canonical_sha256": null,
+        "current_canonical_sha256": "522b505dc753ae61376d45d3a6bd92c60c7f754a00902a3f9084fb91a1c2fd66",
+        "same_file": false
+      }
+    },
+    "interpretation": "Historical Single used frozen source fusion directly; wrappers now copy/freeze it. Later explicit context_right interface is unused for true pairs. Functional checks cover matching modules and all archived validation predictions."
+  },
+  "joint_single": {
+    "code_commit": "4f2dd776fd3040a94dd4199d47866f1ed9968a03",
+    "files": {
+      "src/xgnid/fusion_dimension.py": {
+        "archived_canonical_sha256": "eb8dd5c91a63b424bd421c29e333ff24492e5474cdabe77408abde5f81bb703d",
+        "current_canonical_sha256": "eb8dd5c91a63b424bd421c29e333ff24492e5474cdabe77408abde5f81bb703d",
+        "same_file": true
+      },
+      "src/xgnid/packet_transition_readout.py": {
+        "archived_canonical_sha256": "58fb2df6e007da0746e1da0bcedc870e091fb200269f94f6d8dedf78f4cd5160",
+        "current_canonical_sha256": "58fb2df6e007da0746e1da0bcedc870e091fb200269f94f6d8dedf78f4cd5160",
+        "same_file": true
+      },
+      "src/xgnid/ordered_transition_readout.py": {
+        "archived_canonical_sha256": "812f0c8583d2b0df9ef433414be0554af42026425f3bd8b1e84cfe463ee5ca07",
+        "current_canonical_sha256": "9fea55155056837377a4b20373836ecfcda7dd0d5c28ba211ac95545d54c368d",
+        "same_file": false
+      },
+      "src/xgnid/packet_pooling.py": {
+        "archived_canonical_sha256": "c423c573b624a98a40ee03b5b286f2dcd3297db43a0eedcf1a654590b163742d",
+        "current_canonical_sha256": "c423c573b624a98a40ee03b5b286f2dcd3297db43a0eedcf1a654590b163742d",
+        "same_file": true
+      },
+      "src/xgnid/joint_transition_fusion.py": {
+        "archived_canonical_sha256": "522b505dc753ae61376d45d3a6bd92c60c7f754a00902a3f9084fb91a1c2fd66",
+        "current_canonical_sha256": "522b505dc753ae61376d45d3a6bd92c60c7f754a00902a3f9084fb91a1c2fd66",
+        "same_file": true
+      }
+    },
+    "interpretation": "Historical Single used frozen source fusion directly; wrappers now copy/freeze it. Later explicit context_right interface is unused for true pairs. Functional checks cover matching modules and all archived validation predictions."
+  },
+  "joint_ordered": {
+    "code_commit": "f3baba6ce8b80ed22283e6a501f2dfb992d0edf8",
+    "files": {
+      "src/xgnid/fusion_dimension.py": {
+        "archived_canonical_sha256": "eb8dd5c91a63b424bd421c29e333ff24492e5474cdabe77408abde5f81bb703d",
+        "current_canonical_sha256": "eb8dd5c91a63b424bd421c29e333ff24492e5474cdabe77408abde5f81bb703d",
+        "same_file": true
+      },
+      "src/xgnid/packet_transition_readout.py": {
+        "archived_canonical_sha256": "58fb2df6e007da0746e1da0bcedc870e091fb200269f94f6d8dedf78f4cd5160",
+        "current_canonical_sha256": "58fb2df6e007da0746e1da0bcedc870e091fb200269f94f6d8dedf78f4cd5160",
+        "same_file": true
+      },
+      "src/xgnid/ordered_transition_readout.py": {
+        "archived_canonical_sha256": "9fea55155056837377a4b20373836ecfcda7dd0d5c28ba211ac95545d54c368d",
+        "current_canonical_sha256": "9fea55155056837377a4b20373836ecfcda7dd0d5c28ba211ac95545d54c368d",
+        "same_file": true
+      },
+      "src/xgnid/packet_pooling.py": {
+        "archived_canonical_sha256": "c423c573b624a98a40ee03b5b286f2dcd3297db43a0eedcf1a654590b163742d",
+        "current_canonical_sha256": "c423c573b624a98a40ee03b5b286f2dcd3297db43a0eedcf1a654590b163742d",
+        "same_file": true
+      },
+      "src/xgnid/joint_transition_fusion.py": {
+        "archived_canonical_sha256": "522b505dc753ae61376d45d3a6bd92c60c7f754a00902a3f9084fb91a1c2fd66",
+        "current_canonical_sha256": "522b505dc753ae61376d45d3a6bd92c60c7f754a00902a3f9084fb91a1c2fd66",
+        "same_file": true
+      }
+    },
+    "interpretation": "Historical Single used frozen source fusion directly; wrappers now copy/freeze it. Later explicit context_right interface is unused for true pairs. Functional checks cover matching modules and all archived validation predictions."
+  }
+}

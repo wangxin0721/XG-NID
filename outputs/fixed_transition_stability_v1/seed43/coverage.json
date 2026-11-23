@@ -1,0 +1,84 @@
+{
+  "train": {
+    "samples": 107621,
+    "valid_transitions": 1063099,
+    "ordered_contexts": 970669,
+    "flows_with_ordered_contexts": 66402,
+    "flows_without_transitions": 15191,
+    "context_coverage_by_class": {
+      "Benign": {
+        "samples": 19112,
+        "with_context": 10331
+      },
+      "WebBased": {
+        "samples": 4359,
+        "with_context": 3163
+      },
+      "Spoofing": {
+        "samples": 13914,
+        "with_context": 6161
+      },
+      "Recon": {
+        "samples": 18224,
+        "with_context": 2715
+      },
+      "Mirai": {
+        "samples": 19200,
+        "with_context": 19193
+      },
+      "Dos": {
+        "samples": 11802,
+        "with_context": 3895
+      },
+      "DDos": {
+        "samples": 19140,
+        "with_context": 19125
+      },
+      "BruteForce": {
+        "samples": 1870,
+        "with_context": 1819
+      }
+    }
+  },
+  "val": {
+    "samples": 13446,
+    "valid_transitions": 134039,
+    "ordered_contexts": 122491,
+    "flows_with_ordered_contexts": 8337,
+    "flows_without_transitions": 1898,
+    "context_coverage_by_class": {
+      "Benign": {
+        "samples": 2389,
+        "with_context": 1300
+      },
+      "WebBased": {
+        "samples": 544,
+        "with_context": 404
+      },
+      "Spoofing": {
+        "samples": 1739,
+        "with_context": 798
+      },
+      "Recon": {
+        "samples": 2278,
+        "with_context": 332
+      },
+      "Mirai": {
+        "samples": 2400,
+        "with_context": 2399
+      },
+      "Dos": {
+        "samples": 1475,
+        "with_context": 493
+      },
+      "DDos": {
+        "samples": 2388,
+        "with_context": 2384
+      },
+      "BruteForce": {
+        "samples": 233,
+        "with_context": 227
+      }
+    }
+  }
+}

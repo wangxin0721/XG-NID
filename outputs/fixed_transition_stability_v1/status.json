@@ -1,8 +1,10 @@
 {
-  "status": "failed",
-  "phase": "import",
+  "status": "backbone_completed",
+  "backbone_seed": 43,
+  "formal_training_started": true,
+  "test_evaluated": false,
+  "updates_per_arm": 42200,
+  "phase": "seed43",
   "queue_completed": false,
-  "exception": "CalledProcessError(1, ['git', 'lfs', 'env'])",
-  "traceback": "Traceback (most recent call last):\n  File \"/home/nzxn/下载/WX/load/XG-NID-fixed-transition-stability/scripts/run_fixed_transition_stability.py\", line 260, in main\n    result=run_phase(repo,args.data_root,root,raw.read(CONFIG),args.phase,args.resume,args.probe_only,args.download_inputs)\n  File \"/home/nzxn/下载/WX/load/XG-NID-fixed-transition-stability/scripts/run_fixed_transition_stability.py\", line 219, in run_phase\n    lock=archive.lock_protocol(repo,root,settings,SOURCE_FILES,download)\n  File \"/home/nzxn/下载/WX/load/XG-NID-fixed-transition-stability/scripts/fixed_transition_archive.py\", line 44, in lock_protocol\n    open_archive(repo,spec,download)\n  File \"/home/nzxn/下载/WX/load/XG-NID-fixed-transition-stability/scripts/fixed_transition_archive.py\", line 32, in open_archive\n    missing=[directory+'/'+name for name in spec['inputs'] if isinstance(archive.locate(name),Path)\n  File \"/home/nzxn/下载/WX/load/XG-NID-fixed-transition-stability/scripts/fixed_transition_archive.py\", line 32, in <listcomp>\n    missing=[directory+'/'+name for name in spec['inputs'] if isinstance(archive.locate(name),Path)\n  File \"/home/nzxn/下载/WX/load/XG-NID-fixed-transition-stability/scripts/run_transition_pair_cross_replay.py\", line 52, in locate\n    environment = subprocess.check_output(['git', 'lfs', 'env'], cwd=self.repo, text=True)\n  File \"/home/nzxn/miniconda3/envs/wx/lib/python3.9/subprocess.py\", line 424, in check_output\n    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,\n  File \"/home/nzxn/miniconda3/envs/wx/lib/python3.9/subprocess.py\", line 528, in run\n    raise CalledProcessError(retcode, process.args,\nsubprocess.CalledProcessError: Command '['git', 'lfs', 'env']' returned non-zero exit status 1.\n",
-  "test_evaluated": false
+  "backbone_status": "completed"
 }

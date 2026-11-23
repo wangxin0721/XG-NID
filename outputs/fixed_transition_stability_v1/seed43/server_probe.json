@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "backbone_seed": 43,
+  "full_epoch_zero_replay": true,
+  "real_graph_gradient_paths": true,
+  "probe_updates_discarded": true,
+  "formal_training_started": false
+}

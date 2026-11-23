@@ -1,0 +1,93 @@
+{
+  "partition": "validation",
+  "budgets": [
+    {
+      "epoch_budget": 30,
+      "selected": {
+        "frozen_single": {
+          "epoch": 4,
+          "macro_f1": 0.9794823731268687
+        },
+        "joint_single": {
+          "epoch": 25,
+          "macro_f1": 0.9794729291888726
+        },
+        "joint_ordered": {
+          "epoch": 0,
+          "macro_f1": 0.9793794688588227
+        }
+      },
+      "delta_macro_f1_pp": {
+        "joint_ordered-joint_single": -0.0093460330049977,
+        "joint_ordered-frozen_single": -0.010290426804604458,
+        "joint_single-frozen_single": -0.0009443937996067575
+      }
+    },
+    {
+      "epoch_budget": 100,
+      "selected": {
+        "frozen_single": {
+          "epoch": 50,
+          "macro_f1": 0.9799015807901851
+        },
+        "joint_single": {
+          "epoch": 25,
+          "macro_f1": 0.9794729291888726
+        },
+        "joint_ordered": {
+          "epoch": 97,
+          "macro_f1": 0.9801334169647202
+        }
+      },
+      "delta_macro_f1_pp": {
+        "joint_ordered-joint_single": 0.06604877758475958,
+        "joint_ordered-frozen_single": 0.023183617453514938,
+        "joint_single-frozen_single": -0.04286516013124464
+      }
+    },
+    {
+      "epoch_budget": 150,
+      "selected": {
+        "frozen_single": {
+          "epoch": 50,
+          "macro_f1": 0.9799015807901851
+        },
+        "joint_single": {
+          "epoch": 25,
+          "macro_f1": 0.9794729291888726
+        },
+        "joint_ordered": {
+          "epoch": 97,
+          "macro_f1": 0.9801334169647202
+        }
+      },
+      "delta_macro_f1_pp": {
+        "joint_ordered-joint_single": 0.06604877758475958,
+        "joint_ordered-frozen_single": 0.023183617453514938,
+        "joint_single-frozen_single": -0.04286516013124464
+      }
+    },
+    {
+      "epoch_budget": 200,
+      "selected": {
+        "frozen_single": {
+          "epoch": 50,
+          "macro_f1": 0.9799015807901851
+        },
+        "joint_single": {
+          "epoch": 25,
+          "macro_f1": 0.9794729291888726
+        },
+        "joint_ordered": {
+          "epoch": 97,
+          "macro_f1": 0.9801334169647202
+        }
+      },
+      "delta_macro_f1_pp": {
+        "joint_ordered-joint_single": 0.06604877758475958,
+        "joint_ordered-frozen_single": 0.023183617453514938,
+        "joint_single-frozen_single": -0.04286516013124464
+      }
+    }
+  ]
+}
