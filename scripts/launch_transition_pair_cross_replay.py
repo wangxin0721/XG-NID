@@ -28,7 +28,11 @@ def launch(args):
         caught = signum
         if child is not None and child.poll() is None:
             os.killpg(child.pid, signum) if os.name == 'posix' else child.terminate()
-    with FileLock(str(output / '.launcher.lock'), timeout=0):
+    # Windows locks deny reads of the locked byte. Keep this live coordination
+    # file outside the directory that the publisher must inventory and hash.
+    lock_root = repo / 'tmp'
+    lock_root.mkdir(exist_ok=True)
+    with FileLock(str(lock_root / (OUTPUT_NAME + '.launcher.lock')), timeout=0):
         handlers = {s: signal.signal(s, stop) for s in (signal.SIGINT, signal.SIGTERM)}
         status = 1
         try:

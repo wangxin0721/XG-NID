@@ -16,6 +16,7 @@ from torch_geometric.data import Batch
 import run_transition_pair_cross_replay as run
 import transition_pair_cross_report as report
 import launch_transition_pair_cross_replay as launcher
+import sync_server_outputs as sync
 from test_transition_pair_shuffle import graph_fixture
 from transition_pair_cache import PairCache
 from xgnid.transition_pair_shuffle import PairFusion
@@ -161,8 +162,14 @@ class CrossReplayChecks(unittest.TestCase):
             args = argparse.Namespace(repo=repo, archive_root=None, snapshot=True, device='cpu',
                                       publish_remote='https://github.com/wangxin0721/XG-NID.git')
             process = type('Process', (), {'wait': lambda self: 7, 'poll': lambda self: 7, 'pid': 123})()
+            def inspect_live_publish(*args, **kwargs):
+                target = args[2]
+                self.assertFalse((target / '.launcher.lock').exists())
+                self.assertTrue((repo / 'tmp' / (launcher.OUTPUT_NAME + '.launcher.lock')).exists())
+                self.assertIn('replay_exit.json', sync.inventory(target))
+                return [0, 0]
             with patch.object(launcher.subprocess, 'Popen', return_value=process) as child, \
-                 patch.object(launcher.publisher, 'publish_results', return_value=[0, 0]) as publish:
+                 patch.object(launcher.publisher, 'publish_results', side_effect=inspect_live_publish) as publish:
                 code = launcher.launch(args)
             self.assertEqual(code, 7)
             self.assertIn('--snapshot', child.call_args.args[0])

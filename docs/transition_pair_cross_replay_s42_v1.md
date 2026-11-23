@@ -86,4 +86,6 @@ python -u -B "$xgnid_code/scripts/launch_transition_pair_cross_replay.py" --repo
 python -B "$xgnid_code/scripts/sync_server_outputs.py" publish --repo "$xgnid_repo" --only transition_pair_cross_replay_s42_v1
 ```
 
+Windows 上入口的协调锁保存在仓库 `tmp` 下，避免发布器读取输出目录时碰到仍被锁住的字节。首次本地全量回放完成后发现此发布问题；修复只涉及入口协调锁，不重算已完成的六组预测。结果的 `provenance.json` 保留实际推断代码提交，发布修复提交单独可追踪。
+
 当前 True 候选 **97.914033%** 保留；六组诊断不改变上一轮 True−Shuffle **+0.044451 pp <0.05 pp** 的结论。本轮不实现或启动 R0/R1/R2；先按本次残差修复、破坏、误报来源及关闭残差表现决定下一阶段。

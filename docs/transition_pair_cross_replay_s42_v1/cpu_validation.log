@@ -33,6 +33,6 @@ test_chronological_edges_and_packed_reordering (test_packet_transition_readout.T
 test_paired_training_selects_and_replays_best (test_packet_transition_readout.TransitionReadoutChecks) ... ok
 
 ----------------------------------------------------------------------
-Ran 33 tests in 19.575s
+Ran 33 tests in 19.162s
 
 OK
