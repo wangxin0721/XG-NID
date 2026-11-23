@@ -1,0 +1,33 @@
+{
+  "scope": "synthetic_CPU_unit_checks_only_not_the_13446_flow_replay",
+  "passed": true,
+  "tests_run": 33,
+  "failures": 0,
+  "errors": 0,
+  "python": "3.10.1",
+  "torch": "2.3.1+cpu",
+  "pyg": "2.5.3",
+  "cuda_available": false,
+  "training_epochs": 0,
+  "test_evaluated": false,
+  "test_modules": [
+    "test_transition_pair_cross_replay",
+    "test_transition_pair_shuffle",
+    "test_joint_transition_fusion",
+    "test_ordered_transition_readout",
+    "test_packet_transition_readout"
+  ],
+  "source_sha256": {
+    "src/xgnid/fusion_dimension.py": "0b35328d4357e7bf546c50cfe674595b0a3f62cd212cfbbe42fd9e5e3b4e293a",
+    "src/xgnid/ordered_transition_readout.py": "8c514a3c610049e3723efc12144bcc7fa5edb655e56cf3afde0cefe4bdeaebba",
+    "src/xgnid/packet_transition_readout.py": "99d8c5d9b2ed324977d56cf2c103c80e42435d86da86ad70d01d2180f7a4d4a0",
+    "src/xgnid/packet_pooling.py": "6a78143b8c08991cd21212bb9685d7d1d82169f9688cfb10e765db4d3c08c67e",
+    "src/xgnid/joint_transition_fusion.py": "06f18b5c31487f6a1759f7ee06ff78c39339035f84cdd4075316ec70378cde6e",
+    "src/xgnid/transition_pair_shuffle.py": "027d7a9749bbcae89816c32212572f797d5ee0b48e8880126cec97cd06736718",
+    "scripts/transition_pair_cache.py": "9d9b65822d6c75357471bc918c7e5c99cc48d35128a5fe1c9f1b13edf6e1d8b1",
+    "scripts/run_transition_pair_cross_replay.py": "14ca023f2bbf5311ed8c26471695a65b5345750d5401af5e19e8f46f60cc9775",
+    "scripts/transition_pair_cross_report.py": "5d7ca2c1ac1691698f51d4bac2694798dcc0b5959a4a320780962ea447103f3e",
+    "scripts/launch_transition_pair_cross_replay.py": "1d1d0ca753500a4861d81eed4f6e1f1ca0e9b7c0a5a882b37ab837cc70e7fa16",
+    "scripts/launch_joint_transition_fusion.py": "52efb8dbcf9d84bbcb6d09e106c57b2a88ad6731c2c671ae42047c0dab17f23a"
+  }
+}

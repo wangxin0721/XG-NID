@@ -1,0 +1,38 @@
+test_archive_input_sha_validation_and_tensor_loading (test_transition_pair_cross_replay.CrossReplayChecks) ... ok
+test_native_reproduction_passes_metadata_and_rejects_actual_mismatch (test_transition_pair_cross_replay.CrossReplayChecks) ... ok
+test_net_nine_web_false_positives_is_sixteen_added_minus_seven_removed (test_transition_pair_cross_replay.CrossReplayChecks) ... ok
+test_off_uses_each_trained_checkpoint_fusion_without_residual (test_transition_pair_cross_replay.CrossReplayChecks) ... ok
+test_replay_failure_still_publishes_with_replay_exit_code (test_transition_pair_cross_replay.CrossReplayChecks) ... ok
+test_report_exports_fixed_comparisons_and_source_decomposition (test_transition_pair_cross_replay.CrossReplayChecks) ... ok
+test_six_streams_and_exact_unchanged_feature_outputs (test_transition_pair_cross_replay.CrossReplayChecks) ... ok
+test_actual_paired_adam_resume_matches_continuous_training_and_rejects_new_mapping (test_transition_pair_shuffle.PairShuffleChecks) ... ok
+test_both_arms_zero_initial_gradients_and_frozen_encoders (test_transition_pair_shuffle.PairShuffleChecks) ... ok
+test_candidate_multisets_counts_flow_isolation_and_actual_feature_ratio (test_transition_pair_shuffle.PairShuffleChecks) ... ok
+test_complete_probe_training_raw_replay_strata_and_completed_resume (test_transition_pair_shuffle.PairShuffleChecks) ... ok
+test_derangement_is_fixed_label_free_and_does_not_consume_rng (test_transition_pair_shuffle.PairShuffleChecks) ... ok
+test_mapping_is_invariant_to_batch_order_and_cache_roundtrip (test_transition_pair_shuffle.PairShuffleChecks) ... ok
+test_new_launcher_routes_failures_and_uploads_only_new_output (test_transition_pair_shuffle.PairShuffleChecks) ... ok
+test_nonzero_readout_changes_pairs_preserves_fallback_and_matches_explicit_formula (test_transition_pair_shuffle.PairShuffleChecks) ... ok
+test_complete_runner_probe_cache_training_and_completed_resume_with_synthetic_graphs (test_joint_transition_fusion.JointFusionChecks) ... ok
+test_continuity_diagnosis_does_not_infer_context_from_two_edges (test_joint_transition_fusion.JointFusionChecks) ... ok
+test_failure_inside_four_arm_transaction_recovers_previous_committed_update (test_joint_transition_fusion.JointFusionChecks) ... ok
+test_interrupted_mid_epoch_and_epoch_boundary_equal_uninterrupted (test_joint_transition_fusion.JointFusionChecks) ... ok
+test_joint_initialization_gradients_and_frozen_raw_graph_buffers (test_joint_transition_fusion.JointFusionChecks) ... ok
+test_publisher_uploads_failure_evidence_and_preserves_training_exit (test_joint_transition_fusion.JointFusionChecks) ... ok
+test_resume_rejects_changed_configuration_and_source_binding (test_joint_transition_fusion.JointFusionChecks) ... ok
+test_sampler_matches_historical_order_including_singleton_tail (test_joint_transition_fusion.JointFusionChecks) ... ok
+test_selected_checkpoint_replays_on_raw_graphs_and_reports_all_comparisons (test_joint_transition_fusion.JointFusionChecks) ... ok
+test_source_replay_accepts_archived_gate_metadata (test_joint_transition_fusion.JointFusionChecks) ... ok
+test_source_replay_rejects_real_prediction_identity_metric_and_digest_changes (test_joint_transition_fusion.JointFusionChecks) ... ok
+test_context_observes_order_and_cannot_read_another_graph (test_ordered_transition_readout.OrderedReadoutChecks) ... ok
+test_continuity_respects_missing_links_and_graph_boundaries (test_ordered_transition_readout.OrderedReadoutChecks) ... ok
+test_old_training_entry_replays_new_heads_on_graphs (test_ordered_transition_readout.OrderedReadoutChecks) ... ok
+test_original_mode_is_exact_and_all_modes_preserve_empty_or_single_edge (test_ordered_transition_readout.OrderedReadoutChecks) ... ok
+test_zero_initialization_and_context_gradient_after_first_update (test_ordered_transition_readout.OrderedReadoutChecks) ... ok
+test_chronological_edges_and_packed_reordering (test_packet_transition_readout.TransitionReadoutChecks) ... ok
+test_paired_training_selects_and_replays_best (test_packet_transition_readout.TransitionReadoutChecks) ... ok
+
+----------------------------------------------------------------------
+Ran 33 tests in 19.575s
+
+OK

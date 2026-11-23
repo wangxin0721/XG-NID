@@ -1,0 +1,114 @@
+{
+  "schema": "xgnid.transition-pair-cross-replay.s42.v1",
+  "source_result_commit": "7c40c4b6772679d51b20a6a268fc8b4ae2f3d518",
+  "source_code_commit": "f3baba6ce8b80ed22283e6a501f2dfb992d0edf8",
+  "source_directory": "outputs/transition_pair_shuffle_s42_v1",
+  "inputs": {
+    "status.json": {
+      "bytes": 90,
+      "sha256": "5d5875082aaf45fcb519016b401b92117adeaf51a35ac7d9c70ad5760589df9c"
+    },
+    "config.json": {
+      "bytes": 2092,
+      "sha256": "c4e13ff7cc783e51d41c29ac5f0c5e08e870a8fc7a0caf9bf76f3b29eb1aedff"
+    },
+    "provenance.json": {
+      "bytes": 6008,
+      "sha256": "9f872f355e56961bb6b20b9f5a1d18187f38015b712a9923e542d8ad404ec34b"
+    },
+    "summary.json": {
+      "bytes": 152823,
+      "sha256": "4dca823d7671c28022fdb16ff25bb1c6bad803487f2c1e53b3c1ce337283832c"
+    },
+    "final_verification.json": {
+      "bytes": 279,
+      "sha256": "f7027cc2f1d39e5d38df4ebfc2ce1fc4e6270ba6f6bc6e8698a5968f7e173b0a"
+    },
+    "selected_validation_replay.json": {
+      "bytes": 434,
+      "sha256": "648375536ee6c80e708527a33a37454e129294d45e3d12a4134759ebcf1a4fa2"
+    },
+    "pairing_val_receipt.json": {
+      "bytes": 4712,
+      "sha256": "df831fe21aa60355a17f81a74206aedc7f78c741be04ae300f47366af2d67017"
+    },
+    "pairing_val.jsonl.gz": {
+      "bytes": 819264,
+      "sha256": "f8b7b2dfe7168341cdbed1d08965ef6373c6a2b860883bfaf5ee0abef5a4ac13"
+    },
+    "frozen_val_features.pt": {
+      "bytes": 50122508,
+      "sha256": "cc5b6b4ec7df26a4365abbe9aa25503ecb842d14eb306beeaa2220f2eafa6cf7"
+    },
+    "pair_true/best.pt": {
+      "bytes": 56157,
+      "sha256": "80a07ff28aff1c27e3a698b6832fa3a1b07deeead913f4b02520e9ed3393d55d"
+    },
+    "pair_shuffle/best.pt": {
+      "bytes": 56157,
+      "sha256": "d97988856cd37e11b1233666860b9864604a9a477f223698e2aca6fd8478cd9e"
+    },
+    "pair_true/best_validation_predictions.jsonl.gz": {
+      "bytes": 535686,
+      "sha256": "e82a2a9c527f97f89f27c8d4854be0b14a3026feea60cce08eccc3359831f792"
+    },
+    "pair_shuffle/best_validation_predictions.jsonl.gz": {
+      "bytes": 535691,
+      "sha256": "b7de7772b24bd83ad8211184953325c706352629900e1baaf9f157950df9e8ff"
+    }
+  },
+  "validation_samples": 13446,
+  "eval_batch_size": 16,
+  "training_epochs": 0,
+  "optimizer_updates": 0,
+  "groups": [
+    "T1",
+    "T2",
+    "T0",
+    "S1",
+    "S2",
+    "S0"
+  ],
+  "checkpoint_epochs": {
+    "pair_true": 191,
+    "pair_shuffle": 183
+  },
+  "native_archive_groups": {
+    "T1": "pair_true",
+    "S2": "pair_shuffle"
+  },
+  "comparisons": [
+    [
+      "T1",
+      "T2"
+    ],
+    [
+      "S1",
+      "S2"
+    ],
+    [
+      "T1",
+      "T0"
+    ],
+    [
+      "S2",
+      "S0"
+    ],
+    [
+      "T1",
+      "S2"
+    ],
+    [
+      "T0",
+      "S0"
+    ]
+  ],
+  "pairing_seed": 20261121,
+  "expected_native_webbased_fp_net_increase": 9,
+  "candidate_validation_macro_f1": 0.9791403291717622,
+  "previous_training_ablation_delta_pp": 0.04445090434977983,
+  "previous_training_ablation_reference_pp": 0.05,
+  "previous_training_ablation_passed": false,
+  "test_evaluated": false,
+  "scope": "fixed_model_sensitivity_not_training_ablation"
+}

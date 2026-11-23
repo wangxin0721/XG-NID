@@ -22,9 +22,12 @@ def write(path, value):
     os.replace(temporary, path)
 
 
-def publish_results(code, repo, output, training_exit, env, output_name=OUTPUT):
+def publish_results(code, repo, output, training_exit, env, output_name=OUTPUT,
+                    remote=None, exit_key='training_exit_code'):
     command = [sys.executable, '-B', str(code / 'scripts/sync_server_outputs.py'),
                'publish', '--repo', str(repo), '--only', output_name]
+    if remote is not None:
+        command += ['--remote', remote]
     # Publish cannot inventory a log that its own subprocess is actively appending to.
     # Capture externally, then publish the closed primary log and exit-code receipt.
     temporary_root = repo / 'tmp'
@@ -43,7 +46,7 @@ def publish_results(code, repo, output, training_exit, env, output_name=OUTPUT):
             attempts.append(status)
             if attempt == 1:
                 shutil.copy2(log, output / 'upload.log')
-                write(output / 'exit_codes.json', {'training_exit_code': training_exit,
+                write(output / 'exit_codes.json', {exit_key: training_exit,
                       'primary_upload_exit_code': status, 'receipt_publication_follows': True,
                       'retry_command': shlex.join(command)})
             else:
@@ -52,7 +55,7 @@ def publish_results(code, repo, output, training_exit, env, output_name=OUTPUT):
     if attempts[-1] != 0:
         print('UPLOAD FAILED: results remain local; retry after training has stopped:\n' + shlex.join(command),
               file=sys.stderr, flush=True)
-    print(json.dumps({'training_exit_code': training_exit, 'upload_attempt_exit_codes': attempts,
+    print(json.dumps({exit_key: training_exit, 'upload_attempt_exit_codes': attempts,
                       'output': str(output)}), flush=True)
     return attempts
 
