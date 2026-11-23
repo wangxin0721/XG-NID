@@ -1,6 +1,6 @@
 {
   "schema": "xgnid.outputs-snapshot.v2",
-  "created_utc": "2026-11-23T05:19:10.706657+00:00",
+  "created_utc": "2026-11-23T05:21:46.539162+00:00",
   "source_directory": "/home/nzxn/下载/WX/load/XG-NID/outputs",
   "files": {
     "GNN4ID/best.pt": {
@@ -9831,6 +9831,10 @@
       "bytes": 2056,
       "sha256": "f96d774a6e8592389eb566a8a2cf76d4d7fbb39bb9ac7392f810f793ae97d629"
     },
+    "residual_injection_s42_v1/exit_codes.json": {
+      "bytes": 336,
+      "sha256": "6469dac01022d59de850126c56b44ef7c8e5b96b76a2138b8f5e5b8626abaab2"
+    },
     "residual_injection_s42_v1/final_verification.json": {
       "bytes": 282,
       "sha256": "e29d624a24c94036537548d68c291a8e9f0de4c865289e23b3b38481a2d34de1"
@@ -9950,6 +9954,10 @@
     "residual_injection_s42_v1/training_progress.json": {
       "bytes": 195,
       "sha256": "4ca0c9ffde0d1cd1bd9f208f034b8717ea8e599513f34570bf01663028ea3bea"
+    },
+    "residual_injection_s42_v1/upload.log": {
+      "bytes": 6183,
+      "sha256": "f66e291a57955181afbbc5632604b1daacc00c20c0a22ca385c073537aed8d35"
     },
     "residual_injection_s42_v1/validation/historical_True_confusion_matrix.csv": {
       "bytes": 295,
@@ -10812,10 +10820,10 @@
       "sha256": "ebd2091803aab3a050f3a791f303ea786bca06de0d6ab6d56a633cdc16f67b1e"
     }
   },
-  "file_count": 2652,
+  "file_count": 2654,
   "symlink_count": 100,
-  "regular_file_count": 2552,
-  "total_bytes": 8028425057,
+  "regular_file_count": 2554,
+  "total_bytes": 8028431576,
   "updated_directories": [
     "residual_injection_s42_v1"
   ]

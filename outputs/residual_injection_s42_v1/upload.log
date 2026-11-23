@@ -1,0 +1,78 @@
+git-lfs/3.8.1 (GitHub; linux amd64; go 1.27.3; git a662a6db)
+{"files": 55, "GiB": 0.4520318806171417, "staging_directory": "/home/nzxn/下载/WX/load/XG-NID/.outputs-publish-r4u2j1kz"}
+提示：使用 'master' 作为初始分支的名称。这个默认分支名称可能会更改。要在新仓库中
+提示：配置使用初始分支名，并消除这条警告，请执行：
+提示：
+提示：	git config --global init.defaultBranch <名称>
+提示：
+提示：除了 'master' 之外，通常选定的名字有 'main'、'trunk' 和 'development'。
+提示：可以通过以下命令重命名刚创建的分支：
+提示：
+提示：	git branch -m <name>
+已初始化空的 Git 仓库于 /home/nzxn/下载/WX/load/XG-NID/.outputs-publish-r4u2j1kz/.git/
+来自 github.com:wangxin0721/XG-NID
+ * branch            codex/server-outputs -> FETCH_HEAD
+ * [新分支]          codex/server-outputs -> origin/codex/server-outputs
+Updated Git hooks.
+Git LFS initialized.
+[codex/server-outputs 9c881a4] Update selected server outputs
+ 57 files changed, 10589 insertions(+), 6 deletions(-)
+ create mode 100644 outputs/residual_injection_s42_v1/baseline_validation_replay.json
+ create mode 100644 outputs/residual_injection_s42_v1/beta_distributions.json
+ create mode 100644 outputs/residual_injection_s42_v1/budget_comparison.json
+ create mode 100644 outputs/residual_injection_s42_v1/config.json
+ create mode 100644 outputs/residual_injection_s42_v1/coverage.json
+ create mode 100644 outputs/residual_injection_s42_v1/epoch_zero_replay.json
+ create mode 100644 outputs/residual_injection_s42_v1/final_verification.json
+ create mode 100644 outputs/residual_injection_s42_v1/frozen_train_features.pt
+ create mode 100644 outputs/residual_injection_s42_v1/frozen_val_features.pt
+ create mode 100644 outputs/residual_injection_s42_v1/inj_dynamic/best.pt
+ create mode 100644 outputs/residual_injection_s42_v1/inj_dynamic/best_validation_predictions.jsonl.gz
+ create mode 100644 outputs/residual_injection_s42_v1/inj_dynamic/epochs.jsonl
+ create mode 100644 outputs/residual_injection_s42_v1/inj_dynamic/last.pt
+ create mode 100644 outputs/residual_injection_s42_v1/inj_fixed/best.pt
+ create mode 100644 outputs/residual_injection_s42_v1/inj_fixed/best_validation_predictions.jsonl.gz
+ create mode 100644 outputs/residual_injection_s42_v1/inj_fixed/epochs.jsonl
+ create mode 100644 outputs/residual_injection_s42_v1/inj_fixed/last.pt
+ create mode 100644 outputs/residual_injection_s42_v1/inj_global/best.pt
+ create mode 100644 outputs/residual_injection_s42_v1/inj_global/best_validation_predictions.jsonl.gz
+ create mode 100644 outputs/residual_injection_s42_v1/inj_global/epochs.jsonl
+ create mode 100644 outputs/residual_injection_s42_v1/inj_global/last.pt
+ create mode 100644 outputs/residual_injection_s42_v1/last_beta_distributions.json
+ create mode 100644 outputs/residual_injection_s42_v1/launcher.pid
+ create mode 100644 outputs/residual_injection_s42_v1/preparation_environment.json
+ create mode 100644 outputs/residual_injection_s42_v1/progress.json
+ create mode 100644 outputs/residual_injection_s42_v1/provenance.json
+ create mode 100644 outputs/residual_injection_s42_v1/raw_gradient_probe.json
+ create mode 100644 outputs/residual_injection_s42_v1/recovery.pt
+ create mode 100644 outputs/residual_injection_s42_v1/report.md
+ create mode 100644 outputs/residual_injection_s42_v1/selected_validation_replay.json
+ create mode 100644 outputs/residual_injection_s42_v1/server_probe.json
+ create mode 100644 outputs/residual_injection_s42_v1/status.json
+ create mode 100644 outputs/residual_injection_s42_v1/summary.json
+ create mode 100644 outputs/residual_injection_s42_v1/training.log
+ create mode 100644 outputs/residual_injection_s42_v1/training_exit.json
+ create mode 100644 outputs/residual_injection_s42_v1/training_progress.json
+ create mode 100644 outputs/residual_injection_s42_v1/validation/historical_True_confusion_matrix.csv
+ create mode 100644 outputs/residual_injection_s42_v1/validation/inj_dynamic-historical_True_changed_samples.jsonl.gz
+ create mode 100644 outputs/residual_injection_s42_v1/validation/inj_dynamic-inj_fixed_changed_samples.jsonl.gz
+ create mode 100644 outputs/residual_injection_s42_v1/validation/inj_dynamic-inj_global_changed_samples.jsonl.gz
+ create mode 100644 outputs/residual_injection_s42_v1/validation/inj_dynamic-original_C_changed_samples.jsonl.gz
+ create mode 100644 outputs/residual_injection_s42_v1/validation/inj_dynamic_confusion_matrix.csv
+ create mode 100644 outputs/residual_injection_s42_v1/validation/inj_fixed-historical_True_changed_samples.jsonl.gz
+ create mode 100644 outputs/residual_injection_s42_v1/validation/inj_fixed-original_C_changed_samples.jsonl.gz
+ create mode 100644 outputs/residual_injection_s42_v1/validation/inj_fixed_confusion_matrix.csv
+ create mode 100644 outputs/residual_injection_s42_v1/validation/inj_global-historical_True_changed_samples.jsonl.gz
+ create mode 100644 outputs/residual_injection_s42_v1/validation/inj_global-inj_fixed_changed_samples.jsonl.gz
+ create mode 100644 outputs/residual_injection_s42_v1/validation/inj_global-original_C_changed_samples.jsonl.gz
+ create mode 100644 outputs/residual_injection_s42_v1/validation/inj_global_confusion_matrix.csv
+ create mode 100644 outputs/residual_injection_s42_v1/validation/metrics.json
+ create mode 100644 outputs/residual_injection_s42_v1/validation/original_C_confusion_matrix.csv
+ create mode 100644 outputs/residual_injection_s42_v1/validation/per_class.csv
+ create mode 100644 outputs/residual_injection_s42_v1/validation/per_class_changes.json
+ create mode 100644 outputs/residual_injection_s42_v1/validation/validation_predictions.jsonl.gz
+ create mode 100644 outputs/residual_injection_s42_v1/validation/webbased_false_positives.json
+Uploading LFS objects: 100% (10/10), 481 MB | 9.9 MB/s, done.
+To github.com:wangxin0721/XG-NID.git
+   5b25e26..9c881a4  HEAD -> codex/server-outputs
+{"status": "uploaded", "branch": "codex/server-outputs", "commit": "9c881a4ef37cb06adfb45fda53edece3852eb13c", "files": 55, "symlinks": 0, "bytes": 485365536, "staging_directory_preserved": "/home/nzxn/下载/WX/load/XG-NID/.outputs-publish-r4u2j1kz"}
