@@ -1,14 +1,79 @@
-Traceback (most recent call last):
-  File "D:\XG-NID\tmp\transition-pair-shuffle-worktree\scripts\sync_server_outputs.py", line 251, in <module>
-    if args.action=='publish':publish(args)
-  File "D:\XG-NID\tmp\transition-pair-shuffle-worktree\scripts\sync_server_outputs.py", line 127, in publish
-    files = selected_inventory()
-  File "D:\XG-NID\tmp\transition-pair-shuffle-worktree\scripts\sync_server_outputs.py", line 122, in selected_inventory
-    entries = inventory(folder)
-  File "D:\XG-NID\tmp\transition-pair-shuffle-worktree\scripts\sync_server_outputs.py", line 56, in inventory
-    before=p.stat();digest=sha(p);after=p.stat()
-  File "D:\XG-NID\tmp\transition-pair-shuffle-worktree\scripts\sync_server_outputs.py", line 26, in sha
-    for block in iter(lambda:stream.read(4*1024*1024),b''):digest.update(block)
-  File "D:\XG-NID\tmp\transition-pair-shuffle-worktree\scripts\sync_server_outputs.py", line 26, in <lambda>
-    for block in iter(lambda:stream.read(4*1024*1024),b''):digest.update(block)
-PermissionError: [Errno 13] Permission denied
+{"files": 65, "GiB": 0.038181135430932045, "staging_directory": "D:\\XG-NID\\.outputs-publish-f2vdd9cl"}
+Initialized empty Git repository in D:/XG-NID/.outputs-publish-f2vdd9cl/.git/
+From https://github.com/wangxin0721/XG-NID
+ * branch            codex/server-outputs -> FETCH_HEAD
+ * [new branch]      codex/server-outputs -> origin/codex/server-outputs
+Updated Git hooks.
+Git LFS initialized.
+[codex/server-outputs 1267f48] Update selected server outputs
+ 67 files changed, 4625 insertions(+), 6 deletions(-)
+ create mode 100644 outputs/transition_pair_cross_replay_s42_v1/S0/validation_predictions.jsonl.gz
+ create mode 100644 outputs/transition_pair_cross_replay_s42_v1/S0_confusion_matrix.csv
+ create mode 100644 outputs/transition_pair_cross_replay_s42_v1/S1/validation_predictions.jsonl.gz
+ create mode 100644 outputs/transition_pair_cross_replay_s42_v1/S1_confusion_matrix.csv
+ create mode 100644 outputs/transition_pair_cross_replay_s42_v1/S2/validation_predictions.jsonl.gz
+ create mode 100644 outputs/transition_pair_cross_replay_s42_v1/S2_confusion_matrix.csv
+ create mode 100644 outputs/transition_pair_cross_replay_s42_v1/T0/validation_predictions.jsonl.gz
+ create mode 100644 outputs/transition_pair_cross_replay_s42_v1/T0_confusion_matrix.csv
+ create mode 100644 outputs/transition_pair_cross_replay_s42_v1/T1/validation_predictions.jsonl.gz
+ create mode 100644 outputs/transition_pair_cross_replay_s42_v1/T1_confusion_matrix.csv
+ create mode 100644 outputs/transition_pair_cross_replay_s42_v1/T2/validation_predictions.jsonl.gz
+ create mode 100644 outputs/transition_pair_cross_replay_s42_v1/T2_confusion_matrix.csv
+ create mode 100644 outputs/transition_pair_cross_replay_s42_v1/checkpoints/pair_shuffle.pt
+ create mode 100644 outputs/transition_pair_cross_replay_s42_v1/checkpoints/pair_true.pt
+ create mode 100644 outputs/transition_pair_cross_replay_s42_v1/comparisons/S1-S2_changed_samples.jsonl.gz
+ create mode 100644 outputs/transition_pair_cross_replay_s42_v1/comparisons/S2-S0_changed_samples.jsonl.gz
+ create mode 100644 outputs/transition_pair_cross_replay_s42_v1/comparisons/T0-S0_changed_samples.jsonl.gz
+ create mode 100644 outputs/transition_pair_cross_replay_s42_v1/comparisons/T1-S2_changed_samples.jsonl.gz
+ create mode 100644 outputs/transition_pair_cross_replay_s42_v1/comparisons/T1-T0_changed_samples.jsonl.gz
+ create mode 100644 outputs/transition_pair_cross_replay_s42_v1/comparisons/T1-T2_changed_samples.jsonl.gz
+ create mode 100644 outputs/transition_pair_cross_replay_s42_v1/comparisons/features_changed_S1-S2_changed_samples.jsonl.gz
+ create mode 100644 outputs/transition_pair_cross_replay_s42_v1/comparisons/features_changed_T1-T2_changed_samples.jsonl.gz
+ create mode 100644 outputs/transition_pair_cross_replay_s42_v1/comparisons/features_unchanged_S1-S2_changed_samples.jsonl.gz
+ create mode 100644 outputs/transition_pair_cross_replay_s42_v1/comparisons/features_unchanged_T1-T2_changed_samples.jsonl.gz
+ create mode 100644 outputs/transition_pair_cross_replay_s42_v1/config.json
+ create mode 100644 outputs/transition_pair_cross_replay_s42_v1/exit_codes.json
+ create mode 100644 outputs/transition_pair_cross_replay_s42_v1/final_verification.json
+ create mode 100644 outputs/transition_pair_cross_replay_s42_v1/independent_verification.json
+ create mode 100644 outputs/transition_pair_cross_replay_s42_v1/metrics.json
+ create mode 100644 outputs/transition_pair_cross_replay_s42_v1/native_archive_replay.json
+ create mode 100644 outputs/transition_pair_cross_replay_s42_v1/pairing_val.jsonl.gz
+ create mode 100644 outputs/transition_pair_cross_replay_s42_v1/per_class.csv
+ create mode 100644 outputs/transition_pair_cross_replay_s42_v1/progress.json
+ create mode 100644 outputs/transition_pair_cross_replay_s42_v1/provenance.json
+ create mode 100644 outputs/transition_pair_cross_replay_s42_v1/publication_failures/windows_launcher_lock/exit_codes.json
+ create mode 100644 outputs/transition_pair_cross_replay_s42_v1/publication_failures/windows_launcher_lock/launcher.log
+ create mode 100644 outputs/transition_pair_cross_replay_s42_v1/publication_failures/windows_launcher_lock/upload.log
+ create mode 100644 outputs/transition_pair_cross_replay_s42_v1/publication_retry_context.json
+ create mode 100644 outputs/transition_pair_cross_replay_s42_v1/replay.log
+ create mode 100644 outputs/transition_pair_cross_replay_s42_v1/replay_exit.json
+ create mode 100644 outputs/transition_pair_cross_replay_s42_v1/report.md
+ create mode 100644 outputs/transition_pair_cross_replay_s42_v1/review.md
+ create mode 100644 outputs/transition_pair_cross_replay_s42_v1/sample_diagnostics.jsonl.gz
+ create mode 100644 outputs/transition_pair_cross_replay_s42_v1/status.json
+ create mode 100644 outputs/transition_pair_cross_replay_s42_v1/summary.json
+ create mode 100644 outputs/transition_pair_cross_replay_s42_v1/unchanged_feature_consistency.json
+ create mode 100644 outputs/transition_pair_cross_replay_s42_v1/upload.log
+ create mode 100644 outputs/transition_pair_cross_replay_s42_v1/webbased/S0_false_positives.jsonl.gz
+ create mode 100644 outputs/transition_pair_cross_replay_s42_v1/webbased/S1-S2_fp_changed_samples.jsonl.gz
+ create mode 100644 outputs/transition_pair_cross_replay_s42_v1/webbased/S1-S2_fp_retained_samples.jsonl.gz
+ create mode 100644 outputs/transition_pair_cross_replay_s42_v1/webbased/S1_false_positives.jsonl.gz
+ create mode 100644 outputs/transition_pair_cross_replay_s42_v1/webbased/S2-S0_fp_changed_samples.jsonl.gz
+ create mode 100644 outputs/transition_pair_cross_replay_s42_v1/webbased/S2-S0_fp_retained_samples.jsonl.gz
+ create mode 100644 outputs/transition_pair_cross_replay_s42_v1/webbased/S2_false_positives.jsonl.gz
+ create mode 100644 outputs/transition_pair_cross_replay_s42_v1/webbased/T0_false_positives.jsonl.gz
+ create mode 100644 outputs/transition_pair_cross_replay_s42_v1/webbased/T1-S2_fp_changed_samples.jsonl.gz
+ create mode 100644 outputs/transition_pair_cross_replay_s42_v1/webbased/T1-S2_fp_retained_samples.jsonl.gz
+ create mode 100644 outputs/transition_pair_cross_replay_s42_v1/webbased/T1-T0_fp_changed_samples.jsonl.gz
+ create mode 100644 outputs/transition_pair_cross_replay_s42_v1/webbased/T1-T0_fp_retained_samples.jsonl.gz
+ create mode 100644 outputs/transition_pair_cross_replay_s42_v1/webbased/T1-T2_fp_changed_samples.jsonl.gz
+ create mode 100644 outputs/transition_pair_cross_replay_s42_v1/webbased/T1-T2_fp_retained_samples.jsonl.gz
+ create mode 100644 outputs/transition_pair_cross_replay_s42_v1/webbased/T1_false_positives.jsonl.gz
+ create mode 100644 outputs/transition_pair_cross_replay_s42_v1/webbased/T2_false_positives.jsonl.gz
+ create mode 100644 outputs/transition_pair_cross_replay_s42_v1/webbased/previous_net9_trace.json
+ create mode 100644 outputs/transition_pair_cross_replay_s42_v1/webbased_false_positives.json
+Uploading LFS objects: 100% (3/3), 32 MB | 1.2 MB/s, done.
+Uploading LFS objects: 100% (1/1), 32 MB | 0 B/s, done.
+To https://github.com/wangxin0721/XG-NID.git
+   7c40c4b..1267f48  HEAD -> codex/server-outputs
+{"status": "uploaded", "branch": "codex/server-outputs", "commit": "1267f48cbf58498fc9868d3b43f76ee2b9138f27", "files": 65, "symlinks": 0, "bytes": 40996682, "staging_directory_preserved": "D:\\XG-NID\\.outputs-publish-f2vdd9cl"}
