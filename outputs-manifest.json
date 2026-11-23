@@ -1,6 +1,6 @@
 {
   "schema": "xgnid.outputs-snapshot.v2",
-  "created_utc": "2026-11-23T07:24:13.373285+00:00",
+  "created_utc": "2026-11-23T07:26:35.975064+00:00",
   "source_directory": "D:\\XG-NID\\outputs",
   "files": {
     "GNN4ID/best.pt": {
@@ -2539,6 +2539,10 @@
       "bytes": 75680,
       "sha256": "3bb04395173ba341522fcf242996b5d41bc335a92c89ad62817384e477397b8f"
     },
+    "fixed_transition_stability_v1/exit_codes.json": {
+      "bytes": 392,
+      "sha256": "968e74688b6826af99c9e21cdd2b41722b2e1088848fe0bb2ecb7afe36b4d9dd"
+    },
     "fixed_transition_stability_v1/phase_exit_codes.json": {
       "bytes": 207,
       "sha256": "24588a1b420d80e0f821b3289acdb6b7722dbf48e33b8b9834e533bee697e225"
@@ -2706,6 +2710,10 @@
     "fixed_transition_stability_v1/training_exit.json": {
       "bytes": 173,
       "sha256": "e008a1fb6556c2e1a40c8a47c89fdf5fb26b5fa92ad9f5e948437642431f201e"
+    },
+    "fixed_transition_stability_v1/upload.log": {
+      "bytes": 5211,
+      "sha256": "8984eafabef942bb6868d28bb15980fb759fee35a7a5ab532f78b84948fc76f7"
     },
     "flow_query_joint_seeds43_44_resume_1794361380479152585/analysis.json": {
       "bytes": 2803,
@@ -10988,10 +10996,10 @@
       "sha256": "ebd2091803aab3a050f3a791f303ea786bca06de0d6ab6d56a633cdc16f67b1e"
     }
   },
-  "file_count": 2696,
+  "file_count": 2698,
   "symlink_count": 100,
-  "regular_file_count": 2596,
-  "total_bytes": 8059453657,
+  "regular_file_count": 2598,
+  "total_bytes": 8059459260,
   "updated_directories": [
     "fixed_transition_stability_v1"
   ]

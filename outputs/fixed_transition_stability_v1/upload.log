@@ -1,0 +1,56 @@
+{"files": 42, "GiB": 0.02889156434684992, "staging_directory": "D:\\XG-NID\\.outputs-publish-kkcleze4"}
+Initialized empty Git repository in D:/XG-NID/.outputs-publish-kkcleze4/.git/
+From https://github.com/wangxin0721/XG-NID
+ * branch            codex/server-outputs -> FETCH_HEAD
+ * [new branch]      codex/server-outputs -> origin/codex/server-outputs
+Updated Git hooks.
+Git LFS initialized.
+[codex/server-outputs c81c1a3] Update selected server outputs
+ 44 files changed, 31835 insertions(+), 6 deletions(-)
+ create mode 100644 outputs/fixed_transition_stability_v1/phase_exit_codes.json
+ create mode 100644 outputs/fixed_transition_stability_v1/protocol_lock.json
+ create mode 100644 outputs/fixed_transition_stability_v1/seed42_import/artifact_manifest.json
+ create mode 100644 outputs/fixed_transition_stability_v1/seed42_import/base_C/best.pt
+ create mode 100644 outputs/fixed_transition_stability_v1/seed42_import/base_C/best_validation_predictions.jsonl.gz
+ create mode 100644 outputs/fixed_transition_stability_v1/seed42_import/budget_comparison.json
+ create mode 100644 outputs/fixed_transition_stability_v1/seed42_import/code_version_differences.json
+ create mode 100644 outputs/fixed_transition_stability_v1/seed42_import/final_verification.json
+ create mode 100644 outputs/fixed_transition_stability_v1/seed42_import/frozen_single/best.pt
+ create mode 100644 outputs/fixed_transition_stability_v1/seed42_import/frozen_single/best_validation_predictions.jsonl.gz
+ create mode 100644 outputs/fixed_transition_stability_v1/seed42_import/frozen_single/epochs.jsonl
+ create mode 100644 outputs/fixed_transition_stability_v1/seed42_import/frozen_single/last.pt
+ create mode 100644 outputs/fixed_transition_stability_v1/seed42_import/independent_verification.json
+ create mode 100644 outputs/fixed_transition_stability_v1/seed42_import/joint_ordered/best.pt
+ create mode 100644 outputs/fixed_transition_stability_v1/seed42_import/joint_ordered/best_validation_predictions.jsonl.gz
+ create mode 100644 outputs/fixed_transition_stability_v1/seed42_import/joint_ordered/epochs.jsonl
+ create mode 100644 outputs/fixed_transition_stability_v1/seed42_import/joint_ordered/last.pt
+ create mode 100644 outputs/fixed_transition_stability_v1/seed42_import/joint_single/best.pt
+ create mode 100644 outputs/fixed_transition_stability_v1/seed42_import/joint_single/best_validation_predictions.jsonl.gz
+ create mode 100644 outputs/fixed_transition_stability_v1/seed42_import/joint_single/epochs.jsonl
+ create mode 100644 outputs/fixed_transition_stability_v1/seed42_import/joint_single/last.pt
+ create mode 100644 outputs/fixed_transition_stability_v1/seed42_import/provenance.json
+ create mode 100644 outputs/fixed_transition_stability_v1/seed42_import/report.md
+ create mode 100644 outputs/fixed_transition_stability_v1/seed42_import/rerun_context.json
+ create mode 100644 outputs/fixed_transition_stability_v1/seed42_import/selected_validation_replay.json
+ create mode 100644 outputs/fixed_transition_stability_v1/seed42_import/status.json
+ create mode 100644 outputs/fixed_transition_stability_v1/seed42_import/summary.json
+ create mode 100644 outputs/fixed_transition_stability_v1/seed42_import/validation/base_C_confusion_matrix.csv
+ create mode 100644 outputs/fixed_transition_stability_v1/seed42_import/validation/frozen_single_confusion_matrix.csv
+ create mode 100644 outputs/fixed_transition_stability_v1/seed42_import/validation/joint_ordered-base_C_changed_samples.jsonl.gz
+ create mode 100644 outputs/fixed_transition_stability_v1/seed42_import/validation/joint_ordered-frozen_single_changed_samples.jsonl.gz
+ create mode 100644 outputs/fixed_transition_stability_v1/seed42_import/validation/joint_ordered-joint_single_changed_samples.jsonl.gz
+ create mode 100644 outputs/fixed_transition_stability_v1/seed42_import/validation/joint_ordered_confusion_matrix.csv
+ create mode 100644 outputs/fixed_transition_stability_v1/seed42_import/validation/joint_single-frozen_single_changed_samples.jsonl.gz
+ create mode 100644 outputs/fixed_transition_stability_v1/seed42_import/validation/joint_single_confusion_matrix.csv
+ create mode 100644 outputs/fixed_transition_stability_v1/seed42_import/validation/paired_diagnostic_groups.json
+ create mode 100644 outputs/fixed_transition_stability_v1/seed42_import/validation/per_class.csv
+ create mode 100644 outputs/fixed_transition_stability_v1/seed42_import/validation/per_class_changes.json
+ create mode 100644 outputs/fixed_transition_stability_v1/seed42_import/validation/validation_predictions.jsonl.gz
+ create mode 100644 outputs/fixed_transition_stability_v1/status.json
+ create mode 100644 outputs/fixed_transition_stability_v1/training.log
+ create mode 100644 outputs/fixed_transition_stability_v1/training_exit.json
+Uploading LFS objects: 100% (8/8), 26 MB | 1.8 MB/s, done.
+Uploading LFS objects: 100% (7/7), 22 MB | 0 B/s, done.
+To https://github.com/wangxin0721/XG-NID.git
+   f0f4130..c81c1a3  HEAD -> codex/server-outputs
+{"status": "uploaded", "branch": "codex/server-outputs", "commit": "c81c1a3bf9bf3a45756b7b03fe74ba6c57c92d23", "files": 42, "symlinks": 0, "bytes": 31022081, "staging_directory_preserved": "D:\\XG-NID\\.outputs-publish-kkcleze4"}
