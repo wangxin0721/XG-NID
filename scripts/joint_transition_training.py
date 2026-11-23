@@ -5,6 +5,7 @@ import math
 import os
 from pathlib import Path
 import random
+import time
 
 import numpy as np
 import torch
@@ -207,7 +208,8 @@ def fit(arms, train, val, rows, reference, settings, binding, device, output, re
     path = output / 'recovery.pt'
     factory = optimizer if optimizer_factory is None else optimizer_factory
     optimizers = {name: factory(arm, settings) for name, arm in arms.items()}
-    sampler = PairedSampler(len(train.labels), settings['batch_size'], settings['readout_seed'])
+    sampler = PairedSampler(len(train.labels), settings['batch_size'], settings.get('sampling_seed', settings['readout_seed']))
+    track_time = settings.get('track_training_seconds', False)
     if path.exists():
         require(resume, 'Recovery already exists; use --resume')
         state = torch.load(path, map_location='cpu', weights_only=True)
@@ -232,6 +234,8 @@ def fit(arms, train, val, rows, reference, settings, binding, device, output, re
         state = {'schema': recovery_schema, 'binding': binding, 'settings': settings,
                  'completed_epoch': 0, 'updates': 0, 'epoch_updates': 0, 'epoch_samples': 0,
                  'epoch_loss': {name: 0.0 for name in arm_names}, 'best': {}, 'history': []}
+        if track_time:
+            state['training_seconds'] = {name: 0.0 for name in arm_names}
         for name, arm in arms.items():
             state['best'][name] = {'epoch': 0, 'validation': metrics[name], 'state': cpu_state(arm),
                                   'prediction_ids_sha256': frozen.joint.prediction_digest(records[name])}
@@ -258,6 +262,9 @@ def fit(arms, train, val, rows, reference, settings, binding, device, output, re
             indices = sampler.peek()
             features, labels = train.batch(indices, device)
             for name, arm in arms.items():
+                if track_time and device.type == 'cuda':
+                    torch.cuda.synchronize(device)
+                step_start = time.perf_counter() if track_time else None
                 opt = optimizers[name]
                 opt.zero_grad(set_to_none=True)
                 scores, _, _, _ = arm(features)
@@ -267,6 +274,10 @@ def fit(arms, train, val, rows, reference, settings, binding, device, output, re
                 require(all(p.grad is None or bool(torch.isfinite(p.grad).all()) for p in arm.parameters()),
                         f'{name} nonfinite training gradient')
                 opt.step()
+                if track_time:
+                    if device.type == 'cuda':
+                        torch.cuda.synchronize(device)
+                    state['training_seconds'][name] += time.perf_counter() - step_start
                 state['epoch_loss'][name] += float(loss.detach()) * len(indices)
             sampler.cursor += len(indices)
             state['epoch_samples'] += len(indices)

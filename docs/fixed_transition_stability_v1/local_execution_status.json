@@ -1,0 +1,15 @@
+{
+  "client_date": "2026-11-23",
+  "local_cpu_tests_passed": 57,
+  "seed42_locked_import_validated": true,
+  "seed42_validation_samples_per_model": 13446,
+  "new_training_runs_registered": 6,
+  "new_updates_registered": 253200,
+  "new_training_runs_completed": 0,
+  "new_formal_training_started": false,
+  "local_cuda_available": false,
+  "server_probe_passed": false,
+  "server_connection": "configured SSH jump timed out during banner exchange",
+  "test_evaluated": false,
+  "next_action": "Run launch_fixed_transition_stability.py on the GPU server; it imports seed42, trains C43 then C44 without score-based early stopping, and aggregates."
+}

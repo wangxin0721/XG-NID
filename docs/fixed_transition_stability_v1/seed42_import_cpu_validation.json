@@ -1,0 +1,86 @@
+{
+  "passed": true,
+  "validation_samples_per_model": 13446,
+  "models": [
+    "base_C",
+    "frozen_single",
+    "joint_single",
+    "joint_ordered"
+  ],
+  "new_training_epochs": 0,
+  "new_optimizer_updates": 0,
+  "encoders_executed": false,
+  "raw_graph_replay_this_validation": false,
+  "all_selected_predictions_equal_locked_archives": true,
+  "original_C_state_sha256": "c29a6433880f6e5ad8a45d387abef07cf54f895277f9f89b313edecfa7feedc6",
+  "selected_epochs": {
+    "base_C": 48,
+    "frozen_single": 94,
+    "joint_single": 59,
+    "joint_ordered": 191
+  },
+  "metrics": {
+    "base_C": {
+      "accuracy": 0.9817789677227429,
+      "macro_f1": 0.9755380342743278,
+      "weighted_f1": 0.9818694904721942
+    },
+    "frozen_single": {
+      "accuracy": 0.9836382567306262,
+      "macro_f1": 0.9782536493369995,
+      "weighted_f1": 0.983686782786639
+    },
+    "joint_single": {
+      "accuracy": 0.9824483117655809,
+      "macro_f1": 0.9763020901967145,
+      "weighted_f1": 0.982520055372511
+    },
+    "joint_ordered": {
+      "accuracy": 0.9843819723337796,
+      "macro_f1": 0.9791403291717622,
+      "weighted_f1": 0.9844226528462848
+    }
+  },
+  "source_files_canonical_sha256": {
+    "scripts/run_joint_transition_fusion.py": "add67d0fc200d6970c3f56328d60b3662894a24934fc0a51feda8cc80be5484b",
+    "scripts/joint_transition_training.py": "cd3f5147b70d08fa03e726541fc9a1dc1c23c297ed0af3f06fc1ed942cd6865e",
+    "scripts/joint_transition_diagnostics.py": "866edbf6f219c37f4fda6a38a17674d306cd587b1174101f1c9bed2385ded1da",
+    "scripts/diagnose_joint_transition_fusion.py": "96f5aeb3f35273955a43568a4da09e13cca7dc509e92b0be502a1921ee588ec3",
+    "scripts/run_ordered_transition_readout.py": "e20461a0d88ad178cf989698a764453e558956324f8a658876ad09766b3495aa",
+    "scripts/run_packet_transition_readout.py": "6c1828bf4a0c230621b5a4197ffae47b310966f11529b671b3f5293326bc4f8b",
+    "scripts/run_packet_transition_diagnosis.py": "00d7bbcf16a1dcf70442cdbc7f07bf3df74599e6f18f5aeca4f4b74acab3c51a",
+    "scripts/replay_flow_query_selective.py": "762f0d1df84e0ede16721fe800aaa2ea12c0e70d3fa45c249413fcdd8acc8426",
+    "scripts/run_independent_packet_transition.py": "4ea65e63616a8ba0c97506b5fa971b4f3ad4c2e0624ccf94053d063e72770edc",
+    "scripts/run_joint_cross_layer_query.py": "bdee40be6bf93f1038b6eb24eadf740260a7cfc8b05a11e3f4956d218774c5a9",
+    "scripts/evaluate_joint_cross_layer_query.py": "98aba98bbafd64fb2271879f40180c467867867bf811836eeac8c335faa54a7d",
+    "scripts/run_attention_operator_pair.py": "4b497bfd87b1257729b916ff79672246ad97d1275fbc6dddd77adb3a54b5e5c8",
+    "scripts/audit_packet_transitions.py": "11916302072028261d6314f06152705b5d44c07b27f0cf7477f62edf28dad068",
+    "scripts/grouped_graphs.py": "c1b1273d62fc44d91f7c9b300b66a083c1f80ef2c9c4314a62c4bbd5d708bbb4",
+    "src/xgnid/joint_transition_fusion.py": "522b505dc753ae61376d45d3a6bd92c60c7f754a00902a3f9084fb91a1c2fd66",
+    "src/xgnid/ordered_transition_readout.py": "9fea55155056837377a4b20373836ecfcda7dd0d5c28ba211ac95545d54c368d",
+    "src/xgnid/packet_transition_readout.py": "58fb2df6e007da0746e1da0bcedc870e091fb200269f94f6d8dedf78f4cd5160",
+    "src/xgnid/packet_pooling.py": "c423c573b624a98a40ee03b5b286f2dcd3297db43a0eedcf1a654590b163742d",
+    "src/xgnid/joint_cross_layer_query.py": "e62ce7933540527b7615e36cd2106d2afec82ac8a1e80424622556d4e0a47715",
+    "src/xgnid/fusion_dimension.py": "eb8dd5c91a63b424bd421c29e333ff24492e5474cdabe77408abde5f81bb703d",
+    "src/xgnid/model.py": "28e21e94118db0a4110d17923d2840e18959669d798f628018c98c91c0202631",
+    "src/xgnid/fixed_transition_stability.py": "8025b1b7596cc974f4879e48b953ac951f8cd03ec0f06e758fb319d42ffecdf0",
+    "scripts/run_fixed_transition_stability.py": "54165467152e0912b8615670583edb1c7a9fccc6d1ac4f881bcd727e95ba1dfe",
+    "scripts/fixed_transition_training.py": "8bd1dfae80d5fc9a66233f85e0306211d73f84f885b0ed20f414fa259506af99",
+    "scripts/fixed_transition_results.py": "aaf64e5bc8e0f9274cfccd2a28acd979fdb899405256ff6547ace0ee569481c4",
+    "scripts/fixed_transition_archive.py": "e2e1fddbba0c37b2885318984481c3cef93721bca6605cf83a12837f5041fe13",
+    "scripts/launch_fixed_transition_stability.py": "8bed4d1c7648dffe9d21df573b1545f1bb0f9019242b8d5cdea90d919218d45e",
+    "scripts/launch_joint_transition_fusion.py": "448f060396a73c93bdb5b4c4067d9643bc00379e9800caf8fc6d085de0fae137",
+    "scripts/run_transition_pair_cross_replay.py": "14ca023f2bbf5311ed8c26471695a65b5345750d5401af5e19e8f46f60cc9775",
+    "configs/fixed_transition_stability_v1.json": "f98493448d8f0341a6442548d937df464c5edd102349371c28c212f727670916",
+    "configs/early_baselines_final_test_v1.json": "b1840d0cb5c04d5bd94adcf65f197ed2f48b329658ace02928fa70c809bd717a",
+    "configs/independent_packet_transition_v1.json": "aa0970147fb2b0fc43e0d0d6dd0e6c89b3e61aebf315bd9e24127cf68ba8a0db",
+    "configs/ordered_transition_readout_200.json": "a39b6f140e164a74f8cb1c739224d1131143e29c5008c1a060d4a5b26fbb5216",
+    "configs/packet_transition_readout_s42_v1.json": "44a15906c2020903d84d3633862adc041782845c362ca0ff83054f4768799b7e"
+  },
+  "settings_canonical_sha256": "fb38a795cfbcc46dadd586b36d411df3e0a8d2984986ef781887882e413f5aab",
+  "historical_optimizer_updates_reused": 126600,
+  "new_formal_training_started": false,
+  "server_probe_passed": false,
+  "test_evaluated": false,
+  "inherited_raw_graph_receipts_verified": true
+}
