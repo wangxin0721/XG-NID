@@ -1,7 +1,7 @@
 {
   "schema": "xgnid.outputs-snapshot.v2",
-  "created_utc": "2026-11-23T07:26:35.975064+00:00",
-  "source_directory": "D:\\XG-NID\\outputs",
+  "created_utc": "2026-11-23T07:35:51.825695+00:00",
+  "source_directory": "/home/nzxn/下载/WX/load/XG-NID/outputs",
   "files": {
     "GNN4ID/best.pt": {
       "bytes": 1735954,
@@ -2539,181 +2539,29 @@
       "bytes": 75680,
       "sha256": "3bb04395173ba341522fcf242996b5d41bc335a92c89ad62817384e477397b8f"
     },
-    "fixed_transition_stability_v1/exit_codes.json": {
-      "bytes": 392,
-      "sha256": "968e74688b6826af99c9e21cdd2b41722b2e1088848fe0bb2ecb7afe36b4d9dd"
+    "fixed_transition_stability_v1/failures/import_20261123T073443623251Z.json": {
+      "bytes": 1963,
+      "sha256": "02095f63390da453fb6ea23b79a1bf68d1a0521fda2fe53d7ec8f4b47bc28e31"
+    },
+    "fixed_transition_stability_v1/launcher.pid": {
+      "bytes": 8,
+      "sha256": "d2aef48b8770970b4d9b45fa2ad9abd28231b7ad059618b5587f28354fabad3c"
     },
     "fixed_transition_stability_v1/phase_exit_codes.json": {
-      "bytes": 207,
-      "sha256": "24588a1b420d80e0f821b3289acdb6b7722dbf48e33b8b9834e533bee697e225"
-    },
-    "fixed_transition_stability_v1/protocol_lock.json": {
-      "bytes": 25658,
-      "sha256": "0ade9a6ec5c77d5d86015b144ecb79089663077274685981b318c6e5e4697cb6"
-    },
-    "fixed_transition_stability_v1/seed42_import/artifact_manifest.json": {
-      "bytes": 3923,
-      "sha256": "2d0f29b4c2509188235df31724bd08f7a89559ed7e16bd73145d9c5a347a3510"
-    },
-    "fixed_transition_stability_v1/seed42_import/base_C/best.pt": {
-      "bytes": 3823196,
-      "sha256": "3070acd40203ee3a3944dc5805452eb3a2d73218aa24b31379bdfd5cbb523568"
-    },
-    "fixed_transition_stability_v1/seed42_import/base_C/best_validation_predictions.jsonl.gz": {
-      "bytes": 535752,
-      "sha256": "51321a04e3b262c80a0a28630b9e6ffe508bb387100ed196e5beefb4d7feee70"
-    },
-    "fixed_transition_stability_v1/seed42_import/budget_comparison.json": {
-      "bytes": 2405,
-      "sha256": "38940a97113d0cb26a5eb1746891f29281ef47ba71eeebe095b1c485172080f7"
-    },
-    "fixed_transition_stability_v1/seed42_import/code_version_differences.json": {
-      "bytes": 5382,
-      "sha256": "de77025ea40f543012973ce072800e509936ca9f273cf22b1094d510c27849d5"
-    },
-    "fixed_transition_stability_v1/seed42_import/final_verification.json": {
-      "bytes": 208,
-      "sha256": "3e6c682b3d96dc1329d503e70b362286d5ae70e14f075aca6caebb3caff6ff25"
-    },
-    "fixed_transition_stability_v1/seed42_import/frozen_single/best.pt": {
-      "bytes": 47651,
-      "sha256": "b62d1eb925ec09c6fd3e4eb831c8961f12d3585e861e58e43c3dc14b578a674c"
-    },
-    "fixed_transition_stability_v1/seed42_import/frozen_single/best_validation_predictions.jsonl.gz": {
-      "bytes": 535702,
-      "sha256": "d0d40289341752eec747b94da77b9e4d0b4331aceef04e1363d04ac6a2ebd08f"
-    },
-    "fixed_transition_stability_v1/seed42_import/frozen_single/epochs.jsonl": {
-      "bytes": 317930,
-      "sha256": "d1aa896e496dc46430e76fb64101e413ca916651c0e143d361cf15c3f6df1b2d"
-    },
-    "fixed_transition_stability_v1/seed42_import/frozen_single/last.pt": {
-      "bytes": 46819,
-      "sha256": "90d8f2ac8d7547b5c5dcf07c78fa02f4c8ffd455197184296b58db0292d44a98"
-    },
-    "fixed_transition_stability_v1/seed42_import/independent_verification.json": {
-      "bytes": 184,
-      "sha256": "26570931c12a7293b5e510e1d81772ad0b28844463ab2328780f848a7c53e90e"
-    },
-    "fixed_transition_stability_v1/seed42_import/joint_ordered/best.pt": {
-      "bytes": 50333,
-      "sha256": "8b8eff366c3ec830e59342d1f9852ae1fcb06a7a2361b08fb1929ab3ef71d47c"
-    },
-    "fixed_transition_stability_v1/seed42_import/joint_ordered/best_validation_predictions.jsonl.gz": {
-      "bytes": 535686,
-      "sha256": "f4ea816ccd4f8b4da9ef230e802b2892ae5e4086e7e88d13bc2e0cffc0879c7d"
-    },
-    "fixed_transition_stability_v1/seed42_import/joint_ordered/epochs.jsonl": {
-      "bytes": 320930,
-      "sha256": "e970a8236c2524fa73d02b553c59059b53cd1a56781272f37ac5ccf4b51a23c9"
-    },
-    "fixed_transition_stability_v1/seed42_import/joint_ordered/last.pt": {
-      "bytes": 49501,
-      "sha256": "4003e277fcb874ba08043be4e78bdc8f4a255fb5a4ef86eb900a7a9a2d7e3ad6"
-    },
-    "fixed_transition_stability_v1/seed42_import/joint_single/best.pt": {
-      "bytes": 47651,
-      "sha256": "41096cae6af446243422123bfa5f092f14db26d977df2d0cd51c2ebe58495193"
-    },
-    "fixed_transition_stability_v1/seed42_import/joint_single/best_validation_predictions.jsonl.gz": {
-      "bytes": 535732,
-      "sha256": "5cd64c5a51551cf3d6fd011bf21e85d7fe5841531db18240fd8fe3b177b8d548"
-    },
-    "fixed_transition_stability_v1/seed42_import/joint_single/epochs.jsonl": {
-      "bytes": 321831,
-      "sha256": "518a69570ca41072a2758053035685e441439dea98c0fcc4a681cd5f5c869fca"
-    },
-    "fixed_transition_stability_v1/seed42_import/joint_single/last.pt": {
-      "bytes": 46819,
-      "sha256": "e05527ee085ec1522f4d9ed7dc85a1327383246bb0e691aa56c10d4bf0c9e848"
-    },
-    "fixed_transition_stability_v1/seed42_import/provenance.json": {
-      "bytes": 2159,
-      "sha256": "b660dbf69b60147f5b13d16db1714a078982559167af5a82fe3828dab4b10267"
-    },
-    "fixed_transition_stability_v1/seed42_import/report.md": {
-      "bytes": 2805,
-      "sha256": "2abc99935bc43ead7a2518a94d859116c5ca047ddb99987f6c27bcc0a2491993"
-    },
-    "fixed_transition_stability_v1/seed42_import/rerun_context.json": {
-      "bytes": 6608,
-      "sha256": "1d7b8a302a804b2964332b8a0303ca2e9816d08c4fa319653377d973ea1c5d41"
-    },
-    "fixed_transition_stability_v1/seed42_import/selected_validation_replay.json": {
-      "bytes": 328,
-      "sha256": "3ad99e2e8157fc8c4a1de6ed02708e78398729d7c9793440d8fb0efd4d48c22c"
-    },
-    "fixed_transition_stability_v1/seed42_import/status.json": {
-      "bytes": 117,
-      "sha256": "7a1389fd7b613c39eb0e2ddd4f0cd27facceeb024ea58c29bba91b5dc72e7f22"
-    },
-    "fixed_transition_stability_v1/seed42_import/summary.json": {
-      "bytes": 55774,
-      "sha256": "2a027c752c84e150c440dc2f3b50de0d7887c82259b124576474469a9fe30cb3"
-    },
-    "fixed_transition_stability_v1/seed42_import/validation/base_C_confusion_matrix.csv": {
-      "bytes": 295,
-      "sha256": "6b42ee4f4ee4df6dbcd73c3f079f3a4f66602fb1793a371df20acbaca9f26932"
-    },
-    "fixed_transition_stability_v1/seed42_import/validation/frozen_single_confusion_matrix.csv": {
-      "bytes": 294,
-      "sha256": "d555a6c4624b0930b7777a59ad65c221f1a9d85619248a600effa2d9d89bb00d"
-    },
-    "fixed_transition_stability_v1/seed42_import/validation/joint_ordered-base_C_changed_samples.jsonl.gz": {
-      "bytes": 191155,
-      "sha256": "aec4d5dad71f5e4dc7da68e6788b964056f523c7782f44dbf1a552acd871b6ca"
-    },
-    "fixed_transition_stability_v1/seed42_import/validation/joint_ordered-frozen_single_changed_samples.jsonl.gz": {
-      "bytes": 142390,
-      "sha256": "7738be28eda4ccec993b8c6090164d258e92fe6975b87f34cbde10f98d8ae12c"
-    },
-    "fixed_transition_stability_v1/seed42_import/validation/joint_ordered-joint_single_changed_samples.jsonl.gz": {
-      "bytes": 163440,
-      "sha256": "80d2211be8ec3bdabfbe8b949f17d04287c9e9f638a348c3da9a2a8bdfaa964c"
-    },
-    "fixed_transition_stability_v1/seed42_import/validation/joint_ordered_confusion_matrix.csv": {
-      "bytes": 295,
-      "sha256": "5c3fbe1f18b2706b2db28facdc06844573627f7b5ca51c34d923a9e457d77438"
-    },
-    "fixed_transition_stability_v1/seed42_import/validation/joint_single-frozen_single_changed_samples.jsonl.gz": {
-      "bytes": 109277,
-      "sha256": "73fadbf3a73080e734efc51d469c256e0394fe89ce4611eedbd59ac1f6788f21"
-    },
-    "fixed_transition_stability_v1/seed42_import/validation/joint_single_confusion_matrix.csv": {
-      "bytes": 295,
-      "sha256": "f1d2a442637926d9626587d6b40b68d943f76020cce007bb5a2926c4d2ec6c20"
-    },
-    "fixed_transition_stability_v1/seed42_import/validation/paired_diagnostic_groups.json": {
-      "bytes": 864568,
-      "sha256": "25e9d193631fdf7ab29030e4e6de15eff451de313d5f33cd484adbcd79fb3aaf"
-    },
-    "fixed_transition_stability_v1/seed42_import/validation/per_class.csv": {
-      "bytes": 2561,
-      "sha256": "88574cdd8f21294dac2f86bd52d5a1360791f5ed0194d11837577f5c3d924a7a"
-    },
-    "fixed_transition_stability_v1/seed42_import/validation/per_class_changes.json": {
-      "bytes": 4551,
-      "sha256": "90d3831975ab8f0c81aff4705e0d8805a424b1003945d2467173c64a767d6628"
-    },
-    "fixed_transition_stability_v1/seed42_import/validation/validation_predictions.jsonl.gz": {
-      "bytes": 22220775,
-      "sha256": "b2e434588b2bf6f32c37b729a181ed5acd0e8a65a5fa5dad411b6cc66027790e"
+      "bytes": 197,
+      "sha256": "bdc7d93f6533da8de18f2ee2e65a0666dde7b39fbb15bf9b262e8cbb5f08fcc2"
     },
     "fixed_transition_stability_v1/status.json": {
-      "bytes": 232,
-      "sha256": "31106df34222df1d48d43d146a8120e4417af1636742a6237d6f10c7d050f767"
+      "bytes": 1963,
+      "sha256": "02095f63390da453fb6ea23b79a1bf68d1a0521fda2fe53d7ec8f4b47bc28e31"
     },
     "fixed_transition_stability_v1/training.log": {
-      "bytes": 489,
-      "sha256": "09fe044e29b44921882ccc3a88a166931614dace3c0d92e7928a8234e378213c"
+      "bytes": 2623,
+      "sha256": "a6f1e0904d384379d90290d31325e0a0f85c76ecaf9a98be8414d4b5cad6cc59"
     },
     "fixed_transition_stability_v1/training_exit.json": {
-      "bytes": 173,
-      "sha256": "e008a1fb6556c2e1a40c8a47c89fdf5fb26b5fa92ad9f5e948437642431f201e"
-    },
-    "fixed_transition_stability_v1/upload.log": {
-      "bytes": 5211,
-      "sha256": "8984eafabef942bb6868d28bb15980fb759fee35a7a5ab532f78b84948fc76f7"
+      "bytes": 166,
+      "sha256": "f221453d13445d446c6731cec25dc84a432783018c81280458d1faeb2190b1c7"
     },
     "flow_query_joint_seeds43_44_resume_1794361380479152585/analysis.json": {
       "bytes": 2803,
@@ -10996,10 +10844,10 @@
       "sha256": "ebd2091803aab3a050f3a791f303ea786bca06de0d6ab6d56a633cdc16f67b1e"
     }
   },
-  "file_count": 2698,
+  "file_count": 2660,
   "symlink_count": 100,
-  "regular_file_count": 2598,
-  "total_bytes": 8059459260,
+  "regular_file_count": 2560,
+  "total_bytes": 8028438496,
   "updated_directories": [
     "fixed_transition_stability_v1"
   ]

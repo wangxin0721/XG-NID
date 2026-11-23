@@ -1,8 +1,8 @@
 {
-  "exit_code": 0,
+  "exit_code": 1,
   "last_phase": "import",
   "signal": null,
-  "import_only": true,
+  "import_only": false,
   "probe_only": false,
-  "finished_utc": "2026-11-23T07:22:16.161891+00:00"
+  "finished_utc": "2026-11-23T07:34:44.831051+00:00"
 }

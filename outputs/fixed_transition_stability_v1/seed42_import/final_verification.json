@@ -1,8 +1,0 @@
-{
-  "passed": true,
-  "historical_inputs_unchanged": true,
-  "original_C_unchanged": true,
-  "selected_predictions_identical_to_locked_archives": true,
-  "new_optimizer_updates": 0,
-  "test_graph_loads": 0
-}

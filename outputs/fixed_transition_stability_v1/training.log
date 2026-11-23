@@ -1,3 +1,28 @@
 
-2026-11-23T07:21:12.464313+00:00 'D:\XG-NID\.residual-audit-env\Scripts\python.exe' -u -B 'D:\XG-NID\tmp\fixed-transition-stability-worktree\scripts\run_fixed_transition_stability.py' --repo 'D:\XG-NID' --phase import --resume --download-inputs
-{"status": "import_completed", "formal_training_started": false, "new_training_runs_completed": 0, "new_backbones_pending": [43, 44], "test_evaluated": false, "phase": "import", "output": "D:\\XG-NID\\outputs\\fixed_transition_stability_v1"}
+2026-11-23T07:34:29.491911+00:00 /home/nzxn/miniconda3/envs/wx/bin/python -u -B '/home/nzxn/下载/WX/load/XG-NID-fixed-transition-stability/scripts/run_fixed_transition_stability.py' --repo '/home/nzxn/下载/WX/load/XG-NID' --phase import --resume --download-inputs
+/home/nzxn/miniconda3/envs/wx/lib/python3.9/site-packages/torch_geometric/typing.py:99: UserWarning: An issue occurred while importing 'torch-spline-conv'. Disabling its usage. Stacktrace: /home/nzxn/miniconda3/envs/wx/lib/python3.9/site-packages/torch_spline_conv/_version_cuda.so: undefined symbol: _ZN3c1017RegisterOperatorsD1Ev
+  warnings.warn(
+git：'lfs' 不是一个 git 命令。参见 'git --help'。
+
+最相似的命令是
+	log
+Traceback (most recent call last):
+  File "/home/nzxn/下载/WX/load/XG-NID-fixed-transition-stability/scripts/run_fixed_transition_stability.py", line 276, in <module>
+    if __name__=='__main__': main()
+  File "/home/nzxn/下载/WX/load/XG-NID-fixed-transition-stability/scripts/run_fixed_transition_stability.py", line 260, in main
+    result=run_phase(repo,args.data_root,root,raw.read(CONFIG),args.phase,args.resume,args.probe_only,args.download_inputs)
+  File "/home/nzxn/下载/WX/load/XG-NID-fixed-transition-stability/scripts/run_fixed_transition_stability.py", line 219, in run_phase
+    lock=archive.lock_protocol(repo,root,settings,SOURCE_FILES,download)
+  File "/home/nzxn/下载/WX/load/XG-NID-fixed-transition-stability/scripts/fixed_transition_archive.py", line 44, in lock_protocol
+    open_archive(repo,spec,download)
+  File "/home/nzxn/下载/WX/load/XG-NID-fixed-transition-stability/scripts/fixed_transition_archive.py", line 32, in open_archive
+    missing=[directory+'/'+name for name in spec['inputs'] if isinstance(archive.locate(name),Path)
+  File "/home/nzxn/下载/WX/load/XG-NID-fixed-transition-stability/scripts/fixed_transition_archive.py", line 32, in <listcomp>
+    missing=[directory+'/'+name for name in spec['inputs'] if isinstance(archive.locate(name),Path)
+  File "/home/nzxn/下载/WX/load/XG-NID-fixed-transition-stability/scripts/run_transition_pair_cross_replay.py", line 52, in locate
+    environment = subprocess.check_output(['git', 'lfs', 'env'], cwd=self.repo, text=True)
+  File "/home/nzxn/miniconda3/envs/wx/lib/python3.9/subprocess.py", line 424, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+  File "/home/nzxn/miniconda3/envs/wx/lib/python3.9/subprocess.py", line 528, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['git', 'lfs', 'env']' returned non-zero exit status 1.
