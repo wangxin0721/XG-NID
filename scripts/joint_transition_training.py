@@ -199,17 +199,19 @@ def save_views(output, state):
               'updates_per_arm': state['updates'], 'selected_epochs': {k: v['epoch'] for k, v in state['best'].items()}})
 
 
-def fit(arms, train, val, rows, reference, settings, binding, device, output, resume=False, stop_after_updates=None):
+def fit(arms, train, val, rows, reference, settings, binding, device, output, resume=False,
+        stop_after_updates=None, optimizer_factory=None, recovery_schema='xgnid.joint-transition-recovery.v1'):
     arm_names = tuple(arms)
     require(list(arm_names) == settings['arms'], 'Training arms differ from registered configuration')
     output.mkdir(parents=True, exist_ok=True)
     path = output / 'recovery.pt'
-    optimizers = {name: optimizer(arm, settings) for name, arm in arms.items()}
+    factory = optimizer if optimizer_factory is None else optimizer_factory
+    optimizers = {name: factory(arm, settings) for name, arm in arms.items()}
     sampler = PairedSampler(len(train.labels), settings['batch_size'], settings['readout_seed'])
     if path.exists():
         require(resume, 'Recovery already exists; use --resume')
         state = torch.load(path, map_location='cpu', weights_only=True)
-        require(state['schema'] == 'xgnid.joint-transition-recovery.v1'
+        require(state['schema'] == recovery_schema
                 and state['binding'] == binding and state['settings'] == settings, 'Recovery source/config/code mismatch')
         for name, arm in arms.items():
             arm.load_state_dict(state['models'][name], strict=True)
@@ -227,7 +229,7 @@ def fit(arms, train, val, rows, reference, settings, binding, device, output, re
         require(not (output / arm_names[0] / 'epochs.jsonl').exists(), 'Ledger exists without recovery; preserve and investigate')
         records, metrics = measure(arms, val, rows, settings, device)
         require(all(items == reference for items in records.values()), 'Full validation epoch zero differs from original C')
-        state = {'schema': 'xgnid.joint-transition-recovery.v1', 'binding': binding, 'settings': settings,
+        state = {'schema': recovery_schema, 'binding': binding, 'settings': settings,
                  'completed_epoch': 0, 'updates': 0, 'epoch_updates': 0, 'epoch_samples': 0,
                  'epoch_loss': {name: 0.0 for name in arm_names}, 'best': {}, 'history': []}
         for name, arm in arms.items():

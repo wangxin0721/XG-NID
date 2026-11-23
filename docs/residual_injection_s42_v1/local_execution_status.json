@@ -1,0 +1,24 @@
+{
+  "client_date": "2026-11-23",
+  "local_cpu_checks_passed": true,
+  "unit_tests": 40,
+  "real_cached_validation_samples_per_arm": 13446,
+  "epoch_zero_three_arms_equal_original_C": true,
+  "source_C_sha256": "c29a6433880f6e5ad8a45d387abef07cf54f895277f9f89b313edecfa7feedc6",
+  "local_cuda_available": false,
+  "server_probe_passed": false,
+  "formal_training_started": false,
+  "formal_training_completed": false,
+  "test_evaluated": false,
+  "connection_attempts": [
+    {
+      "route": "configured_GPU-XG-NID_via_jump",
+      "result": "Connection timed out during banner exchange"
+    },
+    {
+      "route": "configured_GPU_server_direct",
+      "result": "Connection timed out"
+    }
+  ],
+  "next_action": "Run scripts/launch_residual_injection.py on the existing GPU server; it probes, trains all three paired arms, resumes transactionally and publishes all generated results."
+}
