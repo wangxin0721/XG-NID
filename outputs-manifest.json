@@ -1,6 +1,6 @@
 {
   "schema": "xgnid.outputs-snapshot.v2",
-  "created_utc": "2026-11-24T08:31:08.733773+00:00",
+  "created_utc": "2026-11-24T08:33:03.888912+00:00",
   "source_directory": "/home/nzxn/下载/WX/load/XG-NID/outputs",
   "files": {
     "GNN4ID/best.pt": {
@@ -2776,8 +2776,8 @@
       "sha256": "0243dc13a50ccf20ab10eae1aad884a5ba64852a2f0550abc388368a9dd1aeea"
     },
     "fixed_transition_final_test_v1/upload.log": {
-      "bytes": 1975,
-      "sha256": "9449adae7ca34882bda6cf5af06b799b12fec75fe8c7de071304894139093cee"
+      "bytes": 5175,
+      "sha256": "351975c3ffdf1b2053dfe58b65cdb966a257b6eb632ebc04d9175d070c7a85cb"
     },
     "fixed_transition_stability_v1/aggregate/model_metrics.csv": {
       "bytes": 3217,
@@ -11671,7 +11671,7 @@
   "file_count": 2866,
   "symlink_count": 100,
   "regular_file_count": 2766,
-  "total_bytes": 9162856927,
+  "total_bytes": 9162860127,
   "updated_directories": [
     "fixed_transition_final_test_v1"
   ]
