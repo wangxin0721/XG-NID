@@ -1,6 +1,6 @@
 {
   "schema": "xgnid.outputs-snapshot.v2",
-  "created_utc": "2026-11-24T08:08:58.255489+00:00",
+  "created_utc": "2026-11-24T08:10:53.219812+00:00",
   "source_directory": "D:\\XG-NID\\outputs",
   "files": {
     "GNN4ID/best.pt": {
@@ -2632,8 +2632,8 @@
       "sha256": "2c9d49890b4f09f1550717e0dc4ad7d9d82f0b793d49f4ac22830be92e3c0b03"
     },
     "fixed_transition_final_test_v1/upload.log": {
-      "bytes": 2727,
-      "sha256": "59ae2720878712f72c9e972dad124971df566c27c60819a76c8dd52bec835c74"
+      "bytes": 1085,
+      "sha256": "80ab7d53c96c7329c637ce1b7a6621002bf135298a5b476a0dc2b1d4fef7030e"
     },
     "fixed_transition_stability_v1/aggregate/model_metrics.csv": {
       "bytes": 3217,
@@ -11527,7 +11527,7 @@
   "file_count": 2830,
   "symlink_count": 100,
   "regular_file_count": 2730,
-  "total_bytes": 9035541343,
+  "total_bytes": 9035539701,
   "updated_directories": [
     "fixed_transition_final_test_v1"
   ]

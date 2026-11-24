@@ -1,33 +1,15 @@
-{"files": 20, "GiB": 0.011197454296052456, "staging_directory": "D:\\XG-NID\\.outputs-publish-8103g4zn"}
-Initialized empty Git repository in D:/XG-NID/.outputs-publish-8103g4zn/.git/
+{"files": 24, "GiB": 0.011200622655451298, "staging_directory": "D:\\XG-NID\\.outputs-publish-iaf3uct4"}
+Initialized empty Git repository in D:/XG-NID/.outputs-publish-iaf3uct4/.git/
 From https://github.com/wangxin0721/XG-NID
  * branch            codex/server-outputs -> FETCH_HEAD
  * [new branch]      codex/server-outputs -> origin/codex/server-outputs
 Updated Git hooks.
 Git LFS initialized.
-[codex/server-outputs d548295] Update selected server outputs
- 22 files changed, 3392 insertions(+), 6 deletions(-)
- create mode 100644 outputs/fixed_transition_final_test_v1/checkpoint_lock.json
- create mode 100644 outputs/fixed_transition_final_test_v1/checkpoint_lock_receipt.json
- create mode 100644 outputs/fixed_transition_final_test_v1/evaluation.log
- create mode 100644 outputs/fixed_transition_final_test_v1/lfs_preflight.json
- create mode 100644 outputs/fixed_transition_final_test_v1/local_validation.json
- create mode 100644 outputs/fixed_transition_final_test_v1/locked_checkpoints/seed42/base_C.pt
- create mode 100644 outputs/fixed_transition_final_test_v1/locked_checkpoints/seed42/frozen_single.pt
- create mode 100644 outputs/fixed_transition_final_test_v1/locked_checkpoints/seed42/joint_ordered.pt
- create mode 100644 outputs/fixed_transition_final_test_v1/locked_checkpoints/seed42/joint_single.pt
- create mode 100644 outputs/fixed_transition_final_test_v1/locked_checkpoints/seed43/base_C.pt
- create mode 100644 outputs/fixed_transition_final_test_v1/locked_checkpoints/seed43/frozen_single.pt
- create mode 100644 outputs/fixed_transition_final_test_v1/locked_checkpoints/seed43/joint_ordered.pt
- create mode 100644 outputs/fixed_transition_final_test_v1/locked_checkpoints/seed43/joint_single.pt
- create mode 100644 outputs/fixed_transition_final_test_v1/locked_checkpoints/seed44/base_C.pt
- create mode 100644 outputs/fixed_transition_final_test_v1/locked_checkpoints/seed44/frozen_single.pt
- create mode 100644 outputs/fixed_transition_final_test_v1/locked_checkpoints/seed44/joint_ordered.pt
- create mode 100644 outputs/fixed_transition_final_test_v1/locked_checkpoints/seed44/joint_single.pt
- create mode 100644 outputs/fixed_transition_final_test_v1/phase_exit_codes.json
- create mode 100644 outputs/fixed_transition_final_test_v1/protocol_lock.json
- create mode 100644 outputs/fixed_transition_final_test_v1/status.json
+[codex/server-outputs 96ce90c] Update selected server outputs
+ 3 files changed, 28 insertions(+), 4 deletions(-)
+ create mode 100644 outputs/fixed_transition_final_test_v1/evaluation_exit.json
+ create mode 100644 outputs/fixed_transition_final_test_v1/publication_history/lock_20261124T080717143648Z.json
 Uploading LFS objects: 100% (12/12), 12 MB | 0 B/s, done.
 To https://github.com/wangxin0721/XG-NID.git
-   5f3975a..d548295  HEAD -> codex/server-outputs
-{"status": "uploaded", "branch": "codex/server-outputs", "commit": "d548295158e8fe9cc5c1c17a6a355d4936d69383", "files": 20, "symlinks": 0, "bytes": 12023175, "staging_directory_preserved": "D:\\XG-NID\\.outputs-publish-8103g4zn"}
+   053cb61..96ce90c  HEAD -> codex/server-outputs
+{"status": "uploaded", "branch": "codex/server-outputs", "commit": "96ce90c4a2e425e64d4beed2a844f2b49e0b097d", "files": 24, "symlinks": 0, "bytes": 12026577, "staging_directory_preserved": "D:\\XG-NID\\.outputs-publish-iaf3uct4"}
