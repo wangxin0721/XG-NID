@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "samples": 13446,
+  "expected_samples": 13446,
+  "prediction_digest": "3d402b19cf6ca657118b0a0089d4c1be5655f49b0efb8cb2bbb5808a25678858",
+  "expected_prediction_digest": "3d402b19cf6ca657118b0a0089d4c1be5655f49b0efb8cb2bbb5808a25678858",
+  "first_differences": [],
+  "comparison_fields": [
+    "sample_id",
+    "label",
+    "prediction"
+  ]
+}

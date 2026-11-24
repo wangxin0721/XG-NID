@@ -1,0 +1,1862 @@
+{
+  "backbone_seed": 44,
+  "partition": "test",
+  "test_evaluated": true,
+  "readout_seed": 42,
+  "sampling_seed": 42,
+  "role": "new_independent_backbone_replication",
+  "new_training_runs": 0,
+  "new_optimizer_updates": 0,
+  "source_binding": {
+    "backbone_seed": 44,
+    "frozen_c_sha256": "813afa5e7d19ff35a050dd81a56a114b03e90421b71fb364cea60691ac9576d2",
+    "split_id": "a8ae9c934eec9fee970cc725e60051d0c709e0f16c7dda14749350ff2006975a",
+    "manifest_sha256": "b8e9b0810471d0c2b52033488fab640625c3731315afd5d2add1571bd2518827",
+    "validation_digest": "4ed6ed2b94fca23727c34737661e3b49209a18d6d8ce74f5e90a3f8822438851"
+  },
+  "model_metadata": {
+    "base_C": {
+      "path": "fixed_transition_stability_v1/seed44/base_C/best.pt",
+      "sha256": "418f26d5ef3db580cf347c3237049e2911731d8e9ca2b6431240bcd4a348d7ca",
+      "bytes": 3821148,
+      "epoch": 167,
+      "validation_macro_f1": 0.9750554254542276,
+      "inference_parameters": 860968,
+      "training_parameters": 0,
+      "validation": {
+        "accuracy": 0.9819277108433735,
+        "macro_f1": 0.9750554254542276,
+        "weighted_f1": 0.9819703117627894,
+        "per_class": {
+          "Benign": {
+            "precision": 0.9695325542570952,
+            "recall": 0.9723733779824194,
+            "f1-score": 0.9709508881922675,
+            "support": 2389
+          },
+          "WebBased": {
+            "precision": 0.9050179211469535,
+            "recall": 0.9283088235294118,
+            "f1-score": 0.9165154264972777,
+            "support": 544
+          },
+          "Spoofing": {
+            "precision": 0.9620253164556962,
+            "recall": 0.9614721104082806,
+            "f1-score": 0.9617486338797814,
+            "support": 1739
+          },
+          "Recon": {
+            "precision": 0.9810322011468902,
+            "recall": 0.9762949956101844,
+            "f1-score": 0.9786578657865787,
+            "support": 2278
+          },
+          "Mirai": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 2400
+          },
+          "Dos": {
+            "precision": 0.9993192648059904,
+            "recall": 0.9952542372881356,
+            "f1-score": 0.9972826086956522,
+            "support": 1475
+          },
+          "DDos": {
+            "precision": 1.0,
+            "recall": 0.9974874371859297,
+            "f1-score": 0.9987421383647799,
+            "support": 2388
+          },
+          "BruteForce": {
+            "precision": 0.9703389830508474,
+            "recall": 0.9828326180257511,
+            "f1-score": 0.976545842217484,
+            "support": 233
+          }
+        },
+        "confusion_matrix": [
+          [
+            2323,
+            13,
+            46,
+            6,
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            8,
+            505,
+            8,
+            19,
+            0,
+            0,
+            0,
+            4
+          ],
+          [
+            53,
+            5,
+            1672,
+            7,
+            0,
+            0,
+            0,
+            2
+          ],
+          [
+            12,
+            32,
+            9,
+            2224,
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            2400,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            2,
+            0,
+            5,
+            0,
+            1468,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0,
+            5,
+            0,
+            0,
+            2382,
+            0
+          ],
+          [
+            0,
+            0,
+            3,
+            1,
+            0,
+            0,
+            0,
+            229
+          ]
+        ],
+        "samples": 13446
+      },
+      "validation_prediction_digest": "4ed6ed2b94fca23727c34737661e3b49209a18d6d8ce74f5e90a3f8822438851",
+      "validation_predictions_path": "fixed_transition_stability_v1/seed44/base_C/best_validation_predictions.jsonl.gz",
+      "source_result_commit": "5f3975aeecd41c8c1150b97f88813b7ea703e54d",
+      "labels": [
+        "Benign",
+        "WebBased",
+        "Spoofing",
+        "Recon",
+        "Mirai",
+        "Dos",
+        "DDos",
+        "BruteForce"
+      ],
+      "selection": "locked_best_validation_macro_f1_including_zero_earliest_tie",
+      "new_optimizer_updates": 0
+    },
+    "frozen_single": {
+      "path": "fixed_transition_stability_v1/seed44/frozen_single/best.pt",
+      "sha256": "65e33e2db9dcbe9e84b3678af134c231896f7e96d8927c96be4cee3c4e9e6c03",
+      "bytes": 49891,
+      "epoch": 150,
+      "validation_macro_f1": 0.9764754562481672,
+      "inference_parameters": 864168,
+      "training_parameters": 3200,
+      "validation": {
+        "accuracy": 0.9826714264465268,
+        "macro_f1": 0.9764754562481672,
+        "weighted_f1": 0.982712937742554,
+        "per_class": {
+          "Benign": {
+            "precision": 0.9718723761544921,
+            "recall": 0.969024696525743,
+            "f1-score": 0.9704464472856843,
+            "support": 2389
+          },
+          "WebBased": {
+            "precision": 0.9144385026737968,
+            "recall": 0.9430147058823529,
+            "f1-score": 0.9285067873303168,
+            "support": 544
+          },
+          "Spoofing": {
+            "precision": 0.9598393574297188,
+            "recall": 0.9620471535365153,
+            "f1-score": 0.9609419873635842,
+            "support": 1739
+          },
+          "Recon": {
+            "precision": 0.9832672831351827,
+            "recall": 0.9802458296751536,
+            "f1-score": 0.9817542316992746,
+            "support": 2278
+          },
+          "Mirai": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 2400
+          },
+          "Dos": {
+            "precision": 0.998639455782313,
+            "recall": 0.9952542372881356,
+            "f1-score": 0.9969439728353141,
+            "support": 1475
+          },
+          "DDos": {
+            "precision": 1.0,
+            "recall": 0.9974874371859297,
+            "f1-score": 0.9987421383647799,
+            "support": 2388
+          },
+          "BruteForce": {
+            "precision": 0.9662447257383966,
+            "recall": 0.9828326180257511,
+            "f1-score": 0.9744680851063829,
+            "support": 233
+          }
+        },
+        "confusion_matrix": [
+          [
+            2315,
+            16,
+            50,
+            7,
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            7,
+            513,
+            8,
+            12,
+            0,
+            0,
+            0,
+            4
+          ],
+          [
+            50,
+            5,
+            1673,
+            7,
+            0,
+            1,
+            0,
+            3
+          ],
+          [
+            10,
+            25,
+            9,
+            2233,
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            2400,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0,
+            6,
+            0,
+            1468,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0,
+            5,
+            0,
+            0,
+            2382,
+            0
+          ],
+          [
+            0,
+            0,
+            3,
+            1,
+            0,
+            0,
+            0,
+            229
+          ]
+        ],
+        "samples": 13446
+      },
+      "validation_prediction_digest": "c57220a055f37749c0e7c9aeb8b7a4c1876e3f17e6a5bce3ab621d7103e4bb27",
+      "validation_predictions_path": "fixed_transition_stability_v1/seed44/frozen_single/best_validation_predictions.jsonl.gz",
+      "source_result_commit": "5f3975aeecd41c8c1150b97f88813b7ea703e54d",
+      "labels": [
+        "Benign",
+        "WebBased",
+        "Spoofing",
+        "Recon",
+        "Mirai",
+        "Dos",
+        "DDos",
+        "BruteForce"
+      ],
+      "selection": "locked_best_validation_macro_f1_including_zero_earliest_tie",
+      "new_optimizer_updates": 0
+    },
+    "joint_single": {
+      "path": "fixed_transition_stability_v1/seed44/joint_single/best.pt",
+      "sha256": "7907c4a864b2dd1f38bf96210aaa5167c1f66acf95aceb168e97692500cc05a7",
+      "bytes": 49891,
+      "epoch": 131,
+      "validation_macro_f1": 0.9770296324461571,
+      "inference_parameters": 864168,
+      "training_parameters": 10344,
+      "validation": {
+        "accuracy": 0.9831176558084188,
+        "macro_f1": 0.9770296324461571,
+        "weighted_f1": 0.9831694500891466,
+        "per_class": {
+          "Benign": {
+            "precision": 0.9707112970711297,
+            "recall": 0.9711176224361657,
+            "f1-score": 0.9709144172421008,
+            "support": 2389
+          },
+          "WebBased": {
+            "precision": 0.911660777385159,
+            "recall": 0.9485294117647058,
+            "f1-score": 0.9297297297297298,
+            "support": 544
+          },
+          "Spoofing": {
+            "precision": 0.9632183908045977,
+            "recall": 0.9637722829212191,
+            "f1-score": 0.9634952572578327,
+            "support": 1739
+          },
+          "Recon": {
+            "precision": 0.9858344400177069,
+            "recall": 0.9776119402985075,
+            "f1-score": 0.9817059731099845,
+            "support": 2278
+          },
+          "Mirai": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 2400
+          },
+          "Dos": {
+            "precision": 0.9993192648059904,
+            "recall": 0.9952542372881356,
+            "f1-score": 0.9972826086956522,
+            "support": 1475
+          },
+          "DDos": {
+            "precision": 0.9995803608896349,
+            "recall": 0.9974874371859297,
+            "f1-score": 0.9985328023475163,
+            "support": 2388
+          },
+          "BruteForce": {
+            "precision": 0.9623430962343096,
+            "recall": 0.9871244635193133,
+            "f1-score": 0.9745762711864406,
+            "support": 233
+          }
+        },
+        "confusion_matrix": [
+          [
+            2320,
+            13,
+            46,
+            8,
+            0,
+            0,
+            0,
+            2
+          ],
+          [
+            8,
+            516,
+            7,
+            8,
+            0,
+            0,
+            1,
+            4
+          ],
+          [
+            51,
+            4,
+            1676,
+            5,
+            0,
+            0,
+            0,
+            3
+          ],
+          [
+            11,
+            31,
+            8,
+            2227,
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            2400,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0,
+            6,
+            0,
+            1468,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0,
+            5,
+            0,
+            0,
+            2382,
+            0
+          ],
+          [
+            0,
+            0,
+            3,
+            0,
+            0,
+            0,
+            0,
+            230
+          ]
+        ],
+        "samples": 13446
+      },
+      "validation_prediction_digest": "d8f39415e351029bbbff3ad2b6a66d8c236b526491f3e75e2f7c343e047c630d",
+      "validation_predictions_path": "fixed_transition_stability_v1/seed44/joint_single/best_validation_predictions.jsonl.gz",
+      "source_result_commit": "5f3975aeecd41c8c1150b97f88813b7ea703e54d",
+      "labels": [
+        "Benign",
+        "WebBased",
+        "Spoofing",
+        "Recon",
+        "Mirai",
+        "Dos",
+        "DDos",
+        "BruteForce"
+      ],
+      "selection": "locked_best_validation_macro_f1_including_zero_earliest_tie",
+      "new_optimizer_updates": 0
+    },
+    "joint_ordered": {
+      "path": "fixed_transition_stability_v1/seed44/joint_ordered/best.pt",
+      "sha256": "504ac5e9347a91e1e657b4128668b760c0655c7ba3038817277beece4442cb11",
+      "bytes": 52573,
+      "epoch": 123,
+      "validation_macro_f1": 0.9776885302583349,
+      "inference_parameters": 864696,
+      "training_parameters": 10872,
+      "validation": {
+        "accuracy": 0.9831920273687342,
+        "macro_f1": 0.9776885302583349,
+        "weighted_f1": 0.9832331959905489,
+        "per_class": {
+          "Benign": {
+            "precision": 0.9706744868035191,
+            "recall": 0.969861866889912,
+            "f1-score": 0.9702680067001676,
+            "support": 2389
+          },
+          "WebBased": {
+            "precision": 0.9197860962566845,
+            "recall": 0.9485294117647058,
+            "f1-score": 0.9339366515837104,
+            "support": 544
+          },
+          "Spoofing": {
+            "precision": 0.9615605278255881,
+            "recall": 0.9637722829212191,
+            "f1-score": 0.9626651349798966,
+            "support": 1739
+          },
+          "Recon": {
+            "precision": 0.984561093956771,
+            "recall": 0.9798068481123793,
+            "f1-score": 0.9821782178217822,
+            "support": 2278
+          },
+          "Mirai": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 2400
+          },
+          "Dos": {
+            "precision": 0.9993192648059904,
+            "recall": 0.9952542372881356,
+            "f1-score": 0.9972826086956522,
+            "support": 1475
+          },
+          "DDos": {
+            "precision": 1.0,
+            "recall": 0.9970686767169179,
+            "f1-score": 0.9985321870413084,
+            "support": 2388
+          },
+          "BruteForce": {
+            "precision": 0.9663865546218487,
+            "recall": 0.9871244635193133,
+            "f1-score": 0.9766454352441614,
+            "support": 233
+          }
+        },
+        "confusion_matrix": [
+          [
+            2317,
+            13,
+            48,
+            10,
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            8,
+            516,
+            7,
+            9,
+            0,
+            0,
+            0,
+            4
+          ],
+          [
+            51,
+            4,
+            1676,
+            5,
+            0,
+            0,
+            0,
+            3
+          ],
+          [
+            11,
+            26,
+            8,
+            2232,
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            2400,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0,
+            6,
+            0,
+            1468,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            1,
+            5,
+            0,
+            0,
+            2381,
+            0
+          ],
+          [
+            0,
+            0,
+            3,
+            0,
+            0,
+            0,
+            0,
+            230
+          ]
+        ],
+        "samples": 13446
+      },
+      "validation_prediction_digest": "3d402b19cf6ca657118b0a0089d4c1be5655f49b0efb8cb2bbb5808a25678858",
+      "validation_predictions_path": "fixed_transition_stability_v1/seed44/joint_ordered/best_validation_predictions.jsonl.gz",
+      "source_result_commit": "5f3975aeecd41c8c1150b97f88813b7ea703e54d",
+      "labels": [
+        "Benign",
+        "WebBased",
+        "Spoofing",
+        "Recon",
+        "Mirai",
+        "Dos",
+        "DDos",
+        "BruteForce"
+      ],
+      "selection": "locked_best_validation_macro_f1_including_zero_earliest_tie",
+      "new_optimizer_updates": 0
+    }
+  },
+  "metrics": {
+    "base_C": {
+      "accuracy": 0.982674003569304,
+      "macro_f1": 0.9736883581931874,
+      "weighted_f1": 0.9826891553724417,
+      "per_class": {
+        "Benign": {
+          "precision": 0.9673418768085986,
+          "recall": 0.9794893260778569,
+          "f1-score": 0.9733777038269551,
+          "support": 2389
+        },
+        "WebBased": {
+          "precision": 0.9010989010989011,
+          "recall": 0.9044117647058824,
+          "f1-score": 0.9027522935779817,
+          "support": 544
+        },
+        "Spoofing": {
+          "precision": 0.966532025389498,
+          "recall": 0.9631972397929844,
+          "f1-score": 0.9648617511520737,
+          "support": 1739
+        },
+        "Recon": {
+          "precision": 0.9862527716186252,
+          "recall": 0.9762949956101844,
+          "f1-score": 0.9812486212221487,
+          "support": 2278
+        },
+        "Mirai": {
+          "precision": 1.0,
+          "recall": 0.9991666666666666,
+          "f1-score": 0.9995831596498541,
+          "support": 2400
+        },
+        "Dos": {
+          "precision": 0.997968855788761,
+          "recall": 0.9993220338983051,
+          "f1-score": 0.9986449864498645,
+          "support": 1475
+        },
+        "DDos": {
+          "precision": 1.0,
+          "recall": 0.997907949790795,
+          "f1-score": 0.9989528795811519,
+          "support": 2390
+        },
+        "BruteForce": {
+          "precision": 0.9659574468085106,
+          "recall": 0.9742489270386266,
+          "f1-score": 0.9700854700854701,
+          "support": 233
+        }
+      },
+      "confusion_matrix": [
+        [
+          2340,
+          8,
+          30,
+          11,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          15,
+          492,
+          18,
+          15,
+          0,
+          0,
+          0,
+          4
+        ],
+        [
+          47,
+          13,
+          1675,
+          1,
+          0,
+          0,
+          0,
+          3
+        ],
+        [
+          14,
+          29,
+          8,
+          2224,
+          0,
+          3,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          2398,
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          0,
+          1474,
+          0,
+          0
+        ],
+        [
+          0,
+          2,
+          0,
+          3,
+          0,
+          0,
+          2385,
+          0
+        ],
+        [
+          2,
+          2,
+          2,
+          0,
+          0,
+          0,
+          0,
+          227
+        ]
+      ],
+      "samples": 13448
+    },
+    "frozen_single": {
+      "accuracy": 0.9822278405710886,
+      "macro_f1": 0.973248012428188,
+      "weighted_f1": 0.9822241241436396,
+      "per_class": {
+        "Benign": {
+          "precision": 0.9675945159950146,
+          "recall": 0.9748848890749268,
+          "f1-score": 0.9712260216847373,
+          "support": 2389
+        },
+        "WebBased": {
+          "precision": 0.9070631970260223,
+          "recall": 0.8970588235294118,
+          "f1-score": 0.9020332717190388,
+          "support": 544
+        },
+        "Spoofing": {
+          "precision": 0.9621125143513203,
+          "recall": 0.9637722829212191,
+          "f1-score": 0.9629416834243033,
+          "support": 1739
+        },
+        "Recon": {
+          "precision": 0.984561093956771,
+          "recall": 0.9798068481123793,
+          "f1-score": 0.9821782178217822,
+          "support": 2278
+        },
+        "Mirai": {
+          "precision": 1.0,
+          "recall": 0.9991666666666666,
+          "f1-score": 0.9995831596498541,
+          "support": 2400
+        },
+        "Dos": {
+          "precision": 0.9986449864498645,
+          "recall": 0.9993220338983051,
+          "f1-score": 0.9989833954591664,
+          "support": 1475
+        },
+        "DDos": {
+          "precision": 1.0,
+          "recall": 0.997907949790795,
+          "f1-score": 0.9989528795811519,
+          "support": 2390
+        },
+        "BruteForce": {
+          "precision": 0.9659574468085106,
+          "recall": 0.9742489270386266,
+          "f1-score": 0.9700854700854701,
+          "support": 233
+        }
+      },
+      "confusion_matrix": [
+        [
+          2329,
+          11,
+          35,
+          14,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          17,
+          488,
+          19,
+          16,
+          0,
+          0,
+          0,
+          4
+        ],
+        [
+          47,
+          12,
+          1676,
+          1,
+          0,
+          0,
+          0,
+          3
+        ],
+        [
+          12,
+          23,
+          9,
+          2232,
+          0,
+          2,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          2398,
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          0,
+          1474,
+          0,
+          0
+        ],
+        [
+          0,
+          2,
+          0,
+          3,
+          0,
+          0,
+          2385,
+          0
+        ],
+        [
+          1,
+          2,
+          3,
+          0,
+          0,
+          0,
+          0,
+          227
+        ]
+      ],
+      "samples": 13448
+    },
+    "joint_single": {
+      "accuracy": 0.9823765615704938,
+      "macro_f1": 0.9733635713560248,
+      "weighted_f1": 0.9824221886973151,
+      "per_class": {
+        "Benign": {
+          "precision": 0.9676616915422885,
+          "recall": 0.9769778149853495,
+          "f1-score": 0.972297438033743,
+          "support": 2389
+        },
+        "WebBased": {
+          "precision": 0.8904847396768402,
+          "recall": 0.9117647058823529,
+          "f1-score": 0.9009990917347865,
+          "support": 544
+        },
+        "Spoofing": {
+          "precision": 0.9670710571923743,
+          "recall": 0.9626221966647499,
+          "f1-score": 0.9648414985590779,
+          "support": 1739
+        },
+        "Recon": {
+          "precision": 0.9879946642952423,
+          "recall": 0.9754170324846356,
+          "f1-score": 0.9816655621824608,
+          "support": 2278
+        },
+        "Mirai": {
+          "precision": 1.0,
+          "recall": 0.9991666666666666,
+          "f1-score": 0.9995831596498541,
+          "support": 2400
+        },
+        "Dos": {
+          "precision": 0.9986449864498645,
+          "recall": 0.9993220338983051,
+          "f1-score": 0.9989833954591664,
+          "support": 1475
+        },
+        "DDos": {
+          "precision": 0.9987437185929648,
+          "recall": 0.997907949790795,
+          "f1-score": 0.9983256592716618,
+          "support": 2390
+        },
+        "BruteForce": {
+          "precision": 0.9620253164556962,
+          "recall": 0.9785407725321889,
+          "f1-score": 0.9702127659574468,
+          "support": 233
+        }
+      },
+      "confusion_matrix": [
+        [
+          2334,
+          12,
+          31,
+          12,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          16,
+          496,
+          15,
+          10,
+          0,
+          0,
+          2,
+          5
+        ],
+        [
+          45,
+          14,
+          1674,
+          2,
+          0,
+          0,
+          1,
+          3
+        ],
+        [
+          14,
+          31,
+          9,
+          2222,
+          0,
+          2,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          2398,
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          0,
+          1474,
+          0,
+          0
+        ],
+        [
+          0,
+          3,
+          0,
+          2,
+          0,
+          0,
+          2385,
+          0
+        ],
+        [
+          2,
+          1,
+          2,
+          0,
+          0,
+          0,
+          0,
+          228
+        ]
+      ],
+      "samples": 13448
+    },
+    "joint_ordered": {
+      "accuracy": 0.982674003569304,
+      "macro_f1": 0.9738343472174121,
+      "weighted_f1": 0.9827229980726792,
+      "per_class": {
+        "Benign": {
+          "precision": 0.9708333333333333,
+          "recall": 0.9753034742570112,
+          "f1-score": 0.9730632699937356,
+          "support": 2389
+        },
+        "WebBased": {
+          "precision": 0.8944543828264758,
+          "recall": 0.9191176470588235,
+          "f1-score": 0.9066183136899365,
+          "support": 544
+        },
+        "Spoofing": {
+          "precision": 0.9643062751871042,
+          "recall": 0.9631972397929844,
+          "f1-score": 0.9637514384349828,
+          "support": 1739
+        },
+        "Recon": {
+          "precision": 0.9867021276595744,
+          "recall": 0.9771729587357331,
+          "f1-score": 0.9819144243493604,
+          "support": 2278
+        },
+        "Mirai": {
+          "precision": 1.0,
+          "recall": 0.9991666666666666,
+          "f1-score": 0.9995831596498541,
+          "support": 2400
+        },
+        "Dos": {
+          "precision": 0.9986449864498645,
+          "recall": 0.9993220338983051,
+          "f1-score": 0.9989833954591664,
+          "support": 1475
+        },
+        "DDos": {
+          "precision": 0.9995808885163453,
+          "recall": 0.997907949790795,
+          "f1-score": 0.9987437185929648,
+          "support": 2390
+        },
+        "BruteForce": {
+          "precision": 0.961864406779661,
+          "recall": 0.9742489270386266,
+          "f1-score": 0.9680170575692963,
+          "support": 233
+        }
+      },
+      "confusion_matrix": [
+        [
+          2330,
+          12,
+          35,
+          12,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          14,
+          500,
+          15,
+          11,
+          0,
+          0,
+          0,
+          4
+        ],
+        [
+          42,
+          14,
+          1675,
+          3,
+          0,
+          0,
+          1,
+          4
+        ],
+        [
+          12,
+          29,
+          9,
+          2226,
+          0,
+          2,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          2398,
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          0,
+          1474,
+          0,
+          0
+        ],
+        [
+          0,
+          2,
+          0,
+          3,
+          0,
+          0,
+          2385,
+          0
+        ],
+        [
+          1,
+          2,
+          3,
+          0,
+          0,
+          0,
+          0,
+          227
+        ]
+      ],
+      "samples": 13448
+    }
+  },
+  "comparisons": {
+    "joint_ordered-base_C": {
+      "counts": {
+        "repaired": 30,
+        "regressed": 30,
+        "both_correct": 13185,
+        "both_wrong": 203
+      },
+      "net_correct": 0,
+      "samples": 13448,
+      "changed": 66,
+      "groups": {
+        "repaired": {
+          "count": 30,
+          "true_class": {
+            "Benign": 2,
+            "WebBased": 13,
+            "Spoofing": 7,
+            "Recon": 6,
+            "BruteForce": 2
+          },
+          "directions": {
+            "Benign: Spoofing -> Benign": 2,
+            "WebBased: Benign -> WebBased": 2,
+            "WebBased: Recon -> WebBased": 8,
+            "WebBased: Spoofing -> WebBased": 3,
+            "Spoofing: Benign -> Spoofing": 6,
+            "Spoofing: Recon -> Spoofing": 1,
+            "Recon: WebBased -> Recon": 5,
+            "Recon: Benign -> Recon": 1,
+            "BruteForce: Benign -> BruteForce": 2
+          },
+          "valid_one_step_counts": {
+            "3": 1,
+            "2": 2,
+            "19": 4,
+            "9": 9,
+            "1": 6,
+            "0": 2,
+            "6": 3,
+            "4": 2,
+            "7": 1
+          },
+          "valid_two_step_counts": {
+            "2": 1,
+            "1": 2,
+            "18": 4,
+            "8": 9,
+            "0": 8,
+            "5": 3,
+            "3": 2,
+            "6": 1
+          },
+          "by_class_and_context": {
+            "Benign|present": 2,
+            "WebBased|present": 10,
+            "WebBased|absent": 3,
+            "Spoofing|present": 3,
+            "Spoofing|absent": 4,
+            "Recon|present": 5,
+            "Recon|absent": 1,
+            "BruteForce|present": 2
+          }
+        },
+        "regressed": {
+          "count": 30,
+          "true_class": {
+            "Benign": 12,
+            "WebBased": 5,
+            "Spoofing": 7,
+            "Recon": 4,
+            "BruteForce": 2
+          },
+          "directions": {
+            "Benign: Benign -> Spoofing": 8,
+            "Benign: Benign -> WebBased": 3,
+            "Benign: Benign -> Recon": 1,
+            "WebBased: WebBased -> Recon": 4,
+            "WebBased: WebBased -> Benign": 1,
+            "Spoofing: Spoofing -> Recon": 3,
+            "Spoofing: Spoofing -> WebBased": 2,
+            "Spoofing: Spoofing -> Benign": 1,
+            "Spoofing: Spoofing -> DDos": 1,
+            "Recon: Recon -> WebBased": 4,
+            "BruteForce: BruteForce -> Spoofing": 2
+          },
+          "valid_one_step_counts": {
+            "1": 7,
+            "4": 1,
+            "2": 5,
+            "19": 6,
+            "9": 5,
+            "3": 3,
+            "6": 2,
+            "0": 1
+          },
+          "valid_two_step_counts": {
+            "0": 8,
+            "3": 1,
+            "1": 5,
+            "18": 6,
+            "8": 5,
+            "2": 3,
+            "5": 2
+          },
+          "by_class_and_context": {
+            "Benign|absent": 4,
+            "Benign|present": 8,
+            "WebBased|present": 5,
+            "Spoofing|present": 6,
+            "Spoofing|absent": 1,
+            "Recon|present": 1,
+            "Recon|absent": 3,
+            "BruteForce|present": 2
+          }
+        },
+        "wrong_changed": {
+          "count": 6,
+          "true_class": {
+            "Benign": 1,
+            "Spoofing": 2,
+            "Recon": 2,
+            "BruteForce": 1
+          },
+          "directions": {
+            "Benign: Spoofing -> WebBased": 1,
+            "Spoofing: WebBased -> Benign": 1,
+            "Spoofing: Benign -> BruteForce": 1,
+            "Recon: Benign -> Spoofing": 1,
+            "Recon: Dos -> WebBased": 1,
+            "BruteForce: Spoofing -> Benign": 1
+          },
+          "valid_one_step_counts": {
+            "1": 3,
+            "19": 1,
+            "3": 1,
+            "2": 1
+          },
+          "valid_two_step_counts": {
+            "0": 3,
+            "18": 1,
+            "2": 1,
+            "1": 1
+          },
+          "by_class_and_context": {
+            "Benign|absent": 1,
+            "Spoofing|present": 2,
+            "Recon|absent": 2,
+            "BruteForce|present": 1
+          }
+        }
+      },
+      "delta_macro_f1_pp": 0.014598902422469084
+    },
+    "joint_ordered-joint_single": {
+      "counts": {
+        "repaired": 25,
+        "regressed": 21,
+        "both_correct": 13190,
+        "both_wrong": 212
+      },
+      "net_correct": 4,
+      "samples": 13448,
+      "changed": 50,
+      "groups": {
+        "repaired": {
+          "count": 25,
+          "true_class": {
+            "Benign": 7,
+            "WebBased": 6,
+            "Spoofing": 5,
+            "Recon": 5,
+            "BruteForce": 2
+          },
+          "directions": {
+            "Benign: Spoofing -> Benign": 3,
+            "Benign: Recon -> Benign": 3,
+            "Benign: WebBased -> Benign": 1,
+            "WebBased: Benign -> WebBased": 3,
+            "WebBased: BruteForce -> WebBased": 1,
+            "WebBased: DDos -> WebBased": 2,
+            "Spoofing: Benign -> Spoofing": 3,
+            "Spoofing: Recon -> Spoofing": 1,
+            "Spoofing: WebBased -> Spoofing": 1,
+            "Recon: Benign -> Recon": 2,
+            "Recon: WebBased -> Recon": 3,
+            "BruteForce: Benign -> BruteForce": 2
+          },
+          "valid_one_step_counts": {
+            "2": 6,
+            "19": 3,
+            "1": 6,
+            "6": 3,
+            "3": 2,
+            "7": 1,
+            "14": 1,
+            "4": 1,
+            "5": 1,
+            "9": 1
+          },
+          "valid_two_step_counts": {
+            "1": 6,
+            "18": 3,
+            "0": 6,
+            "5": 3,
+            "2": 2,
+            "6": 1,
+            "13": 1,
+            "3": 1,
+            "4": 1,
+            "8": 1
+          },
+          "by_class_and_context": {
+            "Benign|present": 5,
+            "Benign|absent": 2,
+            "WebBased|present": 6,
+            "Spoofing|absent": 2,
+            "Spoofing|present": 3,
+            "Recon|present": 3,
+            "Recon|absent": 2,
+            "BruteForce|present": 2
+          }
+        },
+        "regressed": {
+          "count": 21,
+          "true_class": {
+            "Benign": 11,
+            "WebBased": 2,
+            "Spoofing": 4,
+            "Recon": 1,
+            "BruteForce": 3
+          },
+          "directions": {
+            "Benign: Benign -> Recon": 3,
+            "Benign: Benign -> Spoofing": 6,
+            "Benign: Benign -> WebBased": 2,
+            "WebBased: WebBased -> Recon": 1,
+            "WebBased: WebBased -> Benign": 1,
+            "Spoofing: Spoofing -> WebBased": 1,
+            "Spoofing: Spoofing -> Benign": 1,
+            "Spoofing: Spoofing -> Recon": 2,
+            "Recon: Recon -> WebBased": 1,
+            "BruteForce: BruteForce -> Spoofing": 2,
+            "BruteForce: BruteForce -> WebBased": 1
+          },
+          "valid_one_step_counts": {
+            "5": 1,
+            "8": 1,
+            "4": 1,
+            "1": 3,
+            "19": 4,
+            "3": 4,
+            "2": 4,
+            "9": 1,
+            "0": 1,
+            "6": 1
+          },
+          "valid_two_step_counts": {
+            "4": 1,
+            "7": 1,
+            "3": 1,
+            "0": 4,
+            "18": 4,
+            "2": 4,
+            "1": 4,
+            "8": 1,
+            "5": 1
+          },
+          "by_class_and_context": {
+            "Benign|present": 9,
+            "Benign|absent": 2,
+            "WebBased|present": 2,
+            "Spoofing|absent": 1,
+            "Spoofing|present": 3,
+            "Recon|absent": 1,
+            "BruteForce|present": 3
+          }
+        },
+        "wrong_changed": {
+          "count": 4,
+          "true_class": {
+            "Benign": 1,
+            "Spoofing": 1,
+            "DDos": 1,
+            "BruteForce": 1
+          },
+          "directions": {
+            "Benign: WebBased -> Spoofing": 1,
+            "Spoofing: Benign -> BruteForce": 1,
+            "DDos: WebBased -> Recon": 1,
+            "BruteForce: Spoofing -> Benign": 1
+          },
+          "valid_one_step_counts": {
+            "1": 1,
+            "3": 1,
+            "9": 1,
+            "2": 1
+          },
+          "valid_two_step_counts": {
+            "0": 1,
+            "2": 1,
+            "8": 1,
+            "1": 1
+          },
+          "by_class_and_context": {
+            "Benign|absent": 1,
+            "Spoofing|present": 1,
+            "DDos|present": 1,
+            "BruteForce|present": 1
+          }
+        }
+      },
+      "delta_macro_f1_pp": 0.04707758613873292
+    },
+    "joint_ordered-frozen_single": {
+      "counts": {
+        "repaired": 34,
+        "regressed": 28,
+        "both_correct": 13181,
+        "both_wrong": 205
+      },
+      "net_correct": 6,
+      "samples": 13448,
+      "changed": 66,
+      "groups": {
+        "repaired": {
+          "count": 34,
+          "true_class": {
+            "Benign": 11,
+            "WebBased": 14,
+            "Spoofing": 7,
+            "Recon": 1,
+            "BruteForce": 1
+          },
+          "directions": {
+            "Benign: Spoofing -> Benign": 7,
+            "Benign: WebBased -> Benign": 2,
+            "Benign: Recon -> Benign": 2,
+            "WebBased: Benign -> WebBased": 4,
+            "WebBased: Recon -> WebBased": 5,
+            "WebBased: Spoofing -> WebBased": 5,
+            "Spoofing: Benign -> Spoofing": 6,
+            "Spoofing: Recon -> Spoofing": 1,
+            "Recon: WebBased -> Recon": 1,
+            "BruteForce: Benign -> BruteForce": 1
+          },
+          "valid_one_step_counts": {
+            "3": 4,
+            "2": 3,
+            "13": 1,
+            "7": 2,
+            "19": 9,
+            "1": 8,
+            "6": 4,
+            "0": 2,
+            "4": 1
+          },
+          "valid_two_step_counts": {
+            "2": 4,
+            "1": 3,
+            "12": 1,
+            "6": 2,
+            "18": 9,
+            "0": 10,
+            "5": 4,
+            "3": 1
+          },
+          "by_class_and_context": {
+            "Benign|present": 10,
+            "Benign|absent": 1,
+            "WebBased|present": 10,
+            "WebBased|absent": 4,
+            "Spoofing|absent": 4,
+            "Spoofing|present": 3,
+            "Recon|absent": 1,
+            "BruteForce|present": 1
+          }
+        },
+        "regressed": {
+          "count": 28,
+          "true_class": {
+            "Benign": 10,
+            "WebBased": 2,
+            "Spoofing": 8,
+            "Recon": 7,
+            "BruteForce": 1
+          },
+          "directions": {
+            "Benign: Benign -> Spoofing": 7,
+            "Benign: Benign -> WebBased": 3,
+            "WebBased: WebBased -> Spoofing": 1,
+            "WebBased: WebBased -> Benign": 1,
+            "Spoofing: Spoofing -> Recon": 3,
+            "Spoofing: Spoofing -> WebBased": 2,
+            "Spoofing: Spoofing -> Benign": 2,
+            "Spoofing: Spoofing -> DDos": 1,
+            "Recon: Recon -> WebBased": 7,
+            "BruteForce: BruteForce -> Spoofing": 1
+          },
+          "valid_one_step_counts": {
+            "4": 1,
+            "19": 8,
+            "1": 7,
+            "2": 2,
+            "8": 1,
+            "3": 3,
+            "6": 2,
+            "0": 1,
+            "9": 3
+          },
+          "valid_two_step_counts": {
+            "3": 1,
+            "18": 8,
+            "0": 8,
+            "1": 2,
+            "7": 1,
+            "2": 3,
+            "5": 2,
+            "8": 3
+          },
+          "by_class_and_context": {
+            "Benign|present": 7,
+            "Benign|absent": 3,
+            "WebBased|present": 2,
+            "Spoofing|present": 7,
+            "Spoofing|absent": 1,
+            "Recon|present": 3,
+            "Recon|absent": 4,
+            "BruteForce|present": 1
+          }
+        },
+        "wrong_changed": {
+          "count": 4,
+          "true_class": {
+            "Spoofing": 1,
+            "DDos": 2,
+            "BruteForce": 1
+          },
+          "directions": {
+            "Spoofing: Benign -> BruteForce": 1,
+            "DDos: Recon -> WebBased": 1,
+            "DDos: WebBased -> Recon": 1,
+            "BruteForce: Spoofing -> Benign": 1
+          },
+          "valid_one_step_counts": {
+            "3": 1,
+            "9": 2,
+            "2": 1
+          },
+          "valid_two_step_counts": {
+            "2": 1,
+            "8": 2,
+            "1": 1
+          },
+          "by_class_and_context": {
+            "Spoofing|present": 1,
+            "DDos|present": 2,
+            "BruteForce|present": 1
+          }
+        }
+      },
+      "delta_macro_f1_pp": 0.058633478922409665
+    },
+    "joint_single-frozen_single": {
+      "counts": {
+        "repaired": 28,
+        "regressed": 26,
+        "both_correct": 13183,
+        "both_wrong": 211
+      },
+      "net_correct": 2,
+      "samples": 13448,
+      "changed": 56,
+      "groups": {
+        "repaired": {
+          "count": 28,
+          "true_class": {
+            "Benign": 11,
+            "WebBased": 12,
+            "Spoofing": 3,
+            "BruteForce": 2
+          },
+          "directions": {
+            "Benign: Spoofing -> Benign": 5,
+            "Benign: WebBased -> Benign": 3,
+            "Benign: Recon -> Benign": 3,
+            "WebBased: Recon -> WebBased": 6,
+            "WebBased: Benign -> WebBased": 1,
+            "WebBased: Spoofing -> WebBased": 5,
+            "Spoofing: Benign -> Spoofing": 3,
+            "BruteForce: Spoofing -> BruteForce": 1,
+            "BruteForce: WebBased -> BruteForce": 1
+          },
+          "valid_one_step_counts": {
+            "3": 4,
+            "13": 1,
+            "5": 1,
+            "8": 1,
+            "7": 1,
+            "2": 3,
+            "19": 8,
+            "9": 1,
+            "1": 4,
+            "0": 2,
+            "6": 2
+          },
+          "valid_two_step_counts": {
+            "2": 4,
+            "12": 1,
+            "4": 1,
+            "7": 1,
+            "6": 1,
+            "1": 3,
+            "18": 8,
+            "8": 1,
+            "0": 6,
+            "5": 2
+          },
+          "by_class_and_context": {
+            "Benign|present": 11,
+            "WebBased|present": 8,
+            "WebBased|absent": 4,
+            "Spoofing|absent": 2,
+            "Spoofing|present": 1,
+            "BruteForce|present": 2
+          }
+        },
+        "regressed": {
+          "count": 26,
+          "true_class": {
+            "Benign": 6,
+            "WebBased": 4,
+            "Spoofing": 5,
+            "Recon": 10,
+            "BruteForce": 1
+          },
+          "directions": {
+            "Benign: Benign -> WebBased": 3,
+            "Benign: Benign -> Spoofing": 2,
+            "Benign: Benign -> Recon": 1,
+            "WebBased: WebBased -> Spoofing": 1,
+            "WebBased: WebBased -> BruteForce": 1,
+            "WebBased: WebBased -> DDos": 2,
+            "Spoofing: Spoofing -> Recon": 1,
+            "Spoofing: Spoofing -> Benign": 1,
+            "Spoofing: Spoofing -> WebBased": 2,
+            "Spoofing: Spoofing -> DDos": 1,
+            "Recon: Recon -> WebBased": 8,
+            "Recon: Recon -> Benign": 2,
+            "BruteForce: BruteForce -> Benign": 1
+          },
+          "valid_one_step_counts": {
+            "19": 6,
+            "1": 6,
+            "2": 4,
+            "8": 1,
+            "3": 1,
+            "6": 2,
+            "14": 1,
+            "9": 4,
+            "5": 1
+          },
+          "valid_two_step_counts": {
+            "18": 6,
+            "0": 6,
+            "1": 4,
+            "7": 1,
+            "2": 1,
+            "5": 2,
+            "13": 1,
+            "8": 4,
+            "4": 1
+          },
+          "by_class_and_context": {
+            "Benign|present": 4,
+            "Benign|absent": 2,
+            "WebBased|present": 4,
+            "Spoofing|present": 5,
+            "Recon|present": 6,
+            "Recon|absent": 4,
+            "BruteForce|present": 1
+          }
+        },
+        "wrong_changed": {
+          "count": 2,
+          "true_class": {
+            "Benign": 1,
+            "DDos": 1
+          },
+          "directions": {
+            "Benign: Spoofing -> WebBased": 1,
+            "DDos: Recon -> WebBased": 1
+          },
+          "valid_one_step_counts": {
+            "1": 1,
+            "9": 1
+          },
+          "valid_two_step_counts": {
+            "0": 1,
+            "8": 1
+          },
+          "by_class_and_context": {
+            "Benign|absent": 1,
+            "DDos|present": 1
+          }
+        }
+      },
+      "delta_macro_f1_pp": 0.011555892783676747
+    }
+  },
+  "prediction_digests": {
+    "base_C": "328a4bb95df390a584270f89e87a9cba2b4c764f89fc8a085cfde2259516e1e2",
+    "frozen_single": "7e085a952495f93edf6f75028a5f3166648d0a6fab17b82cfd85d0642f47cbf8",
+    "joint_single": "ea1259135c0579a62e455192485238522102a709473bd559033008bfb196a072",
+    "joint_ordered": "81e58850fcf3f475b33b0db6ccbe47a3da279ca4522b0655d12dbd3739205ff7"
+  },
+  "independent_verification": {
+    "passed": true,
+    "samples": 13448,
+    "confusion_matrices": 4,
+    "paired_comparisons": 4,
+    "method": "integer confusion counts and direct precision/recall/harmonic-F1 formulas"
+  },
+  "runtime": {
+    "environment": {
+      "python": "3.9.23",
+      "torch": "2.3.1+cu118",
+      "pyg": "2.5.3",
+      "cuda": "11.8",
+      "platform": "Linux-6.8.0-138-generic-x86_64-with-glibc2.35",
+      "device": "Tesla T4"
+    },
+    "wall_seconds": 701.204334059963,
+    "main_process_graph_load_counters": {
+      "train": 0,
+      "val": 0,
+      "test": 0
+    },
+    "graph_guard_scope": "all dataset calls, including worker processes; counters are process-local",
+    "shared_frozen_features": true
+  }
+}

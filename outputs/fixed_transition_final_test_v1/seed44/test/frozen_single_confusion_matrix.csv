@@ -1,0 +1,9 @@
+true/predicted,Benign,WebBased,Spoofing,Recon,Mirai,Dos,DDos,BruteForce
+Benign,2329,11,35,14,0,0,0,0
+WebBased,17,488,19,16,0,0,0,4
+Spoofing,47,12,1676,1,0,0,0,3
+Recon,12,23,9,2232,0,2,0,0
+Mirai,1,0,0,0,2398,0,0,1
+Dos,0,0,0,1,0,1474,0,0
+DDos,0,2,0,3,0,0,2385,0
+BruteForce,1,2,3,0,0,0,0,227

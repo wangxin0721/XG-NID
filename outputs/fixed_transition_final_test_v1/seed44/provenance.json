@@ -1,0 +1,96 @@
+{
+  "protocol_lock_sha256": "590da676e5c7dd11a50abf92f134964e13d7a0de7ba8f5f2bedf9ff8aa1fc23a",
+  "binding": {
+    "protocol_lock_sha256": "590da676e5c7dd11a50abf92f134964e13d7a0de7ba8f5f2bedf9ff8aa1fc23a",
+    "source": {
+      "backbone_seed": 44,
+      "frozen_c_sha256": "813afa5e7d19ff35a050dd81a56a114b03e90421b71fb364cea60691ac9576d2",
+      "split_id": "a8ae9c934eec9fee970cc725e60051d0c709e0f16c7dda14749350ff2006975a",
+      "manifest_sha256": "b8e9b0810471d0c2b52033488fab640625c3731315afd5d2add1571bd2518827",
+      "validation_digest": "4ed6ed2b94fca23727c34737661e3b49209a18d6d8ce74f5e90a3f8822438851"
+    },
+    "environment": {
+      "python": "3.9.23",
+      "torch": "2.3.1+cu118",
+      "pyg": "2.5.3",
+      "cuda": "11.8",
+      "platform": "Linux-6.8.0-138-generic-x86_64-with-glibc2.35",
+      "device": "Tesla T4"
+    },
+    "graph_root": "/home/nzxn/下载/WX/load/XG-NID/data/processed/CICIoT2023_processed/processed",
+    "input_sha256": {
+      "data/processed/ciciot2023_grouped_input_v1/split.json": "2f6a7c307121454b881520379f0a298b7e2a179b1db4a7cb03741b7f648a774a",
+      "data/processed/ciciot2023_grouped_input_v1/samples.jsonl": "b8e9b0810471d0c2b52033488fab640625c3731315afd5d2add1571bd2518827"
+    },
+    "eval_batch_size": 16,
+    "workers": 2
+  },
+  "source_C_checkpoint_config": {
+    "arm": "C",
+    "query_source": "flow",
+    "protocol": {
+      "schema": "xgnid.joint-cross-layer-query.s42.v1",
+      "source_directory": "outputs/packet_transition_independent_s44_v1/JCL-Multi",
+      "source_epoch": 28,
+      "source_macro_f1": 0.9747048431268122,
+      "source_sha256": "80f7afad8ddb4aac495e6442abe08fcaf060b73a6b261d4591b54a8cfd42f359",
+      "source_predictions_sha256": "3dedd6e914ff7e7945cf1359215479ee4dca9444cddd5643e53e14756eb8be7d",
+      "source_frozen_state_sha256": "33ff6cfbf515cdfbc1ef22ba5b75a77fc9ba81159cdd3f349f9457f03388b3b7",
+      "split_directory": "data/processed/ciciot2023_grouped_input_v1",
+      "split_id": "a8ae9c934eec9fee970cc725e60051d0c709e0f16c7dda14749350ff2006975a",
+      "split_json_sha256": "2f6a7c307121454b881520379f0a298b7e2a179b1db4a7cb03741b7f648a774a",
+      "seed": 44,
+      "epochs": 200,
+      "prefix_epochs": 150,
+      "batch_size": 512,
+      "eval_batch_size": 16,
+      "workers": 2,
+      "training_samples": 107621,
+      "validation_samples": 13446,
+      "updates_per_epoch": 211,
+      "encoder_lr": 1e-06,
+      "projection_lr": 0.0001,
+      "head_lr": 1e-05,
+      "pool_lr": 0.0001,
+      "weight_decay": 0.0,
+      "probe_per_class": 2,
+      "probe_steps": 3,
+      "budget_threshold_pp": 0.1,
+      "test_evaluated": false
+    },
+    "binding": {
+      "seed": 44,
+      "n0_best_sha256": "76535b1b3f1f400887ea6e5a5cf7a1481013ff31c3609fb357e88326553a1c91",
+      "split_id": "a8ae9c934eec9fee970cc725e60051d0c709e0f16c7dda14749350ff2006975a",
+      "manifest_sha256": "b8e9b0810471d0c2b52033488fab640625c3731315afd5d2add1571bd2518827",
+      "code_commit": "91e11b3e347339ead4f872df9f7d97dd4800e69f",
+      "graph_root": "/home/nzxn/下载/WX/load/XG-NID/data/processed/CICIoT2023_processed/processed",
+      "torch": "2.3.1+cu118",
+      "pyg": "2.5.3",
+      "device": "Tesla T4",
+      "parent_stage": "JCL-Multi",
+      "parent_sha256": "80f7afad8ddb4aac495e6442abe08fcaf060b73a6b261d4591b54a8cfd42f359",
+      "parent_prediction_ids_sha256": "8809b122676a70d326fa7ad111785f44a6cb6f9609ad9dfcab30d206ff385f9a"
+    },
+    "labels": [
+      "Benign",
+      "WebBased",
+      "Spoofing",
+      "Recon",
+      "Mirai",
+      "Dos",
+      "DDos",
+      "BruteForce"
+    ],
+    "initial_state_sha256": "edd28fc799d57fce245d68260dcaf8bb15f08d4d3bc74867b250d212b2320022"
+  },
+  "initial_model_state_sha256": {
+    "source_C": "813afa5e7d19ff35a050dd81a56a114b03e90421b71fb364cea60691ac9576d2",
+    "base_C": "06fda10642c3a9cadf9b7b05806aa9a47dceacddb74094b4a0af710064190be7",
+    "frozen_single": "88064e7a22e869fd87d5a2ad5e10af815966523e81e81e6ea8bb935fc39c9aa2",
+    "joint_single": "a526b072cb71aa1966b162ed542b033b80b00c0f60ebb7c8923d47c2c0d478fb",
+    "joint_ordered": "4500d68e2c559ee3e5aa3ed7ee2d373c278754ab29cee451cadb41024f2e7b9b"
+  },
+  "new_training_runs": 0,
+  "new_optimizer_updates": 0
+}

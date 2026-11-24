@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "models": 4,
+  "samples_per_model": 13448,
+  "all_validation_replays_passed": true,
+  "same_weight_historical_C_predictions_identical": true,
+  "frozen_parameters_buffers_modes_unchanged": true,
+  "source_inputs_unchanged": true,
+  "new_training_runs": 0,
+  "new_optimizer_updates": 0,
+  "train_graph_loads": 0,
+  "independent_prediction_audit_passed": true
+}
