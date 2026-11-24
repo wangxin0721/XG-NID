@@ -1,8 +1,10 @@
 {
-  "status": "checkpoint_lock_completed",
-  "models_locked": 12,
-  "test_evaluated": false,
+  "status": "completed",
+  "backbone_seed": 42,
+  "test_evaluated": true,
+  "models": 4,
+  "samples_per_model": 13448,
   "new_optimizer_updates": 0,
-  "phase": "lock",
+  "phase": "seed42",
   "queue_completed": false
 }

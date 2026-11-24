@@ -1,0 +1,115 @@
+{
+  "protocol_lock_sha256": "590da676e5c7dd11a50abf92f134964e13d7a0de7ba8f5f2bedf9ff8aa1fc23a",
+  "binding": {
+    "protocol_lock_sha256": "590da676e5c7dd11a50abf92f134964e13d7a0de7ba8f5f2bedf9ff8aa1fc23a",
+    "source": {
+      "backbone_seed": 42,
+      "frozen_c_sha256": "c29a6433880f6e5ad8a45d387abef07cf54f895277f9f89b313edecfa7feedc6",
+      "split_id": "a8ae9c934eec9fee970cc725e60051d0c709e0f16c7dda14749350ff2006975a",
+      "manifest_sha256": "b8e9b0810471d0c2b52033488fab640625c3731315afd5d2add1571bd2518827",
+      "validation_digest": "396bd22c4004ecf6d283ac36f99ddada3845038ccd7d365a82e46208b1cc0974"
+    },
+    "environment": {
+      "python": "3.9.23",
+      "torch": "2.3.1+cu118",
+      "pyg": "2.5.3",
+      "cuda": "11.8",
+      "platform": "Linux-6.8.0-138-generic-x86_64-with-glibc2.35",
+      "device": "Tesla T4"
+    },
+    "graph_root": "/home/nzxn/下载/WX/load/XG-NID/data/processed/CICIoT2023_processed/processed",
+    "input_sha256": {
+      "data/processed/ciciot2023_grouped_input_v1/split.json": "2f6a7c307121454b881520379f0a298b7e2a179b1db4a7cb03741b7f648a774a",
+      "data/processed/ciciot2023_grouped_input_v1/samples.jsonl": "b8e9b0810471d0c2b52033488fab640625c3731315afd5d2add1571bd2518827"
+    },
+    "eval_batch_size": 16,
+    "workers": 2
+  },
+  "source_C_checkpoint_config": {
+    "arm": "C",
+    "query_source": "flow",
+    "protocol": {
+      "schema": "xgnid.joint-cross-layer-query.s42.v1",
+      "source_directory": "outputs/joint_cross_layer_packet2_s42_v1/JCL-Multi",
+      "source_epoch": 48,
+      "source_macro_f1": 0.9752460910749855,
+      "source_sha256": "c629388d2669a8e86ae00d8ddf80d349efbbcffc7e27ad08023dfc237ef25822",
+      "source_predictions_sha256": "1f2bcaf12fd7be840f3168eb9b4838ec361a8ab8a72271f572ed48e95f5e1902",
+      "source_frozen_state_sha256": "79f8401312a141d9ec344653ad02d70f0743173795c587761819ddc1250c33da",
+      "split_directory": "data/processed/ciciot2023_grouped_input_v1",
+      "split_id": "a8ae9c934eec9fee970cc725e60051d0c709e0f16c7dda14749350ff2006975a",
+      "split_json_sha256": "2f6a7c307121454b881520379f0a298b7e2a179b1db4a7cb03741b7f648a774a",
+      "seed": 42,
+      "epochs": 200,
+      "prefix_epochs": 150,
+      "batch_size": 512,
+      "eval_batch_size": 16,
+      "workers": 2,
+      "training_samples": 107621,
+      "validation_samples": 13446,
+      "updates_per_epoch": 211,
+      "encoder_lr": 1e-06,
+      "projection_lr": 0.0001,
+      "head_lr": 1e-05,
+      "pool_lr": 0.0001,
+      "weight_decay": 0.0,
+      "probe_per_class": 2,
+      "probe_steps": 3,
+      "budget_threshold_pp": 0.1,
+      "test_evaluated": false
+    },
+    "binding": {
+      "config_sha256": "83574a1033a1f9cd27879a6a41962aa73e1a9d0f848b3b069b49359d83196a29",
+      "manifest_sha256": "b8e9b0810471d0c2b52033488fab640625c3731315afd5d2add1571bd2518827",
+      "inputs": {
+        "outputs/joint_cross_layer_packet2_s42_v1/JCL-Multi/best.pt": "c629388d2669a8e86ae00d8ddf80d349efbbcffc7e27ad08023dfc237ef25822",
+        "outputs/joint_cross_layer_packet2_s42_v1/JCL-Multi/validation_predictions.jsonl.gz": "1f2bcaf12fd7be840f3168eb9b4838ec361a8ab8a72271f572ed48e95f5e1902",
+        "data/processed/ciciot2023_grouped_input_v1/split.json": "2f6a7c307121454b881520379f0a298b7e2a179b1db4a7cb03741b7f648a774a"
+      },
+      "source_code": {
+        "scripts/run_joint_cross_layer_query.py": "999c7329c14dcec07550c13984b051b32f604b3e51446afcab2bbda694571f96",
+        "scripts/run_joint_cross_layer_packet2.py": "6c269d9b02ce81a646b51954c71926029e35f5c578e62187e5ab89dc773e5692",
+        "scripts/run_flow_query_joint_packet2.py": "93bff3969bae6814ab4821f35270f28afe31ecc2b8e9e92bc98901bb07122abd",
+        "scripts/run_flow_query_joint_seeds.py": "4bb280d3a81c11e2a89cd646d2391e32d8a6704a5d726ae115b13b7022704e53",
+        "scripts/run_attention_operator_pair.py": "4b497bfd87b1257729b916ff79672246ad97d1275fbc6dddd77adb3a54b5e5c8",
+        "scripts/summarize_attention_operator_pair.py": "4c3ec615e4e554ff1e6023c689efd4b2aed073817e5e5f22fed0d4a219bf52ce",
+        "scripts/grouped_graphs.py": "c1b1273d62fc44d91f7c9b300b66a083c1f80ef2c9c4314a62c4bbd5d708bbb4",
+        "scripts/audit_graph_split.py": "c19164930e8ecb75636cf16d6fa9bb51d6f29e1384e8d8ebf040e683536ffcb6",
+        "scripts/build_grouped_split.py": "24e07766189aec9d03f6161dee15587612a5b2f13e23eab67d7ba4aaf89a3401",
+        "src/xgnid/joint_cross_layer_query.py": "e62ce7933540527b7615e36cd2106d2afec82ac8a1e80424622556d4e0a47715",
+        "src/xgnid/joint_cross_layer.py": "6f9e6bc9d68189c7772e1c013a8746befd9dc1e2676de61d195df943d62246ce",
+        "src/xgnid/cross_layer.py": "b95600a3f085f043e9ed7f2afd24aa6f351f85d9f98544639bae911dd5387dfd",
+        "src/xgnid/flow_query_pooling.py": "b46cf4f440ad8256f09cab71e221284d261753447d773f7a3de5c8c521bb2b66",
+        "src/xgnid/packet_pooling.py": "c423c573b624a98a40ee03b5b286f2dcd3297db43a0eedcf1a654590b163742d",
+        "src/xgnid/fusion_dimension.py": "eb8dd5c91a63b424bd421c29e333ff24492e5474cdabe77408abde5f81bb703d",
+        "src/xgnid/model.py": "28e21e94118db0a4110d17923d2840e18959669d798f628018c98c91c0202631",
+        "src/xgnid/attention_operator_pair.py": "7f3f1929b8138ab010f394db30714a9da3ac15e92b02955d556df34cc4ecbfb6"
+      },
+      "torch": "2.3.1+cu118",
+      "pyg": "2.5.3",
+      "cuda_devices": [
+        "Tesla T4"
+      ]
+    },
+    "labels": [
+      "Benign",
+      "WebBased",
+      "Spoofing",
+      "Recon",
+      "Mirai",
+      "Dos",
+      "DDos",
+      "BruteForce"
+    ],
+    "initial_state_sha256": "0cbda811fabbf35f89dc561dc3101fc75a94122274c61a0b99f122da43ff4385"
+  },
+  "initial_model_state_sha256": {
+    "source_C": "c29a6433880f6e5ad8a45d387abef07cf54f895277f9f89b313edecfa7feedc6",
+    "base_C": "ebe8a5794814ae440d6c8fc39ddecd2a56c02839d065603700a98bf0f5d9bcf9",
+    "frozen_single": "02a001c7e4c5e794e54187b13ce01f09cff85d496829e688d14b02ce5a53c2bf",
+    "joint_single": "15fd78f1b709e3c0f03e59abaab27ffe1cdcd2e91593fa64fc8cfe40399ecb03",
+    "joint_ordered": "fee97b8b072fb9cafec4d7d3990f172de03d509303cc203f31a41ed54ab2f0bc"
+  },
+  "new_training_runs": 0,
+  "new_optimizer_updates": 0
+}

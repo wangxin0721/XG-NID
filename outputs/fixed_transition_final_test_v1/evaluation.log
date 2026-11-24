@@ -6,3 +6,20 @@
  * branch            5f3975aeecd41c8c1150b97f88813b7ea703e54d -> FETCH_HEAD
 Fetching reference 5f3975aeecd41c8c1150b97f88813b7ea703e54d
 {"status": "checkpoint_lock_completed", "models_locked": 12, "test_evaluated": false, "new_optimizer_updates": 0, "phase": "lock", "output": "/home/nzxn/\u4e0b\u8f7d/WX/load/XG-NID/outputs/fixed_transition_final_test_v1"}
+
+2026-11-24T08:17:37.835662+00:00 /home/nzxn/miniconda3/envs/wx/bin/python -u -B '/home/nzxn/下载/WX/load/XG-NID-fixed-transition-final-test/scripts/run_fixed_transition_final_test.py' --repo '/home/nzxn/下载/WX/load/XG-NID' --phase seed42 --resume --download-inputs
+/home/nzxn/miniconda3/envs/wx/lib/python3.9/site-packages/torch_geometric/typing.py:99: UserWarning: An issue occurred while importing 'torch-spline-conv'. Disabling its usage. Stacktrace: /home/nzxn/miniconda3/envs/wx/lib/python3.9/site-packages/torch_spline_conv/_version_cuda.so: undefined symbol: _ZN3c1017RegisterOperatorsD1Ev
+  warnings.warn(
+{"status": "running", "pid": 3063487, "phase": "cache_val", "samples": 16, "total": 13446}
+{"status": "running", "pid": 3063487, "phase": "cache_val", "samples": 3200, "total": 13446}
+{"status": "running", "pid": 3063487, "phase": "cache_val", "samples": 6400, "total": 13446}
+{"status": "running", "pid": 3063487, "phase": "cache_val", "samples": 9600, "total": 13446}
+{"status": "running", "pid": 3063487, "phase": "cache_val", "samples": 12800, "total": 13446}
+{"status": "running", "pid": 3063487, "phase": "cache_val", "samples": 13446, "total": 13446}
+{"status": "running", "pid": 3063487, "phase": "cache_fixed_test", "samples": 16, "total": 13448}
+{"status": "running", "pid": 3063487, "phase": "cache_fixed_test", "samples": 3200, "total": 13448}
+{"status": "running", "pid": 3063487, "phase": "cache_fixed_test", "samples": 6400, "total": 13448}
+{"status": "running", "pid": 3063487, "phase": "cache_fixed_test", "samples": 9600, "total": 13448}
+{"status": "running", "pid": 3063487, "phase": "cache_fixed_test", "samples": 12800, "total": 13448}
+{"status": "running", "pid": 3063487, "phase": "cache_fixed_test", "samples": 13448, "total": 13448}
+{"status": "completed", "backbone_seed": 42, "test_evaluated": true, "models": 4, "samples_per_model": 13448, "new_optimizer_updates": 0, "phase": "seed42", "output": "/home/nzxn/\u4e0b\u8f7d/WX/load/XG-NID/outputs/fixed_transition_final_test_v1"}

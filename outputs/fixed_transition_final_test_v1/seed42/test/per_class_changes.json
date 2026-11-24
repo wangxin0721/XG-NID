@@ -1,0 +1,170 @@
+{
+  "joint_ordered-base_C": {
+    "Benign": {
+      "precision": -0.16786408440927492,
+      "recall": -0.20929259104227604,
+      "f1-score": -0.18847994992002848
+    },
+    "WebBased": {
+      "precision": 3.937716262975788,
+      "recall": -0.5514705882352922,
+      "f1-score": 1.7737325942509208
+    },
+    "Spoofing": {
+      "precision": 0.09804979850316364,
+      "recall": -0.4025301897642386,
+      "f1-score": -0.1531785969504318
+    },
+    "Recon": {
+      "precision": -0.42154750136941255,
+      "recall": 1.097453906935908,
+      "f1-score": 0.3458556946928981
+    },
+    "Mirai": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0
+    },
+    "Dos": {
+      "precision": -0.0675215734633805,
+      "recall": 0.0,
+      "f1-score": -0.03381798125465796
+    },
+    "DDos": {
+      "precision": -0.0837871805613788,
+      "recall": 0.0,
+      "f1-score": -0.04182344063560217
+    },
+    "BruteForce": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0
+    }
+  },
+  "joint_ordered-joint_single": {
+    "Benign": {
+      "precision": -0.2024182324286694,
+      "recall": 0.0,
+      "f1-score": -0.10156881258681638
+    },
+    "WebBased": {
+      "precision": 3.85567010309279,
+      "recall": -1.2867647058823484,
+      "f1-score": 1.3855650553154408
+    },
+    "Spoofing": {
+      "precision": -0.052234299516917826,
+      "recall": 0.11500862564691738,
+      "f1-score": 0.031990839395656945
+    },
+    "Recon": {
+      "precision": -0.2069307224957906,
+      "recall": 0.7023705004389869,
+      "f1-score": 0.25103181208281367
+    },
+    "Mirai": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0
+    },
+    "Dos": {
+      "precision": -0.0675215734633805,
+      "recall": 0.0,
+      "f1-score": -0.03381798125465796
+    },
+    "DDos": {
+      "precision": -0.0837871805613788,
+      "recall": 0.0,
+      "f1-score": -0.04182344063560217
+    },
+    "BruteForce": {
+      "precision": 0.42918454935622075,
+      "recall": 0.42918454935622075,
+      "f1-score": 0.42918454935622075
+    }
+  },
+  "joint_ordered-frozen_single": {
+    "Benign": {
+      "precision": 0.07295127353267317,
+      "recall": -0.2511511092507246,
+      "f1-score": -0.08808665435385832
+    },
+    "WebBased": {
+      "precision": 2.193321616871713,
+      "recall": -0.9191176470588203,
+      "f1-score": 0.6806710128430593
+    },
+    "Spoofing": {
+      "precision": -0.27183579097141974,
+      "recall": 0.2875215641173101,
+      "f1-score": 0.010429339182882469
+    },
+    "Recon": {
+      "precision": -0.25379828862308607,
+      "recall": 0.4828797190517986,
+      "f1-score": 0.11689611954336376
+    },
+    "Mirai": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0
+    },
+    "Dos": {
+      "precision": -0.0675215734633805,
+      "recall": 0.0,
+      "f1-score": -0.03381798125465796
+    },
+    "DDos": {
+      "precision": -0.0837871805613788,
+      "recall": 0.0,
+      "f1-score": -0.04182344063560217
+    },
+    "BruteForce": {
+      "precision": 1.2329962900996527,
+      "recall": 0.0,
+      "f1-score": 0.6204416299861792
+    }
+  },
+  "joint_single-frozen_single": {
+    "Benign": {
+      "precision": 0.2753695059613426,
+      "recall": -0.2511511092507246,
+      "f1-score": 0.013482158232958064
+    },
+    "WebBased": {
+      "precision": -1.662348486221077,
+      "recall": 0.3676470588235281,
+      "f1-score": -0.7048940424723815
+    },
+    "Spoofing": {
+      "precision": -0.21960149145450192,
+      "recall": 0.17251293847039273,
+      "f1-score": -0.021561500212774476
+    },
+    "Recon": {
+      "precision": -0.04686756612729548,
+      "recall": -0.21949078138718825,
+      "f1-score": -0.1341356925394499
+    },
+    "Mirai": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0
+    },
+    "Dos": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0
+    },
+    "DDos": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0
+    },
+    "BruteForce": {
+      "precision": 0.803811740743432,
+      "recall": -0.42918454935622075,
+      "f1-score": 0.1912570806299585
+    }
+  }
+}
