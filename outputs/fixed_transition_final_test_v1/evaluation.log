@@ -57,3 +57,8 @@ Fetching reference 5f3975aeecd41c8c1150b97f88813b7ea703e54d
 {"status": "running", "pid": 3072594, "phase": "cache_fixed_test", "samples": 12800, "total": 13448}
 {"status": "running", "pid": 3072594, "phase": "cache_fixed_test", "samples": 13448, "total": 13448}
 {"status": "completed", "backbone_seed": 44, "test_evaluated": true, "models": 4, "samples_per_model": 13448, "new_optimizer_updates": 0, "phase": "seed44", "output": "/home/nzxn/\u4e0b\u8f7d/WX/load/XG-NID/outputs/fixed_transition_final_test_v1"}
+
+2026-11-24T09:04:48.315387+00:00 /home/nzxn/miniconda3/envs/wx/bin/python -u -B '/home/nzxn/下载/WX/load/XG-NID-fixed-transition-final-test/scripts/run_fixed_transition_final_test.py' --repo '/home/nzxn/下载/WX/load/XG-NID' --phase aggregate --resume --download-inputs
+/home/nzxn/miniconda3/envs/wx/lib/python3.9/site-packages/torch_geometric/typing.py:99: UserWarning: An issue occurred while importing 'torch-spline-conv'. Disabling its usage. Stacktrace: /home/nzxn/miniconda3/envs/wx/lib/python3.9/site-packages/torch_spline_conv/_version_cuda.so: undefined symbol: _ZN3c1017RegisterOperatorsD1Ev
+  warnings.warn(
+{"status": "completed", "test_evaluated": true, "models_evaluated": 12, "samples_per_model": 13448, "new_training_runs": 0, "new_optimizer_updates": 0, "phase": "aggregate", "output": "/home/nzxn/\u4e0b\u8f7d/WX/load/XG-NID/outputs/fixed_transition_final_test_v1"}

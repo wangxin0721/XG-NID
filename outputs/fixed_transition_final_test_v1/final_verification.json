@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "models_evaluated": 12,
+  "samples_per_model": 13448,
+  "same_test_cohort": true,
+  "all_validation_and_historical_C_replays_passed": true,
+  "independent_prediction_audits_passed": true,
+  "new_training_runs": 0,
+  "new_optimizer_updates": 0,
+  "test_reselection_permitted": false
+}
