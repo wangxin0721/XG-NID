@@ -1,0 +1,6 @@
+{
+  "evaluation_exit_code": 0,
+  "primary_upload_exit_code": 0,
+  "receipt_publication_follows": true,
+  "retry_command": "'D:\\XG-NID\\.residual-audit-env\\Scripts\\python.exe' -B 'D:\\XG-NID\\tmp\\fixed-transition-stability-worktree\\scripts\\sync_server_outputs.py' publish --repo 'D:\\XG-NID' --only fixed_transition_final_test_v1 --remote https://github.com/wangxin0721/XG-NID.git"
+}

@@ -1,6 +1,6 @@
 {
   "schema": "xgnid.outputs-snapshot.v2",
-  "created_utc": "2026-11-24T08:05:03.298952+00:00",
+  "created_utc": "2026-11-24T08:07:00.359006+00:00",
   "source_directory": "D:\\XG-NID\\outputs",
   "files": {
     "GNN4ID/best.pt": {
@@ -2551,6 +2551,10 @@
       "bytes": 442,
       "sha256": "9d9b32f33952297f62d31d944c4ef52537a665992cd6b7a4905b2b9ec1209da8"
     },
+    "fixed_transition_final_test_v1/exit_codes.json": {
+      "bytes": 395,
+      "sha256": "810df0a0ba02ebbf0877b4f518bfe594194b613dd93b680bc27e3aace116935f"
+    },
     "fixed_transition_final_test_v1/lfs_preflight.json": {
       "bytes": 51,
       "sha256": "e90a9670ab580784d101f42b60cc8de912d9133b4724cb0e8fa2e5d73d925e6c"
@@ -2618,6 +2622,10 @@
     "fixed_transition_final_test_v1/status.json": {
       "bytes": 171,
       "sha256": "2c9d49890b4f09f1550717e0dc4ad7d9d82f0b793d49f4ac22830be92e3c0b03"
+    },
+    "fixed_transition_final_test_v1/upload.log": {
+      "bytes": 2727,
+      "sha256": "59ae2720878712f72c9e972dad124971df566c27c60819a76c8dd52bec835c74"
     },
     "fixed_transition_stability_v1/aggregate/model_metrics.csv": {
       "bytes": 3217,
@@ -11508,10 +11516,10 @@
       "sha256": "ebd2091803aab3a050f3a791f303ea786bca06de0d6ab6d56a633cdc16f67b1e"
     }
   },
-  "file_count": 2826,
+  "file_count": 2828,
   "symlink_count": 100,
-  "regular_file_count": 2726,
-  "total_bytes": 9035537941,
+  "regular_file_count": 2728,
+  "total_bytes": 9035541063,
   "updated_directories": [
     "fixed_transition_final_test_v1"
   ]
