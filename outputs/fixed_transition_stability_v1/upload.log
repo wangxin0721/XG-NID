@@ -1,4 +1,4 @@
-{"files": 143, "GiB": 0.9262684881687164, "staging_directory": "/home/nzxn/下载/WX/load/XG-NID/.outputs-publish-jkcwl0gj"}
+{"files": 152, "GiB": 0.9267470724880695, "staging_directory": "/home/nzxn/下载/WX/load/XG-NID/.outputs-publish-twz4fc2o"}
 提示：使用 'master' 作为初始分支的名称。这个默认分支名称可能会更改。要在新仓库中
 提示：配置使用初始分支名，并消除这条警告，请执行：
 提示：
@@ -8,64 +8,24 @@
 提示：可以通过以下命令重命名刚创建的分支：
 提示：
 提示：	git branch -m <name>
-已初始化空的 Git 仓库于 /home/nzxn/下载/WX/load/XG-NID/.outputs-publish-jkcwl0gj/.git/
+已初始化空的 Git 仓库于 /home/nzxn/下载/WX/load/XG-NID/.outputs-publish-twz4fc2o/.git/
 来自 github.com:wangxin0721/XG-NID
  * branch            codex/server-outputs -> FETCH_HEAD
  * [新分支]          codex/server-outputs -> origin/codex/server-outputs
 Updated Git hooks.
 Git LFS initialized.
-[codex/server-outputs 81e8549] Update selected server outputs
- 54 files changed, 28130 insertions(+), 11 deletions(-)
- create mode 100644 outputs/fixed_transition_stability_v1/backbone_uploads.json
- create mode 100644 outputs/fixed_transition_stability_v1/publication_history/seed43_20261123T172531112080Z_exit_codes.json
- create mode 100644 outputs/fixed_transition_stability_v1/publication_history/seed43_20261123T172531112080Z_upload.log
- create mode 100644 outputs/fixed_transition_stability_v1/seed44/artifact_manifest.json
- create mode 100644 outputs/fixed_transition_stability_v1/seed44/base_C/best.pt
- create mode 100644 outputs/fixed_transition_stability_v1/seed44/base_C/best_validation_predictions.jsonl.gz
- create mode 100644 outputs/fixed_transition_stability_v1/seed44/baseline_validation_replay.json
- create mode 100644 outputs/fixed_transition_stability_v1/seed44/budget_comparison.json
- create mode 100644 outputs/fixed_transition_stability_v1/seed44/config.json
- create mode 100644 outputs/fixed_transition_stability_v1/seed44/coverage.json
- create mode 100644 outputs/fixed_transition_stability_v1/seed44/epoch_zero_replay.json
- create mode 100644 outputs/fixed_transition_stability_v1/seed44/final_verification.json
- create mode 100644 outputs/fixed_transition_stability_v1/seed44/frozen_single/best.pt
- create mode 100644 outputs/fixed_transition_stability_v1/seed44/frozen_single/best_validation_predictions.jsonl.gz
- create mode 100644 outputs/fixed_transition_stability_v1/seed44/frozen_single/epochs.jsonl
- create mode 100644 outputs/fixed_transition_stability_v1/seed44/frozen_single/last.pt
- create mode 100644 outputs/fixed_transition_stability_v1/seed44/frozen_train_features.pt
- create mode 100644 outputs/fixed_transition_stability_v1/seed44/frozen_val_features.pt
- create mode 100644 outputs/fixed_transition_stability_v1/seed44/independent_verification.json
- create mode 100644 outputs/fixed_transition_stability_v1/seed44/joint_ordered/best.pt
- create mode 100644 outputs/fixed_transition_stability_v1/seed44/joint_ordered/best_validation_predictions.jsonl.gz
- create mode 100644 outputs/fixed_transition_stability_v1/seed44/joint_ordered/epochs.jsonl
- create mode 100644 outputs/fixed_transition_stability_v1/seed44/joint_ordered/last.pt
- create mode 100644 outputs/fixed_transition_stability_v1/seed44/joint_single/best.pt
- create mode 100644 outputs/fixed_transition_stability_v1/seed44/joint_single/best_validation_predictions.jsonl.gz
- create mode 100644 outputs/fixed_transition_stability_v1/seed44/joint_single/epochs.jsonl
- create mode 100644 outputs/fixed_transition_stability_v1/seed44/joint_single/last.pt
- create mode 100644 outputs/fixed_transition_stability_v1/seed44/progress.json
- create mode 100644 outputs/fixed_transition_stability_v1/seed44/provenance.json
- create mode 100644 outputs/fixed_transition_stability_v1/seed44/raw_gradient_probe.json
- create mode 100644 outputs/fixed_transition_stability_v1/seed44/recovery.pt
- create mode 100644 outputs/fixed_transition_stability_v1/seed44/report.md
- create mode 100644 outputs/fixed_transition_stability_v1/seed44/selected_validation_replay.json
- create mode 100644 outputs/fixed_transition_stability_v1/seed44/server_probe.json
- create mode 100644 outputs/fixed_transition_stability_v1/seed44/status.json
- create mode 100644 outputs/fixed_transition_stability_v1/seed44/summary.json
- create mode 100644 outputs/fixed_transition_stability_v1/seed44/training_progress.json
- create mode 100644 outputs/fixed_transition_stability_v1/seed44/validation/base_C_confusion_matrix.csv
- create mode 100644 outputs/fixed_transition_stability_v1/seed44/validation/frozen_single_confusion_matrix.csv
- create mode 100644 outputs/fixed_transition_stability_v1/seed44/validation/joint_ordered-base_C_changed_samples.jsonl.gz
- create mode 100644 outputs/fixed_transition_stability_v1/seed44/validation/joint_ordered-frozen_single_changed_samples.jsonl.gz
- create mode 100644 outputs/fixed_transition_stability_v1/seed44/validation/joint_ordered-joint_single_changed_samples.jsonl.gz
- create mode 100644 outputs/fixed_transition_stability_v1/seed44/validation/joint_ordered_confusion_matrix.csv
- create mode 100644 outputs/fixed_transition_stability_v1/seed44/validation/joint_single-frozen_single_changed_samples.jsonl.gz
- create mode 100644 outputs/fixed_transition_stability_v1/seed44/validation/joint_single_confusion_matrix.csv
- create mode 100644 outputs/fixed_transition_stability_v1/seed44/validation/paired_diagnostic_groups.json
- create mode 100644 outputs/fixed_transition_stability_v1/seed44/validation/per_class.csv
- create mode 100644 outputs/fixed_transition_stability_v1/seed44/validation/per_class_changes.json
- create mode 100644 outputs/fixed_transition_stability_v1/seed44/validation/validation_predictions.jsonl.gz
-Uploading LFS objects: 100% (30/30), 981 MB | 12 MB/s, done.
+[codex/server-outputs 494beed] Update selected server outputs
+ 15 files changed, 19058 insertions(+), 23 deletions(-)
+ create mode 100644 outputs/fixed_transition_stability_v1/aggregate/model_metrics.csv
+ create mode 100644 outputs/fixed_transition_stability_v1/aggregate/paired_differences_pp.csv
+ create mode 100644 outputs/fixed_transition_stability_v1/aggregate/report.md
+ create mode 100644 outputs/fixed_transition_stability_v1/aggregate/summary.json
+ create mode 100644 outputs/fixed_transition_stability_v1/final_verification.json
+ create mode 100644 outputs/fixed_transition_stability_v1/publication_history/seed44_20261124T030543104055Z_exit_codes.json
+ create mode 100644 outputs/fixed_transition_stability_v1/publication_history/seed44_20261124T030543104055Z_upload.log
+ create mode 100644 outputs/fixed_transition_stability_v1/report.md
+ create mode 100644 outputs/fixed_transition_stability_v1/summary.json
+Uploading LFS objects: 100% (30/30), 981 MB | 0 B/s, done.
 To github.com:wangxin0721/XG-NID.git
-   65eda07..81e8549  HEAD -> codex/server-outputs
-{"status": "uploaded", "branch": "codex/server-outputs", "commit": "81e854994076bcca952d71a1f30952c95e49c4e9", "files": 143, "symlinks": 0, "bytes": 994573216, "staging_directory_preserved": "/home/nzxn/下载/WX/load/XG-NID/.outputs-publish-jkcwl0gj"}
+   6f95eb8..494beed  HEAD -> codex/server-outputs
+{"status": "uploaded", "branch": "codex/server-outputs", "commit": "494beed8cbe60c6d94495ee2b75a08fb3024043f", "files": 152, "symlinks": 0, "bytes": 995087092, "staging_directory_preserved": "/home/nzxn/下载/WX/load/XG-NID/.outputs-publish-twz4fc2o"}
