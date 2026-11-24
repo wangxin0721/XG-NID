@@ -1,10 +1,9 @@
 {
-  "status": "backbone_completed",
-  "backbone_seed": 44,
+  "status": "completed",
   "formal_training_started": true,
+  "new_training_runs": 6,
+  "new_updates_total": 253200,
   "test_evaluated": false,
-  "updates_per_arm": 42200,
-  "phase": "seed44",
-  "queue_completed": false,
-  "backbone_status": "completed"
+  "phase": "aggregate",
+  "queue_completed": true
 }

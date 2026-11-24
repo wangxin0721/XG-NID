@@ -1,6 +1,6 @@
 {
   "schema": "xgnid.outputs-snapshot.v2",
-  "created_utc": "2026-11-24T03:05:03.850261+00:00",
+  "created_utc": "2026-11-24T03:07:29.286651+00:00",
   "source_directory": "/home/nzxn/下载/WX/load/XG-NID/outputs",
   "files": {
     "GNN4ID/best.pt": {
@@ -2539,9 +2539,25 @@
       "bytes": 75680,
       "sha256": "3bb04395173ba341522fcf242996b5d41bc335a92c89ad62817384e477397b8f"
     },
+    "fixed_transition_stability_v1/aggregate/model_metrics.csv": {
+      "bytes": 3217,
+      "sha256": "d6220452fabe93bb1b3856c7707b280fcaf51329d9c658b155f184bf230f52d0"
+    },
+    "fixed_transition_stability_v1/aggregate/paired_differences_pp.csv": {
+      "bytes": 1214,
+      "sha256": "7b5c308c1f96e263547182b91796802dc597962673ed8fad135b4e435445269f"
+    },
+    "fixed_transition_stability_v1/aggregate/report.md": {
+      "bytes": 3865,
+      "sha256": "671cf8f9973e84bc7a165b1109bafed74e75d57e9e6989a2cc5d91c9ec66b9a3"
+    },
+    "fixed_transition_stability_v1/aggregate/summary.json": {
+      "bytes": 248880,
+      "sha256": "5eae003cafb1e90cbe651ada3a7f26eb8c7bf41e69c20b804ddf412ad55676ce"
+    },
     "fixed_transition_stability_v1/backbone_uploads.json": {
-      "bytes": 174,
-      "sha256": "0a269464acad967168c3b0a29211260ed39db7223c97a9bd92c27a53669cf4b8"
+      "bytes": 326,
+      "sha256": "a878bfb612bddd3f04946b02b94cb3469c6e71cc6c74eba8a534b740456999f2"
     },
     "fixed_transition_stability_v1/exit_codes.json": {
       "bytes": 348,
@@ -2551,13 +2567,17 @@
       "bytes": 1963,
       "sha256": "02095f63390da453fb6ea23b79a1bf68d1a0521fda2fe53d7ec8f4b47bc28e31"
     },
+    "fixed_transition_stability_v1/final_verification.json": {
+      "bytes": 196,
+      "sha256": "cf888e899a036f1271f18ba42712d8d87b4f960fbed4ba6fc79c5c08f6e68258"
+    },
     "fixed_transition_stability_v1/launcher.pid": {
       "bytes": 8,
       "sha256": "f8b04a74e61265e1c8661bc134ad0f631012bc979e10067631c0ffa65a5b8994"
     },
     "fixed_transition_stability_v1/phase_exit_codes.json": {
-      "bytes": 719,
-      "sha256": "2143e1277794932d9d0fc4b19136335e9f11d6cf6a0e4a7d64349827589304af"
+      "bytes": 896,
+      "sha256": "ffb1598ecc9bbcb0a27ac3035c986e494fe32f0e075748669741ca07df3d0900"
     },
     "fixed_transition_stability_v1/protocol_lock.json": {
       "bytes": 25658,
@@ -2578,6 +2598,18 @@
     "fixed_transition_stability_v1/publication_history/seed43_20261123T172531112080Z_upload.log": {
       "bytes": 10006,
       "sha256": "f7a54dae62538eaf205bc7c1ad4b1141948bce883f92059d3a115604e4102033"
+    },
+    "fixed_transition_stability_v1/publication_history/seed44_20261124T030543104055Z_exit_codes.json": {
+      "bytes": 348,
+      "sha256": "47d46a5b3481b08c9d1064ba8ea6b10d75a964af0605961c0aa5f56fa70b824d"
+    },
+    "fixed_transition_stability_v1/publication_history/seed44_20261124T030543104055Z_upload.log": {
+      "bytes": 6126,
+      "sha256": "08b2202cc9c91f8fc32bba42e2c9d98fe7d6fea085497485a93054b792e8df8b"
+    },
+    "fixed_transition_stability_v1/report.md": {
+      "bytes": 3865,
+      "sha256": "671cf8f9973e84bc7a165b1109bafed74e75d57e9e6989a2cc5d91c9ec66b9a3"
     },
     "fixed_transition_stability_v1/seed42_import/artifact_manifest.json": {
       "bytes": 3923,
@@ -3096,16 +3128,20 @@
       "sha256": "6428f635c1db6e39c6d8a71967e6732bec731eb925f5db09a347d7019b027f46"
     },
     "fixed_transition_stability_v1/status.json": {
-      "bytes": 233,
-      "sha256": "ab714093b2da81408c3b82828bba6922c6ee6709eb15d9be4ce1872ea23b4b3c"
+      "bytes": 198,
+      "sha256": "5780f0c97b6fffd8a52ac4faa6ee13434fd90a702beb93c8fe32e2878cef851a"
+    },
+    "fixed_transition_stability_v1/summary.json": {
+      "bytes": 248880,
+      "sha256": "5eae003cafb1e90cbe651ada3a7f26eb8c7bf41e69c20b804ddf412ad55676ce"
     },
     "fixed_transition_stability_v1/training.log": {
-      "bytes": 125649,
-      "sha256": "d39327171012b6411d65e244346d4d87e1481eaaffe2dae2892353905c8d852c"
+      "bytes": 126517,
+      "sha256": "6bd047443398693ade00985f16d389496b87a8ec4a0fc0219617bdb7883c7048"
     },
     "fixed_transition_stability_v1/training_exit.json": {
-      "bytes": 166,
-      "sha256": "f221453d13445d446c6731cec25dc84a432783018c81280458d1faeb2190b1c7"
+      "bytes": 169,
+      "sha256": "0f22a4f6f454aa358a79907b0fb3329779d783d6a2355f625c51bd7b6e0fa75c"
     },
     "fixed_transition_stability_v1/upload.log": {
       "bytes": 6126,
@@ -11392,10 +11428,10 @@
       "sha256": "ebd2091803aab3a050f3a791f303ea786bca06de0d6ab6d56a633cdc16f67b1e"
     }
   },
-  "file_count": 2797,
+  "file_count": 2806,
   "symlink_count": 100,
-  "regular_file_count": 2697,
-  "total_bytes": 9023000912,
+  "regular_file_count": 2706,
+  "total_bytes": 9023518668,
   "updated_directories": [
     "fixed_transition_stability_v1"
   ]
