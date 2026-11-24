@@ -1,0 +1,31 @@
+{
+  "binding": {
+    "protocol_lock_sha256": "590da676e5c7dd11a50abf92f134964e13d7a0de7ba8f5f2bedf9ff8aa1fc23a",
+    "source": {
+      "backbone_seed": 43,
+      "frozen_c_sha256": "746ee8c5b2e4f3e461bbd61edc59204d55ab565c58a24803f65fbafa9c0ab45d",
+      "split_id": "a8ae9c934eec9fee970cc725e60051d0c709e0f16c7dda14749350ff2006975a",
+      "manifest_sha256": "b8e9b0810471d0c2b52033488fab640625c3731315afd5d2add1571bd2518827",
+      "validation_digest": "79d840d76d3dc8804ccda64dc65ae8f6f368ec91d57b4d062918361de05d3d6e"
+    },
+    "environment": {
+      "python": "3.9.23",
+      "torch": "2.3.1+cu118",
+      "pyg": "2.5.3",
+      "cuda": "11.8",
+      "platform": "Linux-6.8.0-138-generic-x86_64-with-glibc2.35",
+      "device": "Tesla T4"
+    },
+    "graph_root": "/home/nzxn/下载/WX/load/XG-NID/data/processed/CICIoT2023_processed/processed",
+    "input_sha256": {
+      "data/processed/ciciot2023_grouped_input_v1/split.json": "2f6a7c307121454b881520379f0a298b7e2a179b1db4a7cb03741b7f648a774a",
+      "data/processed/ciciot2023_grouped_input_v1/samples.jsonl": "b8e9b0810471d0c2b52033488fab640625c3731315afd5d2add1571bd2518827"
+    },
+    "eval_batch_size": 16,
+    "workers": 2
+  },
+  "sha256": "85e4e9d09dfbb2d608470114b4cc6c58e40d41ce63d90af767f04d6c683aa3a7",
+  "partition": "val",
+  "samples": 13446,
+  "frozen_modules_only": true
+}

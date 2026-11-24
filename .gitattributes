@@ -79,6 +79,9 @@
 "outputs/fixed_transition_final_test_v1/seed42/frozen_test_features.pt" filter=lfs diff=lfs merge=lfs -text
 "outputs/fixed_transition_final_test_v1/seed42/frozen_val_features.pt" filter=lfs diff=lfs merge=lfs -text
 "outputs/fixed_transition_final_test_v1/seed42/test/predictions.jsonl.gz" filter=lfs diff=lfs merge=lfs -text
+"outputs/fixed_transition_final_test_v1/seed43/frozen_test_features.pt" filter=lfs diff=lfs merge=lfs -text
+"outputs/fixed_transition_final_test_v1/seed43/frozen_val_features.pt" filter=lfs diff=lfs merge=lfs -text
+"outputs/fixed_transition_final_test_v1/seed43/test/predictions.jsonl.gz" filter=lfs diff=lfs merge=lfs -text
 "outputs/fixed_transition_stability_v1/seed42_import/base_C/best.pt" filter=lfs diff=lfs merge=lfs -text
 "outputs/fixed_transition_stability_v1/seed42_import/frozen_single/best.pt" filter=lfs diff=lfs merge=lfs -text
 "outputs/fixed_transition_stability_v1/seed42_import/frozen_single/last.pt" filter=lfs diff=lfs merge=lfs -text
