@@ -1,0 +1,29 @@
+{"files": 20, "GiB": 0.01119639165699482, "staging_directory": "/home/nzxn/下载/WX/load/XG-NID/.outputs-publish-64lf7z_y"}
+提示：使用 'master' 作为初始分支的名称。这个默认分支名称可能会更改。要在新仓库中
+提示：配置使用初始分支名，并消除这条警告，请执行：
+提示：
+提示：	git config --global init.defaultBranch <名称>
+提示：
+提示：除了 'master' 之外，通常选定的名字有 'main'、'trunk' 和 'development'。
+提示：可以通过以下命令重命名刚创建的分支：
+提示：
+提示：	git branch -m <name>
+已初始化空的 Git 仓库于 /home/nzxn/下载/WX/load/XG-NID/.outputs-publish-64lf7z_y/.git/
+来自 github.com:wangxin0721/XG-NID
+ * branch            codex/server-outputs -> FETCH_HEAD
+ * [新分支]          codex/server-outputs -> origin/codex/server-outputs
+Updated Git hooks.
+Git LFS initialized.
+[codex/server-outputs 6e324f8] Update selected server outputs
+ 10 files changed, 37 insertions(+), 137 deletions(-)
+ rewrite outputs/fixed_transition_final_test_v1/evaluation.log (70%)
+ delete mode 100644 outputs/fixed_transition_final_test_v1/evaluation_exit.json
+ delete mode 100644 outputs/fixed_transition_final_test_v1/exit_codes.json
+ create mode 100644 outputs/fixed_transition_final_test_v1/launcher.pid
+ delete mode 100644 outputs/fixed_transition_final_test_v1/local_validation.json
+ delete mode 100644 outputs/fixed_transition_final_test_v1/publication_history/lock_20261124T080717143648Z.json
+ delete mode 100644 outputs/fixed_transition_final_test_v1/upload.log
+Uploading LFS objects: 100% (12/12), 12 MB | 0 B/s, done.
+To github.com:wangxin0721/XG-NID.git
+   42e064b..6e324f8  HEAD -> codex/server-outputs
+{"status": "uploaded", "branch": "codex/server-outputs", "commit": "6e324f83446aef9f86053810a10b50acd507c656", "files": 20, "symlinks": 0, "bytes": 12022034, "staging_directory_preserved": "/home/nzxn/下载/WX/load/XG-NID/.outputs-publish-64lf7z_y"}
