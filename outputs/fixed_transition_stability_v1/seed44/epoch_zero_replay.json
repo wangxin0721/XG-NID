@@ -1,0 +1,66 @@
+{
+  "passed": true,
+  "samples": 13446,
+  "source_C_receipts": {
+    "frozen_single": {
+      "passed": true,
+      "samples": 13446,
+      "metrics_match": true,
+      "prediction_ids_sha256": "4ed6ed2b94fca23727c34737661e3b49209a18d6d8ce74f5e90a3f8822438851",
+      "expected_prediction_ids_sha256": "4ed6ed2b94fca23727c34737661e3b49209a18d6d8ce74f5e90a3f8822438851",
+      "archive_comparison": {
+        "counts": {
+          "repaired": 0,
+          "regressed": 0,
+          "both_correct": 13203,
+          "both_wrong": 243
+        },
+        "net_correct": 0
+      },
+      "first_differences": []
+    },
+    "joint_single": {
+      "passed": true,
+      "samples": 13446,
+      "metrics_match": true,
+      "prediction_ids_sha256": "4ed6ed2b94fca23727c34737661e3b49209a18d6d8ce74f5e90a3f8822438851",
+      "expected_prediction_ids_sha256": "4ed6ed2b94fca23727c34737661e3b49209a18d6d8ce74f5e90a3f8822438851",
+      "archive_comparison": {
+        "counts": {
+          "repaired": 0,
+          "regressed": 0,
+          "both_correct": 13203,
+          "both_wrong": 243
+        },
+        "net_correct": 0
+      },
+      "first_differences": []
+    },
+    "joint_ordered": {
+      "passed": true,
+      "samples": 13446,
+      "metrics_match": true,
+      "prediction_ids_sha256": "4ed6ed2b94fca23727c34737661e3b49209a18d6d8ce74f5e90a3f8822438851",
+      "expected_prediction_ids_sha256": "4ed6ed2b94fca23727c34737661e3b49209a18d6d8ce74f5e90a3f8822438851",
+      "archive_comparison": {
+        "counts": {
+          "repaired": 0,
+          "regressed": 0,
+          "both_correct": 13203,
+          "both_wrong": 243
+        },
+        "net_correct": 0
+      },
+      "first_differences": []
+    }
+  },
+  "fusion_initial_sha256": "5aa6da2486f8c3e41b2402a706b86646d4eabd8662293703e4c7ca6b51e8dd75",
+  "max_abs_log_probability_errors": {
+    "frozen_single": 0.0,
+    "joint_single": 0.0,
+    "joint_ordered": 0.0
+  },
+  "common_readout_initialization_verified": true,
+  "context_initialization_verified": true,
+  "independent_parameters_and_optimizers": true
+}

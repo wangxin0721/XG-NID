@@ -1,0 +1,7 @@
+{
+  "passed": true,
+  "samples": 13446,
+  "confusion_matrices": 4,
+  "paired_comparisons": 4,
+  "method": "integer confusion counts and direct precision/recall/harmonic-F1 formulas"
+}
