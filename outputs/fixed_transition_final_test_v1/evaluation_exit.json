@@ -1,0 +1,9 @@
+{
+  "exit_code": 0,
+  "last_phase": "lock",
+  "signal": null,
+  "lock_only": true,
+  "probe_only": false,
+  "new_optimizer_updates": 0,
+  "finished_utc": "2026-11-24T08:07:17.145652+00:00"
+}
