@@ -1,0 +1,53 @@
+{
+  "status": "local_checks_passed_fixed_test_pending",
+  "date": "2026-11-24",
+  "code_commit": "2b6690ac8600732b98365e91f6fb7b464e33912f",
+  "source_result_commit": "5f3975aeecd41c8c1150b97f88813b7ea703e54d",
+  "cpu_checks_passed": 57,
+  "cpu_test_modules": [
+    "test_fixed_transition_final_test",
+    "test_fixed_transition_stability",
+    "test_fixed_transition_lfs",
+    "test_joint_transition_fusion"
+  ],
+  "real_models_restored": 12,
+  "validation_replay": {
+    "42": {
+      "models": 4,
+      "samples_each": 13446,
+      "all_predictions_identical": true,
+      "features_from_hash_bound_archive": true,
+      "source_C_sha256": "c29a6433880f6e5ad8a45d387abef07cf54f895277f9f89b313edecfa7feedc6"
+    },
+    "43": {
+      "models": 4,
+      "samples_each": 13446,
+      "all_predictions_identical": true,
+      "features_from_hash_bound_archive": true,
+      "source_C_sha256": "746ee8c5b2e4f3e461bbd61edc59204d55ab565c58a24803f65fbafa9c0ab45d"
+    },
+    "44": {
+      "models": 4,
+      "samples_each": 13446,
+      "all_predictions_identical": true,
+      "features_from_hash_bound_archive": true,
+      "source_C_sha256": "813afa5e7d19ff35a050dd81a56a114b03e90421b71fb364cea60691ac9576d2"
+    }
+  },
+  "encoders_executed_locally": false,
+  "test_evaluated": false,
+  "new_training_runs": 0,
+  "new_optimizer_updates": 0,
+  "environment": {
+    "torch": "2.3.1+cpu",
+    "pyg": "2.5.3",
+    "cuda_available": false
+  },
+  "server_connection_probe": {
+    "host_alias": "GPU-XG-NID",
+    "status": "unavailable",
+    "reason": "SSH proxy/banner timeout"
+  },
+  "server_runtime_probe_passed": false,
+  "formal_fixed_test_started": false
+}
