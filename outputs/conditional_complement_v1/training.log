@@ -1,3 +1,7 @@
 
-2026-11-25T11:29:07.325022+00:00 'D:\XG-NID\.residual-audit-env\Scripts\python.exe' -u -B 'D:\XG-NID\tmp\conditional-complement-worktree\scripts\run_conditional_complement.py' --repo 'D:\XG-NID' --phase lock --resume auto --download-inputs
+2026-11-25T11:46:17.404680+00:00 /home/nzxn/miniconda3/envs/wx/bin/python -u -B '/home/nzxn/下载/WX/load/XG-NID-conditional-complement-v1/scripts/run_conditional_complement.py' --repo '/home/nzxn/下载/WX/load/XG-NID' --phase lock --resume auto --download-inputs
+/home/nzxn/miniconda3/envs/wx/lib/python3.9/site-packages/torch_geometric/typing.py:99: UserWarning: An issue occurred while importing 'torch-spline-conv'. Disabling its usage. Stacktrace: /home/nzxn/miniconda3/envs/wx/lib/python3.9/site-packages/torch_spline_conv/_version_cuda.so: undefined symbol: _ZN3c1017RegisterOperatorsD1Ev
+  warnings.warn(
+来自 github.com:wangxin0721/XG-NID
+ * branch            b6ca40cfb1abef54c669bdcf932ce95bdd272a66 -> FETCH_HEAD
 {"status": "source_lock_completed", "models": 12, "test_evaluated": false}

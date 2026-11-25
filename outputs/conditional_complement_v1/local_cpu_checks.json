@@ -1,7 +1,0 @@
-{
-  "passed": true,
-  "tests_run": 49,
-  "failures": 0,
-  "errors": 0,
-  "scope": "CPU synthetic mechanisms and dependency regressions; not server preflight or formal training"
-}

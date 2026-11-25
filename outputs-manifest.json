@@ -1,7 +1,7 @@
 {
   "schema": "xgnid.outputs-snapshot.v2",
-  "created_utc": "2026-11-25T11:38:45.269671+00:00",
-  "source_directory": "D:\\XG-NID\\outputs",
+  "created_utc": "2026-11-25T11:47:59.843582+00:00",
+  "source_directory": "/home/nzxn/下载/WX/load/XG-NID/outputs",
   "files": {
     "GNN4ID/best.pt": {
       "bytes": 1735954,
@@ -967,61 +967,21 @@
       "bytes": 21479,
       "sha256": "5bddb0bf1fc32c5583873f5e26cdfc6fc92af19f865bd64a987b34b87f5ffadb"
     },
-    "conditional_complement_v1/exit_codes.json": {
-      "bytes": 384,
-      "sha256": "6fbd4ca20105bb1d940166b3b8725b543d10d137df466b42996a3b37f06c2afa"
+    "conditional_complement_v1/launcher.pid": {
+      "bytes": 8,
+      "sha256": "8d006e07c37eb1473fa470c7d9eaa0ee8b5c6b8647412b141c1b97c2741f9004"
     },
     "conditional_complement_v1/lfs_preflight.json": {
-      "bytes": 174,
-      "sha256": "d39647838ecc61b7fd095be8bc9814cb747d9435a042686c0f02f45bd9731c04"
-    },
-    "conditional_complement_v1/local_cpu_checks.json": {
-      "bytes": 186,
-      "sha256": "8f6e6b1a3367f4096cf1b4ff4c213362c11b5b9dc4c97c884d6984e24ad896fa"
-    },
-    "conditional_complement_v1/local_cpu_checks.log": {
-      "bytes": 5856,
-      "sha256": "597612bdb0eae17a42b7c413922bb02f2b8f05bcc34f9f95f3db4dad550f626a"
-    },
-    "conditional_complement_v1/local_validation.json": {
-      "bytes": 831,
-      "sha256": "3adc65d2bc865f3120d3aa670ef67f9436d16b2576b6e45221a882151abff219"
-    },
-    "conditional_complement_v1/local_validation_cache_audit.json": {
-      "bytes": 825,
-      "sha256": "96835d92b01675e942638480a422b206a3bea05e6f0d4b672212b3914d71c55a"
+      "bytes": 169,
+      "sha256": "01d3119d764a016cea5b0b75c172c96348b1eb368c2cbbe7d3c9716027a4ed71"
     },
     "conditional_complement_v1/phase_exit_codes.json": {
-      "bytes": 205,
-      "sha256": "664a9794e5b0927c0272a691c86cb5028a4629c217fae80fabc346befcc2c2e6"
+      "bytes": 195,
+      "sha256": "af0c4aca6953da41d437812df5045a4815e613ca1761ff6ab145fd04949a0b75"
     },
     "conditional_complement_v1/protocol_lock.json": {
       "bytes": 27364,
       "sha256": "ad46e650b6d5312803e1fe127df9a2d75410725c66ba22f7aee66488623de990"
-    },
-    "conditional_complement_v1/publication_history/20261125T112932061573Z_github_audit.json": {
-      "bytes": 507,
-      "sha256": "40059abf13ab84735b901bded1ef6d9f11fef40161353f9b9ebfd8e9d92fdeb5"
-    },
-    "conditional_complement_v1/publication_history/20261125T112932061573Z_github_audit.log": {
-      "bytes": 583,
-      "sha256": "4dc0a6e7b3065965181c2673e29c27d44a387ed7e043fe35b9476fd82c23a808"
-    },
-    "conditional_complement_v1/publication_history/20261125T113425812399Z_exit_codes.json": {
-      "bytes": 384,
-      "sha256": "6fbd4ca20105bb1d940166b3b8725b543d10d137df466b42996a3b37f06c2afa"
-    },
-    "conditional_complement_v1/publication_history/20261125T113425812399Z_upload.log": {
-      "bytes": 2986,
-      "sha256": "c0ef0d668ef98a8667c385dcb08bd034a5ba7cdbb49817f4ac4dcb30f3eb6196"
-    },
-    "conditional_complement_v1/queue_completion.json": {
-      "bytes": 187,
-      "sha256": "8dfc761b509a2d9798901051bf97904404aed94a109a9b0e409a360556878cd4"
-    },
-    "conditional_complement_v1/report.md": {
-      "bytes": 791,
-      "sha256": "becc24808d886ce85a5d2d9c344ff4a89331c6ad007ca55e5ad4e9538daa24c8"
     },
     "conditional_complement_v1/source_checkpoints/seed42/base_C.pt": {
       "bytes": 3823196,
@@ -1084,16 +1044,8 @@
       "sha256": "7c5403f86955905394a6e84a6b1bd6e063e636dbbf7eda3c541eb4e1cea22717"
     },
     "conditional_complement_v1/training.log": {
-      "bytes": 317,
-      "sha256": "73a74f1d04ea26211339134b41fedbbe75e984b17afaa812198df028bf9192c2"
-    },
-    "conditional_complement_v1/training_exit.json": {
-      "bytes": 146,
-      "sha256": "2a7f0d2c0d2543ab12fe6a1708063b867d5d8b573a1565ef047c1543160e5c98"
-    },
-    "conditional_complement_v1/upload.log": {
-      "bytes": 1492,
-      "sha256": "2a6f81c4bf5ac7a1612fcb64295cc6fd9c6e32770f66583ccacaede63265a26c"
+      "bytes": 804,
+      "sha256": "cd99ce3d28284c6abc0a7ed2fc8c2f844c8fa946511e87933985886b3d9c8673"
     },
     "cross_layer_fold_check_v1.json": {
       "bytes": 7337,
@@ -12148,10 +12100,10 @@
       "sha256": "ebd2091803aab3a050f3a791f303ea786bca06de0d6ab6d56a633cdc16f67b1e"
     }
   },
-  "file_count": 2986,
+  "file_count": 2974,
   "symlink_count": 100,
-  "regular_file_count": 2886,
-  "total_bytes": 9429222923,
+  "regular_file_count": 2874,
+  "total_bytes": 9429208245,
   "updated_directories": [
     "conditional_complement_v1"
   ]
