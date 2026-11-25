@@ -1,6 +1,6 @@
 {
   "schema": "xgnid.outputs-snapshot.v2",
-  "created_utc": "2026-11-25T21:15:20.051324+00:00",
+  "created_utc": "2026-11-25T21:17:59.749577+00:00",
   "source_directory": "/home/nzxn/下载/WX/load/XG-NID/outputs",
   "files": {
     "GNN4ID/best.pt": {
@@ -979,6 +979,14 @@
       "bytes": 169,
       "sha256": "01d3119d764a016cea5b0b75c172c96348b1eb368c2cbbe7d3c9716027a4ed71"
     },
+    "conditional_complement_v1/paper_tables.csv": {
+      "bytes": 645,
+      "sha256": "f502ab85210feaac14c05736aa463604aff5966d84e6ec44e0eb44925f519a08"
+    },
+    "conditional_complement_v1/paper_tables.md": {
+      "bytes": 3833,
+      "sha256": "86e831aede17c9f90e080e1440aa5b6084e2e3f7c9c26e82c99e36dab093b713"
+    },
     "conditional_complement_v1/phase_exit_codes.json": {
       "bytes": 546,
       "sha256": "4d516339752682550c1c4d127ea27c31cb4bf76caaf54d07ba771711967dd350"
@@ -1015,9 +1023,33 @@
       "bytes": 343,
       "sha256": "00bb06b0ee035bbfb266521489a6b4f221201f2ebf4aef32f5ba18fee86c2ae0"
     },
+    "conditional_complement_v1/publication_history/20261125T211203888924Z_github_audit.json": {
+      "bytes": 1526,
+      "sha256": "1f6d64cd520e660b9296469247ff73f9217c70b2af998edf8083987cf7b7a1dc"
+    },
+    "conditional_complement_v1/publication_history/20261125T211203888924Z_github_audit.log": {
+      "bytes": 1824,
+      "sha256": "6b06a5c47528ae18415e22f0aec95a4cf43f0dd698942ba9ca3d8eacb6e422c6"
+    },
     "conditional_complement_v1/publication_history/20261125T211203888924Z_upload.log": {
       "bytes": 3767,
       "sha256": "82a23f492375902276a7b3c55ae74679bc5e8d47a1a02c76c05a59b5241cd1f6"
+    },
+    "conditional_complement_v1/publication_history/20261125T211647509529Z_exit_codes.json": {
+      "bytes": 343,
+      "sha256": "00bb06b0ee035bbfb266521489a6b4f221201f2ebf4aef32f5ba18fee86c2ae0"
+    },
+    "conditional_complement_v1/publication_history/20261125T211647509529Z_upload.log": {
+      "bytes": 8721,
+      "sha256": "033cd787c0a32ddd3bfc71b0ac31d7faea8f51057a02dfe02b313896ad8b12db"
+    },
+    "conditional_complement_v1/queue_completion.json": {
+      "bytes": 210,
+      "sha256": "29ad4be8d915e2e6f1ae02098c5fa279e3f6f04d6bfa10a2db9d61f49ddf5611"
+    },
+    "conditional_complement_v1/report.md": {
+      "bytes": 3833,
+      "sha256": "86e831aede17c9f90e080e1440aa5b6084e2e3f7c9c26e82c99e36dab093b713"
     },
     "conditional_complement_v1/seed42/artifact_manifest.json": {
       "bytes": 9886,
@@ -1459,9 +1491,17 @@
       "bytes": 1347,
       "sha256": "48e7c8ab234758126d47f4f0c24fbfff188eaaed2adeaaf0a3f162852aa8069a"
     },
+    "conditional_complement_v1/summary.json": {
+      "bytes": 276658,
+      "sha256": "ea201914627aab975c5f8f09769738b9feb49b97dee27de1040d6e2ea542abc5"
+    },
     "conditional_complement_v1/training.log": {
       "bytes": 70311,
       "sha256": "ada0dc2447cd2513358cbd691cae4a6059c26c1b8b5b811127fdfdd345664b26"
+    },
+    "conditional_complement_v1/training_exit.json": {
+      "bytes": 139,
+      "sha256": "9b8db2c8c8b5de8ae2c59ce789784f890fe263da1142c55e801372a069f70465"
     },
     "conditional_complement_v1/upload.log": {
       "bytes": 8721,
@@ -12520,10 +12560,10 @@
       "sha256": "ebd2091803aab3a050f3a791f303ea786bca06de0d6ab6d56a633cdc16f67b1e"
     }
   },
-  "file_count": 3079,
+  "file_count": 3089,
   "symlink_count": 100,
-  "regular_file_count": 2979,
-  "total_bytes": 9592195771,
+  "regular_file_count": 2989,
+  "total_bytes": 9592493503,
   "updated_directories": [
     "conditional_complement_v1"
   ]

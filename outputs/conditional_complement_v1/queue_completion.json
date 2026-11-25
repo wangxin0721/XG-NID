@@ -1,0 +1,12 @@
+{
+  "completed_phases": [
+    "lock",
+    "prepare42",
+    "seed42"
+  ],
+  "last_phase": "seed42",
+  "stopped_by_registered_gate": true,
+  "lock_only": false,
+  "probe_only": false,
+  "test_evaluated": false
+}
