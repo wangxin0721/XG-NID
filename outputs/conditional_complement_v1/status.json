@@ -1,6 +1,9 @@
 {
-  "status": "source_lock_completed",
-  "models": 12,
+  "status": "preparation_completed",
+  "backbone_seed": 42,
+  "preparation_updates": 4220,
+  "repairable_validation_disagreements": 82,
+  "formal_candidate_training_started": false,
   "test_evaluated": false,
-  "phase": "lock"
+  "phase": "prepare42"
 }

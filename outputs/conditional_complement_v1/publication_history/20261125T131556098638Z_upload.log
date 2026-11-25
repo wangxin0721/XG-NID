@@ -1,0 +1,37 @@
+{"files": 21, "GiB": 0.011218532919883728, "staging_directory": "/home/nzxn/下载/WX/load/XG-NID/.outputs-publish-5t8n44bt"}
+提示：使用 'master' 作为初始分支的名称。这个默认分支名称可能会更改。要在新仓库中
+提示：配置使用初始分支名，并消除这条警告，请执行：
+提示：
+提示：	git config --global init.defaultBranch <名称>
+提示：
+提示：除了 'master' 之外，通常选定的名字有 'main'、'trunk' 和 'development'。
+提示：可以通过以下命令重命名刚创建的分支：
+提示：
+提示：	git branch -m <name>
+已初始化空的 Git 仓库于 /home/nzxn/下载/WX/load/XG-NID/.outputs-publish-5t8n44bt/.git/
+来自 github.com:wangxin0721/XG-NID
+ * branch            codex/server-outputs -> FETCH_HEAD
+ * [新分支]          codex/server-outputs -> origin/codex/server-outputs
+Updated Git hooks.
+Git LFS initialized.
+[codex/server-outputs b820e2d] Update selected server outputs
+ 18 files changed, 37 insertions(+), 302 deletions(-)
+ delete mode 100644 outputs/conditional_complement_v1/exit_codes.json
+ create mode 100644 outputs/conditional_complement_v1/launcher.pid
+ delete mode 100644 outputs/conditional_complement_v1/local_cpu_checks.json
+ delete mode 100644 outputs/conditional_complement_v1/local_cpu_checks.log
+ delete mode 100644 outputs/conditional_complement_v1/local_validation.json
+ delete mode 100644 outputs/conditional_complement_v1/local_validation_cache_audit.json
+ delete mode 100644 outputs/conditional_complement_v1/publication_history/20261125T112932061573Z_github_audit.json
+ delete mode 100644 outputs/conditional_complement_v1/publication_history/20261125T112932061573Z_github_audit.log
+ delete mode 100644 outputs/conditional_complement_v1/publication_history/20261125T113425812399Z_exit_codes.json
+ delete mode 100644 outputs/conditional_complement_v1/publication_history/20261125T113425812399Z_upload.log
+ delete mode 100644 outputs/conditional_complement_v1/queue_completion.json
+ delete mode 100644 outputs/conditional_complement_v1/report.md
+ rewrite outputs/conditional_complement_v1/training.log (76%)
+ delete mode 100644 outputs/conditional_complement_v1/training_exit.json
+ delete mode 100644 outputs/conditional_complement_v1/upload.log
+Uploading LFS objects: 100% (12/12), 12 MB | 0 B/s, done.
+To github.com:wangxin0721/XG-NID.git
+   c8077c0..b820e2d  HEAD -> codex/server-outputs
+{"status": "uploaded", "branch": "codex/server-outputs", "commit": "b820e2de4ce81b4b2172d4a6628612fd8ebcae83", "files": 21, "symlinks": 0, "bytes": 12045808, "staging_directory_preserved": "/home/nzxn/下载/WX/load/XG-NID/.outputs-publish-5t8n44bt"}

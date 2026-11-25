@@ -1,0 +1,12 @@
+{
+  "selected_epoch": 20,
+  "selection": "fixed_final_epoch_no_validation_selection",
+  "updates": 4220,
+  "total_parameters": 2640,
+  "teacher_parameters": 528,
+  "conditional_predictor_parameters": 2112,
+  "predictor_inference_linear_MACs_per_sample": 2048,
+  "teacher_inference_required": false,
+  "training_seconds": 194.7754423103761,
+  "state_sha256": "0754478cf7a6901bf5a8f799e1ed1df795ca46a47c77ed6f8d5779676f6081af"
+}

@@ -5,3 +5,69 @@
 来自 github.com:wangxin0721/XG-NID
  * branch            b6ca40cfb1abef54c669bdcf932ce95bdd272a66 -> FETCH_HEAD
 {"status": "source_lock_completed", "models": 12, "test_evaluated": false}
+
+2026-11-25T11:50:15.761481+00:00 /home/nzxn/miniconda3/envs/wx/bin/python -u -B '/home/nzxn/下载/WX/load/XG-NID-conditional-complement-v1/scripts/run_conditional_complement.py' --repo '/home/nzxn/下载/WX/load/XG-NID' --phase prepare42 --resume auto --download-inputs
+/home/nzxn/miniconda3/envs/wx/lib/python3.9/site-packages/torch_geometric/typing.py:99: UserWarning: An issue occurred while importing 'torch-spline-conv'. Disabling its usage. Stacktrace: /home/nzxn/miniconda3/envs/wx/lib/python3.9/site-packages/torch_spline_conv/_version_cuda.so: undefined symbol: _ZN3c1017RegisterOperatorsD1Ev
+  warnings.warn(
+{"status": "running", "pid": 3234136, "phase": "project_val", "samples": 16, "total": 13446}
+{"status": "running", "pid": 3234136, "phase": "project_val", "samples": 3200, "total": 13446}
+{"status": "running", "pid": 3234136, "phase": "project_val", "samples": 6400, "total": 13446}
+{"status": "running", "pid": 3234136, "phase": "project_val", "samples": 9600, "total": 13446}
+{"status": "running", "pid": 3234136, "phase": "project_val", "samples": 12800, "total": 13446}
+{"status": "running", "pid": 3234136, "phase": "project_val", "samples": 13446, "total": 13446}
+{"status": "running", "pid": 3234136, "phase": "project_train", "samples": 16, "total": 107621}
+{"status": "running", "pid": 3234136, "phase": "project_train", "samples": 3200, "total": 107621}
+{"status": "running", "pid": 3234136, "phase": "project_train", "samples": 6400, "total": 107621}
+{"status": "running", "pid": 3234136, "phase": "project_train", "samples": 9600, "total": 107621}
+{"status": "running", "pid": 3234136, "phase": "project_train", "samples": 12800, "total": 107621}
+{"status": "running", "pid": 3234136, "phase": "project_train", "samples": 16000, "total": 107621}
+{"status": "running", "pid": 3234136, "phase": "project_train", "samples": 19200, "total": 107621}
+{"status": "running", "pid": 3234136, "phase": "project_train", "samples": 22400, "total": 107621}
+{"status": "running", "pid": 3234136, "phase": "project_train", "samples": 25600, "total": 107621}
+{"status": "running", "pid": 3234136, "phase": "project_train", "samples": 28800, "total": 107621}
+{"status": "running", "pid": 3234136, "phase": "project_train", "samples": 32000, "total": 107621}
+{"status": "running", "pid": 3234136, "phase": "project_train", "samples": 35200, "total": 107621}
+{"status": "running", "pid": 3234136, "phase": "project_train", "samples": 38400, "total": 107621}
+{"status": "running", "pid": 3234136, "phase": "project_train", "samples": 41600, "total": 107621}
+{"status": "running", "pid": 3234136, "phase": "project_train", "samples": 44800, "total": 107621}
+{"status": "running", "pid": 3234136, "phase": "project_train", "samples": 48000, "total": 107621}
+{"status": "running", "pid": 3234136, "phase": "project_train", "samples": 51200, "total": 107621}
+{"status": "running", "pid": 3234136, "phase": "project_train", "samples": 54400, "total": 107621}
+{"status": "running", "pid": 3234136, "phase": "project_train", "samples": 57600, "total": 107621}
+{"status": "running", "pid": 3234136, "phase": "project_train", "samples": 60800, "total": 107621}
+{"status": "running", "pid": 3234136, "phase": "project_train", "samples": 64000, "total": 107621}
+{"status": "running", "pid": 3234136, "phase": "project_train", "samples": 67200, "total": 107621}
+{"status": "running", "pid": 3234136, "phase": "project_train", "samples": 70400, "total": 107621}
+{"status": "running", "pid": 3234136, "phase": "project_train", "samples": 73600, "total": 107621}
+{"status": "running", "pid": 3234136, "phase": "project_train", "samples": 76800, "total": 107621}
+{"status": "running", "pid": 3234136, "phase": "project_train", "samples": 80000, "total": 107621}
+{"status": "running", "pid": 3234136, "phase": "project_train", "samples": 83200, "total": 107621}
+{"status": "running", "pid": 3234136, "phase": "project_train", "samples": 86400, "total": 107621}
+{"status": "running", "pid": 3234136, "phase": "project_train", "samples": 89600, "total": 107621}
+{"status": "running", "pid": 3234136, "phase": "project_train", "samples": 92800, "total": 107621}
+{"status": "running", "pid": 3234136, "phase": "project_train", "samples": 96000, "total": 107621}
+{"status": "running", "pid": 3234136, "phase": "project_train", "samples": 99200, "total": 107621}
+{"status": "running", "pid": 3234136, "phase": "project_train", "samples": 102400, "total": 107621}
+{"status": "running", "pid": 3234136, "phase": "project_train", "samples": 105600, "total": 107621}
+{"status": "running", "pid": 3234136, "phase": "project_train", "samples": 107621, "total": 107621}
+{"status": "running", "pid": 3234136, "phase": "conditional_preparation", "epoch": 1, "total_epochs": 20, "updates_per_arm": 211, "macro_f1": {}}
+{"status": "running", "pid": 3234136, "phase": "conditional_preparation", "epoch": 2, "total_epochs": 20, "updates_per_arm": 422, "macro_f1": {}}
+{"status": "running", "pid": 3234136, "phase": "conditional_preparation", "epoch": 3, "total_epochs": 20, "updates_per_arm": 633, "macro_f1": {}}
+{"status": "running", "pid": 3234136, "phase": "conditional_preparation", "epoch": 4, "total_epochs": 20, "updates_per_arm": 844, "macro_f1": {}}
+{"status": "running", "pid": 3234136, "phase": "conditional_preparation", "epoch": 5, "total_epochs": 20, "updates_per_arm": 1055, "macro_f1": {}}
+{"status": "running", "pid": 3234136, "phase": "conditional_preparation", "epoch": 6, "total_epochs": 20, "updates_per_arm": 1266, "macro_f1": {}}
+{"status": "running", "pid": 3234136, "phase": "conditional_preparation", "epoch": 7, "total_epochs": 20, "updates_per_arm": 1477, "macro_f1": {}}
+{"status": "running", "pid": 3234136, "phase": "conditional_preparation", "epoch": 8, "total_epochs": 20, "updates_per_arm": 1688, "macro_f1": {}}
+{"status": "running", "pid": 3234136, "phase": "conditional_preparation", "epoch": 9, "total_epochs": 20, "updates_per_arm": 1899, "macro_f1": {}}
+{"status": "running", "pid": 3234136, "phase": "conditional_preparation", "epoch": 10, "total_epochs": 20, "updates_per_arm": 2110, "macro_f1": {}}
+{"status": "running", "pid": 3234136, "phase": "conditional_preparation", "epoch": 11, "total_epochs": 20, "updates_per_arm": 2321, "macro_f1": {}}
+{"status": "running", "pid": 3234136, "phase": "conditional_preparation", "epoch": 12, "total_epochs": 20, "updates_per_arm": 2532, "macro_f1": {}}
+{"status": "running", "pid": 3234136, "phase": "conditional_preparation", "epoch": 13, "total_epochs": 20, "updates_per_arm": 2743, "macro_f1": {}}
+{"status": "running", "pid": 3234136, "phase": "conditional_preparation", "epoch": 14, "total_epochs": 20, "updates_per_arm": 2954, "macro_f1": {}}
+{"status": "running", "pid": 3234136, "phase": "conditional_preparation", "epoch": 15, "total_epochs": 20, "updates_per_arm": 3165, "macro_f1": {}}
+{"status": "running", "pid": 3234136, "phase": "conditional_preparation", "epoch": 16, "total_epochs": 20, "updates_per_arm": 3376, "macro_f1": {}}
+{"status": "running", "pid": 3234136, "phase": "conditional_preparation", "epoch": 17, "total_epochs": 20, "updates_per_arm": 3587, "macro_f1": {}}
+{"status": "running", "pid": 3234136, "phase": "conditional_preparation", "epoch": 18, "total_epochs": 20, "updates_per_arm": 3798, "macro_f1": {}}
+{"status": "running", "pid": 3234136, "phase": "conditional_preparation", "epoch": 19, "total_epochs": 20, "updates_per_arm": 4009, "macro_f1": {}}
+{"status": "running", "pid": 3234136, "phase": "conditional_preparation", "epoch": 20, "total_epochs": 20, "updates_per_arm": 4220, "macro_f1": {}}
+{"status": "preparation_completed", "backbone_seed": 42, "preparation_updates": 4220, "repairable_validation_disagreements": 82, "formal_candidate_training_started": false, "test_evaluated": false}

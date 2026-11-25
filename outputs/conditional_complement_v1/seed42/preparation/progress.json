@@ -1,0 +1,9 @@
+{
+  "status": "running",
+  "pid": 3234136,
+  "phase": "conditional_preparation",
+  "epoch": 20,
+  "total_epochs": 20,
+  "updates_per_arm": 4220,
+  "macro_f1": {}
+}
