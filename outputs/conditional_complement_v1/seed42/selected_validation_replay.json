@@ -1,0 +1,32 @@
+{
+  "cc_t0": {
+    "passed": true,
+    "samples": 13446,
+    "best_epoch": 71,
+    "prediction_digest": "102b596b82e1734565f645e6cdd95f6a2fc8474b1c1c79c657ffd3da81ab0194"
+  },
+  "cc_t1": {
+    "passed": true,
+    "samples": 13446,
+    "best_epoch": 58,
+    "prediction_digest": "426c0bc975ff4625144cbce44c7368468db872a7bcecdc031763aa7aa46f805f"
+  },
+  "cc_t2": {
+    "passed": true,
+    "samples": 13446,
+    "best_epoch": 6,
+    "prediction_digest": "52d5d6ba32a68e3138352811c74702dcff2edaf4c0a8b7f7caaaeecd70d3df5c"
+  },
+  "cc_t3": {
+    "passed": true,
+    "samples": 13446,
+    "best_epoch": 190,
+    "prediction_digest": "9a02dd84ac6a03c426cc5b79816277b7b737afabf8ab122cf14b5d05279d1196"
+  },
+  "cc_t4": {
+    "passed": true,
+    "samples": 13446,
+    "best_epoch": 0,
+    "prediction_digest": "4ca4ccadc1c8063d1105ba73ed30e378c4f7b2347090021af50ea4250d64395f"
+  }
+}

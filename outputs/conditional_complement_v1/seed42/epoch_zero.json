@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "samples": 13446,
+  "max_log_probability_difference": {
+    "cc_t0": 0.0,
+    "cc_t1": 0.0,
+    "cc_t2": 0.0,
+    "cc_t3": 0.0,
+    "cc_t4": 0.0
+  },
+  "atol": 1e-06,
+  "rtol": 1e-06,
+  "batch_size": 16
+}

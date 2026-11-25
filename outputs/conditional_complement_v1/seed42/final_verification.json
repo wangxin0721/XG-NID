@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "epochs": 200,
+  "updates_per_arm": 42200,
+  "total_candidate_updates": 211000,
+  "preparation_updates": 4220,
+  "best_raw_replays_passed": true,
+  "frozen_source_and_preparation_unchanged": true,
+  "test_graph_loads": 0,
+  "wall_seconds_this_invocation": 28180.79206873919
+}

@@ -1,0 +1,33 @@
+{
+  "passed": true,
+  "result_commit": "2c99f235e175ae21a9fe7ff1a6faf69d27354c08",
+  "published_prediction_audits": {},
+  "published_preparation_audits": {
+    "seed42/preparation": {
+      "passed": true,
+      "train_samples": 107621,
+      "val_samples": 13446
+    }
+  },
+  "published_aggregate_audits": {},
+  "archive_payload_sha256": {
+    "config.json": {
+      "bytes": 21479,
+      "sha256": "5bddb0bf1fc32c5583873f5e26cdfc6fc92af19f865bd64a987b34b87f5ffadb"
+    },
+    "seed42/preparation/diagnosis.json": {
+      "bytes": 175022,
+      "sha256": "f22dfc80991ba278e5b3659a73bec11213c46c77295d99778b1cfb1f259577dc"
+    },
+    "seed42/preparation/train_diagnosis.jsonl.gz": {
+      "bytes": 39803357,
+      "sha256": "817829942c64a5fae15e0cdb8a4440162e25340ce802123f8569dff6386e90a2"
+    },
+    "seed42/preparation/val_diagnosis.jsonl.gz": {
+      "bytes": 4977438,
+      "sha256": "d5a14176f1728aaed66a3f2db6c359d8008bb530fadf725cf7f12337ef1675cf"
+    }
+  },
+  "method": "reread immutable Git/LFS bytes; integer confusion counts and paired sample transitions",
+  "not_a_new_original_graph_replay": true
+}

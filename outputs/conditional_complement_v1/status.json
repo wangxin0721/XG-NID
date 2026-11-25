@@ -1,9 +1,46 @@
 {
-  "status": "preparation_completed",
+  "status": "completed",
   "backbone_seed": 42,
-  "preparation_updates": 4220,
-  "repairable_validation_disagreements": 82,
-  "formal_candidate_training_started": false,
+  "formal_candidate_training_started": true,
   "test_evaluated": false,
-  "phase": "prepare42"
+  "decision": {
+    "candidate": "cc_t2",
+    "matched_control": "cc_t1",
+    "passed": false,
+    "checks": {
+      "delta_T0": false,
+      "delta_MLP": false,
+      "above_source_ordered": true,
+      "above_frozen_single": true,
+      "focus_classes": true,
+      "destruction": true
+    },
+    "delta_T0_pp": -0.004860272700102364,
+    "delta_MLP_pp": 0.0002819326412772938,
+    "focus_F1_changes_pp": {
+      "WebBased": -0.07275568251178255,
+      "Recon": -0.000794617994182012,
+      "Spoofing": 0.025956883867850333,
+      "BruteForce": 0.008289010154038934
+    },
+    "destruction_checks": {
+      "only_flow_correct": {
+        "candidate": 0.05187637969094923,
+        "T0": 0.052980132450331126,
+        "passed": true
+      },
+      "only_packet_correct": {
+        "candidate": 0.04596100278551532,
+        "T0": 0.04596100278551532,
+        "passed": true
+      }
+    },
+    "empty_group_policy": "N/A; no percentage fabricated; nonempty groups must pass",
+    "next_arms": [],
+    "reason": "registered_gate_failed_stop_v1",
+    "T3_leads": false,
+    "mlp_only_route": "retain evidence; no automatic promotion without a preregistered numeric rule"
+  },
+  "candidate_updates": 211000,
+  "phase": "seed42"
 }

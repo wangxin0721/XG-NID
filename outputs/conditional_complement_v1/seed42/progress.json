@@ -1,7 +1,7 @@
 {
   "status": "running",
-  "pid": 3234136,
-  "phase": "project_train",
-  "samples": 107621,
-  "total": 107621
+  "pid": 3256134,
+  "phase": "best_conditional_raw_val_replay",
+  "samples": 13446,
+  "total": 13446
 }

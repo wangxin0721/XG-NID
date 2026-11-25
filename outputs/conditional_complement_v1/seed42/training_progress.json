@@ -1,0 +1,12 @@
+{
+  "completed_epoch": 200,
+  "updates_per_arm": 42200,
+  "sampler_cursor": 107621,
+  "best_epochs": {
+    "cc_t0": 71,
+    "cc_t1": 58,
+    "cc_t2": 6,
+    "cc_t3": 190,
+    "cc_t4": 0
+  }
+}

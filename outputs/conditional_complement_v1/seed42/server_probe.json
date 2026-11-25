@@ -1,0 +1,22 @@
+{
+  "passed": true,
+  "original_graph_source_replay": true,
+  "full_epoch_zero_replay": {
+    "passed": true,
+    "samples": 13446,
+    "max_log_probability_difference": {
+      "cc_t0": 0.0,
+      "cc_t1": 0.0,
+      "cc_t2": 0.0,
+      "cc_t3": 0.0,
+      "cc_t4": 0.0
+    },
+    "atol": 1e-06,
+    "rtol": 1e-06,
+    "batch_size": 16
+  },
+  "real_coordinate_gradient_probe": true,
+  "probe_updates_discarded": true,
+  "frozen_parameters_buffers_unchanged": true,
+  "test_graph_loads": 0
+}
