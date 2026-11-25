@@ -1,4 +1,4 @@
-{"files": 48, "GiB": 0.12804310116916895, "staging_directory": "/home/nzxn/下载/WX/load/XG-NID/.outputs-publish-hdktq64j"}
+{"files": 126, "GiB": 0.16300788149237633, "staging_directory": "/home/nzxn/下载/WX/load/XG-NID/.outputs-publish-sppe7prf"}
 提示：使用 'master' 作为初始分支的名称。这个默认分支名称可能会更改。要在新仓库中
 提示：配置使用初始分支名，并消除这条警告，请执行：
 提示：
@@ -8,40 +8,95 @@
 提示：可以通过以下命令重命名刚创建的分支：
 提示：
 提示：	git branch -m <name>
-已初始化空的 Git 仓库于 /home/nzxn/下载/WX/load/XG-NID/.outputs-publish-hdktq64j/.git/
+已初始化空的 Git 仓库于 /home/nzxn/下载/WX/load/XG-NID/.outputs-publish-sppe7prf/.git/
 来自 github.com:wangxin0721/XG-NID
  * branch            codex/server-outputs -> FETCH_HEAD
  * [新分支]          codex/server-outputs -> origin/codex/server-outputs
 Updated Git hooks.
 Git LFS initialized.
-[codex/server-outputs 2c99f23] Update selected server outputs
- 30 files changed, 8132 insertions(+), 13 deletions(-)
- create mode 100644 outputs/conditional_complement_v1/publication_history/20261125T114654752971Z_github_audit.json
- create mode 100644 outputs/conditional_complement_v1/publication_history/20261125T114654752971Z_github_audit.log
- create mode 100644 outputs/conditional_complement_v1/publication_history/20261125T131556098638Z_exit_codes.json
- create mode 100644 outputs/conditional_complement_v1/publication_history/20261125T131556098638Z_upload.log
- create mode 100644 outputs/conditional_complement_v1/seed42/base_C_source_validation_replay.json
- create mode 100644 outputs/conditional_complement_v1/seed42/frozen_single_source_validation_replay.json
- create mode 100644 outputs/conditional_complement_v1/seed42/joint_ordered_source_validation_replay.json
- create mode 100644 outputs/conditional_complement_v1/seed42/joint_single_source_validation_replay.json
- create mode 100644 outputs/conditional_complement_v1/seed42/preparation/common/epoch0.pt
- create mode 100644 outputs/conditional_complement_v1/seed42/preparation/common/epochs.jsonl
- create mode 100644 outputs/conditional_complement_v1/seed42/preparation/common/last.pt
- create mode 100644 outputs/conditional_complement_v1/seed42/preparation/diagnosis.json
- create mode 100644 outputs/conditional_complement_v1/seed42/preparation/progress.json
- create mode 100644 outputs/conditional_complement_v1/seed42/preparation/recovery.pt
- create mode 100644 outputs/conditional_complement_v1/seed42/preparation/selection.json
- create mode 100644 outputs/conditional_complement_v1/seed42/preparation/train_diagnosis.jsonl.gz
- create mode 100644 outputs/conditional_complement_v1/seed42/preparation/training_progress.json
- create mode 100644 outputs/conditional_complement_v1/seed42/preparation/val_diagnosis.jsonl.gz
- create mode 100644 outputs/conditional_complement_v1/seed42/progress.json
- create mode 100644 outputs/conditional_complement_v1/seed42/projected_train.pt
- create mode 100644 outputs/conditional_complement_v1/seed42/projected_train_receipt.json
- create mode 100644 outputs/conditional_complement_v1/seed42/projected_val.pt
- create mode 100644 outputs/conditional_complement_v1/seed42/projected_val_receipt.json
- create mode 100644 outputs/conditional_complement_v1/seed42/provenance.json
- create mode 100644 outputs/conditional_complement_v1/seed42/source_validation_replay.json
-Uploading LFS objects: 100% (6/6), 120 MB | 0 B/s, done.
+[codex/server-outputs 5aced78] Update selected server outputs
+ 86 files changed, 14553 insertions(+), 28 deletions(-)
+ create mode 100644 outputs/conditional_complement_v1/publication_history/20261125T131556098638Z_github_audit.json
+ create mode 100644 outputs/conditional_complement_v1/publication_history/20261125T131556098638Z_github_audit.log
+ create mode 100644 outputs/conditional_complement_v1/publication_history/20261125T211203888924Z_exit_codes.json
+ create mode 100644 outputs/conditional_complement_v1/publication_history/20261125T211203888924Z_upload.log
+ create mode 100644 outputs/conditional_complement_v1/seed42/artifact_manifest.json
+ create mode 100644 outputs/conditional_complement_v1/seed42/cc_t0/best.pt
+ create mode 100644 outputs/conditional_complement_v1/seed42/cc_t0/epoch0.pt
+ create mode 100644 outputs/conditional_complement_v1/seed42/cc_t0/epochs.jsonl
+ create mode 100644 outputs/conditional_complement_v1/seed42/cc_t0/last.pt
+ create mode 100644 outputs/conditional_complement_v1/seed42/cc_t1/best.pt
+ create mode 100644 outputs/conditional_complement_v1/seed42/cc_t1/epoch0.pt
+ create mode 100644 outputs/conditional_complement_v1/seed42/cc_t1/epochs.jsonl
+ create mode 100644 outputs/conditional_complement_v1/seed42/cc_t1/last.pt
+ create mode 100644 outputs/conditional_complement_v1/seed42/cc_t2/best.pt
+ create mode 100644 outputs/conditional_complement_v1/seed42/cc_t2/epoch0.pt
+ create mode 100644 outputs/conditional_complement_v1/seed42/cc_t2/epochs.jsonl
+ create mode 100644 outputs/conditional_complement_v1/seed42/cc_t2/last.pt
+ create mode 100644 outputs/conditional_complement_v1/seed42/cc_t3/best.pt
+ create mode 100644 outputs/conditional_complement_v1/seed42/cc_t3/epoch0.pt
+ create mode 100644 outputs/conditional_complement_v1/seed42/cc_t3/epochs.jsonl
+ create mode 100644 outputs/conditional_complement_v1/seed42/cc_t3/last.pt
+ create mode 100644 outputs/conditional_complement_v1/seed42/cc_t4/best.pt
+ create mode 100644 outputs/conditional_complement_v1/seed42/cc_t4/epoch0.pt
+ create mode 100644 outputs/conditional_complement_v1/seed42/cc_t4/epochs.jsonl
+ create mode 100644 outputs/conditional_complement_v1/seed42/cc_t4/last.pt
+ create mode 100644 outputs/conditional_complement_v1/seed42/epoch_zero.json
+ create mode 100644 outputs/conditional_complement_v1/seed42/final_verification.json
+ create mode 100644 outputs/conditional_complement_v1/seed42/gradient_probe.json
+ create mode 100644 outputs/conditional_complement_v1/seed42/paper_tables.csv
+ create mode 100644 outputs/conditional_complement_v1/seed42/paper_tables.md
+ create mode 100644 outputs/conditional_complement_v1/seed42/preparation/resume_receipt.json
+ create mode 100644 outputs/conditional_complement_v1/seed42/recovery.pt
+ create mode 100644 outputs/conditional_complement_v1/seed42/report.md
+ create mode 100644 outputs/conditional_complement_v1/seed42/selected_validation_replay.json
+ create mode 100644 outputs/conditional_complement_v1/seed42/server_probe.json
+ create mode 100644 outputs/conditional_complement_v1/seed42/status.json
+ create mode 100644 outputs/conditional_complement_v1/seed42/summary.json
+ create mode 100644 outputs/conditional_complement_v1/seed42/training_progress.json
+ create mode 100644 outputs/conditional_complement_v1/seed42/validation/base_C_confusion.csv
+ create mode 100644 outputs/conditional_complement_v1/seed42/validation/base_C_predictions.jsonl.gz
+ create mode 100644 outputs/conditional_complement_v1/seed42/validation/cc_t0-base_C_changed.jsonl.gz
+ create mode 100644 outputs/conditional_complement_v1/seed42/validation/cc_t0-frozen_single_changed.jsonl.gz
+ create mode 100644 outputs/conditional_complement_v1/seed42/validation/cc_t0-source_ordered_changed.jsonl.gz
+ create mode 100644 outputs/conditional_complement_v1/seed42/validation/cc_t0_confusion.csv
+ create mode 100644 outputs/conditional_complement_v1/seed42/validation/cc_t0_predictions.jsonl.gz
+ create mode 100644 outputs/conditional_complement_v1/seed42/validation/cc_t1-base_C_changed.jsonl.gz
+ create mode 100644 outputs/conditional_complement_v1/seed42/validation/cc_t1-cc_t0_changed.jsonl.gz
+ create mode 100644 outputs/conditional_complement_v1/seed42/validation/cc_t1-frozen_single_changed.jsonl.gz
+ create mode 100644 outputs/conditional_complement_v1/seed42/validation/cc_t1-source_ordered_changed.jsonl.gz
+ create mode 100644 outputs/conditional_complement_v1/seed42/validation/cc_t1_confusion.csv
+ create mode 100644 outputs/conditional_complement_v1/seed42/validation/cc_t1_predictions.jsonl.gz
+ create mode 100644 outputs/conditional_complement_v1/seed42/validation/cc_t2-base_C_changed.jsonl.gz
+ create mode 100644 outputs/conditional_complement_v1/seed42/validation/cc_t2-cc_t0_changed.jsonl.gz
+ create mode 100644 outputs/conditional_complement_v1/seed42/validation/cc_t2-cc_t1_changed.jsonl.gz
+ create mode 100644 outputs/conditional_complement_v1/seed42/validation/cc_t2-frozen_single_changed.jsonl.gz
+ create mode 100644 outputs/conditional_complement_v1/seed42/validation/cc_t2-source_ordered_changed.jsonl.gz
+ create mode 100644 outputs/conditional_complement_v1/seed42/validation/cc_t2_confusion.csv
+ create mode 100644 outputs/conditional_complement_v1/seed42/validation/cc_t2_predictions.jsonl.gz
+ create mode 100644 outputs/conditional_complement_v1/seed42/validation/cc_t3-base_C_changed.jsonl.gz
+ create mode 100644 outputs/conditional_complement_v1/seed42/validation/cc_t3-cc_t0_changed.jsonl.gz
+ create mode 100644 outputs/conditional_complement_v1/seed42/validation/cc_t3-cc_t1_changed.jsonl.gz
+ create mode 100644 outputs/conditional_complement_v1/seed42/validation/cc_t3-frozen_single_changed.jsonl.gz
+ create mode 100644 outputs/conditional_complement_v1/seed42/validation/cc_t3-source_ordered_changed.jsonl.gz
+ create mode 100644 outputs/conditional_complement_v1/seed42/validation/cc_t3_confusion.csv
+ create mode 100644 outputs/conditional_complement_v1/seed42/validation/cc_t3_predictions.jsonl.gz
+ create mode 100644 outputs/conditional_complement_v1/seed42/validation/cc_t4-base_C_changed.jsonl.gz
+ create mode 100644 outputs/conditional_complement_v1/seed42/validation/cc_t4-cc_t0_changed.jsonl.gz
+ create mode 100644 outputs/conditional_complement_v1/seed42/validation/cc_t4-cc_t2_changed.jsonl.gz
+ create mode 100644 outputs/conditional_complement_v1/seed42/validation/cc_t4-cc_t3_changed.jsonl.gz
+ create mode 100644 outputs/conditional_complement_v1/seed42/validation/cc_t4-frozen_single_changed.jsonl.gz
+ create mode 100644 outputs/conditional_complement_v1/seed42/validation/cc_t4-source_ordered_changed.jsonl.gz
+ create mode 100644 outputs/conditional_complement_v1/seed42/validation/cc_t4_confusion.csv
+ create mode 100644 outputs/conditional_complement_v1/seed42/validation/cc_t4_predictions.jsonl.gz
+ create mode 100644 outputs/conditional_complement_v1/seed42/validation/frozen_single_confusion.csv
+ create mode 100644 outputs/conditional_complement_v1/seed42/validation/frozen_single_predictions.jsonl.gz
+ create mode 100644 outputs/conditional_complement_v1/seed42/validation/predictions.jsonl.gz
+ create mode 100644 outputs/conditional_complement_v1/seed42/validation/source_ordered_confusion.csv
+ create mode 100644 outputs/conditional_complement_v1/seed42/validation/source_ordered_predictions.jsonl.gz
+ rewrite outputs/conditional_complement_v1/status.json (77%)
+Uploading LFS objects: 100% (33/33), 160 MB | 3.9 MB/s, done.
+Uploading LFS objects: 100% (16/16), 68 MB | 0 B/s, done.
 To github.com:wangxin0721/XG-NID.git
-   523b272..2c99f23  HEAD -> codex/server-outputs
-{"status": "uploaded", "branch": "codex/server-outputs", "commit": "2c99f235e175ae21a9fe7ff1a6faf69d27354c08", "files": 48, "symlinks": 0, "bytes": 137485233, "staging_directory_preserved": "/home/nzxn/下载/WX/load/XG-NID/.outputs-publish-hdktq64j"}
+   26dea9e..5aced78  HEAD -> codex/server-outputs
+{"status": "uploaded", "branch": "codex/server-outputs", "commit": "5aced78f9a311c4d5674f28afc9a0f067bbbdc2c", "files": 126, "symlinks": 0, "bytes": 175028380, "staging_directory_preserved": "/home/nzxn/下载/WX/load/XG-NID/.outputs-publish-sppe7prf"}
