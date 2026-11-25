@@ -1,0 +1,3 @@
+
+2026-11-25T11:29:07.325022+00:00 'D:\XG-NID\.residual-audit-env\Scripts\python.exe' -u -B 'D:\XG-NID\tmp\conditional-complement-worktree\scripts\run_conditional_complement.py' --repo 'D:\XG-NID' --phase lock --resume auto --download-inputs
+{"status": "source_lock_completed", "models": 12, "test_evaluated": false}

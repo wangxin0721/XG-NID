@@ -1,0 +1,30 @@
+{
+  "passed": true,
+  "scope": "CPU inference from hash-verified archived frozen validation features; not original graph replay",
+  "backbone_seed": 42,
+  "samples_per_arm": 13446,
+  "arms": [
+    "cc_t0",
+    "cc_t1",
+    "cc_t2",
+    "cc_t3",
+    "cc_t4"
+  ],
+  "epoch_zero_predictions_identical": true,
+  "max_log_probability_difference": {
+    "cc_t0": 0.0,
+    "cc_t1": 0.0,
+    "cc_t2": 0.0,
+    "cc_t3": 0.0,
+    "cc_t4": 0.0
+  },
+  "ordered_best_epoch": 191,
+  "source_cache_result_commit": "b6ca40cfb1abef54c669bdcf932ce95bdd272a66",
+  "source_cache_sha256": "16c4f41a8a7f028ceb1d3ce9d195e4692392816d5d0b8ac4aef63576cd628969",
+  "runtime_torch": "2.3.1+cpu",
+  "device": "cpu",
+  "seconds": 3.8789541001897305,
+  "public_preparation_performed": false,
+  "formal_training_started": false,
+  "test_evaluated": false
+}

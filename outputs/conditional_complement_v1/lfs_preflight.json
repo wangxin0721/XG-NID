@@ -1,0 +1,5 @@
+{
+  "passed": true,
+  "selective_publish_directory": "conditional_complement_v1",
+  "publisher_registration": "dynamic immediate-child selection; no static whitelist"
+}

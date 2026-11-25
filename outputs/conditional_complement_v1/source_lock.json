@@ -1,0 +1,2673 @@
+{
+  "schema": "xgnid.fixed-transition-checkpoint-lock.v1",
+  "source_result_commit": "5f3975aeecd41c8c1150b97f88813b7ea703e54d",
+  "seeds": {
+    "42": {
+      "models": {
+        "base_C": {
+          "path": "fixed_transition_stability_v1/seed42_import/base_C/best.pt",
+          "sha256": "3070acd40203ee3a3944dc5805452eb3a2d73218aa24b31379bdfd5cbb523568",
+          "bytes": 3823196,
+          "epoch": 48,
+          "validation_macro_f1": 0.9755380342743278,
+          "inference_parameters": 860968,
+          "training_parameters": 0,
+          "validation": {
+            "accuracy": 0.9817789677227429,
+            "macro_f1": 0.9755380342743278,
+            "weighted_f1": 0.9818694904721942,
+            "per_class": {
+              "Benign": {
+                "precision": 0.9739605207895842,
+                "recall": 0.9706990372540812,
+                "f1-score": 0.9723270440251572,
+                "support": 2389
+              },
+              "WebBased": {
+                "precision": 0.8877374784110535,
+                "recall": 0.9448529411764706,
+                "f1-score": 0.9154051647373108,
+                "support": 544
+              },
+              "Spoofing": {
+                "precision": 0.9605488850771869,
+                "recall": 0.9660724554341575,
+                "f1-score": 0.963302752293578,
+                "support": 1739
+              },
+              "Recon": {
+                "precision": 0.9822380106571936,
+                "recall": 0.971027216856892,
+                "f1-score": 0.9766004415011037,
+                "support": 2278
+              },
+              "Mirai": {
+                "precision": 0.9995835068721366,
+                "recall": 1.0,
+                "f1-score": 0.9997917100604041,
+                "support": 2400
+              },
+              "Dos": {
+                "precision": 0.9972789115646259,
+                "recall": 0.9938983050847457,
+                "f1-score": 0.9955857385398982,
+                "support": 1475
+              },
+              "DDos": {
+                "precision": 0.9995803608896349,
+                "recall": 0.9974874371859297,
+                "f1-score": 0.9985328023475163,
+                "support": 2388
+              },
+              "BruteForce": {
+                "precision": 0.987012987012987,
+                "recall": 0.9785407725321889,
+                "f1-score": 0.9827586206896551,
+                "support": 233
+              }
+            },
+            "confusion_matrix": [
+              [
+                2319,
+                12,
+                48,
+                8,
+                1,
+                1,
+                0,
+                0
+              ],
+              [
+                5,
+                514,
+                7,
+                15,
+                0,
+                2,
+                0,
+                1
+              ],
+              [
+                46,
+                6,
+                1680,
+                6,
+                0,
+                0,
+                0,
+                1
+              ],
+              [
+                10,
+                43,
+                10,
+                2212,
+                0,
+                1,
+                1,
+                1
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                2400,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                3,
+                0,
+                6,
+                0,
+                1466,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                1,
+                5,
+                0,
+                0,
+                2382,
+                0
+              ],
+              [
+                1,
+                1,
+                3,
+                0,
+                0,
+                0,
+                0,
+                228
+              ]
+            ],
+            "samples": 13446
+          },
+          "validation_prediction_digest": "396bd22c4004ecf6d283ac36f99ddada3845038ccd7d365a82e46208b1cc0974",
+          "validation_predictions_path": "fixed_transition_stability_v1/seed42_import/base_C/best_validation_predictions.jsonl.gz",
+          "source_result_commit": "5f3975aeecd41c8c1150b97f88813b7ea703e54d",
+          "labels": [
+            "Benign",
+            "WebBased",
+            "Spoofing",
+            "Recon",
+            "Mirai",
+            "Dos",
+            "DDos",
+            "BruteForce"
+          ],
+          "selection": "locked_best_validation_macro_f1_including_zero_earliest_tie",
+          "new_optimizer_updates": 0
+        },
+        "frozen_single": {
+          "path": "fixed_transition_stability_v1/seed42_import/frozen_single/best.pt",
+          "sha256": "004d35cf5e89fb998c30ded1c97b6daf49e8e9b92a487f33282b8ef21fad88ab",
+          "bytes": 47651,
+          "epoch": 94,
+          "validation_macro_f1": 0.9782536493369995,
+          "inference_parameters": 864168,
+          "training_parameters": 3200,
+          "validation": {
+            "accuracy": 0.9836382567306262,
+            "macro_f1": 0.9782536493369995,
+            "weighted_f1": 0.983686782786639,
+            "per_class": {
+              "Benign": {
+                "precision": 0.974036850921273,
+                "recall": 0.9736291335286731,
+                "f1-score": 0.9738329495499267,
+                "support": 2389
+              },
+              "WebBased": {
+                "precision": 0.9103690685413005,
+                "recall": 0.9522058823529411,
+                "f1-score": 0.9308176100628931,
+                "support": 544
+              },
+              "Spoofing": {
+                "precision": 0.9688401615695326,
+                "recall": 0.9654974123059229,
+                "f1-score": 0.9671658986175116,
+                "support": 1739
+              },
+              "Recon": {
+                "precision": 0.9810489202291759,
+                "recall": 0.9771729587357331,
+                "f1-score": 0.9791071035847811,
+                "support": 2278
+              },
+              "Mirai": {
+                "precision": 0.9995835068721366,
+                "recall": 1.0,
+                "f1-score": 0.9997917100604041,
+                "support": 2400
+              },
+              "Dos": {
+                "precision": 0.9986376021798365,
+                "recall": 0.9938983050847457,
+                "f1-score": 0.9962623173632348,
+                "support": 1475
+              },
+              "DDos": {
+                "precision": 0.9991610738255033,
+                "recall": 0.9974874371859297,
+                "f1-score": 0.9983235540653814,
+                "support": 2388
+              },
+              "BruteForce": {
+                "precision": 0.9786324786324786,
+                "recall": 0.9828326180257511,
+                "f1-score": 0.9807280513918629,
+                "support": 233
+              }
+            },
+            "confusion_matrix": [
+              [
+                2326,
+                12,
+                38,
+                11,
+                1,
+                1,
+                0,
+                0
+              ],
+              [
+                6,
+                518,
+                4,
+                14,
+                0,
+                0,
+                0,
+                2
+              ],
+              [
+                46,
+                6,
+                1679,
+                5,
+                0,
+                0,
+                1,
+                2
+              ],
+              [
+                9,
+                32,
+                8,
+                2226,
+                0,
+                1,
+                1,
+                1
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                2400,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                1,
+                0,
+                8,
+                0,
+                1466,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                1,
+                5,
+                0,
+                0,
+                2382,
+                0
+              ],
+              [
+                1,
+                0,
+                3,
+                0,
+                0,
+                0,
+                0,
+                229
+              ]
+            ],
+            "samples": 13446
+          },
+          "validation_prediction_digest": "437f123354c0b4450d161dd1aa487267f5e5fcc3032a91d49aa8166e567898e5",
+          "validation_predictions_path": "fixed_transition_stability_v1/seed42_import/frozen_single/best_validation_predictions.jsonl.gz",
+          "source_result_commit": "5f3975aeecd41c8c1150b97f88813b7ea703e54d",
+          "labels": [
+            "Benign",
+            "WebBased",
+            "Spoofing",
+            "Recon",
+            "Mirai",
+            "Dos",
+            "DDos",
+            "BruteForce"
+          ],
+          "selection": "locked_best_validation_macro_f1_including_zero_earliest_tie",
+          "new_optimizer_updates": 0
+        },
+        "joint_single": {
+          "path": "fixed_transition_stability_v1/seed42_import/joint_single/best.pt",
+          "sha256": "95a9cdca596c129236c4678070fa45ec5e2bf19754f61a67d382ba19987ebcd5",
+          "bytes": 47651,
+          "epoch": 59,
+          "validation_macro_f1": 0.9763020901967145,
+          "inference_parameters": 864168,
+          "training_parameters": 10344,
+          "validation": {
+            "accuracy": 0.9824483117655809,
+            "macro_f1": 0.9763020901967145,
+            "weighted_f1": 0.982520055372511,
+            "per_class": {
+              "Benign": {
+                "precision": 0.9723733779824194,
+                "recall": 0.9723733779824194,
+                "f1-score": 0.9723733779824194,
+                "support": 2389
+              },
+              "WebBased": {
+                "precision": 0.8940972222222222,
+                "recall": 0.9466911764705882,
+                "f1-score": 0.9196428571428571,
+                "support": 544
+              },
+              "Spoofing": {
+                "precision": 0.967128027681661,
+                "recall": 0.9643473260494537,
+                "f1-score": 0.9657356752087533,
+                "support": 1739
+              },
+              "Recon": {
+                "precision": 0.9814077025232404,
+                "recall": 0.9732221246707639,
+                "f1-score": 0.9772977738593784,
+                "support": 2278
+              },
+              "Mirai": {
+                "precision": 0.9991673605328892,
+                "recall": 1.0,
+                "f1-score": 0.9995835068721366,
+                "support": 2400
+              },
+              "Dos": {
+                "precision": 0.9979605710401088,
+                "recall": 0.9952542372881356,
+                "f1-score": 0.9966055668703326,
+                "support": 1475
+              },
+              "DDos": {
+                "precision": 0.9995803608896349,
+                "recall": 0.9974874371859297,
+                "f1-score": 0.9985328023475163,
+                "support": 2388
+              },
+              "BruteForce": {
+                "precision": 0.9827586206896551,
+                "recall": 0.9785407725321889,
+                "f1-score": 0.9806451612903225,
+                "support": 233
+              }
+            },
+            "confusion_matrix": [
+              [
+                2323,
+                14,
+                40,
+                10,
+                1,
+                1,
+                0,
+                0
+              ],
+              [
+                6,
+                515,
+                6,
+                14,
+                0,
+                1,
+                0,
+                2
+              ],
+              [
+                47,
+                7,
+                1677,
+                6,
+                0,
+                0,
+                0,
+                2
+              ],
+              [
+                12,
+                38,
+                9,
+                2217,
+                0,
+                1,
+                1,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                2400,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                1,
+                0,
+                6,
+                0,
+                1468,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                6,
+                0,
+                0,
+                2382,
+                0
+              ],
+              [
+                1,
+                1,
+                2,
+                0,
+                1,
+                0,
+                0,
+                228
+              ]
+            ],
+            "samples": 13446
+          },
+          "validation_prediction_digest": "786fb2c89c030e033d606ac9c28495d0c3a128c6b9eefd56c43fc745c8b9b361",
+          "validation_predictions_path": "fixed_transition_stability_v1/seed42_import/joint_single/best_validation_predictions.jsonl.gz",
+          "source_result_commit": "5f3975aeecd41c8c1150b97f88813b7ea703e54d",
+          "labels": [
+            "Benign",
+            "WebBased",
+            "Spoofing",
+            "Recon",
+            "Mirai",
+            "Dos",
+            "DDos",
+            "BruteForce"
+          ],
+          "selection": "locked_best_validation_macro_f1_including_zero_earliest_tie",
+          "new_optimizer_updates": 0
+        },
+        "joint_ordered": {
+          "path": "fixed_transition_stability_v1/seed42_import/joint_ordered/best.pt",
+          "sha256": "4d748e8aa315a171cb2f3ee5e5bc88b3b4696582fc35a2ae22acaad4ad417c2c",
+          "bytes": 50333,
+          "epoch": 191,
+          "validation_macro_f1": 0.9791403291717622,
+          "inference_parameters": 864696,
+          "training_parameters": 10872,
+          "validation": {
+            "accuracy": 0.9843819723337796,
+            "macro_f1": 0.9791403291717622,
+            "weighted_f1": 0.9844226528462848,
+            "per_class": {
+              "Benign": {
+                "precision": 0.9744234800838575,
+                "recall": 0.972791963164504,
+                "f1-score": 0.9736070381231672,
+                "support": 2389
+              },
+              "WebBased": {
+                "precision": 0.9168141592920354,
+                "recall": 0.9522058823529411,
+                "f1-score": 0.9341749323715058,
+                "support": 544
+              },
+              "Spoofing": {
+                "precision": 0.9672413793103448,
+                "recall": 0.9677975848188615,
+                "f1-score": 0.967519402127048,
+                "support": 1739
+              },
+              "Recon": {
+                "precision": 0.9845542806707855,
+                "recall": 0.979367866549605,
+                "f1-score": 0.9819542253521126,
+                "support": 2278
+              },
+              "Mirai": {
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1-score": 1.0,
+                "support": 2400
+              },
+              "Dos": {
+                "precision": 0.9979605710401088,
+                "recall": 0.9952542372881356,
+                "f1-score": 0.9966055668703326,
+                "support": 1475
+              },
+              "DDos": {
+                "precision": 0.9991614255765199,
+                "recall": 0.9979061976549414,
+                "f1-score": 0.9985334171380683,
+                "support": 2388
+              },
+              "BruteForce": {
+                "precision": 0.9786324786324786,
+                "recall": 0.9828326180257511,
+                "f1-score": 0.9807280513918629,
+                "support": 233
+              }
+            },
+            "confusion_matrix": [
+              [
+                2324,
+                14,
+                41,
+                8,
+                0,
+                1,
+                0,
+                1
+              ],
+              [
+                6,
+                518,
+                4,
+                13,
+                0,
+                1,
+                0,
+                2
+              ],
+              [
+                43,
+                7,
+                1683,
+                3,
+                0,
+                0,
+                1,
+                2
+              ],
+              [
+                11,
+                25,
+                10,
+                2231,
+                0,
+                1,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                2400,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                1,
+                0,
+                6,
+                0,
+                1468,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                5,
+                0,
+                0,
+                2383,
+                0
+              ],
+              [
+                1,
+                0,
+                2,
+                0,
+                0,
+                0,
+                1,
+                229
+              ]
+            ],
+            "samples": 13446
+          },
+          "validation_prediction_digest": "43689f092b4d2b3a67dffb5703176e473565fdc588e794206640af74fa235495",
+          "validation_predictions_path": "fixed_transition_stability_v1/seed42_import/joint_ordered/best_validation_predictions.jsonl.gz",
+          "source_result_commit": "5f3975aeecd41c8c1150b97f88813b7ea703e54d",
+          "labels": [
+            "Benign",
+            "WebBased",
+            "Spoofing",
+            "Recon",
+            "Mirai",
+            "Dos",
+            "DDos",
+            "BruteForce"
+          ],
+          "selection": "locked_best_validation_macro_f1_including_zero_earliest_tie",
+          "new_optimizer_updates": 0
+        }
+      },
+      "source_binding": {
+        "backbone_seed": 42,
+        "frozen_c_sha256": "c29a6433880f6e5ad8a45d387abef07cf54f895277f9f89b313edecfa7feedc6",
+        "split_id": "a8ae9c934eec9fee970cc725e60051d0c709e0f16c7dda14749350ff2006975a",
+        "manifest_sha256": "b8e9b0810471d0c2b52033488fab640625c3731315afd5d2add1571bd2518827",
+        "validation_digest": "396bd22c4004ecf6d283ac36f99ddada3845038ccd7d365a82e46208b1cc0974"
+      },
+      "role": "development_stage_locked_archive",
+      "historical_C_identity": {
+        "passed": true,
+        "proof": "packet_transition_final_test_v1/provenance.json",
+        "checkpoint_sha256": "3070acd40203ee3a3944dc5805452eb3a2d73218aa24b31379bdfd5cbb523568",
+        "state_sha256": "c29a6433880f6e5ad8a45d387abef07cf54f895277f9f89b313edecfa7feedc6",
+        "historical_test_split_used": true
+      },
+      "historical_C_test_prediction_digest": "7ac7667945e326ad0fdab885bb7cd5a0ae04b1c39a37676a16ffa1081e4e7b16"
+    },
+    "43": {
+      "models": {
+        "base_C": {
+          "path": "fixed_transition_stability_v1/seed43/base_C/best.pt",
+          "sha256": "6f4d228917e2352b3684b4b1d79dcd0ec8fde02ebe95b7ca6ac6fe732b88bbba",
+          "bytes": 3821148,
+          "epoch": 188,
+          "validation_macro_f1": 0.9793794688588227,
+          "inference_parameters": 860968,
+          "training_parameters": 0,
+          "validation": {
+            "accuracy": 0.9840101145322029,
+            "macro_f1": 0.9793794688588227,
+            "weighted_f1": 0.9840347722824344,
+            "per_class": {
+              "Benign": {
+                "precision": 0.969140950792327,
+                "recall": 0.972791963164504,
+                "f1-score": 0.9709630248589931,
+                "support": 2389
+              },
+              "WebBased": {
+                "precision": 0.9261261261261261,
+                "recall": 0.9448529411764706,
+                "f1-score": 0.935395814376706,
+                "support": 544
+              },
+              "Spoofing": {
+                "precision": 0.9665127020785219,
+                "recall": 0.9626221966647499,
+                "f1-score": 0.9645635263612792,
+                "support": 1739
+              },
+              "Recon": {
+                "precision": 0.9846153846153847,
+                "recall": 0.9833187006145742,
+                "f1-score": 0.9839666154184055,
+                "support": 2278
+              },
+              "Mirai": {
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1-score": 1.0,
+                "support": 2400
+              },
+              "Dos": {
+                "precision": 0.998638529611981,
+                "recall": 0.9945762711864407,
+                "f1-score": 0.9966032608695652,
+                "support": 1475
+              },
+              "DDos": {
+                "precision": 0.9995803608896349,
+                "recall": 0.9974874371859297,
+                "f1-score": 0.9985328023475163,
+                "support": 2388
+              },
+              "BruteForce": {
+                "precision": 0.9829059829059829,
+                "recall": 0.9871244635193133,
+                "f1-score": 0.9850107066381156,
+                "support": 233
+              }
+            },
+            "confusion_matrix": [
+              [
+                2324,
+                15,
+                41,
+                9,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                11,
+                514,
+                4,
+                11,
+                0,
+                1,
+                0,
+                3
+              ],
+              [
+                52,
+                6,
+                1674,
+                5,
+                0,
+                0,
+                1,
+                1
+              ],
+              [
+                11,
+                18,
+                8,
+                2240,
+                0,
+                1,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                2400,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                2,
+                1,
+                5,
+                0,
+                1467,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                1,
+                5,
+                0,
+                0,
+                2382,
+                0
+              ],
+              [
+                0,
+                0,
+                3,
+                0,
+                0,
+                0,
+                0,
+                230
+              ]
+            ],
+            "samples": 13446
+          },
+          "validation_prediction_digest": "79d840d76d3dc8804ccda64dc65ae8f6f368ec91d57b4d062918361de05d3d6e",
+          "validation_predictions_path": "fixed_transition_stability_v1/seed43/base_C/best_validation_predictions.jsonl.gz",
+          "source_result_commit": "5f3975aeecd41c8c1150b97f88813b7ea703e54d",
+          "labels": [
+            "Benign",
+            "WebBased",
+            "Spoofing",
+            "Recon",
+            "Mirai",
+            "Dos",
+            "DDos",
+            "BruteForce"
+          ],
+          "selection": "locked_best_validation_macro_f1_including_zero_earliest_tie",
+          "new_optimizer_updates": 0
+        },
+        "frozen_single": {
+          "path": "fixed_transition_stability_v1/seed43/frozen_single/best.pt",
+          "sha256": "04a001b65e0ba0c29b48929b80c51a090c6eb96582ae52e169c9d83408357220",
+          "bytes": 49891,
+          "epoch": 50,
+          "validation_macro_f1": 0.9799015807901851,
+          "inference_parameters": 864168,
+          "training_parameters": 3200,
+          "validation": {
+            "accuracy": 0.9842332292131489,
+            "macro_f1": 0.9799015807901851,
+            "weighted_f1": 0.9842492223851619,
+            "per_class": {
+              "Benign": {
+                "precision": 0.9683728672492717,
+                "recall": 0.9740477187107577,
+                "f1-score": 0.9712020033388982,
+                "support": 2389
+              },
+              "WebBased": {
+                "precision": 0.9326047358834244,
+                "recall": 0.9411764705882353,
+                "f1-score": 0.9368709972552608,
+                "support": 544
+              },
+              "Spoofing": {
+                "precision": 0.9659156556903524,
+                "recall": 0.9614721104082806,
+                "f1-score": 0.9636887608069165,
+                "support": 1739
+              },
+              "Recon": {
+                "precision": 0.9842105263157894,
+                "recall": 0.9850746268656716,
+                "f1-score": 0.9846423870118473,
+                "support": 2278
+              },
+              "Mirai": {
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1-score": 1.0,
+                "support": 2400
+              },
+              "Dos": {
+                "precision": 0.9993188010899182,
+                "recall": 0.9945762711864407,
+                "f1-score": 0.9969418960244648,
+                "support": 1475
+              },
+              "DDos": {
+                "precision": 1.0,
+                "recall": 0.9974874371859297,
+                "f1-score": 0.9987421383647799,
+                "support": 2388
+              },
+              "BruteForce": {
+                "precision": 0.9871244635193133,
+                "recall": 0.9871244635193133,
+                "f1-score": 0.9871244635193133,
+                "support": 233
+              }
+            },
+            "confusion_matrix": [
+              [
+                2327,
+                12,
+                43,
+                7,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                11,
+                512,
+                5,
+                13,
+                0,
+                1,
+                0,
+                2
+              ],
+              [
+                53,
+                7,
+                1672,
+                6,
+                0,
+                0,
+                0,
+                1
+              ],
+              [
+                11,
+                16,
+                7,
+                2244,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                2400,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                2,
+                1,
+                5,
+                0,
+                1467,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                1,
+                5,
+                0,
+                0,
+                2382,
+                0
+              ],
+              [
+                1,
+                0,
+                2,
+                0,
+                0,
+                0,
+                0,
+                230
+              ]
+            ],
+            "samples": 13446
+          },
+          "validation_prediction_digest": "04acad644d8ccc0b697fd9f10eb16f3d7b81521a9c65cdd8c5e35536a9a6f465",
+          "validation_predictions_path": "fixed_transition_stability_v1/seed43/frozen_single/best_validation_predictions.jsonl.gz",
+          "source_result_commit": "5f3975aeecd41c8c1150b97f88813b7ea703e54d",
+          "labels": [
+            "Benign",
+            "WebBased",
+            "Spoofing",
+            "Recon",
+            "Mirai",
+            "Dos",
+            "DDos",
+            "BruteForce"
+          ],
+          "selection": "locked_best_validation_macro_f1_including_zero_earliest_tie",
+          "new_optimizer_updates": 0
+        },
+        "joint_single": {
+          "path": "fixed_transition_stability_v1/seed43/joint_single/best.pt",
+          "sha256": "b7f251f1c8861302fb14e3d97bc4081b8f9d48705cb8970793448ac24d3d689b",
+          "bytes": 49891,
+          "epoch": 25,
+          "validation_macro_f1": 0.9794729291888726,
+          "inference_parameters": 864168,
+          "training_parameters": 10344,
+          "validation": {
+            "accuracy": 0.9840101145322029,
+            "macro_f1": 0.9794729291888726,
+            "weighted_f1": 0.9840224359113243,
+            "per_class": {
+              "Benign": {
+                "precision": 0.9695452649144765,
+                "recall": 0.972791963164504,
+                "f1-score": 0.9711659005432511,
+                "support": 2389
+              },
+              "WebBased": {
+                "precision": 0.9322344322344323,
+                "recall": 0.9356617647058824,
+                "f1-score": 0.9339449541284404,
+                "support": 544
+              },
+              "Spoofing": {
+                "precision": 0.9643062751871042,
+                "recall": 0.9631972397929844,
+                "f1-score": 0.9637514384349828,
+                "support": 1739
+              },
+              "Recon": {
+                "precision": 0.9829097283085013,
+                "recall": 0.9846356453028973,
+                "f1-score": 0.9837719298245614,
+                "support": 2278
+              },
+              "Mirai": {
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1-score": 1.0,
+                "support": 2400
+              },
+              "Dos": {
+                "precision": 0.9993192648059904,
+                "recall": 0.9952542372881356,
+                "f1-score": 0.9972826086956522,
+                "support": 1475
+              },
+              "DDos": {
+                "precision": 1.0,
+                "recall": 0.9974874371859297,
+                "f1-score": 0.9987421383647799,
+                "support": 2388
+              },
+              "BruteForce": {
+                "precision": 0.9871244635193133,
+                "recall": 0.9871244635193133,
+                "f1-score": 0.9871244635193133,
+                "support": 233
+              }
+            },
+            "confusion_matrix": [
+              [
+                2324,
+                12,
+                43,
+                10,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                10,
+                509,
+                7,
+                15,
+                0,
+                1,
+                0,
+                2
+              ],
+              [
+                52,
+                6,
+                1675,
+                5,
+                0,
+                0,
+                0,
+                1
+              ],
+              [
+                11,
+                17,
+                7,
+                2243,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                2400,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                2,
+                1,
+                4,
+                0,
+                1468,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                1,
+                5,
+                0,
+                0,
+                2382,
+                0
+              ],
+              [
+                0,
+                0,
+                3,
+                0,
+                0,
+                0,
+                0,
+                230
+              ]
+            ],
+            "samples": 13446
+          },
+          "validation_prediction_digest": "a3938e71129e3eed62987e8548f33c896145e3dc1b16bd6e2cada9e8dbedd2c4",
+          "validation_predictions_path": "fixed_transition_stability_v1/seed43/joint_single/best_validation_predictions.jsonl.gz",
+          "source_result_commit": "5f3975aeecd41c8c1150b97f88813b7ea703e54d",
+          "labels": [
+            "Benign",
+            "WebBased",
+            "Spoofing",
+            "Recon",
+            "Mirai",
+            "Dos",
+            "DDos",
+            "BruteForce"
+          ],
+          "selection": "locked_best_validation_macro_f1_including_zero_earliest_tie",
+          "new_optimizer_updates": 0
+        },
+        "joint_ordered": {
+          "path": "fixed_transition_stability_v1/seed43/joint_ordered/best.pt",
+          "sha256": "72528c5d30b3e93de51a902e097702cd75f73b87f96222b76634051bfcfa3aa9",
+          "bytes": 52573,
+          "epoch": 97,
+          "validation_macro_f1": 0.9801334169647202,
+          "inference_parameters": 864696,
+          "training_parameters": 10872,
+          "validation": {
+            "accuracy": 0.9839357429718876,
+            "macro_f1": 0.9801334169647202,
+            "weighted_f1": 0.9839414582496966,
+            "per_class": {
+              "Benign": {
+                "precision": 0.9675270607826811,
+                "recall": 0.972791963164504,
+                "f1-score": 0.9701523690252557,
+                "support": 2389
+              },
+              "WebBased": {
+                "precision": 0.9373848987108656,
+                "recall": 0.9356617647058824,
+                "f1-score": 0.9365225390984361,
+                "support": 544
+              },
+              "Spoofing": {
+                "precision": 0.9664739884393063,
+                "recall": 0.9614721104082806,
+                "f1-score": 0.9639665609685788,
+                "support": 1739
+              },
+              "Recon": {
+                "precision": 0.9807860262008734,
+                "recall": 0.9859525899912204,
+                "f1-score": 0.9833625218914186,
+                "support": 2278
+              },
+              "Mirai": {
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1-score": 1.0,
+                "support": 2400
+              },
+              "Dos": {
+                "precision": 0.9993188010899182,
+                "recall": 0.9945762711864407,
+                "f1-score": 0.9969418960244648,
+                "support": 1475
+              },
+              "DDos": {
+                "precision": 1.0,
+                "recall": 0.9974874371859297,
+                "f1-score": 0.9987421383647799,
+                "support": 2388
+              },
+              "BruteForce": {
+                "precision": 0.9956709956709957,
+                "recall": 0.9871244635193133,
+                "f1-score": 0.9913793103448276,
+                "support": 233
+              }
+            },
+            "confusion_matrix": [
+              [
+                2324,
+                12,
+                42,
+                11,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                11,
+                509,
+                5,
+                17,
+                0,
+                1,
+                0,
+                1
+              ],
+              [
+                55,
+                6,
+                1672,
+                6,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                11,
+                14,
+                7,
+                2246,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                2400,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                2,
+                1,
+                5,
+                0,
+                1467,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                1,
+                5,
+                0,
+                0,
+                2382,
+                0
+              ],
+              [
+                1,
+                0,
+                2,
+                0,
+                0,
+                0,
+                0,
+                230
+              ]
+            ],
+            "samples": 13446
+          },
+          "validation_prediction_digest": "fc18a0a4e42da1ba4cc9db365a510b11226c241bc3500eaff1d2f23dd4a4fbe2",
+          "validation_predictions_path": "fixed_transition_stability_v1/seed43/joint_ordered/best_validation_predictions.jsonl.gz",
+          "source_result_commit": "5f3975aeecd41c8c1150b97f88813b7ea703e54d",
+          "labels": [
+            "Benign",
+            "WebBased",
+            "Spoofing",
+            "Recon",
+            "Mirai",
+            "Dos",
+            "DDos",
+            "BruteForce"
+          ],
+          "selection": "locked_best_validation_macro_f1_including_zero_earliest_tie",
+          "new_optimizer_updates": 0
+        }
+      },
+      "source_binding": {
+        "backbone_seed": 43,
+        "frozen_c_sha256": "746ee8c5b2e4f3e461bbd61edc59204d55ab565c58a24803f65fbafa9c0ab45d",
+        "split_id": "a8ae9c934eec9fee970cc725e60051d0c709e0f16c7dda14749350ff2006975a",
+        "manifest_sha256": "b8e9b0810471d0c2b52033488fab640625c3731315afd5d2add1571bd2518827",
+        "validation_digest": "79d840d76d3dc8804ccda64dc65ae8f6f368ec91d57b4d062918361de05d3d6e"
+      },
+      "role": "new_independent_backbone_replication",
+      "historical_C_identity": {
+        "passed": true,
+        "proof": "packet_transition_independent_final_test_v1/summary.json",
+        "checkpoint_sha256": "6f4d228917e2352b3684b4b1d79dcd0ec8fde02ebe95b7ca6ac6fe732b88bbba",
+        "state_sha256": "746ee8c5b2e4f3e461bbd61edc59204d55ab565c58a24803f65fbafa9c0ab45d",
+        "historical_test_split_used": true
+      },
+      "historical_C_test_prediction_digest": "2d5a0127282408fdeaa03cc2ae55ed1860d2ae78a1f1d73c74781128f8f7694a"
+    },
+    "44": {
+      "models": {
+        "base_C": {
+          "path": "fixed_transition_stability_v1/seed44/base_C/best.pt",
+          "sha256": "418f26d5ef3db580cf347c3237049e2911731d8e9ca2b6431240bcd4a348d7ca",
+          "bytes": 3821148,
+          "epoch": 167,
+          "validation_macro_f1": 0.9750554254542276,
+          "inference_parameters": 860968,
+          "training_parameters": 0,
+          "validation": {
+            "accuracy": 0.9819277108433735,
+            "macro_f1": 0.9750554254542276,
+            "weighted_f1": 0.9819703117627894,
+            "per_class": {
+              "Benign": {
+                "precision": 0.9695325542570952,
+                "recall": 0.9723733779824194,
+                "f1-score": 0.9709508881922675,
+                "support": 2389
+              },
+              "WebBased": {
+                "precision": 0.9050179211469535,
+                "recall": 0.9283088235294118,
+                "f1-score": 0.9165154264972777,
+                "support": 544
+              },
+              "Spoofing": {
+                "precision": 0.9620253164556962,
+                "recall": 0.9614721104082806,
+                "f1-score": 0.9617486338797814,
+                "support": 1739
+              },
+              "Recon": {
+                "precision": 0.9810322011468902,
+                "recall": 0.9762949956101844,
+                "f1-score": 0.9786578657865787,
+                "support": 2278
+              },
+              "Mirai": {
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1-score": 1.0,
+                "support": 2400
+              },
+              "Dos": {
+                "precision": 0.9993192648059904,
+                "recall": 0.9952542372881356,
+                "f1-score": 0.9972826086956522,
+                "support": 1475
+              },
+              "DDos": {
+                "precision": 1.0,
+                "recall": 0.9974874371859297,
+                "f1-score": 0.9987421383647799,
+                "support": 2388
+              },
+              "BruteForce": {
+                "precision": 0.9703389830508474,
+                "recall": 0.9828326180257511,
+                "f1-score": 0.976545842217484,
+                "support": 233
+              }
+            },
+            "confusion_matrix": [
+              [
+                2323,
+                13,
+                46,
+                6,
+                0,
+                0,
+                0,
+                1
+              ],
+              [
+                8,
+                505,
+                8,
+                19,
+                0,
+                0,
+                0,
+                4
+              ],
+              [
+                53,
+                5,
+                1672,
+                7,
+                0,
+                0,
+                0,
+                2
+              ],
+              [
+                12,
+                32,
+                9,
+                2224,
+                0,
+                1,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                2400,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                2,
+                0,
+                5,
+                0,
+                1468,
+                0,
+                0
+              ],
+              [
+                0,
+                1,
+                0,
+                5,
+                0,
+                0,
+                2382,
+                0
+              ],
+              [
+                0,
+                0,
+                3,
+                1,
+                0,
+                0,
+                0,
+                229
+              ]
+            ],
+            "samples": 13446
+          },
+          "validation_prediction_digest": "4ed6ed2b94fca23727c34737661e3b49209a18d6d8ce74f5e90a3f8822438851",
+          "validation_predictions_path": "fixed_transition_stability_v1/seed44/base_C/best_validation_predictions.jsonl.gz",
+          "source_result_commit": "5f3975aeecd41c8c1150b97f88813b7ea703e54d",
+          "labels": [
+            "Benign",
+            "WebBased",
+            "Spoofing",
+            "Recon",
+            "Mirai",
+            "Dos",
+            "DDos",
+            "BruteForce"
+          ],
+          "selection": "locked_best_validation_macro_f1_including_zero_earliest_tie",
+          "new_optimizer_updates": 0
+        },
+        "frozen_single": {
+          "path": "fixed_transition_stability_v1/seed44/frozen_single/best.pt",
+          "sha256": "65e33e2db9dcbe9e84b3678af134c231896f7e96d8927c96be4cee3c4e9e6c03",
+          "bytes": 49891,
+          "epoch": 150,
+          "validation_macro_f1": 0.9764754562481672,
+          "inference_parameters": 864168,
+          "training_parameters": 3200,
+          "validation": {
+            "accuracy": 0.9826714264465268,
+            "macro_f1": 0.9764754562481672,
+            "weighted_f1": 0.982712937742554,
+            "per_class": {
+              "Benign": {
+                "precision": 0.9718723761544921,
+                "recall": 0.969024696525743,
+                "f1-score": 0.9704464472856843,
+                "support": 2389
+              },
+              "WebBased": {
+                "precision": 0.9144385026737968,
+                "recall": 0.9430147058823529,
+                "f1-score": 0.9285067873303168,
+                "support": 544
+              },
+              "Spoofing": {
+                "precision": 0.9598393574297188,
+                "recall": 0.9620471535365153,
+                "f1-score": 0.9609419873635842,
+                "support": 1739
+              },
+              "Recon": {
+                "precision": 0.9832672831351827,
+                "recall": 0.9802458296751536,
+                "f1-score": 0.9817542316992746,
+                "support": 2278
+              },
+              "Mirai": {
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1-score": 1.0,
+                "support": 2400
+              },
+              "Dos": {
+                "precision": 0.998639455782313,
+                "recall": 0.9952542372881356,
+                "f1-score": 0.9969439728353141,
+                "support": 1475
+              },
+              "DDos": {
+                "precision": 1.0,
+                "recall": 0.9974874371859297,
+                "f1-score": 0.9987421383647799,
+                "support": 2388
+              },
+              "BruteForce": {
+                "precision": 0.9662447257383966,
+                "recall": 0.9828326180257511,
+                "f1-score": 0.9744680851063829,
+                "support": 233
+              }
+            },
+            "confusion_matrix": [
+              [
+                2315,
+                16,
+                50,
+                7,
+                0,
+                0,
+                0,
+                1
+              ],
+              [
+                7,
+                513,
+                8,
+                12,
+                0,
+                0,
+                0,
+                4
+              ],
+              [
+                50,
+                5,
+                1673,
+                7,
+                0,
+                1,
+                0,
+                3
+              ],
+              [
+                10,
+                25,
+                9,
+                2233,
+                0,
+                1,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                2400,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                1,
+                0,
+                6,
+                0,
+                1468,
+                0,
+                0
+              ],
+              [
+                0,
+                1,
+                0,
+                5,
+                0,
+                0,
+                2382,
+                0
+              ],
+              [
+                0,
+                0,
+                3,
+                1,
+                0,
+                0,
+                0,
+                229
+              ]
+            ],
+            "samples": 13446
+          },
+          "validation_prediction_digest": "c57220a055f37749c0e7c9aeb8b7a4c1876e3f17e6a5bce3ab621d7103e4bb27",
+          "validation_predictions_path": "fixed_transition_stability_v1/seed44/frozen_single/best_validation_predictions.jsonl.gz",
+          "source_result_commit": "5f3975aeecd41c8c1150b97f88813b7ea703e54d",
+          "labels": [
+            "Benign",
+            "WebBased",
+            "Spoofing",
+            "Recon",
+            "Mirai",
+            "Dos",
+            "DDos",
+            "BruteForce"
+          ],
+          "selection": "locked_best_validation_macro_f1_including_zero_earliest_tie",
+          "new_optimizer_updates": 0
+        },
+        "joint_single": {
+          "path": "fixed_transition_stability_v1/seed44/joint_single/best.pt",
+          "sha256": "7907c4a864b2dd1f38bf96210aaa5167c1f66acf95aceb168e97692500cc05a7",
+          "bytes": 49891,
+          "epoch": 131,
+          "validation_macro_f1": 0.9770296324461571,
+          "inference_parameters": 864168,
+          "training_parameters": 10344,
+          "validation": {
+            "accuracy": 0.9831176558084188,
+            "macro_f1": 0.9770296324461571,
+            "weighted_f1": 0.9831694500891466,
+            "per_class": {
+              "Benign": {
+                "precision": 0.9707112970711297,
+                "recall": 0.9711176224361657,
+                "f1-score": 0.9709144172421008,
+                "support": 2389
+              },
+              "WebBased": {
+                "precision": 0.911660777385159,
+                "recall": 0.9485294117647058,
+                "f1-score": 0.9297297297297298,
+                "support": 544
+              },
+              "Spoofing": {
+                "precision": 0.9632183908045977,
+                "recall": 0.9637722829212191,
+                "f1-score": 0.9634952572578327,
+                "support": 1739
+              },
+              "Recon": {
+                "precision": 0.9858344400177069,
+                "recall": 0.9776119402985075,
+                "f1-score": 0.9817059731099845,
+                "support": 2278
+              },
+              "Mirai": {
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1-score": 1.0,
+                "support": 2400
+              },
+              "Dos": {
+                "precision": 0.9993192648059904,
+                "recall": 0.9952542372881356,
+                "f1-score": 0.9972826086956522,
+                "support": 1475
+              },
+              "DDos": {
+                "precision": 0.9995803608896349,
+                "recall": 0.9974874371859297,
+                "f1-score": 0.9985328023475163,
+                "support": 2388
+              },
+              "BruteForce": {
+                "precision": 0.9623430962343096,
+                "recall": 0.9871244635193133,
+                "f1-score": 0.9745762711864406,
+                "support": 233
+              }
+            },
+            "confusion_matrix": [
+              [
+                2320,
+                13,
+                46,
+                8,
+                0,
+                0,
+                0,
+                2
+              ],
+              [
+                8,
+                516,
+                7,
+                8,
+                0,
+                0,
+                1,
+                4
+              ],
+              [
+                51,
+                4,
+                1676,
+                5,
+                0,
+                0,
+                0,
+                3
+              ],
+              [
+                11,
+                31,
+                8,
+                2227,
+                0,
+                1,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                2400,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                1,
+                0,
+                6,
+                0,
+                1468,
+                0,
+                0
+              ],
+              [
+                0,
+                1,
+                0,
+                5,
+                0,
+                0,
+                2382,
+                0
+              ],
+              [
+                0,
+                0,
+                3,
+                0,
+                0,
+                0,
+                0,
+                230
+              ]
+            ],
+            "samples": 13446
+          },
+          "validation_prediction_digest": "d8f39415e351029bbbff3ad2b6a66d8c236b526491f3e75e2f7c343e047c630d",
+          "validation_predictions_path": "fixed_transition_stability_v1/seed44/joint_single/best_validation_predictions.jsonl.gz",
+          "source_result_commit": "5f3975aeecd41c8c1150b97f88813b7ea703e54d",
+          "labels": [
+            "Benign",
+            "WebBased",
+            "Spoofing",
+            "Recon",
+            "Mirai",
+            "Dos",
+            "DDos",
+            "BruteForce"
+          ],
+          "selection": "locked_best_validation_macro_f1_including_zero_earliest_tie",
+          "new_optimizer_updates": 0
+        },
+        "joint_ordered": {
+          "path": "fixed_transition_stability_v1/seed44/joint_ordered/best.pt",
+          "sha256": "504ac5e9347a91e1e657b4128668b760c0655c7ba3038817277beece4442cb11",
+          "bytes": 52573,
+          "epoch": 123,
+          "validation_macro_f1": 0.9776885302583349,
+          "inference_parameters": 864696,
+          "training_parameters": 10872,
+          "validation": {
+            "accuracy": 0.9831920273687342,
+            "macro_f1": 0.9776885302583349,
+            "weighted_f1": 0.9832331959905489,
+            "per_class": {
+              "Benign": {
+                "precision": 0.9706744868035191,
+                "recall": 0.969861866889912,
+                "f1-score": 0.9702680067001676,
+                "support": 2389
+              },
+              "WebBased": {
+                "precision": 0.9197860962566845,
+                "recall": 0.9485294117647058,
+                "f1-score": 0.9339366515837104,
+                "support": 544
+              },
+              "Spoofing": {
+                "precision": 0.9615605278255881,
+                "recall": 0.9637722829212191,
+                "f1-score": 0.9626651349798966,
+                "support": 1739
+              },
+              "Recon": {
+                "precision": 0.984561093956771,
+                "recall": 0.9798068481123793,
+                "f1-score": 0.9821782178217822,
+                "support": 2278
+              },
+              "Mirai": {
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1-score": 1.0,
+                "support": 2400
+              },
+              "Dos": {
+                "precision": 0.9993192648059904,
+                "recall": 0.9952542372881356,
+                "f1-score": 0.9972826086956522,
+                "support": 1475
+              },
+              "DDos": {
+                "precision": 1.0,
+                "recall": 0.9970686767169179,
+                "f1-score": 0.9985321870413084,
+                "support": 2388
+              },
+              "BruteForce": {
+                "precision": 0.9663865546218487,
+                "recall": 0.9871244635193133,
+                "f1-score": 0.9766454352441614,
+                "support": 233
+              }
+            },
+            "confusion_matrix": [
+              [
+                2317,
+                13,
+                48,
+                10,
+                0,
+                0,
+                0,
+                1
+              ],
+              [
+                8,
+                516,
+                7,
+                9,
+                0,
+                0,
+                0,
+                4
+              ],
+              [
+                51,
+                4,
+                1676,
+                5,
+                0,
+                0,
+                0,
+                3
+              ],
+              [
+                11,
+                26,
+                8,
+                2232,
+                0,
+                1,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                2400,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                1,
+                0,
+                6,
+                0,
+                1468,
+                0,
+                0
+              ],
+              [
+                0,
+                1,
+                1,
+                5,
+                0,
+                0,
+                2381,
+                0
+              ],
+              [
+                0,
+                0,
+                3,
+                0,
+                0,
+                0,
+                0,
+                230
+              ]
+            ],
+            "samples": 13446
+          },
+          "validation_prediction_digest": "3d402b19cf6ca657118b0a0089d4c1be5655f49b0efb8cb2bbb5808a25678858",
+          "validation_predictions_path": "fixed_transition_stability_v1/seed44/joint_ordered/best_validation_predictions.jsonl.gz",
+          "source_result_commit": "5f3975aeecd41c8c1150b97f88813b7ea703e54d",
+          "labels": [
+            "Benign",
+            "WebBased",
+            "Spoofing",
+            "Recon",
+            "Mirai",
+            "Dos",
+            "DDos",
+            "BruteForce"
+          ],
+          "selection": "locked_best_validation_macro_f1_including_zero_earliest_tie",
+          "new_optimizer_updates": 0
+        }
+      },
+      "source_binding": {
+        "backbone_seed": 44,
+        "frozen_c_sha256": "813afa5e7d19ff35a050dd81a56a114b03e90421b71fb364cea60691ac9576d2",
+        "split_id": "a8ae9c934eec9fee970cc725e60051d0c709e0f16c7dda14749350ff2006975a",
+        "manifest_sha256": "b8e9b0810471d0c2b52033488fab640625c3731315afd5d2add1571bd2518827",
+        "validation_digest": "4ed6ed2b94fca23727c34737661e3b49209a18d6d8ce74f5e90a3f8822438851"
+      },
+      "role": "new_independent_backbone_replication",
+      "historical_C_identity": {
+        "passed": true,
+        "proof": "packet_transition_independent_final_test_v1/summary.json",
+        "checkpoint_sha256": "418f26d5ef3db580cf347c3237049e2911731d8e9ca2b6431240bcd4a348d7ca",
+        "state_sha256": "813afa5e7d19ff35a050dd81a56a114b03e90421b71fb364cea60691ac9576d2",
+        "historical_test_split_used": true
+      },
+      "historical_C_test_prediction_digest": "328a4bb95df390a584270f89e87a9cba2b4c764f89fc8a085cfde2259516e1e2"
+    }
+  },
+  "labels": [
+    "Benign",
+    "WebBased",
+    "Spoofing",
+    "Recon",
+    "Mirai",
+    "Dos",
+    "DDos",
+    "BruteForce"
+  ],
+  "label_to_id": {
+    "Benign": 0,
+    "WebBased": 1,
+    "Spoofing": 2,
+    "Recon": 3,
+    "Mirai": 4,
+    "Dos": 5,
+    "DDos": 6,
+    "BruteForce": 7
+  },
+  "source_training_protocol": {
+    "schema": "xgnid.fixed-transition-stability.v1",
+    "backbone_seeds": [
+      42,
+      43,
+      44
+    ],
+    "new_training_backbone_seeds": [
+      43,
+      44
+    ],
+    "readout_seed": 42,
+    "sampling_seed": 42,
+    "epochs": 200,
+    "batch_size": 512,
+    "eval_batch_size": 16,
+    "training_samples": 107621,
+    "validation_samples": 13446,
+    "test_samples": 13448,
+    "updates_per_epoch": 211,
+    "updates_per_arm": 42200,
+    "new_training_runs": 6,
+    "total_new_updates": 253200,
+    "optimizer": "Adam",
+    "adam_betas": [
+      0.9,
+      0.999
+    ],
+    "adam_eps": 1e-08,
+    "weight_decay": 0.0,
+    "readout_learning_rate": 0.001,
+    "fusion_learning_rate": 0.0001,
+    "selection": "best_validation_macro_f1_including_zero_earliest_tie",
+    "loss": "plain_final_eight_class_NLL",
+    "arms": [
+      "frozen_single",
+      "joint_single",
+      "joint_ordered"
+    ],
+    "trainable_parameters": {
+      "frozen_single": 3200,
+      "joint_single": 10344,
+      "joint_ordered": 10872
+    },
+    "fixed_injection_strength": 1.0,
+    "pairing": "true_continuous",
+    "split_id": "a8ae9c934eec9fee970cc725e60051d0c709e0f16c7dda14749350ff2006975a",
+    "manifest_sha256": "b8e9b0810471d0c2b52033488fab640625c3731315afd5d2add1571bd2518827",
+    "checkpoint_every_paired_update": true,
+    "track_training_seconds": true,
+    "partitions": [
+      "train",
+      "val"
+    ],
+    "test_evaluated": false,
+    "progress_phase": "fixed_transition_stability_paired_training",
+    "historical_seed42": {
+      "base_C": {
+        "source_result_commit": "f0f4130e6ef141b8760dceaaac4158f10ccf5522",
+        "source_directory": "outputs/joint_cross_layer_query_s42_v1",
+        "inputs": {
+          "C/best.pt": {
+            "sha256": "3070acd40203ee3a3944dc5805452eb3a2d73218aa24b31379bdfd5cbb523568",
+            "bytes": 3823196
+          },
+          "C/metrics.json": {
+            "sha256": "834f4b9cd970ab41be54599a7e73cbaa5fd1469ac5201912ee366d34565a0039",
+            "bytes": 17470
+          },
+          "C/validation_predictions.jsonl.gz": {
+            "sha256": "91d7765e52a9eca289f3bf0591bcaa06090bb6b1e2ac2319958ffe8df6a7028f",
+            "bytes": 3641660
+          }
+        }
+      },
+      "frozen_single": {
+        "source_result_commit": "944ba61faca474d02c409c2038e02f33e5da3d50",
+        "source_directory": "outputs/ordered_transition_readout_200/seed42",
+        "inputs": {
+          "config.json": {
+            "sha256": "a39b6f140e164a74f8cb1c739224d1131143e29c5008c1a060d4a5b26fbb5216",
+            "bytes": 1121
+          },
+          "provenance.json": {
+            "sha256": "8a76f7ed792c1d43275df008d0b64387292eddf92b3aa884fbb2e8a1ef413e0c",
+            "bytes": 1378
+          },
+          "selection.json": {
+            "sha256": "f6f6a2e025c88de5b8cfa292f92e2ffc3f4de5aa833b2af51dd5f222fac9323d",
+            "bytes": 38050
+          },
+          "status.json": {
+            "sha256": "44437fa80653fe3efc3266791b7baa3b0a8f97b6c4516d54ca3f36a78077b4a8",
+            "bytes": 42
+          },
+          "selected_validation_replay.json": {
+            "sha256": "3e2df180143af21cce6fd4ff19b03a17a9a2160bdb51036e8eefec4e4878cf78",
+            "bytes": 1060
+          },
+          "single/readout.pt": {
+            "sha256": "345bd80c62faa08353a01173703f91905582b0023b45738ef707c08e48c891b5",
+            "bytes": 31736
+          },
+          "single/epochs.jsonl": {
+            "sha256": "fcf46e120569c4b1b0999e45b369f8a871f01e676db7ec66ed09a1e71abc3b35",
+            "bytes": 319136
+          },
+          "validation/validation_predictions.jsonl.gz": {
+            "sha256": "db1e5a9656df731bc32d70af4dc8ee22023f5a17afaf616ca5954651ff8c4662",
+            "bytes": 551405
+          }
+        },
+        "selected_epoch": 94,
+        "source_code_commit": "d03ced606154f1d7b4afd6f29ed0f6f4d2f7011d"
+      },
+      "joint_single": {
+        "source_result_commit": "ac00f1f319aec1b1079e15ca5609c2ec08c85ba9",
+        "source_directory": "outputs/joint_transition_fusion_s42_v1",
+        "inputs": {
+          "config.json": {
+            "sha256": "a7d1273cf5845f0687d6a74018f934488d4851530a2fbb22b2f4f734c0f97359",
+            "bytes": 2000
+          },
+          "provenance.json": {
+            "sha256": "3cb4978001a66084d4c26f3e16fb875f09938f5559c8ded9d4084a2088eb1df7",
+            "bytes": 5442
+          },
+          "summary.json": {
+            "sha256": "333b2741e45127ba4225cd7561d45947343f1f5b2427dad059fdfa08cbbcc83d",
+            "bytes": 68661
+          },
+          "status.json": {
+            "sha256": "5d5875082aaf45fcb519016b401b92117adeaf51a35ac7d9c70ad5760589df9c",
+            "bytes": 90
+          },
+          "final_verification.json": {
+            "sha256": "3e8d71d9743152e7239d4c1ac33b8ec8467e51a273493b5e2fc42bbf0e1dcfb7",
+            "bytes": 300
+          },
+          "epoch_zero_replay.json": {
+            "sha256": "019860dedddb302c2da965b0d0574a9e580b7c6fb5413a329c163e269006795c",
+            "bytes": 2645
+          },
+          "selected_validation_replay.json": {
+            "sha256": "7bd87bffa72ee701eafe97b4ada8dc5cff3de10764a9f460684f83df342a26b1",
+            "bytes": 761
+          },
+          "joint_single/best.pt": {
+            "sha256": "ecbdbc6c294a133368e3d48711e75c0c903a74ef3801e5579ee9844dc91b0e93",
+            "bytes": 52579
+          },
+          "joint_single/last.pt": {
+            "sha256": "d49119559e819f25b44b73781aa09fc2d78305fff366932265b07adda7e31e92",
+            "bytes": 51555
+          },
+          "joint_single/epochs.jsonl": {
+            "sha256": "95036050d8f925178ef460a2353b65726db189d812e572e680f7de1eeb257328",
+            "bytes": 321630
+          },
+          "joint_single/best_validation_predictions.jsonl.gz": {
+            "sha256": "597b3222fd9b487b42ad3ad12c0f4ed4aee26dd21848ebda9e9c5da343bafe1c",
+            "bytes": 535732
+          }
+        },
+        "selected_epoch": 59,
+        "source_code_commit": "4f2dd776fd3040a94dd4199d47866f1ed9968a03"
+      },
+      "joint_ordered": {
+        "source_result_commit": "7c40c4b6772679d51b20a6a268fc8b4ae2f3d518",
+        "source_directory": "outputs/transition_pair_shuffle_s42_v1",
+        "inputs": {
+          "config.json": {
+            "sha256": "c4e13ff7cc783e51d41c29ac5f0c5e08e870a8fc7a0caf9bf76f3b29eb1aedff",
+            "bytes": 2092
+          },
+          "provenance.json": {
+            "sha256": "9f872f355e56961bb6b20b9f5a1d18187f38015b712a9923e542d8ad404ec34b",
+            "bytes": 6008
+          },
+          "summary.json": {
+            "sha256": "4dca823d7671c28022fdb16ff25bb1c6bad803487f2c1e53b3c1ce337283832c",
+            "bytes": 152823
+          },
+          "status.json": {
+            "sha256": "5d5875082aaf45fcb519016b401b92117adeaf51a35ac7d9c70ad5760589df9c",
+            "bytes": 90
+          },
+          "final_verification.json": {
+            "sha256": "f7027cc2f1d39e5d38df4ebfc2ce1fc4e6270ba6f6bc6e8698a5968f7e173b0a",
+            "bytes": 279
+          },
+          "epoch_zero_replay.json": {
+            "sha256": "a83a8059491393c505ada45f22a9154da6eb1fca30f665de98c8c0428a23cc76",
+            "bytes": 1489
+          },
+          "selected_validation_replay.json": {
+            "sha256": "648375536ee6c80e708527a33a37454e129294d45e3d12a4134759ebcf1a4fa2",
+            "bytes": 434
+          },
+          "pair_true/best.pt": {
+            "sha256": "80a07ff28aff1c27e3a698b6832fa3a1b07deeead913f4b02520e9ed3393d55d",
+            "bytes": 56157
+          },
+          "pair_true/last.pt": {
+            "sha256": "f8f5e99e48ea6f1f7dbb4429f3e4161d86870cf3c0759b6231fa212a4a4d2a59",
+            "bytes": 55133
+          },
+          "pair_true/epochs.jsonl": {
+            "sha256": "fb27d813cd2d98f13cbd0d07c54799994757a7b6e2e414937abacfede8c65ff1",
+            "bytes": 320729
+          },
+          "pair_true/best_validation_predictions.jsonl.gz": {
+            "sha256": "e82a2a9c527f97f89f27c8d4854be0b14a3026feea60cce08eccc3359831f792",
+            "bytes": 535686
+          },
+          "frozen_val_features.pt": {
+            "sha256": "cc5b6b4ec7df26a4365abbe9aa25503ecb842d14eb306beeaa2220f2eafa6cf7",
+            "bytes": 50122508
+          }
+        },
+        "selected_epoch": 191,
+        "source_code_commit": "f3baba6ce8b80ed22283e6a501f2dfb992d0edf8"
+      }
+    },
+    "independent_sources": {
+      "43": {
+        "source_result_commit": "f0f4130e6ef141b8760dceaaac4158f10ccf5522",
+        "source_directory": "outputs/packet_transition_independent_s43_v1",
+        "inputs": {
+          "selection.json": {
+            "sha256": "ce8b7ad2ad1488b69592a9728d2b571982ef9650fba4b6edb3c410695d39c6d0",
+            "bytes": 12105
+          },
+          "status.json": {
+            "sha256": "97b43a19ba134e51261465f3e578d5153e10c92143d3095fa5a1c715c4e00129",
+            "bytes": 42
+          },
+          "C/best.pt": {
+            "sha256": "6f4d228917e2352b3684b4b1d79dcd0ec8fde02ebe95b7ca6ac6fe732b88bbba",
+            "bytes": 3821148
+          },
+          "C/metrics.json": {
+            "sha256": "b99c6f27bbdd2c8aa7862c98ccb3e51b7dc1c13629739cbdac73009eb21d1999",
+            "bytes": 17273
+          },
+          "C/validation_predictions.jsonl.gz": {
+            "sha256": "664129906bedf6dc550a22cc9d93edda68c473714cb2a4ee81bf2825d5db3a2c",
+            "bytes": 3660964
+          }
+        },
+        "seed": 43,
+        "n0": {
+          "directory": "outputs/fusion_seed_repeats_s43_s44_v1/seed43/N0",
+          "epoch": 27,
+          "sha256": {
+            "best.pt": "e560fb61ad09fd38237c626ca0aa250ccf8bd003df8e7ac8be3ac4f03b2e0443",
+            "metrics.json": "33e2b140fd2c25b640e6eacbf8bcbbabfc03f50cf551feac1ca6fdbe24c66c9b",
+            "config.json": "cff4d987d25287afa0658675fafffc236dfa2ded2efa5f7c5b9cb466ede05da7",
+            "validation_predictions.jsonl.gz": "066c6ce5db71605a882e70577ab039acb5d4a1c58cc210ccab16aea93f6b5e8d"
+          },
+          "prediction_ids_sha256": "c21946950f02447b6459d2b24c4bae0c4ec6e1fb219f833c0cd310590adbc218"
+        },
+        "C_selection": {
+          "epoch": 188,
+          "validation": {
+            "accuracy": 0.9840101145322029,
+            "macro_f1": 0.9793794688588227,
+            "weighted_f1": 0.9840347722824344,
+            "per_class": {
+              "Benign": {
+                "precision": 0.969140950792327,
+                "recall": 0.972791963164504,
+                "f1-score": 0.9709630248589931,
+                "support": 2389
+              },
+              "WebBased": {
+                "precision": 0.9261261261261261,
+                "recall": 0.9448529411764706,
+                "f1-score": 0.935395814376706,
+                "support": 544
+              },
+              "Spoofing": {
+                "precision": 0.9665127020785219,
+                "recall": 0.9626221966647499,
+                "f1-score": 0.9645635263612792,
+                "support": 1739
+              },
+              "Recon": {
+                "precision": 0.9846153846153847,
+                "recall": 0.9833187006145742,
+                "f1-score": 0.9839666154184055,
+                "support": 2278
+              },
+              "Mirai": {
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1-score": 1.0,
+                "support": 2400
+              },
+              "Dos": {
+                "precision": 0.998638529611981,
+                "recall": 0.9945762711864407,
+                "f1-score": 0.9966032608695652,
+                "support": 1475
+              },
+              "DDos": {
+                "precision": 0.9995803608896349,
+                "recall": 0.9974874371859297,
+                "f1-score": 0.9985328023475163,
+                "support": 2388
+              },
+              "BruteForce": {
+                "precision": 0.9829059829059829,
+                "recall": 0.9871244635193133,
+                "f1-score": 0.9850107066381156,
+                "support": 233
+              }
+            },
+            "confusion_matrix": [
+              [
+                2324,
+                15,
+                41,
+                9,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                11,
+                514,
+                4,
+                11,
+                0,
+                1,
+                0,
+                3
+              ],
+              [
+                52,
+                6,
+                1674,
+                5,
+                0,
+                0,
+                1,
+                1
+              ],
+              [
+                11,
+                18,
+                8,
+                2240,
+                0,
+                1,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                2400,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                2,
+                1,
+                5,
+                0,
+                1467,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                1,
+                5,
+                0,
+                0,
+                2382,
+                0
+              ],
+              [
+                0,
+                0,
+                3,
+                0,
+                0,
+                0,
+                0,
+                230
+              ]
+            ],
+            "samples": 13446
+          },
+          "checkpoint_sha256": "6f4d228917e2352b3684b4b1d79dcd0ec8fde02ebe95b7ca6ac6fe732b88bbba",
+          "predictions_sha256": "664129906bedf6dc550a22cc9d93edda68c473714cb2a4ee81bf2825d5db3a2c",
+          "prediction_ids_sha256": "79d840d76d3dc8804ccda64dc65ae8f6f368ec91d57b4d062918361de05d3d6e",
+          "directory": "outputs/packet_transition_independent_s43_v1/C"
+        },
+        "frozen_c_sha256": "746ee8c5b2e4f3e461bbd61edc59204d55ab565c58a24803f65fbafa9c0ab45d"
+      },
+      "44": {
+        "source_result_commit": "f0f4130e6ef141b8760dceaaac4158f10ccf5522",
+        "source_directory": "outputs/packet_transition_independent_s44_v1",
+        "inputs": {
+          "selection.json": {
+            "sha256": "e3709e63063b8d15eeca9addee88aa5354a9bd674dc8d79cb875c869f59bf3a7",
+            "bytes": 12141
+          },
+          "status.json": {
+            "sha256": "94e0802e739c12dec91b8cd86a129addd2d6219b29e0164061c1d03331fe2086",
+            "bytes": 42
+          },
+          "C/best.pt": {
+            "sha256": "418f26d5ef3db580cf347c3237049e2911731d8e9ca2b6431240bcd4a348d7ca",
+            "bytes": 3821148
+          },
+          "C/metrics.json": {
+            "sha256": "3e253a79633ed7532753dae73c6459f2ffdbf4cc3f8c4aa6f4b12af4726d3b5b",
+            "bytes": 17114
+          },
+          "C/validation_predictions.jsonl.gz": {
+            "sha256": "99810ac94b25bcb6a7d40fef8520cacc073ac7c4b96ec2cbf556cfc2a2128aa3",
+            "bytes": 3740822
+          }
+        },
+        "seed": 44,
+        "n0": {
+          "directory": "outputs/fusion_seed_repeats_s43_s44_v1/seed44/N0",
+          "epoch": 19,
+          "sha256": {
+            "best.pt": "76535b1b3f1f400887ea6e5a5cf7a1481013ff31c3609fb357e88326553a1c91",
+            "metrics.json": "6576632521943461b41ee0f7356dcf3b0b012e45c93f6fefac538fc1493cb8ad",
+            "config.json": "831125858b6a37d6dcabbacaf5da7b808bd803be789e470d8d0939574e04dcea",
+            "validation_predictions.jsonl.gz": "3ab85641bf273abcef4b8fc07ba9e899fae3fe6594b58b216d3c04ac80df9cf8"
+          },
+          "prediction_ids_sha256": "c0433008330eeaf8a21f0a0a9cd759c0e95d91745a3abf1a0594253e73a50f70"
+        },
+        "C_selection": {
+          "epoch": 167,
+          "validation": {
+            "accuracy": 0.9819277108433735,
+            "macro_f1": 0.9750554254542276,
+            "weighted_f1": 0.9819703117627894,
+            "per_class": {
+              "Benign": {
+                "precision": 0.9695325542570952,
+                "recall": 0.9723733779824194,
+                "f1-score": 0.9709508881922675,
+                "support": 2389
+              },
+              "WebBased": {
+                "precision": 0.9050179211469535,
+                "recall": 0.9283088235294118,
+                "f1-score": 0.9165154264972777,
+                "support": 544
+              },
+              "Spoofing": {
+                "precision": 0.9620253164556962,
+                "recall": 0.9614721104082806,
+                "f1-score": 0.9617486338797814,
+                "support": 1739
+              },
+              "Recon": {
+                "precision": 0.9810322011468902,
+                "recall": 0.9762949956101844,
+                "f1-score": 0.9786578657865787,
+                "support": 2278
+              },
+              "Mirai": {
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1-score": 1.0,
+                "support": 2400
+              },
+              "Dos": {
+                "precision": 0.9993192648059904,
+                "recall": 0.9952542372881356,
+                "f1-score": 0.9972826086956522,
+                "support": 1475
+              },
+              "DDos": {
+                "precision": 1.0,
+                "recall": 0.9974874371859297,
+                "f1-score": 0.9987421383647799,
+                "support": 2388
+              },
+              "BruteForce": {
+                "precision": 0.9703389830508474,
+                "recall": 0.9828326180257511,
+                "f1-score": 0.976545842217484,
+                "support": 233
+              }
+            },
+            "confusion_matrix": [
+              [
+                2323,
+                13,
+                46,
+                6,
+                0,
+                0,
+                0,
+                1
+              ],
+              [
+                8,
+                505,
+                8,
+                19,
+                0,
+                0,
+                0,
+                4
+              ],
+              [
+                53,
+                5,
+                1672,
+                7,
+                0,
+                0,
+                0,
+                2
+              ],
+              [
+                12,
+                32,
+                9,
+                2224,
+                0,
+                1,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                2400,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                2,
+                0,
+                5,
+                0,
+                1468,
+                0,
+                0
+              ],
+              [
+                0,
+                1,
+                0,
+                5,
+                0,
+                0,
+                2382,
+                0
+              ],
+              [
+                0,
+                0,
+                3,
+                1,
+                0,
+                0,
+                0,
+                229
+              ]
+            ],
+            "samples": 13446
+          },
+          "checkpoint_sha256": "418f26d5ef3db580cf347c3237049e2911731d8e9ca2b6431240bcd4a348d7ca",
+          "predictions_sha256": "99810ac94b25bcb6a7d40fef8520cacc073ac7c4b96ec2cbf556cfc2a2128aa3",
+          "prediction_ids_sha256": "4ed6ed2b94fca23727c34737661e3b49209a18d6d8ce74f5e90a3f8822438851",
+          "directory": "outputs/packet_transition_independent_s44_v1/C"
+        },
+        "frozen_c_sha256": "813afa5e7d19ff35a050dd81a56a114b03e90421b71fb364cea60691ac9576d2"
+      }
+    },
+    "scope": "paired validation on three independent backbones; seed42 development-stage locked results; readout and sampling seeds fixed at42",
+    "previous_negative_ablations_preserved": [
+      "True-Shuffle threshold not passed",
+      "scalar beta gates not supported in seed42"
+    ],
+    "no_automatic_test_or_new_structure": true,
+    "seed42_rerun_context": [
+      {
+        "source_result_commit": "ac00f1f319aec1b1079e15ca5609c2ec08c85ba9",
+        "source_directory": "outputs/joint_transition_fusion_s42_v1",
+        "inputs": {
+          "summary.json": {
+            "bytes": 68661,
+            "sha256": "333b2741e45127ba4225cd7561d45947343f1f5b2427dad059fdfa08cbbcc83d"
+          },
+          "provenance.json": {
+            "bytes": 5442,
+            "sha256": "3cb4978001a66084d4c26f3e16fb875f09938f5559c8ded9d4084a2088eb1df7"
+          }
+        },
+        "arm": "joint_ordered",
+        "epoch": 84,
+        "role": "context_only_not_eligible_for_reselection"
+      },
+      {
+        "source_result_commit": "f0f4130e6ef141b8760dceaaac4158f10ccf5522",
+        "source_directory": "outputs/residual_injection_s42_v1",
+        "inputs": {
+          "summary.json": {
+            "bytes": 56977,
+            "sha256": "8cc83bd2aa1d72279c13bdb5f5c3a4b0c31adcfb108ebf6f7ec07a3e737dd7ee"
+          },
+          "provenance.json": {
+            "bytes": 6084,
+            "sha256": "8688a1cc772bc7284f71fa87a4706c310a3ebb1520a275d148d05b5b6ac5187d"
+          }
+        },
+        "arm": "inj_fixed",
+        "epoch": 66,
+        "role": "context_only_not_eligible_for_reselection"
+      }
+    ]
+  },
+  "new_training_runs": 0,
+  "new_optimizer_updates": 0,
+  "test_reselection_permitted": false,
+  "historical_test_split_used": true,
+  "validation_cohort_sha256": "5898ff58bd2c051bcc651848f48874632d3ff8e899e38672b0ead2feee4185de",
+  "test_cohort_sha256": "da7af01b74476d8c9616a2b17244728ed74708ab2175f565bf719572b9a1e5a5"
+}

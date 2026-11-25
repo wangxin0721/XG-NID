@@ -1,0 +1,20 @@
+{
+  "status": "local_checks_passed_server_training_pending",
+  "local_cpu_tests": 49,
+  "real_source_models_restored": 12,
+  "archived_validation_predictions_checked": 161352,
+  "epoch_zero_validation_samples_per_arm": 13446,
+  "epoch_zero_arms": 5,
+  "epoch_zero_log_probability_max_difference": 0.0,
+  "common_preparation_started": false,
+  "formal_candidate_training_started": false,
+  "server_probe_passed": false,
+  "test_evaluated": false,
+  "blocker": "SSH jump/banner connection timed out; local PyTorch CPU only and configured original graph directory absent",
+  "server_ssh_observation": "Connection timed out during banner exchange; Connection to UNKNOWN port 65535 timed out",
+  "local_environment": {
+    "torch": "2.3.1+cpu",
+    "cuda_available": false
+  },
+  "bash_syntax_checks_passed": true
+}
