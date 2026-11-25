@@ -1,6 +1,6 @@
 {
   "schema": "xgnid.outputs-snapshot.v2",
-  "created_utc": "2026-11-25T11:33:58.852197+00:00",
+  "created_utc": "2026-11-25T11:36:27.077130+00:00",
   "source_directory": "D:\\XG-NID\\outputs",
   "files": {
     "GNN4ID/best.pt": {
@@ -999,6 +999,26 @@
       "bytes": 27364,
       "sha256": "ad46e650b6d5312803e1fe127df9a2d75410725c66ba22f7aee66488623de990"
     },
+    "conditional_complement_v1/publication_history/20261125T112932061573Z_github_audit.json": {
+      "bytes": 507,
+      "sha256": "40059abf13ab84735b901bded1ef6d9f11fef40161353f9b9ebfd8e9d92fdeb5"
+    },
+    "conditional_complement_v1/publication_history/20261125T112932061573Z_github_audit.log": {
+      "bytes": 583,
+      "sha256": "4dc0a6e7b3065965181c2673e29c27d44a387ed7e043fe35b9476fd82c23a808"
+    },
+    "conditional_complement_v1/publication_history/20261125T113425812399Z_exit_codes.json": {
+      "bytes": 384,
+      "sha256": "6fbd4ca20105bb1d940166b3b8725b543d10d137df466b42996a3b37f06c2afa"
+    },
+    "conditional_complement_v1/publication_history/20261125T113425812399Z_upload.log": {
+      "bytes": 2986,
+      "sha256": "c0ef0d668ef98a8667c385dcb08bd034a5ba7cdbb49817f4ac4dcb30f3eb6196"
+    },
+    "conditional_complement_v1/queue_completion.json": {
+      "bytes": 187,
+      "sha256": "8dfc761b509a2d9798901051bf97904404aed94a109a9b0e409a360556878cd4"
+    },
     "conditional_complement_v1/report.md": {
       "bytes": 791,
       "sha256": "becc24808d886ce85a5d2d9c344ff4a89331c6ad007ca55e5ad4e9538daa24c8"
@@ -1066,6 +1086,10 @@
     "conditional_complement_v1/training.log": {
       "bytes": 317,
       "sha256": "73a74f1d04ea26211339134b41fedbbe75e984b17afaa812198df028bf9192c2"
+    },
+    "conditional_complement_v1/training_exit.json": {
+      "bytes": 146,
+      "sha256": "2a7f0d2c0d2543ab12fe6a1708063b867d5d8b573a1565ef047c1543160e5c98"
     },
     "conditional_complement_v1/upload.log": {
       "bytes": 2986,
@@ -12124,10 +12148,10 @@
       "sha256": "ebd2091803aab3a050f3a791f303ea786bca06de0d6ab6d56a633cdc16f67b1e"
     }
   },
-  "file_count": 2980,
+  "file_count": 2986,
   "symlink_count": 100,
-  "regular_file_count": 2880,
-  "total_bytes": 9429219624,
+  "regular_file_count": 2886,
+  "total_bytes": 9429224417,
   "updated_directories": [
     "conditional_complement_v1"
   ]
