@@ -1,6 +1,6 @@
 {
   "schema": "xgnid.outputs-snapshot.v2",
-  "created_utc": "2026-11-25T11:31:37.009564+00:00",
+  "created_utc": "2026-11-25T11:33:58.852197+00:00",
   "source_directory": "D:\\XG-NID\\outputs",
   "files": {
     "GNN4ID/best.pt": {
@@ -967,6 +967,10 @@
       "bytes": 21479,
       "sha256": "5bddb0bf1fc32c5583873f5e26cdfc6fc92af19f865bd64a987b34b87f5ffadb"
     },
+    "conditional_complement_v1/exit_codes.json": {
+      "bytes": 384,
+      "sha256": "6fbd4ca20105bb1d940166b3b8725b543d10d137df466b42996a3b37f06c2afa"
+    },
     "conditional_complement_v1/lfs_preflight.json": {
       "bytes": 174,
       "sha256": "d39647838ecc61b7fd095be8bc9814cb747d9435a042686c0f02f45bd9731c04"
@@ -1062,6 +1066,10 @@
     "conditional_complement_v1/training.log": {
       "bytes": 317,
       "sha256": "73a74f1d04ea26211339134b41fedbbe75e984b17afaa812198df028bf9192c2"
+    },
+    "conditional_complement_v1/upload.log": {
+      "bytes": 2986,
+      "sha256": "c0ef0d668ef98a8667c385dcb08bd034a5ba7cdbb49817f4ac4dcb30f3eb6196"
     },
     "cross_layer_fold_check_v1.json": {
       "bytes": 7337,
@@ -12116,10 +12124,10 @@
       "sha256": "ebd2091803aab3a050f3a791f303ea786bca06de0d6ab6d56a633cdc16f67b1e"
     }
   },
-  "file_count": 2978,
+  "file_count": 2980,
   "symlink_count": 100,
-  "regular_file_count": 2878,
-  "total_bytes": 9429216254,
+  "regular_file_count": 2880,
+  "total_bytes": 9429219624,
   "updated_directories": [
     "conditional_complement_v1"
   ]
