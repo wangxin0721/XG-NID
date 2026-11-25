@@ -1,6 +1,6 @@
 {
   "schema": "xgnid.outputs-snapshot.v2",
-  "created_utc": "2026-11-25T11:36:27.077130+00:00",
+  "created_utc": "2026-11-25T11:38:45.269671+00:00",
   "source_directory": "D:\\XG-NID\\outputs",
   "files": {
     "GNN4ID/best.pt": {
@@ -1092,8 +1092,8 @@
       "sha256": "2a7f0d2c0d2543ab12fe6a1708063b867d5d8b573a1565ef047c1543160e5c98"
     },
     "conditional_complement_v1/upload.log": {
-      "bytes": 2986,
-      "sha256": "c0ef0d668ef98a8667c385dcb08bd034a5ba7cdbb49817f4ac4dcb30f3eb6196"
+      "bytes": 1492,
+      "sha256": "2a6f81c4bf5ac7a1612fcb64295cc6fd9c6e32770f66583ccacaede63265a26c"
     },
     "cross_layer_fold_check_v1.json": {
       "bytes": 7337,
@@ -12151,7 +12151,7 @@
   "file_count": 2986,
   "symlink_count": 100,
   "regular_file_count": 2886,
-  "total_bytes": 9429224417,
+  "total_bytes": 9429222923,
   "updated_directories": [
     "conditional_complement_v1"
   ]

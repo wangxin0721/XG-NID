@@ -1,38 +1,19 @@
-{"files": 25, "GiB": 0.011225991882383823, "staging_directory": "D:\\XG-NID\\.outputs-publish-6e6tv6vb"}
-Initialized empty Git repository in D:/XG-NID/.outputs-publish-6e6tv6vb/.git/
+{"files": 33, "GiB": 0.01123359426856041, "staging_directory": "D:\\XG-NID\\.outputs-publish-99hkf04d"}
+Initialized empty Git repository in D:/XG-NID/.outputs-publish-99hkf04d/.git/
 From https://github.com/wangxin0721/XG-NID
  * branch            codex/server-outputs -> FETCH_HEAD
  * [new branch]      codex/server-outputs -> origin/codex/server-outputs
 Updated Git hooks.
 Git LFS initialized.
-[codex/server-outputs 9770758] Update selected server outputs
- 27 files changed, 4061 insertions(+), 6 deletions(-)
- create mode 100644 outputs/conditional_complement_v1/config.json
- create mode 100644 outputs/conditional_complement_v1/lfs_preflight.json
- create mode 100644 outputs/conditional_complement_v1/local_cpu_checks.json
- create mode 100644 outputs/conditional_complement_v1/local_cpu_checks.log
- create mode 100644 outputs/conditional_complement_v1/local_validation.json
- create mode 100644 outputs/conditional_complement_v1/local_validation_cache_audit.json
- create mode 100644 outputs/conditional_complement_v1/phase_exit_codes.json
- create mode 100644 outputs/conditional_complement_v1/protocol_lock.json
- create mode 100644 outputs/conditional_complement_v1/report.md
- create mode 100644 outputs/conditional_complement_v1/source_checkpoints/seed42/base_C.pt
- create mode 100644 outputs/conditional_complement_v1/source_checkpoints/seed42/frozen_single.pt
- create mode 100644 outputs/conditional_complement_v1/source_checkpoints/seed42/joint_ordered.pt
- create mode 100644 outputs/conditional_complement_v1/source_checkpoints/seed42/joint_single.pt
- create mode 100644 outputs/conditional_complement_v1/source_checkpoints/seed43/base_C.pt
- create mode 100644 outputs/conditional_complement_v1/source_checkpoints/seed43/frozen_single.pt
- create mode 100644 outputs/conditional_complement_v1/source_checkpoints/seed43/joint_ordered.pt
- create mode 100644 outputs/conditional_complement_v1/source_checkpoints/seed43/joint_single.pt
- create mode 100644 outputs/conditional_complement_v1/source_checkpoints/seed44/base_C.pt
- create mode 100644 outputs/conditional_complement_v1/source_checkpoints/seed44/frozen_single.pt
- create mode 100644 outputs/conditional_complement_v1/source_checkpoints/seed44/joint_ordered.pt
- create mode 100644 outputs/conditional_complement_v1/source_checkpoints/seed44/joint_single.pt
- create mode 100644 outputs/conditional_complement_v1/source_lock.json
- create mode 100644 outputs/conditional_complement_v1/source_lock_receipt.json
- create mode 100644 outputs/conditional_complement_v1/status.json
- create mode 100644 outputs/conditional_complement_v1/training.log
+[codex/server-outputs 221813b] Update selected server outputs
+ 7 files changed, 107 insertions(+), 4 deletions(-)
+ create mode 100644 outputs/conditional_complement_v1/publication_history/20261125T112932061573Z_github_audit.json
+ create mode 100644 outputs/conditional_complement_v1/publication_history/20261125T112932061573Z_github_audit.log
+ create mode 100644 outputs/conditional_complement_v1/publication_history/20261125T113425812399Z_exit_codes.json
+ create mode 100644 outputs/conditional_complement_v1/publication_history/20261125T113425812399Z_upload.log
+ create mode 100644 outputs/conditional_complement_v1/queue_completion.json
+ create mode 100644 outputs/conditional_complement_v1/training_exit.json
 Uploading LFS objects: 100% (12/12), 12 MB | 0 B/s, done.
 To https://github.com/wangxin0721/XG-NID.git
-   b6ca40c..9770758  HEAD -> codex/server-outputs
-{"status": "uploaded", "branch": "codex/server-outputs", "commit": "977075879cb76d918b59e0386b2b2e792956d706", "files": 25, "symlinks": 0, "bytes": 12053817, "staging_directory_preserved": "D:\\XG-NID\\.outputs-publish-6e6tv6vb"}
+   c826ea7..221813b  HEAD -> codex/server-outputs
+{"status": "uploaded", "branch": "codex/server-outputs", "commit": "221813bec4feaf7a6fe506a284fc4cd226554f65", "files": 33, "symlinks": 0, "bytes": 12061980, "staging_directory_preserved": "D:\\XG-NID\\.outputs-publish-99hkf04d"}
