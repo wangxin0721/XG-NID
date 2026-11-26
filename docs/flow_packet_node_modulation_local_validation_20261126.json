@@ -1,0 +1,31 @@
+{
+  "date": "2026-11-26",
+  "scope": "local_CPU_software_validation_only",
+  "runtime": {"torch": "2.3.1+cpu", "pyg": "2.5.3", "CUDA_available": false},
+  "unittest": {
+    "passed": true,
+    "tests": 38,
+    "modules": ["test_flow_packet_node_modulation", "test_conditional_complement", "test_ordered_transition_readout"],
+    "new_module_tests": 14,
+    "temporary_directory": "repo-local tmp; avoids sandbox WinError 650 on atomic replace",
+    "mechanisms": [
+      "raw graph epoch0 equals learned Ordered including nonzero readout and query",
+      "modulation enters Packet convs2 while first-depth skip remains original",
+      "S2 and S3 have 3008 effective trainable new parameters each",
+      "Packet2 gradients and staged adjustment gradients; frozen Flow and BN",
+      "graph-local Flow conditioning and label-independent inference",
+      "half-batch fault followed by exact CPU restoration of models Adam RNG sampler losses and selection",
+      "raw graph synthetic full pipeline and sealed completed resume",
+      "successful publication audit path and failure exit codes",
+      "immutable snapshot metric recomputation rejects changed predictions",
+      "conditional-complement and Ordered dependency regressions"
+    ]
+  },
+  "bash_syntax": {"passed": true, "command": "bash -n scripts/launch_flow_packet_node_modulation.sh"},
+  "source_result_snapshot_checked": "74a3299fd7d14932d97797f3379519d6057de30a",
+  "GPU_server_probe": {"connected": false, "reason": "SSH jump host timed out during banner exchange"},
+  "real_graph_epoch0_replayed": false,
+  "formal_training_started": false,
+  "model_improvement_demonstrated": false,
+  "test_evaluated": false
+}
