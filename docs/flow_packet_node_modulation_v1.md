@@ -59,9 +59,24 @@ git show "$xgnid_revision":scripts/launch_flow_packet_node_modulation.sh \
   | bash -s -- "$xgnid_repo" "$xgnid_revision"
 ```
 
-脚本在相邻目录创建该 SHA 的独立 detached worktree；已有工作树 SHA 不同或代码有修改时停止保留现场，不切换原仓库分支、不覆盖历史结果。已有进程则拒绝重复启动。
+脚本在相邻目录创建带 SHA 前12位后缀的独立 detached worktree；旧版工作树保持原样，同 SHA 工作树有修改时停止保留现场，不切换原仓库分支。已有进程则拒绝重复启动。
 
 同一命令即真正续训；仅锁定来源可在 `bash -s -- ...` 最后加 `--lock-only`；仅原图 epoch0/梯度探测加 `--probe-only`。两者均不启动200轮。数据根目录需覆盖时加 `--data-root '/实际图目录'`。
+
+### 修复 29cc938 的 CUDA 探测失败后重跑
+
+旧探测先执行 `batch.to(cuda)`，再调用需要在 CPU 上以 NumPy 解析时间顺序的 Ordered 编码入口，触发 `can't convert cuda:0 device type tensor to numpy`。修复只调整调用顺序：先对 CPU 原始批次解析拓扑并执行旧编码入口，再以 GPU 批次运行候选模型；旧编码入口会自行在适当位置移动批次。冻结推理文件保持原样，仍可通过历史来源哈希检查。
+
+该失败发生在梯度探测和正式训练之前。先退出 `tail -F`，等旧启动器连同失败上传结束，再用修复提交执行：
+
+```bash
+git show "$xgnid_revision":scripts/launch_flow_packet_node_modulation.sh \
+  | bash -s -- "$xgnid_repo" "$xgnid_revision" --restart-failed-preflight
+```
+
+这个选项在双进程锁下核对旧提交、特定错误和失败退出码，并拒绝活动进程、任何训练恢复状态或已完成探测。随后将旧输出完整保留到新输出的 `previous_attempts/`，使失败日志、旧协议和来源锁一并随新结果上传；新提交生成自己的来源及协议锁。已有实际训练状态时不会清零或绕过恢复绑定；重复同一修复命令则按当前提交继续真正续训。旧版本工作树不删除。
+
+本地新增设备转移边界回归检查：在无 GPU 环境模拟 PyG 的原地设备转移，原代码可复现同一报错，修复后通过。真实 CUDA 探测测试保留在测试集中，无 GPU 时明确跳过，仍需在服务器执行真实探测。截图里的 `torch_spline_conv` 是可选导入警告，本次致命错误发生在 CPU/NumPy 边界，不需要为该错误升级依赖。
 
 ```bash
 tail -F "$xgnid_repo/outputs/flow_packet_node_modulation_v1/publication/training.log"
@@ -72,7 +87,7 @@ tail -F "$xgnid_repo/tmp/flow_packet_node_modulation_v1.launcher.log"
 训练进程停止后的单独重传及读回核验：
 
 ```bash
-xgnid_code="$(dirname "$xgnid_repo")/XG-NID-flow-packet-node-modulation-v1"
+xgnid_code="$(dirname "$xgnid_repo")/XG-NID-flow-packet-node-modulation-v1-${xgnid_revision:0:12}"
 PYTHONPATH="$xgnid_code/src:$xgnid_code/scripts" python -B \
   "$xgnid_code/scripts/sync_server_outputs.py" publish \
   --repo "$xgnid_repo" --only flow_packet_node_modulation_v1

@@ -4,9 +4,14 @@ set -euo pipefail
 xgnid_repo="${1:?repository path required}"
 xgnid_revision="${2:?full code SHA required}"
 shift 2
+xgnid_restart=0
+if [ "${1:-}" = '--restart-failed-preflight' ]; then
+  xgnid_restart=1
+  shift
+fi
 [[ "$xgnid_revision" =~ ^[0-9a-f]{40}$ ]] || { echo 'A full immutable SHA is required' >&2; exit 1; }
 xgnid_repo="$(cd "$xgnid_repo" && pwd)"
-xgnid_code="$(dirname "$xgnid_repo")/XG-NID-flow-packet-node-modulation-v1"
+xgnid_code="$(dirname "$xgnid_repo")/XG-NID-flow-packet-node-modulation-v1-${xgnid_revision:0:12}"
 cd "$xgnid_repo"
 git cat-file -e "$xgnid_revision^{commit}"
 if [ -e "$xgnid_code" ]; then
@@ -21,6 +26,10 @@ mkdir -p "$xgnid_repo/tmp" "$xgnid_output"
 if [ -f "$xgnid_output/launcher.pid" ] && kill -0 "$(cat "$xgnid_output/launcher.pid")" 2>/dev/null; then
   echo 'Recorded launcher is still running; inspect it before restarting' >&2
   exit 1
+fi
+if [ "$xgnid_restart" = 1 ]; then
+  python -B "$xgnid_code/scripts/restart_flow_packet_node_preflight.py" \
+    --repo "$xgnid_repo" --code-commit "$xgnid_revision"
 fi
 nohup python -u -B "$xgnid_code/scripts/launch_flow_packet_node_modulation.py" \
   --repo "$xgnid_repo" --resume auto "$@" \

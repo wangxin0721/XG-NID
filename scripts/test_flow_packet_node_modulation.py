@@ -11,10 +11,12 @@ from unittest.mock import patch
 import torch
 from torch.nn import functional as F
 from torch_geometric.data import Batch
+from torch_geometric.data.data import BaseData
 
 import run_flow_packet_node_modulation as run
 import launch_flow_packet_node_modulation as launcher
 import audit_flow_packet_node_archive as auditor
+import restart_flow_packet_node_preflight as restart
 from test_packet_transition_readout import fixture
 from test_flow_query_joint_packet2 import TinyGraphs
 from xgnid.joint_transition_fusion import JointTransitionFusion
@@ -142,6 +144,36 @@ class Checks(unittest.TestCase):
             a = m(batch, links)
             del batch.y
             torch.testing.assert_close(a, m(batch, links), rtol=0, atol=0)
+
+    def test_probe_resolves_chronology_before_any_batch_device_transfer(self):
+        # Emulate the CUDA boundary on CPU: legacy NumPy graph parsing must not
+        # see a Batch already moved in-place by PyG's Batch.to().
+        moved = set()
+        move = BaseData.to
+        chronological = run.frozen.original.chronological_edges
+        def device_transfer(batch, *args, **kwargs):
+            moved.add(id(batch))
+            return move(batch, *args, **kwargs)
+        def cpu_chronology(batch):
+            if id(batch) in moved:
+                raise TypeError("can't convert cuda:0 device type tensor to numpy")
+            return chronological(batch)
+        with tempfile.TemporaryDirectory(dir=run.raw.ROOT/'tmp') as tmp, \
+             patch.object(BaseData, 'to', device_transfer), \
+             patch.object(run.frozen.original, 'chronological_edges', cpu_chronology):
+            run.probe(self.models(), self.source, self.ordered, self.data, self.rows['train'],
+                      self.settings, self.device, Path(tmp))
+            self.assertTrue(run.raw.read(Path(tmp)/'gradient_probe.json')['passed'])
+
+    @unittest.skipUnless(torch.cuda.is_available(), 'CUDA is unavailable locally')
+    def test_probe_on_real_cuda_batch(self):
+        device = torch.device('cuda:0')
+        source, ordered = self.source.to(device), self.ordered.to(device)
+        models, _ = run.make_models(source, ordered, device, self.settings)
+        with tempfile.TemporaryDirectory(dir=run.raw.ROOT/'tmp') as tmp:
+            run.probe(models, source, ordered, self.data, self.rows['train'],
+                      self.settings, device, Path(tmp))
+            self.assertTrue(run.raw.read(Path(tmp)/'gradient_probe.json')['passed'])
 
     def test_half_batch_fault_restores_all_models_adam_rng_sampler_and_loss(self):
         originals = {n: m for n, m in self.models().items() if n != 'S0'}
@@ -287,6 +319,73 @@ class Checks(unittest.TestCase):
                 self.assertEqual(launcher.launch(args), 1)
                 receipt = Path(tmp)/'outputs'/run.OUTPUT/'publication/publication_failure.json'
                 self.assertEqual(run.raw.read(receipt)['training_exit_code'], 0)
+
+
+class PreflightRestartChecks(unittest.TestCase):
+    def failed_output(self, repo):
+        output = repo/'outputs'/restart.OUTPUT
+        (output/'publication').mkdir(parents=True)
+        (output/'protocol_lock.json').write_text(json.dumps({'code_commit': restart.FAILED_COMMIT}))
+        (output/'failure.json').write_text(json.dumps({'exception':
+            'TypeError("can\'t convert cuda:0 device type tensor to numpy. Use Tensor.cpu()")'}))
+        (output/'publication/training_exit.json').write_text(json.dumps({'exit_code': 1}))
+        (output/'publication/training.log').write_bytes(b'original failure log\n')
+        (output/'source_lock.json').write_bytes(b'original immutable source lock\n')
+        return output
+
+    def test_preserves_every_old_file_and_same_command_becomes_resume(self):
+        with tempfile.TemporaryDirectory(dir=run.raw.ROOT/'tmp') as tmp:
+            repo = Path(tmp)
+            output = self.failed_output(repo)
+            original = {p.relative_to(output): p.read_bytes() for p in output.rglob('*') if p.is_file()}
+            result = restart.archive_failed_preflight(repo, 'a'*40)
+            saved = output/result['preserved_attempt']
+            self.assertTrue(saved.is_dir())
+            self.assertEqual(original, {p.relative_to(saved): p.read_bytes() for p in saved.rglob('*') if p.is_file()})
+            self.assertFalse((output/'protocol_lock.json').exists())
+            # Later recovery data must survive rerunning the exact repair command.
+            (output/'recovery.pt').write_bytes(b'new trained state')
+            self.assertEqual(result, restart.archive_failed_preflight(repo, 'a'*40))
+            self.assertEqual((output/'recovery.pt').read_bytes(), b'new trained state')
+
+    def test_refuses_to_reset_training_or_completed_probe(self):
+        for name in ('recovery.pt', 'S1/best.pt', 'history.json', 'server_probe.json'):
+            with self.subTest(name=name), tempfile.TemporaryDirectory(dir=run.raw.ROOT/'tmp') as tmp:
+                output = self.failed_output(Path(tmp))
+                marker = output/name
+                marker.parent.mkdir(exist_ok=True)
+                marker.write_bytes(b'preserved progress')
+                with self.assertRaisesRegex(ValueError, 'artifacts exist'):
+                    restart.archive_failed_preflight(Path(tmp), 'a'*40)
+                self.assertEqual(marker.read_bytes(), b'preserved progress')
+                self.assertTrue((output/'failure.json').exists())
+
+    def test_refuses_while_previous_launcher_is_alive(self):
+        with tempfile.TemporaryDirectory(dir=run.raw.ROOT/'tmp') as tmp:
+            output = self.failed_output(Path(tmp))
+            (output/'launcher.pid').write_text('12345')
+            with patch.object(restart.os, 'kill', return_value=None), self.assertRaisesRegex(ValueError, 'still active'):
+                restart.archive_failed_preflight(Path(tmp), 'a'*40)
+            self.assertTrue((output/'protocol_lock.json').exists())
+
+    def test_rejects_unknown_failure_or_successful_run(self):
+        for name, value in (('failure.json', {'exception': 'another error'}),
+                            ('protocol_lock.json', {'code_commit': 'b'*40}),
+                            ('publication/training_exit.json', {'exit_code': 0})):
+            with self.subTest(name=name), tempfile.TemporaryDirectory(dir=run.raw.ROOT/'tmp') as tmp:
+                output = self.failed_output(Path(tmp))
+                (output/name).write_text(json.dumps(value))
+                with self.assertRaises(ValueError):
+                    restart.archive_failed_preflight(Path(tmp), 'a'*40)
+                self.assertTrue((output/'source_lock.json').exists())
+
+    def test_exited_pid_allows_preserving_the_known_failure(self):
+        with tempfile.TemporaryDirectory(dir=run.raw.ROOT/'tmp') as tmp:
+            output = self.failed_output(Path(tmp))
+            (output/'launcher.pid').write_text('12345')
+            with patch.object(restart.os, 'kill', side_effect=ProcessLookupError):
+                result = restart.archive_failed_preflight(Path(tmp), 'a'*40)
+            self.assertEqual((output/result['preserved_attempt']/'launcher.pid').read_text(), '12345')
 
 
 if __name__ == '__main__':

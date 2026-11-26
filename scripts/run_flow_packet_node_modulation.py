@@ -71,8 +71,10 @@ def probe(models, source, ordered, data, rows, settings, device, root):
     batch = Batch.from_data_list([data.load(r) for r in expected])
     training.identity(batch, expected)
     links = training.topology(batch, device)
-    batch = batch.to(device)
+    # Legacy Ordered encoding resolves NumPy chronology on the CPU batch, then
+    # moves it in-place during graph encoding. Do not transfer it beforehand.
     features, _ = frozen.encode(source, batch, device)
+    batch = batch.to(device)
     with torch.no_grad():
         reference = ordered(features)[0]
         errors = {}

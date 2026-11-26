@@ -27,5 +27,21 @@
   "real_graph_epoch0_replayed": false,
   "formal_training_started": false,
   "model_improvement_demonstrated": false,
-  "test_evaluated": false
+  "test_evaluated": false,
+  "cuda_preflight_fix_validation": {
+    "reported_failing_commit": "29cc938886727d64eb0578ed8902b89a8140dd46",
+    "cause": "probe moved the PyG Batch in-place to CUDA before legacy CPU NumPy chronology parsing",
+    "regression_reproduced_before_fix": true,
+    "regression_passed_after_fix": true,
+    "tests_total": 45,
+    "tests_passed": 44,
+    "tests_skipped": 1,
+    "skip_reason": "real CUDA probe requires a GPU; this machine has CPU-only torch",
+    "bash_syntax_passed": true,
+    "failed_attempt_preservation_tests_passed": true,
+    "training_state_reset_rejected": true,
+    "same_repair_command_resumes_existing_new_progress": true,
+    "real_server_rerun_verified": false,
+    "historical_inference_files_modified": false
+  }
 }
