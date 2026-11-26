@@ -1,0 +1,46 @@
+{"files": 24, "GiB": 0.011264550499618053, "staging_directory": "/home/nzxn/下载/WX/load/XG-NID/.outputs-publish-ivixcvcn"}
+提示：使用 'master' 作为初始分支的名称。这个默认分支名称可能会更改。要在新仓库中
+提示：配置使用初始分支名，并消除这条警告，请执行：
+提示：
+提示：	git config --global init.defaultBranch <名称>
+提示：
+提示：除了 'master' 之外，通常选定的名字有 'main'、'trunk' 和 'development'。
+提示：可以通过以下命令重命名刚创建的分支：
+提示：
+提示：	git branch -m <name>
+已初始化空的 Git 仓库于 /home/nzxn/下载/WX/load/XG-NID/.outputs-publish-ivixcvcn/.git/
+来自 github.com:wangxin0721/XG-NID
+ * branch            codex/server-outputs -> FETCH_HEAD
+ * [新分支]          codex/server-outputs -> origin/codex/server-outputs
+Updated Git hooks.
+Git LFS initialized.
+[codex/server-outputs 0ce7074] Update selected server outputs
+ 26 files changed, 4497 insertions(+), 5 deletions(-)
+ create mode 100644 outputs/flow_packet_node_modulation_v1/config.json
+ create mode 100644 outputs/flow_packet_node_modulation_v1/failure.json
+ create mode 100644 outputs/flow_packet_node_modulation_v1/launcher.pid
+ create mode 100644 outputs/flow_packet_node_modulation_v1/protocol_lock.json
+ create mode 100644 outputs/flow_packet_node_modulation_v1/provenance.json
+ create mode 100644 outputs/flow_packet_node_modulation_v1/publication/training.log
+ create mode 100644 outputs/flow_packet_node_modulation_v1/publication/training_exit.json
+ create mode 100644 outputs/flow_packet_node_modulation_v1/sources/config.json
+ create mode 100644 outputs/flow_packet_node_modulation_v1/sources/protocol_lock.json
+ create mode 100644 outputs/flow_packet_node_modulation_v1/sources/seed42/provenance.json
+ create mode 100644 outputs/flow_packet_node_modulation_v1/sources/source_checkpoints/seed42/base_C.pt
+ create mode 100644 outputs/flow_packet_node_modulation_v1/sources/source_checkpoints/seed42/frozen_single.pt
+ create mode 100644 outputs/flow_packet_node_modulation_v1/sources/source_checkpoints/seed42/joint_ordered.pt
+ create mode 100644 outputs/flow_packet_node_modulation_v1/sources/source_checkpoints/seed42/joint_single.pt
+ create mode 100644 outputs/flow_packet_node_modulation_v1/sources/source_checkpoints/seed43/base_C.pt
+ create mode 100644 outputs/flow_packet_node_modulation_v1/sources/source_checkpoints/seed43/frozen_single.pt
+ create mode 100644 outputs/flow_packet_node_modulation_v1/sources/source_checkpoints/seed43/joint_ordered.pt
+ create mode 100644 outputs/flow_packet_node_modulation_v1/sources/source_checkpoints/seed43/joint_single.pt
+ create mode 100644 outputs/flow_packet_node_modulation_v1/sources/source_checkpoints/seed44/base_C.pt
+ create mode 100644 outputs/flow_packet_node_modulation_v1/sources/source_checkpoints/seed44/frozen_single.pt
+ create mode 100644 outputs/flow_packet_node_modulation_v1/sources/source_checkpoints/seed44/joint_ordered.pt
+ create mode 100644 outputs/flow_packet_node_modulation_v1/sources/source_checkpoints/seed44/joint_single.pt
+ create mode 100644 outputs/flow_packet_node_modulation_v1/sources/source_lock.json
+ create mode 100644 outputs/flow_packet_node_modulation_v1/sources/source_lock_receipt.json
+Uploading LFS objects: 100% (12/12), 12 MB | 0 B/s, done.
+To github.com:wangxin0721/XG-NID.git
+   74a3299..0ce7074  HEAD -> codex/server-outputs
+{"status": "uploaded", "branch": "codex/server-outputs", "commit": "0ce7074b9dec2d2534e0748c1fff2350df33153d", "files": 24, "symlinks": 0, "bytes": 12095219, "staging_directory_preserved": "/home/nzxn/下载/WX/load/XG-NID/.outputs-publish-ivixcvcn"}
