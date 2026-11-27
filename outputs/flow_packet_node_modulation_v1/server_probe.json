@@ -1,0 +1,28 @@
+{
+  "passed": true,
+  "samples": 13446,
+  "raw_validation_replay": true,
+  "parameter_counts": {
+    "S0": {
+      "trainable": 0,
+      "new": 0,
+      "inference": 864696
+    },
+    "S1": {
+      "trainable": 37368,
+      "new": 0,
+      "inference": 864696
+    },
+    "S2": {
+      "trainable": 40376,
+      "new": 3008,
+      "inference": 867704
+    },
+    "S3": {
+      "trainable": 40376,
+      "new": 3008,
+      "inference": 867704
+    }
+  },
+  "test_graph_loads": 0
+}

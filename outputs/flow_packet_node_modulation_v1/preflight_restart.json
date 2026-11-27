@@ -1,0 +1,7 @@
+{
+  "previous_code_commit": "29cc938886727d64eb0578ed8902b89a8140dd46",
+  "new_code_commit": "3b5e4691aa90425525d58dcc1ab88bc5c092975c",
+  "reason": "CPU chronology must precede the in-place CUDA transfer",
+  "previous_training_updates": 0,
+  "preserved_attempt": "previous_attempts/flow_packet_node_modulation_v1_failed_preflight_20261126T082705385997Z"
+}

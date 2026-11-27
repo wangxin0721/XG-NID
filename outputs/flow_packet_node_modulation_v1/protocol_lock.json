@@ -53,7 +53,7 @@
     "source_model": "joint_ordered",
     "source_result_commit": "b6ca40cfb1abef54c669bdcf932ce95bdd272a66"
   },
-  "code_commit": "29cc938886727d64eb0578ed8902b89a8140dd46",
+  "code_commit": "3b5e4691aa90425525d58dcc1ab88bc5c092975c",
   "source_files_canonical_sha256": {
     "configs/attention_operator_pair_s42_v1.json": "22b216841ab8ada98b478d98a57f676fac7d8d0ded52df3df9bd337972574ebd",
     "configs/attention_operator_training_s42_v1.json": "8f08ee3ea9fc324931f8e9b7a23eee596f9ebb84faa4ae769288c1c33d81a07d",
@@ -199,6 +199,7 @@
     "scripts/replay_flow_query_strength.py": "3f7f86f7cc65f0c8645cd14e1c400f66cd1a9815169d8848c3ab5c10a8c8e035",
     "scripts/residual_injection_results.py": "ec43753669a1f9f1ccbef9b6f528eaf1f1267e0e00d4516642ebe629d624d67f",
     "scripts/residual_injection_training.py": "c94b4a58e9a5054b50f0d7c453631065b8c3b267ebc4e022a977675715f1d0b3",
+    "scripts/restart_flow_packet_node_preflight.py": "1d630ed8563f308fa0deecff243ad0ac3827529e3145ccb2ae30042d7ecdeab7",
     "scripts/restart_r0a_server.py": "39e54ae89a0f4b409274e8e0df0f5b1eb65915993583b97e3188ef2e6bbcbc02",
     "scripts/resume_e3_server.py": "6ac8b4cf8e392501d2ac6a187a97e1e035b249e4a592c8d426b5ba3f588419ac",
     "scripts/resume_fair_vector.py": "55a628b4440b87bbee0605c2fc4655370e27a30ed706745a2244a5f677af6f2c",
@@ -221,7 +222,7 @@
     "scripts/run_fixed_transition_final_test.py": "b2f4b320ecac8ae776a4035b7da4213cb54ef0a6e63dd34bb9276155e684b958",
     "scripts/run_fixed_transition_stability.py": "54165467152e0912b8615670583edb1c7a9fccc6d1ac4f881bcd727e95ba1dfe",
     "scripts/run_flow_only_table5.py": "9f26b9b32051795f187cfbd6ffd5bddf79ea614125bf2c2f04a666635f332b16",
-    "scripts/run_flow_packet_node_modulation.py": "f0ea6a5a60232470fb260007a86bfaa21a9053f0a12d83df34cc43439a937b6d",
+    "scripts/run_flow_packet_node_modulation.py": "c786508da4e3c86a1e3172e69ea64bb37fe8caa58a426c7a4695ecff67bf98ad",
     "scripts/run_flow_query_joint_packet2.py": "93bff3969bae6814ab4821f35270f28afe31ecc2b8e9e92bc98901bb07122abd",
     "scripts/run_flow_query_joint_seeds.py": "4bb280d3a81c11e2a89cd646d2391e32d8a6704a5d726ae115b13b7022704e53",
     "scripts/run_flow_query_pooling.py": "07f15b9559887b88bbaabf55511afd3e81088ca9a6dabb178f98a458c11d888c",
@@ -300,7 +301,7 @@
     "scripts/test_fixed_transition_final_test.py": "8388e839c86dd39034ba0361f5e5f47e8884461b55ce6e9a9d66422d8f43e0be",
     "scripts/test_fixed_transition_lfs.py": "58ae8373d04bb6ce8b452d4a5113e563a225613ccbf3eb651ad4839db49e5e95",
     "scripts/test_fixed_transition_stability.py": "c613dc9049ea61cd32b994efb3251417ff5c2bd22d0d7eb216463c9c96438e43",
-    "scripts/test_flow_packet_node_modulation.py": "53b01de2700813ff2718e7d6daa001b7ce10515a3c9c38570df8e64041f78a81",
+    "scripts/test_flow_packet_node_modulation.py": "63ea5bd40b709ff9669d43e95af19ba514e59649ee89795ead0cf6f8800c107b",
     "scripts/test_flow_query_joint_packet2.py": "7f3a336a7bbb1492e6acbc5e6f5030ffe6a8d8f43877473a5d05e4ad5ff3200d",
     "scripts/test_flow_query_joint_seeds.py": "258e25fc0b9e07e3e6ed2841dd368ab43a30d151d4dda28687a187d9463a08c0",
     "scripts/test_flow_stats_diagnostic.py": "8f54aad192f53022d3436447e3113017b4a523c18f6594d4419fb9ff3c0d5686",
@@ -399,7 +400,7 @@
     "src/xgnid/train.py": "4aa9b321e757395a494a1a46fc9ad99a79e6be449e54ce467950b102be3775b3",
     "src/xgnid/transition_pair_shuffle.py": "027d7a9749bbcae89816c32212572f797d5ee0b48e8880126cec97cd06736718"
   },
-  "source_protocol_sha256": "a0f38a07c511076525064c353b86949782f78133bf3a16f7e755be83e2bb0bbd",
+  "source_protocol_sha256": "3a34d5a7772deec8d3f64843aead54a5b580464bc17e95c528231df547b965f2",
   "source_checkpoint": {
     "path": "fixed_transition_stability_v1/seed42_import/joint_ordered/best.pt",
     "sha256": "4d748e8aa315a171cb2f3ee5e5bc88b3b4696582fc35a2ae22acaad4ad417c2c",

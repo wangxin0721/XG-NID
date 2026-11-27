@@ -1,0 +1,7 @@
+{
+  "passed": true,
+  "selected_raw_replay": true,
+  "source_weights_and_BN_unchanged": true,
+  "test_graph_loads": 0,
+  "updates_each": 42200
+}

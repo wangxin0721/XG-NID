@@ -1,0 +1,10 @@
+{
+  "completed_epoch": 200,
+  "updates_per_arm": 42200,
+  "cursor": 107621,
+  "best_epochs": {
+    "S1": 0,
+    "S2": 0,
+    "S3": 0
+  }
+}

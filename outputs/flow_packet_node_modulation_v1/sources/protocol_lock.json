@@ -518,7 +518,7 @@
       }
     }
   },
-  "code_commit": "29cc938886727d64eb0578ed8902b89a8140dd46",
+  "code_commit": "3b5e4691aa90425525d58dcc1ab88bc5c092975c",
   "source_files_canonical_sha256": {
     "scripts/run_joint_transition_fusion.py": "add67d0fc200d6970c3f56328d60b3662894a24934fc0a51feda8cc80be5484b",
     "scripts/joint_transition_training.py": "cd3f5147b70d08fa03e726541fc9a1dc1c23c297ed0af3f06fc1ed942cd6865e",
