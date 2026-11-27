@@ -1,6 +1,6 @@
 {
   "schema": "xgnid.outputs-snapshot.v2",
-  "created_utc": "2026-11-27T18:45:05.549819+00:00",
+  "created_utc": "2026-11-27T18:47:13.955181+00:00",
   "source_directory": "/home/nzxn/下载/WX/load/XG-NID/outputs",
   "files": {
     "GNN4ID/best.pt": {
@@ -4474,6 +4474,14 @@
     "flow_packet_node_modulation_v1/provenance.json": {
       "bytes": 2194,
       "sha256": "0c4f31c168215246e3eddb4a090779ceb91921561fcdded02bd1d176ccec42e8"
+    },
+    "flow_packet_node_modulation_v1/publication/20261127T184534567316Z_github_audit.json": {
+      "bytes": 5780,
+      "sha256": "7116db82b4a5cfb737933d483cafe3f77964352613f91105e024f8868e16d0e9"
+    },
+    "flow_packet_node_modulation_v1/publication/audit.log": {
+      "bytes": 3940,
+      "sha256": "fab8bfa728a61d5c970d2358dff695499632b4c11c7022aece20dc74eccee69a"
     },
     "flow_packet_node_modulation_v1/publication/exit_codes.json": {
       "bytes": 366,
@@ -12868,10 +12876,10 @@
       "sha256": "ebd2091803aab3a050f3a791f303ea786bca06de0d6ab6d56a633cdc16f67b1e"
     }
   },
-  "file_count": 3166,
+  "file_count": 3168,
   "symlink_count": 100,
-  "regular_file_count": 3066,
-  "total_bytes": 9674388886,
+  "regular_file_count": 3068,
+  "total_bytes": 9674398606,
   "updated_directories": [
     "flow_packet_node_modulation_v1"
   ]

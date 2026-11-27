@@ -1,0 +1,266 @@
+{
+  "passed": true,
+  "result_commit": "7d320f9cb019b57dfdaceb57996a84405cae96d5",
+  "completed_training_audited": true,
+  "test_predictions_loaded": false,
+  "input_bytes_sha256_verified": true,
+  "samples": 13446,
+  "comparisons": {
+    "S1-S0": {
+      "delta_macro_f1_pp": 0.0,
+      "counts": {
+        "repaired": 0,
+        "regressed": 0,
+        "wrong_changed": 0
+      },
+      "per_class": {
+        "Benign": {
+          "repaired": 0,
+          "regressed": 0,
+          "wrong_changed": 0
+        },
+        "WebBased": {
+          "repaired": 0,
+          "regressed": 0,
+          "wrong_changed": 0
+        },
+        "Spoofing": {
+          "repaired": 0,
+          "regressed": 0,
+          "wrong_changed": 0
+        },
+        "Recon": {
+          "repaired": 0,
+          "regressed": 0,
+          "wrong_changed": 0
+        },
+        "Mirai": {
+          "repaired": 0,
+          "regressed": 0,
+          "wrong_changed": 0
+        },
+        "Dos": {
+          "repaired": 0,
+          "regressed": 0,
+          "wrong_changed": 0
+        },
+        "DDos": {
+          "repaired": 0,
+          "regressed": 0,
+          "wrong_changed": 0
+        },
+        "BruteForce": {
+          "repaired": 0,
+          "regressed": 0,
+          "wrong_changed": 0
+        }
+      }
+    },
+    "S2-S1": {
+      "delta_macro_f1_pp": 0.0,
+      "counts": {
+        "repaired": 0,
+        "regressed": 0,
+        "wrong_changed": 0
+      },
+      "per_class": {
+        "Benign": {
+          "repaired": 0,
+          "regressed": 0,
+          "wrong_changed": 0
+        },
+        "WebBased": {
+          "repaired": 0,
+          "regressed": 0,
+          "wrong_changed": 0
+        },
+        "Spoofing": {
+          "repaired": 0,
+          "regressed": 0,
+          "wrong_changed": 0
+        },
+        "Recon": {
+          "repaired": 0,
+          "regressed": 0,
+          "wrong_changed": 0
+        },
+        "Mirai": {
+          "repaired": 0,
+          "regressed": 0,
+          "wrong_changed": 0
+        },
+        "Dos": {
+          "repaired": 0,
+          "regressed": 0,
+          "wrong_changed": 0
+        },
+        "DDos": {
+          "repaired": 0,
+          "regressed": 0,
+          "wrong_changed": 0
+        },
+        "BruteForce": {
+          "repaired": 0,
+          "regressed": 0,
+          "wrong_changed": 0
+        }
+      }
+    },
+    "S3-S0": {
+      "delta_macro_f1_pp": 0.0,
+      "counts": {
+        "repaired": 0,
+        "regressed": 0,
+        "wrong_changed": 0
+      },
+      "per_class": {
+        "Benign": {
+          "repaired": 0,
+          "regressed": 0,
+          "wrong_changed": 0
+        },
+        "WebBased": {
+          "repaired": 0,
+          "regressed": 0,
+          "wrong_changed": 0
+        },
+        "Spoofing": {
+          "repaired": 0,
+          "regressed": 0,
+          "wrong_changed": 0
+        },
+        "Recon": {
+          "repaired": 0,
+          "regressed": 0,
+          "wrong_changed": 0
+        },
+        "Mirai": {
+          "repaired": 0,
+          "regressed": 0,
+          "wrong_changed": 0
+        },
+        "Dos": {
+          "repaired": 0,
+          "regressed": 0,
+          "wrong_changed": 0
+        },
+        "DDos": {
+          "repaired": 0,
+          "regressed": 0,
+          "wrong_changed": 0
+        },
+        "BruteForce": {
+          "repaired": 0,
+          "regressed": 0,
+          "wrong_changed": 0
+        }
+      }
+    },
+    "S3-S1": {
+      "delta_macro_f1_pp": 0.0,
+      "counts": {
+        "repaired": 0,
+        "regressed": 0,
+        "wrong_changed": 0
+      },
+      "per_class": {
+        "Benign": {
+          "repaired": 0,
+          "regressed": 0,
+          "wrong_changed": 0
+        },
+        "WebBased": {
+          "repaired": 0,
+          "regressed": 0,
+          "wrong_changed": 0
+        },
+        "Spoofing": {
+          "repaired": 0,
+          "regressed": 0,
+          "wrong_changed": 0
+        },
+        "Recon": {
+          "repaired": 0,
+          "regressed": 0,
+          "wrong_changed": 0
+        },
+        "Mirai": {
+          "repaired": 0,
+          "regressed": 0,
+          "wrong_changed": 0
+        },
+        "Dos": {
+          "repaired": 0,
+          "regressed": 0,
+          "wrong_changed": 0
+        },
+        "DDos": {
+          "repaired": 0,
+          "regressed": 0,
+          "wrong_changed": 0
+        },
+        "BruteForce": {
+          "repaired": 0,
+          "regressed": 0,
+          "wrong_changed": 0
+        }
+      }
+    },
+    "S3-S2": {
+      "delta_macro_f1_pp": 0.0,
+      "counts": {
+        "repaired": 0,
+        "regressed": 0,
+        "wrong_changed": 0
+      },
+      "per_class": {
+        "Benign": {
+          "repaired": 0,
+          "regressed": 0,
+          "wrong_changed": 0
+        },
+        "WebBased": {
+          "repaired": 0,
+          "regressed": 0,
+          "wrong_changed": 0
+        },
+        "Spoofing": {
+          "repaired": 0,
+          "regressed": 0,
+          "wrong_changed": 0
+        },
+        "Recon": {
+          "repaired": 0,
+          "regressed": 0,
+          "wrong_changed": 0
+        },
+        "Mirai": {
+          "repaired": 0,
+          "regressed": 0,
+          "wrong_changed": 0
+        },
+        "Dos": {
+          "repaired": 0,
+          "regressed": 0,
+          "wrong_changed": 0
+        },
+        "DDos": {
+          "repaired": 0,
+          "regressed": 0,
+          "wrong_changed": 0
+        },
+        "BruteForce": {
+          "repaired": 0,
+          "regressed": 0,
+          "wrong_changed": 0
+        }
+      }
+    }
+  },
+  "decision": {
+    "S3_exceeds_both_controls": false,
+    "interpretation": "no_extra_benefit_demonstrated",
+    "automatic_replication": false,
+    "test_authorized": false
+  }
+}
