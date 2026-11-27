@@ -1,4 +1,4 @@
-{"files": 75, "GiB": 0.07626906968653202, "staging_directory": "/home/nzxn/下载/WX/load/XG-NID/.outputs-publish-eb144d98"}
+{"files": 79, "GiB": 0.07628605980426073, "staging_directory": "/home/nzxn/下载/WX/load/XG-NID/.outputs-publish-hymzxb5t"}
 提示：使用 'master' 作为初始分支的名称。这个默认分支名称可能会更改。要在新仓库中
 提示：配置使用初始分支名，并消除这条警告，请执行：
 提示：
@@ -8,67 +8,17 @@
 提示：可以通过以下命令重命名刚创建的分支：
 提示：
 提示：	git branch -m <name>
-已初始化空的 Git 仓库于 /home/nzxn/下载/WX/load/XG-NID/.outputs-publish-eb144d98/.git/
+已初始化空的 Git 仓库于 /home/nzxn/下载/WX/load/XG-NID/.outputs-publish-hymzxb5t/.git/
 来自 github.com:wangxin0721/XG-NID
  * branch            codex/server-outputs -> FETCH_HEAD
  * [新分支]          codex/server-outputs -> origin/codex/server-outputs
 Updated Git hooks.
 Git LFS initialized.
-[codex/server-outputs 7d320f9] Update selected server outputs
- 61 files changed, 94666 insertions(+), 45 deletions(-)
- create mode 100644 outputs/flow_packet_node_modulation_v1/S0_source_replay.json
- create mode 100644 outputs/flow_packet_node_modulation_v1/S1/best.pt
- create mode 100644 outputs/flow_packet_node_modulation_v1/S1/epoch0.pt
- create mode 100644 outputs/flow_packet_node_modulation_v1/S1/last.pt
- create mode 100644 outputs/flow_packet_node_modulation_v1/S1_source_replay.json
- create mode 100644 outputs/flow_packet_node_modulation_v1/S2/best.pt
- create mode 100644 outputs/flow_packet_node_modulation_v1/S2/epoch0.pt
- create mode 100644 outputs/flow_packet_node_modulation_v1/S2/last.pt
- create mode 100644 outputs/flow_packet_node_modulation_v1/S2_source_replay.json
- create mode 100644 outputs/flow_packet_node_modulation_v1/S3/best.pt
- create mode 100644 outputs/flow_packet_node_modulation_v1/S3/epoch0.pt
- create mode 100644 outputs/flow_packet_node_modulation_v1/S3/last.pt
- create mode 100644 outputs/flow_packet_node_modulation_v1/S3_source_replay.json
- create mode 100644 outputs/flow_packet_node_modulation_v1/artifact_manifest.json
- create mode 100644 outputs/flow_packet_node_modulation_v1/final_verification.json
- create mode 100644 outputs/flow_packet_node_modulation_v1/gradient_probe.json
- create mode 100644 outputs/flow_packet_node_modulation_v1/history.json
- create mode 100644 outputs/flow_packet_node_modulation_v1/preflight_restart.json
- create mode 100644 outputs/flow_packet_node_modulation_v1/previous_attempts/flow_packet_node_modulation_v1_failed_preflight_20261126T082705385997Z/config.json
- rename outputs/flow_packet_node_modulation_v1/{ => previous_attempts/flow_packet_node_modulation_v1_failed_preflight_20261126T082705385997Z}/failure.json (100%)
- create mode 100644 outputs/flow_packet_node_modulation_v1/previous_attempts/flow_packet_node_modulation_v1_failed_preflight_20261126T082705385997Z/launcher.pid
- create mode 100644 outputs/flow_packet_node_modulation_v1/previous_attempts/flow_packet_node_modulation_v1_failed_preflight_20261126T082705385997Z/protocol_lock.json
- create mode 100644 outputs/flow_packet_node_modulation_v1/previous_attempts/flow_packet_node_modulation_v1_failed_preflight_20261126T082705385997Z/provenance.json
- rename outputs/flow_packet_node_modulation_v1/{ => previous_attempts/flow_packet_node_modulation_v1_failed_preflight_20261126T082705385997Z}/publication/exit_codes.json (100%)
- copy outputs/flow_packet_node_modulation_v1/{ => previous_attempts/flow_packet_node_modulation_v1_failed_preflight_20261126T082705385997Z}/publication/training.log (100%)
- create mode 100644 outputs/flow_packet_node_modulation_v1/previous_attempts/flow_packet_node_modulation_v1_failed_preflight_20261126T082705385997Z/publication/training_exit.json
- rename outputs/flow_packet_node_modulation_v1/{ => previous_attempts/flow_packet_node_modulation_v1_failed_preflight_20261126T082705385997Z}/publication/upload.log (100%)
- create mode 100644 outputs/flow_packet_node_modulation_v1/previous_attempts/flow_packet_node_modulation_v1_failed_preflight_20261126T082705385997Z/sources/config.json
- create mode 100644 outputs/flow_packet_node_modulation_v1/previous_attempts/flow_packet_node_modulation_v1_failed_preflight_20261126T082705385997Z/sources/protocol_lock.json
- create mode 100644 outputs/flow_packet_node_modulation_v1/previous_attempts/flow_packet_node_modulation_v1_failed_preflight_20261126T082705385997Z/sources/seed42/provenance.json
- create mode 100644 outputs/flow_packet_node_modulation_v1/previous_attempts/flow_packet_node_modulation_v1_failed_preflight_20261126T082705385997Z/sources/source_checkpoints/seed42/base_C.pt
- create mode 100644 outputs/flow_packet_node_modulation_v1/previous_attempts/flow_packet_node_modulation_v1_failed_preflight_20261126T082705385997Z/sources/source_checkpoints/seed42/frozen_single.pt
- create mode 100644 outputs/flow_packet_node_modulation_v1/previous_attempts/flow_packet_node_modulation_v1_failed_preflight_20261126T082705385997Z/sources/source_checkpoints/seed42/joint_ordered.pt
- create mode 100644 outputs/flow_packet_node_modulation_v1/previous_attempts/flow_packet_node_modulation_v1_failed_preflight_20261126T082705385997Z/sources/source_checkpoints/seed42/joint_single.pt
- create mode 100644 outputs/flow_packet_node_modulation_v1/previous_attempts/flow_packet_node_modulation_v1_failed_preflight_20261126T082705385997Z/sources/source_checkpoints/seed43/base_C.pt
- create mode 100644 outputs/flow_packet_node_modulation_v1/previous_attempts/flow_packet_node_modulation_v1_failed_preflight_20261126T082705385997Z/sources/source_checkpoints/seed43/frozen_single.pt
- create mode 100644 outputs/flow_packet_node_modulation_v1/previous_attempts/flow_packet_node_modulation_v1_failed_preflight_20261126T082705385997Z/sources/source_checkpoints/seed43/joint_ordered.pt
- create mode 100644 outputs/flow_packet_node_modulation_v1/previous_attempts/flow_packet_node_modulation_v1_failed_preflight_20261126T082705385997Z/sources/source_checkpoints/seed43/joint_single.pt
- create mode 100644 outputs/flow_packet_node_modulation_v1/previous_attempts/flow_packet_node_modulation_v1_failed_preflight_20261126T082705385997Z/sources/source_checkpoints/seed44/base_C.pt
- create mode 100644 outputs/flow_packet_node_modulation_v1/previous_attempts/flow_packet_node_modulation_v1_failed_preflight_20261126T082705385997Z/sources/source_checkpoints/seed44/frozen_single.pt
- create mode 100644 outputs/flow_packet_node_modulation_v1/previous_attempts/flow_packet_node_modulation_v1_failed_preflight_20261126T082705385997Z/sources/source_checkpoints/seed44/joint_ordered.pt
- create mode 100644 outputs/flow_packet_node_modulation_v1/previous_attempts/flow_packet_node_modulation_v1_failed_preflight_20261126T082705385997Z/sources/source_checkpoints/seed44/joint_single.pt
- create mode 100644 outputs/flow_packet_node_modulation_v1/previous_attempts/flow_packet_node_modulation_v1_failed_preflight_20261126T082705385997Z/sources/source_lock.json
- create mode 100644 outputs/flow_packet_node_modulation_v1/previous_attempts/flow_packet_node_modulation_v1_failed_preflight_20261126T082705385997Z/sources/source_lock_receipt.json
- create mode 100644 outputs/flow_packet_node_modulation_v1/progress.json
- rewrite outputs/flow_packet_node_modulation_v1/publication/training.log (74%)
- create mode 100644 outputs/flow_packet_node_modulation_v1/recovery.pt
- create mode 100644 outputs/flow_packet_node_modulation_v1/report.md
- create mode 100644 outputs/flow_packet_node_modulation_v1/server_probe.json
- create mode 100644 outputs/flow_packet_node_modulation_v1/status.json
- create mode 100644 outputs/flow_packet_node_modulation_v1/summary.json
- create mode 100644 outputs/flow_packet_node_modulation_v1/training_progress.json
- create mode 100644 outputs/flow_packet_node_modulation_v1/validation_predictions.jsonl.gz
+[codex/server-outputs 5783500] Update selected server outputs
+ 3 files changed, 283 insertions(+), 4 deletions(-)
+ create mode 100644 outputs/flow_packet_node_modulation_v1/publication/20261127T184534567316Z_github_audit.json
+ create mode 100644 outputs/flow_packet_node_modulation_v1/publication/audit.log
+Uploading LFS objects: 100% (19/19), 56 MB | 0 B/s, done.
 To github.com:wangxin0721/XG-NID.git
-   d61ca27..7d320f9  HEAD -> codex/server-outputs
-{"status": "uploaded", "branch": "codex/server-outputs", "commit": "7d320f9cb019b57dfdaceb57996a84405cae96d5", "files": 75, "symlinks": 0, "bytes": 81893290, "staging_directory_preserved": "/home/nzxn/下载/WX/load/XG-NID/.outputs-publish-eb144d98"}
+   e4474f5..5783500  HEAD -> codex/server-outputs
+{"status": "uploaded", "branch": "codex/server-outputs", "commit": "5783500401c66c9efa9877473c341e13f219b45c", "files": 79, "symlinks": 0, "bytes": 81911533, "staging_directory_preserved": "/home/nzxn/下载/WX/load/XG-NID/.outputs-publish-hymzxb5t"}
