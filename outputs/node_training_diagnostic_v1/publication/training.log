@@ -1,0 +1,310 @@
+
+2026-11-28T07:48:59.616659+00:00 /home/nzxn/miniconda3/envs/wx/bin/python -u -B '/home/nzxn/下载/WX/load/XG-NID-node-training-diagnostic-v1-ea1207c8240e/scripts/run_node_training_diagnostic.py' --repo '/home/nzxn/下载/WX/load/XG-NID' --resume auto --download-inputs
+/home/nzxn/miniconda3/envs/wx/lib/python3.9/site-packages/torch_geometric/typing.py:99: UserWarning: An issue occurred while importing 'torch-spline-conv'. Disabling its usage. Stacktrace: /home/nzxn/miniconda3/envs/wx/lib/python3.9/site-packages/torch_spline_conv/_version_cuda.so: undefined symbol: _ZN3c1017RegisterOperatorsD1Ev
+  warnings.warn(
+来自 github.com:wangxin0721/XG-NID
+ * branch            1469f7190e7077db7afb639d2efa1347d9e261f1 -> FETCH_HEAD
+{"status": "running", "pid": 4054398, "phase": "validation_0", "samples": 16, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_0", "samples": 3200, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_0", "samples": 6400, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_0", "samples": 9600, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_0", "samples": 12800, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_0", "samples": 13446, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "fixed_train_0", "samples": 16, "total": 512}
+{"status": "running", "pid": 4054398, "phase": "fixed_train_0", "samples": 512, "total": 512}
+{"status": "running", "pid": 4054398, "phase": "validation_0", "samples": 16, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_0", "samples": 3200, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_0", "samples": 6400, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_0", "samples": 9600, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_0", "samples": 12800, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_0", "samples": 13446, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "fixed_train_0", "samples": 16, "total": 512}
+{"status": "running", "pid": 4054398, "phase": "fixed_train_0", "samples": 512, "total": 512}
+{"status": "running", "pid": 4054398, "phase": "paired_raw_training", "epoch": 1, "samples": 512, "total": 107621, "updates_per_arm": 1}
+{"status": "running", "pid": 4054398, "phase": "paired_raw_training", "epoch": 1, "samples": 25600, "total": 107621, "updates_per_arm": 50}
+{"status": "running", "pid": 4054398, "phase": "paired_raw_training", "epoch": 1, "samples": 51200, "total": 107621, "updates_per_arm": 100}
+{"status": "running", "pid": 4054398, "phase": "paired_raw_training", "epoch": 1, "samples": 76800, "total": 107621, "updates_per_arm": 150}
+{"status": "running", "pid": 4054398, "phase": "paired_raw_training", "epoch": 1, "samples": 102400, "total": 107621, "updates_per_arm": 200}
+{"status": "running", "pid": 4054398, "phase": "validation_1", "samples": 16, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_1", "samples": 3200, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_1", "samples": 6400, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_1", "samples": 9600, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_1", "samples": 12800, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_1", "samples": 13446, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "fixed_train_1", "samples": 16, "total": 512}
+{"status": "running", "pid": 4054398, "phase": "fixed_train_1", "samples": 512, "total": 512}
+{"status": "running", "pid": 4054398, "phase": "epoch_completed", "epoch": 1, "total_epochs": 20, "macro_f1": {"R1": 0.9790149709617653, "R2": 0.9791403291717622, "R3": 0.9787025215977999}}
+{"status": "running", "pid": 4054398, "phase": "paired_raw_training", "epoch": 2, "samples": 512, "total": 107621, "updates_per_arm": 212}
+{"status": "running", "pid": 4054398, "phase": "paired_raw_training", "epoch": 2, "samples": 25600, "total": 107621, "updates_per_arm": 261}
+{"status": "running", "pid": 4054398, "phase": "paired_raw_training", "epoch": 2, "samples": 51200, "total": 107621, "updates_per_arm": 311}
+{"status": "running", "pid": 4054398, "phase": "paired_raw_training", "epoch": 2, "samples": 76800, "total": 107621, "updates_per_arm": 361}
+{"status": "running", "pid": 4054398, "phase": "paired_raw_training", "epoch": 2, "samples": 102400, "total": 107621, "updates_per_arm": 411}
+{"status": "running", "pid": 4054398, "phase": "validation_2", "samples": 16, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_2", "samples": 3200, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_2", "samples": 6400, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_2", "samples": 9600, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_2", "samples": 12800, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_2", "samples": 13446, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "fixed_train_2", "samples": 16, "total": 512}
+{"status": "running", "pid": 4054398, "phase": "fixed_train_2", "samples": 512, "total": 512}
+{"status": "running", "pid": 4054398, "phase": "epoch_completed", "epoch": 2, "total_epochs": 20, "macro_f1": {"R1": 0.9790322903390255, "R2": 0.9786747675704259, "R3": 0.9788347734278818}}
+{"status": "running", "pid": 4054398, "phase": "paired_raw_training", "epoch": 3, "samples": 512, "total": 107621, "updates_per_arm": 423}
+{"status": "running", "pid": 4054398, "phase": "paired_raw_training", "epoch": 3, "samples": 25600, "total": 107621, "updates_per_arm": 472}
+{"status": "running", "pid": 4054398, "phase": "paired_raw_training", "epoch": 3, "samples": 51200, "total": 107621, "updates_per_arm": 522}
+{"status": "running", "pid": 4054398, "phase": "paired_raw_training", "epoch": 3, "samples": 76800, "total": 107621, "updates_per_arm": 572}
+{"status": "running", "pid": 4054398, "phase": "paired_raw_training", "epoch": 3, "samples": 102400, "total": 107621, "updates_per_arm": 622}
+{"status": "running", "pid": 4054398, "phase": "validation_3", "samples": 16, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_3", "samples": 3200, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_3", "samples": 6400, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_3", "samples": 9600, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_3", "samples": 12800, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_3", "samples": 13446, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "fixed_train_3", "samples": 16, "total": 512}
+{"status": "running", "pid": 4054398, "phase": "fixed_train_3", "samples": 512, "total": 512}
+{"status": "running", "pid": 4054398, "phase": "epoch_completed", "epoch": 3, "total_epochs": 20, "macro_f1": {"R1": 0.9786119568647373, "R2": 0.9783216659890057, "R3": 0.9784675846068401}}
+{"status": "running", "pid": 4054398, "phase": "paired_raw_training", "epoch": 4, "samples": 512, "total": 107621, "updates_per_arm": 634}
+{"status": "running", "pid": 4054398, "phase": "paired_raw_training", "epoch": 4, "samples": 25600, "total": 107621, "updates_per_arm": 683}
+{"status": "running", "pid": 4054398, "phase": "paired_raw_training", "epoch": 4, "samples": 51200, "total": 107621, "updates_per_arm": 733}
+{"status": "running", "pid": 4054398, "phase": "paired_raw_training", "epoch": 4, "samples": 76800, "total": 107621, "updates_per_arm": 783}
+{"status": "running", "pid": 4054398, "phase": "paired_raw_training", "epoch": 4, "samples": 102400, "total": 107621, "updates_per_arm": 833}
+{"status": "running", "pid": 4054398, "phase": "validation_4", "samples": 16, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_4", "samples": 3200, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_4", "samples": 6400, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_4", "samples": 9600, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_4", "samples": 12800, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_4", "samples": 13446, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "fixed_train_4", "samples": 16, "total": 512}
+{"status": "running", "pid": 4054398, "phase": "fixed_train_4", "samples": 512, "total": 512}
+{"status": "running", "pid": 4054398, "phase": "epoch_completed", "epoch": 4, "total_epochs": 20, "macro_f1": {"R1": 0.9780226919516408, "R2": 0.9789551485612235, "R3": 0.9786009949619525}}
+{"status": "running", "pid": 4054398, "phase": "paired_raw_training", "epoch": 5, "samples": 512, "total": 107621, "updates_per_arm": 845}
+{"status": "running", "pid": 4054398, "phase": "paired_raw_training", "epoch": 5, "samples": 25600, "total": 107621, "updates_per_arm": 894}
+{"status": "running", "pid": 4054398, "phase": "paired_raw_training", "epoch": 5, "samples": 51200, "total": 107621, "updates_per_arm": 944}
+{"status": "running", "pid": 4054398, "phase": "paired_raw_training", "epoch": 5, "samples": 76800, "total": 107621, "updates_per_arm": 994}
+{"status": "running", "pid": 4054398, "phase": "paired_raw_training", "epoch": 5, "samples": 102400, "total": 107621, "updates_per_arm": 1044}
+{"status": "running", "pid": 4054398, "phase": "validation_5", "samples": 16, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_5", "samples": 3200, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_5", "samples": 6400, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_5", "samples": 9600, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_5", "samples": 12800, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_5", "samples": 13446, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "fixed_train_5", "samples": 16, "total": 512}
+{"status": "running", "pid": 4054398, "phase": "fixed_train_5", "samples": 512, "total": 512}
+{"status": "running", "pid": 4054398, "phase": "epoch_completed", "epoch": 5, "total_epochs": 20, "macro_f1": {"R1": 0.9774482130913806, "R2": 0.9790694501476049, "R3": 0.9788890180991003}}
+{"status": "running", "pid": 4054398, "phase": "paired_raw_training", "epoch": 6, "samples": 512, "total": 107621, "updates_per_arm": 1056}
+{"status": "running", "pid": 4054398, "phase": "paired_raw_training", "epoch": 6, "samples": 25600, "total": 107621, "updates_per_arm": 1105}
+{"status": "running", "pid": 4054398, "phase": "paired_raw_training", "epoch": 6, "samples": 51200, "total": 107621, "updates_per_arm": 1155}
+{"status": "running", "pid": 4054398, "phase": "paired_raw_training", "epoch": 6, "samples": 76800, "total": 107621, "updates_per_arm": 1205}
+{"status": "running", "pid": 4054398, "phase": "paired_raw_training", "epoch": 6, "samples": 102400, "total": 107621, "updates_per_arm": 1255}
+{"status": "running", "pid": 4054398, "phase": "validation_6", "samples": 16, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_6", "samples": 3200, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_6", "samples": 6400, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_6", "samples": 9600, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_6", "samples": 12800, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_6", "samples": 13446, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "fixed_train_6", "samples": 16, "total": 512}
+{"status": "running", "pid": 4054398, "phase": "fixed_train_6", "samples": 512, "total": 512}
+{"status": "running", "pid": 4054398, "phase": "epoch_completed", "epoch": 6, "total_epochs": 20, "macro_f1": {"R1": 0.9785014513478804, "R2": 0.9790802276629194, "R3": 0.9788013489266358}}
+{"status": "running", "pid": 4054398, "phase": "paired_raw_training", "epoch": 7, "samples": 512, "total": 107621, "updates_per_arm": 1267}
+{"status": "running", "pid": 4054398, "phase": "paired_raw_training", "epoch": 7, "samples": 25600, "total": 107621, "updates_per_arm": 1316}
+{"status": "running", "pid": 4054398, "phase": "paired_raw_training", "epoch": 7, "samples": 51200, "total": 107621, "updates_per_arm": 1366}
+{"status": "running", "pid": 4054398, "phase": "paired_raw_training", "epoch": 7, "samples": 76800, "total": 107621, "updates_per_arm": 1416}
+{"status": "running", "pid": 4054398, "phase": "paired_raw_training", "epoch": 7, "samples": 102400, "total": 107621, "updates_per_arm": 1466}
+{"status": "running", "pid": 4054398, "phase": "validation_7", "samples": 16, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_7", "samples": 3200, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_7", "samples": 6400, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_7", "samples": 9600, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_7", "samples": 12800, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_7", "samples": 13446, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "fixed_train_7", "samples": 16, "total": 512}
+{"status": "running", "pid": 4054398, "phase": "fixed_train_7", "samples": 512, "total": 512}
+{"status": "running", "pid": 4054398, "phase": "epoch_completed", "epoch": 7, "total_epochs": 20, "macro_f1": {"R1": 0.9779085298177863, "R2": 0.9779675765423024, "R3": 0.9782207548981842}}
+{"status": "running", "pid": 4054398, "phase": "paired_raw_training", "epoch": 8, "samples": 512, "total": 107621, "updates_per_arm": 1478}
+{"status": "running", "pid": 4054398, "phase": "paired_raw_training", "epoch": 8, "samples": 25600, "total": 107621, "updates_per_arm": 1527}
+{"status": "running", "pid": 4054398, "phase": "paired_raw_training", "epoch": 8, "samples": 51200, "total": 107621, "updates_per_arm": 1577}
+{"status": "running", "pid": 4054398, "phase": "paired_raw_training", "epoch": 8, "samples": 76800, "total": 107621, "updates_per_arm": 1627}
+{"status": "running", "pid": 4054398, "phase": "paired_raw_training", "epoch": 8, "samples": 102400, "total": 107621, "updates_per_arm": 1677}
+{"status": "running", "pid": 4054398, "phase": "validation_8", "samples": 16, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_8", "samples": 3200, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_8", "samples": 6400, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_8", "samples": 9600, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_8", "samples": 12800, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_8", "samples": 13446, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "fixed_train_8", "samples": 16, "total": 512}
+{"status": "running", "pid": 4054398, "phase": "fixed_train_8", "samples": 512, "total": 512}
+{"status": "running", "pid": 4054398, "phase": "epoch_completed", "epoch": 8, "total_epochs": 20, "macro_f1": {"R1": 0.978726411135365, "R2": 0.9787589838688693, "R3": 0.9790237121408097}}
+{"status": "running", "pid": 4054398, "phase": "paired_raw_training", "epoch": 9, "samples": 512, "total": 107621, "updates_per_arm": 1689}
+{"status": "running", "pid": 4054398, "phase": "paired_raw_training", "epoch": 9, "samples": 25600, "total": 107621, "updates_per_arm": 1738}
+{"status": "running", "pid": 4054398, "phase": "paired_raw_training", "epoch": 9, "samples": 51200, "total": 107621, "updates_per_arm": 1788}
+{"status": "running", "pid": 4054398, "phase": "paired_raw_training", "epoch": 9, "samples": 76800, "total": 107621, "updates_per_arm": 1838}
+{"status": "running", "pid": 4054398, "phase": "paired_raw_training", "epoch": 9, "samples": 102400, "total": 107621, "updates_per_arm": 1888}
+{"status": "running", "pid": 4054398, "phase": "validation_9", "samples": 16, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_9", "samples": 3200, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_9", "samples": 6400, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_9", "samples": 9600, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_9", "samples": 12800, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_9", "samples": 13446, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "fixed_train_9", "samples": 16, "total": 512}
+{"status": "running", "pid": 4054398, "phase": "fixed_train_9", "samples": 512, "total": 512}
+{"status": "running", "pid": 4054398, "phase": "epoch_completed", "epoch": 9, "total_epochs": 20, "macro_f1": {"R1": 0.9783488868033371, "R2": 0.9782517920506788, "R3": 0.9784868683614478}}
+{"status": "running", "pid": 4054398, "phase": "paired_raw_training", "epoch": 10, "samples": 512, "total": 107621, "updates_per_arm": 1900}
+{"status": "running", "pid": 4054398, "phase": "paired_raw_training", "epoch": 10, "samples": 25600, "total": 107621, "updates_per_arm": 1949}
+{"status": "running", "pid": 4054398, "phase": "paired_raw_training", "epoch": 10, "samples": 51200, "total": 107621, "updates_per_arm": 1999}
+{"status": "running", "pid": 4054398, "phase": "paired_raw_training", "epoch": 10, "samples": 76800, "total": 107621, "updates_per_arm": 2049}
+{"status": "running", "pid": 4054398, "phase": "paired_raw_training", "epoch": 10, "samples": 102400, "total": 107621, "updates_per_arm": 2099}
+{"status": "running", "pid": 4054398, "phase": "validation_10", "samples": 16, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_10", "samples": 3200, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_10", "samples": 6400, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_10", "samples": 9600, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_10", "samples": 12800, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_10", "samples": 13446, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "fixed_train_10", "samples": 16, "total": 512}
+{"status": "running", "pid": 4054398, "phase": "fixed_train_10", "samples": 512, "total": 512}
+{"status": "running", "pid": 4054398, "phase": "epoch_completed", "epoch": 10, "total_epochs": 20, "macro_f1": {"R1": 0.9777397053765706, "R2": 0.9788171166341715, "R3": 0.9787756156702146}}
+{"status": "running", "pid": 4054398, "phase": "paired_raw_training", "epoch": 11, "samples": 512, "total": 107621, "updates_per_arm": 2111}
+{"status": "running", "pid": 4054398, "phase": "paired_raw_training", "epoch": 11, "samples": 25600, "total": 107621, "updates_per_arm": 2160}
+{"status": "running", "pid": 4054398, "phase": "paired_raw_training", "epoch": 11, "samples": 51200, "total": 107621, "updates_per_arm": 2210}
+{"status": "running", "pid": 4054398, "phase": "paired_raw_training", "epoch": 11, "samples": 76800, "total": 107621, "updates_per_arm": 2260}
+{"status": "running", "pid": 4054398, "phase": "paired_raw_training", "epoch": 11, "samples": 102400, "total": 107621, "updates_per_arm": 2310}
+{"status": "running", "pid": 4054398, "phase": "validation_11", "samples": 16, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_11", "samples": 3200, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_11", "samples": 6400, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_11", "samples": 9600, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_11", "samples": 12800, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_11", "samples": 13446, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "fixed_train_11", "samples": 16, "total": 512}
+{"status": "running", "pid": 4054398, "phase": "fixed_train_11", "samples": 512, "total": 512}
+{"status": "running", "pid": 4054398, "phase": "epoch_completed", "epoch": 11, "total_epochs": 20, "macro_f1": {"R1": 0.977885482504506, "R2": 0.9785948745380548, "R3": 0.978696189438212}}
+{"status": "running", "pid": 4054398, "phase": "paired_raw_training", "epoch": 12, "samples": 512, "total": 107621, "updates_per_arm": 2322}
+{"status": "running", "pid": 4054398, "phase": "paired_raw_training", "epoch": 12, "samples": 25600, "total": 107621, "updates_per_arm": 2371}
+{"status": "running", "pid": 4054398, "phase": "paired_raw_training", "epoch": 12, "samples": 51200, "total": 107621, "updates_per_arm": 2421}
+{"status": "running", "pid": 4054398, "phase": "paired_raw_training", "epoch": 12, "samples": 76800, "total": 107621, "updates_per_arm": 2471}
+{"status": "running", "pid": 4054398, "phase": "paired_raw_training", "epoch": 12, "samples": 102400, "total": 107621, "updates_per_arm": 2521}
+{"status": "running", "pid": 4054398, "phase": "validation_12", "samples": 16, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_12", "samples": 3200, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_12", "samples": 6400, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_12", "samples": 9600, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_12", "samples": 12800, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_12", "samples": 13446, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "fixed_train_12", "samples": 16, "total": 512}
+{"status": "running", "pid": 4054398, "phase": "fixed_train_12", "samples": 512, "total": 512}
+{"status": "running", "pid": 4054398, "phase": "epoch_completed", "epoch": 12, "total_epochs": 20, "macro_f1": {"R1": 0.9780301388920369, "R2": 0.9782663711688786, "R3": 0.978789768201184}}
+{"status": "running", "pid": 4054398, "phase": "paired_raw_training", "epoch": 13, "samples": 512, "total": 107621, "updates_per_arm": 2533}
+{"status": "running", "pid": 4054398, "phase": "paired_raw_training", "epoch": 13, "samples": 25600, "total": 107621, "updates_per_arm": 2582}
+{"status": "running", "pid": 4054398, "phase": "paired_raw_training", "epoch": 13, "samples": 51200, "total": 107621, "updates_per_arm": 2632}
+{"status": "running", "pid": 4054398, "phase": "paired_raw_training", "epoch": 13, "samples": 76800, "total": 107621, "updates_per_arm": 2682}
+{"status": "running", "pid": 4054398, "phase": "paired_raw_training", "epoch": 13, "samples": 102400, "total": 107621, "updates_per_arm": 2732}
+{"status": "running", "pid": 4054398, "phase": "validation_13", "samples": 16, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_13", "samples": 3200, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_13", "samples": 6400, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_13", "samples": 9600, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_13", "samples": 12800, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_13", "samples": 13446, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "fixed_train_13", "samples": 16, "total": 512}
+{"status": "running", "pid": 4054398, "phase": "fixed_train_13", "samples": 512, "total": 512}
+{"status": "running", "pid": 4054398, "phase": "epoch_completed", "epoch": 13, "total_epochs": 20, "macro_f1": {"R1": 0.9780858673251858, "R2": 0.9781959255778707, "R3": 0.9786565947209646}}
+{"status": "running", "pid": 4054398, "phase": "paired_raw_training", "epoch": 14, "samples": 512, "total": 107621, "updates_per_arm": 2744}
+{"status": "running", "pid": 4054398, "phase": "paired_raw_training", "epoch": 14, "samples": 25600, "total": 107621, "updates_per_arm": 2793}
+{"status": "running", "pid": 4054398, "phase": "paired_raw_training", "epoch": 14, "samples": 51200, "total": 107621, "updates_per_arm": 2843}
+{"status": "running", "pid": 4054398, "phase": "paired_raw_training", "epoch": 14, "samples": 76800, "total": 107621, "updates_per_arm": 2893}
+{"status": "running", "pid": 4054398, "phase": "paired_raw_training", "epoch": 14, "samples": 102400, "total": 107621, "updates_per_arm": 2943}
+{"status": "running", "pid": 4054398, "phase": "validation_14", "samples": 16, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_14", "samples": 3200, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_14", "samples": 6400, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_14", "samples": 9600, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_14", "samples": 12800, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_14", "samples": 13446, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "fixed_train_14", "samples": 16, "total": 512}
+{"status": "running", "pid": 4054398, "phase": "fixed_train_14", "samples": 512, "total": 512}
+{"status": "running", "pid": 4054398, "phase": "epoch_completed", "epoch": 14, "total_epochs": 20, "macro_f1": {"R1": 0.9781880102213724, "R2": 0.9782845064060512, "R3": 0.9786422783120918}}
+{"status": "running", "pid": 4054398, "phase": "paired_raw_training", "epoch": 15, "samples": 512, "total": 107621, "updates_per_arm": 2955}
+{"status": "running", "pid": 4054398, "phase": "paired_raw_training", "epoch": 15, "samples": 25600, "total": 107621, "updates_per_arm": 3004}
+{"status": "running", "pid": 4054398, "phase": "paired_raw_training", "epoch": 15, "samples": 51200, "total": 107621, "updates_per_arm": 3054}
+{"status": "running", "pid": 4054398, "phase": "paired_raw_training", "epoch": 15, "samples": 76800, "total": 107621, "updates_per_arm": 3104}
+{"status": "running", "pid": 4054398, "phase": "paired_raw_training", "epoch": 15, "samples": 102400, "total": 107621, "updates_per_arm": 3154}
+{"status": "running", "pid": 4054398, "phase": "validation_15", "samples": 16, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_15", "samples": 3200, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_15", "samples": 6400, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_15", "samples": 9600, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_15", "samples": 12800, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_15", "samples": 13446, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "fixed_train_15", "samples": 16, "total": 512}
+{"status": "running", "pid": 4054398, "phase": "fixed_train_15", "samples": 512, "total": 512}
+{"status": "running", "pid": 4054398, "phase": "epoch_completed", "epoch": 15, "total_epochs": 20, "macro_f1": {"R1": 0.9785446927042857, "R2": 0.9784308421607046, "R3": 0.9781266542116148}}
+{"status": "running", "pid": 4054398, "phase": "paired_raw_training", "epoch": 16, "samples": 512, "total": 107621, "updates_per_arm": 3166}
+{"status": "running", "pid": 4054398, "phase": "paired_raw_training", "epoch": 16, "samples": 25600, "total": 107621, "updates_per_arm": 3215}
+{"status": "running", "pid": 4054398, "phase": "paired_raw_training", "epoch": 16, "samples": 51200, "total": 107621, "updates_per_arm": 3265}
+{"status": "running", "pid": 4054398, "phase": "paired_raw_training", "epoch": 16, "samples": 76800, "total": 107621, "updates_per_arm": 3315}
+{"status": "running", "pid": 4054398, "phase": "paired_raw_training", "epoch": 16, "samples": 102400, "total": 107621, "updates_per_arm": 3365}
+{"status": "running", "pid": 4054398, "phase": "validation_16", "samples": 16, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_16", "samples": 3200, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_16", "samples": 6400, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_16", "samples": 9600, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_16", "samples": 12800, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_16", "samples": 13446, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "fixed_train_16", "samples": 16, "total": 512}
+{"status": "running", "pid": 4054398, "phase": "fixed_train_16", "samples": 512, "total": 512}
+{"status": "running", "pid": 4054398, "phase": "epoch_completed", "epoch": 16, "total_epochs": 20, "macro_f1": {"R1": 0.9777202577949385, "R2": 0.9782040700658492, "R3": 0.9785235984419208}}
+{"status": "running", "pid": 4054398, "phase": "paired_raw_training", "epoch": 17, "samples": 512, "total": 107621, "updates_per_arm": 3377}
+{"status": "running", "pid": 4054398, "phase": "paired_raw_training", "epoch": 17, "samples": 25600, "total": 107621, "updates_per_arm": 3426}
+{"status": "running", "pid": 4054398, "phase": "paired_raw_training", "epoch": 17, "samples": 51200, "total": 107621, "updates_per_arm": 3476}
+{"status": "running", "pid": 4054398, "phase": "paired_raw_training", "epoch": 17, "samples": 76800, "total": 107621, "updates_per_arm": 3526}
+{"status": "running", "pid": 4054398, "phase": "paired_raw_training", "epoch": 17, "samples": 102400, "total": 107621, "updates_per_arm": 3576}
+{"status": "running", "pid": 4054398, "phase": "validation_17", "samples": 16, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_17", "samples": 3200, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_17", "samples": 6400, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_17", "samples": 9600, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_17", "samples": 12800, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_17", "samples": 13446, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "fixed_train_17", "samples": 16, "total": 512}
+{"status": "running", "pid": 4054398, "phase": "fixed_train_17", "samples": 512, "total": 512}
+{"status": "running", "pid": 4054398, "phase": "epoch_completed", "epoch": 17, "total_epochs": 20, "macro_f1": {"R1": 0.9777886476364596, "R2": 0.97814244692054, "R3": 0.9785938623481993}}
+{"status": "running", "pid": 4054398, "phase": "paired_raw_training", "epoch": 18, "samples": 512, "total": 107621, "updates_per_arm": 3588}
+{"status": "running", "pid": 4054398, "phase": "paired_raw_training", "epoch": 18, "samples": 25600, "total": 107621, "updates_per_arm": 3637}
+{"status": "running", "pid": 4054398, "phase": "paired_raw_training", "epoch": 18, "samples": 51200, "total": 107621, "updates_per_arm": 3687}
+{"status": "running", "pid": 4054398, "phase": "paired_raw_training", "epoch": 18, "samples": 76800, "total": 107621, "updates_per_arm": 3737}
+{"status": "running", "pid": 4054398, "phase": "paired_raw_training", "epoch": 18, "samples": 102400, "total": 107621, "updates_per_arm": 3787}
+{"status": "running", "pid": 4054398, "phase": "validation_18", "samples": 16, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_18", "samples": 3200, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_18", "samples": 6400, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_18", "samples": 9600, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_18", "samples": 12800, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_18", "samples": 13446, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "fixed_train_18", "samples": 16, "total": 512}
+{"status": "running", "pid": 4054398, "phase": "fixed_train_18", "samples": 512, "total": 512}
+{"status": "running", "pid": 4054398, "phase": "epoch_completed", "epoch": 18, "total_epochs": 20, "macro_f1": {"R1": 0.978603270307199, "R2": 0.9783290959235412, "R3": 0.9786556227176761}}
+{"status": "running", "pid": 4054398, "phase": "paired_raw_training", "epoch": 19, "samples": 512, "total": 107621, "updates_per_arm": 3799}
+{"status": "running", "pid": 4054398, "phase": "paired_raw_training", "epoch": 19, "samples": 25600, "total": 107621, "updates_per_arm": 3848}
+{"status": "running", "pid": 4054398, "phase": "paired_raw_training", "epoch": 19, "samples": 51200, "total": 107621, "updates_per_arm": 3898}
+{"status": "running", "pid": 4054398, "phase": "paired_raw_training", "epoch": 19, "samples": 76800, "total": 107621, "updates_per_arm": 3948}
+{"status": "running", "pid": 4054398, "phase": "paired_raw_training", "epoch": 19, "samples": 102400, "total": 107621, "updates_per_arm": 3998}
+{"status": "running", "pid": 4054398, "phase": "validation_19", "samples": 16, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_19", "samples": 3200, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_19", "samples": 6400, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_19", "samples": 9600, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_19", "samples": 12800, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_19", "samples": 13446, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "fixed_train_19", "samples": 16, "total": 512}
+{"status": "running", "pid": 4054398, "phase": "fixed_train_19", "samples": 512, "total": 512}
+{"status": "running", "pid": 4054398, "phase": "epoch_completed", "epoch": 19, "total_epochs": 20, "macro_f1": {"R1": 0.9777312884806172, "R2": 0.9784833846154894, "R3": 0.9781509826661188}}
+{"status": "running", "pid": 4054398, "phase": "paired_raw_training", "epoch": 20, "samples": 512, "total": 107621, "updates_per_arm": 4010}
+{"status": "running", "pid": 4054398, "phase": "paired_raw_training", "epoch": 20, "samples": 25600, "total": 107621, "updates_per_arm": 4059}
+{"status": "running", "pid": 4054398, "phase": "paired_raw_training", "epoch": 20, "samples": 51200, "total": 107621, "updates_per_arm": 4109}
+{"status": "running", "pid": 4054398, "phase": "paired_raw_training", "epoch": 20, "samples": 76800, "total": 107621, "updates_per_arm": 4159}
+{"status": "running", "pid": 4054398, "phase": "paired_raw_training", "epoch": 20, "samples": 102400, "total": 107621, "updates_per_arm": 4209}
+{"status": "running", "pid": 4054398, "phase": "validation_20", "samples": 16, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_20", "samples": 3200, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_20", "samples": 6400, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_20", "samples": 9600, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_20", "samples": 12800, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_20", "samples": 13446, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "fixed_train_20", "samples": 16, "total": 512}
+{"status": "running", "pid": 4054398, "phase": "fixed_train_20", "samples": 512, "total": 512}
+{"status": "running", "pid": 4054398, "phase": "epoch_completed", "epoch": 20, "total_epochs": 20, "macro_f1": {"R1": 0.9775599223483463, "R2": 0.9788576439826914, "R3": 0.9782136950889214}}
+{"status": "running", "pid": 4054398, "phase": "validation_selected", "samples": 16, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_selected", "samples": 3200, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_selected", "samples": 6400, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_selected", "samples": 9600, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_selected", "samples": 12800, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "validation_selected", "samples": 13446, "total": 13446}
+{"status": "running", "pid": 4054398, "phase": "fixed_train_selected", "samples": 16, "total": 512}
+{"status": "running", "pid": 4054398, "phase": "fixed_train_selected", "samples": 512, "total": 512}

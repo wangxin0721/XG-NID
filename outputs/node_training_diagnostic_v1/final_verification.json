@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "updates_each": 4220,
+  "total_updates": 12660,
+  "selected_raw_replay": true,
+  "test_graph_loads": 0,
+  "frozen_parameters_and_BN_unchanged": true
+}

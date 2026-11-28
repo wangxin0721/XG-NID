@@ -1,0 +1,27 @@
+{
+  "passed": true,
+  "epoch0_prediction_replay": true,
+  "adjustment_gradient_through_frozen_GNN": true,
+  "test_graph_loads": 0,
+  "trainable_parameters": {
+    "R1": 37368,
+    "R2": 3008,
+    "R3": 3008
+  },
+  "learning_rates": {
+    "R1": {
+      "packet2": 1e-07,
+      "cross_layer": 1e-05,
+      "query_pool": 1e-05,
+      "fusion": 1e-05,
+      "ordered": 0.0001
+    },
+    "R2": {
+      "adjustment": 0.0001
+    },
+    "R3": {
+      "adjustment": 0.0001
+    }
+  },
+  "optimizers_start_fresh_from_Ordered": true
+}

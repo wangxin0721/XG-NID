@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "models": 12,
+  "validation_samples_each": 13446,
+  "source_result_commit": "b6ca40cfb1abef54c669bdcf932ce95bdd272a66",
+  "no_test_graph_or_prediction_access": true,
+  "new_optimizer_updates": 0
+}

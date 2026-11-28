@@ -1,0 +1,191 @@
+{
+  "R1": {
+    "passed": true,
+    "steps": [
+      {
+        "gradient_norms": {
+          "packet2": 2.0779079636747944,
+          "cross_layer": 5.707339254993617,
+          "query_pool": 0.0015672341338996926,
+          "fusion": 1.9730767631359094,
+          "ordered": 0.8812451691690077
+        },
+        "train_nll": 0.02256186492741108,
+        "train_eval_max_log_probability_error": 7.62939453125e-06
+      },
+      {
+        "gradient_norms": {
+          "packet2": 1.7861717844528966,
+          "cross_layer": 4.863468077721028,
+          "query_pool": 0.0013302313626377057,
+          "fusion": 1.7390759551454325,
+          "ordered": 0.7471685103473189
+        },
+        "train_nll": 0.019314520061016083,
+        "train_eval_max_log_probability_error": 0.0
+      }
+    ],
+    "parameter_changes_after_two_updates": {
+      "flow_encoder": {
+        "absolute_l2": 0.0,
+        "relative_l2": 0.0,
+        "changed_elements": 0
+      },
+      "packet_encoder": {
+        "absolute_l2": 0.0,
+        "relative_l2": 0.0,
+        "changed_elements": 0
+      },
+      "packet2": {
+        "absolute_l2": 1.8502821377604692e-05,
+        "relative_l2": 6.847372120088239e-07,
+        "changed_elements": 11161
+      },
+      "cross_layer": {
+        "absolute_l2": 0.0018051429804704184,
+        "relative_l2": 0.00021482747190249265,
+        "changed_elements": 8256
+      },
+      "packet_pool": {
+        "absolute_l2": 0.0006154242675128085,
+        "relative_l2": 0.00031168583770236957,
+        "changed_elements": 1024
+      },
+      "fusion": {
+        "absolute_l2": 0.0016514567547596646,
+        "relative_l2": 7.900733786791756e-05,
+        "changed_elements": 7138
+      },
+      "readout": {
+        "absolute_l2": 0.012076853429231926,
+        "relative_l2": 0.0005761790523229368,
+        "changed_elements": 3727
+      }
+    },
+    "two_updates_discarded": true
+  },
+  "R2": {
+    "passed": true,
+    "steps": [
+      {
+        "gradient_norms": {
+          "adjustment": 1.0328644285695154
+        },
+        "train_nll": 0.02256186492741108,
+        "train_eval_max_log_probability_error": 3.814697265625e-06
+      },
+      {
+        "gradient_norms": {
+          "adjustment": 0.9613722823754426
+        },
+        "train_nll": 0.020875105634331703,
+        "train_eval_max_log_probability_error": 3.814697265625e-06
+      }
+    ],
+    "parameter_changes_after_two_updates": {
+      "flow_encoder": {
+        "absolute_l2": 0.0,
+        "relative_l2": 0.0,
+        "changed_elements": 0
+      },
+      "packet_encoder": {
+        "absolute_l2": 0.0,
+        "relative_l2": 0.0,
+        "changed_elements": 0
+      },
+      "packet2": {
+        "absolute_l2": 0.0,
+        "relative_l2": 0.0,
+        "changed_elements": 0
+      },
+      "cross_layer": {
+        "absolute_l2": 0.0,
+        "relative_l2": 0.0,
+        "changed_elements": 0
+      },
+      "packet_pool": {
+        "absolute_l2": 0.0,
+        "relative_l2": 0.0,
+        "changed_elements": 0
+      },
+      "fusion": {
+        "absolute_l2": 0.0,
+        "relative_l2": 0.0,
+        "changed_elements": 0
+      },
+      "readout": {
+        "absolute_l2": 0.0,
+        "relative_l2": 0.0,
+        "changed_elements": 0
+      },
+      "adjustment": {
+        "absolute_l2": 0.00828219474061734,
+        "relative_l2": 0.002978496119472542,
+        "changed_elements": 3008
+      }
+    },
+    "two_updates_discarded": true
+  },
+  "R3": {
+    "passed": true,
+    "steps": [
+      {
+        "gradient_norms": {
+          "adjustment": 0.5144047838959201
+        },
+        "train_nll": 0.02256186492741108,
+        "train_eval_max_log_probability_error": 7.62939453125e-06
+      },
+      {
+        "gradient_norms": {
+          "adjustment": 0.5054128543793278
+        },
+        "train_nll": 0.022129947319626808,
+        "train_eval_max_log_probability_error": 0.0
+      }
+    ],
+    "parameter_changes_after_two_updates": {
+      "flow_encoder": {
+        "absolute_l2": 0.0,
+        "relative_l2": 0.0,
+        "changed_elements": 0
+      },
+      "packet_encoder": {
+        "absolute_l2": 0.0,
+        "relative_l2": 0.0,
+        "changed_elements": 0
+      },
+      "packet2": {
+        "absolute_l2": 0.0,
+        "relative_l2": 0.0,
+        "changed_elements": 0
+      },
+      "cross_layer": {
+        "absolute_l2": 0.0,
+        "relative_l2": 0.0,
+        "changed_elements": 0
+      },
+      "packet_pool": {
+        "absolute_l2": 0.0,
+        "relative_l2": 0.0,
+        "changed_elements": 0
+      },
+      "fusion": {
+        "absolute_l2": 0.0,
+        "relative_l2": 0.0,
+        "changed_elements": 0
+      },
+      "readout": {
+        "absolute_l2": 0.0,
+        "relative_l2": 0.0,
+        "changed_elements": 0
+      },
+      "adjustment": {
+        "absolute_l2": 0.009218772236678361,
+        "relative_l2": 0.00408384118573609,
+        "changed_elements": 3008
+      }
+    },
+    "two_updates_discarded": true
+  }
+}

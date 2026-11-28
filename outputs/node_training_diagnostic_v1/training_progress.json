@@ -1,0 +1,10 @@
+{
+  "completed_epoch": 20,
+  "updates_per_arm": 4220,
+  "cursor": 107621,
+  "best_epochs": {
+    "R1": 0,
+    "R2": 0,
+    "R3": 0
+  }
+}

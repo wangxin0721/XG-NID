@@ -1,0 +1,226 @@
+{
+  "accuracy": 0.9835638851703109,
+  "macro_f1": 0.9777312884806172,
+  "weighted_f1": 0.9836048817197866,
+  "per_class": {
+    "Benign": {
+      "precision": 0.9715719063545151,
+      "recall": 0.972791963164504,
+      "f1-score": 0.972181551976574,
+      "support": 2389
+    },
+    "WebBased": {
+      "precision": 0.9129662522202486,
+      "recall": 0.9448529411764706,
+      "f1-score": 0.928635953026197,
+      "support": 544
+    },
+    "Spoofing": {
+      "precision": 0.966589861751152,
+      "recall": 0.9649223691776884,
+      "f1-score": 0.9657553956834533,
+      "support": 1739
+    },
+    "Recon": {
+      "precision": 0.9845406360424028,
+      "recall": 0.9784899034240562,
+      "f1-score": 0.9815059445178336,
+      "support": 2278
+    },
+    "Mirai": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 2400
+    },
+    "Dos": {
+      "precision": 0.9979605710401088,
+      "recall": 0.9952542372881356,
+      "f1-score": 0.9966055668703326,
+      "support": 1475
+    },
+    "DDos": {
+      "precision": 0.9991614255765199,
+      "recall": 0.9979061976549414,
+      "f1-score": 0.9985334171380683,
+      "support": 2388
+    },
+    "BruteForce": {
+      "precision": 0.9744680851063829,
+      "recall": 0.9828326180257511,
+      "f1-score": 0.9786324786324786,
+      "support": 233
+    }
+  },
+  "confusion_matrix": [
+    [
+      2324,
+      14,
+      41,
+      8,
+      0,
+      1,
+      0,
+      1
+    ],
+    [
+      9,
+      514,
+      4,
+      13,
+      0,
+      1,
+      0,
+      3
+    ],
+    [
+      46,
+      9,
+      1678,
+      3,
+      0,
+      0,
+      1,
+      2
+    ],
+    [
+      12,
+      25,
+      11,
+      2229,
+      0,
+      1,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      2400,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      1,
+      0,
+      6,
+      0,
+      1468,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      5,
+      0,
+      0,
+      2383,
+      0
+    ],
+    [
+      1,
+      0,
+      2,
+      0,
+      0,
+      0,
+      1,
+      229
+    ]
+  ],
+  "samples": 13446,
+  "nll": 0.13558536152888018,
+  "source_comparison": {
+    "counts": {
+      "repaired": 4,
+      "regressed": 15,
+      "wrong_changed": 1
+    },
+    "per_class": {
+      "Benign": {
+        "repaired": 1,
+        "regressed": 1,
+        "wrong_changed": 0
+      },
+      "WebBased": {
+        "repaired": 2,
+        "regressed": 6,
+        "wrong_changed": 0
+      },
+      "Spoofing": {
+        "repaired": 0,
+        "regressed": 5,
+        "wrong_changed": 0
+      },
+      "Recon": {
+        "repaired": 1,
+        "regressed": 3,
+        "wrong_changed": 1
+      },
+      "Mirai": {
+        "repaired": 0,
+        "regressed": 0,
+        "wrong_changed": 0
+      },
+      "Dos": {
+        "repaired": 0,
+        "regressed": 0,
+        "wrong_changed": 0
+      },
+      "DDos": {
+        "repaired": 0,
+        "regressed": 0,
+        "wrong_changed": 0
+      },
+      "BruteForce": {
+        "repaired": 0,
+        "regressed": 0,
+        "wrong_changed": 0
+      }
+    }
+  },
+  "fixed_train_nll": 0.017226710909820045,
+  "parameter_delta": {
+    "flow_encoder": {
+      "absolute_l2": 0.0,
+      "relative_l2": 0.0,
+      "changed_elements": 0
+    },
+    "packet_encoder": {
+      "absolute_l2": 0.0,
+      "relative_l2": 0.0,
+      "changed_elements": 0
+    },
+    "packet2": {
+      "absolute_l2": 0.0015551755848876045,
+      "relative_l2": 5.755266034557519e-05,
+      "changed_elements": 12576
+    },
+    "cross_layer": {
+      "absolute_l2": 0.03530889973236141,
+      "relative_l2": 0.004202061414096446,
+      "changed_elements": 8256
+    },
+    "packet_pool": {
+      "absolute_l2": 0.03621439998881265,
+      "relative_l2": 0.018341031046792175,
+      "changed_elements": 1024
+    },
+    "fusion": {
+      "absolute_l2": 0.04450110026951255,
+      "relative_l2": 0.0021289770103602402,
+      "changed_elements": 7144
+    },
+    "readout": {
+      "absolute_l2": 0.4500315169896368,
+      "relative_l2": 0.02147071954578103,
+      "changed_elements": 3728
+    }
+  }
+}

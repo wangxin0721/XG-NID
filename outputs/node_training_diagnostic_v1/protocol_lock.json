@@ -1,0 +1,57 @@
+{
+  "settings": {
+    "schema": "xgnid.node-training-diagnostic.v1",
+    "output_name": "node_training_diagnostic_v1",
+    "backbone_seed": 42,
+    "sampling_seed": 42,
+    "new_module_seed": 42,
+    "epochs": 20,
+    "batch_size": 512,
+    "eval_batch_size": 16,
+    "workers": 2,
+    "training_samples": 107621,
+    "validation_samples": 13446,
+    "updates_per_epoch": 211,
+    "updates_per_arm": 4220,
+    "total_updates": 12660,
+    "arms": [
+      "R1",
+      "R2",
+      "R3"
+    ],
+    "loss": "plain_final_eight_class_NLL",
+    "encoder_learning_rate": 1e-07,
+    "readout_learning_rate": 1e-05,
+    "fusion_learning_rate": 1e-05,
+    "ordered_learning_rate": 0.0001,
+    "new_learning_rate": 0.0001,
+    "adam_betas": [
+      0.9,
+      0.999
+    ],
+    "adam_eps": 1e-08,
+    "weight_decay": 0.0,
+    "diagnostic_samples_per_class": 64,
+    "diagnostic_sampling_seed": 420064,
+    "extension_gain_pp": 0.05,
+    "historical_result_commit": "1469f7190e7077db7afb639d2efa1347d9e261f1",
+    "selection": "validation_macro_f1_including_epoch_zero_earliest_tie",
+    "test_access": false,
+    "automatic_extension": false,
+    "automatic_structure_change": false
+  },
+  "code_commit": "ea1207c8240ea03e636b187b74c1f7f49f767065",
+  "source_node_protocol_sha256": "fff64f75300c70255f6faf22c8b2413338cd823647c74447dc5712de6262c07f",
+  "files_canonical_sha256": {
+    "configs/node_training_diagnostic_v1.json": "a364b5533e5148fb39ca0914e0f7ea8ce930d46bc03a5d24b1357b3892a058c4",
+    "scripts/node_training_diagnostic.py": "68b78dc989eccdc3b5f7a4cc923143f725243bcbd03af0ab08e14f5261eaa406",
+    "scripts/run_node_training_diagnostic.py": "b1e571a2edadb278f5a87d4eae3d2e141116e189af1658731267a43a8f3f4c50",
+    "scripts/audit_node_training_diagnostic.py": "78d0ea25fe5b6467a5e853a358e28a1cb4eb68ed9159a772e1e87da41c9d436c",
+    "scripts/extract_node_training_trajectory.py": "0272458aeaf15bbd9431976808f4c77922b7b91102260eddf961e060e9159b2e",
+    "scripts/launch_node_training_diagnostic.py": "0d170501f54dfbe8bb77fc5833b49fcd075c958e4ed72b9bc5fd56c2ce314f03",
+    "scripts/launch_node_training_diagnostic.sh": "65e92dfc26d3bd2a37db0f57b13501c6889885b8b4f64aba2988290c5034b0a5",
+    "scripts/flow_packet_node_training.py": "1c1bc72bb911152c4acb93ab3e0ca9491779cbefd63588e29f566f3bb5043bc2"
+  },
+  "validation_cohort_sha256": "5898ff58bd2c051bcc651848f48874632d3ff8e899e38672b0ead2feee4185de",
+  "test_access": false
+}

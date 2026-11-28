@@ -1,0 +1,38 @@
+{
+  "protocol_sha256": "47a8112571af36cd20c77df04ff7e4475cd3c78e0c461d2c6ab5b69a5920eb96",
+  "source": {
+    "backbone_seed": 42,
+    "frozen_c_sha256": "c29a6433880f6e5ad8a45d387abef07cf54f895277f9f89b313edecfa7feedc6",
+    "split_id": "a8ae9c934eec9fee970cc725e60051d0c709e0f16c7dda14749350ff2006975a",
+    "manifest_sha256": "b8e9b0810471d0c2b52033488fab640625c3731315afd5d2add1571bd2518827",
+    "validation_digest": "396bd22c4004ecf6d283ac36f99ddada3845038ccd7d365a82e46208b1cc0974"
+  },
+  "backbone_seed": 42,
+  "source_weights": {
+    "base_C": "3070acd40203ee3a3944dc5805452eb3a2d73218aa24b31379bdfd5cbb523568",
+    "frozen_single": "004d35cf5e89fb998c30ded1c97b6daf49e8e9b92a487f33282b8ef21fad88ab",
+    "joint_single": "95a9cdca596c129236c4678070fa45ec5e2bf19754f61a67d382ba19987ebcd5",
+    "joint_ordered": "4d748e8aa315a171cb2f3ee5e5bc88b3b4696582fc35a2ae22acaad4ad417c2c"
+  },
+  "graph_root": "/home/nzxn/下载/WX/load/XG-NID/data/processed/CICIoT2023_processed/processed",
+  "environment": {
+    "python": "3.9.23",
+    "torch": "2.3.1+cu118",
+    "pyg": "2.5.3",
+    "cuda": "11.8",
+    "platform": "Linux-6.8.0-138-generic-x86_64-with-glibc2.35",
+    "device": "Tesla T4"
+  },
+  "input_sha256": {
+    "data/processed/ciciot2023_grouped_input_v1/split.json": "2f6a7c307121454b881520379f0a298b7e2a179b1db4a7cb03741b7f648a774a",
+    "outputs/joint_cross_layer_query_s42_v1/C/best.pt": "3070acd40203ee3a3944dc5805452eb3a2d73218aa24b31379bdfd5cbb523568",
+    "outputs/joint_cross_layer_query_s42_v1/C/metrics.json": "834f4b9cd970ab41be54599a7e73cbaa5fd1469ac5201912ee366d34565a0039",
+    "outputs/joint_cross_layer_query_s42_v1/C/validation_predictions.jsonl.gz": "91d7765e52a9eca289f3bf0591bcaa06090bb6b1e2ac2319958ffe8df6a7028f",
+    "data/processed/ciciot2023_grouped_input_v1/samples.jsonl": "b8e9b0810471d0c2b52033488fab640625c3731315afd5d2add1571bd2518827"
+  },
+  "sample_identity_sha256": {
+    "train": "ff1a3154aefffe0987c4eb4ad325af34710d96b9e0a762609f2298fc0ce06755",
+    "val": "5898ff58bd2c051bcc651848f48874632d3ff8e899e38672b0ead2feee4185de"
+  },
+  "eval_batch_size": 16
+}
