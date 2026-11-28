@@ -1,0 +1,5 @@
+/home/nzxn/miniconda3/envs/wx/lib/python3.9/site-packages/torch_geometric/typing.py:99: UserWarning: An issue occurred while importing 'torch-spline-conv'. Disabling its usage. Stacktrace: /home/nzxn/miniconda3/envs/wx/lib/python3.9/site-packages/torch_spline_conv/_version_cuda.so: undefined symbol: _ZN3c1017RegisterOperatorsD1Ev
+  warnings.warn(
+来自 github.com:wangxin0721/XG-NID
+ * branch            fea7736f27592b05ace74692fae251149b7bd51a -> FETCH_HEAD
+{"result_commit": "fea7736f27592b05ace74692fae251149b7bd51a", "input_bytes_sha256_verified": true, "passed": true, "completed_training_audited": true, "epochs": 20, "updates_each": 4220, "test_predictions_loaded": false, "samples": 13446, "decision": {"R3_minus_Ordered_pp": 0.0, "R3_minus_R2_pp": 0.0, "extension_gate_passed": false, "threshold_pp_each": 0.05, "no_arm_improves_source": true, "R2_and_R3_both_improve_source": false, "automatic_extension": false, "test_authorized": false, "scope": "20_epoch_seed42_resource_decision_not_statistical_significance"}, "scope": "predictions/NLL/selection/budget recomputed; tensor changes are server receipts, not independently reloaded here"}

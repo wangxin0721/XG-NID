@@ -1,0 +1,22 @@
+{
+  "result_commit": "fea7736f27592b05ace74692fae251149b7bd51a",
+  "input_bytes_sha256_verified": true,
+  "passed": true,
+  "completed_training_audited": true,
+  "epochs": 20,
+  "updates_each": 4220,
+  "test_predictions_loaded": false,
+  "samples": 13446,
+  "decision": {
+    "R3_minus_Ordered_pp": 0.0,
+    "R3_minus_R2_pp": 0.0,
+    "extension_gate_passed": false,
+    "threshold_pp_each": 0.05,
+    "no_arm_improves_source": true,
+    "R2_and_R3_both_improve_source": false,
+    "automatic_extension": false,
+    "test_authorized": false,
+    "scope": "20_epoch_seed42_resource_decision_not_statistical_significance"
+  },
+  "scope": "predictions/NLL/selection/budget recomputed; tensor changes are server receipts, not independently reloaded here"
+}
