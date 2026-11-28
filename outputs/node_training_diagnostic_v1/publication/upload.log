@@ -1,0 +1,207 @@
+{"files": 185, "GiB": 0.07695192657411098, "staging_directory": "/home/nzxn/下载/WX/load/XG-NID/.outputs-publish-eg6yjbsz"}
+提示：使用 'master' 作为初始分支的名称。这个默认分支名称可能会更改。要在新仓库中
+提示：配置使用初始分支名，并消除这条警告，请执行：
+提示：
+提示：	git config --global init.defaultBranch <名称>
+提示：
+提示：除了 'master' 之外，通常选定的名字有 'main'、'trunk' 和 'development'。
+提示：可以通过以下命令重命名刚创建的分支：
+提示：
+提示：	git branch -m <name>
+已初始化空的 Git 仓库于 /home/nzxn/下载/WX/load/XG-NID/.outputs-publish-eg6yjbsz/.git/
+来自 github.com:wangxin0721/XG-NID
+ * branch            codex/server-outputs -> FETCH_HEAD
+ * [新分支]          codex/server-outputs -> origin/codex/server-outputs
+Updated Git hooks.
+Git LFS initialized.
+[codex/server-outputs fea7736] Update selected server outputs
+ 187 files changed, 48550 insertions(+), 5 deletions(-)
+ create mode 100644 outputs/node_training_diagnostic_v1/Ordered_source_replay.json
+ create mode 100644 outputs/node_training_diagnostic_v1/R1/best.pt
+ create mode 100644 outputs/node_training_diagnostic_v1/R1/epoch0.pt
+ create mode 100644 outputs/node_training_diagnostic_v1/R1/last.pt
+ create mode 100644 outputs/node_training_diagnostic_v1/R1_source_replay.json
+ create mode 100644 outputs/node_training_diagnostic_v1/R2/best.pt
+ create mode 100644 outputs/node_training_diagnostic_v1/R2/epoch0.pt
+ create mode 100644 outputs/node_training_diagnostic_v1/R2/last.pt
+ create mode 100644 outputs/node_training_diagnostic_v1/R2_source_replay.json
+ create mode 100644 outputs/node_training_diagnostic_v1/R3/best.pt
+ create mode 100644 outputs/node_training_diagnostic_v1/R3/epoch0.pt
+ create mode 100644 outputs/node_training_diagnostic_v1/R3/last.pt
+ create mode 100644 outputs/node_training_diagnostic_v1/R3_source_replay.json
+ create mode 100644 outputs/node_training_diagnostic_v1/artifact_manifest.json
+ create mode 100644 outputs/node_training_diagnostic_v1/config.json
+ create mode 100644 outputs/node_training_diagnostic_v1/diagnostic_subset.json
+ create mode 100644 outputs/node_training_diagnostic_v1/final_verification.json
+ create mode 100644 outputs/node_training_diagnostic_v1/gradient_probe.json
+ create mode 100644 outputs/node_training_diagnostic_v1/historical/report.md
+ create mode 100644 outputs/node_training_diagnostic_v1/historical/trajectory.json
+ create mode 100644 outputs/node_training_diagnostic_v1/history.json
+ create mode 100644 outputs/node_training_diagnostic_v1/launcher.pid
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_0/Ordered.json
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_0/R1.json
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_0/R2.json
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_0/R3.json
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_0/fixed_train.jsonl.gz
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_0/validation.jsonl.gz
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_1/Ordered.json
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_1/R1.json
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_1/R2.json
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_1/R3.json
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_1/fixed_train.jsonl.gz
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_1/validation.jsonl.gz
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_10/Ordered.json
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_10/R1.json
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_10/R2.json
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_10/R3.json
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_10/fixed_train.jsonl.gz
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_10/validation.jsonl.gz
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_11/Ordered.json
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_11/R1.json
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_11/R2.json
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_11/R3.json
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_11/fixed_train.jsonl.gz
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_11/validation.jsonl.gz
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_12/Ordered.json
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_12/R1.json
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_12/R2.json
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_12/R3.json
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_12/fixed_train.jsonl.gz
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_12/validation.jsonl.gz
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_13/Ordered.json
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_13/R1.json
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_13/R2.json
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_13/R3.json
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_13/fixed_train.jsonl.gz
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_13/validation.jsonl.gz
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_14/Ordered.json
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_14/R1.json
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_14/R2.json
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_14/R3.json
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_14/fixed_train.jsonl.gz
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_14/validation.jsonl.gz
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_15/Ordered.json
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_15/R1.json
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_15/R2.json
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_15/R3.json
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_15/fixed_train.jsonl.gz
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_15/validation.jsonl.gz
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_16/Ordered.json
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_16/R1.json
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_16/R2.json
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_16/R3.json
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_16/fixed_train.jsonl.gz
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_16/validation.jsonl.gz
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_17/Ordered.json
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_17/R1.json
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_17/R2.json
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_17/R3.json
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_17/fixed_train.jsonl.gz
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_17/validation.jsonl.gz
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_18/Ordered.json
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_18/R1.json
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_18/R2.json
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_18/R3.json
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_18/fixed_train.jsonl.gz
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_18/validation.jsonl.gz
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_19/Ordered.json
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_19/R1.json
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_19/R2.json
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_19/R3.json
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_19/fixed_train.jsonl.gz
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_19/validation.jsonl.gz
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_2/Ordered.json
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_2/R1.json
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_2/R2.json
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_2/R3.json
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_2/fixed_train.jsonl.gz
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_2/validation.jsonl.gz
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_20/Ordered.json
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_20/R1.json
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_20/R2.json
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_20/R3.json
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_20/fixed_train.jsonl.gz
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_20/validation.jsonl.gz
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_3/Ordered.json
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_3/R1.json
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_3/R2.json
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_3/R3.json
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_3/fixed_train.jsonl.gz
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_3/validation.jsonl.gz
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_4/Ordered.json
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_4/R1.json
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_4/R2.json
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_4/R3.json
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_4/fixed_train.jsonl.gz
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_4/validation.jsonl.gz
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_5/Ordered.json
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_5/R1.json
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_5/R2.json
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_5/R3.json
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_5/fixed_train.jsonl.gz
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_5/validation.jsonl.gz
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_6/Ordered.json
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_6/R1.json
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_6/R2.json
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_6/R3.json
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_6/fixed_train.jsonl.gz
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_6/validation.jsonl.gz
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_7/Ordered.json
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_7/R1.json
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_7/R2.json
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_7/R3.json
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_7/fixed_train.jsonl.gz
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_7/validation.jsonl.gz
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_8/Ordered.json
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_8/R1.json
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_8/R2.json
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_8/R3.json
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_8/fixed_train.jsonl.gz
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_8/validation.jsonl.gz
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_9/Ordered.json
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_9/R1.json
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_9/R2.json
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_9/R3.json
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_9/fixed_train.jsonl.gz
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_9/validation.jsonl.gz
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_selected/Ordered.json
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_selected/R1.json
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_selected/R2.json
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_selected/R3.json
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_selected/fixed_train.jsonl.gz
+ create mode 100644 outputs/node_training_diagnostic_v1/observations/epoch_selected/validation.jsonl.gz
+ create mode 100644 outputs/node_training_diagnostic_v1/progress.json
+ create mode 100644 outputs/node_training_diagnostic_v1/protocol_lock.json
+ create mode 100644 outputs/node_training_diagnostic_v1/provenance.json
+ create mode 100644 outputs/node_training_diagnostic_v1/publication/training.log
+ create mode 100644 outputs/node_training_diagnostic_v1/publication/training_exit.json
+ create mode 100644 outputs/node_training_diagnostic_v1/recovery.pt
+ create mode 100644 outputs/node_training_diagnostic_v1/report.md
+ create mode 100644 outputs/node_training_diagnostic_v1/selected_validation.jsonl.gz
+ create mode 100644 outputs/node_training_diagnostic_v1/server_probe.json
+ create mode 100644 outputs/node_training_diagnostic_v1/source_node_protocol/config.json
+ create mode 100644 outputs/node_training_diagnostic_v1/source_node_protocol/protocol_lock.json
+ create mode 100644 outputs/node_training_diagnostic_v1/source_node_protocol/sources/config.json
+ create mode 100644 outputs/node_training_diagnostic_v1/source_node_protocol/sources/protocol_lock.json
+ create mode 100644 outputs/node_training_diagnostic_v1/source_node_protocol/sources/seed42/provenance.json
+ create mode 100644 outputs/node_training_diagnostic_v1/source_node_protocol/sources/source_checkpoints/seed42/base_C.pt
+ create mode 100644 outputs/node_training_diagnostic_v1/source_node_protocol/sources/source_checkpoints/seed42/frozen_single.pt
+ create mode 100644 outputs/node_training_diagnostic_v1/source_node_protocol/sources/source_checkpoints/seed42/joint_ordered.pt
+ create mode 100644 outputs/node_training_diagnostic_v1/source_node_protocol/sources/source_checkpoints/seed42/joint_single.pt
+ create mode 100644 outputs/node_training_diagnostic_v1/source_node_protocol/sources/source_checkpoints/seed43/base_C.pt
+ create mode 100644 outputs/node_training_diagnostic_v1/source_node_protocol/sources/source_checkpoints/seed43/frozen_single.pt
+ create mode 100644 outputs/node_training_diagnostic_v1/source_node_protocol/sources/source_checkpoints/seed43/joint_ordered.pt
+ create mode 100644 outputs/node_training_diagnostic_v1/source_node_protocol/sources/source_checkpoints/seed43/joint_single.pt
+ create mode 100644 outputs/node_training_diagnostic_v1/source_node_protocol/sources/source_checkpoints/seed44/base_C.pt
+ create mode 100644 outputs/node_training_diagnostic_v1/source_node_protocol/sources/source_checkpoints/seed44/frozen_single.pt
+ create mode 100644 outputs/node_training_diagnostic_v1/source_node_protocol/sources/source_checkpoints/seed44/joint_ordered.pt
+ create mode 100644 outputs/node_training_diagnostic_v1/source_node_protocol/sources/source_checkpoints/seed44/joint_single.pt
+ create mode 100644 outputs/node_training_diagnostic_v1/source_node_protocol/sources/source_lock.json
+ create mode 100644 outputs/node_training_diagnostic_v1/source_node_protocol/sources/source_lock_receipt.json
+ create mode 100644 outputs/node_training_diagnostic_v1/status.json
+ create mode 100644 outputs/node_training_diagnostic_v1/summary.json
+ create mode 100644 outputs/node_training_diagnostic_v1/training_progress.json
+Uploading LFS objects: 100% (7/7), 43 MB | 0 B/s, done.
+To github.com:wangxin0721/XG-NID.git
+   1469f71..fea7736  HEAD -> codex/server-outputs
+{"status": "uploaded", "branch": "codex/server-outputs", "commit": "fea7736f27592b05ace74692fae251149b7bd51a", "files": 185, "symlinks": 0, "bytes": 82626502, "staging_directory_preserved": "/home/nzxn/下载/WX/load/XG-NID/.outputs-publish-eg6yjbsz"}

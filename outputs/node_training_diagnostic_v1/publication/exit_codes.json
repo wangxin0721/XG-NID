@@ -1,0 +1,6 @@
+{
+  "training_exit_code": 0,
+  "primary_upload_exit_code": 0,
+  "receipt_publication_follows": true,
+  "retry_command": "/home/nzxn/miniconda3/envs/wx/bin/python -B '/home/nzxn/下载/WX/load/XG-NID-node-training-diagnostic-v1-ea1207c8240e/scripts/sync_server_outputs.py' publish --repo '/home/nzxn/下载/WX/load/XG-NID' --only node_training_diagnostic_v1"
+}
