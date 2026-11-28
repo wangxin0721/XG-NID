@@ -1,0 +1,28 @@
+{
+  "date": "2026-11-28",
+  "scope": "local_CPU_implementation_checks_not_formal_experiment",
+  "historical_result_commit": "1469f7190e7077db7afb639d2efa1347d9e261f1",
+  "historical_history_sha256": "a1bb27f79394b935cd5b2951e10efc36cede57b18f093179ede5041ff8fdc4e4",
+  "regression_tests_total": 51,
+  "regression_tests_passed": 50,
+  "regression_tests_skipped": 1,
+  "skip_reason": "real CUDA test unavailable on CPU-only local runtime",
+  "diagnostic_tests": 6,
+  "checks": [
+    "R1 exact S1 scope with 0.1 times each learning rate",
+    "R2/R3 only 3008 adjustment parameters trainable and effective gradients through frozen GNN",
+    "all eight classes in deterministic fixed training subset; test partition rejected",
+    "per-sample log probabilities recompute NLL and source repairs/regressions",
+    "R3 extension requires at least 0.05 pp over both source and R2",
+    "partial-group fault recovers all models Adam RNG sampler losses and custom observations exactly on CPU",
+    "20-epoch synthetic graph pipeline, sealed completed resume and best raw replay",
+    "all original R2/R3 parameter deltas remain zero at every epoch",
+    "prediction-based archive audit succeeds and rejects changed NLL",
+    "launcher publishes failure and retains training exit code"
+  ],
+  "additional_probe_recheck": "train/eval consistency and effective two-step parameter changes checked after probe instrumentation update",
+  "bash_syntax_passed": true,
+  "formal_GPU_training_started": false,
+  "real_graph_probe_verified": false,
+  "test_evaluated": false
+}

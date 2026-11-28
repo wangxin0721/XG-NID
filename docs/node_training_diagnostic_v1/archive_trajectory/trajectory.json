@@ -1,0 +1,126 @@
+{
+  "source_result_commit": "1469f7190e7077db7afb639d2efa1347d9e261f1",
+  "source_path": "outputs/flow_packet_node_modulation_v1/history.json",
+  "source_bytes_sha256": "a1bb27f79394b935cd5b2951e10efc36cede57b18f093179ede5041ff8fdc4e4",
+  "selected": [
+    {
+      "epoch": 0,
+      "train_online_nll": null,
+      "validation_macro_f1": {
+        "S1": 0.9791403291717622,
+        "S2": 0.9791403291717622,
+        "S3": 0.9791403291717622
+      }
+    },
+    {
+      "epoch": 1,
+      "train_online_nll": {
+        "S1": 0.013502253257020817,
+        "S2": 0.013769257666137421,
+        "S3": 0.014134839924060647
+      },
+      "validation_macro_f1": {
+        "S1": 0.9754111843033882,
+        "S2": 0.9748671684786638,
+        "S3": 0.9762055511633272
+      }
+    },
+    {
+      "epoch": 2,
+      "train_online_nll": {
+        "S1": 0.013599607235656345,
+        "S2": 0.0136617834732198,
+        "S3": 0.013693981042728698
+      },
+      "validation_macro_f1": {
+        "S1": 0.9767854546013713,
+        "S2": 0.9769465163994695,
+        "S3": 0.9764952399245099
+      }
+    },
+    {
+      "epoch": 5,
+      "train_online_nll": {
+        "S1": 0.013945749591818938,
+        "S2": 0.013978912443595644,
+        "S3": 0.01395625971070368
+      },
+      "validation_macro_f1": {
+        "S1": 0.9774062572663613,
+        "S2": 0.977419328810156,
+        "S3": 0.9778253184197568
+      }
+    },
+    {
+      "epoch": 10,
+      "train_online_nll": {
+        "S1": 0.013304066616804057,
+        "S2": 0.01361426143494998,
+        "S3": 0.013540839517087871
+      },
+      "validation_macro_f1": {
+        "S1": 0.9785250076985157,
+        "S2": 0.9763393684582555,
+        "S3": 0.9763948520292138
+      }
+    },
+    {
+      "epoch": 20,
+      "train_online_nll": {
+        "S1": 0.012887170665143888,
+        "S2": 0.012943417472660953,
+        "S3": 0.013101263985265846
+      },
+      "validation_macro_f1": {
+        "S1": 0.9758521005301736,
+        "S2": 0.9759746703528606,
+        "S3": 0.9764659186204305
+      }
+    },
+    {
+      "epoch": 50,
+      "train_online_nll": {
+        "S1": 0.012467407293692077,
+        "S2": 0.012502765146493339,
+        "S3": 0.012736613732756741
+      },
+      "validation_macro_f1": {
+        "S1": 0.974618554137753,
+        "S2": 0.9753221847702626,
+        "S3": 0.9750377634425371
+      }
+    },
+    {
+      "epoch": 100,
+      "train_online_nll": {
+        "S1": 0.01156131431348211,
+        "S2": 0.011677655028907845,
+        "S3": 0.011960983206401819
+      },
+      "validation_macro_f1": {
+        "S1": 0.9771730356301338,
+        "S2": 0.977204115065123,
+        "S3": 0.9778649732096099
+      }
+    },
+    {
+      "epoch": 200,
+      "train_online_nll": {
+        "S1": 0.010085255194237804,
+        "S2": 0.010236255163285517,
+        "S3": 0.010162623505246268
+      },
+      "validation_macro_f1": {
+        "S1": 0.9762776158263927,
+        "S2": 0.9762762432346834,
+        "S3": 0.9763013687230859
+      }
+    }
+  ],
+  "limitations": [
+    "epoch0 training NLL was not recorded",
+    "historical validation NLL and fixed training-subset NLL were not recorded",
+    "online epoch-mean training NLL uses changing weights and is not an eval-mode fixed-subset loss"
+  ],
+  "interpretation": "Shared degradation is a hypothesis; these data alone do not identify learning rate, overfitting or module ineffectiveness."
+}

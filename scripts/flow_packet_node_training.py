@@ -84,11 +84,16 @@ def save_views(output, state):
 
 
 def fit(models, data, rows, settings, binding, device, output, resume=True,
-        fault=None, stop_after_updates=None):
+        fault=None, stop_after_updates=None, optimizer_fn=None, evaluate_fn=None):
     """No partial group update commits; restarting rolls back to the previous batch."""
     output.mkdir(parents=True, exist_ok=True)
     path = output / 'recovery.pt'
-    opts = {n: optimizer(m, settings) for n, m in models.items()}
+    opts = {n: (optimizer_fn or optimizer)(m, settings) for n, m in models.items()}
+    def measure(epoch):
+        if evaluate_fn is not None:
+            return evaluate_fn(models, epoch)
+        return evaluate(models, data, rows['val'], settings, device, output,
+                        'epoch_zero' if epoch == 0 else 'epoch_validation')
     sampler = transaction.PairedSampler(len(rows['train']), settings['batch_size'], settings['sampling_seed'])
     fixed = {n: frozen_digest(m) for n, m in models.items()}
     if path.exists():
@@ -110,7 +115,7 @@ def fit(models, data, rows, settings, binding, device, output, resume=True,
                   'restored': ['models', 'Adam', 'RNG', 'sampler', 'loss_sums']})
     else:
         require(not (output / 'history.json').exists(), 'History exists without recovery')
-        records, zero = evaluate(models, data, rows['val'], settings, device, output, 'epoch_zero')
+        records, zero = measure(0)
         state = {'schema': 'xgnid.node-transaction.v1', 'binding': binding, 'settings': settings,
                  'completed_epoch': 0, 'updates': 0, 'epoch_updates': 0, 'epoch_samples': 0,
                  'loss_sums': {n: 0. for n in models}, 'training_seconds': {n: 0. for n in models},
@@ -176,7 +181,7 @@ def fit(models, data, rows, settings, binding, device, output, resume=True,
         require(state['epoch_samples'] == sampler.size and state['epoch_updates'] == len(sampler),
                 'Incomplete paired epoch')
         require(all(frozen_digest(m) == fixed[n] for n, m in models.items()), 'Frozen encoder/BN changed')
-        records, measured = evaluate(models, data, rows['val'], settings, device, output, 'epoch_validation')
+        records, measured = measure(epoch)
         for n, m in models.items():
             if measured[n]['macro_f1'] > state['best'][n]['validation']['macro_f1']:
                 state['best'][n] = {'epoch': epoch, 'validation': measured[n],
